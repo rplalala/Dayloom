@@ -1,5 +1,8 @@
 # Case 06: Sydney family trip
 
+Current density-policy results: [final](evaluation/density-final.json) and [same-run Pair](evaluation/density-pair.json). Both are offline derivations under `rtpeval_daily_density_3`; factual evidence, policies and numeric results are unchanged. The [twelve-case replacement](../report.md) awaits researcher acceptance.
+
+
 ## Acceptance and selected material
 
 **Case-06 revision 5 final package accepted on 15 October 2026 Australia/Sydney.**

@@ -1,30 +1,7 @@
 {
-  "declared_by": "rtpeval.generate/selected_workflow_1",
-  "declared_at": "2026-10-18T04:42:53.677208+00:00",
-  "policy_ref": "selected_workflow_1",
-  "producer_policy_ref": "selected_workflow_1",
-  "workflow_status": "completed",
-  "required_mechanisms": {
-    "generation": "completed",
-    "retrieval": "completed"
-  },
-  "observations": [
-    {
-      "mechanism": "retrieval",
-      "status": "partial"
-    }
-  ],
-  "failure_type": null,
-  "operator_selection_ref": {
-    "path": "../../generation-selection-23a4e34676bc4b7e9c0b62e1aa4f7cc1.json",
-    "sha256": "6b4a97afe1835ad6b01cb5047ca670f27fcf5f54f1c39cb27493d1e7cebaac3f",
-    "media_type": "application/json",
-    "availability": "available"
-  },
-  "operator_config_ref": {
-    "path": "../../completion-selection.json",
-    "sha256": "6b4a97afe1835ad6b01cb5047ca670f27fcf5f54f1c39cb27493d1e7cebaac3f",
-    "media_type": "application/json",
-    "availability": "available"
+  "$case_material_ref": {
+    "path": "analysis/resources/selected-population.json",
+    "pointer": "/slots/2/primary_attempt/producer_completion",
+    "expanded_semantic_sha256": "e6581855df686a0ddcc32e75cac301284cbdb314737c64bd78af7177368e36a8"
   }
 }

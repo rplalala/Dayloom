@@ -1,24 +1,7 @@
 {
-  "declared_by": "rtpeval.generate/selected_workflow_1",
-  "declared_at": "2026-10-18T03:28:54.395941+00:00",
-  "policy_ref": "selected_workflow_1",
-  "producer_policy_ref": "selected_workflow_1",
-  "workflow_status": "completed",
-  "required_mechanisms": {
-    "generation": "completed"
-  },
-  "observations": [],
-  "failure_type": null,
-  "operator_selection_ref": {
-    "path": "../../generation-selection-67030bec9f774f29a8e718b646ac0395.json",
-    "sha256": "0a1c4986f124392b0de47acfeadd834d55972a23424cf40608023a536ebfecd2",
-    "media_type": "application/json",
-    "availability": "available"
-  },
-  "operator_config_ref": {
-    "path": "../../registration-selection-live.json",
-    "sha256": "0a1c4986f124392b0de47acfeadd834d55972a23424cf40608023a536ebfecd2",
-    "media_type": "application/json",
-    "availability": "available"
+  "$case_material_ref": {
+    "path": "analysis/resources/selected-population.json",
+    "pointer": "/slots/1/primary_attempt/producer_completion",
+    "expanded_semantic_sha256": "a36fcfea93648af268e551a29019711242a3f6aab9b3658384bbc712b1ddb6fa"
   }
 }

@@ -47,69 +47,10 @@
       "max_leg_minutes": 45.0
     },
     "v3_repair": {
-      "max_rounds": 6,
-      "max_model_calls": 6,
-      "max_deletion_attempts": 12,
-      "quantity_review_enabled": true,
-      "overfull_review_enabled": false,
-      "daily_main_min": 2,
-      "daily_main_max": 5,
-      "move_max_days": 1,
-      "blank_day_start_hour": 9,
-      "blank_day_end_hour": 18,
-      "alternatives_per_gap": 2,
-      "exploration_positions": 2,
-      "timing": {
-        "stage_seconds": 420.0,
-        "round_seconds": 150.0,
-        "model_seconds": 70.0,
-        "preparation_seconds": 60.0,
-        "recheck_reserve_seconds": 20.0,
-        "minimum_model_seconds": 30.0,
-        "round_reference_seconds": 120.0,
-        "finalization_reserve_seconds": 1.0
-      },
-      "input": {
-        "input_tokens": 252000,
-        "output_tokens": 16384,
-        "framing_tokens": 2048,
-        "identity_capacity": 32,
-        "activity_capacity": 120,
-        "candidate_characters": 12000,
-        "feedback_characters": 12000
-      },
-      "acquisition": {
-        "google": 6,
-        "fallback": 1,
-        "embedding": 1,
-        "retrieval": 1,
-        "canonical": 30,
-        "details": 30,
-        "routes": 24,
-        "post_proposal_route_reserve": 8,
-        "elements": 32,
-        "top_k": 10,
-        "provider_timeout_seconds": 20.0
-      },
-      "spatial": {
-        "walk_route_max_km": 3.0,
-        "transit_max_minutes": 45.0,
-        "drive_max_minutes": 30.0,
-        "drive_reserve_minutes": 10.0,
-        "walk_radius_km": 2.0,
-        "motor_radius_km": 5.0,
-        "max_leg_minutes": 45.0,
-        "detour_floor_km": 1.0,
-        "detour_ratio": 0.5,
-        "fallback_distance_km": 1.0,
-        "fallback_reserve_minutes": 45.0,
-        "daily_added_minutes": 90.0
-      },
-      "reason_compression": {
-        "max_calls": 1,
-        "input_tokens": 32000,
-        "output_tokens": 8192,
-        "timeout_seconds": 30.0
+      "$case_material_ref": {
+        "path": "analysis/repair/repair.json",
+        "pointer": "/rounds/0/result/effective_policy",
+        "expanded_semantic_sha256": "1d5fae66261fc89794c16f102f30f74aa73a22d52a7cb0f8e7bee6eb776e4403"
       }
     },
     "acquisition": {

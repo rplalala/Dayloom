@@ -1,0 +1,2762 @@
+{
+  "schema_version": "benchmark_pair_density_derivation_1",
+  "case_id": "case-12",
+  "status": "offline_verified_pending_researcher_acceptance",
+  "source": {
+    "public_path": "benchmark/case-12/evaluation/v3-pair/report.json",
+    "file_sha256": "3588a863bd6c9a57ba934e05d2c07a8a819e8f4ba0a399615c7585f68ff9b50e"
+  },
+  "source_group_semantic_sha256": "70a55b5bc4174a7568cda2c58de2b08f30f12f9c35a0078fe91908d6e8f90339",
+  "factual_rules_profile": {
+    "correspondence": "validated adopted sources before unique fallback and review",
+    "delta": "after minus before; exact fractions; unavailable remains null",
+    "identical_contexts": "one_judgment_with_bound_stage_sources",
+    "mask": "pair union; exclude only two established zero denominators",
+    "opening_pass_basis": "api_hours_or_llm_access_reasonableness_2",
+    "profile_id": "rtpeval_v3_pair_rules_2",
+    "quality": "independent checks; deletion and replacement do not repair old facts",
+    "scope": "selected same-run V3 draft and final_primary"
+  },
+  "density_rules_profile_id": "rtpeval_daily_density_3",
+  "method": "Native density scoring and exact aggregation only; factual verdicts, masks, visit changes, correspondence and continuity preserved from the accepted same-run pair.",
+  "live_sends": 0,
+  "groups": [
+    {
+      "deltas": {
+        "auxiliary_total": {
+          "exact_fraction": {
+            "denominator": 5,
+            "numerator": 1
+          },
+          "percentage_points": 20.0
+        },
+        "daily_density_penalty": -25.714285714285715,
+        "date_coverage": {
+          "any_activity_day_count": {
+            "after": 6,
+            "before": 5,
+            "delta": 1,
+            "interpretation": "observed_value_difference"
+          },
+          "declared_day_present_count": {
+            "after": 7,
+            "before": 7,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "empty_primary_day_count": {
+            "after": 1,
+            "before": 2,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "known_primary_day_count": {
+            "after": 6,
+            "before": 5,
+            "delta": 1,
+            "interpretation": "observed_value_difference"
+          },
+          "requested_day_count": {
+            "after": 7,
+            "before": 7,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "unknown_primary_day_count": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        },
+        "density": [
+          {
+            "after": {
+              "category": "<2",
+              "date": "2026-10-22",
+              "known_primary_count": 1,
+              "possible_primary_count": 0
+            },
+            "before": {
+              "category": "<2",
+              "date": "2026-10-22",
+              "known_primary_count": 1,
+              "possible_primary_count": 0
+            },
+            "changes": {
+              "known_primary_count": {
+                "after": 1,
+                "before": 1,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "after": 0,
+                "before": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            },
+            "date": "2026-10-22"
+          },
+          {
+            "after": {
+              "category": "2..5",
+              "date": "2026-10-23",
+              "known_primary_count": 2,
+              "possible_primary_count": 0
+            },
+            "before": {
+              "category": "<2",
+              "date": "2026-10-23",
+              "known_primary_count": 1,
+              "possible_primary_count": 0
+            },
+            "changes": {
+              "known_primary_count": {
+                "after": 2,
+                "before": 1,
+                "delta": 1,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "after": 0,
+                "before": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            },
+            "date": "2026-10-23"
+          },
+          {
+            "after": {
+              "category": "2..5",
+              "date": "2026-10-24",
+              "known_primary_count": 2,
+              "possible_primary_count": 0
+            },
+            "before": {
+              "category": "<2",
+              "date": "2026-10-24",
+              "known_primary_count": 1,
+              "possible_primary_count": 0
+            },
+            "changes": {
+              "known_primary_count": {
+                "after": 2,
+                "before": 1,
+                "delta": 1,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "after": 0,
+                "before": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            },
+            "date": "2026-10-24"
+          },
+          {
+            "after": {
+              "category": "<2",
+              "date": "2026-10-25",
+              "known_primary_count": 0,
+              "possible_primary_count": 0
+            },
+            "before": {
+              "category": "<2",
+              "date": "2026-10-25",
+              "known_primary_count": 0,
+              "possible_primary_count": 0
+            },
+            "changes": {
+              "known_primary_count": {
+                "after": 0,
+                "before": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "after": 0,
+                "before": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            },
+            "date": "2026-10-25"
+          },
+          {
+            "after": {
+              "category": "2..5",
+              "date": "2026-10-26",
+              "known_primary_count": 2,
+              "possible_primary_count": 0
+            },
+            "before": {
+              "category": "<2",
+              "date": "2026-10-26",
+              "known_primary_count": 1,
+              "possible_primary_count": 0
+            },
+            "changes": {
+              "known_primary_count": {
+                "after": 2,
+                "before": 1,
+                "delta": 1,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "after": 0,
+                "before": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            },
+            "date": "2026-10-26"
+          },
+          {
+            "after": {
+              "category": "2..5",
+              "date": "2026-10-27",
+              "known_primary_count": 2,
+              "possible_primary_count": 0
+            },
+            "before": {
+              "category": "<2",
+              "date": "2026-10-27",
+              "known_primary_count": 0,
+              "possible_primary_count": 0
+            },
+            "changes": {
+              "known_primary_count": {
+                "after": 2,
+                "before": 0,
+                "delta": 2,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "after": 0,
+                "before": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            },
+            "date": "2026-10-27"
+          },
+          {
+            "after": {
+              "category": "2..5",
+              "date": "2026-10-28",
+              "known_primary_count": 2,
+              "possible_primary_count": 0
+            },
+            "before": {
+              "category": "<2",
+              "date": "2026-10-28",
+              "known_primary_count": 1,
+              "possible_primary_count": 0
+            },
+            "changes": {
+              "known_primary_count": {
+                "after": 2,
+                "before": 1,
+                "delta": 1,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "after": 0,
+                "before": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            },
+            "date": "2026-10-28"
+          }
+        ],
+        "dimensions": {
+          "grounding": {
+            "contribution": {
+              "exact_fraction": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "percentage_points": 0.0
+            },
+            "counts": {
+              "FAIL": 0,
+              "PASS": 6,
+              "UNKNOWN": 0
+            },
+            "denominator": 6,
+            "known_unit_count": 6,
+            "not_applicable_count": 0,
+            "rates": {
+              "conditional_compliance": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "confirmed_violation_rate": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "unknown_rate": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "verification_coverage": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "verified_fraction": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              }
+            },
+            "verified_fraction_exact_delta": {
+              "denominator": 1,
+              "numerator": 0
+            },
+            "verified_score_percentage_points": 0.0
+          },
+          "non_overlap": {
+            "contribution": {
+              "exact_fraction": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "percentage_points": 0.0
+            },
+            "counts": {
+              "FAIL": 0,
+              "PASS": 11,
+              "UNKNOWN": 0
+            },
+            "denominator": 11,
+            "known_unit_count": 11,
+            "not_applicable_count": 0,
+            "rates": {
+              "conditional_compliance": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "confirmed_violation_rate": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "unknown_rate": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "verification_coverage": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "verified_fraction": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              }
+            },
+            "verified_fraction_exact_delta": {
+              "denominator": 1,
+              "numerator": 0
+            },
+            "verified_score_percentage_points": 0.0
+          },
+          "opening": {
+            "contribution": {
+              "exact_fraction": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "percentage_points": 0.0
+            },
+            "counts": {
+              "FAIL": 0,
+              "PASS": 6,
+              "UNKNOWN": 0
+            },
+            "denominator": 6,
+            "known_unit_count": 6,
+            "not_applicable_count": 0,
+            "rates": {
+              "conditional_compliance": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "confirmed_violation_rate": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "unknown_rate": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "verification_coverage": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "verified_fraction": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              }
+            },
+            "verified_fraction_exact_delta": {
+              "denominator": 1,
+              "numerator": 0
+            },
+            "verified_score_percentage_points": 0.0
+          },
+          "requirements": {
+            "contribution": {
+              "exact_fraction": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "percentage_points": 0.0
+            },
+            "counts": {
+              "FAIL": 0,
+              "PASS": 0,
+              "UNKNOWN": 0
+            },
+            "denominator": 0,
+            "known_unit_count": 0,
+            "not_applicable_count": 0,
+            "rates": {
+              "conditional_compliance": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "confirmed_violation_rate": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "unknown_rate": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "verification_coverage": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              },
+              "verified_fraction": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "percentage_points": 0.0
+              }
+            },
+            "verified_fraction_exact_delta": {
+              "denominator": 1,
+              "numerator": 0
+            },
+            "verified_score_percentage_points": 0.0
+          },
+          "routes": {
+            "contribution": {
+              "exact_fraction": {
+                "denominator": 1,
+                "numerator": 1
+              },
+              "percentage_points": 100.0
+            },
+            "counts": {
+              "FAIL": 0,
+              "PASS": 5,
+              "UNKNOWN": 0
+            },
+            "denominator": 5,
+            "known_unit_count": 5,
+            "not_applicable_count": 0,
+            "rates": {
+              "conditional_compliance": {
+                "exact_fraction": null,
+                "percentage_points": null
+              },
+              "confirmed_violation_rate": {
+                "exact_fraction": null,
+                "percentage_points": null
+              },
+              "unknown_rate": {
+                "exact_fraction": null,
+                "percentage_points": null
+              },
+              "verification_coverage": {
+                "exact_fraction": null,
+                "percentage_points": null
+              },
+              "verified_fraction": {
+                "exact_fraction": null,
+                "percentage_points": null
+              }
+            },
+            "verified_fraction_exact_delta": null,
+            "verified_score_percentage_points": null
+          }
+        },
+        "opening_availability": {
+          "applicable_count": {
+            "after": 11,
+            "before": 5,
+            "delta": 6,
+            "interpretation": "observed_value_difference"
+          },
+          "basis_counts": {
+            "current": {
+              "after": 2,
+              "before": 1,
+              "delta": 1,
+              "interpretation": "observed_value_difference"
+            },
+            "llm_access_reasonableness": {
+              "after": 3,
+              "before": 2,
+              "delta": 1,
+              "interpretation": "observed_value_difference"
+            },
+            "mixed": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "regular": {
+              "after": 6,
+              "before": 2,
+              "delta": 4,
+              "interpretation": "observed_value_difference"
+            },
+            "unavailable": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "complete_evidence_count": {
+            "after": 8,
+            "before": 3,
+            "delta": 5,
+            "interpretation": "observed_value_difference"
+          },
+          "complete_evidence_coverage": {
+            "denominator": {
+              "after": 11,
+              "before": 5,
+              "delta": 6,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "after": 8,
+              "before": 3,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "after": 0.7272727272727273,
+              "before": 0.6,
+              "delta": "0.1272727272727273",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "evidence_counts": {
+            "complete": {
+              "after": 8,
+              "before": 3,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "missing": {
+              "after": 3,
+              "before": 2,
+              "delta": 1,
+              "interpretation": "observed_value_difference"
+            },
+            "partial": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "identity_available_count": {
+            "after": 11,
+            "before": 5,
+            "delta": 6,
+            "interpretation": "observed_value_difference"
+          },
+          "llm_assessed_count": {
+            "after": 3,
+            "before": 2,
+            "delta": 1,
+            "interpretation": "observed_value_difference"
+          },
+          "llm_decidable_count": {
+            "after": 3,
+            "before": 2,
+            "delta": 1,
+            "interpretation": "observed_value_difference"
+          },
+          "structural_coverage": {
+            "denominator": {
+              "after": 11,
+              "before": 5,
+              "delta": 6,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "after": 11,
+              "before": 5,
+              "delta": 6,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "after": 1.0,
+              "before": 1.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structurally_evaluable_count": {
+            "after": 11,
+            "before": 5,
+            "delta": 6,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_role_count": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_count": {
+            "after": 11,
+            "before": 5,
+            "delta": 6,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_coverage": {
+            "denominator": {
+              "after": 11,
+              "before": 5,
+              "delta": 6,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "after": 11,
+              "before": 5,
+              "delta": 6,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "after": 1.0,
+              "before": 1.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "opening_duration_subtotals": {
+          "confirmed_outside_lower_bound_seconds": {
+            "missing_visit_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "after": 11,
+              "before": 5,
+              "delta": 6,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "after": 0.0,
+              "before": 0.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "known_open_seconds": {
+            "missing_visit_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "after": 11,
+              "before": 5,
+              "delta": 6,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "after": 52200.0,
+              "before": 25200.0,
+              "delta": "27000.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "outside_seconds": {
+            "missing_visit_count": {
+              "after": 3,
+              "before": 2,
+              "delta": 1,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "after": 8,
+              "before": 3,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "after": 0.0,
+              "before": 0.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "unknown_seconds": {
+            "missing_visit_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "after": 11,
+              "before": 5,
+              "delta": 6,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "after": 16200.0,
+              "before": 10800.0,
+              "delta": "5400.0",
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "overall_total": {
+          "exact_fraction": {
+            "denominator": 35,
+            "numerator": 16
+          },
+          "percentage_points": 45.714285714285715
+        },
+        "population": {
+          "primary_visit_count": 6,
+          "unique_canonical_venue_count": 6,
+          "unresolved_identity_count": 0
+        },
+        "repetition": {
+          "across_day_extras": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "extra_occurrences": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "known_identity_occurrences": {
+            "after": 11,
+            "before": 5,
+            "delta": 6,
+            "interpretation": "observed_value_difference"
+          },
+          "repeated_venue_count": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "unknown_identity_occurrences": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "within_day_extras": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        },
+        "route_observed_burden": {
+          "duration_nanoseconds": {
+            "after": 4066000000000,
+            "before": null,
+            "delta": null,
+            "interpretation": "observed_value_difference"
+          },
+          "duration_seconds_exact": {
+            "after": "4066",
+            "before": null,
+            "delta": null,
+            "interpretation": "observed_value_difference"
+          },
+          "maximum_duration_seconds_exact": {
+            "after": "1421",
+            "before": null,
+            "delta": null,
+            "interpretation": "observed_value_difference"
+          },
+          "median_duration_seconds_exact": {
+            "after": "886",
+            "before": null,
+            "delta": null,
+            "interpretation": "observed_value_difference"
+          },
+          "missing_leg_count": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "observed_leg_count": {
+            "after": 5,
+            "before": 0,
+            "delta": 5,
+            "interpretation": "observed_value_difference"
+          },
+          "product_reserve_seconds_subtotal": {
+            "after": 600,
+            "before": null,
+            "delta": null,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_population_count": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        },
+        "routes_availability": {
+          "applicable_count": {
+            "after": 5,
+            "before": 0,
+            "delta": 5,
+            "interpretation": "observed_value_difference"
+          },
+          "applicable_response_count": {
+            "after": 5,
+            "before": 0,
+            "delta": 5,
+            "interpretation": "observed_value_difference"
+          },
+          "applicable_response_coverage": {
+            "denominator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "after": 1.0,
+              "before": null,
+              "delta": null,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "complete_evidence_count": {
+            "after": 5,
+            "before": 0,
+            "delta": 5,
+            "interpretation": "observed_value_difference"
+          },
+          "complete_evidence_coverage": {
+            "denominator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "after": 1.0,
+              "before": null,
+              "delta": null,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "duration_available_count": {
+            "after": 5,
+            "before": 0,
+            "delta": 5,
+            "interpretation": "observed_value_difference"
+          },
+          "duration_available_coverage": {
+            "denominator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "after": 1.0,
+              "before": null,
+              "delta": null,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structural_coverage": {
+            "denominator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "after": 1.0,
+              "before": null,
+              "delta": null,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structurally_evaluable_count": {
+            "after": 5,
+            "before": 0,
+            "delta": 5,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_population_count": {
+            "after": 0,
+            "before": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_count": {
+            "after": 5,
+            "before": 0,
+            "delta": 5,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_coverage": {
+            "denominator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "after": 5,
+              "before": 0,
+              "delta": 5,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "after": 1.0,
+              "before": null,
+              "delta": null,
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "schedule_measures": {
+          "combined_conflict": {
+            "seconds": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "commitment_conflict": {
+            "seconds": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "daily": {
+            "2026-10-22": {
+              "combined_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "after": 5400.0,
+                  "before": 5400.0,
+                  "delta": "0.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-23": {
+              "combined_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "after": 13162.0,
+                  "before": 7200.0,
+                  "delta": "5962.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-24": {
+              "combined_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "after": 13486.0,
+                  "before": 7200.0,
+                  "delta": "6286.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-25": {
+              "combined_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "after": 86400.0,
+                  "before": 86400.0,
+                  "delta": "0.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-26": {
+              "combined_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "after": 17764.0,
+                  "before": 10800.0,
+                  "delta": "6964.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-27": {
+              "combined_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "after": 11033.0,
+                  "before": 0,
+                  "delta": "11033.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-28": {
+              "combined_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "after": 12221.0,
+                  "before": 5400.0,
+                  "delta": "6821.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "after": 0,
+                  "before": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            }
+          },
+          "pair_intersection_sum": {
+            "seconds": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "protected_reserved": {
+            "seconds": {
+              "after": 86400.0,
+              "before": 86400.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "protection_conflict": {
+            "seconds": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "scheduled_occupied": {
+            "seconds": {
+              "after": 73066.0,
+              "before": 36000.0,
+              "delta": "37066.0",
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "after": 0,
+              "before": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          }
+        }
+      },
+      "group_id": "case-12",
+      "included_dimensions": [
+        "requirements",
+        "grounding",
+        "non_overlap",
+        "opening",
+        "routes"
+      ],
+      "pair_status": "available",
+      "run_id": "case-12-v3-20261017-r07",
+      "visit_changes": {
+        "added_count": 6,
+        "confirmed_venue_loss_count": 0,
+        "primary_role_loss_count": 0,
+        "removed_count": 0,
+        "replaced_count": 0,
+        "unresolved_after": [],
+        "unresolved_before": []
+      },
+      "stages": {
+        "draft": {
+          "projection": "draft",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 2,
+                "UNKNOWN": 0
+              },
+              "denominator": 2,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "verified_fraction": {
+                  "denominator": 2,
+                  "numerator": 2
+                }
+              },
+              "known_unit_count": 2,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "routes": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "reason": "no_checks",
+                "score_0_100": 0.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 5,
+              "numerator": 4
+            },
+            "reason": null,
+            "score_0_100": 80.0,
+            "total_included_dimensions": 5,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 7,
+            "days": [
+              {
+                "date": "2026-10-22",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": 1,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    },
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 138,
+                      "offset_start": 88,
+                      "quote": "On 2026-10-22, plan exactly one sightseeing visit."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "explicit_count_match"
+              },
+              {
+                "date": "2026-10-23",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-24",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-25",
+                "known_primary_count": 0,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "policy": {
+                  "exact_count": 0,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    },
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 219,
+                      "offset_start": 139,
+                      "quote": "Leave 2026-10-25 completely free of planned activities and travel as a rest day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "explicit_count_match"
+              },
+              {
+                "date": "2026-10-26",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-27",
+                "known_primary_count": 0,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 100,
+                "penalty_bounds": {
+                  "lower": 100,
+                  "upper": 100
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-28",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The original request states a relaxed pace overall. The explicit date-specific sightseeing total is exactly one on 2026-10-22. The full rest day on 2026-10-25 entails zero primary visits; the broader ban on planned activities and travel is separately preserved by protected_time. Flexibility on other dates concerns sightseeing choices and adds no count quota.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-17T03:32:56Z",
+              "reviewer_ref": "/root/case12_r02_reviewer"
+            },
+            "mean_penalty_0_100": 25.714285714285715,
+            "exact_mean_penalty": {
+              "numerator": 180,
+              "denominator": 7
+            },
+            "mean_penalty_bounds": {
+              "lower": 25.714285714285715,
+              "upper": 25.714285714285715
+            }
+          },
+          "overall_total": {
+            "score_0_100": 54.285714285714285,
+            "exact_fraction": {
+              "numerator": 19,
+              "denominator": 35
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+              "requirement_spec": "6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9",
+              "result": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "9cebc6fb0d77680de2e62de21e5989829db12058f88a678cca397fb23f3b0c3b",
+              "identity_references": "e7ba0f9537612ef780fc66554e31b4d4edd457f0d6be179a9509d3069ca04916",
+              "identity_report": "ac5ec619f6490d40406ca58454793b527634afd72c9935215c38d4f545fe9c99",
+              "identity_review": null,
+              "input": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+              "occupancy_review": null,
+              "requirement_spec": "6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9",
+              "result": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849",
+              "rules": "559af0abaf9746cf218a02d7eace40dd35f4ffa6a0f08e3063eded57adb25d83",
+              "schedule_context": "1a156f1da554906a75f8f9798643867e1bdcf69deb946ffec9e4c1fce8610335"
+            },
+            "routes": {
+              "input": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+              "requirement_spec": "6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9",
+              "result": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849"
+            }
+          }
+        },
+        "final_primary": {
+          "projection": "final_primary",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 11,
+                "UNKNOWN": 0
+              },
+              "denominator": 11,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 11,
+                  "numerator": 11
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 11,
+                  "numerator": 11
+                },
+                "verified_fraction": {
+                  "denominator": 11,
+                  "numerator": 11
+                }
+              },
+              "known_unit_count": 11,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 16,
+                "UNKNOWN": 0
+              },
+              "denominator": 16,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 16,
+                  "numerator": 16
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 16,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 16,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 16,
+                  "numerator": 16
+                },
+                "verified_fraction": {
+                  "denominator": 16,
+                  "numerator": 16
+                }
+              },
+              "known_unit_count": 16,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 11,
+                "UNKNOWN": 0
+              },
+              "denominator": 11,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 11,
+                  "numerator": 11
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 11,
+                  "numerator": 11
+                },
+                "verified_fraction": {
+                  "denominator": 11,
+                  "numerator": 11
+                }
+              },
+              "known_unit_count": 11,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 2,
+                "UNKNOWN": 0
+              },
+              "denominator": 2,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "verified_fraction": {
+                  "denominator": 2,
+                  "numerator": 2
+                }
+              },
+              "known_unit_count": 2,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 5,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 7,
+            "days": [
+              {
+                "date": "2026-10-22",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": 1,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    },
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 138,
+                      "offset_start": 88,
+                      "quote": "On 2026-10-22, plan exactly one sightseeing visit."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "explicit_count_match"
+              },
+              {
+                "date": "2026-10-23",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-24",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-25",
+                "known_primary_count": 0,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "policy": {
+                  "exact_count": 0,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    },
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 219,
+                      "offset_start": 139,
+                      "quote": "Leave 2026-10-25 completely free of planned activities and travel as a rest day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "explicit_count_match"
+              },
+              {
+                "date": "2026-10-26",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-27",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-28",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 86,
+                      "offset_start": 57,
+                      "quote": "prefer a relaxed pace overall"
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The original request states a relaxed pace overall. The explicit date-specific sightseeing total is exactly one on 2026-10-22. The full rest day on 2026-10-25 entails zero primary visits; the broader ban on planned activities and travel is separately preserved by protected_time. Flexibility on other dates concerns sightseeing choices and adds no count quota.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-17T03:32:56Z",
+              "reviewer_ref": "/root/case12_r02_reviewer"
+            },
+            "mean_penalty_0_100": 0.0,
+            "exact_mean_penalty": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 100.0,
+            "exact_fraction": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+              "requirement_spec": "6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9",
+              "result": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "9cebc6fb0d77680de2e62de21e5989829db12058f88a678cca397fb23f3b0c3b",
+              "identity_references": "e7ba0f9537612ef780fc66554e31b4d4edd457f0d6be179a9509d3069ca04916",
+              "identity_report": "ac5ec619f6490d40406ca58454793b527634afd72c9935215c38d4f545fe9c99",
+              "identity_review": null,
+              "input": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+              "occupancy_review": null,
+              "requirement_spec": "6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9",
+              "result": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849",
+              "rules": "559af0abaf9746cf218a02d7eace40dd35f4ffa6a0f08e3063eded57adb25d83",
+              "schedule_context": "1a156f1da554906a75f8f9798643867e1bdcf69deb946ffec9e4c1fce8610335"
+            },
+            "routes": {
+              "input": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+              "requirement_spec": "6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9",
+              "result": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849"
+            }
+          }
+        }
+      },
+      "continuity": {
+        "conflicts": {
+          "transitions": {},
+          "checks": 0,
+          "original_checks_semantic_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "grounding": {
+          "transitions": {
+            "unchanged": 5,
+            "added": 6
+          },
+          "checks": 11,
+          "original_checks_semantic_sha256": "36e5982c82952543c6b71ae3d14461a1b22896f85ba0fb0210f6e2488ced270f"
+        },
+        "opening": {
+          "transitions": {
+            "unchanged": 5,
+            "added": 6
+          },
+          "checks": 11,
+          "original_checks_semantic_sha256": "0acd9d0768eff2f419973b1354772ce42ad6a28bd121b6c80a500c8708f36249"
+        },
+        "protection_conflicts": {
+          "transitions": {},
+          "checks": 0,
+          "original_checks_semantic_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "requirements": {
+          "transitions": {
+            "unchanged": 2
+          },
+          "checks": 2,
+          "original_checks_semantic_sha256": "0bf77983337c83f5a584433521239ca15e7d43a7c8c1dbb6cb551b40433fdc4f"
+        },
+        "routes": {
+          "transitions": {
+            "structural_leg_added": 5
+          },
+          "checks": 5,
+          "original_checks_semantic_sha256": "38f741edad17abf73b2e8d2af1a05d7cec7bbb0f087cfde977f043e375d90090"
+        }
+      }
+    }
+  ],
+  "full_derivation_semantic_sha256": "1d46a5949b50395a4b9b0b32103ad5fdbf69a3402bbbcc3fd88aa257c0a85b4f",
+  "source_rules_profile_semantic_sha256": "6761185984e0452c177221ce358df8754655b3baaf8a5f407a3eca491a9ab559",
+  "content_sha256": "2d2ca3ef79f4245887a144952302f6b622648c146e3805e18591c96c5077159e"
+}

@@ -1895,14 +1895,14 @@
   },
   "pre_rag_google_ids": {
     "$case_material_ref": {
-      "path": "opportunities.json",
+      "path": "analysis/poi-process/opportunities.json",
       "pointer": "/runs/0/stages/discovered/canonical_ids",
       "expanded_semantic_sha256": "f851098674b2cf2a937df95271aa6a105a6c6d59da9f2a49f21975cc34e26188"
     }
   },
   "omissions": {
     "$case_material_ref": {
-      "path": "opportunities.json",
+      "path": "analysis/poi-process/opportunities.json",
       "pointer": "/runs/0/omissions",
       "expanded_semantic_sha256": "16087951aa15a6c1bac994e4a19f662b37d3d6c1a5d8bdc6683aa5ebeb9a4760"
     }

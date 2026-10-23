@@ -304,7 +304,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "07dcbbea04d686745fa39b5a9f4e7c2c6d21e20b13bef9e39e57b4de15696110",
+      "sha256": "938eb83f2d48804299a2f044e53c3c2d35c1549cd82b9a68fe454513148ae27f",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/report.md",
         "sha256": "574e88951c8015a922223263653c8059b2b49b4ca64a09228a915ad079748400"
@@ -816,5 +816,18 @@
   "publication_format": {
     "shared_reference": "$case_material_ref paths are relative to the containing public file; expand the JSON Pointer and verify canonical sorted-key UTF-8 compact JSON SHA-256.",
     "stages": "RFC6902 patches apply to the expanded saved final; each complete resulting stage has its own semantic hash."
+  },
+  "density_policy_derivations": {
+    "rules_profile_id": "rtpeval_daily_density_3",
+    "status": "pending_researcher_acceptance",
+    "final": {
+      "path": "evaluation/density-final.json",
+      "sha256": "eb2686d08525844fa6a9b20a2e074e3619543f94165a44b04f094ec79f471e2b"
+    },
+    "pair": {
+      "path": "evaluation/density-pair.json",
+      "sha256": "e7028a77cef63fae796dd21d4ecb6e09e5551951eadf5d892143e54be0f596dc"
+    },
+    "scope": "New offline density reports; original factual sources, receipts and prior acceptance remain unchanged."
   }
 }

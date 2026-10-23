@@ -1261,7 +1261,7 @@
   "reader_views": [
     {
       "path": "report.md",
-      "sha256": "ff8427359a0d32aca042dedaba71c910414871289560867efd46aec868b25523"
+      "sha256": "d33d210b33910419e6bfc7752c588caa7cf795e3a4867e1b6754d0f0544338cf"
     },
     {
       "path": "itinerary.md",
@@ -1274,5 +1274,18 @@
     "timezone": "Australia/Sydney",
     "issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193",
     "details": "selection.json#/researcher_acceptance"
+  },
+  "density_policy_derivations": {
+    "rules_profile_id": "rtpeval_daily_density_3",
+    "status": "pending_researcher_acceptance",
+    "final": {
+      "path": "evaluation/density-final.json",
+      "sha256": "8d20744b894942abdc5b5597f65b26627bf7e4dc4c444cdb11e856c07d30e0fa"
+    },
+    "pair": {
+      "path": "evaluation/density-pair.json",
+      "sha256": "fc8f27ddccaaa33d8a70a047a3714f2449ed0e85f18650271ff14605db50ce07"
+    },
+    "scope": "New offline density reports; original factual sources, receipts and prior acceptance remain unchanged."
   }
 }

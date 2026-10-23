@@ -1,0 +1,2450 @@
+{
+  "schema_version": "benchmark_pair_density_derivation_1",
+  "case_id": "case-09",
+  "status": "offline_verified_pending_researcher_acceptance",
+  "source": {
+    "public_path": "benchmark/case-09/evaluation/v3-pair/report.json",
+    "file_sha256": "a296121079ec9329cfbb4312287d13bce99237a55184dd6629799792479430c5"
+  },
+  "source_group_semantic_sha256": "1d41ac222b58995e85b07a28e795f518b7f09128fa526ca48fb7a635e550547e",
+  "factual_rules_profile": {
+    "profile_id": "rtpeval_v3_pair_rules_2",
+    "scope": "selected same-run V3 draft and final_primary",
+    "mask": "pair union; exclude only two established zero denominators",
+    "delta": "after minus before; exact fractions; unavailable remains null",
+    "correspondence": "validated adopted sources before unique fallback and review",
+    "quality": "independent checks; deletion and replacement do not repair old facts",
+    "opening_pass_basis": "api_hours_or_llm_access_reasonableness_2",
+    "identical_contexts": "one_judgment_with_bound_stage_sources"
+  },
+  "density_rules_profile_id": "rtpeval_daily_density_3",
+  "method": "Native density scoring and exact aggregation only; factual verdicts, masks, visit changes, correspondence and continuity preserved from the accepted same-run pair.",
+  "live_sends": 0,
+  "groups": [
+    {
+      "group_id": "case-09",
+      "run_id": "case-09-v3-r1",
+      "pair_status": "available",
+      "deltas": {
+        "dimensions": {
+          "requirements": {
+            "counts": {
+              "PASS": 0,
+              "FAIL": 0,
+              "UNKNOWN": 0
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": 0,
+            "denominator": 0,
+            "verified_score_percentage_points": 0.0,
+            "verified_fraction_exact_delta": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": 0.0,
+              "exact_fraction": {
+                "numerator": 0,
+                "denominator": 1
+              }
+            }
+          },
+          "grounding": {
+            "counts": {
+              "PASS": -1,
+              "FAIL": 0,
+              "UNKNOWN": 0
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": -1,
+            "denominator": -1,
+            "verified_score_percentage_points": 0.0,
+            "verified_fraction_exact_delta": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": 0.0,
+              "exact_fraction": {
+                "numerator": 0,
+                "denominator": 1
+              }
+            }
+          },
+          "non_overlap": {
+            "counts": {
+              "PASS": -2,
+              "FAIL": 0,
+              "UNKNOWN": 0
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": -2,
+            "denominator": -2,
+            "verified_score_percentage_points": 0.0,
+            "verified_fraction_exact_delta": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": 0.0,
+              "exact_fraction": {
+                "numerator": 0,
+                "denominator": 1
+              }
+            }
+          },
+          "opening": {
+            "counts": {
+              "PASS": -1,
+              "FAIL": 0,
+              "UNKNOWN": 0
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": -1,
+            "denominator": -1,
+            "verified_score_percentage_points": -0.9090909090909091,
+            "verified_fraction_exact_delta": {
+              "numerator": -1,
+              "denominator": 110
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": -0.9090909090909091,
+                "exact_fraction": {
+                  "numerator": -1,
+                  "denominator": 110
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": -0.9090909090909091,
+                "exact_fraction": {
+                  "numerator": -1,
+                  "denominator": 110
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.9090909090909091,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 110
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": -0.9090909090909091,
+              "exact_fraction": {
+                "numerator": -1,
+                "denominator": 110
+              }
+            }
+          },
+          "routes": {
+            "counts": {
+              "PASS": 0,
+              "FAIL": 0,
+              "UNKNOWN": -1
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": -1,
+            "denominator": -1,
+            "verified_score_percentage_points": 16.666666666666668,
+            "verified_fraction_exact_delta": {
+              "numerator": 1,
+              "denominator": 6
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 16.666666666666668,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 6
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 16.666666666666668,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 6
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": -16.666666666666668,
+                "exact_fraction": {
+                  "numerator": -1,
+                  "denominator": 6
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": 16.666666666666668,
+              "exact_fraction": {
+                "numerator": 1,
+                "denominator": 6
+              }
+            }
+          }
+        },
+        "auxiliary_total": {
+          "percentage_points": 3.1515151515151514,
+          "exact_fraction": {
+            "numerator": 26,
+            "denominator": 825
+          }
+        },
+        "overall_total": {
+          "percentage_points": 5.151515151515151,
+          "exact_fraction": {
+            "numerator": 17,
+            "denominator": 330
+          }
+        },
+        "daily_density_penalty": -2.0,
+        "population": {
+          "primary_visit_count": -1,
+          "unique_canonical_venue_count": -1,
+          "unresolved_identity_count": 0
+        },
+        "schedule_measures": {
+          "combined_conflict": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "commitment_conflict": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "daily": {
+            "2026-10-22": {
+              "combined_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "before": 18192.0,
+                  "after": 18192.0,
+                  "delta": "0.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-23": {
+              "combined_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "before": 15848.0,
+                  "after": 15848.0,
+                  "delta": "0.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-24": {
+              "combined_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "before": 15120.0,
+                  "after": 6578.0,
+                  "delta": "-8542.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-25": {
+              "combined_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "before": 14087.0,
+                  "after": 14087.0,
+                  "delta": "0.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-26": {
+              "combined_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "before": 14696.0,
+                  "after": 14696.0,
+                  "delta": "0.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            }
+          },
+          "pair_intersection_sum": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "protected_reserved": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "protection_conflict": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "scheduled_occupied": {
+            "seconds": {
+              "before": 77943.0,
+              "after": 69401.0,
+              "delta": "-8542.0",
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "date_coverage": {
+          "any_activity_day_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "declared_day_present_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "empty_primary_day_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "known_primary_day_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "requested_day_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "unknown_primary_day_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        },
+        "repetition": {
+          "across_day_extras": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "extra_occurrences": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "known_identity_occurrences": {
+            "before": 11,
+            "after": 10,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "repeated_venue_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "unknown_identity_occurrences": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "within_day_extras": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        },
+        "density": [
+          {
+            "date": "2026-10-22",
+            "before": {
+              "date": "2026-10-22",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "after": {
+              "date": "2026-10-22",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "changes": {
+              "known_primary_count": {
+                "before": 2,
+                "after": 2,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "before": 0,
+                "after": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            }
+          },
+          {
+            "date": "2026-10-23",
+            "before": {
+              "date": "2026-10-23",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "after": {
+              "date": "2026-10-23",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "changes": {
+              "known_primary_count": {
+                "before": 2,
+                "after": 2,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "before": 0,
+                "after": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            }
+          },
+          {
+            "date": "2026-10-24",
+            "before": {
+              "date": "2026-10-24",
+              "known_primary_count": 3,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "after": {
+              "date": "2026-10-24",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "changes": {
+              "known_primary_count": {
+                "before": 3,
+                "after": 2,
+                "delta": -1,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "before": 0,
+                "after": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            }
+          },
+          {
+            "date": "2026-10-25",
+            "before": {
+              "date": "2026-10-25",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "after": {
+              "date": "2026-10-25",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "changes": {
+              "known_primary_count": {
+                "before": 2,
+                "after": 2,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "before": 0,
+                "after": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            }
+          },
+          {
+            "date": "2026-10-26",
+            "before": {
+              "date": "2026-10-26",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "after": {
+              "date": "2026-10-26",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "changes": {
+              "known_primary_count": {
+                "before": 2,
+                "after": 2,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "before": 0,
+                "after": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            }
+          }
+        ],
+        "opening_availability": {
+          "applicable_count": {
+            "before": 11,
+            "after": 10,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "basis_counts": {
+            "current": {
+              "before": 2,
+              "after": 2,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "llm_access_reasonableness": {
+              "before": 5,
+              "after": 5,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "mixed": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "regular": {
+              "before": 3,
+              "after": 2,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "unavailable": {
+              "before": 1,
+              "after": 1,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "complete_evidence_count": {
+            "before": 5,
+            "after": 4,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "complete_evidence_coverage": {
+            "denominator": {
+              "before": 11,
+              "after": 10,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 4,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.45454545454545453,
+              "after": 0.4,
+              "delta": "-0.05454545454545453",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "evidence_counts": {
+            "complete": {
+              "before": 5,
+              "after": 4,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "missing": {
+              "before": 6,
+              "after": 6,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "partial": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "identity_available_count": {
+            "before": 11,
+            "after": 10,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "llm_assessed_count": {
+            "before": 6,
+            "after": 6,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "llm_decidable_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "structural_coverage": {
+            "denominator": {
+              "before": 11,
+              "after": 10,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 11,
+              "after": 10,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 1.0,
+              "after": 1.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structurally_evaluable_count": {
+            "before": 11,
+            "after": 10,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_role_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_count": {
+            "before": 10,
+            "after": 9,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_coverage": {
+            "denominator": {
+              "before": 11,
+              "after": 10,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 10,
+              "after": 9,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.9090909090909091,
+              "after": 0.9,
+              "delta": "-0.0090909090909091",
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "routes_availability": {
+          "applicable_count": {
+            "before": 6,
+            "after": 5,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "applicable_response_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "applicable_response_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 5,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 5,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.8333333333333334,
+              "after": 1.0,
+              "delta": "0.1666666666666666",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "complete_evidence_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "complete_evidence_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 5,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 5,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.8333333333333334,
+              "after": 1.0,
+              "delta": "0.1666666666666666",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "duration_available_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "duration_available_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 5,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 5,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.8333333333333334,
+              "after": 1.0,
+              "delta": "0.1666666666666666",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structural_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 5,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 6,
+              "after": 5,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 1.0,
+              "after": 1.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structurally_evaluable_count": {
+            "before": 6,
+            "after": 5,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_population_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 5,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 5,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.8333333333333334,
+              "after": 1.0,
+              "delta": "0.1666666666666666",
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "opening_duration_subtotals": {
+          "confirmed_outside_lower_bound_seconds": {
+            "missing_visit_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "before": 11,
+              "after": 10,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "before": 0.0,
+              "after": 0.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "known_open_seconds": {
+            "missing_visit_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "before": 11,
+              "after": 10,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "before": 36900.0,
+              "after": 29700.0,
+              "delta": "-7200.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "outside_seconds": {
+            "missing_visit_count": {
+              "before": 6,
+              "after": 6,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "before": 5,
+              "after": 4,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "before": 0.0,
+              "after": 0.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "unknown_seconds": {
+            "missing_visit_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "before": 11,
+              "after": 10,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "before": 32400.0,
+              "after": 32400.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "route_observed_burden": {
+          "duration_nanoseconds": {
+            "before": 7301000000000,
+            "after": 7301000000000,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "duration_seconds_exact": {
+            "before": "7301",
+            "after": "7301",
+            "delta": "0",
+            "interpretation": "observed_value_difference"
+          },
+          "maximum_duration_seconds_exact": {
+            "before": "2096",
+            "after": "2096",
+            "delta": "0",
+            "interpretation": "observed_value_difference"
+          },
+          "median_duration_seconds_exact": {
+            "before": "1487",
+            "after": "1487",
+            "delta": "0",
+            "interpretation": "observed_value_difference"
+          },
+          "missing_leg_count": {
+            "before": 1,
+            "after": 0,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "observed_leg_count": {
+            "before": 5,
+            "after": 5,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "product_reserve_seconds_subtotal": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_population_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        }
+      },
+      "included_dimensions": [
+        "requirements",
+        "grounding",
+        "non_overlap",
+        "opening",
+        "routes"
+      ],
+      "visit_changes": {
+        "replaced_count": 0,
+        "confirmed_venue_loss_count": 0,
+        "primary_role_loss_count": 0,
+        "removed_count": 1,
+        "added_count": 0,
+        "unresolved_before": [],
+        "unresolved_after": []
+      },
+      "stages": {
+        "draft": {
+          "projection": "draft",
+          "dimensions": {
+            "requirements": {
+              "state": "PASS",
+              "counts": {
+                "PASS": 2,
+                "FAIL": 0,
+                "UNKNOWN": 0
+              },
+              "known_unit_count": 2,
+              "denominator": 2,
+              "denominator_unresolved": false,
+              "not_applicable_count": 0,
+              "rates": {
+                "verified_fraction": 1.0,
+                "verification_coverage": 1.0,
+                "unknown_rate": 0.0,
+                "confirmed_violation_rate": 0.0
+              },
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "numerator": 2,
+                  "denominator": 2
+                },
+                "verified_fraction": {
+                  "numerator": 2,
+                  "denominator": 2
+                },
+                "verification_coverage": {
+                  "numerator": 2,
+                  "denominator": 2
+                },
+                "unknown_rate": {
+                  "numerator": 0,
+                  "denominator": 2
+                },
+                "confirmed_violation_rate": {
+                  "numerator": 0,
+                  "denominator": 2
+                }
+              },
+              "conditional_compliance": 1.0,
+              "verified_score_0_100": 100.0,
+              "contribution": {
+                "score_0_100": 100.0,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                "reason": null
+              }
+            },
+            "grounding": {
+              "state": "PASS",
+              "counts": {
+                "PASS": 11,
+                "FAIL": 0,
+                "UNKNOWN": 0
+              },
+              "known_unit_count": 11,
+              "denominator": 11,
+              "denominator_unresolved": false,
+              "not_applicable_count": 0,
+              "rates": {
+                "verified_fraction": 1.0,
+                "verification_coverage": 1.0,
+                "unknown_rate": 0.0,
+                "confirmed_violation_rate": 0.0
+              },
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "numerator": 11,
+                  "denominator": 11
+                },
+                "verified_fraction": {
+                  "numerator": 11,
+                  "denominator": 11
+                },
+                "verification_coverage": {
+                  "numerator": 11,
+                  "denominator": 11
+                },
+                "unknown_rate": {
+                  "numerator": 0,
+                  "denominator": 11
+                },
+                "confirmed_violation_rate": {
+                  "numerator": 0,
+                  "denominator": 11
+                }
+              },
+              "conditional_compliance": 1.0,
+              "verified_score_0_100": 100.0,
+              "contribution": {
+                "score_0_100": 100.0,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                "reason": null
+              }
+            },
+            "non_overlap": {
+              "state": "PASS",
+              "counts": {
+                "PASS": 17,
+                "FAIL": 0,
+                "UNKNOWN": 0
+              },
+              "known_unit_count": 17,
+              "denominator": 17,
+              "denominator_unresolved": false,
+              "not_applicable_count": 0,
+              "rates": {
+                "verified_fraction": 1.0,
+                "verification_coverage": 1.0,
+                "unknown_rate": 0.0,
+                "confirmed_violation_rate": 0.0
+              },
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "numerator": 17,
+                  "denominator": 17
+                },
+                "verified_fraction": {
+                  "numerator": 17,
+                  "denominator": 17
+                },
+                "verification_coverage": {
+                  "numerator": 17,
+                  "denominator": 17
+                },
+                "unknown_rate": {
+                  "numerator": 0,
+                  "denominator": 17
+                },
+                "confirmed_violation_rate": {
+                  "numerator": 0,
+                  "denominator": 17
+                }
+              },
+              "conditional_compliance": 1.0,
+              "verified_score_0_100": 100.0,
+              "contribution": {
+                "score_0_100": 100.0,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                "reason": null
+              }
+            },
+            "opening": {
+              "state": "UNKNOWN",
+              "counts": {
+                "PASS": 10,
+                "FAIL": 0,
+                "UNKNOWN": 1
+              },
+              "known_unit_count": 11,
+              "denominator": 11,
+              "denominator_unresolved": false,
+              "not_applicable_count": 0,
+              "rates": {
+                "verified_fraction": 0.9090909090909091,
+                "verification_coverage": 0.9090909090909091,
+                "unknown_rate": 0.09090909090909091,
+                "confirmed_violation_rate": 0.0
+              },
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "numerator": 10,
+                  "denominator": 10
+                },
+                "verified_fraction": {
+                  "numerator": 10,
+                  "denominator": 11
+                },
+                "verification_coverage": {
+                  "numerator": 10,
+                  "denominator": 11
+                },
+                "unknown_rate": {
+                  "numerator": 1,
+                  "denominator": 11
+                },
+                "confirmed_violation_rate": {
+                  "numerator": 0,
+                  "denominator": 11
+                }
+              },
+              "conditional_compliance": 1.0,
+              "verified_score_0_100": 90.9090909090909,
+              "contribution": {
+                "score_0_100": 90.9090909090909,
+                "exact_fraction": {
+                  "numerator": 10,
+                  "denominator": 11
+                },
+                "reason": null
+              }
+            },
+            "routes": {
+              "state": "UNKNOWN",
+              "counts": {
+                "PASS": 5,
+                "FAIL": 0,
+                "UNKNOWN": 1
+              },
+              "known_unit_count": 6,
+              "denominator": 6,
+              "denominator_unresolved": false,
+              "not_applicable_count": 0,
+              "rates": {
+                "verified_fraction": 0.8333333333333334,
+                "verification_coverage": 0.8333333333333334,
+                "unknown_rate": 0.16666666666666666,
+                "confirmed_violation_rate": 0.0
+              },
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "numerator": 5,
+                  "denominator": 5
+                },
+                "verified_fraction": {
+                  "numerator": 5,
+                  "denominator": 6
+                },
+                "verification_coverage": {
+                  "numerator": 5,
+                  "denominator": 6
+                },
+                "unknown_rate": {
+                  "numerator": 1,
+                  "denominator": 6
+                },
+                "confirmed_violation_rate": {
+                  "numerator": 0,
+                  "denominator": 6
+                }
+              },
+              "conditional_compliance": 1.0,
+              "verified_score_0_100": 83.33333333333333,
+              "contribution": {
+                "score_0_100": 83.33333333333333,
+                "exact_fraction": {
+                  "numerator": 5,
+                  "denominator": 6
+                },
+                "reason": null
+              }
+            }
+          },
+          "auxiliary_total": {
+            "score_0_100": 94.84848484848484,
+            "exact_fraction": {
+              "numerator": 313,
+              "denominator": 330
+            },
+            "total_included_dimensions": 5,
+            "reason": null,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 5,
+            "days": [
+              {
+                "date": "2026-10-22",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-23",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-24",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-25",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-26",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "reviewer_ref": "/root/case09_requirements_review",
+              "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+              "review_origin": "agent",
+              "rationale": "The complete request states no daily pace or exact daily total. Flexibility about remaining activities concerns choice rather than relaxed pace. The ordinary profile is the native default, not an inferred user quota. The exactly-one Ueno Park visit on 2026-10-23 and exactly-one Tokyo National Museum visit across the trip constrain those subjects; neither limits the total activities on a date. There are no explicit dated density exceptions."
+            },
+            "mean_penalty_0_100": 2.0,
+            "exact_mean_penalty": {
+              "numerator": 2,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 2.0,
+              "upper": 2.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 92.84848484848484,
+            "exact_fraction": {
+              "numerator": 766,
+              "denominator": 825
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "requirement_schedule": {
+              "input": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+              "requirement_spec": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+              "result": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+              "identity_report": "4ac75cbf584746636c1cf9f7f67ef6ac124a3a243cfbb2edcb46f96b24aa7bef",
+              "identity_evidence": "d4891520595eb16e22c793827365485cec0bfe897bf1b02de719c6ba80c25cd4",
+              "identity_review": null,
+              "identity_audit": null,
+              "identity_references": "5042800b687c1dc1e9702bf6251203f1b1ca7045b8b60a18c55de018facfb944",
+              "schedule_context": "a0ae089b1db98d1225ff149ce734946dff200556bb94b5bbb955c529b7f842b4",
+              "occupancy_review": "f87da31fa8ab23aef0d2100c548446bd7a426e4ee7c36bd665a83ab9ad7f841d",
+              "rules": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225"
+            },
+            "opening": {
+              "input": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+              "requirement_spec": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+              "result": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7"
+            },
+            "routes": {
+              "input": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+              "requirement_spec": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+              "result": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7"
+            }
+          }
+        },
+        "final_primary": {
+          "projection": "final_primary",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 10,
+                "UNKNOWN": 0
+              },
+              "denominator": 10,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "verified_fraction": {
+                  "denominator": 10,
+                  "numerator": 10
+                }
+              },
+              "known_unit_count": 10,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 15,
+                "UNKNOWN": 0
+              },
+              "denominator": 15,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 15,
+                  "numerator": 15
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 15,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 15,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 15,
+                  "numerator": 15
+                },
+                "verified_fraction": {
+                  "denominator": 15,
+                  "numerator": 15
+                }
+              },
+              "known_unit_count": 15,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 10,
+                  "numerator": 9
+                },
+                "reason": null,
+                "score_0_100": 90.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 1
+              },
+              "denominator": 10,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 10,
+                  "numerator": 1
+                },
+                "verification_coverage": {
+                  "denominator": 10,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 10,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 10,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.1,
+                "verification_coverage": 0.9,
+                "verified_fraction": 0.9
+              },
+              "state": "UNKNOWN",
+              "verified_score_0_100": 90.0
+            },
+            "requirements": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 2,
+                "UNKNOWN": 0
+              },
+              "denominator": 2,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "verified_fraction": {
+                  "denominator": 2,
+                  "numerator": 2
+                }
+              },
+              "known_unit_count": 2,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "score_0_100": 98.0,
+            "exact_fraction": {
+              "numerator": 49,
+              "denominator": 50
+            },
+            "total_included_dimensions": 5,
+            "reason": null,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 5,
+            "days": [
+              {
+                "date": "2026-10-22",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-23",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-24",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-25",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-26",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The complete request states no daily pace or exact daily total. Flexibility about remaining activities concerns choice rather than relaxed pace. The ordinary profile is the native default, not an inferred user quota. The exactly-one Ueno Park visit on 2026-10-23 and exactly-one Tokyo National Museum visit across the trip constrain those subjects; neither limits the total activities on a date. There are no explicit dated density exceptions.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+              "reviewer_ref": "/root/case09_requirements_review"
+            },
+            "mean_penalty_0_100": 0.0,
+            "exact_mean_penalty": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 98.0,
+            "exact_fraction": {
+              "numerator": 49,
+              "denominator": 50
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "requirement_schedule": {
+              "input": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+              "requirement_spec": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+              "result": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+              "identity_report": "4ac75cbf584746636c1cf9f7f67ef6ac124a3a243cfbb2edcb46f96b24aa7bef",
+              "identity_evidence": "d4891520595eb16e22c793827365485cec0bfe897bf1b02de719c6ba80c25cd4",
+              "identity_review": null,
+              "identity_audit": null,
+              "identity_references": "5042800b687c1dc1e9702bf6251203f1b1ca7045b8b60a18c55de018facfb944",
+              "schedule_context": "a0ae089b1db98d1225ff149ce734946dff200556bb94b5bbb955c529b7f842b4",
+              "occupancy_review": "f87da31fa8ab23aef0d2100c548446bd7a426e4ee7c36bd665a83ab9ad7f841d",
+              "rules": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225"
+            },
+            "opening": {
+              "input": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+              "requirement_spec": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+              "result": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7"
+            },
+            "routes": {
+              "input": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+              "requirement_spec": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+              "result": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7"
+            }
+          }
+        }
+      },
+      "continuity": {
+        "requirements": {
+          "transitions": {
+            "unchanged": 2
+          },
+          "checks": 2,
+          "original_checks_semantic_sha256": "113d1ceb5c581f752e25bb61855990a8fadd3f0f26e887efc83b644f5c0753d5"
+        },
+        "grounding": {
+          "transitions": {
+            "unchanged": 10,
+            "removed": 1
+          },
+          "checks": 11,
+          "original_checks_semantic_sha256": "6497539f1901cd28fc023110cbb1df81795f08373d03679ddbd564e61f9f86bc"
+        },
+        "opening": {
+          "transitions": {
+            "unchanged": 10,
+            "removed": 1
+          },
+          "checks": 11,
+          "original_checks_semantic_sha256": "f362c9c1be72ce3bf05435765d5b72728fe3a909d80321165b810b3350306a4a"
+        },
+        "routes": {
+          "transitions": {
+            "unchanged": 5,
+            "structural_leg_removed": 1
+          },
+          "checks": 6,
+          "original_checks_semantic_sha256": "b43d451d7bf22686ad96c05ae8d4875784ef73d5419aa5add96c344190d07509"
+        },
+        "conflicts": {
+          "transitions": {},
+          "checks": 0,
+          "original_checks_semantic_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "protection_conflicts": {
+          "transitions": {},
+          "checks": 0,
+          "original_checks_semantic_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      }
+    }
+  ],
+  "full_derivation_semantic_sha256": "54f8bac395e8611c17868fd11762f24a68f7953d93e6331065045f4dba10f862",
+  "source_rules_profile_semantic_sha256": "6761185984e0452c177221ce358df8754655b3baaf8a5f407a3eca491a9ab559",
+  "content_sha256": "6b52c63f49a81ce5b1019776d30e9556de342b217af9a6393fc75b7a4da3591f"
+}

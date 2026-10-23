@@ -43,21 +43,10 @@
           "notes": "Allow time to explore the garden landscapes at an active but unhurried pace. Opening hours and access have not been checked."
         },
         {
-          "activity_kind": "transport",
-          "time_use": "scheduled",
-          "activity_id": "day1-transit-to-gallery",
-          "title": "Public transport to National Gallery Singapore",
-          "place_name": null,
-          "source_place_id": null,
-          "location": null,
-          "start_time": "2026-10-24T11:30:00+08:00",
-          "end_time": "2026-10-24T12:05:00+08:00",
-          "estimated_cost": null,
-          "notes": "Model-estimated duration: about 35 minutes. Model-estimated route: public transport from Singapore Botanic Gardens toward the Civic District; route and service details are not live-verified.",
-          "transport": {
-            "mode": "TRANSIT",
-            "from_activity_id": "day1-botanic-gardens",
-            "to_activity_id": "day1-national-gallery"
+          "$case_material_ref": {
+            "path": "evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/0/claims/0/original",
+            "expanded_semantic_sha256": "d6fabef12d01d27f2c521982c9c27c4cf69b15fce1ad69c7b7276e50d6c21e7e"
           }
         },
         {
@@ -74,21 +63,10 @@
           "notes": "A substantial stop in the Civic District. Opening hours and access have not been checked."
         },
         {
-          "activity_kind": "transport",
-          "time_use": "scheduled",
-          "activity_id": "day1-walk-to-merlion",
-          "title": "Walk to Merlion Park",
-          "place_name": null,
-          "source_place_id": null,
-          "location": null,
-          "start_time": "2026-10-24T14:00:00+08:00",
-          "end_time": "2026-10-24T14:20:00+08:00",
-          "estimated_cost": null,
-          "notes": "Model-estimated duration: about 20 minutes. Model-estimated route: walk from National Gallery Singapore toward the waterfront and Merlion Park; route and duration are not live-verified.",
-          "transport": {
-            "mode": "WALK",
-            "from_activity_id": "day1-national-gallery",
-            "to_activity_id": "day1-merlion-park"
+          "$case_material_ref": {
+            "path": "evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/1/claims/0/original",
+            "expanded_semantic_sha256": "2d45d4607d2690ae914aee5498d6d205e41e6e6127c67efb36f7a054aea56376"
           }
         },
         {
@@ -105,21 +83,10 @@
           "notes": "A short waterfront stop for views across Marina Bay."
         },
         {
-          "activity_kind": "transport",
-          "time_use": "scheduled",
-          "activity_id": "day1-walk-to-gardens-bay",
-          "title": "Walk along Marina Bay to Gardens by the Bay",
-          "place_name": null,
-          "source_place_id": null,
-          "location": null,
-          "start_time": "2026-10-24T15:00:00+08:00",
-          "end_time": "2026-10-24T15:35:00+08:00",
-          "estimated_cost": null,
-          "notes": "Model-estimated duration: about 35 minutes. Model-estimated route: walk from Merlion Park across the Marina Bay waterfront toward Gardens by the Bay; route and duration are not live-verified.",
-          "transport": {
-            "mode": "WALK",
-            "from_activity_id": "day1-merlion-park",
-            "to_activity_id": "day1-gardens-by-the-bay"
+          "$case_material_ref": {
+            "path": "evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/2/claims/0/original",
+            "expanded_semantic_sha256": "745e081a6fcbae93b22b06069a64f9062dc4095f3d44fc4386d3537587c186e5"
           }
         },
         {
@@ -154,21 +121,10 @@
           "notes": "An active start among the park's greenery and historic surroundings."
         },
         {
-          "activity_kind": "transport",
-          "time_use": "scheduled",
-          "activity_id": "day2-transit-to-temple",
-          "title": "Public transport to Chinatown",
-          "place_name": null,
-          "source_place_id": null,
-          "location": null,
-          "start_time": "2026-10-25T10:30:00+08:00",
-          "end_time": "2026-10-25T11:00:00+08:00",
-          "estimated_cost": null,
-          "notes": "Model-estimated duration: about 30 minutes. Model-estimated route: public transport from Fort Canning Park toward Chinatown; route and service details are not live-verified.",
-          "transport": {
-            "mode": "TRANSIT",
-            "from_activity_id": "day2-fort-canning",
-            "to_activity_id": "day2-buddha-tooth-relic-temple"
+          "$case_material_ref": {
+            "path": "evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/3/claims/0/original",
+            "expanded_semantic_sha256": "dd85511bc083dc9f1c3299dea634c613eebdf5d1ea4e38b731be44e6879daba9"
           }
         },
         {
@@ -185,21 +141,10 @@
           "notes": "Allow time to see the temple and its interior spaces respectfully. Opening hours and access have not been checked."
         },
         {
-          "activity_kind": "transport",
-          "time_use": "scheduled",
-          "activity_id": "day2-transit-to-flyer",
-          "title": "Public transport toward Singapore Flyer",
-          "place_name": null,
-          "source_place_id": null,
-          "location": null,
-          "start_time": "2026-10-25T12:15:00+08:00",
-          "end_time": "2026-10-25T12:50:00+08:00",
-          "estimated_cost": null,
-          "notes": "Model-estimated duration: about 35 minutes. Model-estimated route: public transport from Chinatown toward the Marina Bay area and Singapore Flyer; route and service details are not live-verified.",
-          "transport": {
-            "mode": "TRANSIT",
-            "from_activity_id": "day2-buddha-tooth-relic-temple",
-            "to_activity_id": "day2-singapore-flyer"
+          "$case_material_ref": {
+            "path": "evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/4/claims/0/original",
+            "expanded_semantic_sha256": "7f995c0d8ec96f7e8718c0094f3dd08512a985d8302f1713dc94772f01503180"
           }
         },
         {
@@ -216,21 +161,10 @@
           "notes": "Time for the attraction and its panoramic city views. Opening hours, availability, and admission details have not been checked."
         },
         {
-          "activity_kind": "transport",
-          "time_use": "scheduled",
-          "activity_id": "day2-walk-to-artscience",
-          "title": "Walk to ArtScience Museum",
-          "place_name": null,
-          "source_place_id": null,
-          "location": null,
-          "start_time": "2026-10-25T14:20:00+08:00",
-          "end_time": "2026-10-25T14:40:00+08:00",
-          "estimated_cost": null,
-          "notes": "Model-estimated duration: about 20 minutes. Model-estimated route: walk through the Marina Bay area from Singapore Flyer toward ArtScience Museum; route and duration are not live-verified.",
-          "transport": {
-            "mode": "WALK",
-            "from_activity_id": "day2-singapore-flyer",
-            "to_activity_id": "day2-artscience-museum"
+          "$case_material_ref": {
+            "path": "evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/5/claims/0/original",
+            "expanded_semantic_sha256": "2f22a4ff49e7e6cba0c9fb9b09cd606c0144db4d56b6d63caed904841ce04783"
           }
         },
         {

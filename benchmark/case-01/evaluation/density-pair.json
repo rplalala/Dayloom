@@ -1,0 +1,2014 @@
+{
+  "schema_version": "benchmark_pair_density_derivation_1",
+  "case_id": "case-01",
+  "status": "offline_verified_pending_researcher_acceptance",
+  "source": {
+    "public_path": "benchmark/case-01/evaluation/v3-pair/pair-report.json",
+    "file_sha256": "d0507f759530925bdcd10700c25ad581aa7f23dc626b36ef7251820d312bf6b8"
+  },
+  "source_group_semantic_sha256": "ec31e645425ce2297c28a763b97054e6e58d020dfe54992b08aae1cb15c27dae",
+  "factual_rules_profile": {
+    "profile_id": "rtpeval_v3_pair_rules_2",
+    "scope": "selected same-run V3 draft and final_primary",
+    "mask": "pair union; exclude only two established zero denominators",
+    "delta": "after minus before; exact fractions; unavailable remains null",
+    "correspondence": "validated adopted sources before unique fallback and review",
+    "quality": "independent checks; deletion and replacement do not repair old facts",
+    "opening_pass_basis": "api_hours_or_llm_access_reasonableness_2",
+    "identical_contexts": "one_judgment_with_bound_stage_sources"
+  },
+  "density_rules_profile_id": "rtpeval_daily_density_3",
+  "method": "Native density scoring and exact aggregation only; factual verdicts, masks, visit changes, correspondence and continuity preserved from the accepted same-run pair.",
+  "live_sends": 0,
+  "groups": [
+    {
+      "group_id": "case-01",
+      "run_id": "case01-v3-repair140-followup-20261013T064153Z",
+      "pair_status": "available",
+      "deltas": {
+        "dimensions": {
+          "requirements": {
+            "counts": {
+              "PASS": 0,
+              "FAIL": 0,
+              "UNKNOWN": 0
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": 0,
+            "denominator": 0,
+            "verified_score_percentage_points": null,
+            "verified_fraction_exact_delta": null,
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": null,
+                "exact_fraction": null
+              },
+              "verified_fraction": {
+                "percentage_points": null,
+                "exact_fraction": null
+              },
+              "verification_coverage": {
+                "percentage_points": null,
+                "exact_fraction": null
+              },
+              "unknown_rate": {
+                "percentage_points": null,
+                "exact_fraction": null
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": null,
+                "exact_fraction": null
+              }
+            },
+            "contribution": {
+              "percentage_points": null,
+              "exact_fraction": null
+            }
+          },
+          "grounding": {
+            "counts": {
+              "PASS": -3,
+              "FAIL": 0,
+              "UNKNOWN": 0
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": -3,
+            "denominator": -3,
+            "verified_score_percentage_points": 0.0,
+            "verified_fraction_exact_delta": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": 0.0,
+              "exact_fraction": {
+                "numerator": 0,
+                "denominator": 1
+              }
+            }
+          },
+          "non_overlap": {
+            "counts": {
+              "PASS": -6,
+              "FAIL": 0,
+              "UNKNOWN": 0
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": -6,
+            "denominator": -6,
+            "verified_score_percentage_points": 0.0,
+            "verified_fraction_exact_delta": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": 0.0,
+              "exact_fraction": {
+                "numerator": 0,
+                "denominator": 1
+              }
+            }
+          },
+          "opening": {
+            "counts": {
+              "PASS": -3,
+              "FAIL": 0,
+              "UNKNOWN": 0
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": -3,
+            "denominator": -3,
+            "verified_score_percentage_points": 0.0,
+            "verified_fraction_exact_delta": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": 0.0,
+              "exact_fraction": {
+                "numerator": 0,
+                "denominator": 1
+              }
+            }
+          },
+          "routes": {
+            "counts": {
+              "PASS": -2,
+              "FAIL": 0,
+              "UNKNOWN": -1
+            },
+            "not_applicable_count": 0,
+            "known_unit_count": -3,
+            "denominator": -3,
+            "verified_score_percentage_points": 16.666666666666668,
+            "verified_fraction_exact_delta": {
+              "numerator": 1,
+              "denominator": 6
+            },
+            "rates": {
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 16.666666666666668,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 6
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 16.666666666666668,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 6
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": -16.666666666666668,
+                "exact_fraction": {
+                  "numerator": -1,
+                  "denominator": 6
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              }
+            },
+            "contribution": {
+              "percentage_points": 16.666666666666668,
+              "exact_fraction": {
+                "numerator": 1,
+                "denominator": 6
+              }
+            }
+          }
+        },
+        "auxiliary_total": {
+          "percentage_points": 4.166666666666667,
+          "exact_fraction": {
+            "numerator": 1,
+            "denominator": 24
+          }
+        },
+        "overall_total": {
+          "percentage_points": 14.166666666666666,
+          "exact_fraction": {
+            "numerator": 17,
+            "denominator": 120
+          }
+        },
+        "daily_density_penalty": -10.0,
+        "population": {
+          "primary_visit_count": -3,
+          "unique_canonical_venue_count": -3,
+          "unresolved_identity_count": 0
+        },
+        "schedule_measures": {
+          "combined_conflict": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "commitment_conflict": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "daily": {
+            "2026-10-13": {
+              "combined_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "before": 18739.0,
+                  "after": 12268.0,
+                  "delta": "-6471.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-14": {
+              "combined_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "before": 21480.0,
+                  "after": 6525.0,
+                  "delta": "-14955.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            },
+            "2026-10-15": {
+              "combined_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "commitment_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protected_reserved": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "protection_conflict": {
+                "seconds": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              },
+              "scheduled_occupied": {
+                "seconds": {
+                  "before": 17197.0,
+                  "after": 9818.0,
+                  "delta": "-7379.0",
+                  "interpretation": "observed_value_difference"
+                },
+                "unknown_record_count": {
+                  "before": 0,
+                  "after": 0,
+                  "delta": 0,
+                  "interpretation": "observed_value_difference"
+                }
+              }
+            }
+          },
+          "pair_intersection_sum": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "protected_reserved": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "protection_conflict": {
+            "seconds": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "scheduled_occupied": {
+            "seconds": {
+              "before": 57416.0,
+              "after": 28611.0,
+              "delta": "-28805.0",
+              "interpretation": "observed_value_difference"
+            },
+            "unknown_record_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "date_coverage": {
+          "any_activity_day_count": {
+            "before": 3,
+            "after": 3,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "declared_day_present_count": {
+            "before": 3,
+            "after": 3,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "empty_primary_day_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "known_primary_day_count": {
+            "before": 3,
+            "after": 3,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "requested_day_count": {
+            "before": 3,
+            "after": 3,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "unknown_primary_day_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        },
+        "repetition": {
+          "across_day_extras": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "extra_occurrences": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "known_identity_occurrences": {
+            "before": 9,
+            "after": 6,
+            "delta": -3,
+            "interpretation": "observed_value_difference"
+          },
+          "repeated_venue_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "unknown_identity_occurrences": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "within_day_extras": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        },
+        "density": [
+          {
+            "date": "2026-10-13",
+            "before": {
+              "date": "2026-10-13",
+              "known_primary_count": 3,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "after": {
+              "date": "2026-10-13",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "changes": {
+              "known_primary_count": {
+                "before": 3,
+                "after": 2,
+                "delta": -1,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "before": 0,
+                "after": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            }
+          },
+          {
+            "date": "2026-10-14",
+            "before": {
+              "date": "2026-10-14",
+              "known_primary_count": 3,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "after": {
+              "date": "2026-10-14",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "changes": {
+              "known_primary_count": {
+                "before": 3,
+                "after": 2,
+                "delta": -1,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "before": 0,
+                "after": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            }
+          },
+          {
+            "date": "2026-10-15",
+            "before": {
+              "date": "2026-10-15",
+              "known_primary_count": 3,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "after": {
+              "date": "2026-10-15",
+              "known_primary_count": 2,
+              "possible_primary_count": 0,
+              "category": "2..5"
+            },
+            "changes": {
+              "known_primary_count": {
+                "before": 3,
+                "after": 2,
+                "delta": -1,
+                "interpretation": "observed_value_difference"
+              },
+              "possible_primary_count": {
+                "before": 0,
+                "after": 0,
+                "delta": 0,
+                "interpretation": "observed_value_difference"
+              }
+            }
+          }
+        ],
+        "opening_availability": {
+          "applicable_count": {
+            "before": 9,
+            "after": 6,
+            "delta": -3,
+            "interpretation": "observed_value_difference"
+          },
+          "basis_counts": {
+            "current": {
+              "before": 6,
+              "after": 4,
+              "delta": -2,
+              "interpretation": "observed_value_difference"
+            },
+            "llm_access_reasonableness": {
+              "before": 3,
+              "after": 2,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "mixed": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "regular": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "unavailable": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "complete_evidence_count": {
+            "before": 6,
+            "after": 4,
+            "delta": -2,
+            "interpretation": "observed_value_difference"
+          },
+          "complete_evidence_coverage": {
+            "denominator": {
+              "before": 9,
+              "after": 6,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 6,
+              "after": 4,
+              "delta": -2,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.6666666666666666,
+              "after": 0.6666666666666666,
+              "delta": "0E-16",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "evidence_counts": {
+            "complete": {
+              "before": 6,
+              "after": 4,
+              "delta": -2,
+              "interpretation": "observed_value_difference"
+            },
+            "missing": {
+              "before": 3,
+              "after": 2,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "partial": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "identity_available_count": {
+            "before": 9,
+            "after": 6,
+            "delta": -3,
+            "interpretation": "observed_value_difference"
+          },
+          "llm_assessed_count": {
+            "before": 3,
+            "after": 2,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "llm_decidable_count": {
+            "before": 3,
+            "after": 2,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "structural_coverage": {
+            "denominator": {
+              "before": 9,
+              "after": 6,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 9,
+              "after": 6,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 1.0,
+              "after": 1.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structurally_evaluable_count": {
+            "before": 9,
+            "after": 6,
+            "delta": -3,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_role_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_count": {
+            "before": 9,
+            "after": 6,
+            "delta": -3,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_coverage": {
+            "denominator": {
+              "before": 9,
+              "after": 6,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 9,
+              "after": 6,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 1.0,
+              "after": 1.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "routes_availability": {
+          "applicable_count": {
+            "before": 6,
+            "after": 3,
+            "delta": -3,
+            "interpretation": "observed_value_difference"
+          },
+          "applicable_response_count": {
+            "before": 5,
+            "after": 3,
+            "delta": -2,
+            "interpretation": "observed_value_difference"
+          },
+          "applicable_response_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 3,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 3,
+              "delta": -2,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.8333333333333334,
+              "after": 1.0,
+              "delta": "0.1666666666666666",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "complete_evidence_count": {
+            "before": 5,
+            "after": 3,
+            "delta": -2,
+            "interpretation": "observed_value_difference"
+          },
+          "complete_evidence_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 3,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 3,
+              "delta": -2,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.8333333333333334,
+              "after": 1.0,
+              "delta": "0.1666666666666666",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "duration_available_count": {
+            "before": 5,
+            "after": 3,
+            "delta": -2,
+            "interpretation": "observed_value_difference"
+          },
+          "duration_available_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 3,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 3,
+              "delta": -2,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.8333333333333334,
+              "after": 1.0,
+              "delta": "0.1666666666666666",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structural_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 3,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 6,
+              "after": 3,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 1.0,
+              "after": 1.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "structurally_evaluable_count": {
+            "before": 6,
+            "after": 3,
+            "delta": -3,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_population_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_count": {
+            "before": 5,
+            "after": 3,
+            "delta": -2,
+            "interpretation": "observed_value_difference"
+          },
+          "verdict_decidable_coverage": {
+            "denominator": {
+              "before": 6,
+              "after": 3,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "numerator": {
+              "before": 5,
+              "after": 3,
+              "delta": -2,
+              "interpretation": "observed_value_difference"
+            },
+            "rate": {
+              "before": 0.8333333333333334,
+              "after": 1.0,
+              "delta": "0.1666666666666666",
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "opening_duration_subtotals": {
+          "confirmed_outside_lower_bound_seconds": {
+            "missing_visit_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "before": 9,
+              "after": 6,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "before": 0.0,
+              "after": 0.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "known_open_seconds": {
+            "missing_visit_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "before": 9,
+              "after": 6,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "before": 36900.0,
+              "after": 18900.0,
+              "delta": "-18000.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "outside_seconds": {
+            "missing_visit_count": {
+              "before": 3,
+              "after": 2,
+              "delta": -1,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "before": 6,
+              "after": 4,
+              "delta": -2,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "before": 0.0,
+              "after": 0.0,
+              "delta": "0.0",
+              "interpretation": "observed_value_difference"
+            }
+          },
+          "unknown_seconds": {
+            "missing_visit_count": {
+              "before": 0,
+              "after": 0,
+              "delta": 0,
+              "interpretation": "observed_value_difference"
+            },
+            "observed_visit_count": {
+              "before": 9,
+              "after": 6,
+              "delta": -3,
+              "interpretation": "observed_value_difference"
+            },
+            "seconds": {
+              "before": 12600.0,
+              "after": 7200.0,
+              "delta": "-5400.0",
+              "interpretation": "observed_value_difference"
+            }
+          }
+        },
+        "route_observed_burden": {
+          "duration_nanoseconds": {
+            "before": 5937000000000,
+            "after": 2511000000000,
+            "delta": -3426000000000,
+            "interpretation": "observed_value_difference"
+          },
+          "duration_seconds_exact": {
+            "before": "5937",
+            "after": "2511",
+            "delta": "-3426",
+            "interpretation": "observed_value_difference"
+          },
+          "maximum_duration_seconds_exact": {
+            "before": "2355",
+            "after": "1468",
+            "delta": "-887",
+            "interpretation": "observed_value_difference"
+          },
+          "median_duration_seconds_exact": {
+            "before": "1071",
+            "after": "818",
+            "delta": "-253",
+            "interpretation": "observed_value_difference"
+          },
+          "missing_leg_count": {
+            "before": 1,
+            "after": 0,
+            "delta": -1,
+            "interpretation": "observed_value_difference"
+          },
+          "observed_leg_count": {
+            "before": 5,
+            "after": 3,
+            "delta": -2,
+            "interpretation": "observed_value_difference"
+          },
+          "product_reserve_seconds_subtotal": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          },
+          "unresolved_population_count": {
+            "before": 0,
+            "after": 0,
+            "delta": 0,
+            "interpretation": "observed_value_difference"
+          }
+        }
+      },
+      "included_dimensions": [
+        "grounding",
+        "non_overlap",
+        "opening",
+        "routes"
+      ],
+      "visit_changes": {
+        "replaced_count": 0,
+        "confirmed_venue_loss_count": 0,
+        "primary_role_loss_count": 0,
+        "removed_count": 3,
+        "added_count": 0,
+        "unresolved_before": [],
+        "unresolved_after": []
+      },
+      "stages": {
+        "draft": {
+          "projection": "draft",
+          "dimensions": {
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 0
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 15,
+                "UNKNOWN": 0
+              },
+              "denominator": 15,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 15,
+                  "numerator": 15
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 15,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 15,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 15,
+                  "numerator": 15
+                },
+                "verified_fraction": {
+                  "denominator": 15,
+                  "numerator": 15
+                }
+              },
+              "known_unit_count": 15,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 0
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "routes": {
+              "state": "UNKNOWN",
+              "counts": {
+                "PASS": 5,
+                "FAIL": 0,
+                "UNKNOWN": 1
+              },
+              "known_unit_count": 6,
+              "denominator": 6,
+              "denominator_unresolved": false,
+              "not_applicable_count": 0,
+              "rates": {
+                "verified_fraction": 0.8333333333333334,
+                "verification_coverage": 0.8333333333333334,
+                "unknown_rate": 0.16666666666666666,
+                "confirmed_violation_rate": 0.0
+              },
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "numerator": 5,
+                  "denominator": 5
+                },
+                "verified_fraction": {
+                  "numerator": 5,
+                  "denominator": 6
+                },
+                "verification_coverage": {
+                  "numerator": 5,
+                  "denominator": 6
+                },
+                "unknown_rate": {
+                  "numerator": 1,
+                  "denominator": 6
+                },
+                "confirmed_violation_rate": {
+                  "numerator": 0,
+                  "denominator": 6
+                }
+              },
+              "conditional_compliance": 1.0,
+              "verified_score_0_100": 83.33333333333333,
+              "contribution": {
+                "score_0_100": 83.33333333333333,
+                "exact_fraction": {
+                  "numerator": 5,
+                  "denominator": 6
+                },
+                "reason": null
+              }
+            }
+          },
+          "auxiliary_total": {
+            "score_0_100": 95.83333333333333,
+            "exact_fraction": {
+              "numerator": 23,
+              "denominator": 24
+            },
+            "total_included_dimensions": 4,
+            "reason": null,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 3,
+            "days": [
+              {
+                "date": "2026-10-13",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": []
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-14",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": []
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-15",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": []
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": null,
+            "mean_penalty_0_100": 10.0,
+            "exact_mean_penalty": {
+              "numerator": 10,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 10.0,
+              "upper": 10.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 85.83333333333333,
+            "exact_fraction": {
+              "numerator": 103,
+              "denominator": 120
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "requirement_schedule": {
+              "input": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+              "requirement_spec": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+              "result": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828",
+              "identity_report": "ba51a37da946218527403b03a9ea52b20a5cffe811c29e23db0d204ac8855a37",
+              "identity_evidence": "15e2594fb367bf880513c51d527d8d43793c95a91caa2e6f2c96c663805b2ebc",
+              "identity_review": null,
+              "identity_audit": null,
+              "identity_references": "4317ca9ac2a86288dbc40e0ff1a921d520e7d17196cb48f204e719783971f36b",
+              "schedule_context": "9db3f7bc69ac5338f15803baf8ae5eddc2ca5853fd564f79def516584bf80f21",
+              "occupancy_review": null,
+              "rules": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225"
+            },
+            "opening": {
+              "input": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+              "requirement_spec": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+              "result": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828"
+            },
+            "routes": {
+              "input": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+              "requirement_spec": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+              "result": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828"
+            }
+          }
+        },
+        "final_primary": {
+          "projection": "final_primary",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 6,
+                "UNKNOWN": 0
+              },
+              "denominator": 6,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "verified_fraction": {
+                  "denominator": 6,
+                  "numerator": 6
+                }
+              },
+              "known_unit_count": 6,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 0
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 6,
+                "UNKNOWN": 0
+              },
+              "denominator": 6,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "verified_fraction": {
+                  "denominator": 6,
+                  "numerator": 6
+                }
+              },
+              "known_unit_count": 6,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 3,
+                "UNKNOWN": 0
+              },
+              "denominator": 3,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 3,
+                  "numerator": 3
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 3,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 3,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 3,
+                  "numerator": 3
+                },
+                "verified_fraction": {
+                  "denominator": 3,
+                  "numerator": 3
+                }
+              },
+              "known_unit_count": 3,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "score_0_100": 100.0,
+            "exact_fraction": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "total_included_dimensions": 4,
+            "reason": null,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 3,
+            "days": [
+              {
+                "date": "2026-10-13",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": []
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-14",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": []
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-15",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": []
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": null,
+            "mean_penalty_0_100": 0.0,
+            "exact_mean_penalty": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 100.0,
+            "exact_fraction": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "requirement_schedule": {
+              "input": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+              "requirement_spec": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+              "result": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828",
+              "identity_report": "ba51a37da946218527403b03a9ea52b20a5cffe811c29e23db0d204ac8855a37",
+              "identity_evidence": "15e2594fb367bf880513c51d527d8d43793c95a91caa2e6f2c96c663805b2ebc",
+              "identity_review": null,
+              "identity_audit": null,
+              "identity_references": "4317ca9ac2a86288dbc40e0ff1a921d520e7d17196cb48f204e719783971f36b",
+              "schedule_context": "9db3f7bc69ac5338f15803baf8ae5eddc2ca5853fd564f79def516584bf80f21",
+              "occupancy_review": null,
+              "rules": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225"
+            },
+            "opening": {
+              "input": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+              "requirement_spec": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+              "result": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828"
+            },
+            "routes": {
+              "input": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+              "requirement_spec": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+              "result": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828"
+            }
+          }
+        }
+      },
+      "continuity": {
+        "requirements": {
+          "transitions": {},
+          "checks": 0,
+          "original_checks_semantic_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "grounding": {
+          "transitions": {
+            "unchanged": 6,
+            "removed": 3
+          },
+          "checks": 9,
+          "original_checks_semantic_sha256": "dec08b666f57fad1dae289194949d8f710992d0f2dc72602299bd3439c452aaa"
+        },
+        "opening": {
+          "transitions": {
+            "unchanged": 6,
+            "removed": 3
+          },
+          "checks": 9,
+          "original_checks_semantic_sha256": "9587fe603aa1bbc233354bb1ae746dc9a12ca43c912ad3bd15c00abea70d756d"
+        },
+        "routes": {
+          "transitions": {
+            "structural_leg_removed": 3,
+            "unchanged": 3
+          },
+          "checks": 6,
+          "original_checks_semantic_sha256": "723718010cc373c49259caf357f5f16bc296ede0f61b31dd366c5a236310b24b"
+        },
+        "conflicts": {
+          "transitions": {},
+          "checks": 0,
+          "original_checks_semantic_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "protection_conflicts": {
+          "transitions": {},
+          "checks": 0,
+          "original_checks_semantic_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      }
+    }
+  ],
+  "full_derivation_semantic_sha256": "dfd898d77e86a6cf1a316b61c318636ce8843e05190cb61f695f414821576430",
+  "source_rules_profile_semantic_sha256": "6761185984e0452c177221ce358df8754655b3baaf8a5f407a3eca491a9ab559",
+  "content_sha256": "66fc9442438051a6f9b89bfbc5cf6a6e01e4e604d4b18dd9a5f31642bdc5d81e"
+}

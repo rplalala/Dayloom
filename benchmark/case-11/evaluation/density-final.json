@@ -1,0 +1,1751 @@
+{
+  "schema_version": "benchmark_density_only_derivation_1",
+  "case_id": "case-11",
+  "status": "offline_verified_pending_researcher_acceptance",
+  "source": {
+    "public_path": "benchmark/case-11/evaluation/primary/report.json",
+    "file_sha256": "301954366c7b45f20967a64f0ccd979fc526f43ee8bd7070830942b80a1d94a3"
+  },
+  "source_group_semantic_sha256": "5be77e21df2d44d035c3e723901cba76df4a937029cb3d51b81293bc9884ff39",
+  "factual_rules_profile_id": "rtpeval_declared_population_1",
+  "density_rules_profile_id": "rtpeval_daily_density_3",
+  "method": "Native density scorer and exact overall aggregation on preserved accepted daily populations and independently reviewed pace. Factual components and case-specific masks are unchanged; this is a derived report, not a new acquisition receipt.",
+  "live_sends": 0,
+  "groups": [
+    {
+      "all_totals_available": true,
+      "diagnostics": [],
+      "dimension_weights": {
+        "grounding": {
+          "denominator": 5,
+          "numerator": 1
+        },
+        "non_overlap": {
+          "denominator": 5,
+          "numerator": 1
+        },
+        "opening": {
+          "denominator": 5,
+          "numerator": 1
+        },
+        "requirements": {
+          "denominator": 5,
+          "numerator": 1
+        },
+        "routes": {
+          "denominator": 5,
+          "numerator": 1
+        }
+      },
+      "group_id": "case-11",
+      "included_dimensions": [
+        "requirements",
+        "grounding",
+        "non_overlap",
+        "opening",
+        "routes"
+      ],
+      "total_included_dimensions": 5,
+      "versions": {
+        "v0": {
+          "run_id": "case-11-r02-v0",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 0.875,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 8,
+                  "numerator": 7
+                },
+                "reason": null,
+                "score_0_100": 87.5
+              },
+              "counts": {
+                "FAIL": 1,
+                "PASS": 7,
+                "UNKNOWN": 0
+              },
+              "denominator": 8,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 8,
+                  "numerator": 7
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 8,
+                  "numerator": 1
+                },
+                "unknown_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "verified_fraction": {
+                  "denominator": 8,
+                  "numerator": 7
+                }
+              },
+              "known_unit_count": 8,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.125,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 0.875
+              },
+              "state": "FAIL",
+              "verified_score_0_100": 87.5
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 12,
+                "UNKNOWN": 0
+              },
+              "denominator": 12,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 12,
+                  "numerator": 12
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 12,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 12,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 12,
+                  "numerator": 12
+                },
+                "verified_fraction": {
+                  "denominator": 12,
+                  "numerator": 12
+                }
+              },
+              "known_unit_count": 12,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 8,
+                  "numerator": 7
+                },
+                "reason": null,
+                "score_0_100": 87.5
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 7,
+                "UNKNOWN": 1
+              },
+              "denominator": 8,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 7,
+                  "numerator": 7
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 8,
+                  "numerator": 1
+                },
+                "verification_coverage": {
+                  "denominator": 8,
+                  "numerator": 7
+                },
+                "verified_fraction": {
+                  "denominator": 8,
+                  "numerator": 7
+                }
+              },
+              "known_unit_count": 8,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.125,
+                "verification_coverage": 0.875,
+                "verified_fraction": 0.875
+              },
+              "state": "UNKNOWN",
+              "verified_score_0_100": 87.5
+            },
+            "requirements": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 1,
+                "UNKNOWN": 0
+              },
+              "denominator": 1,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "verified_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                }
+              },
+              "known_unit_count": 1,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 4,
+                  "numerator": 3
+                },
+                "reason": null,
+                "score_0_100": 75.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 3,
+                "UNKNOWN": 1
+              },
+              "denominator": 4,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 3,
+                  "numerator": 3
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 4,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 4,
+                  "numerator": 1
+                },
+                "verification_coverage": {
+                  "denominator": 4,
+                  "numerator": 3
+                },
+                "verified_fraction": {
+                  "denominator": 4,
+                  "numerator": 3
+                }
+              },
+              "known_unit_count": 4,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.25,
+                "verification_coverage": 0.75,
+                "verified_fraction": 0.75
+              },
+              "state": "UNKNOWN",
+              "verified_score_0_100": 75.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 10,
+              "numerator": 9
+            },
+            "reason": null,
+            "score_0_100": 90.0,
+            "total_included_dimensions": 5,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 4,
+            "days": [
+              {
+                "date": "2026-10-22",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-23",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-24",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-25",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The complete original request prefers a moderate pace, mapped to ordinary. It specifies no exact daily primary-visit count. The protected interval on 2026-10-23 is only 14:00-16:00 Paris local time; it neither requests a rest day nor a different pace or visit count for that date. All four inclusive requested dates therefore retain ordinary with exact_count null and no dated overrides. The two adults and traveler_count 2 describe party size, not a sightseeing quota. Art and architecture are interests, not visit counts; the flexible remainder adds no count requirement.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-16T21:59:50.038622+00:00",
+              "reviewer_ref": "/root/case11_source_policies"
+            },
+            "mean_penalty_0_100": 0.0,
+            "exact_mean_penalty": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 90.0,
+            "exact_fraction": {
+              "numerator": 9,
+              "denominator": 10
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "c02fe43222e9cf76f1dc94802769f0af0aa80c753404eadff4e35e69ee1d8d26",
+              "identity_references": "3b3f7f865dc0d634d242a9853df7369d43220d7872a2123c4b280fda450377e6",
+              "identity_report": "c2cbd948e4048096dda11f7c1f7890b918c8b99cd023f6fc9c648c21ec675444",
+              "identity_review": null,
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "occupancy_review": null,
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+              "rules": "acbe4be8fe50ec4ec2b524443c1cc6ba3305d1a3a001b43b0aabd8690ce27c43",
+              "schedule_context": "31d0fab05136fb49ad55a6440192adc9f22c9399811f4ef3bccb77b1d3f1621f"
+            },
+            "routes": {
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc"
+            }
+          }
+        },
+        "v1": {
+          "run_id": "case-11-r02-v1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 0
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 14,
+                "UNKNOWN": 0
+              },
+              "denominator": 14,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 14,
+                  "numerator": 14
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 14,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 14,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 14,
+                  "numerator": 14
+                },
+                "verified_fraction": {
+                  "denominator": 14,
+                  "numerator": 14
+                }
+              },
+              "known_unit_count": 14,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 0
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 1,
+                "UNKNOWN": 0
+              },
+              "denominator": 1,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "verified_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                }
+              },
+              "known_unit_count": 1,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 5,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 4,
+            "days": [
+              {
+                "date": "2026-10-22",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-23",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-24",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-25",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The complete original request prefers a moderate pace, mapped to ordinary. It specifies no exact daily primary-visit count. The protected interval on 2026-10-23 is only 14:00-16:00 Paris local time; it neither requests a rest day nor a different pace or visit count for that date. All four inclusive requested dates therefore retain ordinary with exact_count null and no dated overrides. The two adults and traveler_count 2 describe party size, not a sightseeing quota. Art and architecture are interests, not visit counts; the flexible remainder adds no count requirement.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-16T21:59:50.038622+00:00",
+              "reviewer_ref": "/root/case11_source_policies"
+            },
+            "mean_penalty_0_100": 2.5,
+            "exact_mean_penalty": {
+              "numerator": 5,
+              "denominator": 2
+            },
+            "mean_penalty_bounds": {
+              "lower": 2.5,
+              "upper": 2.5
+            }
+          },
+          "overall_total": {
+            "score_0_100": 97.5,
+            "exact_fraction": {
+              "numerator": 39,
+              "denominator": 40
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "c02fe43222e9cf76f1dc94802769f0af0aa80c753404eadff4e35e69ee1d8d26",
+              "identity_references": "3b3f7f865dc0d634d242a9853df7369d43220d7872a2123c4b280fda450377e6",
+              "identity_report": "c2cbd948e4048096dda11f7c1f7890b918c8b99cd023f6fc9c648c21ec675444",
+              "identity_review": null,
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "occupancy_review": null,
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+              "rules": "acbe4be8fe50ec4ec2b524443c1cc6ba3305d1a3a001b43b0aabd8690ce27c43",
+              "schedule_context": "31d0fab05136fb49ad55a6440192adc9f22c9399811f4ef3bccb77b1d3f1621f"
+            },
+            "routes": {
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4"
+            }
+          }
+        },
+        "v2": {
+          "run_id": "case-11-r02-v2",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 6,
+                "UNKNOWN": 0
+              },
+              "denominator": 6,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "verified_fraction": {
+                  "denominator": 6,
+                  "numerator": 6
+                }
+              },
+              "known_unit_count": 6,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 8,
+                "UNKNOWN": 0
+              },
+              "denominator": 8,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "verified_fraction": {
+                  "denominator": 8,
+                  "numerator": 8
+                }
+              },
+              "known_unit_count": 8,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 6,
+                "UNKNOWN": 0
+              },
+              "denominator": 6,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "verified_fraction": {
+                  "denominator": 6,
+                  "numerator": 6
+                }
+              },
+              "known_unit_count": 6,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 1,
+                "UNKNOWN": 0
+              },
+              "denominator": 1,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "verified_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                }
+              },
+              "known_unit_count": 1,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 2,
+                "UNKNOWN": 0
+              },
+              "denominator": 2,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "verified_fraction": {
+                  "denominator": 2,
+                  "numerator": 2
+                }
+              },
+              "known_unit_count": 2,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 5,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 4,
+            "days": [
+              {
+                "date": "2026-10-22",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 40,
+                "penalty_bounds": {
+                  "lower": 40,
+                  "upper": 40
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-23",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 40,
+                "penalty_bounds": {
+                  "lower": 40,
+                  "upper": 40
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-24",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-25",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The complete original request prefers a moderate pace, mapped to ordinary. It specifies no exact daily primary-visit count. The protected interval on 2026-10-23 is only 14:00-16:00 Paris local time; it neither requests a rest day nor a different pace or visit count for that date. All four inclusive requested dates therefore retain ordinary with exact_count null and no dated overrides. The two adults and traveler_count 2 describe party size, not a sightseeing quota. Art and architecture are interests, not visit counts; the flexible remainder adds no count requirement.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-16T21:59:50.038622+00:00",
+              "reviewer_ref": "/root/case11_source_policies"
+            },
+            "mean_penalty_0_100": 20.0,
+            "exact_mean_penalty": {
+              "numerator": 20,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 20.0,
+              "upper": 20.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 80.0,
+            "exact_fraction": {
+              "numerator": 4,
+              "denominator": 5
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "c02fe43222e9cf76f1dc94802769f0af0aa80c753404eadff4e35e69ee1d8d26",
+              "identity_references": "3b3f7f865dc0d634d242a9853df7369d43220d7872a2123c4b280fda450377e6",
+              "identity_report": "c2cbd948e4048096dda11f7c1f7890b918c8b99cd023f6fc9c648c21ec675444",
+              "identity_review": null,
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "occupancy_review": null,
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+              "rules": "acbe4be8fe50ec4ec2b524443c1cc6ba3305d1a3a001b43b0aabd8690ce27c43",
+              "schedule_context": "31d0fab05136fb49ad55a6440192adc9f22c9399811f4ef3bccb77b1d3f1621f"
+            },
+            "routes": {
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0"
+            }
+          }
+        },
+        "v3": {
+          "run_id": "case-11-current-path-v3-a1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 8,
+                "UNKNOWN": 0
+              },
+              "denominator": 8,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "verified_fraction": {
+                  "denominator": 8,
+                  "numerator": 8
+                }
+              },
+              "known_unit_count": 8,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 12,
+                "UNKNOWN": 0
+              },
+              "denominator": 12,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 12,
+                  "numerator": 12
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 12,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 12,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 12,
+                  "numerator": 12
+                },
+                "verified_fraction": {
+                  "denominator": 12,
+                  "numerator": 12
+                }
+              },
+              "known_unit_count": 12,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 8,
+                "UNKNOWN": 0
+              },
+              "denominator": 8,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "verified_fraction": {
+                  "denominator": 8,
+                  "numerator": 8
+                }
+              },
+              "known_unit_count": 8,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 1,
+                "UNKNOWN": 0
+              },
+              "denominator": 1,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "verified_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                }
+              },
+              "known_unit_count": 1,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 4,
+                "UNKNOWN": 0
+              },
+              "denominator": 4,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 4,
+                  "numerator": 4
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 4,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 4,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 4,
+                  "numerator": 4
+                },
+                "verified_fraction": {
+                  "denominator": 4,
+                  "numerator": 4
+                }
+              },
+              "known_unit_count": 4,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 5,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 4,
+            "days": [
+              {
+                "date": "2026-10-22",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-23",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-24",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-25",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The complete original request prefers a moderate pace, mapped to ordinary. It specifies no exact daily primary-visit count. The protected interval on 2026-10-23 is only 14:00-16:00 Paris local time; it neither requests a rest day nor a different pace or visit count for that date. All four inclusive requested dates therefore retain ordinary with exact_count null and no dated overrides. The two adults and traveler_count 2 describe party size, not a sightseeing quota. Art and architecture are interests, not visit counts; the flexible remainder adds no count requirement.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-16T21:59:50.038622+00:00",
+              "reviewer_ref": "/root/case11_source_policies"
+            },
+            "mean_penalty_0_100": 0.0,
+            "exact_mean_penalty": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 100.0,
+            "exact_fraction": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "c02fe43222e9cf76f1dc94802769f0af0aa80c753404eadff4e35e69ee1d8d26",
+              "identity_references": "3b3f7f865dc0d634d242a9853df7369d43220d7872a2123c4b280fda450377e6",
+              "identity_report": "c2cbd948e4048096dda11f7c1f7890b918c8b99cd023f6fc9c648c21ec675444",
+              "identity_review": null,
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "occupancy_review": null,
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+              "rules": "acbe4be8fe50ec4ec2b524443c1cc6ba3305d1a3a001b43b0aabd8690ce27c43",
+              "schedule_context": "31d0fab05136fb49ad55a6440192adc9f22c9399811f4ef3bccb77b1d3f1621f"
+            },
+            "routes": {
+              "input": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+              "requirement_spec": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+              "result": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "full_derivation_semantic_sha256": "ee3ae96ba3318e4cdb90c588f8e8a78631c0e76c2c3e94f1851427800b380225",
+  "content_sha256": "364b25d706aeeefdf86dc04101b36354369947a458327465d55ebfae1f42d838"
+}

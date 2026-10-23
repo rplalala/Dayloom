@@ -1,5 +1,8 @@
 # Case-01: Sydney evaluation report
 
+Current density-policy results: [final](evaluation/density-final.json) and [same-run Pair](evaluation/density-pair.json). Both are offline derivations under `rtpeval_daily_density_3`; factual evidence, policies and numeric results are unchanged. The [twelve-case replacement](../report.md) awaits researcher acceptance.
+
+
 The initial case-01 dataset contains the selected V0-V3 outputs for the
 [original request](../inputs/case-01.json): Sydney, Australia, 13-15 October 2026,
 three days, one traveler and an AUD 900 whole-trip budget, with no additional

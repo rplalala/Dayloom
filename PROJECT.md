@@ -363,22 +363,22 @@ Suite engineering acceptance used synthetic saved material and injected transpor
 
 ### Final benchmark and blinded assessment
 
-The [accepted selection index](benchmark/README.md#accepted-selections) identifies
-all 12 accepted cases in four groups of three, their exact datasets and remaining
-evidence limitations. Automatic case acceptance and the bounded current-data
-refresh are complete; [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124),
-[#151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151) and
-[#193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193) are closed.
+The [selection index](benchmark/README.md#accepted-selections) identifies the twelve
+cases and their exact datasets. The [Rich-policy replacement](benchmark/case-04/report.md)
+under [#218](https://github.com/rplalala/Dayloom/issues/218) is pending researcher
+acceptance: case-04 retains V0–V2, selects one new V3 with three visits per day,
+and has matching Primary, Pair and process/resource reports. The other eleven
+cases have offline density-policy derivations with unchanged factual rules and scores.
 
-The [final benchmark report](benchmark/report.md) gives the final interpretation
-**V3 > V2 > V1 > V0** for reliable, feasible itineraries, with a weak V1/V0
-boundary. It presents automatic mean ranks and scores, separate human/model
-rankings, reasons for differences and selected-run cost/time trade-offs. Automatic
-evaluation is the primary ranking; the three evaluations are not combined into a
-weighted score.
+The [benchmark report](benchmark/report.md) gives the automatic order
+**V3 > V2 > V1 > V0**, with exact scores, ranks, Pair summaries and selected-run
+resources. Case-04's independent final score is 100, while Planner Repair remains
+partial with an unavailable coverage return check. Publication does not certify
+full Repair success or researcher acceptance.
 
 The [blinded-review report](benchmark/blinded-results/report.md) covers one human
-and one GPT-6.1 sol xhigh assessment of the same 12 selections. The accepted
+and one GPT-6.1 sol xhigh assessment of the twelve itineraries originally shown.
+Case-04 answers remain bound to that reviewed itinerary, not its replacement. The accepted
 English/Chinese questionnaires and separate answer exports are published directly
 in `benchmark/blinded-results/`. Both reviewers rank V3 first overall; the human
 places V2 second and the model places V0 second. Publication and report delivery

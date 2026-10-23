@@ -1,5 +1,8 @@
 # Case-08: Barcelona, Spain
 
+Current density-policy results: [final](evaluation/density-final.json) and [same-run Pair](evaluation/density-pair.json). Both are offline derivations under `rtpeval_daily_density_3`; factual evidence, policies and numeric results are unchanged. The [twelve-case replacement](../report.md) awaits researcher acceptance.
+
+
 ## Selection and status
 
 **Automatically accepted on 2026-10-17 (Australia/Sydney); blinded human review deferred.** The researcher completed step 10 by accepting the exact selected material and disclosed limitations presented at `75ade00`. The selected r02 V0-V3 outputs, historical Primary and separately authorized corrected Primary are retained. Same-run V3 pairing, independent continuity, all-attempt reconciliation and retained-evidence archive verification are complete. Case lifecycle is recorded in completed [Issue #157](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/157); shared evaluator corrections are recorded in completed [#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182).

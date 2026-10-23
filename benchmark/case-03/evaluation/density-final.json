@@ -1,0 +1,1690 @@
+{
+  "schema_version": "benchmark_density_only_derivation_1",
+  "case_id": "case-03",
+  "status": "offline_verified_pending_researcher_acceptance",
+  "source": {
+    "public_path": "benchmark/case-03/evaluation/primary/quality-report.json",
+    "file_sha256": "7e9af081bf15cf737e633412904240092d72458c3d3a05496dcc21e7fda0b037"
+  },
+  "source_group_semantic_sha256": "b827f71366027f269f16bbfcd380cbd67f8fc35db48693f59272a5b4799908a2",
+  "factual_rules_profile_id": "rtpeval_access_quality_4",
+  "density_rules_profile_id": "rtpeval_daily_density_3",
+  "method": "Native density scorer and exact overall aggregation on preserved accepted daily populations and independently reviewed pace. Factual components and case-specific masks are unchanged; this is a derived report, not a new acquisition receipt.",
+  "live_sends": 0,
+  "groups": [
+    {
+      "all_totals_available": true,
+      "diagnostics": [],
+      "dimension_weights": {
+        "grounding": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "non_overlap": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "opening": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "routes": {
+          "denominator": 4,
+          "numerator": 1
+        }
+      },
+      "group_id": "case-03",
+      "included_dimensions": [
+        "grounding",
+        "non_overlap",
+        "opening",
+        "routes"
+      ],
+      "total_included_dimensions": 4,
+      "versions": {
+        "v0": {
+          "run_id": "case-03-v0-attempt-1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 11,
+                  "numerator": 10
+                },
+                "reason": null,
+                "score_0_100": 90.9090909090909
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 10,
+                "UNKNOWN": 1
+              },
+              "denominator": 11,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 11,
+                  "numerator": 1
+                },
+                "verification_coverage": {
+                  "denominator": 11,
+                  "numerator": 10
+                },
+                "verified_fraction": {
+                  "denominator": 11,
+                  "numerator": 10
+                }
+              },
+              "known_unit_count": 11,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.09090909090909091,
+                "verification_coverage": 0.9090909090909091,
+                "verified_fraction": 0.9090909090909091
+              },
+              "state": "UNKNOWN",
+              "verified_score_0_100": 90.9090909090909
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 18,
+                "UNKNOWN": 0
+              },
+              "denominator": 18,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 18,
+                  "numerator": 18
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 18,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 18,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 18,
+                  "numerator": 18
+                },
+                "verified_fraction": {
+                  "denominator": 18,
+                  "numerator": 18
+                }
+              },
+              "known_unit_count": 18,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 11,
+                  "numerator": 9
+                },
+                "reason": null,
+                "score_0_100": 81.81818181818181
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 2
+              },
+              "denominator": 11,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 11,
+                  "numerator": 2
+                },
+                "verification_coverage": {
+                  "denominator": 11,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 11,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 11,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.18181818181818182,
+                "verification_coverage": 0.8181818181818182,
+                "verified_fraction": 0.8181818181818182
+              },
+              "state": "UNKNOWN",
+              "verified_score_0_100": 81.81818181818181
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 0.6,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 7,
+                  "numerator": 3
+                },
+                "reason": null,
+                "score_0_100": 42.857142857142854
+              },
+              "counts": {
+                "FAIL": 2,
+                "PASS": 3,
+                "UNKNOWN": 2
+              },
+              "denominator": 7,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 3
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 7,
+                  "numerator": 2
+                },
+                "unknown_rate": {
+                  "denominator": 7,
+                  "numerator": 2
+                },
+                "verification_coverage": {
+                  "denominator": 7,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 7,
+                  "numerator": 3
+                }
+              },
+              "known_unit_count": 7,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.2857142857142857,
+                "unknown_rate": 0.2857142857142857,
+                "verification_coverage": 0.7142857142857143,
+                "verified_fraction": 0.42857142857142855
+              },
+              "state": "FAIL",
+              "verified_score_0_100": 42.857142857142854
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 308,
+              "numerator": 243
+            },
+            "reason": null,
+            "score_0_100": 78.8961038961039,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 4,
+            "days": [
+              {
+                "date": "2026-10-15",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-16",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-17",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-18",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "Review of the complete original request supports ordinary density from moderate pace. Enough time to enjoy each place remains qualitative. No relaxed or rich pace, exact count, dated exception, venue quota, or distribution ratio is requested.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-14T19:11:15+00:00",
+              "reviewer_ref": "/root/case03_semantic_reviewer"
+            },
+            "mean_penalty_0_100": 7.5,
+            "exact_mean_penalty": {
+              "numerator": 15,
+              "denominator": 2
+            },
+            "mean_penalty_bounds": {
+              "lower": 7.5,
+              "upper": 7.5
+            }
+          },
+          "overall_total": {
+            "score_0_100": 71.3961038961039,
+            "exact_fraction": {
+              "numerator": 2199,
+              "denominator": 3080
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "e4ece948cb27e790ba8bf495ac98eebe484cdb0e0e506dad1d518a000ba84407"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "d8938b49e98395e6fe0503a70a896dda86459fe49c5bae989b9a9610ca2580c3",
+              "identity_references": "7ca5a3ae6e8ced5a20f71da6a1b4766decea3043edc62bea19926ff8fbfb47e6",
+              "identity_report": "f11450666edb2f021b205834ce1c1913433353a5c2e2633d9c5e37578b5bc664",
+              "identity_review": null,
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "occupancy_review": "5c35ccfc1750648110b7493e762ef34bf2d5321f15be8b47de12cea14fd2f9d2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "e4ece948cb27e790ba8bf495ac98eebe484cdb0e0e506dad1d518a000ba84407",
+              "rules": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225",
+              "schedule_context": "12efcccb3818664aabd089851c65ad16df031eab0acce8b258f2f554869d33f2"
+            },
+            "routes": {
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "e4ece948cb27e790ba8bf495ac98eebe484cdb0e0e506dad1d518a000ba84407"
+            }
+          }
+        },
+        "v1": {
+          "run_id": "case-03-v1-attempt-1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 0
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 14,
+                "UNKNOWN": 0
+              },
+              "denominator": 14,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 14,
+                  "numerator": 14
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 14,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 14,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 14,
+                  "numerator": 14
+                },
+                "verified_fraction": {
+                  "denominator": 14,
+                  "numerator": 14
+                }
+              },
+              "known_unit_count": 14,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 0
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 4,
+            "days": [
+              {
+                "date": "2026-10-15",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-16",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-17",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-18",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "Review of the complete original request supports ordinary density from moderate pace. Enough time to enjoy each place remains qualitative. No relaxed or rich pace, exact count, dated exception, venue quota, or distribution ratio is requested.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-14T19:11:15+00:00",
+              "reviewer_ref": "/root/case03_semantic_reviewer"
+            },
+            "mean_penalty_0_100": 2.5,
+            "exact_mean_penalty": {
+              "numerator": 5,
+              "denominator": 2
+            },
+            "mean_penalty_bounds": {
+              "lower": 2.5,
+              "upper": 2.5
+            }
+          },
+          "overall_total": {
+            "score_0_100": 97.5,
+            "exact_fraction": {
+              "numerator": 39,
+              "denominator": 40
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "2684f4c8dc76c51362d99975b42a80ed8a0621a39ea22096dc15967b815e4e8f"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "d8938b49e98395e6fe0503a70a896dda86459fe49c5bae989b9a9610ca2580c3",
+              "identity_references": "7ca5a3ae6e8ced5a20f71da6a1b4766decea3043edc62bea19926ff8fbfb47e6",
+              "identity_report": "f11450666edb2f021b205834ce1c1913433353a5c2e2633d9c5e37578b5bc664",
+              "identity_review": null,
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "occupancy_review": "5c35ccfc1750648110b7493e762ef34bf2d5321f15be8b47de12cea14fd2f9d2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "2684f4c8dc76c51362d99975b42a80ed8a0621a39ea22096dc15967b815e4e8f",
+              "rules": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225",
+              "schedule_context": "12efcccb3818664aabd089851c65ad16df031eab0acce8b258f2f554869d33f2"
+            },
+            "routes": {
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "2684f4c8dc76c51362d99975b42a80ed8a0621a39ea22096dc15967b815e4e8f"
+            }
+          }
+        },
+        "v2": {
+          "run_id": "case-03-v2-attempt-1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 11,
+                "UNKNOWN": 0
+              },
+              "denominator": 11,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 11,
+                  "numerator": 11
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 11,
+                  "numerator": 11
+                },
+                "verified_fraction": {
+                  "denominator": 11,
+                  "numerator": 11
+                }
+              },
+              "known_unit_count": 11,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 18,
+                "UNKNOWN": 0
+              },
+              "denominator": 18,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 18,
+                  "numerator": 18
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 18,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 18,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 18,
+                  "numerator": 18
+                },
+                "verified_fraction": {
+                  "denominator": 18,
+                  "numerator": 18
+                }
+              },
+              "known_unit_count": 18,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 11,
+                "UNKNOWN": 0
+              },
+              "denominator": 11,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 11,
+                  "numerator": 11
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 11,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 11,
+                  "numerator": 11
+                },
+                "verified_fraction": {
+                  "denominator": 11,
+                  "numerator": 11
+                }
+              },
+              "known_unit_count": 11,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 7,
+                "UNKNOWN": 0
+              },
+              "denominator": 7,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 7,
+                  "numerator": 7
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 7,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 7,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 7,
+                  "numerator": 7
+                },
+                "verified_fraction": {
+                  "denominator": 7,
+                  "numerator": 7
+                }
+              },
+              "known_unit_count": 7,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 4,
+            "days": [
+              {
+                "date": "2026-10-15",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-16",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-17",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-18",
+                "known_primary_count": 3,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 10,
+                "penalty_bounds": {
+                  "lower": 10,
+                  "upper": 10
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "Review of the complete original request supports ordinary density from moderate pace. Enough time to enjoy each place remains qualitative. No relaxed or rich pace, exact count, dated exception, venue quota, or distribution ratio is requested.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-14T19:11:15+00:00",
+              "reviewer_ref": "/root/case03_semantic_reviewer"
+            },
+            "mean_penalty_0_100": 7.5,
+            "exact_mean_penalty": {
+              "numerator": 15,
+              "denominator": 2
+            },
+            "mean_penalty_bounds": {
+              "lower": 7.5,
+              "upper": 7.5
+            }
+          },
+          "overall_total": {
+            "score_0_100": 92.5,
+            "exact_fraction": {
+              "numerator": 37,
+              "denominator": 40
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "0f289c8561dbfb11465fed38c75c684fbf4cd8b5904837fd2cab24c92232a204"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "d8938b49e98395e6fe0503a70a896dda86459fe49c5bae989b9a9610ca2580c3",
+              "identity_references": "7ca5a3ae6e8ced5a20f71da6a1b4766decea3043edc62bea19926ff8fbfb47e6",
+              "identity_report": "f11450666edb2f021b205834ce1c1913433353a5c2e2633d9c5e37578b5bc664",
+              "identity_review": null,
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "occupancy_review": "5c35ccfc1750648110b7493e762ef34bf2d5321f15be8b47de12cea14fd2f9d2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "0f289c8561dbfb11465fed38c75c684fbf4cd8b5904837fd2cab24c92232a204",
+              "rules": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225",
+              "schedule_context": "12efcccb3818664aabd089851c65ad16df031eab0acce8b258f2f554869d33f2"
+            },
+            "routes": {
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "0f289c8561dbfb11465fed38c75c684fbf4cd8b5904837fd2cab24c92232a204"
+            }
+          }
+        },
+        "v3": {
+          "run_id": "case-03-v3-attempt-1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 8,
+                "UNKNOWN": 0
+              },
+              "denominator": 8,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "verified_fraction": {
+                  "denominator": 8,
+                  "numerator": 8
+                }
+              },
+              "known_unit_count": 8,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 12,
+                "UNKNOWN": 0
+              },
+              "denominator": 12,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 12,
+                  "numerator": 12
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 12,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 12,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 12,
+                  "numerator": 12
+                },
+                "verified_fraction": {
+                  "denominator": 12,
+                  "numerator": 12
+                }
+              },
+              "known_unit_count": 12,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 8,
+                "UNKNOWN": 0
+              },
+              "denominator": 8,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "verified_fraction": {
+                  "denominator": 8,
+                  "numerator": 8
+                }
+              },
+              "known_unit_count": 8,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 4,
+                "UNKNOWN": 0
+              },
+              "denominator": 4,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 4,
+                  "numerator": 4
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 4,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 4,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 4,
+                  "numerator": 4
+                },
+                "verified_fraction": {
+                  "denominator": 4,
+                  "numerator": 4
+                }
+              },
+              "known_unit_count": 4,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 4,
+            "days": [
+              {
+                "date": "2026-10-15",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-16",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-17",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-18",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "profile": "ordinary",
+                  "exact_count": null,
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+                      "occurrence": 0
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "Review of the complete original request supports ordinary density from moderate pace. Enough time to enjoy each place remains qualitative. No relaxed or rich pace, exact count, dated exception, venue quota, or distribution ratio is requested.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-14T19:11:15+00:00",
+              "reviewer_ref": "/root/case03_semantic_reviewer"
+            },
+            "mean_penalty_0_100": 0.0,
+            "exact_mean_penalty": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 100.0,
+            "exact_fraction": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "6d6b1281d3fac651f5b290ed51776e09ded5414dff595b4c038a1381b069b569"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "d8938b49e98395e6fe0503a70a896dda86459fe49c5bae989b9a9610ca2580c3",
+              "identity_references": "7ca5a3ae6e8ced5a20f71da6a1b4766decea3043edc62bea19926ff8fbfb47e6",
+              "identity_report": "f11450666edb2f021b205834ce1c1913433353a5c2e2633d9c5e37578b5bc664",
+              "identity_review": null,
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "occupancy_review": "5c35ccfc1750648110b7493e762ef34bf2d5321f15be8b47de12cea14fd2f9d2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "6d6b1281d3fac651f5b290ed51776e09ded5414dff595b4c038a1381b069b569",
+              "rules": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225",
+              "schedule_context": "12efcccb3818664aabd089851c65ad16df031eab0acce8b258f2f554869d33f2"
+            },
+            "routes": {
+              "input": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+              "requirement_spec": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+              "result": "6d6b1281d3fac651f5b290ed51776e09ded5414dff595b4c038a1381b069b569"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "full_derivation_semantic_sha256": "85234bd1f65e8cb81830cdec35dd51c29239841c830676f510d1517d7346d326",
+  "content_sha256": "8c69a795d361667f3ec00e2ff6536ce74d85236b4becf4e14a841c697bfc0d00"
+}
