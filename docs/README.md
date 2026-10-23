@@ -67,8 +67,10 @@ and the completed bounded generation/Primary checks. It also records the authori
 completed direct replacement for 04/05/09/11, matched dependent analyses,
 canonical input alignment, bounded consumption and retained evidence limitations.
 The [case-04 Rich-policy Primary](records/evaluation/2026-10-24-rich-primary.md)
-records one new V3 reaching three visits per day, a fresh four-final evaluation and
-the application-completion limitation; replacement acceptance remains separate.
+records one new V3 reaching three visits per day and a fresh four-final evaluation.
+The [offline completion review](../benchmark/case-04/analysis/repair/completion-review.json)
+classifies the saved original-date result under corrected completion logic;
+replacement acceptance remains separate.
 The [post-generation review readiness contract](contracts/0002-intake-identity-usage.md#post-generation-review-readiness)
 separates missing output-specific review work from completed unresolved judgments
 before primary acquisition, without changing Planner generation or score policies;
@@ -90,8 +92,9 @@ does not refresh accepted datasets.
 
 - [Benchmark report](../benchmark/report.md): Rich-policy automatic replacement,
   pending researcher acceptance, with order **V3 > V2 > V1 > V0**, exact twelve-case
-  totals, same-run Pair summaries and selected-generation resources. Case-04 has
-  three visits per day but retains unavailable Planner coverage completion;
+  totals, same-run Pair summaries and selected-generation resources. Case-04's
+  original-date offline completion review passes; its current 25–26 October
+  schedules have no transferred date-bound evaluation;
   existing blinded answers remain bound to the original reviewed itinerary.
 - [Blinded-review report](../benchmark/blinded-results/report.md): completed human
   and GPT-6.1 sol xhigh assessments, dimension and task-level rankings, agreement

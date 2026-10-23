@@ -100,5 +100,12 @@
     "scope": "Complete replacement automatic selection, density derivations, Pair, process and resource views."
   },
   "primary_report_expanded_semantic_sha256": "67b0190cff0e104b34bc91c389ba63f9486541b0b7ce45e87276678957c73e5d",
-  "pair_report_expanded_semantic_sha256": "6e060878f190bd0b93b25ee7f0c7214cbb314d41016448e9ef5ccce4c33db953"
+  "pair_report_expanded_semantic_sha256": "6e060878f190bd0b93b25ee7f0c7214cbb314d41016448e9ef5ccce4c33db953",
+  "evaluation_input": {
+    "path": "evaluation/input.json",
+    "original_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+    "published_sha256": "605e3ff99226b8df72361e3ced136faa4598358c07a3aa8c75957023d780a8a9"
+  },
+  "current_schedule_revision": "rescheduled/revision.json",
+  "completion_review": "analysis/repair/completion-review.json"
 }

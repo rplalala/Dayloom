@@ -5,8 +5,9 @@
   "batch_id": "case-04-rich3",
   "status": "pending_researcher_acceptance",
   "original_input": {
-    "path": "../inputs/case-04.json",
-    "sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789"
+    "path": "evaluation/input.json",
+    "sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+    "published_sha256": "605e3ff99226b8df72361e3ced136faa4598358c07a3aa8c75957023d780a8a9"
   },
   "versions": {
     "v0": {
@@ -147,6 +148,22 @@
         }
       ],
       "semantic_sha256": "b152935952164c6b77fe58ea04fe4944e2271e1bd8791523d7baf47557c4da5d"
+    },
+    {
+      "path": "analysis/repair/completion-input.json",
+      "publication_kind": "offline_derivation",
+      "sources": [],
+      "derivation": "Authorized completion review and date revision; no new provider evidence",
+      "sha256": "e094782eb37af6746f729f55d6d9636e8954fc12c81bd27786a9d368911cd8f3",
+      "expanded_semantic_sha256": "dbec2593e5974929d51989d5f8b98fcf55afff5f077b12e8f9713993059a8367"
+    },
+    {
+      "path": "analysis/repair/completion-review.json",
+      "publication_kind": "offline_derivation",
+      "sources": [],
+      "derivation": "Authorized completion review and date revision; no new provider evidence",
+      "sha256": "3606ec033305e9036f188a39ec27f8abe3453947b4ef2e2596508fd3e3583f72",
+      "expanded_semantic_sha256": "80cc22424f95baa9ac9e8a075f23812a84741a1b68130f458d6094f6d0743ce5"
     },
     {
       "path": "analysis/repair/draft.json",
@@ -291,6 +308,14 @@
         }
       ],
       "semantic_sha256": "e0723cbe9f8d4bb70f64cc636a23d23fa8d34204f1806e23853e72ca151c6285"
+    },
+    {
+      "path": "evaluation/input.json",
+      "publication_kind": "offline_derivation",
+      "sources": [],
+      "derivation": "Authorized completion review and date revision; no new provider evidence",
+      "sha256": "605e3ff99226b8df72361e3ced136faa4598358c07a3aa8c75957023d780a8a9",
+      "expanded_semantic_sha256": "694053efce26ff94f73504184dd04052d859eca5d8c8ef030941a2359ed21df2"
     },
     {
       "path": "evaluation/primary/quality.json",
@@ -1730,27 +1755,69 @@
       "semantic_sha256": "632adfeeec2e568dd77b45cb00a159d46df95375105ce6b940353b971f446d18"
     },
     {
+      "path": "rescheduled/revision.json",
+      "publication_kind": "offline_derivation",
+      "sources": [],
+      "derivation": "Authorized completion review and date revision; no new provider evidence",
+      "sha256": "e6e174a4364c2d9f96ec740f8a07789f66c36e711ba7939e0109021704d8ba29",
+      "expanded_semantic_sha256": "0d3929c037bcfb7c76762ee6d812f59fa88eeece8c15e47cbac6be87a8d963b2"
+    },
+    {
+      "path": "rescheduled/v0.json",
+      "publication_kind": "offline_derivation",
+      "sources": [],
+      "derivation": "Authorized completion review and date revision; no new provider evidence",
+      "sha256": "e2bf6318022386d4a8341d5d96ad09193f3a6b6e65e3bf109f1fcce69e93b395",
+      "expanded_semantic_sha256": "eae2927019cfa24721209d87cb41bc6d4e48aca4336cc74225b1521c5b3efc64"
+    },
+    {
+      "path": "rescheduled/v1.json",
+      "publication_kind": "offline_derivation",
+      "sources": [],
+      "derivation": "Authorized completion review and date revision; no new provider evidence",
+      "sha256": "7b01162656ccf672124d3ead6bc94e02cb31d9301112ee6365ac9207acff57f4",
+      "expanded_semantic_sha256": "6414109e8dae08ce1d379012ef16d44e364b5c9f5f9a16c4de0180c8ca08ae4c"
+    },
+    {
+      "path": "rescheduled/v2.json",
+      "publication_kind": "offline_derivation",
+      "sources": [],
+      "derivation": "Authorized completion review and date revision; no new provider evidence",
+      "sha256": "794830d49f319263f5ff86d88a47f01069667e678d263099ee124044ade2e05c",
+      "expanded_semantic_sha256": "bdbdfa5583a3a38a2d5e9b4b8280d1e91cb2922b9a07be352744b62444f7454a"
+    },
+    {
+      "path": "rescheduled/v3.json",
+      "publication_kind": "offline_derivation",
+      "sources": [],
+      "derivation": "Authorized completion review and date revision; no new provider evidence",
+      "sha256": "ed24cfdf97bc64351df2395a5be5b3169954fd18395fcb3e707d5bcb222093cf",
+      "expanded_semantic_sha256": "9d0506a3f9a54a6575f3464a57c1de858b6625c14d4a3088eb107e8992b14d6b"
+    },
+    {
       "path": "selection.json",
-      "sha256": "936e9928ff6370dddbfea5f00de01c1afabfbc9ad740455d60f4e38e0c77f2a6",
-      "expanded_semantic_sha256": "08b03963bba9772ac885a6520954551a806ac8ef741ee3327db3e294d786f9fd",
+      "sha256": "4acdf36ff61bcf145c0b6acf0695f590f7738d17aa914853efd1496a77bc076f",
+      "expanded_semantic_sha256": "24370bdc18fd422da3bf23da5d8f6c9ce4d94bd3efaa311fff1e3d4f65e04db7",
       "publication_kind": "derived_current_view",
       "sources": [],
-      "semantic_sha256": "08b03963bba9772ac885a6520954551a806ac8ef741ee3327db3e294d786f9fd",
+      "semantic_sha256": "24370bdc18fd422da3bf23da5d8f6c9ce4d94bd3efaa311fff1e3d4f65e04db7",
       "derivation": "Issue #218 source-bound selection and exact native-event accounting"
     }
   ],
   "reader_views": [
     {
       "path": "report.md",
-      "sha256": "3b40b7d54d502a8ac5ac6a0df422bfd00245752f8760f37906b100f506bd1a01"
+      "sha256": "1dc72f58aae3bf09db55ade5f80a7e239c89eb82cab0f838019da00ef88a8867"
     },
     {
       "path": "itinerary.md",
-      "sha256": "10f74f42b11bc45f40b2d60f58d1a72f8e4c7161050cdd9c0afbe5347edf55f6"
+      "sha256": "8e5c27b03ad91cb37224b059a70ac0d59691bca764aec45230bd9f79b3cefbde"
     }
   ],
   "researcher_acceptance": {
     "status": "pending",
-    "scope": "Complete replacement automatic selection, density derivations, Pair, process and resource views."
-  }
+    "scope": "Original-date automatic selection and completion review; four offline 25-26 October schedule revisions without transferred date-bound scores."
+  },
+  "current_schedule_revision": "rescheduled/revision.json",
+  "completion_review": "analysis/repair/completion-review.json"
 }

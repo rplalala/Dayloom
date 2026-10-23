@@ -1,0 +1,302 @@
+{
+  "schema_version": "case_completion_review_1",
+  "scope": "Offline completion classification of the original 24-25 October output",
+  "implementation_revision": "df7ef14e570103d1541c92537f3b1a8af6f5cf03",
+  "run_id": "case-04-rich3-v3-a1",
+  "original_result_sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
+  "validation_semantic_sha256": "d8919abef2c67421cb6498293b78b6c646d5eaba491d09189bfc78786d11ab94",
+  "contract_semantic_sha256": "bcc3e38127d0c9d99f84ac76e42b7d52205faa53d615464be785865ab5e757cb",
+  "original_completion": {
+    "status": "unavailable",
+    "days": [
+      {
+        "date": "2026-10-24",
+        "count": 3,
+        "target_count": 3,
+        "override": null,
+        "state": "satisfied"
+      },
+      {
+        "date": "2026-10-25",
+        "count": 3,
+        "target_count": 3,
+        "override": null,
+        "state": "satisfied"
+      }
+    ],
+    "blocking_findings": [
+      "finding_1"
+    ],
+    "unverified_checks": [
+      "coverage"
+    ]
+  },
+  "completion": {
+    "status": "complete",
+    "days": [
+      {
+        "date": "2026-10-24",
+        "count": 3,
+        "target_count": 3,
+        "override": null,
+        "state": "satisfied"
+      },
+      {
+        "date": "2026-10-25",
+        "count": 3,
+        "target_count": 3,
+        "override": null,
+        "state": "satisfied"
+      }
+    ],
+    "blocking_findings": [],
+    "unverified_checks": []
+  },
+  "retained_unknown_findings": [
+    {
+      "finding_id": "finding_1",
+      "check": "coverage",
+      "status": "UNKNOWN",
+      "reason": "default_target_observation_without_executable_exception_contract",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "generation_diagnostics:2026-10-24"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_3",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [
+        "sat-national-gallery"
+      ],
+      "place_ids": [
+        "ChIJFQzeR6cZ2jERgM6--iWeY-U"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJFQzeR6cZ2jERgM6--iWeY-U"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_5",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [
+        "sat-merlion-park"
+      ],
+      "place_ids": [
+        "ChIJBTYg1g4Z2jERp_MBbu5erWY"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_7",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [
+        "sat-singapore-flyer"
+      ],
+      "place_ids": [
+        "ChIJzVHFNqkZ2jERboLN2YrltH8"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJzVHFNqkZ2jERboLN2YrltH8"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_9",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-25"
+      ],
+      "activity_ids": [
+        "sun-gardens-by-the-bay"
+      ],
+      "place_ids": [
+        "ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_11",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-25"
+      ],
+      "activity_ids": [
+        "sun-helix-bridge"
+      ],
+      "place_ids": [
+        "ChIJT4AHFwcZ2jERDJbPVLTEbOk"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJT4AHFwcZ2jERDJbPVLTEbOk"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_13",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-25"
+      ],
+      "activity_ids": [
+        "sun-spectra-show"
+      ],
+      "place_ids": [
+        "ChIJJx8l4dkZ2jER4d43CclDwfs"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJJx8l4dkZ2jER4d43CclDwfs"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_18",
+      "check": "budget",
+      "status": "UNKNOWN",
+      "reason": "verified_party_currency_cost_coverage_not_supported",
+      "dates": [],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_19",
+      "check": "semantic_requirements",
+      "status": "UNKNOWN",
+      "reason": "open_semantics_not_executable_predicates",
+      "dates": [],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [
+        "semantic_1",
+        "semantic_2",
+        "semantic_3",
+        "semantic_4"
+      ],
+      "evidence_refs": [],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    }
+  ],
+  "provider_calls": 0,
+  "limitation": "Saved validation evidence is unchanged; no generation or acquisition replay."
+}

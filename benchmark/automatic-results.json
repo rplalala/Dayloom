@@ -5881,7 +5881,10 @@
             "original_checks_semantic_sha256": "04c4c3d197a2fe34b3f7f7c8096f9a5ee85e4c2d053575ea9836186b07f95e60"
           }
         }
-      }
+      },
+      "input_source": "case-04/evaluation/input.json",
+      "input_file_sha256": "605e3ff99226b8df72361e3ced136faa4598358c07a3aa8c75957023d780a8a9",
+      "input_note": "Original 24-25 October evaluated input; current 25-26 October schedules are not evaluated here."
     },
     {
       "case_id": "case-05",
@@ -21184,5 +21187,5 @@
       }
     }
   ],
-  "content_sha256": "e27546ab544ea339e06e6e1e3c9d228dab9a2db11ff627964948e88e3dcf9044"
+  "content_sha256": "faf3f255e9c41f1f22a7063de53eeb7b98a45662545392da5a76e263f6e4744b"
 }

@@ -81,7 +81,7 @@ def exact(total):
     return Fraction(fraction["numerator"], fraction["denominator"])
 
 
-def verify_score(case, material):
+def verify_score(case, material, input_source=None):
     from backend.evaluation.daily_density import apply_density_penalty, score_daily_density
 
     density = material["daily_density"]
@@ -92,7 +92,9 @@ def verify_score(case, material):
         "review": density["review"],
     }
     rebuilt = score_daily_density(
-        {"input": load(f"benchmark/inputs/{case}.json")}, density["days"], policy
+        {"input": load("benchmark/" + (input_source or f"inputs/{case}.json"))},
+        density["days"],
+        policy,
     )
     assert rebuilt == density, (case, "density")
     scored = {"daily_density": rebuilt, "auxiliary_total": material["auxiliary_total"]}
@@ -122,6 +124,9 @@ def main():
     pair_counts = Counter()
     for case in report["cases"]:
         cid = case["case_id"]
+        input_source = case.get("input_source")
+        if input_source:
+            assert published_sha256(ROOT / "benchmark" / input_source) == case["input_file_sha256"]
         final = load("benchmark/" + case["primary_source"])
         pair = load("benchmark/" + case["pair_source"])
         case_index = load(f"benchmark/{cid}/material-index.json")
@@ -145,7 +150,7 @@ def main():
         pair = pair["groups"][0]
         scores[cid], ranks[cid] = {}, {}
         for version, material in final["versions"].items():
-            verify_score(cid, material)
+            verify_score(cid, material, input_source)
             score = exact(material["overall_total"]) * 100
             assert score == exact({"exact_fraction": case["versions"][version]["score"]})
             assert material["daily_density"] == case["versions"][version]["daily_density"]
@@ -157,7 +162,7 @@ def main():
             assert rank == exact({"exact_fraction": case["versions"][version]["rank"]})
             ranks[cid][version] = rank
         for stage, material in pair["stages"].items():
-            verify_score(cid, material)
+            verify_score(cid, material, input_source)
             key = "final" if stage == "final_primary" else stage
             assert exact(material["overall_total"]) * 100 == exact(
                 {"exact_fraction": case["pair"][key]}
