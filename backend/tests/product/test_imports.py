@@ -360,7 +360,7 @@ def test_documented_bare_versions_and_bundled_r7_fixture_import_through_api(clie
         assert response.status_code == 200, response.text
         assert response.json()["snapshot"]["days"][1]["activities"] == []
     headers["X-Import-Key"] = "actual-r7"
-    fixture = Path("backend/app/product/examples/nearby-linking.json").read_text(encoding="utf-8")
+    fixture = Path("backend/tests/product/fixtures/nearby-linking.json").read_text(encoding="utf-8")
     response = client.post("/api/imports", headers=headers, content=fixture)
     assert response.status_code == 200, response.text
     assert any(

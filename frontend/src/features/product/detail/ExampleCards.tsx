@@ -4,7 +4,7 @@ import { requestJson } from "../../../shared/api/http";
 import type { ExampleCard } from "./types";
 import { Icon } from "../Icon";
 import { CopyControls } from "../CopyControls";
-import { dottedDate } from "./display";
+import { destinationCover, dottedDate } from "./display";
 import { CuratedPhoto } from './MediaPhoto';
 
 export function ExampleCards() {
@@ -40,7 +40,7 @@ export function ExampleCards() {
           <div
             className={`trip-card-photo dayloom-example example-${i}`}
           >
-            <CuratedPhoto link={{ to: `/examples/${card.id}`, label: `Read ${card.title}` }} image={card.destination.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={`${card.destination} destination atmosphere`} fallback={card.illustration_key ? `/dayloom/${card.illustration_key}.svg` : undefined} />
+            <CuratedPhoto link={{ to: `/examples/${card.id}`, label: `Read ${card.title}` }} image={destinationCover(card.destination)} label={`${card.destination} destination atmosphere`} fallback={card.illustration_key ? `/dayloom/${card.illustration_key}.svg` : undefined} />
             <span className="trip-status">Example itinerary</span>
           </div>
           <div className="trip-card-body">

@@ -21,6 +21,7 @@ from backend.tests.product.browser_harness import (
     BROWSER_TEST_SIGNING_KEY,
     BrowserApplication,
     isolated_environment,
+    open_preferences,
 )
 from backend.tests.product.database_safety import require_test_database
 
@@ -108,6 +109,7 @@ def test_manual_identical_replacement_detaches_owned_text(editor_app, replacemen
     page = context.new_page()
     try:
         page.goto(editor_app.base_url + "/plan")
+        open_preferences(page)
         nature = page.get_by_role("button", name="Nature", exact=True)
         nature.click()
         notes = page.get_by_label("Additional preferences")
@@ -161,6 +163,7 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         assert not generation  # Authentication and invalid fields never submit.
         page.get_by_label("Whole-trip budget", exact=True).fill("0")
         page.get_by_label("Currency", exact=True).select_option("CAD")
+        open_preferences(page)
         page.get_by_label("Places or experiences to include").fill("An art museum")
         page.get_by_label("Places or experiences to avoid").fill("Large malls")
         notes = page.get_by_label("Additional preferences")
@@ -252,6 +255,7 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         # Tab recovery retains all fields/metadata and performs no generation.
         relaxed.click()
         page.reload()
+        open_preferences(page)
         expect(page.get_by_role("button", name="Relaxed", exact=True)).to_have_attribute(
             "aria-pressed", "true"
         )
@@ -310,6 +314,7 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         page.get_by_label("Password", exact=True).fill("a secure password")
         page.get_by_role("button", name="Log in", exact=True).click()
         expect(page.get_by_label("Places or experiences to include")).to_have_value("An art museum")
+        open_preferences(page)
         expect(page.get_by_role("button", name="Relaxed", exact=True)).to_have_attribute(
             "aria-pressed", "true"
         )
@@ -318,6 +323,7 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         page.goto(editor_app.base_url + "/plan")
         expect(page.get_by_label("Places or experiences to include")).to_have_value("")
         expect(page.get_by_label("Additional preferences")).to_have_value("")
+        open_preferences(page)
         expect(page.get_by_role("button", name="Relaxed", exact=True)).to_have_attribute(
             "aria-pressed", "false"
         )

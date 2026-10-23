@@ -8,7 +8,7 @@ import jwt
 import pytest
 from playwright.sync_api import expect
 
-from backend.tests.product.browser_harness import BROWSER_TEST_SIGNING_KEY
+from backend.tests.product.browser_harness import BROWSER_TEST_SIGNING_KEY, open_preferences
 from backend.tests.product.test_browser import browser_app, login, register_browser  # noqa: F401
 
 
@@ -41,6 +41,7 @@ def test_guest_keep_returns_to_review_without_automatic_write_or_lost_brief(brow
     try:
         page = context.new_page()
         page.goto(base + "/plan")
+        open_preferences(page)
         page.get_by_label("Additional preferences").fill("Keep my guest brief")
         page.goto(base + "/examples/sydney-example")
         posts = []
@@ -139,7 +140,7 @@ def test_library_copy_keyboard_lost_reply_recovery_and_independent_detail(browse
         page.get_by_text("Before you go", exact=True).click()
         expect(
             page.get_by_text(
-                "This is a sample itinerary.", exact=False
+                "This historical example keeps its original travel dates.", exact=False
             )
         ).to_be_visible()
         page.screenshot(path=str(scratch / f"saved-copy-{width}.png"), full_page=True)
@@ -247,6 +248,7 @@ def test_late_copy_reply_cannot_navigate_or_overwrite_another_page(browser_app):
         page.get_by_role("button", name="Keep a copy", exact=True).click()
         expect(page.get_by_role("button", name="Checking copy…", exact=True)).to_be_visible()
         page.goto(base + "/plan")
+        open_preferences(page)
         page.get_by_label("Additional preferences").fill("A different brief stays here")
         assert len(held) == 1
         held[0][0].fulfill(response=held[0][1])
@@ -347,14 +349,14 @@ def test_unconfirmed_copy_a_survives_a_copy_of_b_and_return_to_a(browser_app):  
             route.abort()
 
         page.route("**/api/copies", lose)
-        for slug in ("sydney-example", "kyoto-design"):
+        for slug in ("sydney-example", "london-example"):
             page.goto(base + f"/examples/{slug}")
             page.get_by_role("button", name="Keep a copy", exact=True).click()
             expect(page.get_by_role("button", name="Check copy status", exact=True)).to_be_visible()
         page.goto(base + "/examples/sydney-example")
         page.get_by_role("button", name="Check copy status", exact=True).click()
         expect(page.get_by_role("link", name="View saved copy", exact=True)).to_be_visible()
-        page.goto(base + "/examples/kyoto-design")
+        page.goto(base + "/examples/london-example")
         page.get_by_role("button", name="Check copy status", exact=True).click()
         expect(page.get_by_role("link", name="View saved copy", exact=True)).to_be_visible()
         assert len(sent) == 2

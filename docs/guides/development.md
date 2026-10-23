@@ -290,17 +290,23 @@ are written to `.scratch/draft-browser`. The [draft contract](../0007-applicatio
 defines schema bounds and listing parameters. Apply the public migration entrypoint before
 starting the API; no additional configuration is required for drafts.
 
-Public example endpoints also run without Product account/provider configuration.
+Public example detail endpoints also run without Product account/provider configuration.
 `uv run pytest backend/tests/api/test_product_examples.py` checks their allowlisted
 HTTP contract offline; the focused frontend detail tests exercise unresolved/undated
-references, real day order and safe text rendering. The public fixtures are historical
-source claims, not live provider verification.
+references, real day order and safe text rendering. Sydney and London are the only
+public examples, curated from existing accepted V3 projections with original weather,
+routes and request values. The private fixture metadata retains their source digests.
+The ambiguous-anchor fixture lives under `backend/tests/product/fixtures/`; it is not
+a public route. Public example media uses the existing configured adapters and shared
+request bounds. Example Copy tests verify private bindings and weather source credit
+through normalized storage, reload and a descendant copy.
 
 ### Product media setup and acceptance
 
 Apply migrations before starting an updated API; migration 006 adds stable private
-place bindings to previews/trips. Media keys are optional and separate from research
-configuration. Keep them server-side. Without either key, the corresponding image
+place bindings to previews/trips, and 008 preserves weather attribution/source URLs
+when a generated preview or curated example becomes a saved trip. Media keys are
+optional and separate from research configuration. Keep them server-side. Without either key, the corresponding image
 remains an explicitly labelled illustration and all planning, import, preview and Save
 flows remain usable. See the [media contract](../0007-application-operations.md#verified-place-media-and-curated-atmosphere)
 for identity, provider, refresh and request bounds. Before a future public Google-enabled

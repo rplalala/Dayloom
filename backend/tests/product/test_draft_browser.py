@@ -11,6 +11,7 @@ from playwright.sync_api import expect
 from backend.tests.product.browser_harness import (
     BROWSER_TEST_SIGNING_KEY,
     expect_recovered_draft_name,
+    open_preferences,
     seed_legacy_draft_title,
 )
 from backend.tests.product.test_browser import login, register_browser
@@ -95,6 +96,7 @@ def test_multiple_drafts_conflict_copy_delete_and_browser_recreation(editor_app)
         register_browser(first, base)
         first.get_by_role("button", name="Create a trip").click()
         first.get_by_label("Destination").fill("Kyoto")
+        open_preferences(first)
         first.get_by_role("button", name="Nature", exact=True).click()
         seed_legacy_draft_title(first, "Kyoto unfinished")
         first.get_by_role("button", name="Save draft", exact=True).click()
@@ -102,6 +104,7 @@ def test_multiple_drafts_conflict_copy_delete_and_browser_recreation(editor_app)
         saved_url = first.url
         first.reload()
         expect(first.get_by_label("Destination")).to_have_value("Kyoto")
+        open_preferences(first)
         expect(first.get_by_role("button", name="Nature", exact=True)).to_have_attribute(
             "aria-pressed", "true"
         )
@@ -177,12 +180,14 @@ def test_multiple_drafts_conflict_copy_delete_and_browser_recreation(editor_app)
             page.get_by_role("link", name="View details", exact=True).click()
             page.get_by_role("link", name="Continue planning", exact=True).click()
             expect(page.get_by_label("Destination")).to_have_value("Keep my local work")
+            open_preferences(page)
             notes = page.get_by_label("Additional preferences")
             notes.fill("🌿 My edited sentence")
             page.get_by_role("button", name="Save draft", exact=True).click()
             expect(page.get_by_text("Draft saved.", exact=True)).to_be_visible()
             page.reload()
             expect(notes).to_have_value("🌿 My edited sentence")
+            open_preferences(page)
             expect(page.get_by_role("button", name="Nature", exact=True)).to_have_attribute(
                 "aria-pressed", "false"
             )

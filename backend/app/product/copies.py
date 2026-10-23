@@ -30,7 +30,7 @@ class CopyIntent(BaseModel):
     def canonical_source(self):
         if self.source_kind == "copied":
             self.source_id = str(UUID(self.source_id))
-        elif self.source_id not in (*COLLECTION, "nearby-linking"):
+        elif self.source_id not in COLLECTION:
             raise ValueError("Unknown example")
         return self
 
@@ -71,6 +71,7 @@ class CopyStore:
             bindings = {}
             if intent.source_kind == "example":
                 detail = example_detail(intent.source_id)
+                bindings = dict(detail._media_bindings)
             else:
                 source = connection.execute(
                     "SELECT * FROM app.trips WHERE owner_id=%s AND id=%s FOR UPDATE",

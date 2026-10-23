@@ -65,9 +65,11 @@ export function BriefPage() {
   useLayoutEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const [checked, setChecked] = useState(false);
   const [draftLoading, setDraftLoading] = useState(false);
+  const [preferencesOpen, setPreferencesOpen] = useState<boolean | null>(null);
   const notesInput = useRef<HTMLTextAreaElement>(null);
   const textEdit = useRef<(TextReplacement & { before: string }) | null>(null);
   const brief = session.brief;
+  const hasPreferences = Boolean(brief.preferences || brief.required || brief.exclusions || brief.interests.length || brief.pace || brief.transport.length);
   useEffect(() => {
     let active = true;
     getTripDateWindow().then(value => { if (active) setDateWindow(value); }, () => { if (active) setDateError(true); });
@@ -108,6 +110,7 @@ export function BriefPage() {
     if (restart || !session.actionId) { session.setActionId(initialKey); context.current.action = initialKey; }
     if (!session.account) { navigate(loginReturn); return; }
     setChecked(true);
+    if (errors.some(error => error.startsWith("Preferences"))) setPreferencesOpen(true);
     if (errors.length || !dateWindow || submission.busy) return;
     const account = session.account;
     const request = planningInput(brief, dateWindow);
@@ -169,9 +172,9 @@ export function BriefPage() {
   if (draftId && !session.account) return <div className="page container"><h1>Log in to open this draft.</h1><p>Planning drafts are private to their account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
 
   return <div className="page container plan-page brief-editor">
-    <div className="page-heading"><span className="eyebrow">YOUR JOURNEY, YOUR WAY</span><h1>A city journey, made yours.</h1><p>Pick a destination. Bring your ideas. Make every day a little clearer.</p></div>
+    <div className="page-heading"><span className="eyebrow">YOUR JOURNEY, YOUR WAY</span><h1>Where will you go next?</h1><p>Start with the essentials. Make room for what you love.</p></div>
     <section className="flow-card form-card" id="travel-brief">
-      <div className="flow-title"><span className="step-number">01</span><div><h2>Tell us how you like to travel</h2><p>A few essentials, and the things that make it your trip.</p></div><span className="count-badge">About 1 minute</span></div>
+      <div className="flow-title"><span className="step-number">01</span><div><h2>Your travel brief</h2></div><span className="count-badge">About 1 minute</span></div>
       <form noValidate onSubmit={event => {
         event.preventDefault();
         void generate();
@@ -186,6 +189,8 @@ export function BriefPage() {
             <label className="field"><span><Icon name="leaf" size={16} /> Whole-trip budget <b aria-hidden="true">*</b></span><span className="budget-input"><input aria-label="Whole-trip budget" type="number" min="0" step="0.01" required placeholder="1000" value={brief.budget} onChange={event => change("budget", event.target.value)} /><select aria-label="Currency" value={brief.currency} required onChange={event => change("currency", event.target.value)}><option value="">Select currency</option>{currencies.map(value => <option key={value.code} value={value.code}>{value.code}</option>)}</select></span></label>
           </div>
           <div className="field-help-row"><p className="subtle-help">{dateWindow ? `Plan ${dateWindow.allowedStart}–${dateWindow.allowedEnd}, up to ${dateWindow.maxTripDays} days.` : dateError ? "Date limits could not be loaded. Reload to try again." : "Loading date limits…"}</p></div>
+          <details className="optional-preferences" open={preferencesOpen ?? hasPreferences} onToggle={event => setPreferencesOpen(event.currentTarget.open)}>
+            <summary><Icon name="sliders" size={18} /><span><strong>Personalize your trip</strong><small>{hasPreferences ? "Preferences added · review or edit" : "Optional · interests, pace, transport and places"}</small></span><Icon name="chevron" size={17} /></summary>
           <fieldset className="field-group brief-choice-group"><legend className="label-row"><Icon name="spark" size={16} /> <strong>Experiences you love</strong></legend><div className="chips">{(Object.keys(interestPrompts) as Interest[]).map(value => <button key={value} type="button" className={`chip ${brief.interests.includes(value) ? "active" : ""}`} aria-pressed={brief.interests.includes(value)} onClick={() => update(toggleInterest(brief, value))}><Icon name={brief.interests.includes(value) ? "check" : "plus"} size={14} /> {value}</button>)}</div></fieldset>
           <div className="preference-pair">
             <fieldset className="field-group brief-choice-group"><legend className="label-row"><Icon name="sliders" size={16} /> <strong>Travel pace</strong></legend><div className="pace-row">{(Object.keys(pacePrompts) as Pace[]).map((value, index) => <button key={value} type="button" aria-label={value[0].toUpperCase() + value.slice(1)} className={`pace-btn ${brief.pace === value ? "selected" : ""}`} aria-pressed={brief.pace === value} onClick={() => update(togglePace(brief, value))}><span>{["Take it slowly", "A little of both", "See a little more"][index]}</span><strong>{value[0].toUpperCase() + value.slice(1)}</strong></button>)}</div></fieldset>
@@ -204,6 +209,7 @@ export function BriefPage() {
             ...(/^[1-9]\d*$/.test(brief.travelers) && Number.isSafeInteger(Number(brief.travelers)) && { traveler_count: Number(brief.travelers) }),
             ...(validBudget && { budget: { amount: brief.budget, currency: brief.currency } }),
           }} disabled={false} onApply={value => update(editPreferences(brief, value))} />
+          </details>
         </fieldset>
         {checked && errors.length > 0 && <div className="form-error" role="alert"><ul>{errors.map(error => <li key={error}>{error}</li>)}</ul></div>}
         <div className="form-bottom"><p><Icon name="shield" size={16} /> City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading || submission.busy} className="btn btn-primary btn-large"><Icon name="spark" size={18} /> {submission.busy ? 'Submitting…' : 'Generate itinerary'} <Icon name="arrow" size={17} /></button></div>
@@ -212,7 +218,7 @@ export function BriefPage() {
       </form>
     </section>
     {submission.activeConflict && <BusyPlanningDialog taskId={submission.taskId} close={() => setSubmitState(previous => ({ ...previous, activeConflict: false }))} save={async () => { await draftActions.current?.save(); }} />}
-    <PlanProgress task={observed.task} error={observed.error} loading={observed.loading} check={observed.check} onUpdate={observed.update} loginHref={!session.account && selectedTaskId ? loginReturn : undefined} submitting={submission.busy} onGenerateAgain={observed.task && dateWindow && !errors.length && sameConfirmedRequest(observed.task.request, planningInput(brief, dateWindow)) ? () => void generate(true) : undefined} />
+    {(observed.task || observed.error || observed.loading || selectedTaskId || location.hash === '#generation-progress') && <PlanProgress task={observed.task} error={observed.error} loading={observed.loading} check={observed.check} onUpdate={observed.update} loginHref={!session.account && selectedTaskId ? loginReturn : undefined} submitting={submission.busy} onGenerateAgain={observed.task && dateWindow && !errors.length && sameConfirmedRequest(observed.task.request, planningInput(brief, dateWindow)) ? () => void generate(true) : undefined} />}
     <PlanResult key={`${session.account?.id}:${session.account?.csrf_token}:${observed.task?.id || "empty"}:${new URLSearchParams(location.search).get("preview") || ""}:${generation}`} task={observed.task} previewId={new URLSearchParams(location.search).get("preview") || undefined} />
   </div>;
 }

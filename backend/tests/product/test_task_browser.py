@@ -15,6 +15,7 @@ from pydantic import SecretStr
 from backend.tests.product.browser_harness import (
     BrowserApplication,
     isolated_environment,
+    open_preferences,
     seed_legacy_draft_title,
 )
 from backend.tests.product.database_safety import require_test_database
@@ -527,6 +528,7 @@ def test_browser_typed_outcome_reopens_exact_input_without_profile_overlay_or_re
         page.get_by_label("End date", exact=True).fill("2026-09-13")
         page.get_by_label("Travelers", exact=True).fill("2")
         page.get_by_label("Whole-trip budget", exact=True).fill("1800")
+        open_preferences(page)
         page.get_by_label("Additional preferences", exact=True).fill(source)
         with page.expect_response(
             lambda reply: (

@@ -1,0 +1,289 @@
+{
+  "created_at": "2026-10-14T03:18:51.311825+00:00",
+  "source": {
+    "case": "case-02",
+    "run_id": "case-02-r1-v3-a1",
+    "result_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+    "input_sha256": "afd045d47b93bef9cc3743bcd2512805bc5b85cf35d1e0b97d23a740e53c9c1b",
+    "weather_sha256": "27163f076377fccd1a1c9ede96b20ab0bda63c37fd3da13357f5562844b4022e",
+    "curation": {
+      "optional_nearby": "Jubilee Gardens replaces Metaverse near London Eye",
+      "authority": "Same accepted run's Google Places nearby ledger",
+      "reason": "The original optional reference has no provider photo"
+    }
+  },
+  "detail": {
+    "illustration_key": "city",
+    "display_tags": [
+      "Landmarks",
+      "Art & museums",
+      "City parks",
+      "Balanced pace"
+    ],
+    "schema_version": "product_detail_1",
+    "id": "london-example",
+    "title": "London · Landmarks along the Thames",
+    "destination": "London, United Kingdom",
+    "start_date": "2026-10-15",
+    "end_date": "2026-10-17",
+    "description": "Three days of riverside landmarks, art and green spaces, from Tower Bridge to Hyde Park.",
+    "provenance": "example",
+    "trust": "source_fixture",
+    "request": {
+      "known_fields": null,
+      "destination": "London, United Kingdom",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-17",
+      "traveler_count": 2,
+      "budget": {
+        "amount": "1200",
+        "currency": "GBP"
+      },
+      "additional_preferences": ""
+    },
+    "days": [
+      {
+        "date": "2026-10-15",
+        "activities": [
+          {
+            "activity_id": "london-20261015-tower-of-london",
+            "title": "Visit the Tower of London",
+            "time_use": "scheduled",
+            "place_name": "Tower of London",
+            "location": "London EC3N 4AB, UK",
+            "category": null,
+            "start_time": "2026-10-15T09:30:00+01:00",
+            "end_time": "2026-10-15T12:00:00+01:00",
+            "estimated_cost": null,
+            "notes": null,
+            "introduction": null
+          },
+          {
+            "activity_id": "london-20261015-tower-bridge",
+            "title": "Visit Tower Bridge",
+            "time_use": "scheduled",
+            "place_name": "Tower Bridge",
+            "location": "Tower Bridge Rd, London SE1 2UP, UK",
+            "category": null,
+            "start_time": "2026-10-15T12:45:00+01:00",
+            "end_time": "2026-10-15T14:15:00+01:00",
+            "estimated_cost": null,
+            "notes": null,
+            "introduction": null
+          }
+        ],
+        "weather": {
+          "summary": "Light drizzle",
+          "temperature_min_c": 14.9,
+          "temperature_max_c": 20.5,
+          "precipitation_probability_percent": 6.0,
+          "max_wind_speed_kph": 18.7,
+          "attribution": "Weather data by Open-Meteo (CC BY 4.0): https://open-meteo.com/",
+          "source_url": "https://open-meteo.com/"
+        }
+      },
+      {
+        "date": "2026-10-16",
+        "activities": [
+          {
+            "activity_id": "london-20261016-london-eye",
+            "title": "Visit the London Eye",
+            "time_use": "scheduled",
+            "place_name": "London Eye",
+            "location": "Riverside Building, County Hall, Westminster Bridge Rd, London SE1 7PB, UK",
+            "category": null,
+            "start_time": "2026-10-16T13:00:00+01:00",
+            "end_time": "2026-10-16T14:00:00+01:00",
+            "estimated_cost": null,
+            "notes": null,
+            "introduction": null
+          },
+          {
+            "activity_id": "london-20261016-national-gallery",
+            "title": "Visit The National Gallery",
+            "time_use": "scheduled",
+            "place_name": "The National Gallery",
+            "location": "Trafalgar Square, London WC2N 5DN, UK",
+            "category": null,
+            "start_time": "2026-10-16T15:00:00+01:00",
+            "end_time": "2026-10-16T17:00:00+01:00",
+            "estimated_cost": null,
+            "notes": null,
+            "introduction": null
+          }
+        ],
+        "weather": {
+          "summary": "Moderate drizzle",
+          "temperature_min_c": 10.7,
+          "temperature_max_c": 16.0,
+          "precipitation_probability_percent": 63.0,
+          "max_wind_speed_kph": 16.2,
+          "attribution": "Weather data by Open-Meteo (CC BY 4.0): https://open-meteo.com/",
+          "source_url": "https://open-meteo.com/"
+        }
+      },
+      {
+        "date": "2026-10-17",
+        "activities": [
+          {
+            "activity_id": "london-20261017-buckingham-palace",
+            "title": "See Buckingham Palace",
+            "time_use": "scheduled",
+            "place_name": "Buckingham Palace",
+            "location": "London SW1A 1AA, UK",
+            "category": null,
+            "start_time": "2026-10-17T10:00:00+01:00",
+            "end_time": "2026-10-17T10:45:00+01:00",
+            "estimated_cost": null,
+            "notes": "Plan an exterior landmark visit; date-specific opening hours and access are unknown.",
+            "introduction": null
+          },
+          {
+            "activity_id": "london-20261017-hyde-park",
+            "title": "Explore Hyde Park",
+            "time_use": "scheduled",
+            "place_name": "Hyde Park",
+            "location": "London, UK",
+            "category": null,
+            "start_time": "2026-10-17T11:30:00+01:00",
+            "end_time": "2026-10-17T13:00:00+01:00",
+            "estimated_cost": null,
+            "notes": null,
+            "introduction": null
+          }
+        ],
+        "weather": {
+          "summary": "Overcast",
+          "temperature_min_c": 7.7,
+          "temperature_max_c": 12.7,
+          "precipitation_probability_percent": 12.0,
+          "max_wind_speed_kph": 19.4,
+          "attribution": "Weather data by Open-Meteo (CC BY 4.0): https://open-meteo.com/",
+          "source_url": "https://open-meteo.com/"
+        }
+      }
+    ],
+    "transfers": [
+      {
+        "from_activity_id": "london-20261015-tower-of-london",
+        "to_activity_id": "london-20261015-tower-bridge",
+        "departure_time": null,
+        "arrival_time": null,
+        "preceding_end_time": "2026-10-15T12:00:00+01:00",
+        "following_start_time": "2026-10-15T12:45:00+01:00",
+        "mode": "WALK",
+        "provider_duration_seconds": 477.0,
+        "distance_meters": 568.0,
+        "reserve_seconds": 0.0,
+        "estimate_kind": "provider",
+        "status": "confirmed",
+        "validation_state": "PASS",
+        "source_status": null,
+        "unknowns": [],
+        "attribution": "Google Routes"
+      },
+      {
+        "from_activity_id": "london-20261016-london-eye",
+        "to_activity_id": "london-20261016-national-gallery",
+        "departure_time": null,
+        "arrival_time": null,
+        "preceding_end_time": "2026-10-16T14:00:00+01:00",
+        "following_start_time": "2026-10-16T15:00:00+01:00",
+        "mode": "WALK",
+        "provider_duration_seconds": 1024.0,
+        "distance_meters": 1097.0,
+        "reserve_seconds": 0.0,
+        "estimate_kind": "provider",
+        "status": "confirmed",
+        "validation_state": "PASS",
+        "source_status": null,
+        "unknowns": [],
+        "attribution": "Google Routes"
+      },
+      {
+        "from_activity_id": "london-20261017-buckingham-palace",
+        "to_activity_id": "london-20261017-hyde-park",
+        "departure_time": null,
+        "arrival_time": null,
+        "preceding_end_time": "2026-10-17T10:45:00+01:00",
+        "following_start_time": "2026-10-17T11:30:00+01:00",
+        "mode": "WALK",
+        "provider_duration_seconds": 1626.0,
+        "distance_meters": 1915.0,
+        "reserve_seconds": 0.0,
+        "estimate_kind": "provider",
+        "status": "confirmed",
+        "validation_state": "PASS",
+        "source_status": null,
+        "unknowns": [],
+        "attribution": "Google Routes"
+      }
+    ],
+    "nearby": [
+      {
+        "place_name": "Royal Armouries",
+        "anchor_activity_id": "london-20261015-tower-of-london",
+        "associated_day": "2026-10-15",
+        "reason": "Museum near Tower of London (approximately 10 m straight-line).",
+        "area": "HM Tower Of London, London EC3N 4AB, UK",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "attribution": "Google Places"
+      },
+      {
+        "place_name": "Jubilee Gardens",
+        "anchor_activity_id": "london-20261016-london-eye",
+        "associated_day": "2026-10-16",
+        "reason": "Garden near London Eye (approximately 135 m straight-line).",
+        "area": "Belvedere Rd, London SE1 7PG, UK",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "attribution": "Google Places"
+      },
+      {
+        "place_name": "Muriel's Espresso Bar",
+        "anchor_activity_id": "london-20261016-national-gallery",
+        "associated_day": "2026-10-16",
+        "reason": "Cafe near The National Gallery (approximately 19 m straight-line).",
+        "area": "National Gallery, Trafalgar Sq, London WC2N 5DN, UK",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "attribution": "Google Places"
+      }
+    ],
+    "completion": {
+      "source_claims": [],
+      "policy_completion": "complete",
+      "policy_reasons": [],
+      "preference_coverage": [],
+      "minimum_daily_coverage": [
+        {
+          "date": "2026-10-15",
+          "countable_primary_activities": 2,
+          "status": "satisfied",
+          "reason": "countable_primary_present_not_feasibility"
+        },
+        {
+          "date": "2026-10-16",
+          "countable_primary_activities": 2,
+          "status": "satisfied",
+          "reason": "countable_primary_present_not_feasibility"
+        },
+        {
+          "date": "2026-10-17",
+          "countable_primary_activities": 2,
+          "status": "satisfied",
+          "reason": "countable_primary_present_not_feasibility"
+        }
+      ]
+    }
+  },
+  "media_bindings": {
+    "activity:london-20261015-tower-of-london": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+    "nearby:0": "ChIJh7JjNEkDdkgRbNhPZVVibMs",
+    "activity:london-20261015-tower-bridge": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+    "activity:london-20261016-london-eye": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+    "nearby:1": "ChIJs1iw7scEdkgR1EEuQ7w71C4",
+    "activity:london-20261016-national-gallery": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+    "nearby:2": "ChIJ9ww8IN4FdkgRgZYTxSda7b0",
+    "activity:london-20261017-buckingham-palace": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+    "activity:london-20261017-hyde-park": "ChIJhRoYKUkFdkgRDL20SU9sr9E"
+  }
+}

@@ -24,6 +24,7 @@ from backend.tests.product.browser_harness import (
     BROWSER_TEST_SIGNING_KEY,
     BrowserApplication,
     isolated_environment,
+    open_preferences,
 )
 from backend.tests.product.database_safety import require_test_database
 
@@ -143,6 +144,7 @@ def test_logout_invalidation_survives_product_unmount_and_later_login(browser_ap
         first = context.new_page()
         email = register_browser(first, base)
         first.goto(base + "/plan")
+        open_preferences(first)
         first.get_by_label("Additional preferences").fill("Never restore after explicit logout")
         first.get_by_role("button", name="Generate itinerary").click()
         old_action = first.evaluate(
@@ -237,9 +239,10 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         ).to_be_visible()
         page.screenshot(path=str(SCRATCH / "home-desktop.png"), full_page=True)
         page.goto(base + "/trips")
-        expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(3)
+        expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(2)
         page.goto(base + "/plan")
         page.get_by_label("Destination", exact=True).fill("Kyoto")
+        open_preferences(page)
         page.get_by_label("Additional preferences").fill("Private slow mornings")
         page.get_by_role("button", name="Generate itinerary").click()
         expect(page.get_by_role("heading", name="Welcome back.")).to_be_visible()
@@ -259,6 +262,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         ).to_be_visible()
         expect(page.get_by_text("EXAMPLE · SYDNEY", exact=True)).to_have_count(0)
         page.goto(base + "/plan")
+        open_preferences(page)
         page.get_by_label("Additional preferences").fill("Quarantined account-only input")
         page.screenshot(path=str(SCRATCH / "brief-desktop.png"), full_page=True)
         cookies = context.cookies()
@@ -279,6 +283,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         assert not generation
         other = context.new_page()
         other.goto(base + "/plan")
+        open_preferences(other)
         other.get_by_label("Additional preferences").fill("Second tab private input")
         page.goto(base + "/account")
         page.get_by_role("button", name="Log out", exact=True).last.click()
@@ -293,6 +298,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         page.get_by_label("Confirm password").fill("a secure password")
         page.get_by_role("button", name="Create account", exact=True).click()
         expect(page.get_by_label("Additional preferences")).to_have_value("")
+        open_preferences(page)
         page.get_by_label("Additional preferences").fill("Bob account-only input")
         bob_cookie = next(c for c in context.cookies() if c["name"] == "dayloom_session")
         bob_claims = jwt.decode(bob_cookie["value"], options={"verify_signature": False})
@@ -304,8 +310,10 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         page.get_by_role("link", name="Log in", exact=True).last.click()
         login(page, email)
         expect(page.get_by_label("Additional preferences")).to_have_value("")
+        open_preferences(page)
         page.get_by_label("Additional preferences").fill("Input before confirmed revocation")
         other.goto(base + "/plan")
+        open_preferences(other)
         other.get_by_label("Additional preferences").fill("Other tab before revocation")
         # Revoke through a separate API client: no browser logout notification is sent.
         token = next(c["value"] for c in context.cookies() if c["name"] == "dayloom_session")

@@ -10,7 +10,7 @@ import type {
 import "./detail.css";
 import { Icon } from "../Icon";
 import { WeatherRow } from "./WeatherRow";
-import { monthDay, weekday, dottedDate, routeDuration, routeDistance, illustrationFor, transferFeasibility } from "./display";
+import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility } from "./display";
 import { ExportControls } from './ExportControls';
 import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
 import { PlaceMedia, usePlaceMedia } from './media';
@@ -277,7 +277,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
         { heading: <><Icon name="clock" size={17} />{activity.time_use === "free_window" ? "Free time" : "Planned visit"}</>, body: `${dottedDate(activity.start_time)} · ${clock(activity.start_time)}–${clock(activity.end_time)}` },
         ...(activity.introduction ? [{ heading: "About this place", body: activity.introduction }] : []),
         { heading: "Good to know", body: activity.notes || "No additional notes." },
-        ...(activity.time_use === "free_window" ? [] : [{ heading: "Estimated cost", body: activity.estimated_cost ? cost(activity.estimated_cost) : "Cost unavailable; not assumed to be free." }]),
+        ...(activity.time_use === "free_window" ? [] : [{ heading: "Estimated cost", body: activity.estimated_cost ? cost(activity.estimated_cost) : "Check admission and booking prices before you go." }]),
       ],
       map:
         activity.time_use === "free_window"
@@ -310,7 +310,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
   return (
     <PlaceMedia.Provider value={media.items}><div className="detail-page">
       <section className="detail-hero">
-        <div className="detail-cover"><CuratedPhoto image={detail.destination.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
+        <div className="detail-cover"><CuratedPhoto image={destinationCover(detail.destination)} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
         <div className="container detail-hero-inner">
           <Link to={mode === "preview" ? "/plan?recover=1" : "/trips"} className="detail-back"><Icon name="back" size={17} />{mode === "preview" ? "Back to previews" : "Back to My trips"}</Link>
           <span className="detail-eyebrow">YOUR JOURNEY, DAY BY DAY</span>
@@ -371,7 +371,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
                 </div>
               </div>
               {Boolean(detail.display_tags?.length || detail.request?.additional_preferences) && <div className="request-overview">{(detail.display_tags?.length ? detail.display_tags : detail.request?.additional_preferences?.split(/\n+/).filter(Boolean) || []).map((text, index) => <span key={index}>{text}</span>)}</div>}
-              <details className="source-details"><summary>Before you go</summary><p>{detail.provenance === "imported" ? "This imported itinerary has not been checked. " : detail.provenance === "example" ? "This is a sample itinerary. " : ""}Confirm access, opening hours, prices and weather before travel.</p></details>
+              <details className="source-details"><summary>Before you go</summary><p>{detail.provenance === "imported" ? "This imported itinerary has not been checked. " : detail.provenance === "example" ? "This historical example keeps its original travel dates. " : ""}Confirm access, opening hours, prices and weather before travel.</p></details>
             </section>
             <section className="content-card days-panel" id="daily">
               <div className="content-heading">

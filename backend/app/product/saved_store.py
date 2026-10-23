@@ -130,9 +130,7 @@ class SavedStore:
         )
         anchors = {}
         for day_position, day in enumerate(detail.days):
-            weather = (
-                day.weather.model_dump(exclude={"attribution", "source_url"}) if day.weather else {}
-            )
+            weather = day.weather.model_dump() if day.weather else {}
             insert(
                 connection,
                 "trip_weather",
@@ -250,6 +248,8 @@ class SavedStore:
                     "temperature_max_c",
                     "precipitation_probability_percent",
                     "max_wind_speed_kph",
+                    "attribution",
+                    "source_url",
                 )
             }
             content = []

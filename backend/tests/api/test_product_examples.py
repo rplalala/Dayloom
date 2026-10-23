@@ -1,77 +1,96 @@
-"""Curated examples are public, allowlisted source claims, with lossless detail."""
+"""Guests receive two complete historical V3 projections, never provider identities."""
 
 import asyncio
-import json
 
 from httpx import ASGITransport, AsyncClient
 
 from backend.app.main import create_app
 
 
-def test_guest_can_follow_curated_collection_to_lossless_example():
-    async def journey():
-        async with AsyncClient(
-            transport=ASGITransport(app=create_app()), base_url="http://test"
-        ) as c:
-            collection = await c.get("/api/examples")
-            assert collection.status_code == 200
-            assert [item["id"] for item in collection.json()] == [
-                "sydney-example",
-                "kyoto-design",
-                "melbourne-design",
-            ]
-            response = await c.get("/api/examples/nearby-linking")
-            assert response.status_code == 200
-            detail = response.json()
-            assert detail["schema_version"] == "product_detail_1"
-            assert detail["provenance"] == "example"
-            assert detail["trust"] == "source_fixture"
-            assert detail["request"] is None
-            assert detail["days"][0]["activities"][0]["start_time"] == "2026-10-13T12:00:00+11:00"
-            assert [day["date"] for day in detail["days"]] == [
-                "2026-10-13",
-                "2026-10-14",
-                "2026-10-15",
-            ]
-            assert detail["nearby"][-1]["anchor_activity_id"] == "missing-activity"
-            assert detail["nearby"][-2]["anchor_activity_id"] is None
-            assert "evidence_refs" not in response.text
-            assert "source_place_id" not in response.text
-            assert detail["transfers"][0]["validation_state"] is None
-            assert detail["transfers"][0]["source_status"] == "PASS"
-            assert detail["transfers"][0]["status"] == "source_claim"
-            for card in collection.json():
-                assert (await c.get(f"/api/examples/{card['id']}")).status_code == 200
-            assert (await c.get("/api/examples/not-an-example")).status_code == 404
-            assert (await c.post("/api/examples", json=detail)).status_code == 405
-
-    asyncio.run(journey())
-
-
-def test_curated_example_display_hints_preserve_r7_without_request_or_verification_authority():
+def test_guest_can_read_two_complete_source_backed_examples():
     async def journey():
         async with AsyncClient(
             transport=ASGITransport(app=create_app()), base_url="http://test"
         ) as client:
-            detail = (await client.get("/api/examples/sydney-example")).json()
-            assert detail["illustration_key"] == "sydney"
-            assert detail["display_tags"] == [
-                "City walks",
-                "Historic neighborhood",
-                "Art & museums",
-                "Balanced pace",
-            ]
-            assert detail["days"][0]["activities"][1]["illustration_key"] == "art"
-            assert detail["nearby"][0]["illustration_key"] == "city"
-            assert detail["request"] is None
-            assert detail["trust"] == "source_fixture"
-            assert detail["transfers"][0]["status"] == "source_claim"
-            assert "source_place_id" not in json.dumps(detail)
-            cards = (await client.get("/api/examples")).json()
-            assert cards[0]["created_at"] == "2026-10-13T18:00:00+11:00"
-            assert cards[1]["created_at"] == "2026-10-22T08:00:00Z"
-            assert cards[0]["stop_count"] == 6
-            assert cards[0]["transfer_count"] == 3
-            assert cards[1]["illustration_key"] == "nature"
+            collection = await client.get("/api/examples")
+            assert collection.status_code == 200
+            cards = collection.json()
+            assert [card["id"] for card in cards] == ["sydney-example", "london-example"]
+            for card in cards:
+                response = await client.get(f"/api/examples/{card['id']}")
+                assert response.status_code == 200
+                detail = response.json()
+                assert detail["provenance"] == "example"
+                assert detail["trust"] == "source_fixture"
+                assert detail["request"]["budget"]
+                assert card["day_count"] == 3
+                assert card["stop_count"] == 6
+                assert card["transfer_count"] == 3
+                assert len(detail["nearby"]) == 3
+                for day in detail["days"]:
+                    assert day["weather"]["summary"]
+                    assert day["weather"]["temperature_min_c"] is not None
+                    assert day["weather"]["temperature_max_c"] is not None
+                    assert day["weather"]["precipitation_probability_percent"] is not None
+                    assert day["weather"]["max_wind_speed_kph"] is not None
+                    assert day["weather"]["attribution"]
+                    for activity in day["activities"]:
+                        assert activity["location"]
+                        assert activity["estimated_cost"] is None
+                for transfer in detail["transfers"]:
+                    assert transfer["provider_duration_seconds"] > 0
+                    assert transfer["distance_meters"] > 0
+                    assert transfer["validation_state"] == "PASS"
+                    assert transfer["status"] == "confirmed"
+                assert "source_place_id" not in response.text
+                assert "media_bindings" not in response.text
+                assert "evidence_refs" not in response.text
+            sydney = (await client.get("/api/examples/sydney-example")).json()
+            assert sydney["days"][0]["date"] == "2026-10-13"
+            assert sydney["days"][0]["weather"]["precipitation_probability_percent"] == 100
+            assert sydney["transfers"][0]["provider_duration_seconds"] == 1468
+            london = (await client.get("/api/examples/london-example")).json()
+            assert london["days"][0]["date"] == "2026-10-15"
+            assert london["days"][0]["weather"]["temperature_max_c"] == 20.5
+            assert london["transfers"][0]["distance_meters"] == 568
+            for removed in ["nearby-linking", "kyoto-design", "melbourne-design", "not-an-example"]:
+                assert (await client.get(f"/api/examples/{removed}")).status_code == 404
+            assert (await client.post("/api/examples", json=sydney)).status_code == 405
+
+    asyncio.run(journey())
+
+
+def test_example_photos_use_only_curated_identities_and_real_provider_contract():
+    import httpx
+
+    from backend.app.product.media import MediaProviders, get_media_providers
+    from backend.tests.product.media_fakes import media_transport
+
+    async def journey():
+        application = create_app()
+        application.dependency_overrides[get_media_providers] = lambda: MediaProviders(
+            google_key="test-only", transport=httpx.MockTransport(media_transport)
+        )
+        async with AsyncClient(
+            transport=ASGITransport(app=application), base_url="http://test"
+        ) as client:
+            for example in ("sydney-example", "london-example"):
+                response = await client.get(f"/api/examples/{example}/media")
+                assert response.status_code == 200
+                assert response.headers["cache-control"] == "no-store"
+                photos = response.json()["items"]
+                assert len(photos) == 9
+                assert sum(slot.startswith("activity:") for slot in photos) == 6
+                assert all(photo["status"] == "available" for photo in photos.values())
+                assert all(photo["authors"] for photo in photos.values())
+                assert "test-only" not in response.text
+                oversized = await client.get(f"/api/examples/{example}/media?width=1281")
+                assert oversized.status_code == 422
+            for unknown in ("nearby-linking", "not-an-example", "ChIJ-forged"):
+                assert (await client.get(f"/api/examples/{unknown}/media")).status_code == 404
+            cover = await client.get("/api/media/curated/london")
+            assert cover.status_code == 200
+            assert cover.json()["status"] == "available"
+            assert cover.json()["provider"] == "Google Maps"
 
     asyncio.run(journey())

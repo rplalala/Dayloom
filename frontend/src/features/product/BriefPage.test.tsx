@@ -61,11 +61,13 @@ it("returns a guest brief through registration without generating", async () => 
   expect(calls).not.toContain("/api/planning");
 });
 
-it("keeps soft controls visible and detaches an edited sentence without deleting it", async () => {
+it("keeps optional preferences discoverable and detaches an edited sentence without deleting it", async () => {
   vi.stubGlobal("fetch", vi.fn(async (url: string) => new Response(JSON.stringify(
     url === "/api/planning/date-window" ? { allowedStart: "2026-10-21", allowedEnd: "2026-11-03", maxTripDays: 10 } : { detail: { code: "login_required" } }
   ), { status: url === "/api/auth/current" ? 401 : 200 })));
   render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/plan"] })} />);
+  await screen.findByLabelText("Destination");
+  fireEvent.click(screen.getByText("Personalize your trip"));
   const nature = await screen.findByRole("button", { name: "Nature" });
   fireEvent.click(nature);
   expect(nature).toHaveAttribute("aria-pressed", "true");
@@ -80,6 +82,28 @@ it("keeps soft controls visible and detaches an edited sentence without deleting
   expect((notes as HTMLTextAreaElement).value).toContain("Prefer walking and public transit where practical.");
   expect(screen.getByLabelText("Places or experiences to include")).toBeVisible();
   expect(screen.getByLabelText("Places or experiences to avoid")).toBeVisible();
+});
+
+it("starts with essentials and keeps optional values when their section is collapsed", async () => {
+  vi.stubGlobal("fetch", vi.fn(async (url: string) => Response.json(
+    url === "/api/planning/date-window" ? { allowedStart: "2026-10-21", allowedEnd: "2026-11-03", maxTripDays: 10 } : {},
+    { status: url === "/api/auth/current" ? 401 : 200 },
+  )));
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/plan"] })} />);
+  await screen.findByLabelText("Destination");
+  expect(screen.getByRole("button", { name: "Generate itinerary" })).toBeVisible();
+  expect(screen.queryByRole("heading", { name: "Planning progress" })).not.toBeInTheDocument();
+  expect(screen.queryByRole("heading", { name: "Your itinerary" })).not.toBeInTheDocument();
+  const notes = screen.getByLabelText("Additional preferences");
+  expect(notes).not.toBeVisible();
+  const disclosure = screen.getByText("Personalize your trip");
+  fireEvent.click(disclosure);
+  expect(notes).toBeVisible();
+  fireEvent.input(notes, { target: { value: "Step-free access and a quiet afternoon" } });
+  fireEvent.click(disclosure);
+  expect(notes).not.toBeVisible();
+  fireEvent.click(disclosure);
+  expect(notes).toHaveValue("Step-free access and a quiet afternoon");
 });
 
 

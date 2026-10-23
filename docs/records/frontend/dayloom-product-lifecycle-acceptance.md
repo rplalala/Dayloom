@@ -61,7 +61,7 @@ The broader fixture-consumer check exposed a separate Windows path-length proble
 
 ### Media authority and readable attribution
 
-Private media bindings originate in final adopted Google identities and the strict final Nearby association ledger. Generated preview Save carries them into the owned normalized snapshot; imported claims, public examples and exported text cannot confer that authority. Fresh public migration applied six files, reran zero, rejected a changed checksum and preserved ten domain tables and the seeded TripWorld marker. Integration upgrade applied only 006 and reran zero with all six checksums verified.
+At initial lifecycle acceptance, private media bindings originated in final adopted Google identities and the strict final Nearby association ledger. Generated preview Save carried them into the owned normalized snapshot; the original prototype examples had no bindings. Imports and exported text cannot confer that authority. Fresh public migration applied six files, reran zero, rejected a changed checksum and preserved ten domain tables and the seeded TripWorld marker. Integration upgrade applied only 006 and reran zero with all six checksums verified.
 
 Initial Spec review found that legacy Nearby thumbnail dimensions constrained the new whole image figure. Although presence checks passed, full author/source captions overflowed the desktop row and clipped on mobile. Real V3/API/PostgreSQL/Chromium geometry failed at 1440, 800 and 390px. The separate correction retains thumbnail and Details side by side, with full-width credits below both in normal flow. Actual geometry, clipping-ancestor and keyboard regressions passed; final related backend/API/PG/browser checks passed 41 tests with zero skips, and affected frontend checks passed 26. Both final review axes were clear at `4c09a8acf80092c909609ffbea9eb16b7e0fd6cf`. No provider request, binding schema or production header change was needed for the layout correction.
 
@@ -94,6 +94,52 @@ restoring no-wrap alone still overflowed its caption by 3.375px. Narrow runtime 
 padding then kept the full 12px label inside its figure without changing photo dimensions
 or crop. Author names continue to wrap. The same correction consolidates the duplicated
 mood mapping and native-dialog backdrop predicate while leaving close/busy policies local.
+
+### Complete guest examples and compact planning
+
+The 23–24 October 2026 refinement in [#212](https://github.com/rplalala/Dayloom/issues/212),
+[#213](https://github.com/rplalala/Dayloom/issues/213) and
+[#214](https://github.com/rplalala/Dayloom/issues/214) starts from `d1aa66a`.
+The two original accepted Sydney/London V3 outputs were projected through the normal
+Product boundary, with source digests retained in the bundled server fixtures.
+Original primary visits, request facts, dates, weather and transfer outcomes were
+preserved. Actual photo inspection found the London Metaverse optional reference had
+no provider photo; Jubilee Gardens from the same run's acquired Nearby ledger replaced
+it under the same London Eye anchor. This was editorial selection of an optional
+reference, with no new planning or research run.
+
+A failing copy round-trip assertion exposed deliberate omission of weather attribution
+and source URLs from normalized storage. Nullable migration 008 and the shared writer
+now preserve them, alongside copied private photo bindings. API/storage checks then
+passed for copies, descendants, source deletion and recreated applications. The old
+ambiguous-anchor example moved to a test-only fixture, keeping keyboard/breakpoint
+coverage without exposing a third guest itinerary.
+
+Manual checks used the normal built Product application on an isolated local database.
+Both city covers and all nine bound place photos per example loaded; normal example
+views contained no missing weather/route placeholders. Computed muted-text contrast
+was 4.87:1–5.51:1 on the common light surfaces. At a 390px viewport, the compact
+planning page placed Generate at approximately y=708px, with optional preferences
+collapsed and no empty progress/result panels. Detail checks also covered 800px and
+1440px, keyboard navigation and horizontal overflow. Local screenshots under
+`.scratch/product-polish/` are historical evidence identifiers, not published assets.
+Media availability remains dependent on configured providers; these observations do
+not establish future image availability or current travel conditions.
+
+Implementation commits `410f784` and `2eee32b` passed the full 255-test frontend suite,
+119 related backend/API/storage tests, TypeScript/Vite build and lint (zero errors;
+two existing Fast Refresh warnings). The affected browser run passed 43 of 47 cases;
+the four failures expected the former third card or old sample notice. Updating those
+expectations produced a 13-pass focused run covering all four failures, two public
+example browser cases and seven API/copy cases. Thus all 49 affected browser cases
+passed across the scoped runs. A final fixture/frontend retest passed 24 tests.
+Initial browser setup also encountered occupied loopback ports; using alternate
+test-only ports resolved it without changing application configuration. Automated
+external transports remained substituted, while the manual image check used real
+display providers and submitted no planning task.
+Independent Standards and Spec reviews of `d1aa66a...2eee32b` each returned zero
+findings. Existing `.env.example` and `GLOSSARY.md` work remained excluded; delivery
+at this event is local commits, not a published deployment.
 
 ## Verification and evidence
 
