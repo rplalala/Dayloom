@@ -1,0 +1,217 @@
+{
+  "implementation_revision": "df7ef14e570103d1541c92537f3b1a8af6f5cf03",
+  "original_source": {
+    "logical_path": ".scratch/issue-217/captures/v3-a1/result.json",
+    "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
+    "json_pointer": "/interpreted_requirements"
+  },
+  "contract": {
+    "contract_version": "interpreted_requirements_6",
+    "transport_constraint": {
+      "allowed_modes": [
+        "TRANSIT",
+        "WALK"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ],
+      "source_refs": [
+        {
+          "quote": "Use public transport and walking only; do not include car, taxi or ride-hailing transfers.",
+          "occurrence": 0,
+          "start": 148,
+          "end": 238,
+          "match_mode": "exact"
+        }
+      ]
+    },
+    "daily_visit_constraints": [],
+    "request_sha256": "6a3c059b7419decb8dae6bd806a4edc89314e2ac8982510b75db638fd08df964",
+    "daily_pace": [
+      {
+        "date": null,
+        "profile": "rich",
+        "exact_count": null,
+        "source_refs": [
+          {
+            "quote": "full itinerary",
+            "occurrence": 0,
+            "start": 77,
+            "end": 91,
+            "match_mode": "exact"
+          },
+          {
+            "quote": "prefer to make active use of both days.",
+            "occurrence": 0,
+            "start": 242,
+            "end": 281,
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "input_version": "planning_request_2",
+    "structured_input_sha256": "f2022a253c1a014d12522abd4c4ff743bdc19eec3071afeb6c29fd5bc272f885",
+    "structured_field_paths": [
+      "destination",
+      "start_date",
+      "end_date",
+      "traveler_count",
+      "budget.amount",
+      "budget.currency"
+    ],
+    "visit_requirements": [],
+    "time_protections": [],
+    "interpretation_origin": "model",
+    "requirements": {
+      "destination": "Singapore",
+      "start_date": "2026-10-24",
+      "end_date": "2026-10-25",
+      "traveler_count": 2,
+      "budget": {
+        "amount": "800",
+        "currency": "SGD"
+      },
+      "required_activities": [],
+      "excluded_activities": [],
+      "preferences": [],
+      "unresolved_fields": []
+    },
+    "named_places": [],
+    "requested_place_information": [],
+    "transport_preference": null,
+    "semantic_requirements": [
+      {
+        "soft_coverage": {
+          "target": 1,
+          "origin": "ordinary_preference",
+          "focus_source": null
+        },
+        "experience_goal": {
+          "frequency": "one_off",
+          "count": null,
+          "target": "category",
+          "distinct_dates": false,
+          "explicit_primary_exception": false,
+          "trip_scope": "ordinary"
+        },
+        "requirement_id": "semantic_1",
+        "normalized_text": "Include gardens as part of an itinerary that combines them with major city sights and views.",
+        "kind": "goal",
+        "polarity": "favor",
+        "strength": "medium",
+        "scope": "selected_poi_set",
+        "subject_refs": [
+          "party"
+        ],
+        "source_refs": [
+          {
+            "quote": "We would like a fairly full itinerary that combines gardens with major city sights and views.",
+            "occurrence": 0,
+            "start": 54,
+            "end": 147,
+            "match_mode": "exact"
+          }
+        ]
+      },
+      {
+        "soft_coverage": {
+          "target": 1,
+          "origin": "ordinary_preference",
+          "focus_source": null
+        },
+        "experience_goal": {
+          "frequency": "one_off",
+          "count": null,
+          "target": "category",
+          "distinct_dates": false,
+          "explicit_primary_exception": false,
+          "trip_scope": "ordinary"
+        },
+        "requirement_id": "semantic_2",
+        "normalized_text": "Include major city sights and views alongside gardens in the itinerary.",
+        "kind": "goal",
+        "polarity": "favor",
+        "strength": "medium",
+        "scope": "selected_poi_set",
+        "subject_refs": [
+          "party"
+        ],
+        "source_refs": [
+          {
+            "quote": "We would like a fairly full itinerary that combines gardens with major city sights and views.",
+            "occurrence": 0,
+            "start": 54,
+            "end": 147,
+            "match_mode": "exact"
+          }
+        ]
+      },
+      {
+        "soft_coverage": null,
+        "experience_goal": null,
+        "requirement_id": "semantic_3",
+        "normalized_text": "Prefer a fairly full itinerary and active use of both days.",
+        "kind": "preference",
+        "polarity": "favor",
+        "strength": "medium",
+        "scope": "itinerary_style",
+        "subject_refs": [
+          "party"
+        ],
+        "source_refs": [
+          {
+            "quote": "full itinerary",
+            "occurrence": 0,
+            "start": 77,
+            "end": 91,
+            "match_mode": "exact"
+          },
+          {
+            "quote": "prefer to make active use of both days.",
+            "occurrence": 0,
+            "start": 242,
+            "end": 281,
+            "match_mode": "exact"
+          }
+        ]
+      },
+      {
+        "soft_coverage": null,
+        "experience_goal": null,
+        "requirement_id": "semantic_4",
+        "normalized_text": "Require transfers by public transport or walking only; exclude car, taxi, and ride-hailing transfers.",
+        "kind": "constraint",
+        "polarity": "favor",
+        "strength": "hard",
+        "scope": "transport",
+        "subject_refs": [
+          "party"
+        ],
+        "source_refs": [
+          {
+            "quote": "Use public transport and walking only; do not include car, taxi or ride-hailing transfers.",
+            "occurrence": 0,
+            "start": 148,
+            "end": 238,
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "subjects": [],
+    "discovery_intents": [
+      {
+        "intent_id": "discovery_1",
+        "requirement_refs": [
+          "semantic_1",
+          "semantic_2"
+        ],
+        "purpose": "activity_or_category",
+        "query_text": "Gardens, major city sights, and views"
+      }
+    ],
+    "experience_evidence_requests": [],
+    "extraction_issues": []
+  }
+}

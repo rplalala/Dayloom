@@ -1,0 +1,42 @@
+{
+  "schema_version": "case_schedule_revision_1",
+  "case_id": "case-04",
+  "revision": "dates-20261025-r1",
+  "method": "User-authorized offline one-day schedule shift; no generation or acquisition",
+  "input_path": "../inputs/case-04.json",
+  "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+  "dates": [
+    "2026-10-25",
+    "2026-10-26"
+  ],
+  "timezone": "Asia/Singapore",
+  "evaluation_status": "not_evaluated_for_revised_dates",
+  "original_evaluation_input": "evaluation/input.json",
+  "original_evaluation_input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+  "provider_calls": 0,
+  "versions": {
+    "v0": {
+      "path": "rescheduled/v0.json",
+      "sha256": "e2bf6318022386d4a8341d5d96ad09193f3a6b6e65e3bf109f1fcce69e93b395"
+    },
+    "v1": {
+      "path": "rescheduled/v1.json",
+      "sha256": "7b01162656ccf672124d3ead6bc94e02cb31d9301112ee6365ac9207acff57f4"
+    },
+    "v2": {
+      "path": "rescheduled/v2.json",
+      "sha256": "794830d49f319263f5ff86d88a47f01069667e678d263099ee124044ade2e05c"
+    },
+    "v3": {
+      "path": "rescheduled/v3.json",
+      "sha256": "ed24cfdf97bc64351df2395a5be5b3169954fd18395fcb3e707d5bcb222093cf"
+    }
+  },
+  "limitations": [
+    "Local clock times, visit identities and order are retained; weekdays change from Saturday/Sunday to Sunday/Monday.",
+    "Original 24-25 October Primary/Pair scores do not score the revised dates.",
+    "Opening/access, transit departures, weather and other date-bound evidence require new applicability checks.",
+    "Proposed transfers retain schedule windows only, without old provider verdicts or verified durations.",
+    "Original notes, forecasts, prices, Nearby references and evidence remain in the source itineraries."
+  ]
+}

@@ -210,6 +210,13 @@ visitor suitability and open semantic requirements remain explicitly unsupported
 capabilities; they do not become verified facts when completion is reported. Existing
 patch admission, cost protections and execution budgets remain binding.
 
+The generic same-day quantity observation stays `UNKNOWN` because remaining-hour
+planning is unsupported. It does not block Rich completion when that date's Rich
+target is satisfied, minimum coverage is satisfied, and no activity identity/role
+is unclassified. This exception applies only to the same-day default-target
+observation, not other coverage uncertainty. The original finding remains visible;
+completion does not certify remaining-time planning or promote UNKNOWN to PASS.
+
 For Rich, the stage and final runner cannot report `ACCEPTED_COMPLETE` unless final
 completion is `complete`; accepted edits otherwise retain `ACCEPTED_PARTIAL`. Round
 acceptance continues to describe its scoped patch. The runner recomputes completion

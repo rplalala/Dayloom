@@ -2,7 +2,7 @@
 
 import asyncio
 import json
-from datetime import timedelta
+from datetime import date, timedelta
 from time import monotonic
 
 import pytest
@@ -175,7 +175,14 @@ def rich_model(
 
 
 def run_rich(
-    counts=(3, 3), *, review=True, text="rich", runtime_config=None, routes_provider=None, **kwargs
+    counts=(3, 3),
+    *,
+    review=True,
+    text="rich",
+    runtime_config=None,
+    routes_provider=None,
+    reference_date=date(2026, 9, 11),
+    **kwargs,
 ):
     from backend.tests.request_fixtures import make_request
 
@@ -188,14 +195,29 @@ def run_rich(
             quantity_review_enabled=review,
             system_deletions=True,
             runtime_config=runtime_config,
+            reference_date=reference_date,
             **({"routes_provider": routes_provider} if routes_provider is not None else {}),
         )
     )
     return result, model
 
 
-def test_runner_already_three_is_verified_without_inventing_repair_work():
-    result, model = run_rich()
+def test_same_day_repair_completes_without_erasing_the_remaining_time_diagnostic():
+    result, _ = run_rich((4, 3), reference_date=date(2026, 9, 12))
+    assert [len(day.activities) for day in result.itinerary.days] == [3, 3]
+    report = result.v3.repair.adopted_report
+    day = report.diagnostics.days[0]
+    assert day.minimum_coverage == "satisfied"
+    assert day.applicability == "same_day_remaining_hours_unsupported"
+    assert any(f.check == "coverage" and f.status == "UNKNOWN" for f in report.findings)
+    assert result.v3.repair.status == "ACCEPTED_COMPLETE"
+    assert result.v3.soft_pace["completion"]["status"] == "complete"
+    assert result.v3.soft_pace["completion"]["blocking_findings"] == []
+
+
+@pytest.mark.parametrize("reference_date", [date(2026, 9, 11), date(2026, 9, 12)])
+def test_runner_already_three_is_verified_without_inventing_repair_work(reference_date):
+    result, model = run_rich(reference_date=reference_date)
     assert result.v3.soft_pace["completion"]["status"] == "already_satisfied"
     assert result.v3.repair is None and model.repair_calls == 0
 
@@ -290,14 +312,15 @@ def test_runner_all_rest_has_no_route_obligation_blocking_the_satisfied_exceptio
     assert model.repair_calls == 0
 
 
-def test_runner_three_visits_with_actual_unverified_routes_remain_unavailable():
+@pytest.mark.parametrize("reference_date", [date(2026, 9, 11), date(2026, 9, 12)])
+def test_runner_three_visits_with_actual_unverified_routes_remain_unavailable(reference_date):
     from backend.tests.versions.v1.fakes import FakeRoutesProvider
 
     class UnavailableRoutes(FakeRoutesProvider):
         async def compute_route_matrix(self, request):
             raise RuntimeError("Fixture route evidence unavailable")
 
-    result, _ = run_rich(routes_provider=UnavailableRoutes())
+    result, _ = run_rich(routes_provider=UnavailableRoutes(), reference_date=reference_date)
     completion = result.v3.soft_pace["completion"]
     assert all(day["count"] == 3 for day in completion["days"])
     assert completion["status"] == "unavailable"
@@ -349,8 +372,11 @@ def test_runner_keeps_a_missing_requested_date_in_completion():
 
 
 @pytest.mark.parametrize("counts", [(2, 3), (2, 4)])
-def test_runner_residual_day_cannot_be_hidden_by_an_average_or_another_improvement(counts):
-    result, _ = run_rich(counts)
+@pytest.mark.parametrize("reference_date", [date(2026, 9, 11), date(2026, 9, 12)])
+def test_runner_residual_day_cannot_be_hidden_by_an_average_or_another_improvement(
+    counts, reference_date
+):
+    result, _ = run_rich(counts, reference_date=reference_date)
     assert result.v3.soft_pace["completion"]["status"] == "partial"
     assert result.v3.soft_pace["completion"]["days"][0]["state"] == "residual"
     assert result.v3.repair.status != "ACCEPTED_COMPLETE"
@@ -364,7 +390,10 @@ def test_runner_residual_day_cannot_be_hidden_by_an_average_or_another_improveme
         ({"unknown": True}, "unavailable"),
     ],
 )
-def test_runner_does_not_report_success_when_review_or_required_checks_are_missing(kwargs, status):
-    result, _ = run_rich(**kwargs)
+@pytest.mark.parametrize("reference_date", [date(2026, 9, 11), date(2026, 9, 12)])
+def test_runner_does_not_report_success_when_review_or_required_checks_are_missing(
+    kwargs, status, reference_date
+):
+    result, _ = run_rich(**kwargs, reference_date=reference_date)
     assert result.v3.soft_pace["completion"]["status"] == status
     assert result.v3.repair is None or result.v3.repair.status != "ACCEPTED_COMPLETE"

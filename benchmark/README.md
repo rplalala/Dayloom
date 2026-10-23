@@ -140,7 +140,7 @@ retain the separately accepted questionnaires and answers.
 | 01 | 2026-10-14 | [Initial Sydney dataset](case-01/report.md#acceptance) |
 | 02 | 2026-10-14 | [London selection](case-02/report.md#acceptance-and-material) |
 | 03 | 2026-10-15 | [Tokyo selection](case-03/report.md#acceptance-status) |
-| 04 | Rich-policy replacement pending acceptance; former selection accepted 2026-10-18 | [Singapore replacement](case-04/report.md#acceptance), 24–25 October; retained V0–V2, one new V3, fresh Primary/Pair and matching analyses; three visits per day with unavailable Planner coverage completion |
+| 04 | Completion review and date revision pending acceptance; former selection accepted 2026-10-18 | [Singapore](case-04/report.md#acceptance), current schedules 25–26 October; original 24–25 October Primary/Pair retained; original-date offline Rich completion passes with UNKNOWN diagnostic preserved |
 | 05 | 2026-10-16; refreshed selection accepted 2026-10-18 | [Barcelona current selection](case-05/report.md#acceptance), 26–30 October; four current-system generations, fresh Primary/pair and complete dependent analyses; refreshed selection explicitly accepted with disclosed limitations |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
@@ -470,7 +470,7 @@ actual application reference date. Case-12 r07 remains the accepted former Sydne
 | [01](case-01/report.md) | A. General sightseeing | Sydney | 3 | 1 | AUD 900 | Empty preferences for a solo traveler; checks ordinary destination planning from structured fields alone. |
 | [02](case-02/report.md) | A. General sightseeing | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
 | [03](inputs/case-03.json) | A. General sightseeing | Tokyo | 4 | 2 | JPY 160,000 | First-time visit with traditional culture and modern neighborhoods; checks balanced introductory sightseeing at a moderate pace. |
-| [04](inputs/case-04.json) | D. Itinerary boundaries | Singapore | 2 | 2 | SGD 800 | A fairly full garden/city weekend using only walking and public transport; checks an explicit transport restriction on a short trip. |
+| [04](inputs/case-04.json) | D. Itinerary boundaries | Singapore | 2 | 2 | SGD 800 | A fairly full two-day garden/city trip using only walking and public transport; checks an explicit transport restriction on a short trip. |
 | [05](inputs/case-05.json) | B. Contextual preferences | Barcelona | 5 | 1 | EUR 1,300 | Solo architecture and art travel at a relaxed pace; checks depth and time at places rather than many daily stops. |
 | [06](inputs/case-06.json) | B. Contextual preferences | Sydney | 4 | 3 | AUD 2,200 | Two adults and a child prefer science, nature, breaks and driving; checks family preferences and soft transport intent. |
 | [07](inputs/case-07.json) | B. Contextual preferences | Paris | 3 | 1 | EUR 650 | Lower-cost parks, neighborhoods and exterior architecture, with a few paid visits; checks cost-conscious selection without inventing a numeric quota. |
@@ -543,8 +543,10 @@ execution, semantic-review dispatch, new paid call or rescoring.
 2. Revalidate pending inputs against the actual configured-zone application date;
    do not backdate the runtime. Update structured dates and every explicit prose
    date together, preserving day-relative relationships and local clock times.
-3. Retain duration and weekdays with a seven-day shift. Accepted case-04 keeps its
-   original Saturday-to-Sunday interval. Do not change interests, visit counts,
+3. Preserve duration and weekdays unless a specific date change is authorized.
+   Case-04's current request and V0–V3 schedule revision use 25–26 October, Sunday
+   and Monday. Its evaluated input and original outputs remain bound to 24–25 October.
+   Do not change interests, visit counts,
    exclusions, budgets or traveler counts as a side effect of a date update.
 4. Before execution, review the input revision, actual source/runtime and official
    opening information for required places. An offline date/schema check does not
@@ -560,12 +562,21 @@ explicit execution reference date. Accepted dates and retired historical inputs
 are exempt from today's new-run window, not from source-integrity checks.
 
 Verify four disjoint groups of three, the origin/retirement mapping and Issue
-identities, scenario fields and all local index links. Case-01–07 must match their
-pre-change bytes; retired 12/13/15 must match the retained originals. The five new
+identities, scenario fields and all local index links. Cases 01–03 and 05–07 must match
+their pre-change bytes; case-04's evaluated input is preserved in
+`case-04/evaluation/input.json`, with original and published hashes recorded separately.
+Retired 12/13/15 must match the retained originals. The five new
 pending requests must equal their prior counterparts after only the authorized
 seven-day date shift and former-14 renaming. Retain existing acceptance and
 regression limitations; this revision changes no runtime code or scoring policy
 and does not establish a full-backend regression gate.
+
+Run `python benchmark/review_case04.py` to reproduce the original-date completion
+classification and verify all four revised-date schedules against their source
+identities and times. Run `python benchmark/verify_automatic.py` for the evaluated
+cohort's scores/resources and publication hashes. Date-revised schedules have no
+transferred Primary/Pair scores; native evidence, usage and original run statuses
+remain immutable. These commands perform no provider acquisition.
 
 ## Accepted case bundles
 

@@ -55,13 +55,21 @@ proposals produced the retained three/three final without a Repair model proposa
 | Remove the Singapore skyline-view activity on 25 October | Adopted |
 
 The native Repair status was `ACCEPTED_PARTIAL`, reason
-`authorized_targets_complete`. Both dates reached the three-visit quantity target,
-but final completion remained `unavailable`: the first date's coverage check was
-UNKNOWN with `same_day_remaining_hours_unsupported` applicability. Visitor
-suitability, budget and some semantic requirements also retained their original
-Planner UNKNOWN observations. The independent Primary score of 100 does not turn
-these different application checks into a fully successful Repair declaration.
-No quality-driven retry, fabricated exception or manual itinerary edit was used.
+`authorized_targets_complete`, with `unavailable` completion despite three visits
+and satisfied minimum coverage on each date. The completion gate incorrectly treated
+the unsupported same-day default-target observation as a required return check.
+The regression first reproduced this outcome, then passed after the narrow correction
+in `df7ef14e570103d1541c92537f3b1a8af6f5cf03`. The
+[offline review](../../../benchmark/case-04/analysis/repair/completion-review.json)
+of the identical saved final validation returns `complete`, retaining the coverage
+UNKNOWN and all other unsupported-capability observations. Original statuses and
+receipts remain unchanged; the correction made no new provider calls.
+
+The [current schedules](../../../benchmark/case-04/itinerary.md) separately shift
+V0–V3 to 25–26 October under explicit user authorization. Visits, ordering and local
+clock times are retained, but original Primary/Pair scores remain bound to 24–25
+October. No new generation, independent semantic review or date-bound acquisition
+was performed for the shifted schedules.
 
 ## Execution and resources
 

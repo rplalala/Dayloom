@@ -185,7 +185,7 @@ async def execute(model=None, places=None, runtime=None, **kwargs):
         places,
         FakeWeatherProvider(),
         kwargs.pop("routes_provider", None) or FakeRoutesProvider(),
-        reference_date=date(2026, 9, 11),
+        reference_date=kwargs.pop("reference_date", date(2026, 9, 11)),
         retrieval_factory=lambda: runtime,
         development_timeout_seconds=kwargs.pop("development_timeout_seconds", 600),
         # Isolate existing conflict fixtures; default-policy coverage passes None explicitly.

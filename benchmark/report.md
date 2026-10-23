@@ -7,6 +7,9 @@ under [#218](https://github.com/rplalala/Dayloom/issues/218).
 [Exact results and resource rows](automatic-results.json) bind every final and same-run
 Pair to its selected source. The [case-04 report](case-04/report.md) contains the full
 replacement, limits and acceptance boundary.
+Case-04 scores and resources refer to its original **24–25 October** outputs.
+Its [current 25–26 October schedules](case-04/itinerary.md) are an offline date
+revision and have no new Primary/Pair evaluation; the ranking does not score them.
 
 ## Automatic ranking
 
@@ -69,9 +72,11 @@ continuing-condition transitions.
 | [case-12](case-12/evaluation/density-pair.json) | 54.286 | 100.000 | +45.714 | 0 / 6 |
 
 Case-04 improves 50 → 100 with 5/4 → 3/3 visits. Its auxiliary score remains 100.
-The three-per-day target is reached, but Planner completion remains `unavailable`
-because first-day coverage cannot be verified. The final Repair status is
-`ACCEPTED_PARTIAL`; no fully successful Rich Repair is claimed for this run.
+The [offline completion review](case-04/analysis/repair/completion-review.json)
+returns `complete` using the original final validation and corrected completion
+logic. The unsupported same-day quantity diagnostic remains UNKNOWN without
+blocking satisfied Rich/coverage targets. Original invocation statuses remain in
+their source reports; this reclassification changes no independent score or cost.
 
 ## Selected-generation resources
 

@@ -1,9 +1,19 @@
-# Case-04: Singapore automatic selection
+# Case-04: Singapore schedules and evaluation
 
 ## Current selection
 
-Singapore, 24–25 October 2026, two adults, SGD 800, walking and public transport.
-The [original request](../inputs/case-04.json) and reviewed requirements are unchanged.
+Singapore, **25–26 October 2026**, two adults, SGD 800, walking and public transport.
+The [current request](../inputs/case-04.json) and [V0–V3 schedules](itinerary.md)
+use Sunday and Monday. Each schedule is an offline one-day shift of its selected
+output, preserving visits, order and local clock times. No new generation or paid
+acquisition was performed. The [revision](rescheduled/revision.json) binds every
+schedule to its source; opening/access, transit and weather are not verified for
+the revised dates. The request describes a two-day trip rather than a weekend.
+
+The automatic scores below remain bound to the **24–25 October**
+[evaluation input](evaluation/input.json) and original outputs. They are not scores
+for the date-revised schedules. Reviewed requirements and interests retain their
+original input bindings; the revised request has not undergone a new independent review.
 The [selection](selection.json) binds V0/V1 to source `62f04cd`, V2 to `986ff39`,
 and the new V3 invocation `case-04-rich3-v3-a1` to `a391c2c`.
 Primary and the same-run Pair use `rtpeval_daily_density_3`.
@@ -15,12 +25,13 @@ inspection; prior acceptance remains bound to the earlier selected artifacts.
 
 | Material | Current view |
 | --- | --- |
-| Input and semantic inputs | [Original request](../inputs/case-04.json), [reviewed requirements](requirements/reviewed.json), [interest inventory](interests/inventory.json) |
+| Input and semantic inputs | [Current request](../inputs/case-04.json), [evaluation input](evaluation/input.json), [original reviewed requirements](requirements/reviewed.json), [interest inventory](interests/inventory.json) |
 | Schedules and actual origins | [Complete daily schedules](itinerary.md) |
 | Final scoring | [Primary](evaluation/primary/report.json), [native quality](evaluation/primary/quality.json) |
 | Same-run V3 pair | [Independent report](evaluation/v3-pair/report.json), [exact source binding](evaluation/v3-pair/source-binding.json) |
 | Candidate process | [All stages, origins and omissions](analysis/poi-process/opportunities.json), [independent relevance](analysis/poi-process/relevance.json), [actual review records](interests/relevance-reviews.json) |
 | Repair | [Draft](analysis/repair/draft.json), [final primary](analysis/repair/final-primary.json), [complete Repair](analysis/repair/repair.json), [validation](analysis/repair/validation.json), [mechanism](analysis/repair/mechanism.json), [native research](analysis/repair/research.json) |
+| Offline completion review | [Result](analysis/repair/completion-review.json), [source contract](analysis/repair/completion-input.json), [replay command](../review_case04.py) |
 | Resources | [All-attempt ledger](analysis/resources/all-attempt-resources.json), [selected-cohort tradeoffs](analysis/resources/selected-tradeoffs.json), [new batch consumption](analysis/resources/refresh-execution.json) |
 | Publication integrity | [Material index](material-index.json) |
 | V0 selected generation | [Itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [usage summary](generation/v0/usage-summary.json), [provenance](generation/v0/provenance.json), [runtime](generation/v0/runtime-policy.json), [cost](generation/v0/cost-report.json) |
@@ -28,7 +39,7 @@ inspection; prior acceptance remains bound to the earlier selected artifacts.
 | V2 selected generation | [Itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [usage summary](generation/v2/usage-summary.json), [provenance](generation/v2/provenance.json), [runtime](generation/v2/runtime-policy.json), [cost](generation/v2/cost-report.json) |
 | V3 selected generation | [Itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [usage summary](generation/v3/usage-summary.json), [provenance](generation/v3/provenance.json), [runtime](generation/v3/runtime-policy.json), [cost](generation/v3/cost-report.json) |
 
-## Results
+## Evaluated results: 24–25 October
 
 | Version | Final / 100 | Auxiliary / 100 | Mean density deduction | Daily primary visits |
 | --- | ---: | ---: | ---: | --- |
@@ -83,13 +94,14 @@ additions or replacements. These are the two stages of one V3 run.
 | 4 | Delete Sunday Singapore Skyline View | Adopted |
 
 All four proposals are deterministic `system_delete`; Repair made no model calls.
-Both retained dates meet the three-visit target. The overall Repair result remains
-`ACCEPTED_PARTIAL`, with stop reason `authorized_targets_complete`, target state
-`reached` and completion **`unavailable`**. The first-day coverage check is UNKNOWN
-because `same_day_remaining_hours_unsupported`. Planner suitability, budget and
-semantic findings also remain visible in [validation](analysis/repair/validation.json).
-Independent Primary/Pairs passing their own checks does not certify these separate
-Planner return conditions. This run is not counted as fully successful Rich Repair.
+The [offline completion review](analysis/repair/completion-review.json) of the saved
+24–25 October final validation returns **`complete`** under implementation `df7ef14`:
+both dates have three visits, minimum coverage is satisfied and no required check
+blocks completion. The same-day generic coverage finding remains UNKNOWN. It records
+unsupported remaining-hour planning, not missing coverage or an unresolved Rich count.
+Planner suitability, budget and semantic limitations remain visible in
+[validation](analysis/repair/validation.json). This is a completion reclassification
+using unchanged evidence, not a new run or a feasibility certificate for 25–26 October.
 
 V1/V2 [candidate opportunities](analysis/poi-process/opportunities.json) and
 [relevance](analysis/poi-process/relevance.json) retain the captured donor results.
@@ -127,7 +139,10 @@ External Codex coordinator `/root` prepared the 23–24 October 2026 source bind
 qualified saved outputs, replayed reports, computed density/resource summaries and
 wrote the reader material from the original request, selected captures, evaluator
 evidence and retained histories. This influenced selection and presentation, not
-new relevance judgments. `/root/execute_217_v3`, `/root/execute_217_primary` and
+new relevance judgments. The coordinator also implemented the narrow completion
+correction, replayed its saved inputs, and prepared the authorized offline date
+revision; no new independent semantic judgments or provider calls were made.
+`/root/execute_217_v3`, `/root/execute_217_primary` and
 `/root/execute_218_pair` executed the approved prepared jobs using
 `gpt-6.1-sol / medium`, one invocation each with zero outer retries. These external
 roles are separate from the studied Planner/evaluator model calls recorded in usage.
@@ -140,6 +155,9 @@ exposed to Planner annotations was excluded, as documented in the
 replacement against repository standards and #218. The coordinator validated exact
 source projections, native replays, arithmetic, indexes and published references;
 agent review is not researcher acceptance.
+`/root/standards_rich_completion` and `/root/spec_rich_completion` independently
+reviewed the completion correction and date revision, including original source
+bindings and offline replay. Both reported no actionable findings.
 
 Reused semantic author/reviewer identities and dates remain in the
 [requirements](requirements/reviewed.json) and [interest inventory](interests/inventory.json).
@@ -159,8 +177,8 @@ unavailable. Recorded source provenance is retained rather than inferred.
 
 ## Acceptance
 
-The complete replacement, its three-per-day itinerary and disclosed incomplete
-Planner return checks await the researcher's decision under
+The original-date completion review and four revised-date schedules await the
+researcher's decision under
 [#218](https://github.com/rplalala/Dayloom/issues/218). Publication and merge do not
 constitute acceptance. The actual decision must precede
 [#219](https://github.com/rplalala/Dayloom/issues/219) content synchronization.
@@ -168,3 +186,12 @@ Existing blinded answers remain tied to the itinerary shown to each reviewer.
 
 Earlier acceptance records and original receipts remain immutable in private
 evidence and Git history; the exact preceding publication is recorded in the index.
+
+## Historical provenance
+
+The original V3 invocation recorded `ACCEPTED_PARTIAL` / `unavailable`: the Rich
+completion gate treated an unsupported same-day quantity diagnostic as a required
+return check. Its original status, validation, receipts and process reports remain
+unchanged. The separately bound offline review corrects only this classification.
+V0–V2 used reference date 18 October; V3 used 24 October. All original outputs and
+their Primary/Pair evaluations cover 24–25 October.

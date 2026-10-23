@@ -372,9 +372,11 @@ cases have offline density-policy derivations with unchanged factual rules and s
 
 The [benchmark report](benchmark/report.md) gives the automatic order
 **V3 > V2 > V1 > V0**, with exact scores, ranks, Pair summaries and selected-run
-resources. Case-04's independent final score is 100, while Planner Repair remains
-partial with an unavailable coverage return check. Publication does not certify
-full Repair success or researcher acceptance.
+resources for the evaluated outputs. Case-04's 24–25 October V3 score is 100;
+offline completion review returns complete while retaining the unsupported
+same-day diagnostic. Its current V0–V3 schedules are shifted to 25–26 October
+without paid calls; date-bound feasibility and scores are not transferred to them.
+Original evidence remains unchanged. Researcher acceptance is pending.
 
 The [blinded-review report](benchmark/blinded-results/report.md) covers one human
 and one GPT-6.1 sol xhigh assessment of the twelve itineraries originally shown.
