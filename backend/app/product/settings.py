@@ -1,21 +1,71 @@
 """Product configuration is loaded only when a Product service is used."""
 
+from pathlib import Path
 from urllib.parse import urlparse
 
-from pydantic import SecretStr, model_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+import yaml
+from pydantic import BaseModel, ConfigDict, SecretStr, model_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
-class ProductSettings(BaseSettings):
+class ProductOptions(BaseModel):
+    """The non-secret deployment options accepted in product.yaml."""
+
+    model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
+
+    origin: str = "https://localhost"
+    allow_insecure_loopback: bool = False
+    session_seconds: int = 3600
+
+
+class ProductYamlSettingsSource(YamlConfigSettingsSource):
+    def _read_file(self, file_path):
+        try:
+            with file_path.open(encoding="utf-8") as yaml_file:
+                options = yaml.load(yaml_file, Loader=ProductYamlLoader)
+        except yaml.YAMLError:
+            # Parser diagnostics can echo pasted credentials or whole source lines.
+            raise ValueError("Invalid Product YAML syntax or duplicate setting") from None
+
+        return ProductOptions.model_validate(
+            {} if options is None else options
+        ).model_dump(exclude_unset=True)
+
+
+class ProductYamlLoader(yaml.SafeLoader):
+    def construct_mapping(self, node, deep=False):
+        self.flatten_mapping(node)
+        result = {}
+        for key, value in self.construct_pairs(node, deep=deep):
+            try:
+                if key in result:
+                    raise yaml.YAMLError("Duplicate setting")
+                result[key] = value
+            except TypeError:
+                raise yaml.YAMLError("Invalid setting key") from None
+        return result
+
+
+class ProductSettings(ProductOptions, BaseSettings):
     model_config = SettingsConfigDict(
-        env_prefix="PRODUCT_", env_file=".env", extra="ignore", hide_input_in_errors=True
+        env_prefix="PRODUCT_", env_file=PROJECT_ROOT / ".env", extra="ignore",
+        hide_input_in_errors=True, yaml_file=PROJECT_ROOT / "product.yaml",
+        yaml_file_encoding="utf-8",
     )
 
     database_url: SecretStr
     jwt_secret: SecretStr
-    origin: str = "https://localhost"
-    allow_insecure_loopback: bool = False
-    session_seconds: int = 3600
+
+    @classmethod
+    def settings_customise_sources(
+        cls, settings_cls, init_settings, env_settings, dotenv_settings, file_secret_settings
+    ):
+        return (
+            init_settings, env_settings, dotenv_settings, file_secret_settings,
+            ProductYamlSettingsSource(settings_cls),
+        )
 
     @model_validator(mode="after")
     def validate_security(self):

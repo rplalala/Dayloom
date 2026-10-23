@@ -1,0 +1,5 @@
+# Dayloom Product settings. Secrets belong in the ignored .env file.
+# PRODUCT_* environment variables override these values.
+origin: http://localhost:5173
+allow_insecure_loopback: true
+session_seconds: 3600

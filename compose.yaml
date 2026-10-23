@@ -10,7 +10,7 @@ services:
     ports:
       - "127.0.0.1:${TRIPWORLD_DB_PORT:-55432}:5432"
     volumes:
-      - tripworld_pgdata:/var/lib/postgresql/data
+      - dayloom_pgdata:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
       interval: 5s
@@ -18,5 +18,5 @@ services:
       retries: 12
     shm_size: 256mb
 volumes:
-  tripworld_pgdata:
+  dayloom_pgdata:
     name: ${TRIPWORLD_DB_VOLUME:-dayloom_pgdata}

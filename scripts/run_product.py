@@ -67,7 +67,7 @@ def main(argv=None):
         origin = urlsplit(settings.origin)
         expected_port = origin.port or (443 if origin.scheme == "https" else 80)
         if origin.scheme == "http" and expected_port != args.port:
-            parser.error("The listening port must match PRODUCT_ORIGIN")
+            parser.error("The listening port must match product.yaml origin or PRODUCT_ORIGIN")
     except ValidationError as error:
         fields = ", ".join(".".join(map(str, item["loc"])) for item in error.errors())
         raise SystemExit("Invalid runtime configuration fields: " + fields) from None

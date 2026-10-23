@@ -4,14 +4,15 @@ import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from dotenv import load_dotenv  # noqa: E402
 
 from backend.app.product.database import migrate  # noqa: E402
 
 if __name__ == "__main__":
-    load_dotenv()
+    load_dotenv(PROJECT_ROOT / ".env", override=False)
     database_url = os.environ.get("PRODUCT_DATABASE_URL")
     if not database_url:
         raise SystemExit("Set PRODUCT_DATABASE_URL before running Product migrations")
