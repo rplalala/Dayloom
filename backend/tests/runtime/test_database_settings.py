@@ -2,8 +2,31 @@
 
 import pytest
 from pydantic import ValidationError
+from pydantic_settings import SettingsConfigDict
 
 from backend.app.runtime.database import DatabaseSettings
+
+
+def test_shared_database_reads_yaml_and_preserves_override_precedence(monkeypatch, tmp_path):
+    for key in ("URL", "HOST", "PORT", "NAME", "USER", "PASSWORD"):
+        monkeypatch.delenv("DAYLOOM_DB_" + key, raising=False)
+    path = tmp_path / "deployment.yaml"
+    path.write_text(
+        "database:\n  host: 127.0.0.1\n  port: 55618\n"
+        "  name: yaml_test\n  user: yaml_user\n", encoding="utf-8"
+    )
+
+    class Settings(DatabaseSettings):
+        model_config = SettingsConfigDict(yaml_file=path)
+
+    assert Settings(_env_file=None, password="synthetic").name == "yaml_test"
+    env = tmp_path / "settings.env"
+    env.write_text("DAYLOOM_DB_NAME=dotenv_test\n", encoding="utf-8")
+    assert Settings(_env_file=env, password="synthetic").name == "dotenv_test"
+    monkeypatch.setenv("DAYLOOM_DB_NAME", "process_test")
+    assert Settings(_env_file=env, password="synthetic").name == "process_test"
+    explicit = Settings(_env_file=env, password="synthetic", name="explicit_test")
+    assert explicit.name == "explicit_test"
 
 
 def test_explicit_connection_url_overrides_split_settings():

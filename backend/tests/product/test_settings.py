@@ -8,6 +8,25 @@ from pydantic_settings import SettingsConfigDict
 from backend.app.product.settings import ProductSettings
 
 
+def test_product_database_uses_its_selected_yaml(monkeypatch, tmp_path):
+    for key in ("URL", "HOST", "PORT", "NAME", "USER", "PASSWORD"):
+        monkeypatch.delenv("DAYLOOM_DB_" + key, raising=False)
+    path = tmp_path / "selected.yaml"
+    path.write_text(
+        "database:\n  host: 127.0.0.1\n  port: 55618\n"
+        "  name: selected_test\n  user: selected_user\n", encoding="utf-8"
+    )
+
+    class Settings(ProductSettings):
+        model_config = SettingsConfigDict(yaml_file=path)
+
+    monkeypatch.setenv("DAYLOOM_DB_PASSWORD", "synthetic-only")
+    settings = Settings(_env_file=None, jwt_secret="synthetic-signing-secret-at-least-32")
+    parameters = conninfo_to_dict(settings.database_url.get_secret_value())
+    assert parameters["dbname"] == "selected_test"
+    assert parameters["user"] == "selected_user"
+
+
 def test_product_uses_shared_dayloom_connection_fields(monkeypatch):
     monkeypatch.delenv("DAYLOOM_DB_URL", raising=False)
     for key, value in {
@@ -80,6 +99,19 @@ def test_product_yaml_rejects_credentials_and_unknown_options(configured_setting
         settings_type()
     assert sentinel not in str(failure.value)
     assert key in str(failure.value)
+
+
+@pytest.mark.parametrize("section, field", [("database", "password"), ("foundry", "api_key")])
+def test_nested_yaml_rejects_credentials_without_disclosing_them(
+    configured_settings, section, field,
+):
+    settings_type, yaml_path = configured_settings
+    with yaml_path.open("a", encoding="utf-8") as stream:
+        stream.write(f"{section}:\n  {field}: nested-private-sentinel\n")
+    with pytest.raises(ValidationError) as failure:
+        settings_type()
+    assert field in str(failure.value)
+    assert "nested-private-sentinel" not in str(failure.value)
 
 
 def test_explicit_and_environment_settings_override_yaml_and_dotenv(

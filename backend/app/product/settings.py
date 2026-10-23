@@ -3,51 +3,13 @@
 from pathlib import Path
 from urllib.parse import urlparse
 
-import yaml
-from pydantic import BaseModel, ConfigDict, Field, SecretStr, field_validator, model_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource
+from pydantic import Field, SecretStr, field_validator, model_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from backend.app.runtime.database import DatabaseSettings
+from backend.app.runtime.deployment import DeploymentYamlSettingsSource, ProductOptions
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-
-
-class ProductOptions(BaseModel):
-    """The non-secret deployment options accepted in product.yaml."""
-
-    model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
-
-    origin: str = "https://localhost"
-    allow_insecure_loopback: bool = False
-    session_seconds: int = 3600
-
-
-class ProductYamlSettingsSource(YamlConfigSettingsSource):
-    def _read_file(self, file_path):
-        try:
-            with file_path.open(encoding="utf-8") as yaml_file:
-                options = yaml.load(yaml_file, Loader=ProductYamlLoader)
-        except yaml.YAMLError:
-            # Parser diagnostics can echo pasted credentials or whole source lines.
-            raise ValueError("Invalid Product YAML syntax or duplicate setting") from None
-
-        return ProductOptions.model_validate(
-            {} if options is None else options
-        ).model_dump(exclude_unset=True)
-
-
-class ProductYamlLoader(yaml.SafeLoader):
-    def construct_mapping(self, node, deep=False):
-        self.flatten_mapping(node)
-        result = {}
-        for key, value in self.construct_pairs(node, deep=deep):
-            try:
-                if key in result:
-                    raise yaml.YAMLError("Duplicate setting")
-                result[key] = value
-            except TypeError:
-                raise yaml.YAMLError("Invalid setting key") from None
-        return result
 
 
 class ProductSettings(ProductOptions, BaseSettings):
@@ -72,13 +34,16 @@ class ProductSettings(ProductOptions, BaseSettings):
                 for source in (init_settings, env_settings, dotenv_settings, file_secret_settings)
             ):
                 return {}
-            return {"DAYLOOM_DB_URL": DatabaseSettings(
+            class ProductDatabaseSettings(DatabaseSettings):
+                model_config = SettingsConfigDict(yaml_file=settings_cls.model_config["yaml_file"])
+
+            return {"DAYLOOM_DB_URL": ProductDatabaseSettings(
                 _env_file=dotenv_settings.env_file
             ).connection_string}
 
         return (
             init_settings, env_settings, dotenv_settings, file_secret_settings,
-            shared_database, ProductYamlSettingsSource(settings_cls),
+            shared_database, DeploymentYamlSettingsSource(settings_cls),
         )
 
     @field_validator("database_url")

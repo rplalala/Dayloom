@@ -6,6 +6,8 @@ from psycopg.conninfo import conninfo_to_dict, make_conninfo
 from pydantic import Field, SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from backend.app.runtime.deployment import DEPLOYMENT_FILE, DeploymentYamlSettingsSource
+
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
@@ -13,6 +15,7 @@ class DatabaseSettings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="DAYLOOM_DB_", env_file=PROJECT_ROOT / ".env",
         extra="ignore", hide_input_in_errors=True,
+        yaml_file=DEPLOYMENT_FILE,
     )
 
     host: str = Field(default="127.0.0.1", min_length=1)
@@ -21,6 +24,15 @@ class DatabaseSettings(BaseSettings):
     user: str = Field(default="dayloom", min_length=1)
     password: SecretStr = SecretStr("")
     url: SecretStr | None = None
+
+    @classmethod
+    def settings_customise_sources(
+        cls, settings_cls, init_settings, env_settings, dotenv_settings, file_secret_settings
+    ):
+        return (
+            init_settings, env_settings, dotenv_settings, file_secret_settings,
+            DeploymentYamlSettingsSource(settings_cls, section="database"),
+        )
 
     @model_validator(mode="after")
     def validate_connection(self):
