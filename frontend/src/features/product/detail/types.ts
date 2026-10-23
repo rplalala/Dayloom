@@ -60,6 +60,11 @@ export type DetailTransfer = {
   unknowns: string[];
   attribution?: string | null;
 };
+export type PaceReview = {
+  status: "complete" | "already_satisfied" | "partial" | "unavailable" | "not_attempted" | "source_overridden";
+  days: { date: string; count: number | null; target_count: number; state: "satisfied" | "residual" | "unavailable" | "source_overridden" }[];
+};
+
 export type ProductDetail = {
   illustration_key?: IllustrationKey | null;
   display_tags?: string[];
@@ -85,6 +90,7 @@ export type ProductDetail = {
   transfers: DetailTransfer[];
   nearby: DetailNearby[];
   completion?: {
+    pace_review?: PaceReview | null;
     source_claims?: string[];
     policy_completion: "complete" | "incomplete" | "unassessed";
     policy_reasons: string[];

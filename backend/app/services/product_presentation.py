@@ -167,7 +167,17 @@ def present_product(result, evidence, introductions=None):
                 else None,
             )
         )
+    completion = getattr(getattr(result, "v3", None), "soft_pace", {}).get("completion")
     projected = ProductPlanResult(
+        pace_review={
+            "status": completion["status"],
+            "days": [
+                {key: day[key] for key in ("date", "count", "target_count", "state")}
+                for day in completion["days"]
+            ],
+        }
+        if completion
+        else None,
         preference_coverage=tuple(
             dict(
                 preference=row["preference"],
