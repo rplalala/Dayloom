@@ -11,6 +11,7 @@ from playwright.sync_api import expect
 
 from backend.tests.product.browser_harness import (
     expect_recovered_draft_name,
+    open_preferences,
     seed_legacy_draft_title,
 )
 from backend.tests.product.test_browser import register_browser
@@ -111,6 +112,7 @@ def fill_generation_fields(page):
     ]:
         page.get_by_label(label, exact=True).fill(value)
     page.get_by_label("Currency", exact=True).select_option("AUD")
+    open_preferences(page)
     page.get_by_label("Additional preferences").fill("")
 
 

@@ -29,6 +29,14 @@ _OS_TOOL_KEYS = (
 )
 
 
+def open_preferences(page):
+    """Expose optional editor controls through the traveler's disclosure action."""
+    notes = page.get_by_label("Additional preferences", exact=True)
+    notes.wait_for(state="attached")
+    if not notes.is_visible():
+        page.get_by_text("Personalize your trip", exact=True).click()
+
+
 class IsolatedEnvironment(dict[str, str]):
     """Subprocess-compatible mapping whose diagnostic representation excludes values."""
 

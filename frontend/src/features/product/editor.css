@@ -1,9 +1,9 @@
 /* Compatibility for the shared, accessible destination and calendar controls. */
 .dayloom .brief-editor .destination-control label, .dayloom .brief-editor .trip-date-control label { display:flex; flex-direction:column; gap:10px; min-width:0; }
-.dayloom .brief-editor .destination-control label > span, .dayloom .brief-editor .trip-date-control label > span { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:700; }
+.dayloom .brief-editor .destination-control label > span, .dayloom .brief-editor .trip-date-control label > span { display:flex; align-items:center; gap:7px; font-size:14px; font-weight:700; }
 .dayloom .brief-editor .destination-control label .ico, .dayloom .brief-editor .trip-date-control label .ico { color:var(--accent); }
 .dayloom .brief-editor label b { color:#db6468; }
-.dayloom .brief-editor .destination-control input, .dayloom .brief-editor .trip-date-control input { border:1px solid var(--line-2); background:var(--paper); border-radius:9px; color:var(--ink); outline:none; min-width:0; padding:13px; font-size:13px; width:100%; height:48px; }
+.dayloom .brief-editor .destination-control input, .dayloom .brief-editor .trip-date-control input { border:1px solid var(--line-2); background:var(--paper); border-radius:9px; color:var(--ink); outline:none; min-width:0; padding:13px; font-size:14px; width:100%; height:48px; }
 .dayloom .brief-editor .trip-date-control input { padding-right:36px; }
 .dayloom .brief-editor .destination-control input:focus, .dayloom .brief-editor .trip-date-control input:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(var(--accent-rgb),.09); }
 .dayloom .brief-editor .destination-control { min-width:0; }
@@ -26,3 +26,33 @@
 .dayloom .plan-recovery-link { margin-top:15px; }
 .dayloom .preference-tools { justify-content:flex-end; }
 .dayloom .result-actions .preview-decision-actions { width:auto; }
+
+.dayloom .plan-page .page-heading { margin-bottom:24px; }
+.dayloom .plan-page .page-heading h1 { font-size:clamp(30px,3.4vw,44px); margin:10px 0; }
+.dayloom .plan-page .flow-title { margin-bottom:22px; }
+.dayloom .optional-preferences { margin-top:22px; border-top:1px solid var(--line); padding-top:18px; }
+.dayloom .optional-preferences>summary { display:flex; align-items:center; gap:10px; cursor:pointer; list-style:none; border-radius:6px; color:var(--accent); }
+.dayloom .optional-preferences>summary::-webkit-details-marker { display:none; }
+.dayloom .optional-preferences>summary>span { display:flex; flex:1; flex-direction:column; gap:5px; }
+.dayloom .optional-preferences>summary strong { font-size:14px; color:var(--ink); }
+.dayloom .optional-preferences>summary small { font-size:12px; color:var(--muted); line-height:1.5; }
+.dayloom .optional-preferences>summary:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
+.dayloom .optional-preferences[open]>summary>.ico:last-child { transform:rotate(90deg); }
+.dayloom .planning-inspiration { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:12px; color:var(--muted); font-size:13px; margin:20px 0; }
+.dayloom .planning-inspiration>.inline-action { display:inline-flex; align-items:center; gap:6px; }
+@media(max-width:560px) {
+  .dayloom .plan-page { padding-top:24px; }
+  .dayloom .plan-page .page-heading { margin-bottom:20px; }
+  .dayloom .plan-page .page-heading p { font-size:14px; line-height:1.6; }
+  .dayloom .plan-page .flow-card { padding:20px 16px; }
+  .dayloom .plan-page .flow-title { gap:10px; }
+  .dayloom .plan-page .flow-title h2 { font-size:18px; }
+  .dayloom .plan-page .count-badge { display:none; }
+  .dayloom .brief-editor .form-grid-essentials { grid-template-columns:repeat(6,minmax(0,1fr)); gap:16px 12px; }
+  .dayloom .brief-editor .form-grid-essentials>.trip-date-control { grid-column:span 3; }
+  .dayloom .brief-editor .form-grid-essentials>.field { grid-column:span 2; }
+  .dayloom .brief-editor .form-grid-essentials>.field:last-child { grid-column:span 4; }
+  .dayloom .plan-page .form-bottom { margin-top:20px; padding-top:20px; gap:14px; }
+  .dayloom .plan-page .form-bottom>button { order:-1; width:100%; }
+  .dayloom .plan-page .planning-inspiration { justify-content:flex-start; }
+}
