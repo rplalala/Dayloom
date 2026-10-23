@@ -23,14 +23,15 @@ from backend.tests.versions.v3.test_wiring import OwnedRetrieval
 
 
 @pytest.mark.parametrize("counts, status", [((2, 3), "partial"), ((4, 3), "complete")])
+@pytest.mark.parametrize("reference_date", [date(2026, 9, 11), date(2026, 9, 12)])
 def test_rich_task_preview_save_reopen_and_replan_keep_completion(
-    client, monkeypatch, counts, status
+    client, monkeypatch, counts, status, reference_date
 ):  # noqa: F811, E501
     with TestClient(create_app(), base_url="http://localhost:5120") as planning_client:
-        check_rich_lifecycle(planning_client, monkeypatch, counts, status)
+        check_rich_lifecycle(planning_client, monkeypatch, counts, status, reference_date)
 
 
-def check_rich_lifecycle(client, monkeypatch, counts, status):
+def check_rich_lifecycle(client, monkeypatch, counts, status, reference_date):
     account = register(client)
     headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": account["csrf_token"]}
     models = []
@@ -54,7 +55,7 @@ def check_rich_lifecycle(client, monkeypatch, counts, status):
 
     service = PlanningService(
         RequestPlannerRuntime(dependency_factory=dependencies),
-        FixedDateProvider(date(2026, 9, 11)),
+        FixedDateProvider(reference_date),
         introductions=ProductIntroductions(introductions),
     )
     client.app.dependency_overrides[get_planning_service] = lambda: service

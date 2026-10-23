@@ -51,6 +51,15 @@ def rich_completion(after, contract, *, review_enabled, changed):
     if not days:
         return None
 
+    satisfied_dates = {day["date"] for day in days if day["state"] == "satisfied"}
+    remaining_time_limit_dates = {
+        row.date
+        for row in after.diagnostics.days
+        if str(row.date) in satisfied_dates
+        and row.applicability == "same_day_remaining_hours_unsupported"
+        and row.minimum_coverage == "satisfied"
+        and row.unclassified_activity_count == 0
+    }
     # These are explicitly unverified capabilities, not executable return checks.
     # The original validation report retains their limitations even on completion.
     unverified = [
@@ -59,6 +68,12 @@ def rich_completion(after, contract, *, review_enabled, changed):
         if f.status == "UNKNOWN"
         and f.check not in {"budget", "visitor_suitability"}
         and f.reason != "open_semantics_not_executable_predicates"
+        and not (
+            f.check == "coverage"
+            and f.reason == "default_target_observation_without_executable_exception_contract"
+            and f.dates
+            and set(f.dates) <= remaining_time_limit_dates
+        )
         and not (
             f.check == "route"
             and f.reason == "per_leg_mode_and_departure_binding_not_supported"
