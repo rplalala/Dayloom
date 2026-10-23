@@ -124,46 +124,50 @@ choice, not proof of statistical independence or overall travel usefulness.
 
 <a id="daily-density"></a>
 
-### Daily density policy and overall score (2026-10-04)
+### Daily density policy and overall score
 
-The current numeric authority is the final approved table in
-[Issue #52](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/52), implemented
-as `rtpeval_daily_density_2`. Earlier density curves are historical only. Final and
-paired report wire shapes stay at version 2; their embedded density profile and rule
-hash identify the current deductions.
+The current numeric policy is `rtpeval_daily_density_3`, specified in
+[Issue #216](https://github.com/rplalala/Dayloom/issues/216). Final and paired report
+wire shapes remain at version 2; their embedded density profile and rule hash identify
+the deductions. This section owns the numeric table for both independent scoring and
+the planner's soft pace objective; their interpretations and evidence remain separate.
 
-The user's approved development-time scoring change preserves the five-dimensional
-`auxiliary_total` and adds `overall_total = max(0, auxiliary_total - mean_daily_penalty)`.
+The five-dimensional `auxiliary_total` is preserved, with
+`overall_total = max(0, auxiliary_total - mean_daily_penalty)`.
 The mean gives every inclusive requested date equal weight, including missing/empty
 days. Calculate with exact rational values before emitting numeric percentages.
-The rule/profile versions distinguish this report from historical five-dimensional-only
-reports; old artifacts are not rewritten. `all_totals_available` now describes overall
-totals. An unavailable auxiliary score or unresolved daily deduction keeps the overall
+The rule/profile versions distinguish reports; source artifacts are immutable.
+`all_totals_available` describes overall totals. An unavailable auxiliary score or
+unresolved daily deduction keeps the overall
 score null; even a 100-point deduction cannot make missing feasibility evidence available.
 
 | Primary visit count | Ordinary | Relaxed | Rich |
 | --- | ---: | ---: | ---: |
 | 0 | 100 | 100 | 100 |
 | 1 | 40 | 20 | 60 |
-| 2 | 0 | 0 | 0 |
+| 2 | 0 | 0 | 10 |
 | 3 | 10 | 40 | 0 |
 | 4 | 50 | 70 | 30 |
 | 5 | 80 | 90 | 70 |
 | 6 or more | 100 | 100 | 100 |
 
-For four and five visits, deductions strictly increase from rich to ordinary to
-relaxed. Ordinary pace now deducts 10 for three visits; relaxed pace deducts 40.
-Uncertain ordinary counts spanning two and three visits therefore have deduction
-bounds 0..10 and an unavailable exact deduction; they are not a zero-cost interval.
+Default Rich has a single zero-deduction count of three. Counts two/three over two
+requested dates yield a five-point mean deduction. Removing this deduction establishes
+neither an overall score of 100 nor factual feasibility. Uncertain Rich or Ordinary
+counts spanning two and three retain bounds 0..10 and an unavailable exact deduction.
 
 Counts reuse the requirement/schedule scorer's source-distinct primary occurrences;
 transport, breaks and Nearby suggestions are excluded. Same-venue repeat occurrences
-remain occurrences; canonical repetition is separately reported. This change does not
-replace the legacy `<2`, `2..5`, `>5` descriptive categories or planner V3 quantity rules.
+remain occurrences; canonical repetition is separately reported. The legacy `<2`,
+`2..5`, `>5` descriptive categories remain reporting labels.
 The 2..5 window is not a blanket exemption from busyness deductions.
 
 `--density-reviews` supplies `rtpeval_density_reviews_1` with `batch_id`,
-`batch_revision` and a `groups` array. Each reviewed group has `group_id`,
+`batch_revision`, an optional `rules_profile_id` and a `groups` array. Omission selects
+`rtpeval_daily_density_3`. Explicit `rtpeval_daily_density_2` retains the prior curve
+(Rich two visits deducts zero; every other bucket is identical). Unknown profile IDs
+are rejected. This selector chooses numeric rules, not request semantics.
+Each reviewed group has `group_id`,
 `input_sha256`, `reviewer_ref`, offset-aware `reviewed_at`, `review_origin` (`human`
 or `agent`), `rationale`, a `default` policy and `days` overrides. A policy has exactly
 `profile` (`ordinary`, `relaxed`, `rich`, `unresolved`), `exact_count` (null or a
@@ -175,6 +179,14 @@ does not independently prove that its semantic interpretation is correct. Planne
 requirements, internal findings and planner density summaries are never policy evidence.
 Canonical review hashes and exact CLI file hashes bind this additional preparation.
 Foreign, stale, duplicate or malformed material fails the whole batch.
+
+Primary and paired acquisition preparation record the selected `density_rules` in
+their content digest. Final/paired reports carry the selected rules and a matching
+rule hash; review provenance and source bindings remain intact. A new-policy report
+requires its own preparation/report bindings and cannot inherit a historical execution
+receipt. Frozen historical replay uses its bound implementation, sources and receipts;
+explicit prior-curve scoring in current code does not turn a derived report into that
+historical execution or authorize overwriting its artifacts.
 
 Dated policies override the trip default. To retain the default profile while changing
 only the count, repeat that profile explicitly in the dated policy. An explicit count

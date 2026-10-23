@@ -7,6 +7,7 @@ from backend.app.evidence.effective_models import EffectivePlaceEvidence
 from backend.app.evidence.models import PlaceEvidence, RouteEvidenceBundle
 from backend.app.policies.generation_diagnostics import observe_generation
 from backend.app.policies.itinerary_output import validate_output_sources
+from backend.app.policies.itinerary_schedule import ordered_activities
 from backend.app.policies.poi_funnel import NamedPlaceResolution
 from backend.app.policies.schedule_time import elapsed_seconds
 from backend.app.policies.trip_dates import TripDateWindow, validate_itinerary_dates
@@ -20,6 +21,7 @@ from backend.app.versions.v3.models import (
     ValidationPolicy,
     ValidationReport,
 )
+from backend.pace_policy import PROFILE_ID as PACE_PROFILE_ID
 
 
 def validate_draft(
@@ -523,6 +525,10 @@ def validate_draft(
             "UNKNOWN",
             "per_leg_mode_and_departure_binding_not_supported",
             evidence_refs=route_refs,
+            adopted_evidence={
+                "has_transition_obligations": bool(itinerary.transfers)
+                or any(len(ordered_activities(day, schedule)) > 1 for day in itinerary.days)
+            },
         )
     add("budget", "UNKNOWN", "verified_party_currency_cost_coverage_not_supported")
     daily_refs = {
@@ -550,7 +556,7 @@ def validate_draft(
             dates=(row["date"],),
             activity_ids=row["activity_ids"],
             magnitude=penalty,
-            evidence_refs=("policy:rtpeval_daily_density_2",),
+            evidence_refs=(f"policy:{PACE_PROFILE_ID}",),
             adopted_evidence={
                 "count": row["count"],
                 "zero_counts": row["zero_counts"],

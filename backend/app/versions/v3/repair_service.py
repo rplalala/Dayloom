@@ -998,7 +998,12 @@ async def run_repair_stage(
             selected_semantic_assessments=context.semantic_assessments,
             schedule=context.schedule,
             adopted_report=initial,
-            soft_pace=pace_summary(initial, initial),
+            soft_pace=pace_summary(
+                initial,
+                initial,
+                contract=context.contract,
+                review_enabled="soft_pace" in context.policy.review_targets,
+            ),
             reason=stop,
             model_attempted=False,
             original=original,
@@ -1110,6 +1115,16 @@ async def run_repair_stage(
         if any(r.result.model_attempted or r.exploration_transition for r in records)
         else last.status
     )
+    soft_pace = pace_summary(
+        initial,
+        final_report,
+        contract=context.contract,
+        review_enabled="soft_pace" in context.policy.review_targets,
+        changed=any_accepted,
+    )
+    completion = soft_pace["completion"]
+    if status == "ACCEPTED_COMPLETE" and completion and completion["status"] != "complete":
+        status = "ACCEPTED_PARTIAL"
     cumulative_usage = {}
     for record in records:
         for model_name, values in record.usage.items():
@@ -1179,7 +1194,7 @@ async def run_repair_stage(
             ),
             "model_attempted": any(r.result.model_attempted for r in records),
             "adopted_report": final_report,
-            "soft_pace": pace_summary(initial, final_report),
+            "soft_pace": soft_pace,
         }
     )
 

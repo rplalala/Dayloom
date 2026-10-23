@@ -55,7 +55,7 @@ def test_final_and_paired_reports_use_the_same_final_three_visit_cost(
     assert paired["status"] == "complete", paired["diagnostics"]
     stages = paired["groups"][0]["stages"]
     for row in (version, *stages.values()):
-        assert row["daily_density"]["rules_profile_id"] == "rtpeval_daily_density_2"
+        assert row["daily_density"]["rules_profile_id"] == "rtpeval_daily_density_3"
         assert row["daily_density"]["mean_penalty_0_100"] == expected_penalty
         assert row["daily_density"]["days"][0]["known_primary_count"] == 3
         assert row["auxiliary_total"]["score_0_100"] == 37.5
@@ -68,6 +68,44 @@ def test_final_and_paired_reports_use_the_same_final_three_visit_cost(
             }[profile]
         )
     assert paired["groups"][0]["deltas"]["overall_total"]["percentage_points"] == 0
+
+
+@pytest.mark.parametrize(
+    "profile_id, expected_penalty",
+    [(None, 10), ("rtpeval_daily_density_2", 0)],
+)
+def test_final_and_pair_select_versioned_rich_rules_without_rewriting_evidence(
+    pair_case, route_case, profile_id, expected_penalty
+):
+    final_case = route_case(change=pairs.no_departure)
+    paired_case = pair_case()
+    reports = []
+    originals = {
+        path: path.read_bytes()
+        for case in (final_case, paired_case)
+        for path in case[2].parent.rglob("*")
+        if path.is_file()
+    }
+    for case, build in ((final_case, quality.report), (paired_case, pairs.report)):
+        reviews = density_reviews(case[0], "rich")
+        if profile_id is not None:
+            reviews["rules_profile_id"] = profile_id
+        result = build(case, density_reviews=reviews)
+        assert result["status"] == "complete", result["diagnostics"]
+        rules = result["rules_profile"]["daily_density"]
+        assert rules["profile_id"] == (profile_id or "rtpeval_daily_density_3")
+        assert rules["penalties_by_count_0_to_5"]["rich"][2] == expected_penalty
+        reports.append(result)
+    rows = [
+        reports[0]["groups"][0]["versions"]["v3"],
+        *reports[1]["groups"][0]["stages"].values(),
+    ]
+    for row in rows:
+        assert row["daily_density"]["mean_penalty_0_100"] == expected_penalty
+        assert row["daily_density"]["rules_profile_id"] == (profile_id or "rtpeval_daily_density_3")
+        assert row["auxiliary_total"]["score_0_100"] == 50
+        assert row["overall_total"]["score_0_100"] == 50 - expected_penalty
+    assert all(path.read_bytes() == original for path, original in originals.items())
 
 
 def test_paired_cli_density_policy_preserves_provenance_and_read_only_sources(pair_case, capsys):

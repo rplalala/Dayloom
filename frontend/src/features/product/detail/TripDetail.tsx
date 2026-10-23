@@ -10,7 +10,7 @@ import type {
 import "./detail.css";
 import { Icon } from "../Icon";
 import { WeatherRow } from "./WeatherRow";
-import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility } from "./display";
+import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice } from "./display";
 import { ExportControls } from './ExportControls';
 import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
 import { PlaceMedia, usePlaceMedia } from './media';
@@ -156,6 +156,7 @@ function NearbyRows({
 }
 
 export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: { detail: ProductDetail; mediaEndpoint?: string; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved" }) {
+  const paceMessage = paceNotice(detail.completion?.pace_review);
   const positionOf = (item: DetailNearby) => detail.nearby.indexOf(item);
   const [filter, setFilter] = useState<string | null>(null);
   const [closedDays, setClosedDays] = useState<Set<string>>(() => new Set());
@@ -346,6 +347,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
                 {detail.description ||
                   "Your days, places and connections, together in one itinerary."}
               </p>
+              {paceMessage && <p className="footnote caution-text" role="status">{paceMessage}</p>}
               <div className="stat-grid">
                 <div>
                   <strong>{String(detail.days.length).padStart(2, "0")}</strong>

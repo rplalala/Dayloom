@@ -127,9 +127,45 @@ def test_prepare_is_offline_and_binds_original_sources(batch):
     assert prepared["status"] == "prepared"
     assert prepared["intake"]["status"] == "accepted"
     assert prepared["identity_plan"]["phase"] == "identity"
+    assert prepared["density_rules"]["profile_id"] == "rtpeval_daily_density_3"
     assert not (root / "evaluation" / "execution").exists()
     saved = json.loads((root / "evaluation" / "preparation.json").read_bytes())
     assert saved == prepared
+
+
+@pytest.mark.parametrize("profile", ["rtpeval_daily_density_2", "rtpeval_daily_density_3"])
+def test_versioned_density_preparation_execution_and_receipt_replay(batch, profile):
+    from backend.evaluation.evaluation_run import execute_run, prepare_run, replay_run
+    from backend.evaluation.intake import load_batch
+    from backend.tests.evaluation.test_daily_density import density_reviews
+
+    _, _, write, _, root = batch
+    manifest = write()
+    reviews = {**density_reviews(load_batch(manifest), "rich"), "rules_profile_id": profile}
+    prepared = prepare_run(
+        manifest,
+        root / "versioned",
+        options=options(),
+        prices=run_prices(),
+        density_reviews=reviews,
+    )
+    assert prepared["density_rules"]["profile_id"] == profile
+
+    async def execute():
+        async with httpx.AsyncClient(transport=httpx.MockTransport(mock_provider)) as client:
+            return await execute_run(
+                prepared,
+                approved_sha256=prepared["content_sha256"],
+                google_api_key="synthetic-google",
+                model_api_key="synthetic-model",
+                http_client=client,
+            )
+
+    report = asyncio.run(execute())
+    assert report["quality"]["rules_profile"]["daily_density"] == prepared["density_rules"]
+    originals = {p: p.read_bytes() for p in (root / "versioned").rglob("*") if p.is_file()}
+    assert replay_run(root / "versioned") == report
+    assert all(p.read_bytes() == content for p, content in originals.items())
 
 
 def run_prices():

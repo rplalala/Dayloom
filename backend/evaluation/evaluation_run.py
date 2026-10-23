@@ -761,7 +761,7 @@ def prepare_run(
             raise ValueError("Subject stage reservation exceeds execution reference allowance")
     from ._route_inputs import route_reviews as read_route_reviews
     from ._schedule_preparation import _occupancy_reviews, _validate_spec
-    from .daily_density import prepare_density_policies
+    from .daily_density import density_rules, prepare_density_policies
     from .preparation import schedule_timezones
 
     schedule_timezones(intake, schedule_context)
@@ -813,6 +813,7 @@ def prepare_run(
         "options": options,
         "prices": prices,
         "identity_plan": build_identity_plan(intake),
+        "density_rules": density_rules(density_reviews),
         "context": {
             "schedule_context": schedule_context,
             "occupancy_reviews": occupancy_reviews,

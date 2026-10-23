@@ -83,6 +83,18 @@ const detail: ProductDetail = {
 };
 
 describe("Product detail", () => {
+  it.each(["preview", "saved"] as const)("keeps an unmet Rich pace visible in %s", mode => {
+    render(<MemoryRouter><TripDetail mode={mode} detail={{ ...detail, provenance: "generated", trust: "generated_projection", completion: {
+      policy_completion: "complete", policy_reasons: [], preference_coverage: [], minimum_daily_coverage: [],
+      pace_review: { status: "partial", days: [
+        { date: "2026-10-15", count: 2, target_count: 3, state: "residual" },
+      ] },
+    } }} /></MemoryRouter>);
+    expect(screen.getByText("Rich pace is not fully met. Some days do not have three main visits.")).toBeVisible();
+    expect(screen.queryByText(/Repair success|Repair complete/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/rtpeval|ACCEPTED_PARTIAL|residual/)).not.toBeInTheDocument();
+  });
+
   it("keeps internal planning diagnostics out of the travel experience", () => {
     render(<MemoryRouter><TripDetail detail={{ ...detail, completion: {
       policy_completion: "incomplete", policy_reasons: ["internal_policy_reason"],

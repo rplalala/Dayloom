@@ -1,4 +1,19 @@
-import type { ProductDetail, DetailTransfer } from "./types";
+import type { ProductDetail, DetailTransfer, PaceReview } from "./types";
+
+export function paceNotice(review?: PaceReview | null): string | null {
+  if (!review) return null;
+  if (review.status === "partial" && review.days.some(day => day.state === "residual" && day.target_count === 3)) {
+    return "Rich pace is not fully met. Some days do not have three main visits.";
+  }
+  if (review.status === "partial" || review.status === "unavailable") {
+    return "Some travel details still need checking before you go.";
+  }
+  if (review.status === "not_attempted") return "The planned pace has not been reviewed.";
+  if (review.days.some(day => day.state === "source_overridden")) {
+    return "Your specific daily requests take priority over Rich pace.";
+  }
+  return null;
+}
 
 /** Locale-stable date labels; ISO values remain the operation and activity keys. */
 export function monthDay(value: string): string {

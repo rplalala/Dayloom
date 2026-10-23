@@ -71,6 +71,28 @@ def test_public_contract_excludes_debug_and_separates_route_reserve():
     assert public.itinerary.days[0].weather.status == "unavailable"
 
 
+def test_rich_partial_review_survives_public_preview_and_saved_detail_serialization():
+    from backend.app.product.detail import ProductDetail
+    from backend.app.product.preview_projection import generated_detail
+    from backend.tests.request_fixtures import make_request
+    from backend.tests.versions.v3.test_rich_pace_completion import run_rich
+
+    result, _ = run_rich((2, 3))
+    public = present_product(result, ProductEvidenceCollector(NullRunTracer(None)))
+    assert public.pace_review.status == "partial"
+    assert [day.count for day in public.pace_review.days] == [2, 3]
+    detail = generated_detail(public, make_request("rich"))
+    restored = ProductDetail.model_validate_json(detail.model_dump_json())
+    assert restored.completion.pace_review == public.pace_review
+    wire = public.model_dump_json()
+    assert "rtpeval_daily_density" not in wire and "blocking_findings" not in wire
+
+
+def test_historical_product_result_does_not_acquire_a_rich_review():
+    result, evidence = example()
+    assert present_product(result, evidence).pace_review is None
+
+
 @pytest.mark.parametrize("mutation", ["identity", "departure", "removed", "reordered"])
 def test_stale_transfer_is_omitted(mutation):
     result, evidence = example()

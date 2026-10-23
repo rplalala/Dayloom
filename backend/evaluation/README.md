@@ -1503,9 +1503,9 @@ or available total; correction exits 2. `--generated-at` defaults to current UTC
 freeze it with the inputs for reproducible report content.
 
 Current report schemas are `rtpeval_quality_report_2` and `rtpeval_v3_pair_report_2`.
-Both use `rtpeval_daily_density_2` and the sole current
+Both default to `rtpeval_daily_density_3` and the current
 [approved table](../../docs/contracts/0005-quality-human-review.md#daily-density)
-from [Issue #52](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/52).
+from [Issue #216](https://github.com/rplalala/Dayloom/issues/216).
 Use `overall_total.score_0_100` for the density-adjusted score; `auxiliary_total`
 remains the exact five-dimensional diagnostic. Both report commands accept
 `--density-reviews density-reviews.json`. Review the complete original request once
@@ -1518,6 +1518,7 @@ Example preparation (replace all linkage and review fields with actual values):
 ```json
 {
   "schema_version": "rtpeval_density_reviews_1",
+  "rules_profile_id": "rtpeval_daily_density_3",
   "batch_id": "submitted-batch",
   "batch_revision": "1",
   "groups": [{
@@ -1542,7 +1543,11 @@ Example preparation (replace all linkage and review fields with actual values):
 
 The [density contract](../../docs/contracts/0005-quality-human-review.md#daily-density)
 defines dated overrides, count exemptions/mismatches, penalty tables and UNKNOWN bounds.
-Keep historical report files intact and write new replays to separate paths.
+The same optional `rules_profile_id` selector is honored by Primary/Pair preparation
+and final/paired scoring. Use `rtpeval_daily_density_2` explicitly for prior-curve
+scoring. New preparation binds `density_rules` in its digest. Keep frozen historical
+replay on its bound code and evidence; write derived reports to separate paths with
+their own rule/source bindings, without changing historical receipts.
 
 Usage envelopes come from opt-in [request-local capture](../app/observability/USAGE.md),
 not automatic CLI/API collection. `compare_usage` keeps scopes/namespaces and missing

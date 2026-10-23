@@ -1916,3 +1916,56 @@ sends, the 420-second stage limit and acquisition ceilings remain unchanged. No 
 rerun, native replay/rescore or paid project-provider call occurred. Full backend
 regression and live repair quality remain unverified; case-12 stays paused after its
 existing Primary handoff, with its USD 55 cumulative allowance and historical usage intact.
+
+## Rich completion and density policy revision (2026-10-24)
+
+[Issue #216](https://github.com/rplalala/Dayloom/issues/216) is implemented in
+`8cfbf5f` (scoring and final V3 completion) and `5ae7208` (Product projection and
+compatibility), followed by review corrections `9265a2a` and `ee62de6`. The fixed review
+base is `2eee32b`; concurrently merged guest-Product documentation in `76511e2`/`22fc70b` and
+unrelated working-tree changes are outside this implementation.
+The [completion contract](../../0005-validation-repair%28v3%29.md#final-rich-completion)
+and [density contract](../../contracts/0005-quality-human-review.md#daily-density)
+own the current rules.
+
+Regression-first checks reproduced two completion defects during implementation:
+an unmet sourced soft count could be labelled already satisfied, and an unresolved
+dated policy could disappear from the Rich day list. Completion now checks the full
+requested date range against the retained itinerary, preserves unmet exceptions and
+separates unsupported validation capabilities from executable return checks. Real
+runner fixtures verified legal two-to-three additions, four-to-three reductions,
+missing dates, cross-date residuals, sourced counts/rest, uncertain evidence, disabled
+review and finite limits. Product fixtures exercised task publication, PostgreSQL
+Save/reopen and replanning with external adapters substituted.
+
+The initial full backend gate reported **4,908 passed, 82 skipped and one failure**.
+The failure was a pre-existing assertion that cleared weather attribution before
+comparing a saved trip with its preview. Current storage already preserves this
+provenance; removing that obsolete transformation strengthened the equality check.
+The related Product task/Rich gate then passed **16 tests**. The expanded Rich runner
+gate also covered a missing-date case added after full-suite collection. Two Windows
+junction subprocess decode warnings were separately checked in a UTF-8 child process
+with thread warnings treated as errors: **one test passed**.
+A dependency deprecation warning remains. The frontend passed **261 tests**, TypeScript
+checking and production build; Vite emitted a bundle-size advisory. Changed-file Ruff,
+formatting, whitespace and tracked local-link checks passed.
+
+Standards review found no actionable issues. Spec review reproduced a route-applicability
+defect: fully protected rest days with no transitions were incorrectly unavailable because
+of a generic missing-binding limitation, including days expressed as free-time windows.
+Failing runner regressions preceded the corrections. Completion excludes that limitation
+only when validation explicitly records no transition obligations using the shared schedule
+and recorded transfers. Actual routes with unavailable evidence remain blocking, and the
+original report retains its UNKNOWN finding. The final correction gate passed **206 tests**
+across validation, Repair, wiring, schedule and Rich completion, including **21 Rich tests**.
+Independent rechecks found no remaining Standards or Spec issues.
+
+Local evidence identifiers are `.scratch/issue-216/product-20261024-003529.log`
+(full gate), `.scratch/issue-216/product-20261024-005202.log` (Product retest) and the
+`pytest-rest-windows-red`/`pytest-rest-windows-green`/`pytest-census-utf8`
+directories under the same scratch root.
+These are historical local identifiers, not published dependencies. The full backend
+suite was not repeated after the isolated corrections. No accepted case,
+benchmark acquisition/replay/rescore, paid model call, thesis result update or version
+freeze occurred. Synthetic replay checks preserve source/receipt bytes and establish
+prior-curve compatibility; they do not establish a new live repair outcome.

@@ -136,8 +136,12 @@ arithmetic for transfers. V0 retains its independent time generation. See the
   are recorded per run.
 - V3 Repair's optional quantity review optimizes source-linked daily pace toward zero
   deductions. It accepts legal partial reductions and preserves the best accepted
-  result at stops; zero is not a failure constraint. V0-V2 and V3 initial generation
-  have no zero-penalty requirement.
+  result at stops. Under `rtpeval_daily_density_3`, full Rich Repair completion requires
+  exactly three known primary visits on each default-Rich date and satisfied supported
+  return checks. Sourced exceptions, residuals and unavailable results retain distinct
+  states through Product preview and save/reopen. See the
+  [final completion contract](docs/0005-validation-repair%28v3%29.md#final-rich-completion).
+  V0-V2 and V3 initial generation have no zero-penalty requirement.
 
 V3 Repair now separates exploration from the best retained result, enumerates bounded
 authorized deletions and replans causally linked affected dates. Local proposals and

@@ -260,9 +260,6 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
 
                 expected_saved = deepcopy(preview["snapshot"])
                 expected_saved["id"] = saved_id
-                for day in expected_saved["days"]:
-                    if day["weather"] is not None:
-                        day["weather"].update(attribution=None, source_url=None)
                 assert (await http.get(f"/api/trips/{saved_id}")).json() == expected_saved
                 assert (await http.get("/api/previews")).json() == []
                 preview = (await http.get(f"/api/previews/{preview_id}")).json()

@@ -59,6 +59,7 @@ def generated_detail(result, request):
         nearby=nearby,
         transfers=transfers,
         completion={
+            "pace_review": result.pace_review,
             "policy_completion": result.policy_completion,
             "policy_reasons": result.policy_reasons,
             "preference_coverage": result.preference_coverage,

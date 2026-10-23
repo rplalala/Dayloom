@@ -86,6 +86,25 @@ class PreferenceCoverage(ProductModel):
     )
 
 
+class PaceReviewDay(ProductModel):
+    date: date
+    count: int | None = Field(ge=0)
+    target_count: int = Field(ge=0)
+    state: Literal["satisfied", "residual", "unavailable", "source_overridden"]
+
+
+class PaceReview(ProductModel):
+    status: Literal[
+        "complete",
+        "already_satisfied",
+        "partial",
+        "unavailable",
+        "not_attempted",
+        "source_overridden",
+    ]
+    days: tuple[PaceReviewDay, ...]
+
+
 class ProductPlanResult(ProductModel):
     _media_bindings: dict[str, str] = PrivateAttr(default_factory=dict)
     preference_coverage: tuple[PreferenceCoverage, ...] = ()
@@ -94,3 +113,4 @@ class ProductPlanResult(ProductModel):
     requirements: TravelRequirements
     itinerary: ProductItinerary
     minimum_daily_coverage: tuple[MinimumDailyCoverage, ...] = ()
+    pace_review: PaceReview | None = Field(default=None, exclude_if=lambda value: value is None)

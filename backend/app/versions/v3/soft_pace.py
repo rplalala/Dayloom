@@ -2,7 +2,8 @@
 
 from backend.app.policies.daily_visit_constraints import daily_count_bounds, hard_count_floor
 from backend.app.policies.visit_multiplicity import is_primary_visit
-from backend.pace_policy import PENALTIES, daily_penalty, zero_penalty_counts
+from backend.app.versions.v3.completion import rich_completion
+from backend.pace_policy import PENALTIES, PROFILE_ID, daily_penalty, zero_penalty_counts
 
 
 def pace_coverage_floor(minimum, current_count, zero_counts=()):
@@ -110,10 +111,16 @@ def measure_pace(itinerary, contract, diagnostics, assessments=()):
     return result
 
 
-def pace_summary(before, after):
+def pace_summary(before, after, *, contract, review_enabled=False, changed=False):
     def projection(report):
         rows = [f for f in report.findings if f.check == "soft_pace"]
-        known = bool(rows) and all(f.magnitude is not None for f in rows)
+        dates = {day.date for day in report.diagnostics.days}
+        known = (
+            bool(rows)
+            and len(rows) == len(dates)
+            and {f.dates[0] for f in rows} == dates
+            and all(f.magnitude is not None for f in rows)
+        )
         return {
             "mean_penalty": sum(f.magnitude for f in rows) / len(rows) if known else None,
             "days": [
@@ -136,11 +143,15 @@ def pace_summary(before, after):
         else None,
     }
     return {
+        "rules_profile_id": PROFILE_ID,
         "objective": "zero_soft_pace_deductions",
         "is_failure_constraint": False,
         "comparable": comparable,
         "before": first,
         "after": last,
+        "completion": rich_completion(
+            after, contract, review_enabled=review_enabled, changed=changed
+        ),
         "target_state": "reached"
         if last["mean_penalty"] == 0
         else "unavailable"

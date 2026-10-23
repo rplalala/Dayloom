@@ -836,10 +836,14 @@ httpx.AsyncClient = FixtureClient
 )
 
 
+@pytest.mark.parametrize("profile", [None, "rtpeval_daily_density_2"])
 def test_offline_preparation_preserves_selected_stages_and_native_inventory(
-    installed_cli, paired_material, tmp_path
+    installed_cli, paired_material, tmp_path, profile
 ):
-    root, args, _, _ = paired_material
+    root, args, values, _ = paired_material
+    if profile:
+        values["density-reviews"]["rules_profile_id"] = profile
+        save(root, "density-reviews.json", values["density-reviews"])
     originals = {p: p.read_bytes() for p in root.glob("*.json")}
     directory = tmp_path / "paired-preparation"
     result = run(installed_cli, "prepare", *args, "--directory", directory)
@@ -848,6 +852,7 @@ def test_offline_preparation_preserves_selected_stages_and_native_inventory(
     assert preparation["identity_plan"]["paired"] is True
     assert preparation["evidence_plan"]["paired"] is True
     assert preparation["scope"] == "selected_v3_paired_evidence"
+    assert preparation["density_rules"]["profile_id"] == (profile or "rtpeval_daily_density_3")
     assert preparation["max_model_sends"] == preparation["max_retries"] == 0
     pointers = {
         r["source"]["pointer"]
