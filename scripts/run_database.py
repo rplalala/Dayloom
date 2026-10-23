@@ -23,8 +23,10 @@ def main(argv=None):
     load_dotenv(PROJECT_ROOT / ".env", override=False)
     try:
         parameters = DatabaseSettings().connection_parameters()
-        if parameters.get("host") not in {"localhost", "127.0.0.1", "::1"}:
-            raise ValueError("Local Compose requires a loopback database host")
+        if parameters.get("host") not in {"localhost", "127.0.0.1"}:
+            print("Local Compose publishes on IPv4 loopback; use database host "
+                  "127.0.0.1 or localhost.", file=sys.stderr)
+            return 1
         if not all(parameters.get(key) for key in ("user", "password", "dbname", "port")):
             raise ValueError("Local Compose requires explicit connection fields")
         environment = {**os.environ, **{
