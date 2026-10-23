@@ -77,8 +77,22 @@ Product task outcomes distinguish `completed`, `needs_clarification`, `safety_bl
 `provider_blocked`, `failed` and `cancelled`. Typed actions retain the immutable submitted
 input. Clarification may show the owner's sourced quote; safety/provider block messages
 exclude sensitive source text and raw provider diagnostics.
-A completed preview retains its separate policy completion and uncertainty; persistence
-does not imply global feasibility. Invalid submission/date/currency fields fail with 422
+A completed task means that a preview is available. It retains separate policy
+completion and uncertainty; persistence does not imply global feasibility.
+For new Rich results, optional `completion.pace_review` preserves the
+[final V3 completion](0005-validation-repair%28v3%29.md#final-rich-completion) status and
+each applicable day's `date`, `count`, `target_count` and `state`. It carries no internal
+scores, finding IDs or debug flags. The same projection survives task result delivery,
+preview, Save and reopening. A partial preview remains a valid returned itinerary and
+does not acquire a successful-Repair badge. The detail page explains unmet Rich dates
+or unresolved travel checks in plain travel language; sourced exceptions retain a
+separate indication. Historical records without this optional field keep their original
+completion content, without backfilling or relabelling.
+
+Rich chosen in the form, inherited from account defaults, restored in a draft or
+carried through replanning uses the same active V3 rule. Preference text and span
+ownership remain unchanged; the option does not inject a hard exact-three requirement.
+Invalid submission/date/currency fields fail with 422
 before external work. Developer retains its research responses and HTTP failure policy.
 
 The [frontend Product API](../frontend/src/features/planning/api.ts) and

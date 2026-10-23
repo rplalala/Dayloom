@@ -223,7 +223,8 @@ Display-only inferred arrival follows [human review](0005-quality-human-review.m
 semantic projections while still changing exact artifact hashes and source identities.
 Replay derived identity/evidence/report preparations when classification changes; preserve
 original source artifacts and historical reports. The density table remains
-`rtpeval_daily_density_2`.
+`rtpeval_daily_density_3`; explicit prior-curve compatibility is defined in the
+[density contract](0005-quality-human-review.md#daily-density).
 
 <a id="identity"></a>
 

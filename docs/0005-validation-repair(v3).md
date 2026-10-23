@@ -1,9 +1,8 @@
 # Structured validation and targeted repair
 
-Status: Validation and bounded Repair search are implemented. Integrated offline
-verification and independent review of the October 13 redesign are complete;
-[the development record](records/v0-v3/v3-development.md#bounded-repair-search-and-selected-result-integration-2026-10-13)
-preserves the regression failures, corrections and final checks.
+Status: Validation, bounded Repair search and final Rich completion are implemented.
+[The development record](records/v0-v3/v3-development.md#rich-completion-and-density-policy-revision-2026-10-24)
+preserves offline validation, review findings and corrections.
 The [search contract](#accepted-bounded-search-redesign) defines exploration,
 retained results and proposal strategies.
 
@@ -136,8 +135,9 @@ make the read-only validator mutate its input or certify independent ground trut
 
 ## Soft pace objective
 
-V3 Repair aims for zero soft pace deductions under the existing daily-density table.
-Zero is an optimization objective, not output validity or a failure gate. The
+V3 Repair aims for zero soft pace deductions under
+[`rtpeval_daily_density_3`](contracts/0005-quality-human-review.md#daily-density).
+Zero is an optimization objective; retaining a residual does not invalidate output. The
 `quantity_review_enabled` flag enables this optional quantity optimization; opting out
 preserves hard Repair. A resolved pace policy supersedes the generic 2-5 quantity
 target on that date. Minimum daily coverage and hard visit protections remain separate.
@@ -169,9 +169,55 @@ deductions over the original comparable dates. Individual dates and intermediate
 may worsen without becoming the delivered result. No role relabeling is an edit operation,
 and retained penalties do not fail V3 generation.
 `soft_pace` summaries in V3 outcome and stage result expose before/after days and mean,
-`reached`/`residual`/`unavailable` state and `is_failure_constraint=false`. Existing
-round patches, stop reasons and actual usage remain authoritative. V0-V2 and V3 draft
+`reached`/`residual`/`unavailable` objective state, `rules_profile_id` and
+`is_failure_constraint=false`. Round patches, stop reasons and actual usage remain
+evidence of their own operations. V0-V2 and V3 draft
 acceptance gain no zero-penalty condition; independent evaluation still scores all normally.
+
+### Final Rich completion
+
+`soft_pace.completion` records a separate final result for Rich; it is null for other
+pace profiles. After revalidating the best retained itinerary, examine every requested
+date governed by default Rich. Each must have exactly three known primary visit
+occurrences. A mean count of three, progress on another date or accepted hard-only
+edits cannot satisfy this condition. Missing dates retain an explicit unmet or
+unavailable target; unresolved counts remain unavailable. An unresolved dated policy
+under a Rich default remains in this check.
+
+Each day records its actual count, applicable target count, override kind and state
+(`satisfied`, `residual`, `unavailable`, `source_overridden`). Explicit sourced counts,
+fixed full-day protection and hard-count projections retain precedence; reaching their
+feasible baseline is recorded as source-overridden rather than default-three satisfaction.
+An unmet override remains residual. Short windows, unavailable candidates, opening/route
+restrictions and execution limits do not create user exceptions.
+
+| Completion status | Meaning |
+| --- | --- |
+| `complete` | A retained repair meets every applicable Rich date and supported return check. |
+| `already_satisfied` | The verified initial itinerary meets those conditions without a retained repair. |
+| `partial` | A daily target remains unmet or a supported return check fails. |
+| `unavailable` | No known failure/residual takes priority, but required evidence is unresolved. |
+| `not_attempted` | Quantity review is disabled; hard Repair may still run. |
+| `source_overridden` | Every Rich date is covered by a satisfied sourced exception. |
+
+Completion requires no confirmed validation conflicts and no unresolved executable
+return checks, including applicable opening and route checks. A generic missing-binding
+route limitation does not block completion when the retained itinerary has neither
+adjacent route activities nor recorded transfers. Route adjacency uses the shared
+schedule, excluding free windows and elastic placeholders. Actual unresolved transitions
+still block completion; the original validation report retains its limitations. Budget,
+visitor suitability and open semantic requirements remain explicitly unsupported validation
+capabilities; they do not become verified facts when completion is reported. Existing
+patch admission, cost protections and execution budgets remain binding.
+
+For Rich, the stage and final runner cannot report `ACCEPTED_COMPLETE` unless final
+completion is `complete`; accepted edits otherwise retain `ACCEPTED_PARTIAL`. Round
+acceptance continues to describe its scoped patch. The runner recomputes completion
+from final validation, preserving the best itinerary even when optimization stops.
+The generic objective's `reached` state alone is insufficient to assert Rich Repair
+success, particularly under sourced exceptions. An already-satisfied plan does not
+require a fabricated Repair call. Product exposes the compatible public projection
+described in its [HTTP contract](0007-application-operations.md#http-contract-map).
 
 Offline tests exercise authorization, regressions, component interactions, rejection and
 fallback with controlled evidence. Bounded historical live repairs demonstrate only their
