@@ -1,0 +1,1002 @@
+{
+  "schema_version": "case_04_rich_primary_record_1",
+  "event_date": "2026-10-24",
+  "event_time_zone": "Australia/Sydney",
+  "scope": "one_new_v3_and_one_independent_four_final_primary",
+  "replacement_researcher_accepted": false,
+  "source_revision": "a391c2c18846f40a727038a0cf4bd176239ba904",
+  "original_input": {
+    "logical_path": "benchmark/inputs/case-04.json",
+    "sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789"
+  },
+  "sources": {
+    "preparation": {
+      "logical_path": ".scratch/issue-217/primary-a1/preparation.json",
+      "sha256": "ac89d3529a56c6ec4dc928dcb26a118f518afa921852f2da7839f5e72d589c7a"
+    },
+    "primary_report": {
+      "logical_path": ".scratch/issue-217/primary-a1/execution/report.json",
+      "sha256": "67b0190cff0e104b34bc91c389ba63f9486541b0b7ce45e87276678957c73e5d"
+    },
+    "primary_receipt": {
+      "logical_path": ".scratch/issue-217/primary-a1/execution/receipt.json",
+      "sha256": "8eb0db9a1f4759c5378d97f1497d83585a0621054083111cd3d18cd5b206d2b6"
+    },
+    "generation_result": {
+      "logical_path": ".scratch/issue-217/captures/v3-a1/result.json",
+      "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d"
+    },
+    "generation_usage": {
+      "logical_path": ".scratch/issue-217/captures/v3-a1/usage.json",
+      "sha256": "20b4b3dcd05f0716c1167e82fa00b67a1262a5303ab8028a3869511f346812e9"
+    },
+    "generation_cost": {
+      "logical_path": ".scratch/issue-217/captures/v3-a1/cost-report.json",
+      "sha256": "ae133109289185997fe5d7947412e9987a94f662a5587d960e1f302956f5c4bc"
+    },
+    "output_review": {
+      "logical_path": ".scratch/issue-217/output-review.json",
+      "sha256": "bdb11f3be7117ac81fc6decfb141133baaeee2261f94d49981904ac0510fa6f0"
+    }
+  },
+  "preparation_digest": "e4b63211ca1d392240bdc37c4aada311b7f60cbc8b65a01508e60ae538d5f291",
+  "quality_content_hash": "55cc54999fa4a17d619ef16df3ae9af8b912152479c7e6b36f69b1fd106588ed",
+  "included_dimensions": [
+    "requirements",
+    "grounding",
+    "non_overlap",
+    "opening",
+    "routes"
+  ],
+  "selected_finals": {
+    "v0": {
+      "run_id": "case-04-current-path-v0-a1",
+      "source_revision": "62f04cddad8635bbef12d116ea84346d0f9788a5",
+      "result": {
+        "logical_path": ".scratch/issue-217/assembled/sources/captures/v0/result.json",
+        "sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77"
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 30,
+          "numerator": 29
+        },
+        "reason": null,
+        "score_0_100": 96.66666666666667,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 3,
+          "numerator": 2
+        },
+        "reason": null,
+        "score_0_100": 66.66666666666667
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 4,
+              "upper": 4
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 4,
+            "penalty_0_100": 30,
+            "penalty_bounds": {
+              "lower": 30,
+              "upper": 30
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "rich",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We would like a fairly full itinerary"
+                },
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We prefer to make active use of both days."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 4,
+              "upper": 4
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 4,
+            "penalty_0_100": 30,
+            "penalty_bounds": {
+              "lower": 30,
+              "upper": 30
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "rich",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We would like a fairly full itinerary"
+                },
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We prefer to make active use of both days."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 30
+        },
+        "mean_penalty_0_100": 30.0,
+        "mean_penalty_bounds": {
+          "lower": 30.0,
+          "upper": 30.0
+        },
+        "requested_day_count": 2,
+        "review": {
+          "rationale": "The source asks for a fairly full itinerary and active use of both days, supporting the rich density profile as a soft pace interpretation. It specifies no numeric sightseeing count or differing date-specific pace.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-18T02:03:12Z",
+          "reviewer_ref": "/root/revalidation_semantic_reviewer"
+        },
+        "rules_profile_id": "rtpeval_daily_density_3"
+      },
+      "dimensions": {
+        "grounding": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 8,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "non_overlap": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 14,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 14,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "opening": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 8,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "requirements": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 1,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "routes": {
+          "counts": {
+            "FAIL": 1,
+            "PASS": 5,
+            "UNKNOWN": 0
+          },
+          "state": "FAIL",
+          "denominator": 6,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 6,
+              "numerator": 5
+            },
+            "reason": null,
+            "score_0_100": 83.33333333333333
+          }
+        }
+      }
+    },
+    "v1": {
+      "run_id": "case-04-current-path-v1-a1",
+      "source_revision": "62f04cddad8635bbef12d116ea84346d0f9788a5",
+      "result": {
+        "logical_path": ".scratch/issue-217/assembled/sources/captures/v1/result.json",
+        "sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1"
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 5,
+          "numerator": 3
+        },
+        "reason": null,
+        "score_0_100": 60.0
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 5,
+              "upper": 5
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 5,
+            "penalty_0_100": 70,
+            "penalty_bounds": {
+              "lower": 70,
+              "upper": 70
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "rich",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We would like a fairly full itinerary"
+                },
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We prefer to make active use of both days."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 2,
+            "penalty_0_100": 10,
+            "penalty_bounds": {
+              "lower": 10,
+              "upper": 10
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "rich",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We would like a fairly full itinerary"
+                },
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We prefer to make active use of both days."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 40
+        },
+        "mean_penalty_0_100": 40.0,
+        "mean_penalty_bounds": {
+          "lower": 40.0,
+          "upper": 40.0
+        },
+        "requested_day_count": 2,
+        "review": {
+          "rationale": "The source asks for a fairly full itinerary and active use of both days, supporting the rich density profile as a soft pace interpretation. It specifies no numeric sightseeing count or differing date-specific pace.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-18T02:03:12Z",
+          "reviewer_ref": "/root/revalidation_semantic_reviewer"
+        },
+        "rules_profile_id": "rtpeval_daily_density_3"
+      },
+      "dimensions": {
+        "grounding": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 7,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "non_overlap": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 12,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 12,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "opening": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 7,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "requirements": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 1,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "routes": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 5,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 5,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        }
+      }
+    },
+    "v2": {
+      "run_id": "case-04-completion-v2-a1",
+      "source_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+      "result": {
+        "logical_path": ".scratch/issue-217/assembled/sources/captures/v2/result.json",
+        "sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90"
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 20,
+          "numerator": 17
+        },
+        "reason": null,
+        "score_0_100": 85.0
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 4,
+              "upper": 4
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 4,
+            "penalty_0_100": 30,
+            "penalty_bounds": {
+              "lower": 30,
+              "upper": 30
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "rich",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We would like a fairly full itinerary"
+                },
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We prefer to make active use of both days."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 3,
+              "upper": 3
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 3,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "rich",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We would like a fairly full itinerary"
+                },
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We prefer to make active use of both days."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 15
+        },
+        "mean_penalty_0_100": 15.0,
+        "mean_penalty_bounds": {
+          "lower": 15.0,
+          "upper": 15.0
+        },
+        "requested_day_count": 2,
+        "review": {
+          "rationale": "The source asks for a fairly full itinerary and active use of both days, supporting the rich density profile as a soft pace interpretation. It specifies no numeric sightseeing count or differing date-specific pace.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-18T02:03:12Z",
+          "reviewer_ref": "/root/revalidation_semantic_reviewer"
+        },
+        "rules_profile_id": "rtpeval_daily_density_3"
+      },
+      "dimensions": {
+        "grounding": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 7,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "non_overlap": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 12,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 12,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "opening": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 7,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "requirements": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 1,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "routes": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 5,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 5,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        }
+      }
+    },
+    "v3": {
+      "run_id": "case-04-rich3-v3-a1",
+      "source_revision": "a391c2c18846f40a727038a0cf4bd176239ba904",
+      "result": {
+        "logical_path": ".scratch/issue-217/assembled/sources/new-v3/result.json",
+        "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d"
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 3,
+              "upper": 3
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 3,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "rich",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We would like a fairly full itinerary"
+                },
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We prefer to make active use of both days."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 3,
+              "upper": 3
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 3,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "rich",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We would like a fairly full itinerary"
+                },
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "quote": "We prefer to make active use of both days."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "mean_penalty_0_100": 0.0,
+        "mean_penalty_bounds": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "requested_day_count": 2,
+        "review": {
+          "rationale": "The source asks for a fairly full itinerary and active use of both days, supporting the rich density profile as a soft pace interpretation. It specifies no numeric sightseeing count or differing date-specific pace.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-18T02:03:12Z",
+          "reviewer_ref": "/root/revalidation_semantic_reviewer"
+        },
+        "rules_profile_id": "rtpeval_daily_density_3"
+      },
+      "dimensions": {
+        "grounding": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 6,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "non_overlap": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 10,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 10,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "opening": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 6,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "requirements": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 1,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        },
+        "routes": {
+          "counts": {
+            "FAIL": 0,
+            "PASS": 4,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "denominator": 4,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          }
+        }
+      }
+    }
+  },
+  "route_failures": [
+    {
+      "version": "v0",
+      "from_activity_id": "day1-botanic-gardens",
+      "to_activity_id": "day1-national-gallery",
+      "from_source": {
+        "artifact_sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
+        "batch_id": "case-04-rich3",
+        "group_id": "case-04",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "d248a5e1236be0a5e0891842ea819cfd6de437ac684d5f1d9237e723a40c87df",
+        "run_id": "case-04-current-path-v0-a1"
+      },
+      "to_source": {
+        "artifact_sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
+        "batch_id": "case-04-rich3",
+        "group_id": "case-04",
+        "pointer": "/itinerary/days/0/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "ddf459d6b3871597aedb23cd0bce5c10593be780378f0ab4bd2640a9060b3d24",
+        "run_id": "case-04-current-path-v0-a1"
+      },
+      "state": "FAIL",
+      "reason": null,
+      "duration_seconds_exact": "2612",
+      "raw_deficit_seconds_exact": "512",
+      "available_nanoseconds": 2100000000000,
+      "schedule_tolerance_seconds": 300
+    }
+  ],
+  "independent_unknowns": [],
+  "acquisition_failures": [],
+  "opening_assessment": {
+    "eligible_count": 0,
+    "packet_sha256": "3a10af2e60434483723d13a6372050bc1d12d1241857ec2d96900ad7ceb3246b",
+    "reason": "no_eligible_missing_hours",
+    "status": "skipped"
+  },
+  "v3": {
+    "draft": {
+      "logical_path": ".scratch/issue-217/captures/v3-a1/result.json",
+      "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
+      "json_pointer": "/v3/draft"
+    },
+    "final": {
+      "logical_path": ".scratch/issue-217/captures/v3-a1/result.json",
+      "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
+      "json_pointer": "/v3/final_primary"
+    },
+    "draft_daily_counts": [
+      {
+        "date": "2026-10-24",
+        "count": 5
+      },
+      {
+        "date": "2026-10-25",
+        "count": 4
+      }
+    ],
+    "repair_status": "ACCEPTED_PARTIAL",
+    "repair_reason": "authorized_targets_complete",
+    "soft_pace": {
+      "rules_profile_id": "rtpeval_daily_density_3",
+      "objective": "zero_soft_pace_deductions",
+      "is_failure_constraint": false,
+      "comparable": {
+        "dates": [
+          "2026-10-24",
+          "2026-10-25"
+        ],
+        "before_total": 100.0,
+        "after_total": 0.0
+      },
+      "before": {
+        "mean_penalty": 50.0,
+        "days": [
+          {
+            "date": "2026-10-24",
+            "penalty": 70.0,
+            "reason": "soft_pace_objective"
+          },
+          {
+            "date": "2026-10-25",
+            "penalty": 30.0,
+            "reason": "soft_pace_objective"
+          }
+        ]
+      },
+      "after": {
+        "mean_penalty": 0.0,
+        "days": [
+          {
+            "date": "2026-10-24",
+            "penalty": 0.0,
+            "reason": "soft_pace_objective"
+          },
+          {
+            "date": "2026-10-25",
+            "penalty": 0.0,
+            "reason": "soft_pace_objective"
+          }
+        ]
+      },
+      "completion": {
+        "status": "unavailable",
+        "days": [
+          {
+            "date": "2026-10-24",
+            "count": 3,
+            "target_count": 3,
+            "override": null,
+            "state": "satisfied"
+          },
+          {
+            "date": "2026-10-25",
+            "count": 3,
+            "target_count": 3,
+            "override": null,
+            "state": "satisfied"
+          }
+        ],
+        "blocking_findings": [
+          "finding_1"
+        ],
+        "unverified_checks": [
+          "coverage"
+        ]
+      },
+      "target_state": "reached"
+    },
+    "deterministic_attempts": 4,
+    "model_attempted": false,
+    "removed_activity_ids": [
+      "sat-botanic-gardens",
+      "sat-buddha-tooth-relic-temple",
+      "sun-singapore-skyline-view"
+    ]
+  },
+  "resources": {
+    "generation_reference_usd": "2.12482589",
+    "primary_reference_usd": "1.1608993",
+    "combined_reference_usd": "3.28572519",
+    "generation_unpriced_events": 0,
+    "primary_unpriced_events": 0,
+    "primary_google_sends": 60,
+    "primary_model_sends": 1,
+    "outer_retries": 0,
+    "actual_billing": null,
+    "external_codex_billing": null
+  },
+  "validation": {
+    "native_intake": "accepted",
+    "semantic_readiness": "ready",
+    "numerical_population": "ready",
+    "full_offline_replay_equal": true
+  }
+}

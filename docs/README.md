@@ -66,6 +66,9 @@ separating unchanged saved-material calculations from source-bound policy upgrad
 and the completed bounded generation/Primary checks. It also records the authorized
 completed direct replacement for 04/05/09/11, matched dependent analyses,
 canonical input alignment, bounded consumption and retained evidence limitations.
+The [case-04 Rich-policy Primary](records/evaluation/2026-10-24-rich-primary.md)
+records one new V3 reaching three visits per day, a fresh four-final evaluation and
+the application-completion limitation; replacement acceptance remains separate.
 The [post-generation review readiness contract](contracts/0002-intake-identity-usage.md#post-generation-review-readiness)
 separates missing output-specific review work from completed unresolved judgments
 before primary acquisition, without changing Planner generation or score policies;
