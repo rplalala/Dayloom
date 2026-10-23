@@ -79,6 +79,7 @@ def rich_model(
     overlap=False,
     unknown=False,
     missing_day=False,
+    rest_placeholders=False,
     behavior="failure",
     fields=None,
 ):
@@ -95,6 +96,24 @@ def rich_model(
             )
             for index in range(count)
         ]
+        if rest_placeholders:
+            day.activities = [
+                sample.model_copy(
+                    update={
+                        "activity_id": f"rest_{offset}_{index}",
+                        "activity_kind": "free_time",
+                        "time_use": "free_window",
+                        "title": "Free time",
+                        "source_place_id": None,
+                        "place_name": None,
+                        "location": None,
+                        "estimated_cost": None,
+                        "start_time": sample.start_time + timedelta(hours=3 * index),
+                        "end_time": sample.end_time + timedelta(hours=3 * index),
+                    }
+                )
+                for index in range(2)
+            ]
     if overlap:
         first, second = initial.days[0].activities[:2]
         second.start_time = first.end_time - timedelta(minutes=30)
@@ -112,6 +131,8 @@ def rich_model(
                 ids = iter(supply["optional_canonical_ids"])
                 for day in self.responses[0].days:
                     for activity in day.activities:
+                        if activity.time_use == "free_window":
+                            continue
                         activity.source_place_id = next(ids)
                         activity.place_name = f"Place {activity.source_place_id}"
             return await super().generate_structured(**kwargs)
@@ -242,7 +263,8 @@ def test_runner_sourced_full_day_rest_retains_zero_without_default_rich_success(
     assert (day["count"], day["target_count"], day["state"]) == (0, 0, "source_overridden")
 
 
-def test_runner_all_rest_has_no_route_obligation_blocking_the_satisfied_exception():
+@pytest.mark.parametrize("placeholders", [False, True], ids=["empty", "free-time-windows"])
+def test_runner_all_rest_has_no_route_obligation_blocking_the_satisfied_exception(placeholders):
     fields = empty_preference_draft().model_dump()
     fields["time_protections"] = [
         {
@@ -255,7 +277,9 @@ def test_runner_all_rest_has_no_route_obligation_blocking_the_satisfied_exceptio
             "source_refs": [{"quote": "Rest every day", "occurrence": 0}],
         }
     ]
-    result, model = run_rich((0, 0), fields=fields, text="rich. Rest every day")
+    result, model = run_rich(
+        (0, 0), fields=fields, text="rich. Rest every day", rest_placeholders=placeholders
+    )
     completion = result.v3.soft_pace["completion"]
     assert completion["status"] == "source_overridden"
     assert all(
