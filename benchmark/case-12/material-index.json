@@ -625,7 +625,7 @@
     {
       "path": "report.md",
       "sha256": "5991aadd682a0b181aace174ba319fb86325ab6b93eef119df64658ea4fc0a5f",
-      "bytes": 38472,
+      "bytes": 38794,
       "representation": "reader_document",
       "original_source": {
         "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-12/report.md",

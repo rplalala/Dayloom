@@ -100,6 +100,19 @@ def verify_score(case, material):
     assert scored["overall_total"] == material["overall_total"], (case, "overall")
 
 
+def verify_reader_sizes(value, base):
+    """Check published reader sizes where an index records them."""
+    if isinstance(value, dict):
+        if value.get("path") == "report.md" and "bytes" in value:
+            assert len((base / "report.md").read_bytes().replace(b"\r\n", b"\n")) == value["bytes"]
+        for key, child in value.items():
+            if key not in ("source", "sources", "native_source", "original_source"):
+                verify_reader_sizes(child, base)
+    elif isinstance(value, list):
+        for child in value:
+            verify_reader_sizes(child, base)
+
+
 def main():
     report = load("benchmark/automatic-results.json")
     assert report["content_sha256"] == digest(
@@ -112,6 +125,7 @@ def main():
         final = load("benchmark/" + case["primary_source"])
         pair = load("benchmark/" + case["pair_source"])
         case_index = load(f"benchmark/{cid}/material-index.json")
+        verify_reader_sizes(case_index, ROOT / "benchmark" / cid)
         for kind in ("final", "pair"):
             binding = case_index.get("density_policy_derivations", {}).get(kind)
             if binding:
