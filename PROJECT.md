@@ -52,8 +52,10 @@ recorded and do not automatically re-freeze any version.
 The complete local Dayloom Product was accepted by the user on 23 October 2026 at
 `b40fcfa55f919a570fbfcec10bde110ac7029a89`, after the final photo-layout corrections.
 The built frontend and normal API share `http://localhost:5173`; the `dayloom` Compose
-project runs `postgres` against the retained runtime volume. Remote code delivery and
-hosting remain pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
+project runs `postgres` against the retained runtime volume. Git delivery is tracked by
+[PR #210](https://github.com/rplalala/Dayloom/pull/210) and
+[#208](https://github.com/rplalala/Dayloom/issues/208); hosting remains separate and
+pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
 
 One ignored root `.env` supplies credentials and machine-specific overrides. Root
 `product.yaml` supplies Product options, shared database connection fields and Foundry
@@ -332,9 +334,9 @@ providers. One separately authorized Sydney one-day journey passed generation,
 preview, explicit Save and My trips reload on 22 October, with real model, map/route,
 weather, embedding and image HTTP success evidence. This does not establish general
 provider quality, full billing, public deployment or scale. Independent V0–V3,
-Developer and research commands retain their entrypoints and behavior. Additional
-live runs, remote Git delivery and research remain separately scoped; no version
-freeze follows from this acceptance.
+Developer and research commands retain their entrypoints and behavior. Git delivery
+is tracked in PR #210 and #208. Additional live runs, public hosting and research
+require separate scope; no version freeze follows from acceptance.
 
 Evaluation extensions are developed independently:
 

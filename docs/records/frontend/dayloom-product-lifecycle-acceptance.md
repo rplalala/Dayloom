@@ -97,6 +97,58 @@ mood mapping and native-dialog backdrop predicate while leaving close/busy polic
 
 ## Verification and evidence
 
+### Published Product integration
+
+Delivery on 23 October 2026 is tracked by [PR #210](https://github.com/rplalala/Dayloom/pull/210)
+and [#208](https://github.com/rplalala/Dayloom/issues/208). Its fixed published-main base
+is `ed1a51329f02c32dd25f6b012e4d91d91e99f747`; accepted local source `f91226c`
+contains 97 outgoing Product/runtime commits. Separate test corrections `aee24ec`
+and `9856f50` retain the implementation history. The delivery includes the shared
+non-secret `product.yaml` source and Compose launcher; current configuration ownership
+is defined in the [development guide](../../guides/development.md#complete-local-product-runtime).
+
+The complete backend invocation ran **4,963 cases: 4,944 passed, 12 failed and 7 skipped in
+2,765.68 seconds** with actual isolated
+PostgreSQL, public migrations and Chromium enabled. The fresh delivery worktree initially lacked
+its ignored offline tokenizer vocabularies. After restoring both verified local caches without
+downloads, the exact 12-node follow-up passed nine and failed three editor cases. Those cases
+depended on a transient start notification that the fixture's immediate failure can replace;
+test-only correction `9856f50` verifies HTTP 202 task acceptance and the Plan progress area
+instead. All three then passed, establishing 4,956 distinct passed backend cases across the full
+run and precise follow-ups. The seven skips cover two unavailable Windows symlink privileges and
+five alternate-volume cases without a configured writable second volume. Three warnings remain:
+one Starlette/AnyIO deprecation and two Windows subprocess UTF-8 reader warnings in an otherwise
+passed census-export case.
+The exact original failure-node set equals the first follow-up's collection; its
+remaining failure-node set equals the final follow-up's collection. No all-green
+single whole-backend invocation is claimed.
+
+The full frontend initially passed 251 tests and failed one authentication-return
+assertion because routing preceded React's DOM commit. Correction `aee24ec` waits
+for the visible destination heading; the complete rerun passed **252 tests in 41 files**.
+TypeScript production build and lint passed with two existing Fast Refresh warnings
+and the existing 514.39 kB bundle-size advisory. All 107 changed Python files and the
+later editor-test delta passed Ruff. No mypy/pyright project configuration exists.
+
+Independent Standards and Spec reviews covered the combined fixed-base change.
+Standards identified one P2 stale architecture-status paragraph; the in-place
+correction was rechecked. Both axes reported zero remaining findings, including the
+test-only corrections. Five pre-existing development-toolchain dependency audit
+findings are tracked by [#209](https://github.com/rplalala/Dayloom/issues/209); the
+frontend lockfile is unchanged from published main and the production dependency
+audit reports zero findings. Current-credential exact scans of outgoing history
+found zero matches. This is a bounded scan, not a global secret-erasure claim.
+
+Local evidence identifiers under the delivery worktree's `.scratch/delivery/` are
+`product-20261023-152214.{log,xml}`, `followup-20261023-154451.{log,xml}`,
+`followup-20261023-155218.{log,xml}`, `validation-summary.json`,
+`frontend-tests-final.log`, `frontend-build.log`, `frontend-lint.log`, `ruff.log`
+and the two review reports. The original parent log/XML remain intact; browser
+module scratch paths were reused by follow-ups, so they are not claimed as a complete
+archive of every initial screenshot. Main-worktree readiness passed without provider
+calls. Public hosting, new live checks, benchmark execution and AWS changes are
+outside this delivery.
+
 ### Unified local database and configuration
 
 On 23 October 2026 (Australia/Sydney), configuration consolidation started at
@@ -167,7 +219,9 @@ retained the original physical volume, database identity, all sixteen table coun
 Product content hashes; automated test databases are stopped. The existing `.env.example`
 and `GLOSSARY.md` edits remain uncommitted and excluded. A read-only post-acceptance
 HTTP check returned 200 and matched the current frontend build. The user's confirmation
-records local Product acceptance; remote code delivery, public hosting and version-level
+records local Product acceptance. Code delivery is tracked by
+[PR #210](https://github.com/rplalala/Dayloom/pull/210) and
+[#208](https://github.com/rplalala/Dayloom/issues/208); public hosting and version-level
 research freezes remain separate decisions.
 
 ### Complete local runtime and bounded real-service acceptance
@@ -358,4 +412,5 @@ and ports, with external transports substituted. The separately authorized real-
 journey above uses the normal daily database on port 55432 and real providers; it does
 not change the safety boundary for automated tests. These engineering results establish
 neither a provider-quality comparison, formal benchmark, research conclusion, version
-freeze nor scale guarantee. Remote Git delivery and deployment remain separate.
+freeze nor scale guarantee. PR #210 tracks remote code delivery; public deployment
+remains separate.
