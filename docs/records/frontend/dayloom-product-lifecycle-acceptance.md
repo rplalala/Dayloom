@@ -86,6 +86,50 @@ mood mapping and native-dialog backdrop predicate while leaving close/busy polic
 
 ## Verification and evidence
 
+### Unified local database and configuration
+
+On 23 October 2026 (Australia/Sydney), configuration consolidation started at
+`c1200b38a9e4ba63d8564d8d29422af68b7ae556`. Implementation `32e5537` and separate
+compatibility correction `abb8a28` unify Product, retrieval and maintenance connections
+under `DAYLOOM_DB_*`, merge the ignored environment files into root `.env`, and share
+`GOOGLE_MAPS_API_KEY` between planning and Product photos. Root `product.yaml` remains
+separate from planning policy. Existing unrelated environment values, passwords,
+signing credentials, the sample's Unsplash addition and `GLOSSARY.md` edits were preserved.
+
+The actual local migration renamed `tripworld`/`tripworld_test` to
+`dayloom`/`dayloom_test` and the login role to `dayloom`. Before-and-after checks
+preserved database, schema, role and table identities, ownership and all 21 table
+content fingerprints: sixteen runtime tables and five retained test tables. The
+runtime retains 647,057 entities and 577,011 vectors. Compose still mounts the same
+`reliable-tripworld_tripworld_pgdata` volume, now declared external. Full custom-format
+database backups, a role snapshot and original environment files were retained locally
+before the rename; they contain private data and are excluded from tracked evidence.
+
+Post-migration readiness exposed pgvector in the retained `tripworld` schema while
+PostgreSQL's default `$user` search path now resolved the renamed role. An isolated
+regression reproduced the missing-vector-type error. The shared connection policy
+now explicitly searches `tripworld,public`, without moving the extension or rebuilding
+the corpus. The regression fixture also needed the existing embedding-space record
+before its search assertion could run. The final 59-case configuration, real PostgreSQL
+and retrieval set passed, covering extensions in both supported schemas. Public Product
+migrations reran with zero changes; local readiness and HTTP health/home checks passed.
+
+The full backend invocation ran 4,952 cases: 4,879 passed, 71 skipped and two failed.
+The failures were CLI fixtures intentionally loading synthetic dotenv files while the
+isolated runner disabled dotenv loading. Scoped fixture corrections were followed by
+all fifteen tests in that file passing; this is not a single all-green full-suite run.
+The gate reported three warnings, including Windows subprocess decoding warnings.
+Nineteen affected packet/API cases and six actual Chromium account/media journeys
+also passed with external services substituted. Standards and Spec reviews were clear
+for the implementation and correction. These checks preserve independent V0–V3 entry
+points and do not repeat the earlier authorized real-provider journey.
+
+Credential-free fingerprints and original validation outputs are identified locally
+under `.scratch/dayloom-db-unification/` by `before-migration.json`,
+`after-migration.json`, `runtime-final.json`, `validation-summary.json` and the two
+review reports. They are evidence identifiers, not published dependencies. The normal
+built frontend and FastAPI runtime were restored together at `http://localhost:5173`.
+
 ### Final local Product acceptance
 
 On 23 October 2026 (Australia/Sydney), the user explicitly accepted the complete local

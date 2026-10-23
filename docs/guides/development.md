@@ -43,9 +43,10 @@ V0-V3 and the existing structured form. Product generation HTTP endpoints requir
 authentication and submit the durable account-owned task lifecycle.
 
 Populate local `.env` from [the non-secret example](../../.env.example).
-Foundry endpoint/deployment/key and `GOOGLE_MAPS_API_KEY` serve planning;
-`.env.tripworld` or process environment supplies `OPENAI_API_KEY` and
-`TRIPWORLD_DB_HOST/PORT/NAME/USER/PASSWORD` for retrieval. Model and deployment names
+Foundry endpoint/deployment/key serve planning. `GOOGLE_MAPS_API_KEY` is shared by
+planning and Product place photos. The same `.env` or process environment supplies
+`OPENAI_API_KEY` for retrieval embeddings and `DAYLOOM_DB_*` for shared persistence.
+Model and deployment names
 are distinct settings. Never commit real credentials. Default local DB host/port are
 127.0.0.1:55432. See [configuration](../../config/README.md) for exact current keys.
 
@@ -63,20 +64,41 @@ The root `compose.yaml` uses the Docker Compose project `dayloom` and container
 `postgres`, exposed only on `127.0.0.1:55432` by default. Start it with:
 
 ```powershell
-docker compose --env-file .env.tripworld up -d postgres
+docker compose up -d postgres
 ```
 
-The Compose volume alias is `dayloom_pgdata`; fresh installations use that physical
-volume name too. Existing installations must set `TRIPWORLD_DB_VOLUME` in ignored
-`.env.tripworld` to their actual current volume. The existing local installation
+The Compose volume alias is `dayloom_pgdata`. It is external storage, so Compose
+reuses it and does not delete it through `down --volumes`. Fresh installations create
+the default volume once with `docker volume create dayloom_pgdata` before starting
+PostgreSQL. Existing installations must set `DAYLOOM_DB_VOLUME` in ignored
+`.env` to their actual current volume. The existing local installation
 retains `reliable-tripworld_tripworld_pgdata`; this storage identifier does not affect
 the displayed project/container names. Selecting another volume would expose an empty
 database. Do not remove the existing volume or re-ingest/re-embed the corpus.
 
-The SQL database remains `tripworld`. Compose/project/container naming does not rename
-an initialized database. The `TRIPWORLD_DB_*` connection settings retain their retrieval
-domain meaning; database credentials, host port and independent V0–V3 connections stay
-unchanged.
+The shared SQL database and login role are `dayloom`. The `app` schema stores Product
+accounts, drafts, tasks and trips; `tripworld` stores retrieval entities and embeddings.
+One PostgreSQL service hosts both schemas. The local retained test database is
+`dayloom_test`; automated acceptance uses explicitly isolated databases instead.
+
+| Shared environment key | Default / meaning |
+| --- | --- |
+| `DAYLOOM_DB_HOST` | `127.0.0.1` |
+| `DAYLOOM_DB_PORT` | `55432` on the host |
+| `DAYLOOM_DB_NAME` | `dayloom` |
+| `DAYLOOM_DB_USER` | `dayloom` |
+| `DAYLOOM_DB_PASSWORD` | Required private password; used by Compose and application clients |
+| `DAYLOOM_DB_VOLUME` | `dayloom_pgdata` for new installs; retained physical volume for existing data |
+| `DAYLOOM_DB_URL` | Optional complete connection override for application/maintenance clients; takes precedence over split fields and must specify the database name |
+
+Product, retrieval and corpus tools use the same connection settings, including an
+explicit `tripworld,public` search path so retained pgvector types remain visible after
+a login-role rename. Compose needs
+the split fields because it initializes the PostgreSQL service; leave the URL unset
+for normal local use. A non-secret `product.yaml` setting never contains credentials.
+Changing Compose initialization variables does not rename an existing database or role.
+Migrate their names explicitly before restarting against retained storage; never select
+an empty volume as a naming workaround.
 
 ## Complete local Product runtime
 
@@ -98,7 +120,7 @@ uv run python scripts/run_product.py
 
 The root `product.yaml` configures `http://localhost:5173` and explicitly allows
 local HTTP. `--port` must match the configured origin's port. The launcher loads
-`.env` and `.env.tripworld` from the repository root without overriding existing
+`.env` from the repository root without overriding existing
 process values. It serves `frontend/dist`,
 including direct navigation/reload of Product and Developer routes; missing APIs and
 assets retain their HTTP errors. Rebuild the frontend after changing its source.
@@ -145,34 +167,33 @@ process environment:
 
 | Key | Meaning |
 | --- | --- |
-| `PRODUCT_DATABASE_URL` | PostgreSQL connection URL for Product persistence |
 | `PRODUCT_JWT_SECRET` | Independently generated signing secret, at least 32 characters |
 | `PRODUCT_API_PROXY` | Vite process setting; defaults to `http://127.0.0.1:8000` |
-| `PRODUCT_GOOGLE_PLACES_MEDIA_KEY` | Optional server-only Places API key for verified Product photos; missing means illustration fallback |
+| `GOOGLE_MAPS_API_KEY` | Shared server-only key for planning and verified Product place photos; absent photo credentials mean illustration fallback |
 | `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional server-only Unsplash key for the curated atmosphere catalog; takes precedence over the existing `UNSPLASH_API_KEY` alias; missing both means illustration fallback |
 
 Run `uv sync --locked` and `npm --prefix frontend ci`, then apply migrations with
 `uv run python scripts/migrate_product.py`. The entrypoint applies only Product SQL,
 retains SHA-256 integrity and never rebuilds the TripWorld corpus. Start the API using
 the normal launcher. Open the exact origin configured in `product.yaml` or its
-environment override. The migration command needs only the database URL and resolves
-the default `.env` from the repository; it does not require a signing key or initialize
+environment override. The migration command resolves the shared database settings
+from the repository `.env` and process environment; it needs no signing key or
 planner/provider settings. Production uses same-origin HTTPS routing.
 
 Acceptance requires a separate disposable database whose name includes `test`.
 Never point the acceptance URL at the runtime/retrieval database. Prepare an isolated
 PostgreSQL instance, choose unused ports and set its URL in
-`PRODUCT_TEST_DATABASE_URL`.
+`DAYLOOM_DB_TEST_URL`.
 
 Both URL and PostgreSQL conninfo forms require an explicitly supplied actual database
 name containing `test`; query options, usernames and environment defaults do not satisfy
 the safety check. Supplied unsafe values fail before migrations, connections or cleanup.
 The pytest host also needs complete isolated Product settings, even though browser
-children construct their own strict environment. Point both Product URLs at the
+children construct their own strict environment. Point both test URLs at the
 same disposable database and use a synthetic signing secret. From the worktree root:
 
 ```powershell
-$env:PRODUCT_DATABASE_URL = $env:PRODUCT_TEST_DATABASE_URL
+$env:DAYLOOM_DB_URL = $env:DAYLOOM_DB_TEST_URL
 $env:PRODUCT_JWT_SECRET = "isolated-tests-only-not-a-runtime-signing-secret"
 $env:PRODUCT_ORIGIN = "http://127.0.0.1:5120"
 $env:PRODUCT_ALLOW_INSECURE_LOOPBACK = "true"
@@ -189,6 +210,11 @@ uv run pytest backend/tests/product/test_profile_browser.py --basetemp=.scratch/
 uv run pytest backend/tests/product/test_drafts.py --basetemp=.scratch/pytest-drafts
 uv run pytest backend/tests/product/test_draft_browser.py --basetemp=.scratch/pytest-draft-browser
 ```
+
+For real corpus-persistence contract tests, reuse the explicitly isolated test URL
+and set `DAYLOOM_DB_TESTS=1` before running `backend/tests/tripworld/test_database.py`.
+These tests replace only the isolated database's `tripworld` schema; their guard
+rejects runtime database URLs before opening a connection.
 
 The browser fixture starts/stops its own API and Vite processes, exercises real
 accounts through PostgreSQL, and writes logs/screenshots only under `.scratch/browser`
@@ -451,8 +477,8 @@ override must not disguise stale dates in a live run.
 ```powershell
 .\.venv\Scripts\python.exe scripts/run_v0.py --input-json request.json
 .\.venv\Scripts\python.exe scripts/run_v1.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
-.\.venv\Scripts\python.exe scripts/run_v2.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600 --rag-env-file .env.tripworld
-.\.venv\Scripts\python.exe scripts/run_v3.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600 --rag-env-file .env.tripworld
+.\.venv\Scripts\python.exe scripts/run_v2.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
+.\.venv\Scripts\python.exe scripts/run_v3.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
 ```
 
 V0 is tool-free and accepts neither runtime configuration nor development-timeout flags.

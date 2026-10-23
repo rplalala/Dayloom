@@ -25,7 +25,8 @@ Repository content is English; user-facing development discussion is Chinese.
 
 Use a modular monolith: React frontend; FastAPI API/application/backend services;
 shared LLM, evidence, RAG and orchestration components with version-specific
-entry points; PostgreSQL + pgvector for TripWorld retrieval.
+entry points; the shared `dayloom` PostgreSQL database with pgvector for TripWorld
+retrieval and the `dayloom` login role.
 Product uses the separate `app` schema in that database for accounts/profiles,
 incomplete drafts, durable account-owned tasks, recoverable previews and normalized
 saved trips. Checksum-protected migrations and owner-scoped operation receipts support
@@ -53,6 +54,12 @@ The complete local Dayloom Product was accepted by the user on 23 October 2026 a
 The built frontend and normal API share `http://localhost:5173`; the `dayloom` Compose
 project runs `postgres` against the retained runtime volume. Remote code delivery and
 hosting remain pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
+
+One ignored root `.env` supplies shared `DAYLOOM_DB_*` connections and provider
+credentials. Product deployment options live in root `product.yaml`; planning policies
+remain in `config/runtime.yaml`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
+See the [development guide](docs/guides/development.md#local-postgresql-naming-and-storage)
+for storage retention, overrides and isolated test settings.
 
 Product UI/API uses V3 and an allowlisted presentation contract. Developer mode
 exposes V0-V3 independently. Current input assistance includes destination suggestions,
