@@ -1664,7 +1664,7 @@
   "reader_views": [
     {
       "path": "report.md",
-      "sha256": "83218d7aede47ee2c8460c0bfdfdefc5393b3e99201930ff57c42ace654cf2bd"
+      "sha256": "cd82a37c98e79a26272d1a2339697b1c8a9dbee07624f36a93e734a8b69ff293"
     },
     {
       "path": "itinerary.md",
@@ -1683,11 +1683,11 @@
     "status": "pending_researcher_acceptance",
     "final": {
       "path": "evaluation/density-final.json",
-      "sha256": "0c419ba20e369efb26ae1804e2f091a013432b0144918e8f222bc1427c8fe671"
+      "sha256": "626623746203ab7dba82fd50182085c8aa72f00f692bf94f2efc553a37fb61c8"
     },
     "pair": {
       "path": "evaluation/density-pair.json",
-      "sha256": "e9f7b671ab306a91c2a18eb2d9814b9de60251e35b816f804449f30fded1029e"
+      "sha256": "2e36268f6ab99562c36522e9d984b2bb4ec58b1a4785752ed6ddb34ebe00f559"
     },
     "scope": "New offline density reports; original factual sources, receipts and prior acceptance remain unchanged."
   }

@@ -30,6 +30,10 @@ combines each request with independently reviewed requirements, selected version
 results, usage and provenance under the existing
 [artifact contract](../docs/contracts/0001-evaluation-artifacts.md).
 
+Public material-index hashes for the Rich-policy replacement identify Git-published
+LF text. The offline verifier normalizes checkout CRLF for those public byte checks;
+private source and native acquisition hashes always retain their exact original bytes.
+
 ## Per-case execution and joint review
 
 Cases may progress concurrently in coordinator-assigned worker queues. Each case

@@ -903,8 +903,8 @@
   "documents": [
     {
       "path": "report.md",
-      "sha256": "5b47d5735e6f7e67a874fbbe62992e4803cc8a14ed4d52baa6f6f03404f938dc",
-      "bytes": 20763,
+      "sha256": "ceadf9ba8eb627e2f1fd63348751affcc91a339af5529e13e5aeb045d537c198",
+      "bytes": 21085,
       "original_source": {
         "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-03/report.md",
         "sha256": "a5a38d78156214cc61a9880c642ea90e3f375464f01a7f69ab622a69b8655b80",
@@ -1107,11 +1107,11 @@
     "status": "pending_researcher_acceptance",
     "final": {
       "path": "evaluation/density-final.json",
-      "sha256": "f29c330a91c7cccb0f036f7f46b63b6c924d7faf43a0342c48a716c8b0351ec2"
+      "sha256": "8984d7ab299b571c39619a6a1f8e0060c327300c95595b1e14b42de094cd2169"
     },
     "pair": {
       "path": "evaluation/density-pair.json",
-      "sha256": "34f7238ee506a93668e817bea0af986b4d2561475b5fe7a49730fa55670b353a"
+      "sha256": "b391146f37756acd4115ea0de1d9e84f2d51421b7c3ccb53a298cb1d6248b0f2"
     },
     "scope": "New offline density reports; original factual sources, receipts and prior acceptance remain unchanged."
   }

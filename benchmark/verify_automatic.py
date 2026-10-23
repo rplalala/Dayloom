@@ -23,6 +23,15 @@ def digest(value):
     return hashlib.sha256(encoded.encode()).hexdigest()
 
 
+def published_sha256(path):
+    """Hash published LF text, independent of Windows checkout conversion.
+
+    This applies only to public JSON/Markdown projections. Native private source
+    and acquisition hashes continue to identify their exact original bytes.
+    """
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
 @lru_cache(None)
 def raw(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
@@ -91,6 +100,19 @@ def verify_score(case, material):
     assert scored["overall_total"] == material["overall_total"], (case, "overall")
 
 
+def verify_reader_sizes(value, base):
+    """Check published reader sizes where an index records them."""
+    if isinstance(value, dict):
+        if value.get("path") == "report.md" and "bytes" in value:
+            assert len((base / "report.md").read_bytes().replace(b"\r\n", b"\n")) == value["bytes"]
+        for key, child in value.items():
+            if key not in ("source", "sources", "native_source", "original_source"):
+                verify_reader_sizes(child, base)
+    elif isinstance(value, list):
+        for child in value:
+            verify_reader_sizes(child, base)
+
+
 def main():
     report = load("benchmark/automatic-results.json")
     assert report["content_sha256"] == digest(
@@ -102,11 +124,23 @@ def main():
         cid = case["case_id"]
         final = load("benchmark/" + case["primary_source"])
         pair = load("benchmark/" + case["pair_source"])
+        case_index = load(f"benchmark/{cid}/material-index.json")
+        verify_reader_sizes(case_index, ROOT / "benchmark" / cid)
+        for kind in ("final", "pair"):
+            binding = case_index.get("density_policy_derivations", {}).get(kind)
+            if binding:
+                assert (
+                    published_sha256(ROOT / "benchmark" / cid / binding["path"])
+                    == binding["sha256"]
+                )
         for value in (final, pair):
             if "content_sha256" in value:
                 assert value["content_sha256"] == digest(
                     {k: v for k, v in value.items() if k != "content_sha256"}
                 )
+            source = value.get("source", {})
+            if source.get("public_path"):
+                assert published_sha256(ROOT / source["public_path"]) == source["file_sha256"]
         final = final.get("quality", final)["groups"][0]
         pair = pair["groups"][0]
         scores[cid], ranks[cid] = {}, {}
@@ -161,10 +195,10 @@ def main():
     index = load("benchmark/case-04/material-index.json")
     for entry in index["entries"]:
         path = base / entry["path"]
-        assert hashlib.sha256(path.read_bytes()).hexdigest() == entry["sha256"], path
+        assert published_sha256(path) == entry["sha256"], path
         assert digest(load(path)) == entry["expanded_semantic_sha256"], path
     for entry in index["reader_views"]:
-        assert hashlib.sha256((base / entry["path"]).read_bytes()).hexdigest() == entry["sha256"]
+        assert published_sha256(base / entry["path"]) == entry["sha256"]
     ledger = load("benchmark/case-04/analysis/resources/all-attempt-resources.json")
     keys = [
         tuple(event[k] for k in ("namespace", "run_id", "kind", "provider", "event_id"))
