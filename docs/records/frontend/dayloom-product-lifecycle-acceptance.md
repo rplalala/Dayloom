@@ -40,6 +40,17 @@ A subsequent integration probe found JSON numeric exponents beyond Decimal's rep
 
 A failed early browser fixture inherited the host environment, and pytest's failure representation exposed real AWS credential values. The corrected harness admits a strict subprocess environment and opaque metadata; connection strings use `SecretStr`, with failure-frame regression tests. Four affected temporary raw logs were replaced by verified sanitized copies and removed locally. Subsequent bounded scans of committed diffs and retained text artifacts found no matching current credential values. This local cleanup cannot revoke content already emitted in an earlier tool transcript, and is not evidence of credential rotation or global erasure. No credential values belong in this record.
 
+During deployment consolidation on 23 October 2026 (`00fb103` plus an uncommitted
+launcher regression), a new Compose launcher fixture repeated this failure pattern by returning inherited environment values as a
+pytest fixture argument. Its intentional red diagnostic exposed host AWS credentials
+in the tool transcript. Separate correction `c99330c` restricts the fixture to explicit
+OS/tool paths and verifies an actual child-pytest failure with a synthetic credential.
+The final 32-case launcher/database/Product configuration set passed. A bounded scan
+found no exact current host credential values in retained task text artifacts under
+`.scratch/deployment-config/`; private backups were excluded. The user was informed
+and advised to rotate the affected AWS access key. Rotation was not performed, and
+the prior output cannot be revoked by this source or artifact correction.
+
 The first broad media run passed 304 tests and failed 28 because its pytest host lacked complete isolated Product settings; browser children already had them. After correcting the host environment, those 28 passed without source changes. Raw Pydantic input representations contained dotenv configuration fragments. A designated sanitized log removes 56 input-value lines while preserving the failure counts, trace and cause; the raw diagnostic is excluded from the retained archive. A fake-sentinel red/green test now verifies Product settings suppress input representations. Exact complete-value scans do not prove absence of truncated fragments in the original output.
 
 The integrated backend gate enabled real TripWorld database acceptance in a separate disposable database. Two installed offline V1/V2 CLI tests inherited that pytest host's database environment; the unchanged credential guard then rejected `RawCapture` enumerating environment variables for redaction. The original guard event files and a minimal fake-sentinel-only contrast both recorded the same forbidden password-name read. A stack-only diagnostic identified environment enumeration rather than settings bootstrap, real retrieval or a missing provider substitute. Explicit fake-host-password regressions reproduced both failures; strict OS/tool/TEMP admission for the test subprocess made both pass. Production redaction, the zero-read/network/import guards and the 60-second subprocess timeout remain unchanged.

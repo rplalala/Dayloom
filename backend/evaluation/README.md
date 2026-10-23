@@ -1234,9 +1234,10 @@ V0 material bundle. Preparation is offline; execution requires explicit user app
 the exact manifest digest and the [smoke execution handoff](../../docs/agents/smoke-tests.md).
 Existing historical authorization is used only to verify source material. It grants no
 new request authority. Preparation accepts `--endpoint` without loading credentials;
-otherwise it reads existing V0 settings. Execution requires `AZURE_OPENAI_ENDPOINT`,
-`AZURE_OPENAI_DEPLOYMENT` and `AZURE_OPENAI_API_KEY` through V0 settings; no credentials
-are written to preparation. The request itself selects `gpt-6-luna`.
+otherwise it reads existing V0 settings. Execution resolves the endpoint/deployment
+from root `product.yaml` or `AZURE_OPENAI_ENDPOINT`/`AZURE_OPENAI_DEPLOYMENT` overrides,
+with the private `AZURE_OPENAI_API_KEY` from the environment; no credentials are written
+to preparation. The request itself selects `gpt-6-luna`.
 
 ```powershell
 .venv/Scripts/python.exe -m tools.validation.identity_judgment_smoke prepare --material v0-identity-material.json --directory artifacts/new-identity-smoke --endpoint https://YOUR_RESOURCE.openai.azure.com/openai/v1/

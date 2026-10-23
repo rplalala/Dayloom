@@ -55,8 +55,10 @@ The built frontend and normal API share `http://localhost:5173`; the `dayloom` C
 project runs `postgres` against the retained runtime volume. Remote code delivery and
 hosting remain pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
 
-One ignored root `.env` supplies shared `DAYLOOM_DB_*` connections and provider
-credentials. Product deployment options live in root `product.yaml`; planning policies
+One ignored root `.env` supplies credentials and machine-specific overrides. Root
+`product.yaml` supplies Product options, shared database connection fields and Foundry
+endpoint/deployment settings. `scripts/run_database.py` passes the same resolved
+connection settings to Compose. Planning policies
 remain in `config/runtime.yaml`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
 See the [development guide](docs/guides/development.md#local-postgresql-naming-and-storage)
 for storage retention, overrides and isolated test settings.

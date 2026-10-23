@@ -43,9 +43,10 @@ V0-V3 and the existing structured form. Product generation HTTP endpoints requir
 authentication and submit the durable account-owned task lifecycle.
 
 Populate local `.env` from [the non-secret example](../../.env.example).
-Foundry endpoint/deployment/key serve planning. `GOOGLE_MAPS_API_KEY` is shared by
-planning and Product place photos. The same `.env` or process environment supplies
-`OPENAI_API_KEY` for retrieval embeddings and `DAYLOOM_DB_*` for shared persistence.
+Root `product.yaml` supplies the Foundry endpoint/deployment and shared database
+connection fields. `.env` supplies private keys, including the shared planning/photo
+`GOOGLE_MAPS_API_KEY`, Foundry credentials, `OPENAI_API_KEY` for retrieval embeddings
+and `DAYLOOM_DB_PASSWORD`. Environment variables remain explicit overrides.
 Model and deployment names
 are distinct settings. Never commit real credentials. Default local DB host/port are
 127.0.0.1:55432. See [configuration](../../config/README.md) for exact current keys.
@@ -64,7 +65,7 @@ The root `compose.yaml` uses the Docker Compose project `dayloom` and container
 `postgres`, exposed only on `127.0.0.1:55432` by default. Start it with:
 
 ```powershell
-docker compose up -d postgres
+uv run python scripts/run_database.py up -d --wait postgres
 ```
 
 The Compose volume alias is `dayloom_pgdata`. It is external storage, so Compose
@@ -78,27 +79,45 @@ database. Do not remove the existing volume or re-ingest/re-embed the corpus.
 
 The shared SQL database and login role are `dayloom`. The `app` schema stores Product
 accounts, drafts, tasks and trips; `tripworld` stores retrieval entities and embeddings.
-One PostgreSQL service hosts both schemas. The local retained test database is
+One PostgreSQL service hosts both schemas. Database connection values belong to the
+`database` section of `product.yaml`; normal `.env` files need only its private password
+and any machine-specific volume override. The local retained test database is
 `dayloom_test`; automated acceptance uses explicitly isolated databases instead.
 
-| Shared environment key | Default / meaning |
+| Environment override | YAML source / meaning |
 | --- | --- |
-| `DAYLOOM_DB_HOST` | `127.0.0.1` |
-| `DAYLOOM_DB_PORT` | `55432` on the host |
-| `DAYLOOM_DB_NAME` | `dayloom` |
-| `DAYLOOM_DB_USER` | `dayloom` |
+| `DAYLOOM_DB_HOST` | `product.yaml: database.host` |
+| `DAYLOOM_DB_PORT` | `product.yaml: database.port` |
+| `DAYLOOM_DB_NAME` | `product.yaml: database.name` |
+| `DAYLOOM_DB_USER` | `product.yaml: database.user` |
 | `DAYLOOM_DB_PASSWORD` | Required private password; used by Compose and application clients |
 | `DAYLOOM_DB_VOLUME` | `dayloom_pgdata` for new installs; retained physical volume for existing data |
 | `DAYLOOM_DB_URL` | Optional complete connection override for application/maintenance clients; takes precedence over split fields and must specify the database name |
 
-Product, retrieval and corpus tools use the same connection settings, including an
-explicit `tripworld,public` search path so retained pgvector types remain visible after
-a login-role rename. Compose needs
-the split fields because it initializes the PostgreSQL service; leave the URL unset
-for normal local use. A non-secret `product.yaml` setting never contains credentials.
+Product, retrieval, corpus tools and the database launcher use the same connection
+settings, including an explicit `tripworld,public` search path so retained pgvector types remain visible after
+a login-role rename. `scripts/run_database.py` resolves these settings and passes the
+result to `compose.yaml` in its subprocess environment. Compose does not parse
+`product.yaml` itself; use the launcher for lifecycle/configuration commands, such as
+`uv run python scripts/run_database.py config --quiet`. The template requires the
+resolved fields rather than maintaining independent defaults. Leave the URL unset
+for normal local use; a URL override for local Compose must explicitly supply a
+IPv4 loopback host (`127.0.0.1` or `localhost`), port, database, user and password.
+The local launcher rejects `::1` because this Compose template publishes only on
+IPv4. Application clients may still select separately hosted IPv6 databases. YAML
+never contains credentials.
 Changing Compose initialization variables does not rename an existing database or role.
 Migrate their names explicitly before restarting against retained storage; never select
 an empty volume as a naming workaround.
+
+The same YAML file has a `foundry` section with `endpoint` and `deployment` for all
+independent V0–V3 planners and Product. `AZURE_OPENAI_ENDPOINT` and
+`AZURE_OPENAI_DEPLOYMENT` remain environment overrides. `AZURE_OPENAI_API_KEY` stays
+private in `.env`. The unused `LLM_MODEL` key is removed; the configured deployment
+selects the actual model. The loader rejects unknown keys, duplicate mappings and
+credentials in both nested sections. Explicit settings arguments take precedence over
+process environment, then dotenv, then YAML and code fallbacks. Shared configuration
+does not initialize Product authentication, a database connection or a provider client.
 
 ## Complete local Product runtime
 
@@ -107,7 +126,7 @@ origin. It uses the configured real model, Google Places/Routes, Open-Meteo,
 TripWorld retrieval and media adapters. It does not load a test application factory,
 provider substitutes or the offline walkthrough's external-link interception.
 
-Prepare the ignored environment files and Product settings described below, then run:
+Prepare the ignored environment file and shared deployment settings described below, then run:
 
 ```powershell
 uv sync --locked --group retrieval
@@ -144,7 +163,8 @@ to create the separate `app` schema. Product migration/account settings are opti
 for the independent V0-V3 and research commands.
 
 The root [product.yaml](../../product.yaml), beside [compose.yaml](../../compose.yaml),
-owns non-secret Product deployment settings. It is separate from planner policies in
+owns the shared non-secret deployment settings. Its Product options are listed below;
+its database and Foundry sections are defined above. It is separate from planner policies in
 `config/runtime.yaml` and is not included in their snapshots or hashes.
 
 | YAML key | Environment override | Meaning |
@@ -177,8 +197,8 @@ Run `uv sync --locked` and `npm --prefix frontend ci`, then apply migrations wit
 retains SHA-256 integrity and never rebuilds the TripWorld corpus. Start the API using
 the normal launcher. Open the exact origin configured in `product.yaml` or its
 environment override. The migration command resolves the shared database settings
-from the repository `.env` and process environment; it needs no signing key or
-planner/provider settings. Production uses same-origin HTTPS routing.
+from `product.yaml`, the repository `.env` and process environment; it needs no signing
+key or provider credentials. Production uses same-origin HTTPS routing.
 
 Acceptance requires a separate disposable database whose name includes `test`.
 Never point the acceptance URL at the runtime/retrieval database. Prepare an isolated

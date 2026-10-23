@@ -4,8 +4,9 @@
 its current values; it is not another default file. The tables enumerate every YAML leaf.
 English names identify application policies, not measured optimal settings or user demands.
 
-Product deployment settings live separately in the root `product.yaml`, beside
-`compose.yaml`. See [Product setup](../docs/guides/development.md#product-account-setup-and-acceptance)
+Product options, shared database connections and Foundry endpoint/deployment settings
+live separately in root `product.yaml`, beside `compose.yaml`. Credentials remain in
+`.env`; `scripts/run_database.py` supplies resolved database settings to Compose. See [Product setup](../docs/guides/development.md#product-account-setup-and-acceptance)
 for their keys, environment overrides and credential boundary.
 
 ## Loading, versions and overrides
@@ -31,8 +32,9 @@ are introduced. `--development-timeout-seconds` remains explicit, positive, and 
 `development_timeout_seconds`; YAML alone never grants 600 seconds. V3 counts from request
 entry before dependency assembly. Existing `--reference-date`, input arguments and
 `--runtime-config` responsibilities are unchanged. `--rag-env-file` supplies the existing
-RAG environment with override disabled. Provider/model credentials and deployment settings stay
-in existing environment settings; no secret values belong here or in this README.
+RAG environment with override disabled. Provider credentials remain in environment settings; deployment defaults come from
+root `product.yaml` with environment overrides. No secret values belong in either YAML
+file or in this README.
 
 `v3_request_policy` records base/effective runtime SHA-256 identifiers, review override source,
 effective Repair values, shared Nearby reservation and entry deadline. Existing run configuration
