@@ -1,6 +1,6 @@
 """Real browser -> Vite -> FastAPI -> isolated PostgreSQL account journeys.
 
-Set PRODUCT_TEST_DATABASE_URL and PRODUCT_BROWSER_TESTS=1. External services are unused.
+Set DAYLOOM_DB_TEST_URL and PRODUCT_BROWSER_TESTS=1. External services are unused.
 All transient processes, screenshots and logs belong to this worktree's .scratch.
 """
 
@@ -33,7 +33,7 @@ SCRATCH = ROOT / ".scratch" / "browser"
 
 @pytest.fixture(scope="module")
 def browser_app():
-    dsn = SecretStr(os.environ.get("PRODUCT_TEST_DATABASE_URL", ""))
+    dsn = SecretStr(os.environ.get("DAYLOOM_DB_TEST_URL", ""))
     if os.environ.get("PRODUCT_BROWSER_TESTS") != "1" or not dsn.get_secret_value():
         pytest.skip("Enable browser acceptance with an explicitly isolated Product test database")
     require_test_database(dsn)

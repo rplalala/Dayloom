@@ -26,7 +26,10 @@ def test_built_product_serves_navigation_assets_and_the_real_api(tmp_path):
 
 @pytest.mark.parametrize("explicit_key", [None, "dedicated-media-key"])
 def test_curated_media_reads_existing_unsplash_configuration(tmp_path, monkeypatch, explicit_key):
+    from backend.app.product.media import MediaSettings
+
     monkeypatch.chdir(tmp_path)
+    monkeypatch.setitem(MediaSettings.model_config, "env_file", tmp_path / ".env")
     monkeypatch.delenv("PRODUCT_UNSPLASH_ACCESS_KEY", raising=False)
     monkeypatch.delenv("UNSPLASH_API_KEY", raising=False)
     (tmp_path / "index.html").write_text("Dayloom", encoding="utf-8")

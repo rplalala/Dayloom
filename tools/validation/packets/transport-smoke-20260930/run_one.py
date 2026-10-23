@@ -21,6 +21,7 @@ from backend.app.policies.trip_dates import (  # noqa: E402
     validate_requested_trip_dates,
 )
 from backend.app.runtime.config_loader import load_runtime_config_file  # noqa: E402
+from backend.app.runtime.database import DatabaseSettings  # noqa: E402
 from backend.app.schemas.request import PlanningRequest  # noqa: E402
 from backend.app.versions.v0.config import V0Settings  # noqa: E402
 from backend.app.versions.v1.config import V1Settings  # noqa: E402
@@ -55,7 +56,7 @@ def source_hashes():
     for folder in ("backend", "scripts", "tools/validation"):
         files.update((ROOT / folder).rglob("*.py"))
     files.update((ROOT / "config").glob("*.yaml"))
-    files.update(p for p in (ROOT / ".env", ROOT / ".env.tripworld") if p.is_file())
+    files.update(p for p in (ROOT / ".env",) if p.is_file())
     files.update(
         (ROOT / "data/tripworld") / name
         for name in (
@@ -73,6 +74,7 @@ def environment_hash():
         "OPENAI_",
         "GOOGLE_",
         "TRIPWORLD_",
+        "DAYLOOM_",
         "APP_",
         "HTTP_PROXY",
         "HTTPS_PROXY",
@@ -85,7 +87,7 @@ def environment_hash():
 
 def all_secrets():
     values = dict(os.environ)
-    for name in (".env", ".env.tripworld"):
+    for name in (".env",):
         values.update({f"{name}:{k}": v for k, v in dotenv_values(ROOT / name).items()})
     return tuple(
         v
@@ -158,11 +160,10 @@ def credentials(version):
         settings.google_maps_api_key.get_secret_value(),
     ]
     if version in {"v2", "v3"}:
-        rag_file = ROOT / ".env.tripworld"
+        rag_file = ROOT / ".env"
         if not rag_file.is_file():
             raise ValueError("TripWorld environment file unavailable")
-        values = dotenv_values(rag_file)
-        password = os.environ.get("TRIPWORLD_DB_PASSWORD") or values.get("TRIPWORLD_DB_PASSWORD")
+        password = DatabaseSettings(_env_file=rag_file).connection_parameters().get("password")
         if not password:
             raise ValueError("TripWorld database credential unavailable")
         secrets.append(password)
@@ -238,7 +239,7 @@ def command_for(version, date, case_output):
             "--execute",
         ]
         if version == "v3":
-            command += ["--rag-env-file", str(ROOT / ".env.tripworld"), "--capture-repair"]
+            command += ["--rag-env-file", str(ROOT / ".env"), "--capture-repair"]
         return command
     command = [
         sys.executable,
@@ -255,7 +256,7 @@ def command_for(version, date, case_output):
             "--development-timeout-seconds",
             "600",
             "--rag-env-file",
-            str(ROOT / ".env.tripworld"),
+            str(ROOT / ".env"),
         ]
     return command
 

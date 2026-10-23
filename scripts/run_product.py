@@ -60,7 +60,6 @@ def main(argv=None):
     args = parser.parse_args(argv)
     os.chdir(PROJECT_ROOT)
     load_dotenv(PROJECT_ROOT / ".env", override=False)
-    load_dotenv(PROJECT_ROOT / ".env.tripworld", override=False)
     try:
         application = create_product_application()
         settings = check_runtime()

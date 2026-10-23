@@ -189,7 +189,7 @@ def test_integer_numeric_boundary_saves_and_pg_reads_exactly_without_amount_expa
     assert response.status_code == 200, response.text
     saved = client.post(f"/api/previews/{response.json()['id']}/save", headers=headers, json={})
     assert saved.status_code == 200, saved.text
-    database = SecretStr(os.environ["PRODUCT_TEST_DATABASE_URL"])
+    database = SecretStr(os.environ["DAYLOOM_DB_TEST_URL"])
     with psycopg.connect(database.get_secret_value()) as connection:
         # The SQL comparison reads the exact stored value but returns only a boolean:
         # neither Python nor HTTP/log output expands a 131072-digit integer.

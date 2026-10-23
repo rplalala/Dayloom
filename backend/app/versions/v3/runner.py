@@ -157,8 +157,9 @@ def main(argv=None, **kwargs):
     args, remaining = parser.parse_known_args(argv)
     if args.runtime_config:
         remaining = ["--runtime-config", args.runtime_config, *remaining]
-    if args.rag_env_file:
-        load_dotenv(args.rag_env_file, override=False)
+    from backend.app.runtime.database import PROJECT_ROOT
+
+    load_dotenv(args.rag_env_file or PROJECT_ROOT / ".env", override=False)
     return tools_main(
         remaining,
         planner_runner=partial(

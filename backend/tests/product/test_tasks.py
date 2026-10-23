@@ -460,7 +460,7 @@ def test_terminal_update_failure_rolls_back_inserted_preview(client):  # noqa: F
         date(2026, 9, 11),
     )
     claim = store.claim(accepted["id"])
-    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    dsn = SecretStr(os.environ["DAYLOOM_DB_URL"])
     with psycopg.connect(dsn.get_secret_value()) as connection:
         connection.execute(
             "CREATE FUNCTION app.reject_completed_task() RETURNS trigger LANGUAGE plpgsql AS $$ "
@@ -546,7 +546,7 @@ def test_submission_observer_cancellation_cannot_drop_committed_scheduling(clien
     from backend.app.schemas.request import PlanningRequest
 
     account = register(client)
-    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    dsn = SecretStr(os.environ["DAYLOOM_DB_URL"])
 
     async def scenario():
         scheduled = asyncio.Event()

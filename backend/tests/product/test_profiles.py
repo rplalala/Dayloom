@@ -98,7 +98,7 @@ def test_profile_is_owner_only_and_rejects_unsupported_fields(client):
 
 def test_profile_database_domains_deduplication_and_owner_cascade(client):
     account = register(client)
-    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    dsn = SecretStr(os.environ["DAYLOOM_DB_URL"])
     for assignment in [
         "currency='XXX'",
         "pace='fast'",

@@ -371,17 +371,18 @@ def test_cli_loads_declared_base_and_rag_environment_only_for_execution(
     base = tmp_path / ".env"
     base.write_text("OPENAI_API_KEY=fixture-base-key\n", encoding="utf-8")
     rag = tmp_path / "rag.env"
-    rag.write_text("TRIPWORLD_TEST_DB=fixture-db\n", encoding="utf-8")
+    rag.write_text("DAYLOOM_DB_TEST_MARKER=fixture-db\n", encoding="utf-8")
     monkeypatch.setattr(os, "environ", dict(os.environ))
+    monkeypatch.delenv("PYTHON_DOTENV_DISABLED", raising=False)
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
-    monkeypatch.delenv("TRIPWORLD_TEST_DB", raising=False)
+    monkeypatch.delenv("DAYLOOM_DB_TEST_MARKER", raising=False)
     if existing_key:
         monkeypatch.setenv("OPENAI_API_KEY", existing_key)
 
     class EnvironmentRuntime:
         async def run(self, version, request, **kwargs):
             assert os.environ["OPENAI_API_KEY"] == (existing_key or "fixture-base-key")
-            assert os.environ["TRIPWORLD_TEST_DB"] == "fixture-db"
+            assert os.environ["DAYLOOM_DB_TEST_MARKER"] == "fixture-db"
             return result(version, request)
 
     argv = arguments(tmp_path) + ["--env-file", str(base), "--rag-env-file", str(rag)]

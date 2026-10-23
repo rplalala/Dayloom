@@ -24,7 +24,7 @@ def test_unsafe_database_is_rejected_before_any_side_effect(monkeypatch, dsn, fi
     def forbidden(*args, **kwargs):
         pytest.fail("Unsafe acceptance setup reached a connection or process")
 
-    monkeypatch.setenv("PRODUCT_TEST_DATABASE_URL", dsn)
+    monkeypatch.setenv("DAYLOOM_DB_TEST_URL", dsn)
     monkeypatch.setenv("PRODUCT_BROWSER_TESTS", "1")
     monkeypatch.setattr(psycopg, "connect", forbidden)
     monkeypatch.setattr(subprocess, "run", forbidden)

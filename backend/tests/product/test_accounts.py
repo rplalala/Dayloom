@@ -19,11 +19,11 @@ from backend.tests.product.database_safety import require_test_database
 
 @pytest.fixture
 def client(monkeypatch):
-    dsn = SecretStr(os.environ.get("PRODUCT_TEST_DATABASE_URL", ""))
+    dsn = SecretStr(os.environ.get("DAYLOOM_DB_TEST_URL", ""))
     if not dsn.get_secret_value():
-        pytest.skip("Set PRODUCT_TEST_DATABASE_URL to an isolated test database")
+        pytest.skip("Set DAYLOOM_DB_TEST_URL to an isolated test database")
     require_test_database(dsn)
-    monkeypatch.setenv("PRODUCT_DATABASE_URL", dsn.get_secret_value())
+    monkeypatch.setenv("DAYLOOM_DB_URL", dsn.get_secret_value())
     monkeypatch.setenv("PRODUCT_JWT_SECRET", "test-signing-key-with-at-least-32-characters")
     monkeypatch.setenv("PRODUCT_ALLOW_INSECURE_LOOPBACK", "true")
     monkeypatch.setenv("PRODUCT_ORIGIN", "http://localhost:5120")
@@ -165,7 +165,7 @@ def test_tokens_generic_login_errors_and_public_protection(client):
 
 
 def test_registration_profile_failure_rolls_back_account(client):
-    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    dsn = SecretStr(os.environ["DAYLOOM_DB_URL"])
     with psycopg.connect(dsn.get_secret_value()) as connection:
         connection.execute("""CREATE FUNCTION app.reject_profile()
             RETURNS trigger LANGUAGE plpgsql AS $$
@@ -203,7 +203,7 @@ def test_registration_profile_failure_rolls_back_account(client):
 def test_public_migration_rerun_checksum_and_tripworld_preservation(client, tmp_path):
     from backend.app.product.database import migrate
 
-    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    dsn = SecretStr(os.environ["DAYLOOM_DB_URL"])
     with psycopg.connect(dsn.get_secret_value()) as connection:
         connection.execute("CREATE SCHEMA IF NOT EXISTS tripworld")
         connection.execute(

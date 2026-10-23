@@ -4,11 +4,11 @@ services:
     container_name: postgres
     image: pgvector/pgvector:0.8.2-pg17@sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966
     environment:
-      POSTGRES_USER: ${TRIPWORLD_DB_USER:?Set TRIPWORLD_DB_USER}
-      POSTGRES_PASSWORD: ${TRIPWORLD_DB_PASSWORD:?Set TRIPWORLD_DB_PASSWORD}
-      POSTGRES_DB: ${TRIPWORLD_DB_NAME:-tripworld}
+      POSTGRES_USER: ${DAYLOOM_DB_USER:-dayloom}
+      POSTGRES_PASSWORD: ${DAYLOOM_DB_PASSWORD:?Set DAYLOOM_DB_PASSWORD}
+      POSTGRES_DB: ${DAYLOOM_DB_NAME:-dayloom}
     ports:
-      - "127.0.0.1:${TRIPWORLD_DB_PORT:-55432}:5432"
+      - "127.0.0.1:${DAYLOOM_DB_PORT:-55432}:5432"
     volumes:
       - dayloom_pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -19,4 +19,5 @@ services:
     shm_size: 256mb
 volumes:
   dayloom_pgdata:
-    name: ${TRIPWORLD_DB_VOLUME:-dayloom_pgdata}
+    external: true
+    name: ${DAYLOOM_DB_VOLUME:-dayloom_pgdata}

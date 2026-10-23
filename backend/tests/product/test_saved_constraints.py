@@ -30,7 +30,7 @@ def test_public_fresh_migration_rerun_checksum_and_tripworld_marker(client):  # 
         # The fixture has already proved this explicitly isolated test database.
         connection.execute("DROP SCHEMA app CASCADE")
     environment = isolated_environment(
-        SecretStr(os.environ["PRODUCT_DATABASE_URL"]),
+        SecretStr(os.environ["DAYLOOM_DB_URL"]),
         "8122",
         "5122",
         Path(".scratch/saved-migration-tmp").resolve(),
@@ -180,7 +180,7 @@ def test_display_migration_upgrades_existing_rows_without_changing_public_detail
             "DELETE FROM app.schema_migrations WHERE name='007_display_metadata.sql'"
         )
     environment = isolated_environment(
-        SecretStr(os.environ["PRODUCT_DATABASE_URL"]),
+        SecretStr(os.environ["DAYLOOM_DB_URL"]),
         "8122",
         "5122",
         Path(".scratch/display-migration-tmp").resolve(),

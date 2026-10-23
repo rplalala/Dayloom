@@ -1,17 +1,49 @@
 """Configuration diagnostics never include unrecognized dotenv credential input."""
 
 import pytest
+from psycopg.conninfo import conninfo_to_dict
 from pydantic import ValidationError
 from pydantic_settings import SettingsConfigDict
 
 from backend.app.product.settings import ProductSettings
 
 
+def test_product_uses_shared_dayloom_connection_fields(monkeypatch):
+    monkeypatch.delenv("DAYLOOM_DB_URL", raising=False)
+    for key, value in {
+        "HOST": "127.0.0.1", "PORT": "55619", "NAME": "dayloom_settings_test",
+        "USER": "dayloom_test_user", "PASSWORD": "synthetic password with @ and :",
+    }.items():
+        monkeypatch.setenv("DAYLOOM_DB_" + key, value)
+    settings = ProductSettings(
+        _env_file=None, jwt_secret="configuration-test-signing-key-32-characters"
+    )
+    connection = conninfo_to_dict(settings.database_url.get_secret_value())
+    assert connection["dbname"] == "dayloom_settings_test"
+    assert connection["user"] == "dayloom_test_user"
+    assert connection["port"] == "55619"
+    assert connection["password"] == "synthetic password with @ and :"
+
+
+def test_product_and_database_use_the_same_explicit_env_file(monkeypatch, tmp_path):
+    for key in ("URL", "HOST", "PORT", "NAME", "USER", "PASSWORD"):
+        monkeypatch.delenv("DAYLOOM_DB_" + key, raising=False)
+    dotenv = tmp_path / "controlled.env"
+    dotenv.write_text(
+        "DAYLOOM_DB_NAME=controlled_test\nDAYLOOM_DB_PASSWORD=synthetic-only\n"
+        "PRODUCT_JWT_SECRET=configuration-test-signing-key-32-characters\n",
+        encoding="utf-8",
+    )
+    connection = conninfo_to_dict(ProductSettings(_env_file=dotenv).database_url.get_secret_value())
+    assert connection["dbname"] == "controlled_test"
+    assert connection["password"] == "synthetic-only"
+
+
 @pytest.fixture
 def configured_settings(monkeypatch, tmp_path):
     for key in ("ORIGIN", "ALLOW_INSECURE_LOOPBACK", "SESSION_SECONDS"):
         monkeypatch.delenv("PRODUCT_" + key, raising=False)
-    monkeypatch.setenv("PRODUCT_DATABASE_URL", "postgresql://localhost/dayloom_test")
+    monkeypatch.setenv("DAYLOOM_DB_URL", "postgresql://localhost/dayloom_test")
     monkeypatch.setenv("PRODUCT_JWT_SECRET", "configuration-test-signing-key-32-characters")
     yaml_path = tmp_path / "product.yaml"
     yaml_path.write_text(
@@ -107,14 +139,14 @@ def test_product_yaml_requires_a_settings_mapping(configured_settings, contents)
 
 
 def test_missing_product_settings_hide_unrecognized_dotenv_secrets(monkeypatch, tmp_path):
-    monkeypatch.delenv("PRODUCT_DATABASE_URL", raising=False)
+    monkeypatch.delenv("DAYLOOM_DB_URL", raising=False)
     monkeypatch.delenv("PRODUCT_JWT_SECRET", raising=False)
     dotenv = tmp_path / "controlled.env"
     sentinel = "private42"
     dotenv.write_text(f"UNRECOGNIZED_PROVIDER_SECRET={sentinel}\n", encoding="utf-8")
     with pytest.raises(ValidationError) as failure:
         ProductSettings(_env_file=dotenv)
-    assert "database_url" in str(failure.value) and "jwt_secret" in str(failure.value)
+    assert "DAYLOOM_DB_PASSWORD" in str(failure.value)
     assert sentinel not in str(failure.value)
     assert sentinel not in repr(failure.value)
     assert "input_value" not in str(failure.value)

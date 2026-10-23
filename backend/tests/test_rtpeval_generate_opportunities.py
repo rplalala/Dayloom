@@ -210,7 +210,7 @@ def test_capture_cannot_collide_with_generation_material(installed_cli, tmp_path
 def test_installed_generation_captures_real_synthetic_graph(
     installed_cli, tmp_path_factory, monkeypatch, version
 ):
-    monkeypatch.setenv("TRIPWORLD_DB_PASSWORD", "offline-host-password-sentinel")
+    monkeypatch.setenv("DAYLOOM_DB_PASSWORD", "offline-host-password-sentinel")
     # Native trace paths need room below the Windows legacy path-length limit.
     tmp_path = tmp_path_factory.mktemp("graph")
     args = arguments(tmp_path, version, execute=True)

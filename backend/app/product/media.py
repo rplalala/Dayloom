@@ -13,6 +13,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from backend.app.product.auth import CurrentUser
 from backend.app.product.database import connect
+from backend.app.runtime.database import PROJECT_ROOT
 
 router = APIRouter(tags=["Product media"])
 MAX_PLACE_PHOTOS = 12
@@ -23,8 +24,13 @@ CURATED = {
 
 
 class MediaSettings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix="PRODUCT_", env_file=".env", extra="ignore")
-    google_places_media_key: SecretStr = SecretStr("")
+    model_config = SettingsConfigDict(
+        env_prefix="PRODUCT_", env_file=PROJECT_ROOT / ".env", extra="ignore",
+        hide_input_in_errors=True,
+    )
+    google_places_media_key: SecretStr = Field(
+        default=SecretStr(""), validation_alias="GOOGLE_MAPS_API_KEY",
+    )
     unsplash_access_key: SecretStr = Field(
         default=SecretStr(""),
         validation_alias=AliasChoices("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"),

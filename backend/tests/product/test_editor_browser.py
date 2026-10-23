@@ -30,7 +30,7 @@ SCRATCH = ROOT / ".scratch" / "editor-browser"
 
 @pytest.fixture(scope="module")
 def editor_app():
-    dsn = SecretStr(os.environ.get("PRODUCT_TEST_DATABASE_URL", ""))
+    dsn = SecretStr(os.environ.get("DAYLOOM_DB_TEST_URL", ""))
     if os.environ.get("PRODUCT_BROWSER_TESTS") != "1" or not dsn.get_secret_value():
         pytest.skip("Enable browser acceptance with an explicitly isolated Product test database")
     require_test_database(dsn)

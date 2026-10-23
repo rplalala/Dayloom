@@ -225,7 +225,7 @@ def test_simultaneous_edit_has_one_winner_and_no_lost_revision(client):  # noqa:
 
 def test_database_draft_constraints_and_account_cascade(client):  # noqa: F811
     account = register(client)
-    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    dsn = SecretStr(os.environ["DAYLOOM_DB_URL"])
     with psycopg.connect(dsn.get_secret_value()) as connection:
         for title, snapshot, revision in [
             ("  ", editor(), 1),

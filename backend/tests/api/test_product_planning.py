@@ -28,9 +28,9 @@ def post_product_planning(service: PlanningService, payload: dict[str, object], 
     from backend.tests.product.database_safety import require_test_database
     from scripts.run_api import create_api_loop
 
-    dsn = SecretStr(os.environ.get("PRODUCT_TEST_DATABASE_URL", ""))
+    dsn = SecretStr(os.environ.get("DAYLOOM_DB_TEST_URL", ""))
     if not dsn.get_secret_value():
-        pytest.skip("Product HTTP acceptance requires isolated PRODUCT_TEST_DATABASE_URL")
+        pytest.skip("Product HTTP acceptance requires isolated DAYLOOM_DB_TEST_URL")
     require_test_database(dsn)
     migrate(dsn.get_secret_value())
     from backend.app.product.settings import ProductSettings

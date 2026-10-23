@@ -19,7 +19,7 @@ def test_browser_children_receive_only_allowlisted_environment(monkeypatch, tmp_
         "OPENAI_API_KEY",
         "GITHUB_TOKEN",
         "PRODUCT_JWT_SECRET",
-        "PRODUCT_DATABASE_URL",
+        "DAYLOOM_DB_URL",
     ]:
         monkeypatch.setenv(key, "synthetic-host-secret-never-inherit")
     environment = isolated_environment(
@@ -67,7 +67,7 @@ def test_intentional_failure(browser_app):
     environment = isolated_environment(
         SecretStr("postgresql://local/isolated_test"), "8120", "5120", tmp_path
     )
-    environment["PRODUCT_TEST_DATABASE_URL"] = (
+    environment["DAYLOOM_DB_TEST_URL"] = (
         "postgresql://user:synthetic-connection-secret@127.0.0.1/isolated_test"
     )
     environment["AWS_ACCESS_KEY_ID"] = "synthetic-access-key-never-report"

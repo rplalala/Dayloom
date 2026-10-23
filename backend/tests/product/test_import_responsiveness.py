@@ -32,7 +32,7 @@ def test_import_row_lock_does_not_block_health_or_stop_api(client):  # noqa: F81
         "X-CSRF-Token": account["csrf_token"],
         "X-Import-Key": "lock-wait",
     }
-    database = SecretStr(os.environ["PRODUCT_TEST_DATABASE_URL"])
+    database = SecretStr(os.environ["DAYLOOM_DB_TEST_URL"])
     with (
         psycopg.connect(database.get_secret_value()) as locker,
         psycopg.connect(database.get_secret_value(), autocommit=True) as observer,

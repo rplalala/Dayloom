@@ -132,7 +132,7 @@ def isolated_environment(
             "CHROME_LOG_FILE": str(temporary_directory / "chromium.log"),
             "PYTHONUTF8": "1",
             "PYTHONUNBUFFERED": "1",
-            "PRODUCT_DATABASE_URL": database_url.get_secret_value(),
+            "DAYLOOM_DB_URL": database_url.get_secret_value(),
             "PRODUCT_JWT_SECRET": BROWSER_TEST_SIGNING_KEY,
             "PRODUCT_ALLOW_INSECURE_LOOPBACK": "true",
             "PRODUCT_ORIGIN": f"http://localhost:{web_port}",

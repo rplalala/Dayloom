@@ -4,8 +4,10 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 import yaml
-from pydantic import BaseModel, ConfigDict, SecretStr, model_validator
+from pydantic import BaseModel, ConfigDict, Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource
+
+from backend.app.runtime.database import DatabaseSettings
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
@@ -52,20 +54,37 @@ class ProductSettings(ProductOptions, BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="PRODUCT_", env_file=PROJECT_ROOT / ".env", extra="ignore",
         hide_input_in_errors=True, yaml_file=PROJECT_ROOT / "product.yaml",
-        yaml_file_encoding="utf-8",
+        yaml_file_encoding="utf-8", populate_by_name=True,
     )
 
-    database_url: SecretStr
+    database_url: SecretStr = Field(
+        validation_alias="DAYLOOM_DB_URL",
+    )
     jwt_secret: SecretStr
 
     @classmethod
     def settings_customise_sources(
         cls, settings_cls, init_settings, env_settings, dotenv_settings, file_secret_settings
     ):
+        def shared_database():
+            if any(
+                {"DAYLOOM_DB_URL", "database_url"}.intersection(source())
+                for source in (init_settings, env_settings, dotenv_settings, file_secret_settings)
+            ):
+                return {}
+            return {"DAYLOOM_DB_URL": DatabaseSettings(
+                _env_file=dotenv_settings.env_file
+            ).connection_string}
+
         return (
             init_settings, env_settings, dotenv_settings, file_secret_settings,
-            ProductYamlSettingsSource(settings_cls),
+            shared_database, ProductYamlSettingsSource(settings_cls),
         )
+
+    @field_validator("database_url")
+    @classmethod
+    def validate_database_url(cls, value):
+        return DatabaseSettings(url=value, _env_file=None).connection_string
 
     @model_validator(mode="after")
     def validate_security(self):

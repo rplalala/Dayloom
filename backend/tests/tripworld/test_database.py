@@ -15,6 +15,7 @@ from backend.app.tripworld.database.search import PostgresSearch, geographic_sql
 from backend.app.tripworld.database.vectors import SPACE_ID
 from backend.app.tripworld.hashing import sha256_file
 from backend.app.tripworld.retrieval.geography import GeographicScope
+from backend.tests.product.database_safety import require_test_database
 from backend.tests.tripworld.test_retrieval_foundation import source_row
 from tools.data.tripworld.artifact_persistence import write_json_if_changed
 from tools.data.tripworld.corpus import build_corpus
@@ -69,7 +70,7 @@ def test_bad_vector_and_k_rejected_before_database():
 
 
 def test_database_errors_sanitized(monkeypatch):
-    monkeypatch.setenv("TRIPWORLD_DB_PASSWORD", "secret-for-test")
+    monkeypatch.setenv("DAYLOOM_DB_PASSWORD", "secret-for-test")
 
     def fail(**kwargs):
         raise psycopg.OperationalError("secret-for-test")
@@ -117,12 +118,13 @@ def test_ingestion_rejects_hash_and_version_before_writes(entity_artifact):
 
 @pytest.fixture
 def db(monkeypatch):
-    if os.environ.get("TRIPWORLD_TEST_DATABASE") != "1":
-        pytest.skip("Set TRIPWORLD_TEST_DATABASE=1 for isolated local PostgreSQL tests")
-    # Never clear the production schema. Tests always use a separate named database.
-    monkeypatch.setenv("TRIPWORLD_DB_NAME", "tripworld_test")
+    if os.environ.get("DAYLOOM_DB_TESTS") != "1":
+        pytest.skip("Set DAYLOOM_DB_TESTS=1 for isolated local PostgreSQL tests")
+    dsn = os.environ.get("DAYLOOM_DB_TEST_URL", "")
+    require_test_database(dsn)
+    monkeypatch.setenv("DAYLOOM_DB_URL", dsn)
     with connection() as conn:
-        assert conn.info.dbname == "tripworld_test"
+        assert "test" in conn.info.dbname.lower()
         conn.execute("DROP SCHEMA IF EXISTS tripworld CASCADE")
         conn.commit()
         migrate(conn)

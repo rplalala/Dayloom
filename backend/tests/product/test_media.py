@@ -16,6 +16,27 @@ from backend.tests.api.test_product_planning import make_product_payload
 from backend.tests.product.test_accounts import client, register  # noqa: F401
 
 
+def test_product_photos_use_the_shared_google_maps_key(monkeypatch):
+    from backend.app.product.media import get_media_providers
+
+    monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "shared-google-test-key")
+    monkeypatch.setenv("PRODUCT_GOOGLE_PLACES_MEDIA_KEY", "")
+    received_keys = []
+
+    def provider(request):
+        received_keys.append(request.headers["X-Goog-Api-Key"])
+        if request.url.path.endswith("/media"):
+            return httpx.Response(200, json={"photoUri": "https://lh3.googleusercontent.com/test"})
+        return httpx.Response(200, json={"photos": [{"name": "places/test-place/photos/test"}]})
+
+    service = get_media_providers()
+    service.transport = httpx.MockTransport(provider)
+    result = asyncio.run(service.google("test-place", 960, 640))
+    assert result["status"] == "available"
+    assert received_keys == ["shared-google-test-key", "shared-google-test-key"]
+    assert "shared-google-test-key" not in json.dumps(result)
+
+
 def bound_preview(owner, bindings=None):
     store = TaskStore()
     task, _ = store.accept(

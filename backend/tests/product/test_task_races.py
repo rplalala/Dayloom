@@ -57,7 +57,7 @@ def test_replay_waits_for_current_claim_lease_or_completion(client, transition):
     if new_operation:
         transition = "complete"
     account = register(client)
-    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    dsn = SecretStr(os.environ["DAYLOOM_DB_URL"])
     instant = [datetime(2026, 9, 11, tzinfo=UTC)]
     store = named_store(dsn, "replay-regression", lambda: instant[0])
     worker = named_store(dsn, "worker-regression", lambda: instant[0])
@@ -195,7 +195,7 @@ def test_canonical_api_distinguishes_exact_amounts_without_expanding_exponents(
 def test_stop_and_completion_serialize_and_stale_execution_cannot_replace_winner(client, winner):  # noqa: F811
     account = register(client)
     headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": account["csrf_token"]}
-    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    dsn = SecretStr(os.environ["DAYLOOM_DB_URL"])
     instant = [datetime(2026, 9, 11, tzinfo=UTC)]
     stop_store = named_store(dsn, "stop-race", lambda: instant[0])
     worker = named_store(dsn, "completion-race", lambda: instant[0])
