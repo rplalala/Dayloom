@@ -243,13 +243,15 @@ The guard observed 18 model sends, 99 Places sends, 65 route sends and one weath
 send. Repair made three model calls across six observed rounds and ended
 `ACCEPTED_PARTIAL` with `no_executable_candidate_operation`.
 
-This result does **not** establish complete hard-requirement acceptance. Final validation
-reported 49 PASS, 31 UNKNOWN and one NEEDS_REVIEW. The art-museum obligation was matched
-by semantic judgment, not an independently established operating fact. Although the raw
-avoidance text was preserved, interpretation assigned "Avoid very crowded places" medium
-preference strength and left its semantic check UNKNOWN. That does not prove preservation
-or satisfaction of a hard avoidance constraint. Rich coverage on 26 October also remained
-a soft-target review item. No requirement was manually removed to obtain this preview.
+Final validation reported 49 PASS, 31 UNKNOWN and one NEEDS_REVIEW. The art-museum
+obligation was matched by semantic judgment, not an independently established operating
+fact. Interpretation assigned "Avoid very crowded places" medium preference strength
+and left its semantic check UNKNOWN. This matches the intended Product treatment of
+vague crowding avoidance as a best-effort preference; it is not a hard-constraint
+downgrade or an acceptance blocker by itself. Explicit hard requirements remain binding.
+Rich coverage on 26 October also
+remained a soft-target review item. No requirement was manually removed to obtain this
+preview, and the validation counts do not independently establish every operating fact.
 
 The execution harness incorrectly used the default Windows asyncio loop rather than
 the application's selector-loop factory. PostgreSQL retrieval preparation raised
