@@ -5,6 +5,15 @@ import type {
 } from "../../planning/types";
 
 export type IllustrationKey = "hero" | "sydney" | "art" | "city" | "nature";
+export type RequiredExperience = {
+  requirement: string;
+  source_quotes: string[];
+  target: number;
+  scheduled: number;
+  frequency: "one_off" | "minimum" | "exact";
+  status: "satisfied" | "unmet" | "unverified";
+  reason: "supported_visit_coverage" | "matching_evidence_incomplete" | "required_visits_not_scheduled" | "no_confirmed_match";
+};
 export type DetailNearby = {
   illustration_key?: IllustrationKey | null;
   place_name: string;
@@ -90,6 +99,7 @@ export type ProductDetail = {
   transfers: DetailTransfer[];
   nearby: DetailNearby[];
   completion?: {
+    required_experiences?: RequiredExperience[];
     pace_review?: PaceReview | null;
     source_claims?: string[];
     policy_completion: "complete" | "incomplete" | "unassessed";

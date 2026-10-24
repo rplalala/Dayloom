@@ -137,6 +137,8 @@ export interface NeedsClarificationResponse {
   status: "needs_clarification";
   requirements: TravelRequirements;
   issues?: {
+    code?: string;
+    requirement_ids?: string[];
     input_disposition?: "VALID" | "CLARIFICATION_REQUIRED" | "REWRITE_REQUIRED";
     issues?: Array<{
       issue_type: string;

@@ -1,4 +1,11 @@
-import type { ProductDetail, DetailTransfer, PaceReview } from "./types";
+import type { ProductDetail, DetailTransfer, PaceReview, RequiredExperience } from "./types";
+
+export function requiredExperienceNotice(row: RequiredExperience): string {
+  if (row.status === "satisfied") return "Required visits are scheduled based on available place information.";
+  if (row.reason === "matching_evidence_incomplete") return "Available information could not confirm enough matching visits. This requirement remains unresolved.";
+  if (row.reason === "no_confirmed_match") return "No confirmed matching place was found in the searched options. This requirement remains unmet.";
+  return "The itinerary does not meet the required visit count or date distribution. Your requirement has been kept.";
+}
 
 export function paceNotice(review?: PaceReview | null): string | null {
   if (!review) return null;

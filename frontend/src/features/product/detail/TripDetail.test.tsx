@@ -83,6 +83,17 @@ const detail: ProductDetail = {
 };
 
 describe("Product detail", () => {
+  it.each(["preview", "saved"] as const)("retains unmet required experiences in %s", mode => {
+    render(<MemoryRouter><TripDetail mode={mode} detail={{ ...detail, completion: {
+      policy_completion: "incomplete", policy_reasons: [], preference_coverage: [], minimum_daily_coverage: [],
+      required_experiences: [{ requirement: "Include a botanical garden", source_quotes: ["A botanical garden is required."], target: 1, scheduled: 0,
+        frequency: "one_off", status: "unmet", reason: "no_confirmed_match" }],
+    } }} /></MemoryRouter>);
+    expect(screen.getByRole("heading", { name: "Required experiences" })).toBeVisible();
+    expect(screen.getByText("A botanical garden is required.")).toBeVisible();
+    expect(screen.getByText(/No confirmed matching place was found/)).toBeVisible();
+    expect(screen.queryByText(/no_confirmed_match|semantic_1/)).not.toBeInTheDocument();
+  });
   it.each(["preview", "saved"] as const)("keeps an unmet Rich pace visible in %s", mode => {
     render(<MemoryRouter><TripDetail mode={mode} detail={{ ...detail, provenance: "generated", trust: "generated_projection", completion: {
       policy_completion: "complete", policy_reasons: [], preference_coverage: [], minimum_daily_coverage: [],

@@ -1,5 +1,5 @@
 import type { ProductDetail } from './types';
-import { routeDuration, routeDistance, transferFeasibility } from './display';
+import { routeDuration, routeDistance, transferFeasibility, requiredExperienceNotice } from './display';
 
 export function exportArtifact(detail: ProductDetail) {
   return {
@@ -24,6 +24,10 @@ export function summaryText(detail: ProductDetail) {
     request ? [request.start_date, request.end_date, request.traveler_count != null ? `${request.traveler_count} travelers` : null, request.budget ? `Budget ${request.budget.currency} ${request.budget.amount}` : null, request.additional_preferences].filter(Boolean).join(' · ') : 'Original request: unknown',
     'Confirm opening hours, prices and weather before you travel.',
   ];
+  for (const row of detail.completion?.required_experiences || []) {
+    lines.push('', row.source_quotes.join(' ') || row.requirement,
+      `${row.scheduled} matching visits scheduled · ${row.frequency === 'exact' ? 'Exactly' : 'At least'} ${row.target} required`, requiredExperienceNotice(row));
+  }
   for (const day of detail.days) {
     lines.push('', day.date);
     const weather = day.weather;

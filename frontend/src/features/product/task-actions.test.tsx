@@ -3,6 +3,16 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, expect, it, vi } from 'vitest';
 import { routes } from '../../app/router';
 import { createBrief } from './editor';
+import { TaskOutcome } from './TaskActions';
+import type { PlanningTask } from './taskClient';
+
+it('shows specific acquisition failures without asking the traveler to clarify wording', () => {
+  render(<TaskOutcome task={{ ...taskA, state: 'failed', created_at: '2026-10-24T00:00:00Z', updated_at: '2026-10-24T00:00:01Z', progress: { stage: 'planning', message: 'Planning stopped' }, outcome: {
+    code: 'requirements_unmet', message: 'The planner could not meet your requirements.', action: 'Your original requirements have been kept.',
+    issues: { issues: [{ issue_type: 'no_eligible_details', reason: 'No usable place details were available.', action: 'You can retry later.', source_refs: [], quote_status: 'unavailable', related_field: null, current_value: null }] },
+  } } as PlanningTask} />);
+  expect(screen.getByText('No usable place details were available.')).toBeVisible();
+});
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
