@@ -14,6 +14,9 @@ references. References have no scheduled occupancy, planned cost or booking impl
 they do not fulfill a required visit or increase primary-visit counts. Empty reference
 output is valid. V0's optional references are model knowledge with no fabricated provider
 identity. V1-V3 use independent bounded Nearby acquisition after the final primary plan.
+Product acceptance scales Nearby by trip duration under the
+[resource profile](../config/README.md#product-acceptance-profile). The shared representation
+can hold the expanded output, while V0's model-knowledge boundary retains at most three references.
 
 Primary source identities resolve against authorized supply. Generic activities can have
 no venue identity where supported, but missing named identities are not fuzzy-matched into

@@ -30,8 +30,9 @@ requested-date overrides, with `ordinary`, `relaxed`, `rich` or
 the [daily visit contract](#dated-total-primary-visit-counts); their pace count is derived
 by the application. Relaxed/rich style creates no numerical quota. Empty preferences
 supply ordinary style locally; historical absent/null metadata stays unassessed.
-Only V3 Repair uses pace metadata as an optimization target; initial generation gains
-no zero-penalty objective. Hard dated totals also constrain initial generation.
+V3 Repair uses pace metadata as an optimization target. Product acceptance also uses it
+to size initial candidate supply with alternatives; this adds no numerical visit obligation
+or zero-penalty acceptance rule to initial generation. Hard dated totals constrain generation.
 
 ## Evidence ownership
 
@@ -282,8 +283,11 @@ as unsuitable merely because preparation reached a capacity/deadline boundary.
 Reliably resolved required identities may expand acquisition and supply within the required
 capacity ceiling. Duration-dependent acquisition basis and final supply floor remain distinct;
 a larger final supply target does not automatically grant more Details sends. Exceeding the
-required-identity ceiling is an explicit capacity conflict, while an ordinary supply shortfall
-does not itself demand clarification. Exact formulas belong to
+required-identity ceiling is a resource failure in Product acceptance; the development policy
+retains its historical capacity-conflict gate. Ordinary supply shortfalls do not themselves
+demand clarification. Acceptance sizes supply from duration, sourced pace, fixed full-day
+protections and hard visit obligations under the [selected profile](../config/README.md#product-acceptance-profile).
+Exact formulas belong to
 [capacity policy](../backend/app/policies/poi_capacity.py) and active limits to runtime config.
 Candidate acquisition is composed into the supply pipeline; retired selector/subset experiments
 are not runtime dependencies. Discovery sends, Details successes/failures, semantic assessment,

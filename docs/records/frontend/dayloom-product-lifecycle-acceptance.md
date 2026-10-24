@@ -1,8 +1,8 @@
 # Dayloom Product lifecycle acceptance
 
 Lifecycle validation uses isolated PostgreSQL and Chromium with controlled external
-adapters. A separately authorized one-use check also validates the complete local
-runtime against real providers; the two scopes remain distinct below.
+adapters. Separately authorized bounded checks validate the local runtime and saved-trip
+media against real providers; their scopes remain distinct below.
 
 ## Event and scope
 
@@ -142,6 +142,70 @@ findings. Existing `.env.example` and `GLOSSARY.md` work remained excluded; deli
 at this event is local commits, not a published deployment.
 
 ## Verification and evidence
+
+### Complete media and acceptance resources (24 October 2026)
+
+[Issue #231](https://github.com/rplalala/Dayloom/issues/231) follows the generic required-category
+correction merged through [PR #230](https://github.com/rplalala/Dayloom/pull/230).
+The review base is `ff239237`; implementation commits are `cc2864d` and `fd93029`, with
+the independent-obligation correction in `a5d9f86`. Current resource values and selection
+belong to the [profile reference](../../../config/README.md#product-acceptance-profile).
+
+A saved nine-day Paris trip had all 30 authorized media bindings, but the API selected
+only the first 12 JSONB entries: three Nearby and nine Repair activities. Eighteen original
+activities were never attempted. An offline provider that returned every photo successfully
+reproduced the omission. Ordered bounded pagination removed the whole-trip truncation;
+timeout tests also established that completed photos survive a failed slot or later batch.
+
+Acceptance resources were tested through actual V1-V3 graphs with external doubles.
+One-, nine- and ten-day Rich inputs received 9, 36 and 40 initial supply identities. Hard
+dated counts, full-day protections and category obligations retained their sourced values.
+Repair accepted a 42-identity input union without the old 32-identity restriction. The
+Nearby regression exposed a separate hardcoded three-anchor-group limit, which was removed
+while preserving cached reuse with zero send allowance. Assistance completed 105 sequential
+operations without a small daily cutoff; account isolation, cancellation and concurrency
+were checked separately.
+
+Standards review found no issues. Spec review reproduced an undersized supply for ten
+named REQUIRED identities plus ten potentially disjoint category visits: the old formula
+reserved only sixteen identities. A failing regression established the gap; the correction
+reserves twenty obligations plus seven alternatives, leaves original requirements unchanged,
+and passed the focused recheck.
+
+The broad offline run finished with **1,871 passed, 29 skipped** across runtime, policies,
+services, versions, API and schemas. Its first pass had five stale assertions for the old
+resource bounds/error wording; these were updated and the complete group rerun successfully.
+The correction then passed **115 affected tests**. Isolated PostgreSQL lifecycle/media tests
+passed **64**, account/admission tests **8**, and the media browser journey passed **3**,
+including 25 photos across preview, Save, reopening and copy. Frontend regression had
+**268 passed, one unchanged UI-wait timeout**; the complete affected file passed all **8**
+on retry. Build, Ruff and lint passed, with the existing bundle-size advisory and two
+Fast Refresh warnings. These are scoped engineering checks, not a new formal benchmark.
+
+The authorized live allowance was at most two new generations plus one trip's complete
+photo acceptance, combined US$10. New generation was withheld at preflight: the configured
+baseline route and initial Details allowances alone can reach US$10.40 at public paid
+rates, before searches, model calls or Repair. No free-tier allowance was assumed and no
+requirements were reduced to force a cheaper pass. This leaves real long-trip generation
+and latency unverified. Pricing basis: [Google Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
+
+One real photo acceptance ran against `fd93029` using the prescribed execution child and
+the rebuilt local Product. All **30 unique authorized slots** returned available in three
+HTTP-200 batches of **12/12/6**. The browser rendered 33 photo elements (some repeated in
+different layouts), all with loaded image pixels. It completed in **9.297 seconds**, with
+no request-guard violations, retries, new generations or saved-record mutations. The
+bounded adapter permits at most 30 Details and 30 Photo metadata requests; a conservative
+US$0.025 + US$0.007 per-slot assumption gives **US$0.96**. Actual provider sends and billing
+were not independently invoiced. Atmosphere images were excluded from this place-photo check.
+
+Local evidence identifiers: `.scratch/acceptance-regression-final.log`,
+`acceptance-product.log`, `accounts-admission.log`, `mixed-obligations-green.log`,
+`media-browser-regression.log`, `acceptance-frontend.log`, `acceptance-frontend-retest.log`,
+and `live-media-acceptance.{json,png}`. The photo run used runtime digest
+`54d73997e8529504ab89f69bb480046f4d2259d73336051d9c600671ce7332d5` and execution-script digest
+`02c1e57d5229bd69f9d1c35da69ca026dc78183885d156a5a2f8507da8185d5d`.
+These local artifacts preserve original evidence; the source and outcome above are sufficient
+to understand the event without them.
 
 ### Published Product integration
 
