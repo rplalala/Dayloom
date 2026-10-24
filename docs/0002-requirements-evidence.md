@@ -65,7 +65,7 @@ Missing assessment, inconsistent disposition and invalid source references are s
 contract failures, not evidence that the user wrote an invalid request.
 
 Current planning envelopes select `PreferenceDraftV15` / `preference_draft_15`,
-`preference_prompt_22` and canonical `interpreted_requirements_6`. The provider receives
+`preference_prompt_23` and canonical `interpreted_requirements_6`. The provider receives
 request-local integer references for original
 single-codepoint spans, including whitespace. Every original substring boundary is
 representable, including short scopes within unbroken text. Each source selects inclusive
@@ -109,7 +109,8 @@ grounding cannot certify that a model's interpretation is semantically correct.
 Semantic text remains open vocabulary with typed strength, polarity, subject, scope and
 source links. Canonicalization rewrites duplicate links without duplicate reward. Unknown
 subjects are not silently party-wide. Named counts/dates belong to named visit obligations;
-category goals use semantic assessment. Unsupported hard semantics require clarification;
+category goals use semantic assessment, with the bounded hard-visit support below.
+Unsupported hard semantics require clarification;
 ordinary rich/varied/enjoyable wishes stay soft without invented quotas or luxury budgets.
 Supported executable forms include dated total counts below and a whole-party,
 whole-trip `transport_constraint`: a nonempty
@@ -205,6 +206,35 @@ minimum counts are not maxima. Exception allowances apply to the goal across alt
 not once per candidate. Historical missing multiplicity remains unassessed. Soft coverage
 counts distinct supported scheduled identities, not candidate matches or repeated visits;
 one place may satisfy multiple goals. Soft gaps do not create new confirmed Repair targets.
+
+### Required category visits
+
+V1-V3 accept a sourced, whole-party positive hard category visit with ordinary trip
+scope and `individual_poi`, `selected_poi_set` or `whole_trip` requirement scope.
+One-off means at least one distinct qualifying visit; explicit minimum/exact counts
+and distinct-date requirements retain their operators. Recognition uses the typed
+goal shape, without a venue-category vocabulary or destination-specific rule.
+Original source text and hard strength remain intact. Extraction keeps independent
+hard access, crowding or other conditions separate; a category count cannot enforce
+them. Unsupported conditions retain their capability boundary rather than becoming
+optional. V0 has no grounded category enforcement and retains that boundary.
+
+Admission requests evidence assessment, not a registered factual predicate. Within
+existing capacity, supply reserves supported candidates for hard category counts
+ahead of optional category targets. Final coverage counts distinct supported main
+visit identities actually scheduled; related alternatives, free windows and Nearby
+references do not fulfill the obligation. Known matches suffice for a minimum, while
+an exact count cannot be satisfied if another scheduled primary visit has unresolved
+matching evidence. A known excess remains a confirmed mismatch. Missing or unresolved
+assessment is not successful coverage.
+
+V3 uses existing count-repair operations for proven shortfalls and protects attained
+hard coverage during deletion, replacement and replanning. Unknown evidence does not
+authorize a fabricated match. Bounded search can return no confirmed match or a partial
+itinerary; neither proves that the request is impossible. Product preserves required
+coverage and its evidence limitation in the [public result](0007-application-operations.md#http-contract-map).
+The semantic judgment establishes category matching against supplied information, not
+ticket availability, access, opening hours or other operating facts.
 
 ## Admission, acquisition and deterministic supply
 

@@ -188,3 +188,44 @@ Provider/model tests use offline fixtures and doubles; they verify contract beha
 not real-model correspondence accuracy or case acceptance. Original case inputs, failed
 attempts, provider captures and scores were not rewritten, and no paid call or case rerun
 was part of this correction.
+
+## Required-category admission and Product feedback — 2026-10-24
+
+The reported Paris brief had valid dates and an unspecified required category visit.
+Its persisted Product task (`40c313b4-9f93-4bd9-8a0c-884b890e6f58`) retained
+`needs_clarification` with an empty public issue list. The original interpretation
+capture was unavailable, so the exact historical model decision cannot be established.
+An offline reproduction did establish two defects: a hard category goal was rejected
+before discovery, and the public projection discarded its code and source-linked reason.
+Changing the requirement to a preference would bypass the gate but alter user intent;
+the approved correction retained the original text and hard strength.
+
+Against base `ac279230`, implementation commits `d07e45b` and `2243102` added the
+[generic required-category contract](../../0002-requirements-evidence.md#required-category-visits)
+and durable Product coverage/feedback. Actual V1-V3 graph regressions exposed a second
+hard gate in candidate acquisition; it was corrected as well as intake. Supply tests
+reproduced an optional target displacing the only required-category option at capacity.
+Coverage and Repair tests verified related alternatives, unknown matches, free windows,
+exact/minimum counts and preservation of the sole required match. Test categories include
+art museums, botanical gardens, science centres and craft workshops; there is no category
+keyword branch. Model responses are controlled fixtures, not measured language accuracy.
+
+The relevant backend gate passed **2,071 tests, 29 skipped**; frontend passed **264 tests
+in 43 files**. Windows default temporary-directory permission failures were resolved by
+running tests with an explicit workspace temporary directory, without changing permissions
+or credentials. Skips require isolated database or local historical evidence prerequisites.
+The first Standards review passed. Spec review identified two remaining feedback paths:
+empty qualified supply and capability limits still requested a rewritten brief.
+Commit `cc063db` corrected both; new assertions first produced **7 backend failures**
+and **1 frontend failure**, then related regression passed **791 backend tests** and
+**40 frontend tests**. These gates overlap. TypeScript/Vite, changed Python Ruff and
+ESLint passed; existing bundle-size and two Fast Refresh warnings remain.
+Standards and Spec rechecks closed both findings without new issues; the Spec reviewer
+independently reran the 27 intake, graph and feedback regressions successfully.
+
+Required coverage survives typed detail serialization and preview/saved-view rendering;
+JSON/text export assertions retain unresolved obligations. An isolated database Save/reopen
+acceptance run and real-provider generation were not performed. Local diagnostic logs under
+`.scratch/required-categories-*` are ignored evidence identifiers. Unrelated `.env.example`
+and `GLOSSARY.md` work remained outside these commits. No paid execution or original
+task-result rewriting was part of this correction.
