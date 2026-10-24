@@ -1,223 +1,132 @@
 # Dayloom
 
-Dayloom is an LLM-based travel-planning Capstone project with four independently runnable versions: V0
-uses plain model generation, V1 adds external travel information, V2 adds TripWorld retrieval,
-and V3 adds validation, targeted repair and re-validation. [PROJECT.md](PROJECT.md) records
-the current engineering state and evidence boundaries.
+An LLM-powered travel planner that combines travel information, retrieval and
+validation to build more feasible day-by-day itineraries.
 
-## Product design and prototype
+Dayloom turns a destination, dates, budget and travel preferences into a trip you
+can preview, save and revisit. Built as a Capstone project, it also includes four
+independently runnable planners for exploring how external evidence, retrieval
+and targeted repair affect itinerary quality.
 
-- [Try the online prototype](https://dingzh.cc/Dayloom/prototype/)
-- [GitHub Pages default address](https://rplalala.github.io/Dayloom/prototype/)
-- [Fixed r7 source and build instructions](https://github.com/rplalala/Dayloom/tree/b30eb3814513b12d7869ca8a5c59f0b7401d45d6/r7)
-- [Unified frontend/backend specification #198](https://github.com/rplalala/Dayloom/issues/198)
+[Explore the prototype](https://dingzh.cc/Dayloom/prototype/) ·
+[Documentation](docs/README.md) · [Benchmark results](benchmark/report.md)
 
-The provisionally accepted r7 prototype defines the Product visual and interaction
-baseline: editable travel briefs, accounts, multiple drafts, recoverable planning tasks,
-itinerary previews, manual saving and activity-linked Nearby references. Its source and
-preview are maintained on the dedicated `prototype/dayloom` branch.
+## Features
 
-Accounts, tasks and persistence in the prototype are browser-local simulations. The
-implemented application has a separate FastAPI/PostgreSQL lifecycle, described below
-under [Current application](#current-application).
+- **Plan around your brief.** Set dates, traveler count, whole-trip budget and
+  preferences, with destination suggestions and optional preference polishing.
+- **Use travel context.** Combine place, route and weather information with
+  TripWorld retrieval to inform activity selection and scheduling.
+- **Check and refine.** V3 validates the generated itinerary, attempts targeted
+  repairs where permitted, and checks the result again. Uncertainty remains visible.
+- **Pick up where you left off.** Account-owned planning tasks survive navigation;
+  drafts and completed previews can be recovered before you choose to save a trip.
+- **Keep your trips together.** Search, rename and manage saved trips, browse
+  activity-linked Nearby references, and import or export itinerary JSON.
 
-## Benchmark results
+The online link is an interactive design prototype with browser-local accounts
+and data. The full application runs locally with FastAPI and PostgreSQL; its
+Product interface uses V3, while Developer mode exposes all four versions.
 
-The [final benchmark report](benchmark/report.md) compares 12 accepted cases. For
-reliable, feasible itineraries, the final ranking is **V3 > V2 > V1 > V0**.
+## How it works
 
-V3 ranks first in automatic evaluation in all 12 cases and has the best overall
-mean rank in both blinded reviews. Validation and repair reduce overcrowded
-schedules, with selected-run costs and times in a similar range to V2. V2 is the
-strongest alternative; V0 is much faster and cheaper for initial drafts. The
-V1/V0 distinction is weak: each wins six automatic comparisons against the other.
+Each version builds on the previous one's planning capabilities:
 
-The human review agrees with the final order; the model review places V0 second.
-The report keeps the three evaluations separate and explains score gaps,
-experience differences, cost trade-offs and historical evaluation-policy limits.
+| Version | Approach |
+| --- | --- |
+| **V0** | Plain LLM generation from the travel brief |
+| **V1** | External place, weather, route and supported current evidence |
+| **V2** | V1 plus TripWorld retrieval-augmented generation (RAG) |
+| **V3** | V2 plus structured validation, targeted repair and re-validation |
 
-## Command line
-
-Run `uv sync --locked --group dev` from the repository root to install the editable
-project. Use `uv run rtpeval --help`, group help and leaf help to inspect parameters.
-The primary flow is selected material -> external requirements review -> accepted
-manifest -> automatic report -> offline replay.
-
-| Command | Does | Requests and main output |
-| --- | --- | --- |
-| `generate` | Prepares or explicitly runs one selected V0–V3 Planner; optional registration | Preparation offline; `--execute` online; capture and separate registration status |
-| `batch collect` | Copies explicitly selected existing sources | Offline; unqualified `staging.json` |
-| `batch attach-requirements / finalize` | Attaches external reviewed requirements, then gates a complete batch through native intake | Offline; `attachment.json`, then accepted `manifest.json` |
-| `validate` | Checks a source-bound native manifest | Offline; intake JSON, without scoring |
-| `evaluate execute / prepare / replay` | Produces the automatic report, optionally prepares or replays saved evidence | Execute online; prepare/replay offline; report, source bindings and receipts |
-| `quality`, `usage`, `cost` | Reads saved independent quality, usage or explicit prices/bills | Offline; separate descriptive reports |
-| `pair`, `controlled`, `review`, `mechanism` | Operates distinct specialized tracks | Offline; controlled replay runs frozen V3; external review participation stays separate |
-| `advanced`, `dev` | Exposes individual evidence tools and development tools | Inspect leaf help; explicit opening/smoke execution can be online |
-
-For an already accepted four-version manifest, the shortest report route is:
-
-```powershell
-uv run rtpeval evaluate execute manifest.json --directory artifacts/fresh-evaluation --options options.json --prices prices.json --env-file .env
-uv run rtpeval evaluate replay artifacts/fresh-evaluation
-```
-
-Execute requires explicit limits, a dated price book, credentials and a fresh directory;
-applicable reviewed contexts can be supplied explicitly. It emits the automatic quality
-report without manual preparation/digest copying or a subsequent scoring command. No
-retry, resume or supplemental opening assessment runs implicitly. Exit 0 means processing
-completed and can coexist with FAIL, UNKNOWN or unavailable values. Processing, acquisition
-and evidence statuses remain separate. See [automatic evaluation](backend/evaluation/README.md#installed-automatic-evaluation).
-
-For new material, save the complete original `planning_request_2` request and declare
-explicit group/run IDs and capture slots in `selection.json`. The configuration uses
-`selected_workflow_1`; every selected version has its own invocation and fresh capture.
-This example executes only its declared V0 slot:
-
-```powershell
-uv run rtpeval generate --version v0 --input-json material/input.json --output-directory material/captures/v0 --group-id case-1 --run-id case-1-v0 --execute --register-batch material/selection.json --registration-directory artifacts/staging-v0
-```
-
-Repeat only explicitly selected V1, V2 and V3 invocations with their matching slots and
-runtime/RAG settings. Each registration preserves other slots; unstarted slots stay
-blocked. The last complete staging remains `pending_review`. Generation needs no
-RequirementSpec. Planner invocation and registration have separate statuses; a successful
-Planner with failed registration retains the result and exits 2. See
-[generation and registration](backend/evaluation/README.md#installed-generation-and-material-handoff).
-
-An alternative uses four existing results: declare their exact result, usage, provenance
-references and producer completion in `collection.json`. No latest/best run is selected
-and collection never regenerates material:
-
-```powershell
-uv run rtpeval batch collect material/collection.json --directory artifacts/staging
-```
-
-Operate external **Codex `gpt-6.1-sol`, reasoning effort `high`** separately: an author
-reads the complete original request and produces a draft RequirementSpec; a distinct
-reviewer checks that draft against the same request and saves the final reviewed spec.
-Retain actual source/hash bindings, execution identities/configuration/times, transcript
-exports and the draft-to-final lineage in `handoff.json`. Planner interpretation, generated
-outputs, scores and mechanisms are excluded from that review. The CLI neither authors
-requirements nor launches/messages the agent. Review is agent review, with semantic
-completeness and actual provenance remaining operator responsibilities.
-
-After either collection route, attach the corresponding staging and finalize:
-
-```powershell
-uv run rtpeval batch attach-requirements artifacts/staging/staging.json material/handoff.json --directory artifacts/attached
-uv run rtpeval batch finalize artifacts/attached/attachment.json --directory artifacts/finalized
-uv run rtpeval validate artifacts/finalized/manifest.json
-uv run rtpeval evaluate execute artifacts/finalized/manifest.json --directory artifacts/fresh-evaluation --options options.json --prices prices.json --env-file .env
-uv run rtpeval evaluate replay artifacts/fresh-evaluation
-```
-
-For the generation route, substitute the latest explicit registration's `staging.json`
-for `artifacts/staging/staging.json`. Every destination above must be fresh. Keep original
-selection, capture, source and handoff files accessible and byte-identical until
-finalization. `incomplete`, `blocked` and `pending_review` staging is unqualified even when
-collection exits 0. Required workflow completion is distinct from quality/PASS: normal V3
-partial or rejected Repair can qualify, while failed required retrieval cannot. Explicit
-unavailable usage remains unavailable; new capture failures are not relabelled successful.
-Native validation exits 0 for accepted material and 2 for correction/argument errors.
-A standard manifest alone establishes no formal benchmark.
-
-Detailed schemas and handoff parameters: [material operations](backend/evaluation/README.md#installed-generation-and-material-handoff),
-[current producer contract](docs/contracts/0002-intake-identity-usage.md#producer-material-handoff).
-Accepted benchmark candidate bundles belong in [`benchmark/`](benchmark/README.md),
-with an immutable validated manifest and source material per case revision. Evaluation
-outputs remain in explicit fresh directories under `artifacts/`.
-Legacy module commands and historical switches retain their meaning in the
-[evaluation package guide](backend/evaluation/README.md); smoke/history remain separate
-under the [development guide](docs/guides/development.md).
-Commands are operational references and grant no live-run authorization.
-
-## Current application
-
-The Product page at `/plan` provides an editable V3 travel brief. Guests can prepare
-requirements and read examples; an account is required to submit a planning task,
-save drafts or manage private trips. Submitted tasks survive browser navigation and
-can be recovered or explicitly stopped. A completed task creates a preview; Save
-creates a trip, while Discard records the decision without saving it.
-
-My trips combines saved itineraries and incomplete planning drafts, with search,
-sorting, renaming and confirmed deletion. Historical JSON imports open a separate
-preview for review, saving and faithful text/JSON export. Detail shows completion,
-provenance and uncertainty separately from itinerary content, with activity-linked
-Nearby references. Copy and Keep example create independent saved snapshots;
-Replan starts another brief from known original inputs. Verified place photos
-and curated destination imagery retain separate attribution and fallback rules.
-[Application operations](docs/0007-application-operations.md) defines ownership,
-recovery and persistence behavior.
-
-The Developer page at `/dev` retains independent V0–V3 runs. Generation requires a
-destination, valid dates, traveler count and whole-trip budget/currency, with optional
-preferences; incomplete drafts and historical imports can retain unknown fields.
-
-Shared input assistance includes a selectable currency, locale-independent date input and
-GeoDB city suggestions. Selecting a suggestion fills the city/region/country label; manual
-destination entry remains available. FastAPI calls the public free GeoDB service over HTTPS
-and normalizes its response. The browser does not call GeoDB directly.
-
-The optional **Polish preferences** action makes at most one model call. A schema-valid rewrite
-is displayed beside the original for the user to Apply or Dismiss; an applied rewrite can be
-undone. The prompt asks the model to preserve meaning, but the application does not perform
-a second preservation review or suppress a rewrite based on local semantic comparisons.
-The normal planning Gate still runs when the user submits the form. Profile defaults
-initialize a genuinely new brief; existing editor content retains its own requirements.
-Daily weather is shown compactly alongside the itinerary.
+The application is a modular monolith: **React + TypeScript** for the frontend,
+**FastAPI + LangGraph** for the API and planning workflows, and
+**PostgreSQL + pgvector** for application data and retrieval.
+See the [architecture guide](docs/0001-system-architecture.md) for details.
 
 ## Local development
 
-For the built frontend and real API on one local origin, use the
-[complete Product runtime](docs/guides/development.md#complete-local-product-runtime).
-The commands below retain the separate API/Vite workflow for source development.
+Prerequisites: **Python 3.12**, **uv**, **Node.js/npm**, and a
+**PostgreSQL database with pgvector**. Docker Compose is available for the local
+database. Full V3 planning also needs the TripWorld release below and configured
+model and travel-provider credentials.
 
-Use Python 3.12, the repository's virtual environment, and private local credentials based on
-`.env.example`. On Windows, start FastAPI with the project's event-loop-compatible launcher:
+From the repository root:
+
+1. Copy [`.env.example`](.env.example) to `.env` and fill in the private credentials,
+   database password and a signing secret of at least 32 characters. Review
+   [`product.yaml`](product.yaml) for database and model deployment settings.
+2. Install dependencies with `uv sync --locked --group retrieval` and
+   `npm --prefix frontend ci`.
+3. Prepare the database, restore TripWorld, and set up both tokenizer caches using
+   the [environment setup guide](docs/guides/development.md#environment-and-local-application).
+
+Once those resources are ready, build and start the full application:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/run_api.py --host 127.0.0.1 --port 8000
+npm --prefix frontend run build
+uv run python scripts/migrate_product.py
+uv run python scripts/run_product.py --check
+uv run python scripts/run_product.py
 ```
 
-In a separate terminal, start the frontend:
+Open [localhost:5173](http://localhost:5173). Create an account to submit planning
+tasks and save trips. The readiness check verifies local resources without calling
+external providers; planning and other online features use real services.
 
-```powershell
-cd frontend
-npm ci
-npm run dev
-```
-
-The backend health endpoint is `GET /health`; Vite proxies `/api` and `/health` to the
-backend. The version entry points are `scripts/run_v0.py`, `scripts/run_v1.py`,
-`scripts/run_v2.py` and `scripts/run_v3.py`. V2/V3 retrieval requires an existing compatible
-PostgreSQL/pgvector database and its configured local environment. See the
-[Product setup](docs/guides/development.md#product-account-setup-and-acceptance) for
-account/session settings and the public Product migration command, and the
-[development guide](docs/guides/development.md) for version-specific dependencies.
+For separate API/Vite development, database setup and troubleshooting, see the
+[development guide](docs/guides/development.md).
 
 ## TripWorld database release
 
-The project owner's [TripWorld database release folder](https://drive.google.com/drive/folders/14VjxQU7jR8PGuiMWes5uaPLIOdrMNaQ0?usp=sharing)
-contains the processed entities, retrieval text and saved vectors. Download the complete
-release while preserving its directory structure, then verify the files against
-`SHA256SUMS.txt`. The release `README.md` gives the import steps and validation results.
+Download the processed dataset, retrieval text and saved vectors from the
+[TripWorld release folder](https://drive.google.com/drive/folders/14VjxQU7jR8PGuiMWes5uaPLIOdrMNaQ0?usp=sharing).
+Keep its directory structure, verify `SHA256SUMS.txt`, and follow the included
+`README.md` to restore `tripworld.pgcustom` into an empty PostgreSQL database with
+pgvector. The tested versions are PostgreSQL **17.10** and pgvector **0.8.2**.
 
-Restore `tripworld.pgcustom` into an empty PostgreSQL database with pgvector available.
-The tested versions are PostgreSQL 17.10 and pgvector 0.8.2. For the current retrieval
-runtime, copy the two packaged sidecars into these repository paths:
+Copy the two packaged sidecars to these repository paths:
 
 ```text
 data/tripworld/artifacts/retrieval_entities.parquet.manifest.json
 data/tripworld/reports/phase5_embedding_run.json
 ```
 
-Importing the release avoids downloading the TripWorld source data and regenerating the
-stored embeddings. Online planning still needs the configured model and travel providers.
-Keep the database dump outside Git.
+The release avoids rebuilding the corpus and its stored embeddings. Keep the
+database dump outside Git; online planning still needs provider credentials.
 
-## Documentation and evidence
+## Benchmark results
 
-[docs/README.md](docs/README.md) indexes current design and dated development records.
-The [planning input UX specification](https://github.com/rplalala/Dayloom/issues/25) owns the assistance
-contract and limits. Local `logs/` and `artifacts/` contain development evidence, including
-potential provider/model data, and are not part of a source commit.
+Across the project's **12 accepted cases**, V3 ranks first in every automatic
+evaluation, with an automatic mean-score order of **V3 > V2 > V1 > V0**.
+These results describe the selected cases across historical runtime and evaluation
+policies; they are not causal ablations or a guarantee for other trips.
+
+The [benchmark report](benchmark/report.md) includes per-case scores, repair
+outcomes, cost and latency. [Blinded review results](benchmark/README.md#final-blinded-results) provide
+additional perspectives on itinerary quality.
+
+## Command line
+
+The four planners have independent entry points at `scripts/run_v0.py` through
+`scripts/run_v3.py`; see [version execution](docs/guides/development.md#independent-version-execution)
+for inputs and runtime options.
+
+**RTPEval** provides generation, material collection, validation, evaluation and
+offline replay. Run `uv run rtpeval --help` to explore the commands. Its material
+workflow is selected generation or collection → external requirements review →
+attachment and finalization → accepted manifest → automatic report → offline replay.
+See the [evaluation guide](backend/evaluation/README.md) for commands, schemas,
+credentials and explicit execution limits.
+
+## Documentation
+
+- [Documentation index](docs/README.md) — architecture, planning, retrieval and validation.
+- [Development guide](docs/guides/development.md) — environment, application setup and checks.
+- [Configuration reference](config/README.md) — provider settings and planning policies.
+- [Evaluation guide](backend/evaluation/README.md) — RTPEval workflows and saved-evidence replay.
+- [Project status](PROJECT.md) — current engineering state and scope.
+
+## License
+
+[MIT](LICENSE) © 2026 Zihang Ding.
