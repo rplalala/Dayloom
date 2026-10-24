@@ -8,7 +8,7 @@ from uuid import UUID
 
 import httpx
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
-from pydantic import AliasChoices, Field, SecretStr
+from pydantic import AliasChoices, Field, SecretStr, StringConstraints
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from backend.app.product.auth import CurrentUser
@@ -95,7 +95,7 @@ class MediaProviders:
             return unavailable()
         try:
             async with httpx.AsyncClient(
-                transport=self.transport, timeout=3, follow_redirects=False, trust_env=False
+                transport=self.transport, timeout=8, follow_redirects=False, trust_env=False
             ) as client:
                 data = await self._json(
                     client,
@@ -156,7 +156,7 @@ class MediaProviders:
             return unavailable()
         try:
             async with httpx.AsyncClient(
-                transport=self.transport, timeout=3, follow_redirects=False, trust_env=False
+                transport=self.transport, timeout=8, follow_redirects=False, trust_env=False
             ) as client:
                 data = await self._json(
                     client,
@@ -221,6 +221,8 @@ def get_media_providers():
 
 Providers = Annotated[MediaProviders, Depends(get_media_providers)]
 Dimension = Annotated[int, Query(ge=200, le=1280)]
+Slot = Annotated[str, StringConstraints(min_length=1, max_length=300)]
+RequestedSlots = Annotated[list[Slot] | None, Query(max_length=MAX_PLACE_PHOTOS)]
 
 
 def owned_bindings(kind, resource_id, owner):
@@ -242,24 +244,46 @@ def owned_bindings(kind, resource_id, owner):
                     "SELECT media_bindings FROM app.trips WHERE owner_id=%s AND id=%s",
                     (owner, decision["saved_trip_id"]),
                 ).fetchone()
-    return list((row["media_bindings"] if row else {}).items())[:MAX_PLACE_PHOTOS]
+    return sorted((row["media_bindings"] if row else {}).items())
 
 
-async def resolve_photos(bindings, providers, width, height, response):
+async def resolve_photos(
+    bindings, providers, width, height, response, *, offset=0, slots=None,
+    batch_timeout_seconds=30, provider_timeout_seconds=8,
+):
     response.headers["Cache-Control"] = "no-store"
-    bindings = list(bindings)[:MAX_PLACE_PHOTOS]
+    all_bindings = list(bindings)
+    if slots is not None:
+        if len(slots) > MAX_PLACE_PHOTOS:
+            raise ValueError("Media batch exceeds the slot limit")
+        authorized = dict(all_bindings)
+        all_bindings = [(slot, authorized.get(slot)) for slot in dict.fromkeys(slots)]
+        offset = 0
+    bindings = all_bindings[offset:offset + MAX_PLACE_PHOTOS]
     semaphore = asyncio.Semaphore(3)
+    items = {slot: unavailable() for slot, _ in bindings}
 
     async def resolve(slot, place):
+        if place is None:
+            return
         async with semaphore:
-            return slot, await providers.google(place, width, height)
+            try:
+                async with asyncio.timeout(provider_timeout_seconds):
+                    items[slot] = await providers.google(place, width, height)
+            except Exception:
+                # One display failure must not erase completed slots; cancellation propagates.
+                pass
 
     try:
-        async with asyncio.timeout(12):
-            items = dict(await asyncio.gather(*(resolve(slot, place) for slot, place in bindings)))
+        async with asyncio.timeout(batch_timeout_seconds):
+            await asyncio.gather(*(resolve(slot, place) for slot, place in bindings))
     except TimeoutError:
-        items = {slot: unavailable() for slot, _ in bindings}
-    return {"items": items, "limit": MAX_PLACE_PHOTOS}
+        pass
+    next_offset = offset + len(bindings)
+    return {
+        "items": items, "limit": MAX_PLACE_PHOTOS,
+        "next_offset": next_offset if next_offset < len(all_bindings) else None,
+    }
 
 
 @router.get("/api/examples/{example_id}/media")
@@ -269,9 +293,14 @@ async def example_media(
     response: Response,
     width: Dimension = 960,
     height: Dimension = 640,
+    offset: Annotated[int, Query(ge=0)] = 0,
+    slot: RequestedSlots = None,
 ):
     detail = example_detail(example_id)
-    return await resolve_photos(detail._media_bindings.items(), providers, width, height, response)
+    return await resolve_photos(
+        detail._media_bindings.items(), providers, width, height, response,
+        offset=offset, slots=slot,
+    )
 
 
 @router.get("/api/{kind}/{resource_id}/media")
@@ -283,10 +312,14 @@ async def owned_media(
     response: Response,
     width: Dimension = 960,
     height: Dimension = 640,
+    offset: Annotated[int, Query(ge=0)] = 0,
+    slot: RequestedSlots = None,
 ):
     # Storage is synchronous; slow reads must not block the task/lease event loop.
     bindings = await asyncio.to_thread(owned_bindings, kind, resource_id, user["id"])
-    return await resolve_photos(bindings, providers, width, height, response)
+    return await resolve_photos(
+        bindings, providers, width, height, response, offset=offset, slots=slot
+    )
 
 
 @router.get("/api/media/curated/{key}")

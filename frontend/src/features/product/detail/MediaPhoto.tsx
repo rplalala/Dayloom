@@ -19,21 +19,23 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   };
   useEffect(() => setFailed(false), [media]);
   const available = media?.status === 'available' && media.image_url && !failed;
+  const pendingLabel = !atmosphere && !failed && (!media || media.status === 'loading')
+    ? media ? 'Loading photo…' : 'Photo pending' : 'Illustration';
   const placeCredit = Boolean(available && !atmosphere && !creditInDetails);
   const visual = available ? <img src={media.image_url} alt={atmosphere ? media.alt || label : `${label} · place photograph`} onError={() => setFailed(true)} referrerPolicy="no-referrer" /> : atmosphere ? <img src={fallback} alt={`${label} · illustration`} /> : <div className="media-placeholder" aria-label="Illustration, not a place photograph"><img src={fallback} alt="" aria-hidden="true" /></div>;
   const credit = available ? <>
     <span className="media-provider" translate="no">{media.provider}</span>
     {media.authors?.map((author, i) => <span key={i}> · {author.url ? <a href={author.url} target="_blank" rel="noopener noreferrer">{author.name}</a> : author.name}</span>)}
     {media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
-  </> : 'Illustration';
+  </> : pendingLabel;
   const picture = onOpen ? <button type="button" className="media-open" aria-label={`View ${label}`} onClick={onOpen}>{visual}</button> : link ? <Link className="media-image-link" to={link.to} aria-label={link.label}>{visual}</Link> : visual;
-  return <figure className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}
+  return <figure data-photo-state={failed ? 'unavailable' : media?.status || 'unattempted'} aria-busy={media?.status === 'loading'} className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}
     onPointerEnter={event => { if (atmosphere && event.pointerType !== "touch") setCreditsOpen(true); }}
     onPointerLeave={event => { if (!event.currentTarget.contains(document.activeElement)) setCreditsOpen(false); }}
     onFocus={() => setCreditsOpen(true)}
     onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setCreditsOpen(false); }}
     onKeyDown={event => { if (atmosphere && event.key === "Escape") { event.preventDefault(); event.stopPropagation(); closeCredits(); } }}>
-    {children ? <div className="media-detail-row"><div className="nearby-photo">{picture}{!available && <span className="media-credit" aria-hidden="true">Illustration</span>}</div>{children}</div> : picture}
+    {children ? <div className="media-detail-row"><div className="nearby-photo">{picture}{!available && <span className="media-credit" aria-hidden="true">{pendingLabel}</span>}</div>{children}</div> : picture}
     {available && atmosphere ? <figcaption className="atmosphere-credit">
       <button type="button" className="photo-credit-toggle" ref={creditToggle} aria-label="Photo credits" aria-expanded={creditsOpen} aria-controls={creditsId} onClick={() => setCreditsOpen(true)}><Icon name="info" size={15} /></button>
       <span id={creditsId} className="photo-credit-content" hidden={!creditsOpen}>{credit}<button type="button" className="photo-credit-close" aria-label="Hide photo credits" onClick={closeCredits}><Icon name="close" size={12} /></button></span>

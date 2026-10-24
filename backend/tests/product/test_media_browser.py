@@ -11,6 +11,36 @@ from backend.tests.product.test_imports import source
 from backend.tests.product.test_task_browser import task_app  # noqa: F401
 
 
+def test_all_twenty_five_photos_render_after_preview_save_reopen_and_copy(task_app):  # noqa: F811
+    from backend.tests.product.test_media import bound_preview
+
+    context = task_app.browser.new_context(viewport={"width": 1440, "height": 1000})
+    try:
+        page = context.new_page()
+        register_browser(page, task_app.base_url)
+        owner = page.request.get(task_app.base_url + "/api/auth/current").json()
+        preview = bound_preview(owner["id"], {
+            f"activity:stop-{index}": f"place-{index}" for index in range(25)
+        })
+        page.goto(task_app.base_url + f"/previews/{preview.id}")
+        photos = page.locator('.activity-photo[data-photo-state="available"] img')
+        expect(photos).to_have_count(25)
+        page.get_by_role("button", name="Save to My trips", exact=True).click()
+        page.get_by_role("link", name="View saved itinerary", exact=True).click()
+        expect(photos).to_have_count(25)
+        page.reload()
+        expect(photos).to_have_count(25)
+        page.get_by_role("button", name="Make a copy", exact=True).click()
+        page.get_by_role("link", name="View saved copy", exact=True).click()
+        expect(photos).to_have_count(25)
+        page.wait_for_function(
+            "Array.from(document.querySelectorAll('.activity-photo img'))"
+            ".every(image => image.complete && image.naturalWidth > 0)"
+        )
+    finally:
+        context.close()
+
+
 def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_app):  # noqa: F811
     base, browser = task_app.base_url, task_app.browser
     context = browser.new_context(viewport={"width": 1440, "height": 1000})
