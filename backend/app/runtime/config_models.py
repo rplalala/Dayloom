@@ -462,7 +462,22 @@ class LandmarkNominationConfig(_RepairConfigModel):
     supplementary_searches: StrictInt = Field(default=4, ge=0, le=4)
 
 
+class AuxiliaryModelLimits(_ConfigModel):
+    input_tokens: StrictInt = Field(default=252000, gt=0, le=252000)
+    output_tokens: StrictInt = Field(default=16384, gt=0, le=16384)
+    framing_tokens: StrictInt = Field(default=2048, ge=0)
+
+    @model_validator(mode="after")
+    def framing_fits(self):
+        if self.framing_tokens >= self.input_tokens:
+            raise ValueError("Auxiliary framing reserve must fit input allowance")
+        return self
+
+
 class RuntimeConfig(_ConfigModel):
+    auxiliary_model_limits: AuxiliaryModelLimits | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     resource_profile: Literal["development", "acceptance"] = Field(
         default="development", exclude_if=lambda value: value == "development"
     )

@@ -355,17 +355,20 @@ def _create_official_web_providers(
     *,
     existing=(None, None, None),
     owned_clients=None,
+    auxiliary_limits=None,
 ) -> tuple[WebEvidenceProvider, PageRetriever, OfficialEvidenceReasoner]:
     endpoint = str(settings.azure_openai_endpoint)
     deployment = settings.azure_openai_deployment
     api_key = settings.azure_openai_api_key.get_secret_value()
     factories = (
         lambda: AzureFoundryWebEvidenceProvider(
-            endpoint=endpoint, deployment=deployment, api_key=api_key, config=config
+            endpoint=endpoint, deployment=deployment, api_key=api_key, config=config,
+            auxiliary_limits=auxiliary_limits,
         ),
         lambda: SafeHTMLPageRetriever(config.page_retrieval),
         lambda: AzureFoundryEvidenceReasoner(
-            endpoint=endpoint, deployment=deployment, api_key=api_key, config=config
+            endpoint=endpoint, deployment=deployment, api_key=api_key, config=config,
+            auxiliary_limits=auxiliary_limits,
         ),
     )
     result = []
@@ -469,7 +472,11 @@ def main(
                 settings, effective_tracer
             )
             if llm_client is None:
-                llm_client = create_foundry_client(settings)
+                options = (
+                    {"auxiliary_limits": runtime_config.auxiliary_model_limits}
+                    if runtime_config.auxiliary_model_limits is not None else {}
+                )
+                llm_client = create_foundry_client(settings, **options)
                 owned_clients.append(llm_client)
             places_provider = places_provider or default_places
             weather_provider = weather_provider or default_weather
@@ -480,6 +487,7 @@ def main(
                     runtime_config.web_evidence,
                     existing=(web_provider, page_retriever, official_reasoner),
                     owned_clients=owned_clients,
+                    auxiliary_limits=runtime_config.auxiliary_model_limits,
                 )
 
         if (

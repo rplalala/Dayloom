@@ -84,13 +84,16 @@ async def run_v0(
     )
 
 
-def create_foundry_client(settings: V0Settings) -> AzureFoundryStructuredLLMClient:
+def create_foundry_client(
+    settings: V0Settings, *, auxiliary_limits=None
+) -> AzureFoundryStructuredLLMClient:
     """Create the default provider client from explicit V0 settings."""
 
     return AzureFoundryStructuredLLMClient(
         endpoint=str(settings.azure_openai_endpoint),
         deployment=settings.azure_openai_deployment,
         api_key=settings.azure_openai_api_key.get_secret_value(),
+        auxiliary_limits=auxiliary_limits,
     )
 
 

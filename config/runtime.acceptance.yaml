@@ -1,5 +1,9 @@
 # Standalone Product acceptance policy; runtime.yaml remains the development policy.
 schema_version: 6
+auxiliary_model_limits:
+  input_tokens: 252000
+  output_tokens: 16384
+  framing_tokens: 2048
 landmark_nomination:
   max_calls: 1
   max_names: 12

@@ -222,7 +222,9 @@ class AzureFoundryEvidenceReasoner:
         api_key: str,
         config: WebEvidenceConfig,
         responses_client: Any | None = None,
+        auxiliary_limits=None,
     ) -> None:
+        self._auxiliary_limits = auxiliary_limits
         self._deployment = deployment
         self._config = config
         self._owned_client = None
@@ -291,8 +293,12 @@ class AzureFoundryEvidenceReasoner:
         references = ShortReferences(
             input_data, {"place_id": "p", "source_key": "s", "task_id": "t"}
         )
+        from functools import partial
+
+        from backend.app.services.auxiliary_model_limits import bounded_response
+
         raw = await observe_sdk(
-            self._responses.create,
+            partial(bounded_response, self._responses.create, self._auxiliary_limits),
             usage_operation="official_reasoning",
             usage_provider="azure_foundry",
             model=self._deployment,

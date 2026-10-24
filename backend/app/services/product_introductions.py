@@ -36,12 +36,16 @@ class IntroductionBatch(BaseModel):
 
 
 class IntroductionClient:
-    def __init__(self, client, deployment):
+    def __init__(self, client, deployment, *, auxiliary_limits=None):
         self.client, self.deployment = client, deployment
+        self._auxiliary_limits = auxiliary_limits
 
     async def generate(self, places):
+        from backend.app.services.auxiliary_model_limits import bounded_response
+
         references = ShortReferences(places, {"activity_id": "a"})
-        response = await self.client.responses.create(
+        response = await bounded_response(
+            self.client.responses.create, self._auxiliary_limits,
             model=self.deployment,
             input=[
                 {"role": "system", "content": SYSTEM_PROMPT + "\n" + INSTRUCTION},
@@ -65,6 +69,8 @@ class IntroductionClient:
 
 @asynccontextmanager
 async def create_introduction_client():
+    from backend.app.runtime.config_loader import load_product_runtime_config
+
     settings = V0Settings()
     client = AsyncOpenAI(
         base_url=str(settings.azure_openai_endpoint),
@@ -73,7 +79,10 @@ async def create_introduction_client():
         timeout=30,
     )
     try:
-        yield IntroductionClient(client, settings.azure_openai_deployment)
+        yield IntroductionClient(
+            client, settings.azure_openai_deployment,
+            auxiliary_limits=load_product_runtime_config().auxiliary_model_limits,
+        )
     finally:
         await _await_cleanup(client.close())
 

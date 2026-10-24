@@ -116,6 +116,7 @@ async def create_planner_dependencies(
             api_key=settings.azure_openai_api_key.get_secret_value(),
             http_client=http_client,
             http_async_client=http_async_client,
+            auxiliary_limits=config.auxiliary_model_limits,
         ))
         if version == SystemVersion.V0:
             yield PlannerDependencies(llm=llm)
@@ -129,6 +130,7 @@ async def create_planner_dependencies(
             "deployment": settings.azure_openai_deployment,
             "api_key": settings.azure_openai_api_key.get_secret_value(),
             "config": config.web_evidence,
+            "auxiliary_limits": config.auxiliary_model_limits,
         }
         yield PlannerDependencies(
             llm=llm,
