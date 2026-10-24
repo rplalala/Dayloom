@@ -1,25 +1,19 @@
-"""Verify content-only blinded display synchronization without network access."""
+"""Verify the current blinded questionnaire, confirmed answers and mean ranks offline."""
 
-import hashlib
 import json
 import re
-import subprocess
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from backend.evaluation.human_answers import validate_answers
 from backend.evaluation.human_tasks import ACTIVITY_FIELDS, INPUT_FIELDS
 from benchmark.verify_automatic import ROOT, digest, load, published_sha256
 
 DIRECTORY = ROOT / "benchmark/blinded-results"
 DATA = re.compile(r'(<script id="human-data" type="application/json">)(.*?)(</script>)', re.S)
-
-
-def historical(revision, name):
-    return subprocess.check_output(
-        ["git", "show", f"{revision}:benchmark/blinded-results/{name}"], cwd=ROOT
-    )
 
 
 def presentation(html):
@@ -66,80 +60,93 @@ def activity_signature(days, displayed=False):
 
 def verify():
     binding = load(DIRECTORY / "source-binding.json")
-    assessed = binding["assessed"]
-    for name, expected in assessed["artifacts"].items():
-        assert hashlib.sha256(historical(assessed["git_revision"], name)).hexdigest() == expected
-    old_html = historical(assessed["git_revision"], "review.html").decode("utf-8")
-    old = presentation(old_html)
     current_html = (DIRECTORY / "review.html").read_text("utf-8")
     current = presentation(current_html)
-    assert old["presentation_hash"] == assessed["presentation_hash"]
-    assert current["presentation_hash"] == binding["current"]["presentation_hash"]
-    for package in (old, current):
-        assert package["presentation_hash"] == digest(
-            {k: v for k, v in package.items() if k != "presentation_hash"}
-        )
-        assert package["dimensions"] == ["preference", "pace", "usefulness"]
-        assert len(package["tasks"]) == 12
-    assert current["presentation_id"] != old["presentation_id"]
-    assert current["presentation_hash"] != old["presentation_hash"]
-    assert current["batch_revision"] == 2
-    for before, after in zip(old["tasks"], current["tasks"], strict=True):
-        assert before["task_id"] == after["task_id"]
-        assert list(after["plans"]) == ["A", "B", "C", "D"]
-        assert digest(after) == binding["current"]["task_semantic_sha256"][after["task_id"]]
-        if after["task_id"] != "task-4":
-            assert after == before
-    task = current["tasks"][3]
-    request = load("benchmark/inputs/case-04.json")
-    assert task["input"] == {k: request[k] for k in INPUT_FIELDS}
-    selected = [
-        load(f"benchmark/case-04/generation/{v}/itinerary.json") for v in ("v0", "v1", "v2", "v3")
-    ]
-    expected = {digest(activity_signature(itinerary["days"])) for itinerary in selected}
-    actual = {digest(activity_signature(plan["days"], True)) for plan in task["plans"].values()}
-    assert len(expected) == 4 and actual == expected
+    assert binding["current"]["assessment_status"] == "completed"
+    for key in ("presentation_id", "presentation_hash", "batch_revision"):
+        assert current[key] == binding["current"][key]
+    assert current["presentation_hash"] == digest(
+        {k: v for k, v in current.items() if k != "presentation_hash"}
+    )
+    assert current["dimensions"] == ["preference", "pace", "usefulness"]
+    assert [t["task_id"] for t in current["tasks"]] == [f"task-{i}" for i in range(1, 13)]
+    mappings = []
+    for number, task in enumerate(current["tasks"], 1):
+        assert list(task["plans"]) == ["A", "B", "C", "D"]
+        assert digest(task) == binding["current"]["task_semantic_sha256"][task["task_id"]]
+        case = f"case-{number:02d}"
+        request = load(f"benchmark/inputs/{case}.json")
+        assert task["input"] == {k: request[k] for k in INPUT_FIELDS}
+        selected = {
+            digest(
+                activity_signature(load(f"benchmark/{case}/generation/{v}/itinerary.json")["days"])
+            ): v
+            for v in ("v0", "v1", "v2", "v3")
+        }
+        assert len(selected) == 4
+        labels = {
+            label: selected[digest(activity_signature(plan["days"], True))]
+            for label, plan in task["plans"].items()
+        }
+        assert len(set(labels.values())) == 4
+        mappings.append({"task_id": task["task_id"], "group_id": case, "labels": labels})
     dictionaries = []
     for name in ("review.html", "review.zh-CN.html"):
         html = (DIRECTORY / name).read_text("utf-8")
-        previous = historical(assessed["git_revision"], name).decode("utf-8").replace("\r\n", "\n")
         assert presentation(html) == current
-        assert renderer(html) == renderer(previous)
+        assert renderer(html) == renderer(current_html)
         assert re.findall(r"<style>(.*?)</style>", html, re.S) == re.findall(
-            r"<style>(.*?)</style>", previous, re.S
+            r"<style>(.*?)</style>", current_html, re.S
         )
-        dictionary = translations(html)[0]
-        assert all(dictionary[k] == v for k, v in translations(previous)[0].items())
-        dictionaries.append(dictionary)
-        assert published_sha256(DIRECTORY / name) == binding["current"]["artifacts"][name]
+        dictionaries.append(translations(html)[0])
     assert dictionaries[0] == dictionaries[1]
+    for name in ("review.html", "review.zh-CN.html", "answers_human.json", "answers_6.1sol.json"):
+        assert published_sha256(DIRECTORY / name) == binding["current"]["artifacts"][name]
+    private = {
+        "schema_version": "rtpeval_human_mapping_1",
+        "public_sha256": digest(current),
+        "tasks": mappings,
+    }
+    private["content_hash"] = digest(private)
+    report = (DIRECTORY / "report.md").read_text("utf-8")
+    rows = [
+        [cell.strip().replace("**", "") for cell in line.strip("|").split("|")]
+        for line in report.splitlines()
+        if line.startswith("|")
+    ]
+    overall = {}
     for name in ("answers_human.json", "answers_6.1sol.json"):
-        original = historical(assessed["git_revision"], name)
-        assert (DIRECTORY / name).read_bytes() == original
-        answers = json.loads(original)["answers"]
-        assert len(answers) == 12
-        for answer in answers:
-            for key in (
-                "batch_id",
-                "batch_revision",
-                "presentation_id",
-                "presentation_hash",
-                "rater_ref",
-            ):
-                assert answer[key] == old[key]
-            assert answer["state"] == "submitted"
-            assert set(answer["responses"]) == set(old["dimensions"])
-    previous_report = historical(assessed["git_revision"], "report.md").decode("utf-8")
-    current_report = (DIRECTORY / "report.md").read_text("utf-8")
-
-    def tables(text):
-        return [line for line in text.splitlines() if line.startswith("|")]
-
-    assert tables(previous_report) == tables(current_report)
+        assert not (DIRECTORY / name.replace(".json", ".current.json")).exists()
+        bundle = load(DIRECTORY / name)
+        imported = validate_answers(current, private, [bundle])
+        assert len(bundle["answers"]) == len(imported["effective"]) == 12
+        sums = {
+            v: {d: Fraction(0) for d in current["dimensions"]} for v in ("v0", "v1", "v2", "v3")
+        }
+        by_task = {m["task_id"]: m["labels"] for m in mappings}
+        for answer in imported["effective"]:
+            for dimension, response in answer["responses"].items():
+                assert response["status"] == "ranked"
+                position = 1
+                for group in response["tie_groups"]:
+                    rank = Fraction(2 * position + len(group) - 1, 2)
+                    for label in group:
+                        sums[by_task[answer["task_id"]][label]][dimension] += rank
+                    position += len(group)
+        reviewer = "Human" if "human" in name else "Model"
+        overall[reviewer] = {}
+        for version, totals in sums.items():
+            means = [total / 12 for total in totals.values()]
+            assert [reviewer, version.upper(), *[f"{float(n):.3f}" for n in means]] in rows
+            overall[reviewer][version] = sum(means) / 3
+    for version in overall["Human"]:
+        assert [
+            version.upper(),
+            *[f"{float(overall[r][version]):.3f}" for r in ("Human", "Model")],
+        ] in rows
     print(
-        "Verified 12 tasks, four selected plans, bilingual content, "
-        "unchanged renderer/ranking rules, "
-        "24 original answers, all result tables and distinct source bindings."
+        "Verified 12 current tasks, 48 selected plans, bilingual questionnaires, "
+        "24 confirmed answers, published mean ranks and current source hashes."
     )
 
 

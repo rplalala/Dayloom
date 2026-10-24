@@ -159,17 +159,15 @@ or formal research analysis requires its own covered authorization.
 
 ### Final blinded results
 
-The [blinded-review report](blinded-results/report.md) links current English/Chinese
-itinerary displays, the assessed questionnaires and separate human and GPT-6.1 sol
-xhigh answer exports accepted on 19 October 2026 (Australia/Sydney). It explains the three dimensions, shows all
-task-level rankings and separate V0-V3 mean ranks, and describes agreement, use of
-ties and interpretation limits.
-Current displays, original answer exports, the report and source bindings are
-tracked directly in `blinded-results/`, without round or category subdirectories.
-Assessed questionnaire bytes remain accessible at the pinned revision in the
-report. Existing private mappings and native evidence are preserved.
-Run `python benchmark/verify_blinded.py` to check display bindings, unchanged
-answers/results, both languages and the eleven retained tasks offline.
+The [blinded-review report](blinded-results/report.md) links English/Chinese
+questionnaires and separate human and GPT-6.1 sol xhigh answer exports. The
+researcher confirmed both reviewers' results on 24 October 2026 (Australia/Sydney).
+The report explains the three dimensions, shows all task-level rankings and
+separate V0-V3 mean ranks, and describes agreement, ties and interpretation limits.
+Questionnaires, the two directly importable answer exports, the report and source
+bindings are maintained in place in `blinded-results/`.
+Run `python benchmark/verify_blinded.py` to check all twelve tasks, 48 selected
+plans, both languages, answer bindings, mean ranks and source hashes offline.
 
 ### Workflow and responsibilities
 
@@ -408,9 +406,9 @@ detect an omitted category. Retain genuine empty/no-Repair/partial observations;
 unavailable evidence stays explicitly unavailable rather than being reconstructed
 from assumptions. Native execution/replay closures remain private.
 
-The [final blinded results](#final-blinded-results) link current itinerary displays,
-fixed-revision assessed questionnaires and original answer exports. A public binding
-summary identifies display and assessed-source hashes; preparation, private version
+The [final blinded results](#final-blinded-results) link the questionnaires and
+confirmed answer exports. A public binding summary identifies questionnaire and
+answer hashes; preparation, private version
 mappings and native report/replay dependencies stay in private evidence storage.
 Additional human or corpus directories are created only for covered work.
 
