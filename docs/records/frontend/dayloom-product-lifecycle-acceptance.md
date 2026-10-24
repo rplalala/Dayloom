@@ -260,11 +260,25 @@ sends. The pipeline continued through its ordinary acquisition path. The new Ope
 search adapter was not invoked either, so this run establishes no live acceptance of
 that adapter; its evidence is the offline SDK/transport regression. The saved execution
 source and raw evidence remain unchanged. No additional paid generation or probe was
-launched, and Issue #231 remains open for these acceptance gaps.
+launched. Live retrieval and search coverage remain explicitly unverified; these do not
+invalidate the separately observed ordinary-acquisition result.
+
+The user confirmed the resulting Product experience on 24 October 2026. The harness
+correction reuses `scripts.run_api.create_api_loop`; its separate local copy passed an
+offline Selector-loop check, and the existing launcher regression passed one test.
+Pytest reported only a sandbox cache-write warning. The official Product readiness
+command also passed local database/retrieval preparation without external calls. The
+original frozen script's SHA-256 was unchanged. These checks do not establish live
+retrieval/search coverage or authorize another paid attempt. The smoke policy now
+requires this shared loop factory before source freezing. No Product preference logic
+or V0-V3 behavior changed during this closeout. Issue #231 remains open for Git delivery.
 
 Local evidence identifiers: `.scratch/controlled-paris-run.py`,
 `.scratch/controlled-paris/`, `.scratch/paris-original-request.json`, and the earlier
-`.scratch/paris-budget-preflight.{py,json}`. Runtime outputs remain local evidence, not
+`.scratch/paris-budget-preflight.{py,json}`. The separate
+`.scratch/controlled-paris-loop-correction.py` and
+`.scratch/controlled-paris-loop-verification.json` identify the unexecuted correction and
+its offline receipt; future execution requires a new approved freeze. Runtime outputs remain local evidence, not
 published requirements or an invoice.
 
 One real photo acceptance ran against `fd93029` using the prescribed execution child and

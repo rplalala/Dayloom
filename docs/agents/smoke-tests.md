@@ -32,6 +32,14 @@ output paths, and approved request/cost/token/time/retry limits and stopping rul
 Include credentials/configuration prerequisites without copying secrets into the
 handoff. Missing approval or prerequisites is a blocker, not authority to improvise.
 
+Python harnesses using async PostgreSQL must reuse
+`scripts.run_api.create_api_loop` through
+`asyncio.run(main(), loop_factory=create_api_loop)`, as the Product launcher does.
+Verify loop selection offline before freezing the execution source; Windows Proactor
+cannot run psycopg async connections. Preserve previously frozen source and evidence
+when preparing a corrected harness. A local readiness check does not establish live
+retrieval, embedding or search coverage.
+
 The child executes only that handoff and preserves original evidence. It stops at
 approved limits or blocking conditions and reports deviations. Spawning a child
 never authorizes additional live calls, retries, mode substitution or budget growth.
