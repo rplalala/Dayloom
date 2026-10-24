@@ -3,7 +3,7 @@
   "case_id": "case-04",
   "case_revision": "oct25-20261024-r1",
   "batch_id": "case-04-oct25",
-  "status": "pending_researcher_acceptance",
+  "status": "accepted",
   "original_input": {
     "path": "evaluation/input.json",
     "sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
@@ -1711,16 +1711,16 @@
     },
     {
       "path": "selection.json",
-      "sha256": "90f870080ae5e57d2e89f9b79e6f1256107d62a7d55041ee6a306da483b3cb23",
+      "sha256": "1f2838a7ed281f019f5efcd5e08e2c8588cda6c90fe1ab64e1a162bef9df0acf",
       "publication_kind": "derived_current_view",
       "sources": [],
-      "expanded_semantic_sha256": "937a68f00858637751b226244f488eb99c37f2d2b67ab0514b8f81de803ea615"
+      "expanded_semantic_sha256": "92ed55af6bc3552d25c534287259d655f748da8ea0ca0dc476788c77b87bb218"
     }
   ],
   "reader_views": [
     {
       "path": "report.md",
-      "sha256": "4c7d2c64533194956b7785141f3e207937eaffdd17d5f99c0ddf318ed08c22cf"
+      "sha256": "fbde6073c711302102271b4056743efd5511e3f0f4d383cd1491edca57cb8d3c"
     },
     {
       "path": "itinerary.md",
@@ -1728,7 +1728,11 @@
     }
   ],
   "researcher_acceptance": {
-    "status": "pending",
-    "scope": "Complete new-date four-version automatic selection and dependent analyses."
+    "status": "accepted",
+    "date": "2026-10-24",
+    "timezone": "Australia/Sydney",
+    "source_revision": "daaf9ba7ebe2cb7d881946bdce47e4f757f4f626",
+    "decision_url": "https://github.com/rplalala/Dayloom/issues/218#issuecomment-6377527970",
+    "scope": "Complete new-date four-version automatic selection and dependent analyses, with disclosed limitations."
   }
 }

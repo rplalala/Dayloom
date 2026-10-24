@@ -3,7 +3,7 @@
 The [benchmark report](report.md) summarizes the V0-V3 automatic ranking, exact
 quality decomposition, same-run Pair results and selected-generation resources.
 The Rich-policy replacement under [#218](https://github.com/rplalala/Dayloom/issues/218)
-is pending researcher acceptance; existing blinded answers retain their original inputs.
+was accepted on 24 October 2026; existing blinded answers retain their assessed inputs.
 
 The active set contains 12 English travel-planning requests in four groups of three. Pending inputs remain
 working drafts; directory placement does not freeze the set. Each public case
@@ -140,7 +140,7 @@ retain the separately accepted questionnaires and answers.
 | 01 | 2026-10-14 | [Initial Sydney dataset](case-01/report.md#acceptance) |
 | 02 | 2026-10-14 | [London selection](case-02/report.md#acceptance-and-material) |
 | 03 | 2026-10-15 | [Tokyo selection](case-03/report.md#acceptance-status) |
-| 04 | New-date complete replacement pending acceptance; former selection accepted 2026-10-18 | [Singapore](case-04/report.md#acceptance), new V0–V3 and independent Primary/Pair for 25–26 October; native V3 Rich completion is complete with 3/3 visits |
+| 04 | 2026-10-24; former selection accepted 2026-10-18 | [Singapore](case-04/report.md#acceptance), new V0–V3 and independent Primary/Pair for 25–26 October; native V3 Rich completion is complete with 3/3 visits |
 | 05 | 2026-10-16; refreshed selection accepted 2026-10-18 | [Barcelona current selection](case-05/report.md#acceptance), 26–30 October; four current-system generations, fresh Primary/pair and complete dependent analyses; refreshed selection explicitly accepted with disclosed limitations |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
@@ -159,14 +159,17 @@ or formal research analysis requires its own covered authorization.
 
 ### Final blinded results
 
-The [blinded-review report](blinded-results/report.md) presents the English/Chinese
-questionnaires and separate human and GPT-6.1 sol xhigh answer exports accepted on
-19 October 2026 (Australia/Sydney). It explains the three dimensions, shows all
+The [blinded-review report](blinded-results/report.md) links current English/Chinese
+itinerary displays, the assessed questionnaires and separate human and GPT-6.1 sol
+xhigh answer exports accepted on 19 October 2026 (Australia/Sydney). It explains the three dimensions, shows all
 task-level rankings and separate V0-V3 mean ranks, and describes agreement, use of
 ties and interpretation limits.
-The report and four original artifacts are tracked directly in `blinded-results/`,
-without round or category subdirectories. Private mappings and native report
-dependencies remain in private evidence storage.
+Current displays, original answer exports, the report and source bindings are
+tracked directly in `blinded-results/`, without round or category subdirectories.
+Assessed questionnaire bytes remain accessible at the pinned revision in the
+report. Existing private mappings and native evidence are preserved.
+Run `python benchmark/verify_blinded.py` to check display bindings, unchanged
+answers/results, both languages and the eleven retained tasks offline.
 
 ### Workflow and responsibilities
 

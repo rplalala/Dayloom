@@ -70,7 +70,7 @@ The [case-04 refresh record](records/evaluation/2026-10-24-rich-primary.md)
 records four new generations and independent Primary/Pair evaluation for
 25–26 October, including native 3/3 Rich completion, factual exceptions and resources.
 The [offline verifier](../benchmark/review_case04.py) checks the selected bindings
-and completion; researcher acceptance remains separate.
+and completion; the researcher accepted the selection on 24 October 2026.
 The [post-generation review readiness contract](contracts/0002-intake-identity-usage.md#post-generation-review-readiness)
 separates missing output-specific review work from completed unresolved judgments
 before primary acquisition, without changing Planner generation or score policies;
@@ -90,11 +90,12 @@ does not refresh accepted datasets.
 
 ## Other responsibilities
 
-- [Benchmark report](../benchmark/report.md): pending researcher acceptance,
+- [Benchmark report](../benchmark/report.md): accepted automatic selection,
   mean-score order **V3 > V2 > V1 > V0**, exact twelve-case totals, same-run Pair
   summaries and selected-generation resources. Case-04 uses four new outputs and
   independent evaluations for 25–26 October; existing blinded answers retain their
-  original reviewed itinerary bindings.
+  original reviewed itinerary bindings; current blinded displays match the accepted
+  case-04 selection and link their assessed sources.
 - [Blinded-review report](../benchmark/blinded-results/report.md): completed human
   and GPT-6.1 sol xhigh assessments, dimension and task-level rankings, agreement
   and differences. The accepted English/Chinese questionnaires and separate answer

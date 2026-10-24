@@ -73,17 +73,22 @@ Three examples show the different patterns:
 ## Evaluation method
 
 One human and one GPT-6.1 sol xhigh reviewer each assessed the same 12 requests
-and four anonymous plans per request. Both completed all 36 rankings across
-preference match, pace and practical usefulness; the English and Chinese pages
-contain the same presentation.
+and four anonymous plans per request in the assessed questionnaire linked below.
+Both completed all 36 rankings across preference match, pace and practical usefulness.
+The current English/Chinese displays contain the accepted automatic itineraries;
+the retained ratings assess the archived questionnaire, including its case-04 content.
 
 Tied plans receive the average of their occupied positions: `A = B > C > D`
 becomes 1.5, 1.5, 3 and 4. Each dimension mean averages 12 ranks; the overall
 mean averages all 36, separately for each reviewer. Results are rounded to three
 decimal places after calculation.
 
-Version correspondence was checked by uniquely matching each plan's displayed
-activity content to the [selected itineraries](../README.md#accepted-selections).
+Version correspondence was derived by uniquely matching the assessed plans' complete
+activity content to their selected sources at the [recorded publication](https://github.com/rplalala/Dayloom/tree/77ac8a4858ee6b08ea41a8012f9983a726298d02/benchmark).
+This content-derived correspondence is retained; it is not a recovered private
+assignment file. The [source binding](source-binding.json) identifies the assessed
+questionnaire and current display separately. No retained rating assesses the
+current case-04 itinerary or establishes a reviewer judgment of its Repair behavior.
 
 ### GPT-6.1 sol xhigh
 
@@ -174,7 +179,22 @@ a task and do not represent fixed versions across tasks.
 
 ### Source files
 
-Questionnaires: [English](review.html), [Chinese](review.zh-CN.html).
+Current itinerary displays: [English](review.html), [Chinese](review.zh-CN.html).
+Task 4 presents the accepted Singapore selection for 25–26 October 2026; the
+other eleven tasks and the three-dimensional ranking format are unchanged.
+
+Assessed questionnaires: [English](https://github.com/rplalala/Dayloom/blob/daaf9ba7ebe2cb7d881946bdce47e4f757f4f626/benchmark/blinded-results/review.html),
+[Chinese](https://github.com/rplalala/Dayloom/blob/daaf9ba7ebe2cb7d881946bdce47e4f757f4f626/benchmark/blinded-results/review.zh-CN.html).
 Answers: [Human](answers_human.json), [GPT-6.1 sol xhigh](answers_6.1sol.json).
-The final questionnaires and answer exports were accepted on 19 October 2026
-(Australia/Sydney).
+These assessed questionnaires and original answer exports were accepted on
+19 October 2026 (Australia/Sydney). All answer text, rankings, ties and reported
+statistics remain attached to that presentation. Current displays have a distinct
+presentation identity and hash; old answer imports are rejected by the existing
+binding checks. [Source hashes](source-binding.json) preserve both populations.
+
+Content synchronization uses the native source-linked display projection and the
+existing anonymous letter order. External Codex `/root` prepared the content,
+Chinese display translations, source bindings and equality checks under #219;
+exact inherited model metadata, session tokens and billing are unavailable.
+No reviewer answers were authored or reassessed. Thesis #220 consumes the accepted
+automatic selection and these source-bound blinded results as separate populations.

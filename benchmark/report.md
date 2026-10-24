@@ -1,7 +1,7 @@
 # Benchmark automatic results
 
 The automatic mean-score order is **V3 > V2 > V1 > V0**. The complete
-case-04 replacement is **pending researcher acceptance** under
+case-04 replacement was **accepted on 24 October 2026** under
 [#218](https://github.com/rplalala/Dayloom/issues/218).
 
 [Exact results and resource rows](automatic-results.json) bind every final and Pair
@@ -87,9 +87,9 @@ Actual account billing and external Codex costs are not established.
 
 The [blinded report](blinded-results/report.md) retains its completed human and
 model reviews, answers, ties, ranks and scoring structure. Its case-04 responses
-remain bound to the earlier itineraries actually shown. #219 owns presentation
-content synchronization after acceptance; these responses do not assess the new
-automatic selection and are not merged into its score.
+remain bound to the assessed questionnaire. Current English/Chinese display
+content matches the accepted case-04 selection; retained responses do not assess
+that display and are not merged into its automatic score.
 
 ## Reproducibility and acceptance
 
@@ -99,6 +99,6 @@ verifies the current input/output bindings and native 3/3 Rich completion. Prima
 Pair and all five applicable research tracks also replay from private saved evidence
 without network calls. Original captures, receipts and prior acceptance are preserved.
 
-The [selection index](README.md#accepted-selections) locates each case. Researcher
-acceptance remains pending; merge does not supply it. Thesis prose and existing
-blinded answers are outside this delivery.
+The [selection index](README.md#accepted-selections) locates each accepted case.
+Case-04 acceptance is recorded under #218; the blinded report identifies its
+assessed population separately. Thesis synchronization continues under #220.
