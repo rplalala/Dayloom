@@ -170,3 +170,57 @@ def test_product_introduction_factory_applies_product_policy(monkeypatch):
     with pytest.raises(GenerationResourceError):
         asyncio.run(run())
     assert calls == []
+
+
+@pytest.mark.parametrize("kind", ["web", "evidence"])
+@pytest.mark.parametrize("injected", [False, True])
+@pytest.mark.parametrize("limits", [None, AuxiliaryModelLimits()])
+def test_sdk_http_accounting_survives_late_capture(monkeypatch, kind, injected, limits):
+    from openai import AsyncOpenAI
+
+    from backend.app.integrations.azure_foundry import evidence_reasoner, web_search
+    from backend.app.observability.usage_capture import capture_attempt
+
+    rows, dispatched = [], []
+
+    async def run():
+        def respond(request):
+            dispatched.append(request)
+            return httpx.Response(400, json={"error": {"message": "offline rejection"}})
+
+        sdk = AsyncOpenAI(
+            api_key="fixture", base_url="https://example.invalid/openai/v1",
+            max_retries=0, http_client=httpx.AsyncClient(transport=httpx.MockTransport(respond)),
+        )
+        module = web_search if kind == "web" else evidence_reasoner
+        adapter_type = (
+            AzureFoundryWebEvidenceProvider if kind == "web" else AzureFoundryEvidenceReasoner
+        )
+        monkeypatch.setattr(module, "AsyncOpenAI", lambda **kwargs: sdk)
+        adapter = adapter_type(
+            endpoint="https://example.invalid/openai/v1", deployment="fixture",
+            api_key="fixture", config=load_runtime_profile("acceptance").web_evidence,
+            responses_client=sdk.responses if injected else None, auxiliary_limits=limits,
+        )
+
+        async def invoke_adapter():
+            if kind == "web":
+                return await adapter.search(_request())
+            return await adapter.reason(_task(), (_source(TEXT),), _place())
+
+        try:
+            with pytest.raises(BadRequestError):
+                await capture_attempt(
+                    invoke_adapter, group_id="offline", run_id="late", version="v3",
+                    sink=rows.append,
+                )
+        finally:
+            await adapter.aclose()
+            await sdk.close()
+
+    asyncio.run(run())
+    assert len(dispatched) == 1
+    assert len(rows[0]["provider_events"]) == 1
+    assert rows[0]["provider_events"][0]["outcome"] == "failed"
+    assert len(rows[0]["model_calls"]) == 1
+    assert rows[0]["model_calls"][0]["outcome"] == "failed"

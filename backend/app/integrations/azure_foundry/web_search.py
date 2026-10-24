@@ -253,15 +253,10 @@ class AzureFoundryWebEvidenceProvider:
         return f"azure_foundry:{self._deployment}"
 
     async def search(self, request: WebEvidenceSearchRequest) -> WebSearchObservation:
-        from functools import partial
-
-        from backend.app.services.auxiliary_model_limits import bounded_response
+        from backend.app.services.auxiliary_model_limits import bound_response_request
 
         started = time.monotonic()
-        raw = await observe_sdk(
-            partial(bounded_response, self._responses.create, self._auxiliary_limits),
-            usage_operation="official_search",
-            usage_provider="azure_foundry",
+        options = dict(
             model=self._deployment,
             input=request.task_instruction,
             tools=[
@@ -275,6 +270,12 @@ class AzureFoundryWebEvidenceProvider:
             reasoning={"effort": self._config.reasoning_effort},
             max_tool_calls=self._config.max_tool_calls,
             include=["web_search_call.action.sources", "web_search_call.results"],
+        )
+        raw = await observe_sdk(
+            self._responses.create,
+            usage_operation="official_search",
+            usage_provider="azure_foundry",
+            **bound_response_request(options, self._auxiliary_limits),
         )
         return normalize_luna_response(
             raw, request, latency_ms=round((time.monotonic() - started) * 1000)
