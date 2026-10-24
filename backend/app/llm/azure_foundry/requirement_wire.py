@@ -276,9 +276,21 @@ def dated_prompt(prompt):
     return (
         indexed_prompt(prompt).replace(
             "preference_prompt_21 / preference_draft_14",
-            "preference_prompt_22 / preference_draft_15",
+            "preference_prompt_23 / preference_draft_15",
         )
         + """
+Required category experiences: a non-negotiable positive visit to an unspecified member of
+a category is still strength=hard with an ordinary category experience_goal. Represent one
+required experience as one_off (count=null), or an explicit exact/minimum count as such.
+Use selected_poi_set scope for these visit obligations. This applies to any sourced category,
+not a vocabulary of particular venue types. Do not invent a named place or soften the obligation.
+Keep independent hard conditions (such as guaranteed access, spending limits or absence of
+stairs/crowds) as separate sourced requirements; a visit count cannot enforce those conditions.
+Preserve qualifying meaning and source attribution; never remove a qualifier to obtain a match.
+Ordinary requests to avoid crowds remain tradeable unless context makes them non-negotiable.
+Availability and matching are assessed later. Do not mark a clear category visit request as
+ambiguous merely because a specific venue has not yet been chosen.
+
 Dated total visit counts: daily_visit_constraints is required; [] means assessed without them.
 It counts ALL primary sightseeing visit occurrences on one date, never distinct venue identities.
 Each rule has date, mode=exact|minimum, count, strength=hard|soft, requirement_refs and source_refs.

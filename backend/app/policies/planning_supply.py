@@ -6,6 +6,7 @@ from time import perf_counter, process_time
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from backend.app.policies.category_visits import category_visit_target, required_category_visit
 from backend.app.schemas.interpreted_requirements import ClarificationRequired
 from backend.app.schemas.landmark_nomination import LandmarkIdentity
 
@@ -280,14 +281,14 @@ def select_planning_supply(
         else:
             key, cohort = None, independent or remaining
         count_options = set()
+        hard_count_options = set()
         if semantic_assessments is not None:
             for req in requirements.values():
                 goal = req.experience_goal
-                if (
-                    req.polarity != "favor"
-                    or not goal
-                    or goal.frequency not in {"exact", "minimum"}
-                ):
+                category_target = category_visit_target(req)
+                if not goal or (category_target is None and (
+                    req.polarity != "favor" or goal.frequency not in {"exact", "minimum"}
+                )):
                     continue
                 supported = {
                     pid
@@ -297,9 +298,12 @@ def select_planning_supply(
                         for m in semantic_assessments[pid].matches
                     )
                 }
-                needed = goal.count if goal.target == "category" else 1
+                needed = category_target if category_target is not None else 1
                 if len(supported & set(chosen)) < needed:
                     count_options.update(supported & remaining)
+                    if required_category_visit(req):
+                        hard_count_options.update(supported & remaining)
+        count_options = hard_count_options or count_options
         if count_options:
             if key and cohort & count_options:
                 cohort &= count_options

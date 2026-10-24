@@ -466,7 +466,9 @@ def canonicalize_requirements(
     return validate_canonical_requirements(result, request)
 
 
-def assess_requirements(contract: InterpretedTripRequirements) -> tuple[RequirementAssessment, ...]:
+def assess_requirements(
+    contract: InterpretedTripRequirements, *, category_visits=False
+) -> tuple[RequirementAssessment, ...]:
     """No registered predicate currently certifies arbitrary open semantic text."""
     linked = {r.requirement_id for r in contract.experience_evidence_requests}
     restriction = contract.transport_constraint
@@ -479,13 +481,19 @@ def assess_requirements(contract: InterpretedTripRequirements) -> tuple[Requirem
         ref for rule in contract.daily_visit_constraints or () for ref in rule.requirement_refs
     }
     supported |= daily
+    from backend.app.policies.category_visits import required_category_visit
+
+    categories = {
+        r.requirement_id for r in contract.semantic_requirements
+        if category_visits and required_category_visit(r)
+    }
     return tuple(
         RequirementAssessment(
             requirement_id=r.requirement_id,
             capability="registered_predicate"
             if r.requirement_id in supported
             else "evidence_assessment"
-            if r.requirement_id in linked
+            if r.requirement_id in linked | categories
             else "semantic_only",
             predicate_id="daily_primary_visit_count"
             if r.requirement_id in daily
@@ -498,6 +506,8 @@ def assess_requirements(contract: InterpretedTripRequirements) -> tuple[Requirem
             check_result="unknown",
             disposition="enforce"
             if r.requirement_id in supported and r.strength == "hard"
+            else "acquire"
+            if r.requirement_id in categories
             else "clarify"
             if r.strength == "hard"
             else "advise",

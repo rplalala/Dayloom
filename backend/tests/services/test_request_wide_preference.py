@@ -110,7 +110,7 @@ def test_request_applicability_does_not_bypass_grounding(invalid):
         canonicalize_requirements(draft, make_request(text))
 
 
-@pytest.mark.parametrize("draft,prompt", [(12, 19), (13, 20), (14, 21), (15, 22)])
+@pytest.mark.parametrize("draft,prompt", [(12, 19), (13, 20), (14, 21), (15, 23)])
 def test_prompt_and_capture_version_wiring(draft, prompt):
     from backend.tests.llm.azure_foundry.test_requirement_wire import run_wire, wire_empty
 

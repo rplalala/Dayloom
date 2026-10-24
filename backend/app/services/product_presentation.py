@@ -169,6 +169,14 @@ def present_product(result, evidence, introductions=None):
         )
     completion = getattr(getattr(result, "v3", None), "soft_pace", {}).get("completion")
     projected = ProductPlanResult(
+        required_experiences=tuple(
+            dict(
+                requirement=row["requirement"], source_quotes=row["source_quotes"],
+                target=row["expected"], scheduled=row["matched"], frequency=row["frequency"],
+                status=row["status"], reason=row["reason"],
+            )
+            for row in result.generation_diagnostics.goal_progress if row.get("required")
+        ) if result.generation_diagnostics else (),
         pace_review={
             "status": completion["status"],
             "days": [
@@ -233,8 +241,11 @@ def present_product(result, evidence, introductions=None):
 
 def public_clarification(issues):
     """Keep input rewrite feedback, not research conflicts, provenance or contract versions."""
+    from backend.app.policies.requirement_feedback import MESSAGES, feedback_rows
+
+    code = issues.get("code")
     rows = []
-    for row in issues.get("issues", ()):
+    for row in issues.get("issues") or feedback_rows(code):
         public = {
             k: row[k]
             for k in (
@@ -253,6 +264,11 @@ def public_clarification(issues):
         ]
         rows.append(public)
     return {
+        **({"code": code, "requirement_ids": [
+            ref for ref in issues.get("requirement_ids", ())
+            if isinstance(ref, str) and len(ref) <= 40
+            and ref.startswith(("semantic_", "named_")) and ref.rsplit("_", 1)[-1].isdigit()
+        ]} if code in MESSAGES else {}),
         "input_disposition": issues.get("input_disposition", "CLARIFICATION_REQUIRED"),
         "issues": rows,
     }

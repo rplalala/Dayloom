@@ -10,7 +10,7 @@ from typing import Annotated, Literal
 from pydantic import AfterValidator, BaseModel, ConfigDict, Field, PrivateAttr
 
 from backend.app.schemas.generation_diagnostics import MinimumDailyCoverage
-from backend.app.schemas.product import PaceReview, PreferenceCoverage
+from backend.app.schemas.product import PaceReview, PreferenceCoverage, RequiredExperienceCoverage
 from backend.app.schemas.request import Money
 
 
@@ -111,6 +111,9 @@ class DetailTransfer(DetailModel):
 
 
 class DetailCompletion(DetailModel):
+    required_experiences: list[RequiredExperienceCoverage] = Field(
+        default_factory=list, exclude_if=lambda value: not value
+    )
     pace_review: PaceReview | None = Field(default=None, exclude_if=lambda value: value is None)
     source_claims: list[str] = Field(default_factory=list)
     policy_completion: Literal["complete", "incomplete", "unassessed"] = "unassessed"

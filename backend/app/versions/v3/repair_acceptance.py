@@ -438,10 +438,14 @@ def compare(
     }
     rejections = []
     if context is not None:
+        from backend.app.policies.category_visits import protect_required_categories
         from backend.app.policies.daily_visit_constraints import protect_daily_visits
 
         try:
             protect_daily_visits(original, proposed, context.contract, context.semantic_assessments)
+            protect_required_categories(
+                original, proposed, context.contract, context.semantic_assessments
+            )
         except ValueError as exc:
             rejections.append(str(exc))
     for f in initial_report.findings:

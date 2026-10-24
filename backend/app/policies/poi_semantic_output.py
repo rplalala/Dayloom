@@ -2,6 +2,11 @@
 
 from collections import Counter, defaultdict
 
+from backend.app.policies.category_visits import (
+    category_visit_target,
+    required_category_progress,
+    required_category_visit,
+)
 from backend.app.policies.visit_multiplicity import (
     excess_visits,
     is_primary_visit,
@@ -24,7 +29,8 @@ def goal_progress(itinerary, contract, assessments):
         soft = (req.soft_coverage or SoftCoverageTarget()) if soft_coverage_eligible(req) else None
         if not goal or req.polarity != "favor" or (goal.frequency == "continuing" and not soft):
             continue
-        if not rows and not soft:
+        required = required_category_visit(req)
+        if not rows and not soft and not required:
             continue
         expected = soft.target if soft else goal.count or 1
         matched = [
@@ -61,6 +67,8 @@ def goal_progress(itinerary, contract, assessments):
             else (count == goal.count if goal.frequency == "exact" else count >= expected)
             and (not goal.distinct_dates or matched_dates >= expected)
         )
+        if required and goal.frequency == "exact" and uncertain:
+            satisfied = False
         progress.append(
             dict(
                 requirement_id=req.requirement_id,
@@ -68,6 +76,12 @@ def goal_progress(itinerary, contract, assessments):
                 matched=count,
                 matched_dates=matched_dates,
                 satisfied=satisfied,
+                **(
+                    required_category_progress(
+                        req, assessments, count=count, uncertain=uncertain, satisfied=satisfied,
+                    )
+                    if required else {}
+                ),
                 **(
                     dict(
                         soft=True,
@@ -128,18 +142,22 @@ def semantic_policy_issues(itinerary, contract, assessments=(), resolutions=()):
     for req in contract.semantic_requirements:
         goal = req.experience_goal
         row = progress.get(req.requirement_id)
+        target = category_visit_target(req)
+        if row and row.get("required") and row["status"] == "unverified":
+            issues.append({
+                "reason": "required_category_unverified", "requirement_id": req.requirement_id,
+            })
+            continue
         if (
-            goal
-            and goal.target == "category"
-            and goal.frequency in {"exact", "minimum"}
+            target is not None
             and row
-            and row["matched"] < goal.count
+            and row["matched"] < target
         ):
             issues.append(
                 {
                     "reason": "experience_goal_count_unmet",
                     "requirement_id": req.requirement_id,
-                    "shortfall": goal.count - row["matched"],
+                    "shortfall": target - row["matched"],
                 }
             )
         if (

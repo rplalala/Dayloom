@@ -599,6 +599,7 @@ class ClarificationRequired(ValueError):
         self.conflicts = conflicts
         self.code = code
         self.requirement_ids = requirement_ids
+        self.details: tuple[dict, ...] = ()
         super().__init__(code)
 
     def as_dict(self) -> dict[str, object]:
@@ -607,4 +608,5 @@ class ClarificationRequired(ValueError):
             "code": self.code,
             "conflicts": self.conflicts,
             "requirement_ids": self.requirement_ids,
+            **({"issues": self.details} if self.details else {}),
         }

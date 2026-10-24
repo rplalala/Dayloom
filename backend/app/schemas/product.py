@@ -93,6 +93,22 @@ class PaceReviewDay(ProductModel):
     state: Literal["satisfied", "residual", "unavailable", "source_overridden"]
 
 
+class RequiredExperienceCoverage(ProductModel):
+    requirement: str
+    source_quotes: list[str]
+    target: int = Field(ge=1)
+    scheduled: int = Field(ge=0)
+    frequency: Literal["one_off", "minimum", "exact"]
+    status: Literal["satisfied", "unmet", "unverified"]
+    reason: Literal[
+        "supported_visit_coverage", "matching_evidence_incomplete",
+        "required_visits_not_scheduled", "no_confirmed_match",
+    ]
+    basis: Literal["model_semantic_judgment_not_operating_fact"] = (
+        "model_semantic_judgment_not_operating_fact"
+    )
+
+
 class PaceReview(ProductModel):
     status: Literal[
         "complete",
@@ -108,6 +124,9 @@ class PaceReview(ProductModel):
 class ProductPlanResult(ProductModel):
     _media_bindings: dict[str, str] = PrivateAttr(default_factory=dict)
     preference_coverage: tuple[PreferenceCoverage, ...] = ()
+    required_experiences: tuple[RequiredExperienceCoverage, ...] = Field(
+        default=(), exclude_if=lambda value: not value
+    )
     policy_completion: Literal["complete", "incomplete", "unassessed"] = "unassessed"
     policy_reasons: tuple[str, ...] = ()
     requirements: TravelRequirements

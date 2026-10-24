@@ -113,7 +113,8 @@ def build_tools_graph(
     async def extract_requirements(state: V1State) -> dict[str, object]:
         try:
             contract = await interpret_preferences(
-                state["request"], state["reference_date"], llm_client, tracer
+                state["request"], state["reference_date"], llm_client, tracer,
+                category_visits=True,
             )
         except (
             ClarificationRequired,
@@ -158,11 +159,17 @@ def build_tools_graph(
             evidence_service, llm_client, tracer, llm_config_identity
         )
         pipeline.discovery_extension = discovery_extension
-        funnel, selection = await pipeline.run(
-            state["interpreted_requirements"],
-            state["destination_context"],
-            create_trip_date_window(state["reference_date"]),
-        )
+        try:
+            funnel, selection = await pipeline.run(
+                state["interpreted_requirements"],
+                state["destination_context"],
+                create_trip_date_window(state["reference_date"]),
+            )
+        except ClarificationRequired as exc:
+            from backend.app.policies.requirement_feedback import attach_requirement_feedback
+
+            attach_requirement_feedback(exc, state["interpreted_requirements"])
+            raise
         candidates, places = project_selected_places(funnel, selection)
         tracer.payload(
             "evidence", "selected_place_evidence", places, minimum_mode=TracePayloadMode.NORMALIZED
