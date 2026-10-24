@@ -58,8 +58,8 @@ project runs `postgres` against the retained runtime volume. Git delivery is tra
 pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
 
 The complete-media and acceptance-resource follow-up was accepted by the user on
-24 October 2026. [Issue #231](https://github.com/rplalala/Dayloom/issues/231) tracks its
-pending Git delivery; the [acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#complete-media-and-acceptance-resources-24-october-2026)
+24 October 2026. [PR #232](https://github.com/rplalala/Dayloom/pull/232) delivers
+[Issue #231](https://github.com/rplalala/Dayloom/issues/231); the [acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#complete-media-and-acceptance-resources-24-october-2026)
 retains the bounded live result and unverified retrieval/search coverage.
 
 One ignored root `.env` supplies credentials and machine-specific overrides. Root

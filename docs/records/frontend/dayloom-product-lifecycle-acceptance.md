@@ -271,7 +271,9 @@ command also passed local database/retrieval preparation without external calls.
 original frozen script's SHA-256 was unchanged. These checks do not establish live
 retrieval/search coverage or authorize another paid attempt. The smoke policy now
 requires this shared loop factory before source freezing. No Product preference logic
-or V0-V3 behavior changed during this closeout. Issue #231 remains open for Git delivery.
+or V0-V3 behavior changed during this closeout. Git delivery is tracked by
+[PR #232](https://github.com/rplalala/Dayloom/pull/232) for
+[Issue #231](https://github.com/rplalala/Dayloom/issues/231).
 
 Local evidence identifiers: `.scratch/controlled-paris-run.py`,
 `.scratch/controlled-paris/`, `.scratch/paris-original-request.json`, and the earlier
