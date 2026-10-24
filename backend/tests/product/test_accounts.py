@@ -84,6 +84,44 @@ def register(client, email="alice@example.com"):
     return response.json()
 
 
+def test_assistance_cooldown_follows_account_across_sessions_and_allows_guests(client):
+    from backend.app.api.input_assistance import get_polishing_service
+    from backend.app.main import app
+    from backend.app.runtime.config_loader import load_runtime_profile
+    from backend.app.services.preference_polishing import PreferencePolishingService
+    from backend.tests.api.test_preference_polishing import FakePolisher, payload
+
+    fake = FakePolisher(
+        {"status": "unchanged", "suggested_text": None, "explanation": "Clear.", "questions": []}
+    )
+    service = PreferencePolishingService(
+        lambda: fake,
+        load_runtime_profile("acceptance").input_assistance.polishing,
+        now=lambda: 0,
+    )
+    app.dependency_overrides[get_polishing_service] = lambda: service
+    try:
+        register(client)
+        endpoint = "/api/input-assistance/preferences/polish"
+        assert client.post(endpoint, json=payload()).status_code == 200
+        client.post(
+            "/api/auth/login",
+            json={"email": "alice@example.com", "password": "a secure password"},
+            headers={"Origin": "http://localhost:5120"},
+        )
+        assert client.post(endpoint, json=payload()).status_code == 429
+        register(client, "bob@example.com")
+        assert client.post(endpoint, json=payload()).status_code == 200
+        client.cookies.clear()
+        assert client.post(endpoint, json=payload()).status_code == 200
+        assert (
+            client.post(endpoint, json=payload(), headers={"X-Forwarded-For": "other"}).status_code
+            == 429
+        )
+    finally:
+        app.dependency_overrides.pop(get_polishing_service, None)
+
+
 def test_cookie_csrf_origin_and_logout_revoke_all_tokens(client):
     account = register(client)
     old = client.cookies.get("dayloom_session")

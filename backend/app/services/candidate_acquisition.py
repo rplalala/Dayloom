@@ -139,7 +139,7 @@ class CandidateAcquisition:
         r = contract.requirements
         assessments = assess_requirements(contract, category_visits=True)
         require_resolved_hard(assessments)
-        capacities = supply.capacities(r, window)
+        capacities = supply.capacities(r, window, contract=contract)
         intents = []
         # The old identity resolver only interprets identities, not user preference text.
         # Exclusions use OPTIONAL for lookup only; the canonical requirement stays EXCLUDED.

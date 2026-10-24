@@ -360,11 +360,48 @@ def test_budget_defaults_and_upper_bounds():
         cfg.max_references,
     ) == (3, 10, 800, 300, 10, 4, 0, 3)
     for changes in (
-        {"max_requests": 4},
+        {"max_requests": 11},
         {"retries": 1},
         {"rank_preference": "POPULARITY"},
-        {"max_references": 4},
+        {"max_references": 21},
         {"included_types": ("casino",)},
     ):
         with pytest.raises(ValidationError):
             ReferenceDiscoveryConfig(**changes)
+
+
+@pytest.mark.parametrize("days,expected_calls,expected_references", [(1, 1, 2), (10, 10, 20)])
+def test_acceptance_nearby_scales_with_duration_without_changing_primary(
+    days, expected_calls, expected_references,
+):
+    from datetime import timedelta
+
+    from backend.app.runtime.config_loader import load_runtime_profile
+
+    ids = [f"anchor-{index}" for index in range(days)]
+    original = primary(*ids)
+    first = original.days[0]
+    original.days = [
+        ItineraryDay(date=first.date + timedelta(days=index), activities=[
+            activity.model_copy(update={
+                "start_time": activity.start_time + timedelta(days=index),
+                "end_time": activity.end_time + timedelta(days=index),
+            })
+        ]) for index, activity in enumerate(first.activities)
+    ]
+    original.end_date = original.days[-1].date
+    provider = Provider(*[
+        response(candidate(f"option-{i}-a", i * .01 + .001),
+                 candidate(f"option-{i}-b", i * .01 + .002))
+        for i in range(days)
+    ])
+    nearby = ReferenceDiscoveryService(
+        provider, RequestCache(), load_runtime_profile("acceptance").reference_discovery
+    )
+    result = asyncio.run(nearby.discover(
+        original, [place(pid, index * .01) for index, pid in enumerate(ids)], ids,
+    ))
+    assert len(provider.requests) == expected_calls
+    assert len(result.itinerary.reference_recommendations) == expected_references
+    before = original.model_dump(exclude={"reference_recommendations"})
+    assert result.itinerary.model_dump(exclude={"reference_recommendations"}) == before

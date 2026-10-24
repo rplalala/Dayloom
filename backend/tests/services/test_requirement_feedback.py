@@ -14,6 +14,39 @@ from backend.tests.services.test_required_categories import category_draft
 from backend.tests.versions.v0.fakes import FakeStructuredLLMClient
 
 
+@pytest.mark.parametrize(
+    "kind,code",
+    [
+        ("resource", "planning_resource_limit"),
+        ("timeout", "planning_timeout"),
+        ("provider", "provider_unavailable"),
+        ("evidence", "requirements_unmet"),
+        ("unknown", "planning_failed"),
+    ],
+)
+def test_infrastructure_failures_keep_original_requirements_without_requesting_rewording(
+    kind, code
+):
+    from backend.app.integrations.http import ProviderHTTPError
+    from backend.app.schemas.poi_semantics import SemanticPreparationLimit
+    from backend.app.services.generation_resources import GenerationResourceError
+
+    failures = {
+        "resource": GenerationResourceError("private resource details"),
+        "timeout": TimeoutError("private timeout details"),
+        "provider": ProviderHTTPError("private provider details"),
+        "evidence": SemanticPreparationLimit("required_primary_role_not_qualified"),
+        "unknown": RuntimeError("private failure details"),
+    }
+    outer = RuntimeError("wrapper")
+    outer.__cause__ = failures[kind]
+    state, outcome = failure_outcome(outer)
+    assert state == "failed" and outcome["code"] == code
+    assert "original requirements have been kept" in outcome["action"]
+    assert "Review your brief" not in outcome["action"]
+    assert "private" not in str(outcome)
+
+
 def test_unsupported_hard_requirement_retains_its_source_and_reason_in_product_outcome():
     text = "A local craft workshop is required."
     request = make_request(text)

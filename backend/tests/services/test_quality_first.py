@@ -561,7 +561,7 @@ def test_quality_rejects_incoherent_matrix():
 
     document = config().model_dump()
     document["budget"]["routes"]["baseline_elements_per_request"] = 32
-    with pytest.raises(ValueError, match="complete 20-place"):
+    with pytest.raises(ValueError, match="complete initial route matrix"):
         RuntimeConfig.model_validate(document)
 
 

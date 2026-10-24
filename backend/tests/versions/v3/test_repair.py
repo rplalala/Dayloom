@@ -1126,6 +1126,29 @@ def test_full_union_reserves_only_two_round_slots_and_keeps_ledger_separate():
     assert result.reassessed_original_report.diagnostics.unused_supply == 35
 
 
+def test_acceptance_repair_keeps_more_than_thirty_two_original_identities():
+    from backend.app.runtime.config_loader import load_runtime_profile
+
+    original = draft()
+    places = tuple(place(pid) for pid in ["a", *(f"old{i:02}" for i in range(39))])
+    ctx = discovery_context(original_supply_ids=tuple(p.place_id for p in places), places=places)
+    provider, model = CandidateSearch(), Model([])
+    budget = RepairBudget(monotonic() + 1200, policy=load_runtime_profile("acceptance").v3_repair)
+    budget.explore_feedback = True
+    result = run(
+        budget=budget, original=original, ctx=ctx, scope=addition_scope(original, ctx),
+        model=model, places_provider=provider, intent_ids=("discovery_1",),
+    )
+    assert result.sizing["input_identity_union"] == 42
+    assert {p.place_id for p in places} - set(result.candidate_preparation.scheduled_ids) <= {
+        row["place"]["place_id"] for row in model.input["candidate_catalog"]
+    }
+    assert result.counters["original_supply_unused"] == 39
+    assert not any(
+        d.disposition == "capacity_omitted" for d in result.candidate_preparation.decisions
+    )
+
+
 def test_no_new_results_refill_old_slots_and_unknown_does_not_loop():
     original = draft()
     ps = tuple(place(pid) for pid in ["a", *(f"old{i}" for i in range(30))])

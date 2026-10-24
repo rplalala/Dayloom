@@ -3,7 +3,7 @@
 from functools import lru_cache
 
 from backend.app.policies.trip_dates import DateProvider, SystemDateProvider
-from backend.app.runtime.config_loader import load_runtime_config
+from backend.app.runtime.config_loader import load_product_runtime_config, load_runtime_config
 from backend.app.runtime.logging_config import configure_logging
 from backend.app.services.planner_runtime import RequestPlannerRuntime
 from backend.app.services.planning import DeveloperPlanningService, PlanningService
@@ -24,7 +24,10 @@ def get_planning_service() -> PlanningService:
     """Provide the version-agnostic product planning service."""
 
     return PlanningService(
-        RequestPlannerRuntime(dependency_factory=create_product_planner_dependencies),
+        RequestPlannerRuntime(
+            config=load_product_runtime_config(),
+            dependency_factory=create_product_planner_dependencies,
+        ),
         get_date_provider(),
     )
 

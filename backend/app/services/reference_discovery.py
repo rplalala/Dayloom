@@ -145,6 +145,15 @@ class ReferenceDiscoveryService:
 
     async def _discover(self, result, places, supplied_ids, excluded_ids, known_places, deadline):
         primary, info, cfg = result.itinerary, result.diagnostics, self.config
+        if cfg.scale_by_duration:
+            days = (primary.end_date - primary.start_date).days + 1
+            cfg = cfg.model_copy(update={
+                "max_requests": min(cfg.max_requests, days),
+                "max_references": min(cfg.max_references, 2 * days),
+            })
+        info["effective_limits"] = {
+            "requests": cfg.max_requests, "references": cfg.max_references,
+        }
         by_id = {p.place_id: p for p in places if p.place_id in supplied_ids}
         activities = sorted(
             ((d.date, a) for d in primary.days for a in d.activities),
@@ -192,7 +201,8 @@ class ReferenceDiscoveryService:
             )
             if group is not None:
                 group.append(anchor)
-            elif len(groups) < 3:
+            # Cached groups remain usable even when the external send allowance is zero.
+            elif len(groups) < max(cfg.max_requests, cfg.max_references):
                 groups.append([anchor])
             else:
                 info["uncovered_anchor_ids"].append(pid)

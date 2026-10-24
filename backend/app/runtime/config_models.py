@@ -1,4 +1,4 @@
-"""Strict, immutable schema for the one project-wide runtime YAML file."""
+"""Strict, immutable schema shared by the selectable runtime policies."""
 
 from pathlib import Path
 from typing import Literal
@@ -40,13 +40,27 @@ class AppConfig(_ConfigModel):
         return value
 
 
+class AssistanceAdmissionConfig(_ConfigModel):
+    per_user_interval_seconds: float = Field(gt=0)
+    max_concurrent: StrictInt = Field(ge=1, le=32)
+
+
 class DestinationAssistanceConfig(_ConfigModel):
     min_chars: StrictInt = Field(default=2, ge=2, le=2)
     max_chars: StrictInt = Field(default=100, ge=100, le=100)
     result_limit: StrictInt = Field(default=5, ge=1, le=5)
     timeout_seconds: float = Field(default=3, gt=0, le=3)
     minimum_interval_seconds: float = Field(default=1.1, ge=1.1)
-    daily_attempts_per_process: StrictInt = Field(default=100, ge=1, le=100)
+    daily_attempts_per_process: StrictInt | None = Field(default=100, ge=1, le=100)
+    admission: AssistanceAdmissionConfig | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
+
+    @model_validator(mode="after")
+    def bounded_admission(self):
+        if self.daily_attempts_per_process is None and self.admission is None:
+            raise ValueError("User admission is required without a daily allowance")
+        return self
 
 
 class PreferencePolishingConfig(_ConfigModel):
@@ -56,7 +70,16 @@ class PreferencePolishingConfig(_ConfigModel):
     draft_output_tokens: StrictInt = Field(default=2000, ge=1, le=2000)
     call_timeout_seconds: float = Field(default=20, gt=0, le=20)
     total_timeout_seconds: float = Field(default=40, gt=0, le=40)
-    daily_operations_per_process: StrictInt = Field(default=20, ge=1, le=20)
+    daily_operations_per_process: StrictInt | None = Field(default=20, ge=1, le=20)
+    admission: AssistanceAdmissionConfig | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
+
+    @model_validator(mode="after")
+    def bounded_admission(self):
+        if self.daily_operations_per_process is None and self.admission is None:
+            raise ValueError("User admission is required without a daily allowance")
+        return self
 
 
 class InputAssistanceConfig(_ConfigModel):
@@ -245,15 +268,16 @@ class TraceConfig(_ConfigModel):
 
 
 class ReferenceDiscoveryConfig(_ConfigModel):
+    scale_by_duration: bool = Field(default=False, exclude_if=lambda value: not value)
     policy_version: Literal["nearby_references_1"] = "nearby_references_1"
-    max_requests: int = Field(default=3, ge=0, le=3)
+    max_requests: int = Field(default=3, ge=0, le=10)
     max_result_count: int = Field(default=10, ge=1, le=10)
     radius_metres: float = Field(default=800, gt=0, le=800)
     anchor_reuse_metres: float = Field(default=300, ge=0, le=300)
-    deadline_seconds: float = Field(default=10, gt=0, le=10)
+    deadline_seconds: float = Field(default=10, gt=0, le=45)
     request_timeout_seconds: float = Field(default=4, gt=0, le=4)
     retries: Literal[0] = 0
-    max_references: int = Field(default=3, ge=0, le=3)
+    max_references: int = Field(default=3, ge=0, le=20)
     rank_preference: Literal["DISTANCE"] = "DISTANCE"
     included_types: tuple[str, ...] = ("restaurant", "cafe", "park", "museum")
 
@@ -307,9 +331,9 @@ class RepairAcquisitionConfig(_RepairConfigModel):
 
 
 class RepairTimingConfig(_RepairConfigModel):
-    stage_seconds: float = Field(gt=0, le=420)
-    round_seconds: float = Field(gt=0, le=150)
-    model_seconds: float = Field(gt=0, le=70)
+    stage_seconds: float = Field(gt=0, le=720)
+    round_seconds: float = Field(gt=0, le=210)
+    model_seconds: float = Field(gt=0, le=120)
     preparation_seconds: float = Field(ge=0, le=60)
     recheck_reserve_seconds: float = Field(gt=0)
     minimum_model_seconds: float = Field(gt=0)
@@ -334,7 +358,7 @@ class RepairInputConfig(_RepairConfigModel):
     input_tokens: StrictInt = Field(ge=1, le=252000)
     output_tokens: StrictInt = Field(ge=1, le=16384)
     framing_tokens: StrictInt = Field(ge=1)
-    identity_capacity: StrictInt = Field(ge=1, le=32)
+    identity_capacity: StrictInt = Field(ge=1, le=64)
     activity_capacity: StrictInt = Field(ge=1, le=120)
     candidate_characters: StrictInt = Field(ge=1, le=12000)
     feedback_characters: StrictInt = Field(ge=1, le=12000)
@@ -380,8 +404,8 @@ class RepairReasonCompressionConfig(_RepairConfigModel):
 
 
 class V3RepairConfig(_RepairConfigModel):
-    max_rounds: StrictInt = Field(ge=1, le=6)
-    max_model_calls: StrictInt = Field(ge=0, le=6)
+    max_rounds: StrictInt = Field(ge=1, le=10)
+    max_model_calls: StrictInt = Field(ge=0, le=10)
     max_deletion_attempts: StrictInt = Field(default=12, ge=0, le=120)
     quantity_review_enabled: StrictBool
     overfull_review_enabled: StrictBool
@@ -439,6 +463,9 @@ class LandmarkNominationConfig(_RepairConfigModel):
 
 
 class RuntimeConfig(_ConfigModel):
+    resource_profile: Literal["development", "acceptance"] = Field(
+        default="development", exclude_if=lambda value: value == "development"
+    )
     landmark_nomination: LandmarkNominationConfig = Field(default_factory=LandmarkNominationConfig)
     input_assistance: InputAssistanceConfig = Field(default_factory=InputAssistanceConfig)
     poi_semantics: POISemanticsConfig
@@ -446,7 +473,7 @@ class RuntimeConfig(_ConfigModel):
     v3_repair: V3RepairConfig | None = None
     acquisition: AcquisitionConfig = Field(default_factory=AcquisitionConfig)
     main_generation: MainGenerationConfig = Field(default_factory=MainGenerationConfig)
-    development_timeout_seconds: int = Field(default=600, ge=1, le=600)
+    development_timeout_seconds: int = Field(default=600, ge=1, le=1200)
     schema_version: Literal[6]
     app: AppConfig
     budget: BudgetConfig
@@ -485,7 +512,7 @@ class RuntimeConfig(_ConfigModel):
             if (
                 b.candidates < 64
                 or b.places.detail_calls < 40
-                or b.final_pois != 20
+                or b.final_pois < 20
                 or min(
                     b.places.review_detail_calls,
                     b.experience.review_enriched_places,
@@ -495,11 +522,12 @@ class RuntimeConfig(_ConfigModel):
             ):
                 raise ValueError("Quality-first envelope must support every supported duration")
             if (
-                b.routes.baseline_elements_per_run < 400
-                or b.routes.baseline_calls < 7
+                b.routes.baseline_elements_per_run < b.final_pois**2
+                or b.routes.baseline_calls * b.routes.baseline_elements_per_request
+                < b.final_pois**2
                 or b.routes.baseline_elements_per_request < 64
             ):
-                raise ValueError("Quality-first supply needs a complete 20-place route matrix")
+                raise ValueError("Quality-first supply needs a complete initial route matrix")
             if not self.main_generation.enabled:
                 raise ValueError("Quality-first requires primary generation resource protection")
         return self

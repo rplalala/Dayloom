@@ -3,7 +3,7 @@
 from functools import lru_cache
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict
 from pydantic import ValidationError as PydanticValidationError
@@ -23,7 +23,8 @@ from backend.app.llm.azure_foundry.polishing import (
     PolishProviderUnavailable,
     create_foundry_polisher,
 )
-from backend.app.runtime.config_loader import load_runtime_config
+from backend.app.product.auth import COOKIE, authenticated_account
+from backend.app.runtime.config_loader import load_product_runtime_config
 from backend.app.schemas.input_assistance import PolishRequest, PolishResponse
 from backend.app.services.destination_suggestions import (
     DestinationRateLimited,
@@ -39,6 +40,20 @@ from backend.app.services.preference_polishing import (
 )
 
 router = APIRouter(prefix="/api/input-assistance", tags=["input-assistance"])
+
+
+def assistance_actor(request: Request) -> str:
+    """Use verified accounts, or the direct client address for public guest assistance."""
+    if request.cookies.get(COOKIE) or request.headers.get("authorization"):
+        try:
+            return f"user:{authenticated_account(request)['id']}"
+        except HTTPException as exc:
+            if exc.status_code != 401:
+                raise
+    return f"guest:{request.client.host if request.client else 'unknown'}"
+
+
+AssistanceActor = Annotated[str, Depends(assistance_actor)]
 
 
 class DestinationResponse(BaseModel):
@@ -69,20 +84,21 @@ def assistance_error(
 
 @lru_cache
 def get_destination_service() -> DestinationSuggestionService:
-    config = load_runtime_config().input_assistance.destination
+    config = load_product_runtime_config().input_assistance.destination
     return DestinationSuggestionService(GeoDBClient(), config)
 
 
 @router.get("/destinations", response_model=DestinationResponse)
 async def get_destinations(
     service: Annotated[DestinationSuggestionService, Depends(get_destination_service)],
+    actor: AssistanceActor,
     q: Annotated[str | None, Query()] = None,
 ):
     prefix = q.strip() if q is not None else ""
     if not service.accepts(prefix):
         return assistance_error(422, "invalid_prefix", "Enter 2 to 100 destination characters.")
     try:
-        choices = await service.suggest(prefix)
+        choices = await service.suggest(prefix, actor=actor)
     except DestinationRateLimited:
         return assistance_error(
             429,
@@ -109,7 +125,7 @@ async def get_destinations(
 
 @lru_cache
 def get_polishing_service() -> PreferencePolishingService:
-    config = load_runtime_config().input_assistance.polishing
+    config = load_product_runtime_config().input_assistance.polishing
     return PreferencePolishingService(create_foundry_polisher, config)
 
 
@@ -117,12 +133,13 @@ def get_polishing_service() -> PreferencePolishingService:
 async def polish_preferences(
     body: dict,
     service: Annotated[PreferencePolishingService, Depends(get_polishing_service)],
+    actor: AssistanceActor,
 ):
     revision = body.get("client_revision")
     revision = revision if isinstance(revision, str) and len(revision) <= 100 else None
     try:
         request = PolishRequest.model_validate(body)
-        return await service.polish(request)
+        return await service.polish(request, actor=actor)
     except PydanticValidationError:
         return assistance_error(
             422, "invalid_polish_input", "Review the preference input.", client_revision=revision

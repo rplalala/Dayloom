@@ -42,8 +42,16 @@ class PlanningCandidateSupplyPipeline:
     async def run(self, contract, destination, window):
         return await self.candidate_acquisition.run(contract, destination, window, supply=self)
 
-    def capacities(self, requirements, window):
+    def capacities(self, requirements, window, *, contract=None):
         self._requirements, self._window = requirements, window
+        self._contract = contract
+        config = getattr(self.acquisition, "runtime_config", None)
+        if config and config.resource_profile == "acceptance":
+            from backend.app.policies.poi_capacity import acceptance_capacities
+
+            if contract is None:
+                raise ValueError("Acceptance supply requires the interpreted contract")
+            return acceptance_capacities(contract, window, self.acquisition._budget.limits)
         if (
             getattr(self.acquisition, "runtime_config", None)
             and self.acquisition.runtime_config.acquisition.policy_id == "quality_first_1"
@@ -73,6 +81,20 @@ class PlanningCandidateSupplyPipeline:
     def required_capacities(self, capacities, count):
         limits = self.acquisition._budget.limits
         config = getattr(self.acquisition, "runtime_config", None)
+        if config and config.resource_profile == "acceptance":
+            from backend.app.policies.poi_capacity import acceptance_capacities
+
+            values = acceptance_capacities(self._contract, self._window, limits, count)
+            self._normal_supply_capacity = values.k_final
+            self.tracer.event("effective_acquisition_policy", {
+                "policy_id": config.acquisition.policy_id,
+                "resource_profile": config.resource_profile,
+                "days": values.algorithmic.trip_days, "required": count,
+                "capacity": values.c_raw, "new_success_target": values.r_pool,
+                "supply_target": values.k_final, "review_cap": values.review_pool_cap,
+                "limiting_budgets": values.limiting_budgets,
+            })
+            return values
         if config and config.acquisition.policy_id == "quality_first_1":
             from backend.app.policies.poi_capacity import quality_capacities
 

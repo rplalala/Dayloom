@@ -1,10 +1,11 @@
 """Validated non-secret deployment configuration shared by every runtime entry point."""
 
 from pathlib import Path
+from typing import Literal
 
 import yaml
 from pydantic import AnyHttpUrl, BaseModel, ConfigDict, Field
-from pydantic_settings import YamlConfigSettingsSource
+from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEPLOYMENT_FILE = PROJECT_ROOT / "product.yaml"
@@ -16,6 +17,7 @@ class ProductOptions(BaseModel):
     origin: str = "https://localhost"
     allow_insecure_loopback: bool = False
     session_seconds: int = 3600
+    runtime_profile: Literal["development", "acceptance"] = "acceptance"
 
 
 class DatabaseOptions(BaseModel):
@@ -71,3 +73,21 @@ class DeploymentYamlSettingsSource(YamlConfigSettingsSource):
         else:
             values = options.model_dump(exclude={"database", "foundry"}, exclude_unset=True)
         return {self.aliases.get(key, key): value for key, value in values.items()}
+
+
+class ProductPolicySettings(ProductOptions, BaseSettings):
+    """Non-secret policy selection also works for guest input assistance."""
+
+    model_config = SettingsConfigDict(
+        env_prefix="PRODUCT_", env_file=PROJECT_ROOT / ".env", extra="ignore",
+        hide_input_in_errors=True, yaml_file=DEPLOYMENT_FILE,
+    )
+
+    @classmethod
+    def settings_customise_sources(
+        cls, settings_cls, init_settings, env_settings, dotenv_settings, file_secret_settings
+    ):
+        return (
+            init_settings, env_settings, dotenv_settings, file_secret_settings,
+            DeploymentYamlSettingsSource(settings_cls),
+        )

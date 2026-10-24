@@ -5,6 +5,7 @@ import json
 from collections.abc import Callable
 from datetime import UTC, datetime
 from threading import Lock
+from time import monotonic
 
 from pydantic import ValidationError
 
@@ -15,6 +16,7 @@ from backend.app.schemas.input_assistance import (
     PolishRequest,
     PolishResponse,
 )
+from backend.app.services.assistance_admission import AssistanceGate
 from backend.app.services.preference_polishing_prompts import (
     DRAFT_SYSTEM_PROMPT,
 )
@@ -55,6 +57,7 @@ class PreferencePolishingService:
         config: PreferencePolishingConfig | None = None,
         *,
         utc_now=lambda: datetime.now(UTC),
+        now=monotonic,
     ) -> None:
         self._client_factory = client_factory
         self._config = config or PreferencePolishingConfig()
@@ -63,18 +66,28 @@ class PreferencePolishingService:
         self._day = None
         self._count = 0
         self._inflight = False
+        self._gate = (
+            AssistanceGate(self._config.admission, now=now) if self._config.admission else None
+        )
 
-    def _admit(self) -> None:
+    def _admit(self, actor: str) -> None:
+        if self._gate and not self._gate.admit(actor):
+            raise PolishingRateLimited()
         with self._lock:
             day = self._utc_now().date()
             if day != self._day:
                 self._day, self._count = day, 0
-            if self._inflight or self._count >= self._config.daily_operations_per_process:
+            limit = self._config.daily_operations_per_process
+            if (not self._gate and self._inflight) or (limit is not None and self._count >= limit):
+                if self._gate:
+                    self._gate.release(actor)
                 raise PolishingRateLimited()
             self._inflight = True
             self._count += 1
 
-    def _release(self) -> None:
+    def _release(self, actor: str) -> None:
+        if self._gate:
+            self._gate.release(actor)
         with self._lock:
             self._inflight = False
 
@@ -83,7 +96,7 @@ class PreferencePolishingService:
         total += count_tokens(json.dumps(schema.model_json_schema(), sort_keys=True))
         return total <= self._config.model_input_tokens_per_call
 
-    async def polish(self, request: PolishRequest) -> PolishResponse:
+    async def polish(self, request: PolishRequest, *, actor: str = "anonymous") -> PolishResponse:
         original = request.original_text
         if (
             len(original) > self._config.source_max_chars
@@ -93,7 +106,7 @@ class PreferencePolishingService:
         draft_user = _prompt_payload(request)
         if not self._fits_model_input(DRAFT_SYSTEM_PROMPT, draft_user, PolishDraft):
             raise PolishingInputLimit()
-        self._admit()
+        self._admit(actor)
         client = None
         try:
             try:
@@ -141,4 +154,4 @@ class PreferencePolishingService:
                     except Exception:
                         pass
             finally:
-                self._release()
+                self._release(actor)

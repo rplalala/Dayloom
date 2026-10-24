@@ -97,7 +97,8 @@ def create_session(row: dict, response: Response, settings: ProductSettings) -> 
     return {**public_account(row), "csrf_token": csrf}
 
 
-def current_user(request: Request) -> dict:
+def authenticated_account(request: Request) -> dict:
+    """Validate account identity without granting permission for a mutation."""
     cookie = request.cookies.get(COOKIE)
     authorization = request.headers.get("authorization", "")
     bearer = authorization[7:] if authorization.startswith("Bearer ") else None
@@ -133,13 +134,20 @@ def current_user(request: Request) -> dict:
         ).fetchone()
     if not row or row["token_version"] != claims["ver"]:
         raise HTTPException(401, {"code": "session_revoked"})
-    if request.method not in {"GET", "HEAD", "OPTIONS"} and not bearer:
-        origin_check(request, settings)
-        supplied = request.headers.get("x-csrf-token", "")
-        if not hmac.compare_digest(supplied, claims["csrf"]):
-            raise HTTPException(403, {"code": "csrf_rejected"})
     request.state.account = row
     request.state.csrf_token = claims["csrf"]
+    return row
+
+
+def current_user(request: Request) -> dict:
+    row = authenticated_account(request)
+    if request.method not in {"GET", "HEAD", "OPTIONS"} and not request.headers.get(
+        "authorization"
+    ):
+        origin_check(request, ProductSettings())
+        supplied = request.headers.get("x-csrf-token", "")
+        if not hmac.compare_digest(supplied, request.state.csrf_token):
+            raise HTTPException(403, {"code": "csrf_rejected"})
     return row
 
 

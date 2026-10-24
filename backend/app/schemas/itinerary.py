@@ -123,7 +123,7 @@ class Itinerary(BaseModel):
     transfers: list[Transfer] = Field(default_factory=list)
     route_diagnostics: list[dict] = Field(default_factory=list)
     reference_recommendations: list[ReferenceRecommendation] = Field(
-        default_factory=list, max_length=3
+        default_factory=list, max_length=20
     )
     destination: str = Field(min_length=1)
     start_date: date

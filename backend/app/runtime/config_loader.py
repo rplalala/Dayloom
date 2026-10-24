@@ -1,4 +1,4 @@
-"""Load the single project-wide non-secret runtime policy."""
+"""Load an explicitly selected, complete non-secret runtime policy."""
 
 import hashlib
 import json
@@ -41,6 +41,22 @@ def load_runtime_config_file(path: Path) -> RuntimeConfig:
 
     document = yaml.load(path.read_text(encoding="utf-8"), Loader=_UniqueKeySafeLoader)
     return RuntimeConfig.model_validate(document)
+
+
+@lru_cache(maxsize=2)
+def load_runtime_profile(profile: str) -> RuntimeConfig:
+    """Select a complete policy; independent runners retain development by default."""
+    if profile == "development":
+        return load_runtime_config()
+    if profile == "acceptance":
+        return load_runtime_config_file(PROJECT_ROOT / "config" / "runtime.acceptance.yaml")
+    raise ValueError("Unknown runtime resource profile")
+
+
+def load_product_runtime_config() -> RuntimeConfig:
+    from backend.app.runtime.deployment import ProductPolicySettings
+
+    return load_runtime_profile(ProductPolicySettings().runtime_profile)
 
 
 def resolve_trace_directory(directory: Path) -> Path:
