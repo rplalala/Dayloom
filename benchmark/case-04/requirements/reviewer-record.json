@@ -1,0 +1,94 @@
+{
+  "schema_version": "rtpeval_requirement_agent_execution_1",
+  "operation": "review",
+  "origin": "external_codex",
+  "actor_ref": "codex-agent:/root/oct25_source_reviewer",
+  "execution_id": "e3e0f602-5f4a-4bbf-b07c-593900f50aed",
+  "group_id": "case-04",
+  "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+  "requirement_spec_sha256": "df9ed5e7ff244f525c441a5689edb6dcf885f432442af9d36ac7dc50a6de6d16",
+  "started_at": "2026-10-24T10:54:13.1554443+11:00",
+  "completed_at": "2026-10-24T10:55:50.044349+11:00",
+  "configuration": {
+    "agent": "Codex",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "high",
+    "configuration_basis": "Coordinator confirmed the actual independent child execution model and reasoning effort in the source-only dispatch."
+  },
+  "context": {
+    "source": "complete_original_request",
+    "excluded": [
+      "planner_interpretation",
+      "generated_outputs",
+      "scores",
+      "mechanisms"
+    ]
+  },
+  "source_input_ref": {
+    "path": "input.json",
+    "sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "planning_request_2"
+  },
+  "requirement_spec_ref": {
+    "path": "requirements-reviewed.json",
+    "sha256": "df9ed5e7ff244f525c441a5689edb6dcf885f432442af9d36ac7dc50a6de6d16",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "input_requirement_spec_ref": {
+    "path": "requirements.json",
+    "sha256": "e56553e214f3860890633cefbce091f339368b45a58795c845c7c2784a07cc36",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "input_requirement_spec_sha256": "e56553e214f3860890633cefbce091f339368b45a58795c845c7c2784a07cc36",
+  "rationale": "Independent review accepted the author draft without semantic edits after reading the complete original input and checking every quoted source and offset. The only executable obligation is the whole-trip WALK/TRANSIT restriction. Fairly full pace and active use of both days are soft; gardens, major city sights and views are soft themes. The destination, inclusive dates, two adult travelers and SGD 800 budget remain original input facts, with no factual affordability PASS or numerical daily quota inferred. The reviewer independently authored source-bound rich density, route policy, destination timezone and a three-interest inventory. No Planner output, interpretation, trace, score, benchmark README or case result/report was read.",
+  "permitted_data_read": [
+    "input.json",
+    "requirements.json",
+    "author-record.json"
+  ],
+  "contract_and_code_scope": [
+    "root and benchmark AGENTS.md",
+    "docs/agents/workflow.md",
+    "docs/agents/domain.md",
+    "docs/contracts/0002-intake-identity-usage.md external requirements handoff",
+    "docs/contracts/0003-requirement-schedule.md relevant requirements/time sections",
+    "docs/contracts/0004-opening-routes.md route wire",
+    "docs/contracts/0005-quality-human-review.md daily density",
+    "backend native source-only validators and synthetic test examples"
+  ],
+  "external_evidence": [
+    {
+      "url": "https://www.a-star.edu.sg/nmc/Research-and-Development/Labs/FL",
+      "purpose": "Official Singapore UTC+08:00 factual timezone context",
+      "method": "web search official source result plus installed zoneinfo validation"
+    }
+  ],
+  "provenance_gaps": [
+    "Exact dispatch/start time was not captured. started_at is the first explicitly observed local timestamp, after initial source and policy reading; review began earlier at an unknown time.",
+    "A full session transcript export is unavailable. The bound partial transcript retains the actual parent task dispatch and one actual assistant tool-call text only; omitted messages and timings are not reconstructed."
+  ],
+  "validation": {
+    "native_reviewed_requirement_intake": "passed",
+    "native_executable_obligation_validation": "passed",
+    "all_soft_preference_quote_offsets": "passed",
+    "native_interest_inventory": "passed",
+    "native_density_policy": "passed",
+    "native_route_policy": "passed",
+    "native_schedule_timezones": "passed",
+    "requested_date_timezone_offsets": "UTC+08:00 on 2026-10-25 and 2026-10-26",
+    "original_author_draft_preserved": "passed"
+  },
+  "transcript_ref": {
+    "path": "reviewer-transcript-partial.json",
+    "sha256": "49de04b5092febda0e9b9690869a471d1bb50703fff3d344357a4396a239dc53",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirement_agent_transcript_1"
+  }
+}

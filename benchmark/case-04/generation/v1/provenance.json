@@ -1,11 +1,11 @@
 {
   "schema_version": "rtpeval_provenance_1",
   "group_id": "case-04",
-  "run_id": "case-04-current-path-v1-a1",
+  "run_id": "case-04-oct25-v1-a1",
   "version": "v1",
-  "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-  "result_sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
-  "source_revision": "62f04cddad8635bbef12d116ea84346d0f9788a5",
+  "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+  "result_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+  "source_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
   "configuration_ref": {
     "path": "runtime-policy.json",
     "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
@@ -14,44 +14,11 @@
   },
   "evidence_index_ref": {
     "path": "evidence-index.json",
-    "sha256": "9c6d994d1e6290e33e017cfa2dd57c1d09aaf60439e2901587ccb33e1f693b7d"
+    "sha256": "b80344ce20ed7d407d7f0015cb42e414eb52460dfe4f297c16f77e152f7a5e68"
   },
   "mechanism_ref": {
     "path": "mechanism.json",
-    "sha256": "fcfbf0642a779620944c63175636ed92e9ee96431a7ac45e795b4db154294bc7"
+    "sha256": "0b770b506654e3ef5ee9d12ec4966c8219fe6504443493d3fe1ca9e28999b140"
   },
-  "scope": "Development capture only; producer completion and batch qualification are separate.",
-  "declared_by": "rtpeval.generate/selected_workflow_1",
-  "declared_at": "2026-10-18T04:45:04.544295+00:00",
-  "rationale": "Selected Planner workflow observation; qualification is separate from quality.",
-  "captured_input_ref": {
-    "path": "input.json",
-    "sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-    "media_type": "application/json",
-    "availability": "available"
-  },
-  "captured_runtime_config_ref": {
-    "path": "runtime.yaml",
-    "sha256": "76dabacf63c2b5e03eb0ef9109b21a28a39a0401431c640fa93c10ac94b08077",
-    "media_type": "application/yaml",
-    "availability": "available"
-  },
-  "producer_completion_ref": {
-    "path": "producer-completion.json",
-    "sha256": "0c5f3ed2ad72ee21582c6601f3a40ba0857940192605a9c0a1c8e209d204024b",
-    "media_type": "application/json",
-    "availability": "available"
-  },
-  "capture_manifest_ref": {
-    "path": "manifest.json",
-    "sha256": "5f2ceb1f0da2a4ecc7acda7d843269690373bce22fc3b7192e602e41d9389315",
-    "media_type": "application/json",
-    "availability": "available"
-  },
-  "native_provenance_ref": {
-    "path": "provenance.json",
-    "sha256": "4146ad2c0862f337b6af33ffde67f7bbc1d7a923347ca6b6dfb4d2dfefe51e15",
-    "media_type": "application/json",
-    "availability": "available"
-  }
+  "scope": "Development capture only; producer completion and batch qualification are separate."
 }

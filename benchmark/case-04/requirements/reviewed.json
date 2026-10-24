@@ -2,6 +2,6 @@
   "$case_material_ref": {
     "path": "evaluation/primary/report.json",
     "pointer": "/reports/identity/identity_versioned_replay/model_result/binding_source/intake/inventory/0/requirement_spec",
-    "expanded_semantic_sha256": "632adfeeec2e568dd77b45cb00a159d46df95375105ce6b940353b971f446d18"
+    "expanded_semantic_sha256": "97759c2243762d35cc05c59c28d096e169ea95110089a8d2fe04748b586e167c"
   }
 }

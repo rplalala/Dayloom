@@ -4,76 +4,48 @@
     "$case_material_ref": {
       "path": "analysis/repair/repair.json",
       "pointer": "/components/0/proposal/transfers",
-      "expanded_semantic_sha256": "017ef172c14242a2dc7a532d92461a7e7e5b4e9e3223508bf5e2f02b25186522"
+      "expanded_semantic_sha256": "32a7f6ba46825f36c2d099b5ad82f7ff89a6b351dfefc6be873b473451c677ab"
     }
   },
   "route_diagnostics": [
     {
       "$case_material_ref": {
         "path": "analysis/repair/repair.json",
-        "pointer": "/components/0/proposal/route_diagnostics/2",
-        "expanded_semantic_sha256": "bc9b8fe4088e250f18cfd0c65f6c1027e68a888fb98f640128e64d88eb3814d4"
+        "pointer": "/components/0/proposal/route_diagnostics/3",
+        "expanded_semantic_sha256": "12ab57ada4eb60df1fef24d346659d98be37f5dfdf135d6fc3c598b09925ee27"
       }
     },
     {
       "$case_material_ref": {
         "path": "analysis/repair/repair.json",
-        "pointer": "/components/0/proposal/route_diagnostics/3",
-        "expanded_semantic_sha256": "dfdad5f18ffcb08802fa711b3753b999ef8b1c53bb3191b2585657f1d306d3aa"
+        "pointer": "/components/0/proposal/route_diagnostics/4",
+        "expanded_semantic_sha256": "e2bdf6daaefa6d95b8085d749b418bf0ecb6c40617f95491e04f5a68dd378616"
       }
     },
     {
-      "from_activity_id": "sun-gardens-by-the-bay",
-      "to_activity_id": "sun-helix-bridge",
-      "origin": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-      "destination": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-      "departure": "2026-10-25T13:00:00+08:00",
-      "next_start": "2026-10-25T19:15:00+08:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": {
-            "$case_material_ref": {
-              "path": "analysis/repair/repair.json",
-              "pointer": "/components/0/report/findings/15/adopted_evidence/selected_routes",
-              "expanded_semantic_sha256": "821b3fe6abbead1a289c681b42f4e245b8f15657e56653b30ba98d072ae29109"
-            }
-          }
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
+      "$case_material_ref": {
+        "path": "analysis/repair/repair.json",
+        "pointer": "/components/0/proposal/route_diagnostics/5",
+        "expanded_semantic_sha256": "333914e52ff96d69f3b9a9217b4b38584193c343f34e209ac06ea3a99cfed0f3"
+      }
     },
     {
       "$case_material_ref": {
         "path": "analysis/repair/repair.json",
         "pointer": "/components/0/proposal/route_diagnostics/6",
-        "expanded_semantic_sha256": "674bf0ccc1c4ab93b59af11b4dc53f8b359bc6909e033aa3910a90ee7b9177bd"
+        "expanded_semantic_sha256": "7728b5cb29b2635152f581ae00ec3627b19dac081e23810fc3ccc077c1cd1389"
       }
     }
   ],
   "reference_recommendations": [],
   "destination": "Singapore",
-  "start_date": "2026-10-24",
-  "end_date": "2026-10-25",
+  "start_date": "2026-10-25",
+  "end_date": "2026-10-26",
   "days": {
     "$case_material_ref": {
       "path": "analysis/repair/repair.json",
       "pointer": "/components/0/proposal/days",
-      "expanded_semantic_sha256": "15c688656b3be002ad4a09eac162e347e43754782460006db6e39fe04ab4f1e7"
+      "expanded_semantic_sha256": "bcd1c0ecfa6bf2aed02ed8e55c78934f742701fab52b2a3a0dedbafb477fccce"
     }
   }
 }

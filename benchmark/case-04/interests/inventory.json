@@ -2,6 +2,6 @@
   "$case_material_ref": {
     "path": "analysis/poi-process/relevance.json",
     "pointer": "/runs/0/interest_inventory",
-    "expanded_semantic_sha256": "c48608beb2da6d3eab1904e2a65660c0a9577a4c59369b184d6503b0fbd17625"
+    "expanded_semantic_sha256": "c194a1288a7731557499a176fcb361e2a3a77d89f485c1defb9376639818ad13"
   }
 }

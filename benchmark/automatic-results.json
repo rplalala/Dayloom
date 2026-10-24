@@ -2,7 +2,7 @@
   "schema_version": "benchmark_automatic_summary_1",
   "status": "pending_researcher_acceptance",
   "density_rules_profile_id": "rtpeval_daily_density_3",
-  "scope": "Twelve fixed selected outputs; case-04 replaces only V3 generation and all-four Primary plus same-run Pair. Other cases retain factual policies and evidence, with offline density-only derivations. Blinded answers remain bound to the itineraries actually reviewed.",
+  "scope": "Twelve selected cases; case-04 has fresh V0-V3 generations, four-final Primary and same-run V3 Pair for 25-26 October 2026. Other cases retain factual policies and evidence, with offline density-only derivations. Blinded answers remain bound to the itineraries actually reviewed.",
   "cases": [
     {
       "case_id": "case-01",
@@ -4401,9 +4401,9 @@
             "decimal": 66.66666666666667
           },
           "rank": {
-            "numerator": 3,
+            "numerator": 2,
             "denominator": 1,
-            "decimal": 3.0
+            "decimal": 2.0
           },
           "auxiliary": {
             "numerator": 290,
@@ -4412,38 +4412,6 @@
           },
           "daily_density": {
             "days": [
-              {
-                "count_bounds": {
-                  "lower": 4,
-                  "upper": 4
-                },
-                "date": "2026-10-24",
-                "known_primary_count": 4,
-                "penalty_0_100": 30,
-                "penalty_bounds": {
-                  "lower": 30,
-                  "upper": 30
-                },
-                "policy": {
-                  "exact_count": null,
-                  "profile": "rich",
-                  "source_refs": [
-                    {
-                      "field_path": "additional_preferences",
-                      "occurrence": 0,
-                      "quote": "We would like a fairly full itinerary"
-                    },
-                    {
-                      "field_path": "additional_preferences",
-                      "occurrence": 0,
-                      "quote": "We prefer to make active use of both days."
-                    }
-                  ]
-                },
-                "possible_primary_count": 0,
-                "reason": "default_pace_penalty",
-                "state": "FAIL"
-              },
               {
                 "count_bounds": {
                   "lower": 4,
@@ -4463,11 +4431,51 @@
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 91,
+                      "offset_start": 54,
                       "quote": "We would like a fairly full itinerary"
                     },
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 281,
+                      "offset_start": 239,
+                      "quote": "We prefer to make active use of both days."
+                    }
+                  ]
+                },
+                "possible_primary_count": 0,
+                "reason": "default_pace_penalty",
+                "state": "FAIL"
+              },
+              {
+                "count_bounds": {
+                  "lower": 4,
+                  "upper": 4
+                },
+                "date": "2026-10-26",
+                "known_primary_count": 4,
+                "penalty_0_100": 30,
+                "penalty_bounds": {
+                  "lower": 30,
+                  "upper": 30
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "rich",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 91,
+                      "offset_start": 54,
+                      "quote": "We would like a fairly full itinerary"
+                    },
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 281,
+                      "offset_start": 239,
                       "quote": "We prefer to make active use of both days."
                     }
                   ]
@@ -4488,10 +4496,10 @@
             },
             "requested_day_count": 2,
             "review": {
-              "rationale": "The source asks for a fairly full itinerary and active use of both days, supporting the rich density profile as a soft pace interpretation. It specifies no numeric sightseeing count or differing date-specific pace.",
+              "rationale": "The complete original request asks for a fairly full itinerary and active use of both days, supporting rich pace on both inclusive dates. It gives no numerical visit quota, duration minimum, fixed clock window or date-specific pace exception. The numeric density profile is evaluator policy, not an inferred user obligation.",
               "review_origin": "agent",
-              "reviewed_at": "2026-10-18T02:03:12Z",
-              "reviewer_ref": "/root/revalidation_semantic_reviewer"
+              "reviewed_at": "2026-10-24T10:55:50.044349+11:00",
+              "reviewer_ref": "codex-agent:/root/oct25_source_reviewer"
             },
             "rules_profile_id": "rtpeval_daily_density_3"
           },
@@ -4750,9 +4758,9 @@
         },
         "v1": {
           "score": {
-            "numerator": 60,
+            "numerator": 50,
             "denominator": 1,
-            "decimal": 60.0
+            "decimal": 50.0
           },
           "rank": {
             "numerator": 4,
@@ -4771,7 +4779,7 @@
                   "lower": 5,
                   "upper": 5
                 },
-                "date": "2026-10-24",
+                "date": "2026-10-25",
                 "known_primary_count": 5,
                 "penalty_0_100": 70,
                 "penalty_bounds": {
@@ -4785,11 +4793,15 @@
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 91,
+                      "offset_start": 54,
                       "quote": "We would like a fairly full itinerary"
                     },
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 281,
+                      "offset_start": 239,
                       "quote": "We prefer to make active use of both days."
                     }
                   ]
@@ -4800,15 +4812,15 @@
               },
               {
                 "count_bounds": {
-                  "lower": 2,
-                  "upper": 2
+                  "lower": 4,
+                  "upper": 4
                 },
-                "date": "2026-10-25",
-                "known_primary_count": 2,
-                "penalty_0_100": 10,
+                "date": "2026-10-26",
+                "known_primary_count": 4,
+                "penalty_0_100": 30,
                 "penalty_bounds": {
-                  "lower": 10,
-                  "upper": 10
+                  "lower": 30,
+                  "upper": 30
                 },
                 "policy": {
                   "exact_count": null,
@@ -4817,11 +4829,15 @@
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 91,
+                      "offset_start": 54,
                       "quote": "We would like a fairly full itinerary"
                     },
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 281,
+                      "offset_start": 239,
                       "quote": "We prefer to make active use of both days."
                     }
                   ]
@@ -4833,19 +4849,19 @@
             ],
             "exact_mean_penalty": {
               "denominator": 1,
-              "numerator": 40
+              "numerator": 50
             },
-            "mean_penalty_0_100": 40.0,
+            "mean_penalty_0_100": 50.0,
             "mean_penalty_bounds": {
-              "lower": 40.0,
-              "upper": 40.0
+              "lower": 50.0,
+              "upper": 50.0
             },
             "requested_day_count": 2,
             "review": {
-              "rationale": "The source asks for a fairly full itinerary and active use of both days, supporting the rich density profile as a soft pace interpretation. It specifies no numeric sightseeing count or differing date-specific pace.",
+              "rationale": "The complete original request asks for a fairly full itinerary and active use of both days, supporting rich pace on both inclusive dates. It gives no numerical visit quota, duration minimum, fixed clock window or date-specific pace exception. The numeric density profile is evaluator policy, not an inferred user obligation.",
               "review_origin": "agent",
-              "reviewed_at": "2026-10-18T02:03:12Z",
-              "reviewer_ref": "/root/revalidation_semantic_reviewer"
+              "reviewed_at": "2026-10-24T10:55:50.044349+11:00",
+              "reviewer_ref": "codex-agent:/root/oct25_source_reviewer"
             },
             "rules_profile_id": "rtpeval_daily_density_3"
           },
@@ -4862,34 +4878,34 @@
               },
               "counts": {
                 "FAIL": 0,
-                "PASS": 7,
+                "PASS": 9,
                 "UNKNOWN": 0
               },
-              "denominator": 7,
+              "denominator": 9,
               "denominator_unresolved": false,
               "exact_fractions": {
                 "conditional_compliance": {
-                  "denominator": 7,
-                  "numerator": 7
+                  "denominator": 9,
+                  "numerator": 9
                 },
                 "confirmed_violation_rate": {
-                  "denominator": 7,
+                  "denominator": 9,
                   "numerator": 0
                 },
                 "unknown_rate": {
-                  "denominator": 7,
+                  "denominator": 9,
                   "numerator": 0
                 },
                 "verification_coverage": {
-                  "denominator": 7,
-                  "numerator": 7
+                  "denominator": 9,
+                  "numerator": 9
                 },
                 "verified_fraction": {
-                  "denominator": 7,
-                  "numerator": 7
+                  "denominator": 9,
+                  "numerator": 9
                 }
               },
-              "known_unit_count": 7,
+              "known_unit_count": 9,
               "not_applicable_count": 0,
               "rates": {
                 "confirmed_violation_rate": 0.0,
@@ -4912,34 +4928,34 @@
               },
               "counts": {
                 "FAIL": 0,
-                "PASS": 12,
+                "PASS": 16,
                 "UNKNOWN": 0
               },
-              "denominator": 12,
+              "denominator": 16,
               "denominator_unresolved": false,
               "exact_fractions": {
                 "conditional_compliance": {
-                  "denominator": 12,
-                  "numerator": 12
+                  "denominator": 16,
+                  "numerator": 16
                 },
                 "confirmed_violation_rate": {
-                  "denominator": 12,
+                  "denominator": 16,
                   "numerator": 0
                 },
                 "unknown_rate": {
-                  "denominator": 12,
+                  "denominator": 16,
                   "numerator": 0
                 },
                 "verification_coverage": {
-                  "denominator": 12,
-                  "numerator": 12
+                  "denominator": 16,
+                  "numerator": 16
                 },
                 "verified_fraction": {
-                  "denominator": 12,
-                  "numerator": 12
+                  "denominator": 16,
+                  "numerator": 16
                 }
               },
-              "known_unit_count": 12,
+              "known_unit_count": 16,
               "not_applicable_count": 0,
               "rates": {
                 "confirmed_violation_rate": 0.0,
@@ -4962,34 +4978,34 @@
               },
               "counts": {
                 "FAIL": 0,
-                "PASS": 7,
+                "PASS": 9,
                 "UNKNOWN": 0
               },
-              "denominator": 7,
+              "denominator": 9,
               "denominator_unresolved": false,
               "exact_fractions": {
                 "conditional_compliance": {
-                  "denominator": 7,
-                  "numerator": 7
+                  "denominator": 9,
+                  "numerator": 9
                 },
                 "confirmed_violation_rate": {
-                  "denominator": 7,
+                  "denominator": 9,
                   "numerator": 0
                 },
                 "unknown_rate": {
-                  "denominator": 7,
+                  "denominator": 9,
                   "numerator": 0
                 },
                 "verification_coverage": {
-                  "denominator": 7,
-                  "numerator": 7
+                  "denominator": 9,
+                  "numerator": 9
                 },
                 "verified_fraction": {
-                  "denominator": 7,
-                  "numerator": 7
+                  "denominator": 9,
+                  "numerator": 9
                 }
               },
-              "known_unit_count": 7,
+              "known_unit_count": 9,
               "not_applicable_count": 0,
               "rates": {
                 "confirmed_violation_rate": 0.0,
@@ -5062,34 +5078,34 @@
               },
               "counts": {
                 "FAIL": 0,
-                "PASS": 5,
+                "PASS": 7,
                 "UNKNOWN": 0
               },
-              "denominator": 5,
+              "denominator": 7,
               "denominator_unresolved": false,
               "exact_fractions": {
                 "conditional_compliance": {
-                  "denominator": 5,
-                  "numerator": 5
+                  "denominator": 7,
+                  "numerator": 7
                 },
                 "confirmed_violation_rate": {
-                  "denominator": 5,
+                  "denominator": 7,
                   "numerator": 0
                 },
                 "unknown_rate": {
-                  "denominator": 5,
+                  "denominator": 7,
                   "numerator": 0
                 },
                 "verification_coverage": {
-                  "denominator": 5,
-                  "numerator": 5
+                  "denominator": 7,
+                  "numerator": 7
                 },
                 "verified_fraction": {
-                  "denominator": 5,
-                  "numerator": 5
+                  "denominator": 7,
+                  "numerator": 7
                 }
               },
-              "known_unit_count": 5,
+              "known_unit_count": 7,
               "not_applicable_count": 0,
               "rates": {
                 "confirmed_violation_rate": 0.0,
@@ -5104,19 +5120,19 @@
         },
         "v2": {
           "score": {
-            "numerator": 85,
+            "numerator": 61,
             "denominator": 1,
-            "decimal": 85.0
+            "decimal": 61.0
           },
           "rank": {
-            "numerator": 2,
+            "numerator": 3,
             "denominator": 1,
-            "decimal": 2.0
+            "decimal": 3.0
           },
           "auxiliary": {
-            "numerator": 100,
+            "numerator": 76,
             "denominator": 1,
-            "decimal": 100.0
+            "decimal": 76.0
           },
           "daily_density": {
             "days": [
@@ -5125,7 +5141,7 @@
                   "lower": 4,
                   "upper": 4
                 },
-                "date": "2026-10-24",
+                "date": "2026-10-25",
                 "known_primary_count": 4,
                 "penalty_0_100": 30,
                 "penalty_bounds": {
@@ -5139,11 +5155,15 @@
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 91,
+                      "offset_start": 54,
                       "quote": "We would like a fairly full itinerary"
                     },
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 281,
+                      "offset_start": 239,
                       "quote": "We prefer to make active use of both days."
                     }
                   ]
@@ -5157,7 +5177,7 @@
                   "lower": 3,
                   "upper": 3
                 },
-                "date": "2026-10-25",
+                "date": "2026-10-26",
                 "known_primary_count": 3,
                 "penalty_0_100": 0,
                 "penalty_bounds": {
@@ -5171,11 +5191,15 @@
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 91,
+                      "offset_start": 54,
                       "quote": "We would like a fairly full itinerary"
                     },
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 281,
+                      "offset_start": 239,
                       "quote": "We prefer to make active use of both days."
                     }
                   ]
@@ -5196,10 +5220,10 @@
             },
             "requested_day_count": 2,
             "review": {
-              "rationale": "The source asks for a fairly full itinerary and active use of both days, supporting the rich density profile as a soft pace interpretation. It specifies no numeric sightseeing count or differing date-specific pace.",
+              "rationale": "The complete original request asks for a fairly full itinerary and active use of both days, supporting rich pace on both inclusive dates. It gives no numerical visit quota, duration minimum, fixed clock window or date-specific pace exception. The numeric density profile is evaluator policy, not an inferred user obligation.",
               "review_origin": "agent",
-              "reviewed_at": "2026-10-18T02:03:12Z",
-              "reviewer_ref": "/root/revalidation_semantic_reviewer"
+              "reviewed_at": "2026-10-24T10:55:50.044349+11:00",
+              "reviewer_ref": "codex-agent:/root/oct25_source_reviewer"
             },
             "rules_profile_id": "rtpeval_daily_density_3"
           },
@@ -5355,76 +5379,73 @@
               "verified_score_0_100": 100.0
             },
             "requirements": {
-              "conditional_compliance": 1.0,
+              "conditional_compliance": null,
               "contribution": {
                 "exact_fraction": {
                   "denominator": 1,
-                  "numerator": 1
+                  "numerator": 0
                 },
                 "reason": null,
-                "score_0_100": 100.0
+                "score_0_100": 0.0
               },
               "counts": {
                 "FAIL": 0,
-                "PASS": 1,
-                "UNKNOWN": 0
+                "PASS": 0,
+                "UNKNOWN": 1
               },
               "denominator": 1,
               "denominator_unresolved": false,
               "exact_fractions": {
-                "conditional_compliance": {
-                  "denominator": 1,
-                  "numerator": 1
-                },
+                "conditional_compliance": null,
                 "confirmed_violation_rate": {
                   "denominator": 1,
                   "numerator": 0
                 },
                 "unknown_rate": {
                   "denominator": 1,
-                  "numerator": 0
+                  "numerator": 1
                 },
                 "verification_coverage": {
                   "denominator": 1,
-                  "numerator": 1
+                  "numerator": 0
                 },
                 "verified_fraction": {
                   "denominator": 1,
-                  "numerator": 1
+                  "numerator": 0
                 }
               },
               "known_unit_count": 1,
               "not_applicable_count": 0,
               "rates": {
                 "confirmed_violation_rate": 0.0,
-                "unknown_rate": 0.0,
-                "verification_coverage": 1.0,
-                "verified_fraction": 1.0
+                "unknown_rate": 1.0,
+                "verification_coverage": 0.0,
+                "verified_fraction": 0.0
               },
-              "state": "PASS",
-              "verified_score_0_100": 100.0
+              "state": "UNKNOWN",
+              "verified_score_0_100": 0.0
             },
             "routes": {
               "conditional_compliance": 1.0,
               "contribution": {
                 "exact_fraction": {
-                  "denominator": 1,
-                  "numerator": 1
+                  "denominator": 5,
+                  "numerator": 4
                 },
                 "reason": null,
-                "score_0_100": 100.0
+                "score_0_100": 80.0
               },
               "counts": {
                 "FAIL": 0,
-                "PASS": 5,
-                "UNKNOWN": 0
+                "PASS": 4,
+                "UNKNOWN": 1
               },
               "denominator": 5,
               "denominator_unresolved": false,
               "exact_fractions": {
                 "conditional_compliance": {
-                  "denominator": 5,
-                  "numerator": 5
+                  "denominator": 4,
+                  "numerator": 4
                 },
                 "confirmed_violation_rate": {
                   "denominator": 5,
@@ -5432,27 +5453,27 @@
                 },
                 "unknown_rate": {
                   "denominator": 5,
-                  "numerator": 0
+                  "numerator": 1
                 },
                 "verification_coverage": {
                   "denominator": 5,
-                  "numerator": 5
+                  "numerator": 4
                 },
                 "verified_fraction": {
                   "denominator": 5,
-                  "numerator": 5
+                  "numerator": 4
                 }
               },
               "known_unit_count": 5,
               "not_applicable_count": 0,
               "rates": {
                 "confirmed_violation_rate": 0.0,
-                "unknown_rate": 0.0,
-                "verification_coverage": 1.0,
-                "verified_fraction": 1.0
+                "unknown_rate": 0.2,
+                "verification_coverage": 0.8,
+                "verified_fraction": 0.8
               },
-              "state": "PASS",
-              "verified_score_0_100": 100.0
+              "state": "UNKNOWN",
+              "verified_score_0_100": 80.0
             }
           }
         },
@@ -5479,38 +5500,6 @@
                   "lower": 3,
                   "upper": 3
                 },
-                "date": "2026-10-24",
-                "known_primary_count": 3,
-                "penalty_0_100": 0,
-                "penalty_bounds": {
-                  "lower": 0,
-                  "upper": 0
-                },
-                "policy": {
-                  "exact_count": null,
-                  "profile": "rich",
-                  "source_refs": [
-                    {
-                      "field_path": "additional_preferences",
-                      "occurrence": 0,
-                      "quote": "We would like a fairly full itinerary"
-                    },
-                    {
-                      "field_path": "additional_preferences",
-                      "occurrence": 0,
-                      "quote": "We prefer to make active use of both days."
-                    }
-                  ]
-                },
-                "possible_primary_count": 0,
-                "reason": "default_pace_penalty",
-                "state": "PASS"
-              },
-              {
-                "count_bounds": {
-                  "lower": 3,
-                  "upper": 3
-                },
                 "date": "2026-10-25",
                 "known_primary_count": 3,
                 "penalty_0_100": 0,
@@ -5525,11 +5514,51 @@
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 91,
+                      "offset_start": 54,
                       "quote": "We would like a fairly full itinerary"
                     },
                     {
                       "field_path": "additional_preferences",
                       "occurrence": 0,
+                      "offset_end": 281,
+                      "offset_start": 239,
+                      "quote": "We prefer to make active use of both days."
+                    }
+                  ]
+                },
+                "possible_primary_count": 0,
+                "reason": "default_pace_penalty",
+                "state": "PASS"
+              },
+              {
+                "count_bounds": {
+                  "lower": 3,
+                  "upper": 3
+                },
+                "date": "2026-10-26",
+                "known_primary_count": 3,
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "rich",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 91,
+                      "offset_start": 54,
+                      "quote": "We would like a fairly full itinerary"
+                    },
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 281,
+                      "offset_start": 239,
                       "quote": "We prefer to make active use of both days."
                     }
                   ]
@@ -5550,10 +5579,10 @@
             },
             "requested_day_count": 2,
             "review": {
-              "rationale": "The source asks for a fairly full itinerary and active use of both days, supporting the rich density profile as a soft pace interpretation. It specifies no numeric sightseeing count or differing date-specific pace.",
+              "rationale": "The complete original request asks for a fairly full itinerary and active use of both days, supporting rich pace on both inclusive dates. It gives no numerical visit quota, duration minimum, fixed clock window or date-specific pace exception. The numeric density profile is evaluator policy, not an inferred user obligation.",
               "review_origin": "agent",
-              "reviewed_at": "2026-10-18T02:03:12Z",
-              "reviewer_ref": "/root/revalidation_semantic_reviewer"
+              "reviewed_at": "2026-10-24T10:55:50.044349+11:00",
+              "reviewer_ref": "codex-agent:/root/oct25_source_reviewer"
             },
             "rules_profile_id": "rtpeval_daily_density_3"
           },
@@ -5812,7 +5841,7 @@
         }
       },
       "pair": {
-        "run_id": "case-04-rich3-v3-a1",
+        "run_id": "case-04-oct25-v3-a1",
         "draft": {
           "numerator": 50,
           "denominator": 1,
@@ -5849,7 +5878,7 @@
               "unchanged": 6
             },
             "checks": 9,
-            "original_checks_semantic_sha256": "8cd937d6ff551cf6aa7357b7e381f98638eca35e842165f792e83e8d6ccfef37"
+            "original_checks_semantic_sha256": "ffb420e7aad874f1dadcad1a6e0b503fc7bf6ed73aad3fa1a1cfe09b0671043c"
           },
           "opening": {
             "transitions": {
@@ -5857,7 +5886,7 @@
               "unchanged": 6
             },
             "checks": 9,
-            "original_checks_semantic_sha256": "d3227dadb6d145d16d7012349891c9e438cd0227b09d3d7872bdad494ec44e7c"
+            "original_checks_semantic_sha256": "d411d4e6ce5bcef23792104799f57ee72ed7287b7027ef4015a2c2db132b305a"
           },
           "protection_conflicts": {
             "transitions": {},
@@ -5869,22 +5898,18 @@
               "unchanged": 1
             },
             "checks": 1,
-            "original_checks_semantic_sha256": "c763241a6d1b0d27cbe00b5134ba9e3056f58e5966eadb0e0515cf8b41c536b7"
+            "original_checks_semantic_sha256": "a912c33fbb44e48c2cd9669f277fe2b82d4b91850904d9fa350f0acac088e02d"
           },
           "routes": {
             "transitions": {
-              "structural_leg_removed": 4,
-              "unchanged": 3,
-              "structural_leg_added": 1
+              "structural_leg_removed": 3,
+              "unchanged": 4
             },
-            "checks": 8,
-            "original_checks_semantic_sha256": "04c4c3d197a2fe34b3f7f7c8096f9a5ee85e4c2d053575ea9836186b07f95e60"
+            "checks": 7,
+            "original_checks_semantic_sha256": "850f25a512b9728330a656cad2853467c6fb91b7a38ab5d4b175c0a42a4adfb2"
           }
         }
-      },
-      "input_source": "case-04/evaluation/input.json",
-      "input_file_sha256": "605e3ff99226b8df72361e3ced136faa4598358c07a3aa8c75957023d780a8a9",
-      "input_note": "Original 24-25 October evaluated input; current 25-26 October schedules are not evaluated here."
+      }
     },
     {
       "case_id": "case-05",
@@ -19558,23 +19583,23 @@
         "decimal": 81.74266474266474
       },
       "mean_rank": {
-        "numerator": 77,
-        "denominator": 24,
-        "decimal": 3.2083333333333335
+        "numerator": 25,
+        "denominator": 8,
+        "decimal": 3.125
       },
       "sole_firsts": 0,
       "joint_firsts": 0,
       "resources": {
         "n": 12,
-        "reference_total_usd": "0.052481650",
+        "reference_total_usd": "0.052511400",
         "median_reference_usd": "0.0043604875",
-        "median_elapsed_seconds": 43.65699999999924,
+        "median_elapsed_seconds": 42.14099999999962,
         "totals": {
           "model_calls": 22,
           "embedding_calls": 0,
-          "input_tokens": 164074,
-          "output_tokens": 73095,
-          "total_tokens": 237169,
+          "input_tokens": 164024,
+          "output_tokens": 73167,
+          "total_tokens": 237191,
           "http_sends": 22
         },
         "provider_sends": {
@@ -19584,9 +19609,9 @@
     },
     "v1": {
       "mean_score": {
-        "numerator": 21043,
+        "numerator": 20833,
         "denominator": 252,
-        "decimal": 83.50396825396825
+        "decimal": 82.67063492063492
       },
       "mean_rank": {
         "numerator": 19,
@@ -19597,52 +19622,52 @@
       "joint_firsts": 0,
       "resources": {
         "n": 12,
-        "reference_total_usd": "23.478791725",
+        "reference_total_usd": "24.040367550",
         "median_reference_usd": "1.967271465",
-        "median_elapsed_seconds": 96.07749999999942,
+        "median_elapsed_seconds": 96.53899999999703,
         "totals": {
-          "model_calls": 57,
+          "model_calls": 58,
           "embedding_calls": 0,
-          "input_tokens": 613223,
-          "output_tokens": 106783,
-          "total_tokens": 720006,
-          "http_sends": 776
+          "input_tokens": 615624,
+          "output_tokens": 109614,
+          "total_tokens": 725238,
+          "http_sends": 805
         },
         "provider_sends": {
-          "google": 707,
-          "azure_foundry": 57,
+          "google": 735,
+          "azure_foundry": 58,
           "open_meteo": 12
         }
       }
     },
     "v2": {
       "mean_score": {
-        "numerator": 1968313,
+        "numerator": 1923961,
         "denominator": 22176,
-        "decimal": 88.7587031024531
+        "decimal": 86.7587031024531
       },
       "mean_rank": {
-        "numerator": 21,
-        "denominator": 8,
-        "decimal": 2.625
+        "numerator": 65,
+        "denominator": 24,
+        "decimal": 2.7083333333333335
       },
       "sole_firsts": 0,
       "joint_firsts": 0,
       "resources": {
         "n": 12,
-        "reference_total_usd": "27.191269297",
+        "reference_total_usd": "26.988961822",
         "median_reference_usd": "2.2983045925",
-        "median_elapsed_seconds": 125.55500000000029,
+        "median_elapsed_seconds": 117.03899999999703,
         "totals": {
           "model_calls": 79,
           "embedding_calls": 12,
-          "input_tokens": 650885,
+          "input_tokens": 650161,
           "output_tokens": null,
-          "total_tokens": 781145,
-          "http_sends": 972
+          "total_tokens": 779746,
+          "http_sends": 962
         },
         "provider_sends": {
-          "google": 878,
+          "google": 868,
           "azure_foundry": 67,
           "openai": 12,
           "open_meteo": 12,
@@ -19665,19 +19690,19 @@
       "joint_firsts": 0,
       "resources": {
         "n": 12,
-        "reference_total_usd": "27.566670277",
+        "reference_total_usd": "27.569010862",
         "median_reference_usd": "2.2714044685",
-        "median_elapsed_seconds": 134.375,
+        "median_elapsed_seconds": 129.72599999999602,
         "totals": {
           "model_calls": 79,
           "embedding_calls": 12,
-          "input_tokens": 969505,
+          "input_tokens": 968508,
           "output_tokens": null,
-          "total_tokens": 1101869,
-          "http_sends": 1027
+          "total_tokens": 1099562,
+          "http_sends": 1028
         },
         "provider_sends": {
-          "google": 936,
+          "google": 937,
           "azure_foundry": 67,
           "openai": 12,
           "open_meteo": 12
@@ -20064,16 +20089,16 @@
       "native_usage_source": null,
       "case_id": "case-04",
       "version": "v0",
-      "run_id": "case-04-current-path-v0-a1",
+      "run_id": "case-04-oct25-v0-a1",
       "usage_source": "case-04/generation/v0/usage.json",
-      "usage_semantic_sha256": "9363822216403aa34ee7783d3284f11f9edc642c9c978c9953139a0c1105c78e",
+      "usage_semantic_sha256": "29d42b687eda8efe5922a35aac787fcb06d41dab0b2bb4489ebcdad08f21b077",
       "cost_source": "case-04/analysis/resources/selected-tradeoffs.json",
-      "reference_usd": "0.0054891",
-      "elapsed_seconds": 46.34299999999985,
+      "reference_usd": "0.00551885",
+      "elapsed_seconds": 42.375,
       "metrics": {
-        "input_tokens": 16322,
-        "output_tokens": 6898,
-        "total_tokens": 23220,
+        "input_tokens": 16272,
+        "output_tokens": 6970,
+        "total_tokens": 23242,
         "model_calls": 2,
         "embedding_calls": 0,
         "http_sends": 2,
@@ -20089,28 +20114,28 @@
       "native_usage_source": null,
       "case_id": "case-04",
       "version": "v1",
-      "run_id": "case-04-current-path-v1-a1",
+      "run_id": "case-04-oct25-v1-a1",
       "usage_source": "case-04/generation/v1/usage.json",
-      "usage_semantic_sha256": "4c854f15ffc2ca6b80e2f1738ce92ade077b731fa283b7c9fa814f94742046a3",
+      "usage_semantic_sha256": "fea6f57e892d8f43193aaff255c8d4ebf6cb9ab9bee0827d3d44a7cda8acbebe",
       "cost_source": "case-04/analysis/resources/selected-tradeoffs.json",
-      "reference_usd": "1.344135235",
-      "elapsed_seconds": 88.21900000000005,
+      "reference_usd": "1.90571106",
+      "elapsed_seconds": 95.81299999999464,
       "metrics": {
-        "input_tokens": 38514,
-        "output_tokens": 7525,
-        "total_tokens": 46039,
-        "model_calls": 4,
+        "input_tokens": 40915,
+        "output_tokens": 10356,
+        "total_tokens": 51271,
+        "model_calls": 5,
         "embedding_calls": 0,
-        "http_sends": 55,
+        "http_sends": 84,
         "provider_sends": {
-          "azure_foundry": 4,
-          "google": 50,
+          "azure_foundry": 5,
+          "google": 78,
           "open_meteo": 1
         },
         "operation_sends": {
-          "model_http": 4,
+          "model_http": 5,
           "places_search": 11,
-          "place_details": 20,
+          "place_details": 48,
           "weather": 1,
           "route_matrix": 19
         }
@@ -20120,16 +20145,49 @@
       "native_usage_source": null,
       "case_id": "case-04",
       "version": "v2",
-      "run_id": "case-04-completion-v2-a1",
+      "run_id": "case-04-oct25-v2-a1",
       "usage_source": "case-04/generation/v2/usage.json",
-      "usage_semantic_sha256": "17b7dd916a74009e3f3176ae4ef6f8cddc739d3a8b05db6c95b6e9fb97642186",
+      "usage_semantic_sha256": "eb7df372845872d9ac9c08225da1c1cf38eaaad9f9cc228514e2af0badfdad6e",
       "cost_source": "case-04/analysis/resources/selected-tradeoffs.json",
-      "reference_usd": "2.156415785",
-      "elapsed_seconds": 145.98400000000038,
+      "reference_usd": "1.95410831",
+      "elapsed_seconds": 110.35899999999674,
       "metrics": {
-        "input_tokens": 41658,
+        "input_tokens": 40934,
         "output_tokens": null,
-        "total_tokens": 54368,
+        "total_tokens": 52969,
+        "model_calls": 6,
+        "embedding_calls": 1,
+        "http_sends": 85,
+        "provider_sends": {
+          "azure_foundry": 5,
+          "google": 78,
+          "openai": 1,
+          "open_meteo": 1
+        },
+        "operation_sends": {
+          "model_http": 5,
+          "places_search": 15,
+          "embedding": 1,
+          "place_details": 44,
+          "weather": 1,
+          "route_matrix": 19
+        }
+      }
+    },
+    {
+      "native_usage_source": null,
+      "case_id": "case-04",
+      "version": "v3",
+      "run_id": "case-04-oct25-v3-a1",
+      "usage_source": "case-04/generation/v3/usage.json",
+      "usage_semantic_sha256": "b6b3f9c01283a21a602bd1d483caa547687190f34b464255bdd2fcbafb03de75",
+      "cost_source": "case-04/analysis/resources/selected-tradeoffs.json",
+      "reference_usd": "2.127166475",
+      "elapsed_seconds": 108.70300000000861,
+      "metrics": {
+        "input_tokens": 41129,
+        "output_tokens": null,
+        "total_tokens": 53232,
         "model_calls": 6,
         "embedding_calls": 1,
         "http_sends": 95,
@@ -20141,44 +20199,11 @@
         },
         "operation_sends": {
           "model_http": 5,
-          "places_search": 15,
-          "embedding": 1,
-          "place_details": 54,
-          "weather": 1,
-          "route_matrix": 19
-        }
-      }
-    },
-    {
-      "native_usage_source": null,
-      "case_id": "case-04",
-      "version": "v3",
-      "run_id": "case-04-rich3-v3-a1",
-      "usage_source": "case-04/generation/v3/usage.json",
-      "usage_semantic_sha256": "f7e15e5117d9c8775fd69d2d2dffb45d00901630f34bc4681dc2d4e7be3cea3f",
-      "cost_source": "case-04/analysis/resources/selected-tradeoffs.json",
-      "reference_usd": "2.12482589",
-      "elapsed_seconds": 152.25,
-      "metrics": {
-        "input_tokens": 42126,
-        "output_tokens": null,
-        "total_tokens": 55539,
-        "model_calls": 6,
-        "embedding_calls": 1,
-        "http_sends": 94,
-        "provider_sends": {
-          "azure_foundry": 5,
-          "google": 87,
-          "openai": 1,
-          "open_meteo": 1
-        },
-        "operation_sends": {
-          "model_http": 5,
           "places_search": 14,
           "embedding": 1,
           "place_details": 54,
           "weather": 1,
-          "route_matrix": 19
+          "route_matrix": 20
         }
       }
     },
@@ -21187,5 +21212,5 @@
       }
     }
   ],
-  "content_sha256": "faf3f255e9c41f1f22a7063de53eeb7b98a45662545392da5a76e263f6e4744b"
+  "content_sha256": "9cda34662b24a9455cf0aaea1d0a04459131517f28cc1fad8a4ec050863780f2"
 }

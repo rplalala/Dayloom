@@ -1,11 +1,11 @@
 {
   "schema_version": "rtpeval_provenance_1",
   "group_id": "case-04",
-  "run_id": "case-04-rich3-v3-a1",
+  "run_id": "case-04-oct25-v3-a1",
   "version": "v3",
-  "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-  "result_sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
-  "source_revision": "a391c2c18846f40a727038a0cf4bd176239ba904",
+  "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+  "result_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+  "source_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
   "configuration_ref": {
     "path": "runtime-policy.json",
     "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
@@ -14,11 +14,11 @@
   },
   "evidence_index_ref": {
     "path": "evidence-index.json",
-    "sha256": "fc546af81f89ad699544ac55a5c03748494352e112b2bab7cc363827c9c2dcc9"
+    "sha256": "7663e84ebbbd19b45e8c3ff436a103e08a482ffcbff156931957ff32b6d014e9"
   },
   "mechanism_ref": {
     "path": "mechanism.json",
-    "sha256": "cd5540bddf11a4e6884680cafb2a7c9ac75b25190aceaac63158cc2313541020"
+    "sha256": "b6d6f0310ffb4070682cd10475046b61fdad3e1057c702257cb48a4858f12844"
   },
   "scope": "Development capture only; producer completion and batch qualification are separate."
 }

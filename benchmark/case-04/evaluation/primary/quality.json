@@ -2,6 +2,6 @@
   "$case_material_ref": {
     "path": "evaluation/primary/report.json",
     "pointer": "/quality",
-    "expanded_semantic_sha256": "784f8d640b9dc7247aef29ea6d08614aadf4f7e206294492065d319856c81f05"
+    "expanded_semantic_sha256": "558c74af8f7728e96c4b1bfbdf390960e4565313a372e1a9a31930f300d68ce4"
   }
 }

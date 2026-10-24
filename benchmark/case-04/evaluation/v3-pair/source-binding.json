@@ -1,15 +1,14 @@
 {
   "schema_version": "case_pair_source_binding_1",
   "case_id": "case-04",
-  "v3_result_sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
-  "run_id": "case-04-rich3-v3-a1",
-  "scope": "Independent same-run V3 draft/final-primary; not an independent V2 generation.",
-  "policy": "Fresh Google acquisition with source-bound Primary common subjects, density policy 3, zero model sends and zero retries. All paired opening checks are API-supported PASS.",
-  "paired_report_semantic_sha256": "6e060878f190bd0b93b25ee7f0c7214cbb314d41016448e9ef5ccce4c33db953",
-  "preparation_sha256": "c15321a1f4a9957a67fca2f2ee8585908b71b056c8a1dc6209e6515f79206702",
+  "v3_result_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+  "run_id": "case-04-oct25-v3-a1",
+  "scope": "Fresh independent same-run V3 draft/final-primary for 25-26 October; not an independent V2 generation.",
+  "preparation_sha256": "a7d1c93907ffd36252d484da54c7b7c3a23e603f02bfbf089b494d825623dbc6",
+  "paired_report_semantic_sha256": "f1f277813d9b0c0380f7019b89279f8f7060c8c89e5f02bf4a5258ddcedfd013",
   "source": {
-    "logical_path": ".scratch/issue-218/pair-a1/execution/pair-report.json",
-    "sha256": "6e060878f190bd0b93b25ee7f0c7214cbb314d41016448e9ef5ccce4c33db953",
+    "logical_path": ".scratch/case04-oct25/pair-a1/execution/pair-report.json",
+    "sha256": "f1f277813d9b0c0380f7019b89279f8f7060c8c89e5f02bf4a5258ddcedfd013",
     "json_pointer": ""
   }
 }

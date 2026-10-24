@@ -1,0 +1,24 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "codex-agent:/root/oct25_relevance_review",
+  "checked_at": "2026-10-24T00:05:34.329299+00:00",
+  "sources": [
+    {
+      "url": "https://www.roots.gov.sg/nhb/monuments",
+      "title": "National Monuments",
+      "access_status": "official_search_excerpt_open_blocked",
+      "facts": [
+        "NHB describes the National Museum on Stamford Road as a prominent landmark and Singapore's oldest existing museum."
+      ],
+      "limitations": [
+        "The official search result supplied the descriptive text; opening the page returned a JavaScript verification challenge."
+      ],
+      "source_kind": "independent_official",
+      "checked_at": "2026-10-24T00:05:34.329299+00:00"
+    }
+  ],
+  "scope": "Thematic relevance only; opening, routing, schedule and date feasibility are not adjudicated.",
+  "identity_binding": "Canonical identifier and name/address/coordinates from the stripped safe venue packet are identity aids only. Official descriptive facts establish relevance."
+}

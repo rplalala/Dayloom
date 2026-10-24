@@ -1,0 +1,1187 @@
+{
+  "schema_version": "case_output_claims_preparation_review_1",
+  "batch_id": "case-04-oct25",
+  "revision": "oct25-20261024-r1",
+  "reviewer": {
+    "actor": "codex-agent:/root/oct25_clean_output_review",
+    "role": "independent output-claims-only pre-Primary preparation reviewer",
+    "review_origin": "agent",
+    "human_review": false,
+    "model_configuration": "Inherited parent model and reasoning; exact model configuration was not exposed to this reviewer.",
+    "reviewed_at": "2026-10-24T00:06:26.653604+00:00"
+  },
+  "scope": "Selected final submitted activity/transfer claims, original request and permitted source-only preparation context. No factual identity, opening, route quality or score judgment.",
+  "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+  "packet_sha256": "3bbf3b82475ffec9408e5c6565b1a8350c4789cbb697a2c702fc4ea2464cba9d",
+  "upstream_source_packet_sha256_as_declared": "46cb8b4fc2dfe49439ff0e63aafe17849dc9959b3207fce76d1874d299532572",
+  "input_files": [
+    {
+      "path": ".scratch/case04-oct25/output-claims-only.json",
+      "sha256": "3bbf3b82475ffec9408e5c6565b1a8350c4789cbb697a2c702fc4ea2464cba9d"
+    },
+    {
+      "path": ".scratch/case04-oct25/readiness.json",
+      "sha256": "9f64e2b45166d375bce52a08ac7d1c1f2f733712be41aca28060677a9608723d"
+    },
+    {
+      "path": ".scratch/case04-oct25/source-only/requirements-reviewed.json",
+      "sha256": "df9ed5e7ff244f525c441a5689edb6dcf885f432442af9d36ac7dc50a6de6d16"
+    },
+    {
+      "path": ".scratch/case04-oct25/source-only/route_reviews.json",
+      "sha256": "a720ebe68c331b1f93e586f0927259e9bb4506c711bd117314dc41b019acc082"
+    },
+    {
+      "path": ".scratch/case04-oct25/source-only/density_reviews.json",
+      "sha256": "3c86f80a2dd121281a4bd43a59fa9f0f029096f0a0b84c19d2780a5e2af63c54"
+    },
+    {
+      "path": ".scratch/case04-oct25/source-only/schedule_context.json",
+      "sha256": "fe9bc9d36f31ae23adc7cfbd57340f892fa274f4724b20a7e24f9ddcd30b033c"
+    }
+  ],
+  "policy_files_read": [
+    "AGENTS.md",
+    "benchmark/AGENTS.md",
+    "docs/contracts/0002-intake-identity-usage.md",
+    "docs/contracts/0004-opening-routes.md"
+  ],
+  "excluded_input_access": false,
+  "provider_calls": 0,
+  "source_binding_checks": {
+    "all_37_activity_claims_match_readiness_original": true,
+    "run_artifact_and_pointer_links_match": true,
+    "complete_original_request_matches": true,
+    "original_artifact_bytes_rehashed": false,
+    "explanation": "Artifact hashes are supplied source bindings; excluded original result artifacts were not opened or rehashed."
+  },
+  "readiness_corroboration": {
+    "native_status": "ready",
+    "independent_claim_review_status": "ready",
+    "activities": 37,
+    "primary_visits": 30,
+    "transport_activities": 6,
+    "scheduled_generic_activities": 1,
+    "free_windows": 0,
+    "placeholders": 0,
+    "protected_user_commitments": 0,
+    "missing_role_reviews": 0,
+    "missing_occupancy_reviews": 0,
+    "unresolved_semantic_claims": 0,
+    "all_activity_clocks_ordered_nonoverlapping_on_declared_date_at_utc_plus_08": true
+  },
+  "activity_checks": [
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "eca5d0216b2ffc2b27bed3a530642669a30af797f5382b14aaa9226ca6aa31de"
+      },
+      "activity_id": "day1_gardens",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T09:00:00+08:00",
+      "end_time": "2026-10-25T11:30:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/0/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "65432b9855a0df4eed563f5a4549be2fcc404ca8e3fa945ad0ab2ebb198d18db"
+      },
+      "activity_id": "day1_walk_to_skypark",
+      "role": "transport",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T11:30:00+08:00",
+      "end_time": "2026-10-25T11:50:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Movement title and notes agree with the structured mode and directed endpoints in readiness.original."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/0/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "af2df421cfa74281971dbdebba4d1fc9645305dbed506a7ae7002acf89502f32"
+      },
+      "activity_id": "day1_skypark",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T11:50:00+08:00",
+      "end_time": "2026-10-25T13:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/0/activities/3",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "ec51b135e8a538e3d076d905fff2ff8de120b3be5c146249e33da19dd402052f"
+      },
+      "activity_id": "day1_walk_to_merlion",
+      "role": "transport",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T13:00:00+08:00",
+      "end_time": "2026-10-25T13:20:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Movement title and notes agree with the structured mode and directed endpoints in readiness.original."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/0/activities/4",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "87211add6b52e40890dfd383b58f1def1d3688dd46dc86c4ae6d44366858fcf1"
+      },
+      "activity_id": "day1_merlion",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T13:20:00+08:00",
+      "end_time": "2026-10-25T14:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/0/activities/5",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "954b441ca27e960599d4c8b436a360927eeada7ee50c92408ec4825a91b3dee5"
+      },
+      "activity_id": "day1_walk_to_gallery",
+      "role": "transport",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T14:00:00+08:00",
+      "end_time": "2026-10-25T14:15:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Movement title and notes agree with the structured mode and directed endpoints in readiness.original."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/0/activities/6",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "5cdd4580527f16d403d9f43195a4476cdda708324c276f55792f149b9790a10a"
+      },
+      "activity_id": "day1_gallery",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T14:15:00+08:00",
+      "end_time": "2026-10-25T17:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/1/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "33bbfde4ffe70f871080544deccd661c81b371d2f6e04a99d68792f9bcdce0b2"
+      },
+      "activity_id": "day2_botanic",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T08:30:00+08:00",
+      "end_time": "2026-10-26T11:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/1/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "e4ba3f26ed36f789d343d80a0d1ffe04a42795344d0dca7c96bef329a1722e90"
+      },
+      "activity_id": "day2_transit_to_museum",
+      "role": "transport",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T11:00:00+08:00",
+      "end_time": "2026-10-26T11:35:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Movement title and notes agree with the structured mode and directed endpoints in readiness.original."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/1/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "2d96509d41c51727045c575b9949e95d1cc2930332393877c4fb0f483c32d28e"
+      },
+      "activity_id": "day2_museum",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T11:35:00+08:00",
+      "end_time": "2026-10-26T13:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/1/activities/3",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "c44a3f36a11a18582bc3505cff050bbaa671a7bcff7c9b81ed8612270c3078cc"
+      },
+      "activity_id": "day2_transit_to_chinatown",
+      "role": "transport",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T13:00:00+08:00",
+      "end_time": "2026-10-26T13:35:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Movement title and notes agree with the structured mode and directed endpoints in readiness.original."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/1/activities/4",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "6efb0b27e7c3f1ec952704c8139f827f1b17e4df61e48f8e29ca8f159e42e735"
+      },
+      "activity_id": "day2_temple",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T13:35:00+08:00",
+      "end_time": "2026-10-26T14:30:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/1/activities/5",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "0844560631f469c242ec5a461acfa2ee669553f9ba4c5596c895d5298fe17be0"
+      },
+      "activity_id": "day2_transit_to_flyer",
+      "role": "transport",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T14:30:00+08:00",
+      "end_time": "2026-10-26T15:05:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Movement title and notes agree with the structured mode and directed endpoints in readiness.original."
+    },
+    {
+      "version": "v0",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v0-a1",
+        "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+        "pointer": "/itinerary/days/1/activities/6",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "e64d48f78a1ea2cb3fb7b86b43a26582a57a2cae87cfb727890e24270af551e2"
+      },
+      "activity_id": "day2_flyer",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T15:05:00+08:00",
+      "end_time": "2026-10-26T16:30:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "7254672efcee57d1d576471903f60684e54883a87ba79cd3f2370fced485aaa5"
+      },
+      "activity_id": "day1-merlion",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T09:00:00+08:00",
+      "end_time": "2026-10-25T09:45:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/0/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "d4e19eb58e954b202b055d7afe327affc412338918c264a56f8592fbdad4b747"
+      },
+      "activity_id": "day1-gardens",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T10:30:00+08:00",
+      "end_time": "2026-10-25T13:15:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/0/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "1f7b16f3be026abf60f18149a331d0f40d61304019db1ebfd0ef8e1040e061c8"
+      },
+      "activity_id": "day1-flyer",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T14:00:00+08:00",
+      "end_time": "2026-10-25T15:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/0/activities/3",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "633ffb9724bed880abb41eb3c322bf46a80c30b51f325b1be02e57c6a561dfb3"
+      },
+      "activity_id": "day1-skyline",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T15:30:00+08:00",
+      "end_time": "2026-10-25T16:15:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/0/activities/4",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "1ca5cea29b386a908c44b8b1787da4b30961e0a497e170a120f36f057e9c1ca9"
+      },
+      "activity_id": "day1-gallery",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T17:00:00+08:00",
+      "end_time": "2026-10-25T18:30:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/1/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "01117d471be4157d7b909a1fd4af1f520e25ff988478b2280f7b3c7b9ab617f4"
+      },
+      "activity_id": "day2-botanic-gardens",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T07:30:00+08:00",
+      "end_time": "2026-10-26T10:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/1/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "46ff26de451a7fe1f6b211126116494dd99812c4edc086b0d3250529b7f6f368"
+      },
+      "activity_id": "day2-national-museum",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T11:00:00+08:00",
+      "end_time": "2026-10-26T13:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/1/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "261f019f436a4d451b2c6d8c41f061d86ec2a39e14622472aa748656ed76c11a"
+      },
+      "activity_id": "day2-fort-canning",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T13:30:00+08:00",
+      "end_time": "2026-10-26T14:20:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v1",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v1-a1",
+        "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+        "pointer": "/itinerary/days/1/activities/3",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "2d29129a23227f20da02be5649665d27721716d2657aea72df3314b7e7c80245"
+      },
+      "activity_id": "day2-sultan-mosque",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T15:10:00+08:00",
+      "end_time": "2026-10-26T15:50:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v2",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v2-a1",
+        "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "722fae36ddbfda2eca0eb792fc000cd16cec0093fa3142a4af7afbf3e3d927e7"
+      },
+      "activity_id": "day1-fort-canning",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T09:00:00+08:00",
+      "end_time": "2026-10-25T10:15:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v2",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v2-a1",
+        "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+        "pointer": "/itinerary/days/0/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "96692e90d030345fa0a54e57374a64bb13c3c5a6046aa0fc5ca5bd5001415fb6"
+      },
+      "activity_id": "day1-national-gallery",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T10:45:00+08:00",
+      "end_time": "2026-10-25T13:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v2",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v2-a1",
+        "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+        "pointer": "/itinerary/days/0/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "9e9be3c3dda7878ee175f58f934f5200177f1f1c69204866c72aa6bdb3c55bea"
+      },
+      "activity_id": "day1-sultan-mosque",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T14:00:00+08:00",
+      "end_time": "2026-10-25T14:45:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v2",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v2-a1",
+        "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+        "pointer": "/itinerary/days/0/activities/3",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "57cf03fc481129e9dad9f349daefdf965fcc4aa01a9ff9cb0e3fb8d060d788d6"
+      },
+      "activity_id": "day1-covered-break",
+      "role": "transition",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T16:00:00+08:00",
+      "end_time": "2026-10-25T17:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Supporting indoor break at a named venue; explicit scheduled time_use establishes a 16:00-17:00 commitment, not a primary visit, placeholder, protected user obligation or free window."
+    },
+    {
+      "version": "v2",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v2-a1",
+        "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+        "pointer": "/itinerary/days/0/activities/4",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "37e3ad1877e9686ee03adff7144991931a34ea46209d076dbda2cbffd4264702"
+      },
+      "activity_id": "day1-garden-rhapsody",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T19:45:00+08:00",
+      "end_time": "2026-10-25T20:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v2",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v2-a1",
+        "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+        "pointer": "/itinerary/days/1/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "55b2738488e06b8a1bdb941886e7bec0bbd10dc703f46c7a01b563daf73f4d7d"
+      },
+      "activity_id": "day2-botanic-gardens",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T09:00:00+08:00",
+      "end_time": "2026-10-26T11:30:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v2",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v2-a1",
+        "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+        "pointer": "/itinerary/days/1/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "b92721920e772c64fe05c17a1afc10267c7d79c1d4d06491fbf2393c89594874"
+      },
+      "activity_id": "day2-singapore-flyer",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T13:00:00+08:00",
+      "end_time": "2026-10-26T14:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v2",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v2-a1",
+        "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+        "pointer": "/itinerary/days/1/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "fb251079681ea64543016a809ec9e8344f895afa8f2da97817df3b63773783a7"
+      },
+      "activity_id": "day2-merlion-park",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T14:30:00+08:00",
+      "end_time": "2026-10-26T15:15:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v3",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v3-a1",
+        "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "af58fd4096ebac6d838c069b0062c449969086650ddb75b60ba4154a0c42321c"
+      },
+      "activity_id": "day1-national-gallery",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T13:20:00+08:00",
+      "end_time": "2026-10-25T15:30:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v3",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v3-a1",
+        "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+        "pointer": "/itinerary/days/0/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "70d6b02b8509e6100991d348388f5958be8537ad0b5fd0afb9e58cd0aa0264e2"
+      },
+      "activity_id": "day1-gardens-by-the-bay",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T16:15:00+08:00",
+      "end_time": "2026-10-25T19:30:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v3",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v3-a1",
+        "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+        "pointer": "/itinerary/days/0/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "b2ce5caf63e490a6f077b79c31147e4735334f871db3d084167a4bb42c6a2d47"
+      },
+      "activity_id": "day1-garden-rhapsody",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-25T19:45:00+08:00",
+      "end_time": "2026-10-25T20:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v3",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v3-a1",
+        "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+        "pointer": "/itinerary/days/1/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "c0520752a5ca8d140d6c6e0328d303912da9f18dcfd362e75c4d06cf83eb52e5"
+      },
+      "activity_id": "day2-national-museum",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T10:00:00+08:00",
+      "end_time": "2026-10-26T12:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v3",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v3-a1",
+        "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+        "pointer": "/itinerary/days/1/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "c2e0893511fde45b35a1d3061683133fd393424d876f88898c927c4c7f20fe80"
+      },
+      "activity_id": "day2-fort-canning",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T12:30:00+08:00",
+      "end_time": "2026-10-26T14:00:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    },
+    {
+      "version": "v3",
+      "source": {
+        "batch_id": "case-04-oct25",
+        "group_id": "case-04",
+        "run_id": "case-04-oct25-v3-a1",
+        "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+        "pointer": "/itinerary/days/1/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "1cf146495ddf0f4d15fff4d3ca22296707d999115e921c6d55a16a83363b0f77"
+      },
+      "activity_id": "day2-sultan-mosque",
+      "role": "primary_visit",
+      "time_use": "scheduled",
+      "start_time": "2026-10-26T14:30:00+08:00",
+      "end_time": "2026-10-26T15:30:00+08:00",
+      "role_review_required": false,
+      "occupancy_review_required": false,
+      "rationale": "Named visit declaration agrees with the submitted title and notes; optional admission-dependent subareas do not make the scheduled parent visit a free window."
+    }
+  ],
+  "transport_checks": [
+    {
+      "version": "v0",
+      "run_id": "case-04-oct25-v0-a1",
+      "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+      "pointer": "/itinerary/days/0/activities/1",
+      "from_activity_id": "day1_gardens",
+      "to_activity_id": "day1_skypark",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T11:30:00+08:00",
+      "arrival_time": "2026-10-25T11:50:00+08:00",
+      "claim_duration_seconds": 1200,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v0",
+      "run_id": "case-04-oct25-v0-a1",
+      "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+      "pointer": "/itinerary/days/0/activities/3",
+      "from_activity_id": "day1_skypark",
+      "to_activity_id": "day1_merlion",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T13:00:00+08:00",
+      "arrival_time": "2026-10-25T13:20:00+08:00",
+      "claim_duration_seconds": 1200,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v0",
+      "run_id": "case-04-oct25-v0-a1",
+      "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+      "pointer": "/itinerary/days/0/activities/5",
+      "from_activity_id": "day1_merlion",
+      "to_activity_id": "day1_gallery",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T14:00:00+08:00",
+      "arrival_time": "2026-10-25T14:15:00+08:00",
+      "claim_duration_seconds": 900,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v0",
+      "run_id": "case-04-oct25-v0-a1",
+      "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+      "pointer": "/itinerary/days/1/activities/1",
+      "from_activity_id": "day2_botanic",
+      "to_activity_id": "day2_museum",
+      "mode": "TRANSIT",
+      "departure_time": "2026-10-26T11:00:00+08:00",
+      "arrival_time": "2026-10-26T11:35:00+08:00",
+      "claim_duration_seconds": 2100,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v0",
+      "run_id": "case-04-oct25-v0-a1",
+      "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+      "pointer": "/itinerary/days/1/activities/3",
+      "from_activity_id": "day2_museum",
+      "to_activity_id": "day2_temple",
+      "mode": "TRANSIT",
+      "departure_time": "2026-10-26T13:00:00+08:00",
+      "arrival_time": "2026-10-26T13:35:00+08:00",
+      "claim_duration_seconds": 2100,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v0",
+      "run_id": "case-04-oct25-v0-a1",
+      "artifact_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+      "pointer": "/itinerary/days/1/activities/5",
+      "from_activity_id": "day2_temple",
+      "to_activity_id": "day2_flyer",
+      "mode": "TRANSIT",
+      "departure_time": "2026-10-26T14:30:00+08:00",
+      "arrival_time": "2026-10-26T15:05:00+08:00",
+      "claim_duration_seconds": 2100,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v1",
+      "run_id": "case-04-oct25-v1-a1",
+      "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "pointer": "/itinerary/transfers/0",
+      "from_activity_id": "day1-merlion",
+      "to_activity_id": "day1-gardens",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T09:45:00+08:00",
+      "arrival_time": "2026-10-25T10:17:58+08:00",
+      "claim_duration_seconds": 1978,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v1",
+      "run_id": "case-04-oct25-v1-a1",
+      "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "pointer": "/itinerary/transfers/1",
+      "from_activity_id": "day1-gardens",
+      "to_activity_id": "day1-flyer",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T13:15:00+08:00",
+      "arrival_time": "2026-10-25T13:38:40+08:00",
+      "claim_duration_seconds": 1420,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v1",
+      "run_id": "case-04-oct25-v1-a1",
+      "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "pointer": "/itinerary/transfers/2",
+      "from_activity_id": "day1-flyer",
+      "to_activity_id": "day1-skyline",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T15:00:00+08:00",
+      "arrival_time": "2026-10-25T15:17:01+08:00",
+      "claim_duration_seconds": 1021,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v1",
+      "run_id": "case-04-oct25-v1-a1",
+      "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "pointer": "/itinerary/transfers/3",
+      "from_activity_id": "day1-skyline",
+      "to_activity_id": "day1-gallery",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T16:15:00+08:00",
+      "arrival_time": "2026-10-25T16:43:43+08:00",
+      "claim_duration_seconds": 1723,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v1",
+      "run_id": "case-04-oct25-v1-a1",
+      "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "pointer": "/itinerary/transfers/4",
+      "from_activity_id": "day2-botanic-gardens",
+      "to_activity_id": "day2-national-museum",
+      "mode": "TRANSIT",
+      "departure_time": "2026-10-26T10:00:00+08:00",
+      "arrival_time": "2026-10-26T10:43:03+08:00",
+      "claim_duration_seconds": 2583,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v1",
+      "run_id": "case-04-oct25-v1-a1",
+      "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "pointer": "/itinerary/transfers/5",
+      "from_activity_id": "day2-national-museum",
+      "to_activity_id": "day2-fort-canning",
+      "mode": "WALK",
+      "departure_time": "2026-10-26T13:00:00+08:00",
+      "arrival_time": "2026-10-26T13:11:37+08:00",
+      "claim_duration_seconds": 697,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v1",
+      "run_id": "case-04-oct25-v1-a1",
+      "artifact_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "pointer": "/itinerary/transfers/6",
+      "from_activity_id": "day2-fort-canning",
+      "to_activity_id": "day2-sultan-mosque",
+      "mode": "WALK",
+      "departure_time": "2026-10-26T14:20:00+08:00",
+      "arrival_time": "2026-10-26T14:52:19+08:00",
+      "claim_duration_seconds": 1939,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v2",
+      "run_id": "case-04-oct25-v2-a1",
+      "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+      "pointer": "/itinerary/transfers/0",
+      "from_activity_id": "day1-fort-canning",
+      "to_activity_id": "day1-national-gallery",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T10:15:00+08:00",
+      "arrival_time": "2026-10-25T10:30:55+08:00",
+      "claim_duration_seconds": 955,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v2",
+      "run_id": "case-04-oct25-v2-a1",
+      "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+      "pointer": "/itinerary/transfers/1",
+      "from_activity_id": "day1-national-gallery",
+      "to_activity_id": "day1-sultan-mosque",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T13:00:00+08:00",
+      "arrival_time": "2026-10-25T13:25:08+08:00",
+      "claim_duration_seconds": 1508,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v2",
+      "run_id": "case-04-oct25-v2-a1",
+      "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+      "pointer": "/itinerary/transfers/2",
+      "from_activity_id": "day2-botanic-gardens",
+      "to_activity_id": "day2-singapore-flyer",
+      "mode": "TRANSIT",
+      "departure_time": "2026-10-26T11:30:00+08:00",
+      "arrival_time": "2026-10-26T12:09:01+08:00",
+      "claim_duration_seconds": 2341,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v2",
+      "run_id": "case-04-oct25-v2-a1",
+      "artifact_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+      "pointer": "/itinerary/transfers/3",
+      "from_activity_id": "day2-singapore-flyer",
+      "to_activity_id": "day2-merlion-park",
+      "mode": "WALK",
+      "departure_time": "2026-10-26T14:00:00+08:00",
+      "arrival_time": "2026-10-26T14:18:36+08:00",
+      "claim_duration_seconds": 1116,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v3",
+      "run_id": "case-04-oct25-v3-a1",
+      "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+      "pointer": "/itinerary/transfers/0",
+      "from_activity_id": "day1-national-gallery",
+      "to_activity_id": "day1-gardens-by-the-bay",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T15:30:00+08:00",
+      "arrival_time": "2026-10-25T16:07:09+08:00",
+      "claim_duration_seconds": 2229,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v3",
+      "run_id": "case-04-oct25-v3-a1",
+      "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+      "pointer": "/itinerary/transfers/1",
+      "from_activity_id": "day1-gardens-by-the-bay",
+      "to_activity_id": "day1-garden-rhapsody",
+      "mode": "WALK",
+      "departure_time": "2026-10-25T19:30:00+08:00",
+      "arrival_time": "2026-10-25T19:31:09+08:00",
+      "claim_duration_seconds": 69,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v3",
+      "run_id": "case-04-oct25-v3-a1",
+      "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+      "pointer": "/itinerary/transfers/2",
+      "from_activity_id": "day2-national-museum",
+      "to_activity_id": "day2-fort-canning",
+      "mode": "WALK",
+      "departure_time": "2026-10-26T12:00:00+08:00",
+      "arrival_time": "2026-10-26T12:11:37+08:00",
+      "claim_duration_seconds": 697,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    },
+    {
+      "version": "v3",
+      "run_id": "case-04-oct25-v3-a1",
+      "artifact_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+      "pointer": "/itinerary/transfers/3",
+      "from_activity_id": "day2-fort-canning",
+      "to_activity_id": "day2-sultan-mosque",
+      "mode": "TRANSIT",
+      "departure_time": "2026-10-26T14:00:00+08:00",
+      "arrival_time": "2026-10-26T14:20:46+08:00",
+      "claim_duration_seconds": 1246,
+      "association": "directed_consecutive_same_day",
+      "span": "contained_in_endpoint_gap",
+      "factual_feasibility": "not_assessed"
+    }
+  ],
+  "findings": [
+    {
+      "id": "scheduled-supporting-break",
+      "status": "resolved",
+      "version": "v2",
+      "activity_id": "day1-covered-break",
+      "finding": "Covered break at Suntec City is a declared scheduled generic activity from 16:00 to 17:00 on October 25. Its title and supporting-pause notes agree with non-primary status. It remains fixed other occupancy within the Sultan Mosque to Garden Rhapsody gap. Neither its venue name nor pause wording changes its declared role or creates free time.",
+      "preparation_action": "Preserve the one-hour commitment when native route preparation computes continuous free spans. No supplemental occupancy review is required by the explicit itinerary_3 declaration."
+    },
+    {
+      "id": "missing-transfer",
+      "status": "preserve_missing_claim",
+      "claims": [
+        {
+          "version": "v2",
+          "from_activity_id": "day1-sultan-mosque",
+          "to_activity_id": "day1-garden-rhapsody"
+        }
+      ],
+      "finding": "There is no submitted V2 Transfer for the consecutive primary pair Sultan Mosque to Garden Rhapsody. The scheduled Suntec break does not become a primary endpoint and does not supply an implicit transport leg.",
+      "preparation_action": "Retain the missing claim and unknown submitted mode; the allowed set WALK/TRANSIT does not select a mode. Do not invent a Transfer or treat review coverage as route feasibility."
+    },
+    {
+      "id": "v0-filter-omission",
+      "status": "resolved_from_permitted_input",
+      "finding": "The claims-only packet omits Activity.transport, but all six structured V0 mode/endpoint claims are available in permitted readiness.json original fields. Those exact declarations were used for association checks, not inferred from titles or notes.",
+      "preparation_action": "Retain both input hashes for this review; packet alone is insufficient to reproduce the V0 structured endpoint check."
+    },
+    {
+      "id": "notes-are-claims",
+      "status": "boundary_preserved",
+      "finding": "Opening hours, weather, estimated durations, admission uncertainty and supplied-evidence statements in notes were read only as submitted claims. No note supplied independent opening, identity, timing or route proof.",
+      "preparation_action": "Independent evaluator acquisition and scoring remain necessary."
+    },
+    {
+      "id": "source-context",
+      "status": "consistent",
+      "finding": "Original request specifies Singapore on October 25-26, two adults, public transport and walking only, and fairly full active days. Reviewed restrictions preserve WALK/TRANSIT; reviewed schedule context gives Asia/Singapore. No fixed protected clock obligation or mandatory named venue appears.",
+      "preparation_action": "Use the already reviewed source context; do not invent time windows or exact visit quotas."
+    }
+  ],
+  "needed_native_supplemental_reviews": {
+    "projection_reviews": [],
+    "occupancy_reviews": [],
+    "route_policy_reviews": [],
+    "reason": "Explicit declarations and permitted structured claims resolve semantic preparation scope. Missing transport coverage and future factual uncertainty are not repaired by semantic reviews."
+  },
+  "unresolved_material_ambiguities": [],
+  "conclusion": {
+    "status": "ready_for_parent_preparation_inspection",
+    "semantic_readiness_corroborated": true,
+    "primary_execution_authorized_by_this_review": false,
+    "score_decidability": "not_assessed",
+    "statement": "No additional independent role projection or occupancy review is required from the inspected claims. Preserve the V2 fixed break and missing Transfer in native preparation. This review does not assert factual feasibility, numerical-population eligibility, score decidability, or authorization to execute."
+  }
+}

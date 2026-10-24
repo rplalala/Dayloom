@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-23.
+Current source of truth. Updated 2026-10-24.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -364,19 +364,17 @@ Suite engineering acceptance used synthetic saved material and injected transpor
 ### Final benchmark and blinded assessment
 
 The [selection index](benchmark/README.md#accepted-selections) identifies the twelve
-cases and their exact datasets. The [Rich-policy replacement](benchmark/case-04/report.md)
-under [#218](https://github.com/rplalala/Dayloom/issues/218) is pending researcher
-acceptance: case-04 retains V0–V2, selects one new V3 with three visits per day,
-and has matching Primary, Pair and process/resource reports. The other eleven
-cases have offline density-policy derivations with unchanged factual rules and scores.
+cases and their exact datasets. The [case-04 replacement](benchmark/case-04/report.md)
+under [#218](https://github.com/rplalala/Dayloom/issues/218) has four newly generated
+versions and matching independent Primary/Pair evaluation for 25–26 October 2026.
+V3 retains three primary visits per day with native Rich completion `complete` and
+independent score 100. V0 has a route timing FAIL; V2 retains missing-mode UNKNOWNs.
+The other eleven cases retain their outputs, factual rules and scores.
 
-The [benchmark report](benchmark/report.md) gives the automatic order
-**V3 > V2 > V1 > V0**, with exact scores, ranks, Pair summaries and selected-run
-resources for the evaluated outputs. Case-04's 24–25 October V3 score is 100;
-offline completion review returns complete while retaining the unsupported
-same-day diagnostic. Its current V0–V3 schedules are shifted to 25–26 October
-without paid calls; date-bound feasibility and scores are not transferred to them.
-Original evidence remains unchanged. Researcher acceptance is pending.
+The [benchmark report](benchmark/report.md) gives the automatic mean-score order
+**V3 > V2 > V1 > V0**, exact ranks, Pair summaries and selected-generation resources.
+Original evidence and all-attempt costs remain preserved. Researcher acceptance
+of the complete replacement is pending; #219 and thesis synchronization follow it.
 
 The [blinded-review report](benchmark/blinded-results/report.md) covers one human
 and one GPT-6.1 sol xhigh assessment of the twelve itineraries originally shown.

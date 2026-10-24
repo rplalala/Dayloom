@@ -1,0 +1,33 @@
+{
+  "schema_version": "rtpeval_route_reviews_1",
+  "batch_id": "case-04-oct25",
+  "revision": "oct25-20261024-r1",
+  "groups": [
+    {
+      "group_id": "case-04",
+      "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+      "reviewer_ref": "codex-agent:/root/oct25_source_reviewer",
+      "reviewed_at": "2026-10-24T10:55:50.044349+11:00",
+      "status": "restricted",
+      "policies": [
+        {
+          "policy_id": "public-transport-and-walking-only",
+          "scope": "whole_trip",
+          "allowed_modes": [
+            "WALK",
+            "TRANSIT"
+          ],
+          "source_refs": [
+            {
+              "field_path": "additional_preferences",
+              "quote": "Use public transport and walking only; do not include car, taxi or ride-hailing transfers.",
+              "occurrence": 0,
+              "offset_start": 148,
+              "offset_end": 238
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

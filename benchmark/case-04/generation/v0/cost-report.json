@@ -2,6 +2,6 @@
   "$case_material_ref": {
     "path": "analysis/resources/selected-tradeoffs.json",
     "pointer": "/all_attempts/native_cost_ledgers/0/native",
-    "expanded_semantic_sha256": "f2d79c1e870c06b80795fa5d9e1f8a45ef7b8c5b7c8d48157244bd0ac7207d98"
+    "expanded_semantic_sha256": "789be4c7cbc2ca4a96e463d352a40a0ee9a52e80f76a24ff5dad641f15704be1"
   }
 }

@@ -140,7 +140,7 @@ retain the separately accepted questionnaires and answers.
 | 01 | 2026-10-14 | [Initial Sydney dataset](case-01/report.md#acceptance) |
 | 02 | 2026-10-14 | [London selection](case-02/report.md#acceptance-and-material) |
 | 03 | 2026-10-15 | [Tokyo selection](case-03/report.md#acceptance-status) |
-| 04 | Completion review and date revision pending acceptance; former selection accepted 2026-10-18 | [Singapore](case-04/report.md#acceptance), current schedules 25–26 October; original 24–25 October Primary/Pair retained; original-date offline Rich completion passes with UNKNOWN diagnostic preserved |
+| 04 | New-date complete replacement pending acceptance; former selection accepted 2026-10-18 | [Singapore](case-04/report.md#acceptance), new V0–V3 and independent Primary/Pair for 25–26 October; native V3 Rich completion is complete with 3/3 visits |
 | 05 | 2026-10-16; refreshed selection accepted 2026-10-18 | [Barcelona current selection](case-05/report.md#acceptance), 26–30 October; four current-system generations, fresh Primary/pair and complete dependent analyses; refreshed selection explicitly accepted with disclosed limitations |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
@@ -460,7 +460,7 @@ replacement is limited to 04/05/09/11; case-07's canonical input is aligned with
 its unchanged accepted native revision. Historical accepted dates need not satisfy
 today's moving window. Current selections and acceptance boundaries are indexed above.
 
-Dates and durations are inclusive. Case-04 uses 24–25 October, case-05 uses
+Dates and durations are inclusive. Case-04 uses 25–26 October, case-05 uses
 26–30 October, and [case-07 input revision 2](inputs/case-07.json) uses
 22–24 October 2026. Before executing any request, revalidate its dates against the
 actual application reference date. Case-12 r07 remains the accepted former Sydney case-14.
@@ -544,8 +544,9 @@ execution, semantic-review dispatch, new paid call or rescoring.
    do not backdate the runtime. Update structured dates and every explicit prose
    date together, preserving day-relative relationships and local clock times.
 3. Preserve duration and weekdays unless a specific date change is authorized.
-   Case-04's current request and V0–V3 schedule revision use 25–26 October, Sunday
-   and Monday. Its evaluated input and original outputs remain bound to 24–25 October.
+   Case-04's current request, newly generated V0–V3 and independent evaluations
+   use 25–26 October, Sunday and Monday. Earlier evaluated dates remain bound to
+   their immutable historical sources.
    Do not change interests, visit counts,
    exclusions, budgets or traveler counts as a side effect of a date update.
 4. Before execution, review the input revision, actual source/runtime and official
@@ -563,20 +564,17 @@ are exempt from today's new-run window, not from source-integrity checks.
 
 Verify four disjoint groups of three, the origin/retirement mapping and Issue
 identities, scenario fields and all local index links. Cases 01–03 and 05–07 must match
-their pre-change bytes; case-04's evaluated input is preserved in
-`case-04/evaluation/input.json`, with original and published hashes recorded separately.
+their pre-change bytes; case-04's current evaluated input in
+`case-04/evaluation/input.json` matches the current canonical input exactly.
 Retired 12/13/15 must match the retained originals. The five new
 pending requests must equal their prior counterparts after only the authorized
 seven-day date shift and former-14 renaming. Retain existing acceptance and
 regression limitations; this revision changes no runtime code or scoring policy
 and does not establish a full-backend regression gate.
 
-Run `python benchmark/review_case04.py` to reproduce the original-date completion
-classification and verify all four revised-date schedules against their source
-identities and times. Run `python benchmark/verify_automatic.py` for the evaluated
-cohort's scores/resources and publication hashes. Date-revised schedules have no
-transferred Primary/Pair scores; native evidence, usage and original run statuses
-remain immutable. These commands perform no provider acquisition.
+Run `python benchmark/review_case04.py` to verify all four selected 25–26 October
+outputs, their matching Primary/Pair date bindings and native 3/3 Rich completion.
+It performs no provider calls.
 
 ## Accepted case bundles
 

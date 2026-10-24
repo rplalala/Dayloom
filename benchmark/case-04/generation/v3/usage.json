@@ -2,6 +2,6 @@
   "$case_material_ref": {
     "path": "analysis/resources/selected-tradeoffs.json",
     "pointer": "/all_attempts/rows/3/raw_usage",
-    "expanded_semantic_sha256": "f7e15e5117d9c8775fd69d2d2dffb45d00901630f34bc4681dc2d4e7be3cea3f"
+    "expanded_semantic_sha256": "b6b3f9c01283a21a602bd1d483caa547687190f34b464255bdd2fcbafb03de75"
   }
 }

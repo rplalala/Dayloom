@@ -1,0 +1,33 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJeXrAvBcb2jERhWAujA0K0LE",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "codex-agent:/root/oct25_relevance_review",
+  "checked_at": "2026-10-24T00:05:34.329299+00:00",
+  "sources": [
+    {
+      "url": "https://www.nparks.gov.sg/visit/parks/telok-blangah-hill-park/special-features/henderson-waves",
+      "title": "Henderson Waves at Telok Blangah Hill Park",
+      "access_status": "opened",
+      "facts": [
+        "NParks identifies Henderson Waves as an iconic wave-shaped bridge and the tallest pedestrian bridge in Singapore."
+      ],
+      "source_kind": "independent_official",
+      "checked_at": "2026-10-24T00:05:34.329299+00:00",
+      "limitations": []
+    },
+    {
+      "url": "https://www.sg101.gov.sg/resources/archives/heritage-henderson-waves-bridge/",
+      "title": "Henderson Waves Bridge",
+      "access_status": "opened",
+      "facts": [
+        "The government article explicitly describes island views from the bridge."
+      ],
+      "source_kind": "independent_official",
+      "checked_at": "2026-10-24T00:05:34.329299+00:00",
+      "limitations": []
+    }
+  ],
+  "scope": "Thematic relevance only; opening, routing, schedule and date feasibility are not adjudicated.",
+  "identity_binding": "Canonical identifier and name/address/coordinates from the stripped safe venue packet are identity aids only. Official descriptive facts establish relevance."
+}

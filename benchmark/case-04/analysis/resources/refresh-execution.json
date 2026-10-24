@@ -1,60 +1,108 @@
 {
   "schema_version": "case_refresh_consumption_1",
   "case_id": "case-04",
-  "global_new_allowance_usd": "20",
-  "global_new_reference_subtotal_usd": "4.49072519",
+  "global_new_allowance_usd": "40",
+  "global_new_reference_subtotal_usd": "8.168798870",
   "automatic_retries": 0,
   "concurrency": 1,
   "actual_billing": null,
   "invocations": [
     {
-      "stage": "v3",
-      "run_id": "case-04-rich3-v3-a1",
-      "budget_usd": "10",
-      "reference_usd": "2.12482589",
+      "stage": "v0",
+      "run_id": "case-04-oct25-v0-a1",
+      "budget_usd": "2",
+      "reference_usd": "0.00551885",
       "cost_source": {
-        "logical_path": ".scratch/issue-217/captures/v3-a1/cost-report.json",
-        "sha256": "ae133109289185997fe5d7947412e9987a94f662a5587d960e1f302956f5c4bc",
+        "logical_path": ".scratch/case04-oct25/captures/v0/cost-report.json",
+        "sha256": "9f24f133171f98550cc7d7d6f88b322f4113fa84445cba1230cfe7a3ffccfc0f",
         "json_pointer": ""
       },
       "usage_source": {
-        "logical_path": ".scratch/issue-217/captures/v3-a1/usage.json",
-        "sha256": "20b4b3dcd05f0716c1167e82fa00b67a1262a5303ab8028a3869511f346812e9",
+        "logical_path": ".scratch/case04-oct25/captures/v0/usage.json",
+        "sha256": "9b73287156540f1b73562ddd87986979719e9d39a867f06b8dce8698a587f2bc",
+        "json_pointer": ""
+      }
+    },
+    {
+      "stage": "v1",
+      "run_id": "case-04-oct25-v1-a1",
+      "budget_usd": "8",
+      "reference_usd": "1.90571106",
+      "cost_source": {
+        "logical_path": ".scratch/case04-oct25/captures/v1/cost-report.json",
+        "sha256": "15e4e73d4032c24bb776c90bebd27a7743fe5f02b432c557938b737fbeae076b",
+        "json_pointer": ""
+      },
+      "usage_source": {
+        "logical_path": ".scratch/case04-oct25/captures/v1/usage.json",
+        "sha256": "a85cc844178575972485485f56095988ad98b2968cbf41fe92fb7e7ed4840674",
+        "json_pointer": ""
+      }
+    },
+    {
+      "stage": "v2",
+      "run_id": "case-04-oct25-v2-a1",
+      "budget_usd": "10",
+      "reference_usd": "1.95410831",
+      "cost_source": {
+        "logical_path": ".scratch/case04-oct25/captures/v2/cost-report.json",
+        "sha256": "db697677fc531dc248a82a5c5def348c74251dcc17468adee9ea802bbe8206c5",
+        "json_pointer": ""
+      },
+      "usage_source": {
+        "logical_path": ".scratch/case04-oct25/captures/v2/usage.json",
+        "sha256": "7f94ad031b7380a65f519b9beee96bba4e40135968f6b0a65a2329df1e3e2184",
+        "json_pointer": ""
+      }
+    },
+    {
+      "stage": "v3",
+      "run_id": "case-04-oct25-v3-a1",
+      "budget_usd": "10",
+      "reference_usd": "2.127166475",
+      "cost_source": {
+        "logical_path": ".scratch/case04-oct25/captures/v3/cost-report.json",
+        "sha256": "5ac84f6c10d638debd51ba24db366f2547485ac84c5a95e0939368d7fb2d7a5b",
+        "json_pointer": ""
+      },
+      "usage_source": {
+        "logical_path": ".scratch/case04-oct25/captures/v3/usage.json",
+        "sha256": "bf0b6b3bd3506b115e23a57fa19d03318f84517476088446b44d586c4dd9b784",
         "json_pointer": ""
       }
     },
     {
       "stage": "primary",
-      "run_id": "D:\\Workspace\\Capstone\\Reliable-Trip-Plan-Agent\\.scratch\\issue-217\\primary-a1\\execution",
+      "run_id": "D:\\Workspace\\Capstone\\Reliable-Trip-Plan-Agent\\.scratch\\case04-oct25\\primary-a1\\execution",
       "budget_usd": "6",
-      "reference_usd": "1.1608993",
+      "reference_usd": "1.120294175",
       "cost_source": {
-        "logical_path": ".scratch/issue-217/primary-a1/execution/report.json",
-        "sha256": "67b0190cff0e104b34bc91c389ba63f9486541b0b7ce45e87276678957c73e5d",
+        "logical_path": ".scratch/case04-oct25/primary-a1/execution/report.json",
+        "sha256": "3965d0c327c89458e0eb4d0fd9d03ee0fc253ef1ab7ad321cbffc95384d32172",
         "json_pointer": ""
       },
       "usage_source": {
-        "logical_path": ".scratch/issue-217/primary-a1/execution/usage.json",
-        "sha256": "9087e8bd8a9c0abf98e471c2c9cb55a7f19f1436773d93458ea3cd668167df08",
+        "logical_path": ".scratch/case04-oct25/primary-a1/execution/usage.json",
+        "sha256": "68c386e1f8219f76bb0170e68eea1417a206242b416c12c3bd099ff9c7137075",
         "json_pointer": ""
       }
     },
     {
       "stage": "pair",
-      "run_id": "D:\\Workspace\\Capstone\\Reliable-Trip-Plan-Agent\\.scratch\\issue-218\\pair-a1\\execution",
+      "run_id": "D:\\Workspace\\Capstone\\Reliable-Trip-Plan-Agent\\.scratch\\case04-oct25\\pair-a1\\execution",
       "budget_usd": "4",
-      "reference_usd": "1.205",
+      "reference_usd": "1.056",
       "cost_source": {
-        "logical_path": ".scratch/issue-218/pair-a1/execution/report.json",
-        "sha256": "b8661549366f60b42cd4a18941785d56d50ed21e041968a954ff27c97d1bd7db",
+        "logical_path": ".scratch/case04-oct25/pair-a1/execution/report.json",
+        "sha256": "c354ff3f5478127297303640e385a9792e7a54624902dae1822932ed8ce39b5f",
         "json_pointer": ""
       },
       "usage_source": {
-        "logical_path": ".scratch/issue-218/pair-a1/execution/usage.json",
-        "sha256": "2acf985cac7bff15592659128a416e0dd1df94d3a3eeaf79b37813abaa618698",
+        "logical_path": ".scratch/case04-oct25/pair-a1/execution/usage.json",
+        "sha256": "7ed53829e91042a2bea6dadb2e39ec8cb00ea99545ae21a39ce836737346bb0d",
         "json_pointer": ""
       }
     }
   ],
-  "note": "All three stages executed once. Pre-launch approval rejections incurred no sends. Historical consumption remains in the cumulative ledger; external Codex billing is unavailable."
+  "note": "Each version and evaluation stage executed once. External Codex session costs remain separate and unavailable; retail reference estimates are not invoices."
 }
