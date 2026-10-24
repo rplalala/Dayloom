@@ -134,7 +134,8 @@ def acceptance_capacities(contract, window, limits, required=0):
         row.experience_goal.count or 1
         for row in contract.semantic_requirements if required_category_visit(row)
     )
-    demand = max(demand, obligations, required)
+    # Named identities and category obligations may be disjoint until evidence proves otherwise.
+    demand = max(demand, obligations + required)
     target = min(limits.max_final_pois, max(8, demand + max(6, (demand + 2) // 3)))
     values = POICapacities(
         days, min(limits.max_candidates, max(48, 4 * target)),

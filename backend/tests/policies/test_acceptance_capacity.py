@@ -69,6 +69,31 @@ def test_seventeen_required_identities_do_not_hit_the_development_gate():
     assert capacities.k_final >= 17
 
 
+def test_named_required_places_and_category_obligations_reserve_independent_capacity():
+    from backend.app.policies.poi_capacity import acceptance_capacities
+    from backend.tests.services.test_required_categories import category_draft
+
+    text = "Visit at least 10 gardens."
+    original = asyncio.run(
+        interpret_preferences(
+            make_request(text, end_date="2026-09-16"),
+            date(2026, 9, 11),
+            FakeStructuredLLMClient([category_draft(text, frequency="minimum", count=10)]),
+            category_visits=True,
+        )
+    )
+    before = original.model_dump()
+    result = acceptance_capacities(
+        original,
+        create_trip_date_window(date(2026, 9, 11)),
+        tool_limits(load_runtime_profile("acceptance")),
+        required=10,
+    )
+    # Ten resolved named places may all be outside the ten required category visits.
+    assert result.k_final == 27
+    assert original.model_dump() == before
+
+
 def test_explicit_daily_count_and_protected_day_override_soft_pace_demand():
     from backend.app.policies.poi_capacity import acceptance_capacities
     from backend.app.schemas.interpreted_requirements import InterpretationDraft
