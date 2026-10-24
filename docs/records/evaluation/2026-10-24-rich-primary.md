@@ -70,8 +70,9 @@ the prior full backend suite. The modified publication verifier passes Ruff.
 Private evidence identifier `.scratch/case04-oct25/` retains the immutable captures,
 preparations, HTTP journals, receipts, usage, actual independent review records
 and offline reconstructions. Native original bytes are separate from LF-normalized
-public projection hashes. Current material is pending researcher acceptance;
-blinded answers and thesis prose are unchanged.
+public projection hashes. The researcher [accepted the complete selection](https://github.com/rplalala/Dayloom/issues/218#issuecomment-6377527970)
+on 24 October 2026 and authorized #219 content synchronization. Blinded answers
+retain their assessed-source bindings; thesis prose belongs to #220.
 
 ## Historical context
 

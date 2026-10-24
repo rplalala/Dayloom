@@ -1,6 +1,6 @@
 {
   "schema_version": "benchmark_automatic_summary_1",
-  "status": "pending_researcher_acceptance",
+  "status": "accepted",
   "density_rules_profile_id": "rtpeval_daily_density_3",
   "scope": "Twelve selected cases; case-04 has fresh V0-V3 generations, four-final Primary and same-run V3 Pair for 25-26 October 2026. Other cases retain factual policies and evidence, with offline density-only derivations. Blinded answers remain bound to the itineraries actually reviewed.",
   "cases": [
@@ -21212,5 +21212,5 @@
       }
     }
   ],
-  "content_sha256": "9cda34662b24a9455cf0aaea1d0a04459131517f28cc1fad8a4ec050863780f2"
+  "content_sha256": "0a98c966d208570db24eaf5f4664ba1690493b8aa75a9b25d9743694f97e55df"
 }

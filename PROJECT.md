@@ -373,14 +373,15 @@ The other eleven cases retain their outputs, factual rules and scores.
 
 The [benchmark report](benchmark/report.md) gives the automatic mean-score order
 **V3 > V2 > V1 > V0**, exact ranks, Pair summaries and selected-generation resources.
-Original evidence and all-attempt costs remain preserved. Researcher acceptance
-of the complete replacement is pending; #219 and thesis synchronization follow it.
+Original evidence and all-attempt costs remain preserved. The researcher accepted
+the complete replacement on 24 October 2026 under #218. Blinded display content
+is synchronized under #219; thesis synchronization continues under #220.
 
 The [blinded-review report](benchmark/blinded-results/report.md) covers one human
 and one GPT-6.1 sol xhigh assessment of the twelve itineraries originally shown.
-Case-04 answers remain bound to that reviewed itinerary, not its replacement. The accepted
-English/Chinese questionnaires and separate answer exports are published directly
-in `benchmark/blinded-results/`. Both reviewers rank V3 first overall; the human
+Case-04 answers remain bound to the assessed questionnaire. Current English/Chinese
+displays, original answer exports and exact source bindings are published in
+`benchmark/blinded-results/`; the report links the archived assessed questionnaires. Both reviewers rank V3 first overall; the human
 places V2 second and the model places V0 second. Publication and report delivery
 are completed under [#196](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/196);
 the [roadmap #51](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/51)

@@ -71,7 +71,7 @@
   },
   "primary": "evaluation/primary/report.json",
   "pair": "evaluation/v3-pair/report.json",
-  "status": "pending_researcher_acceptance",
+  "status": "accepted",
   "preceding_publication_git_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
   "historical_acceptance": "Earlier acceptance remains bound to its actual earlier selection.",
   "former_researcher_acceptance": {
@@ -94,8 +94,12 @@
     "additional_live_execution": false
   },
   "researcher_acceptance": {
-    "status": "pending",
-    "scope": "Complete new-date four-version automatic selection and dependent analyses."
+    "status": "accepted",
+    "date": "2026-10-24",
+    "timezone": "Australia/Sydney",
+    "source_revision": "daaf9ba7ebe2cb7d881946bdce47e4f757f4f626",
+    "decision_url": "https://github.com/rplalala/Dayloom/issues/218#issuecomment-6377527970",
+    "scope": "Complete new-date four-version automatic selection and dependent analyses, with disclosed limitations."
   },
   "primary_report_expanded_semantic_sha256": "3965d0c327c89458e0eb4d0fd9d03ee0fc253ef1ab7ad321cbffc95384d32172",
   "pair_report_expanded_semantic_sha256": "f1f277813d9b0c0380f7019b89279f8f7060c8c89e5f02bf4a5258ddcedfd013",

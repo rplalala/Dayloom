@@ -8,8 +8,8 @@ generated once from the same [request](../inputs/case-04.json) at source `4f4d0b
 [Primary](evaluation/primary/report.json) and the same-run V3
 [Pair](evaluation/v3-pair/report.json) use `rtpeval_daily_density_3`.
 
-The complete replacement is **pending researcher acceptance** under
-[#218](https://github.com/rplalala/Dayloom/issues/218).
+The complete selection and disclosed limitations were **accepted on 24 October 2026**
+under [#218](https://github.com/rplalala/Dayloom/issues/218#issuecomment-6377527970).
 
 ## Materials
 
@@ -127,6 +127,7 @@ material hashes and new-date V3 completion. Product/runtime code is unchanged.
 | Independent venue relevance | `/root/oct25_relevance_review`, inherited configuration |
 | Binding, offline reconstruction, publication and verification | `/root`, inherited configuration |
 | Standards / Spec delivery review | `/root/oct25_standards_review`, `/root/oct25_spec_review`, inherited configuration |
+| Acceptance registration and blinded-content synchronization | `/root`, inherited configuration; explicit researcher decision on 24 October 2026 |
 
 The selected source-only roles did not receive itineraries or scores. The output
 review received submitted claims; relevance received stripped venue identities and
@@ -144,10 +145,11 @@ This identifier is not a public navigation dependency.
 
 ## Acceptance
 
-The replacement and its limitations are presented for researcher acceptance.
-Publication and merge do not supply that decision. Existing blinded answers remain
-bound to the itineraries actually shown; #219 and thesis synchronization await
-acceptance and are outside this delivery.
+The researcher accepted the complete selection at [revision `daaf9ba`](https://github.com/rplalala/Dayloom/tree/daaf9ba7ebe2cb7d881946bdce47e4f757f4f626/benchmark/case-04)
+on 24 October 2026 (Australia/Sydney). The [decision](https://github.com/rplalala/Dayloom/issues/218#issuecomment-6377527970)
+covers the reported results and limitations. [Blinded display content](../blinded-results/report.md#source-files)
+uses these selected itineraries; retained ratings remain bound to their assessed
+questionnaire. Thesis synchronization continues under #220.
 
 ## Historical context
 

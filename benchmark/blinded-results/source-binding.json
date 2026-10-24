@@ -1,0 +1,51 @@
+{
+  "schema_version": "blinded_display_binding_1",
+  "purpose": "Current content display; existing ratings assess the separately retained questionnaire.",
+  "accepted_automatic_revision": "daaf9ba7ebe2cb7d881946bdce47e4f757f4f626",
+  "automatic_acceptance_date": "2026-10-24",
+  "automatic_acceptance_issue": "https://github.com/rplalala/Dayloom/issues/218#issuecomment-6377527970",
+  "assessed": {
+    "git_revision": "daaf9ba7ebe2cb7d881946bdce47e4f757f4f626",
+    "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+    "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+    "batch_revision": 1,
+    "artifacts": {
+      "review.html": "e9c673c538242c1541fdb64ebcb0667237d4013ad39a130f3a4ebefaa26e7673",
+      "review.zh-CN.html": "6a83d2d1e6471ecdd91e5f9b1722921755973903505d9970809eea9014f3bdc6",
+      "answers_human.json": "24a1219ae23f2bfa3e54554bd06559c76a93104b705b8880ad49b1eebd8ba1bc",
+      "answers_6.1sol.json": "7685fc65600c043871e3dbaffc2e292bb5f8e4cd2f4b613d873c98b645d2f6cc",
+      "report.md": "51905021892b7ce2616dab8e44dbc7d7d37381065defbf15fcbfb6b8fe5161b4"
+    }
+  },
+  "current": {
+    "presentation_id": "57a5e0017504e69f7a58bddaee45daa9",
+    "presentation_hash": "8bf11d5fb95848762ac1acdf6ea3ae8bfa466d9e47d872182f30d0f0778799d7",
+    "batch_revision": 2,
+    "changed_tasks": [
+      "task-4"
+    ],
+    "assessment_status": "not_assessed",
+    "source_selection": "../case-04/selection.json",
+    "task_semantic_sha256": {
+      "task-1": "cc37a9bf58559e76e019780e37adcb437f2d609cd30d39a5ab9aa6596816536e",
+      "task-2": "26334bd64efa1078a68380ebe2fb9f0e6f20fd290f816ad4322464b2e1d65898",
+      "task-3": "d82b6b56e1c801b57f2d275efd62dd39e82497239faeb2097b9f62a586c3e2e4",
+      "task-4": "60e074020631f7dee812190d240768ab7f1a0a4fbfb81d03de401e6cc4621a3c",
+      "task-5": "10c8cdd6999b188b2adb34e745ebe447f23ad53ca225b52bfea93336ef97163f",
+      "task-6": "c42a629548aa486a842effa3fe5fbef244dac8e9c114404877053321d77d4983",
+      "task-7": "59a9f7a549d0eed64f54c547cee4cede687fe5de18d9cfa397ebbbab1606d55a",
+      "task-8": "1dadfa58a9894043b6df768179c136e33a033be3a75412c27542f777bf3cada3",
+      "task-9": "e3fb7a132ec8e05db422453ccf7ab7d41ead4e86f5722ba241eb35d06f6c3c2a",
+      "task-10": "d0930bb580257e649b7adeb2dccd00efb88ca13dc72136895f9b7bac01432bfe",
+      "task-11": "e7a2e30c7e5e7ed5630d2007a9d36b2171cd4b94e31950356bb8923e27e86e57",
+      "task-12": "c59e219e501ddd1036fba15f07792f2665ac3f5b4f8577d0306393025ca003d3"
+    },
+    "artifacts": {
+      "review.html": "5bc6600a395ba7cd84716049f1dc2ab74d0487f7ebf391f3d79951c6d87d6f51",
+      "review.zh-CN.html": "ef5f39c6f9d2c4f2ec429becbd26655e1eaffa4c7382e710b1188f86d11a348f"
+    }
+  },
+  "answers": "Both exports remain byte-identical and bound to the assessed presentation.",
+  "mapping_provenance": "Existing version means use verified content-derived correspondence; original private assignment was not recovered or replaced.",
+  "private_evidence_identifier": ".scratch/issue-219/ (originals, native display preparation, content-derived mapping, checks)"
+}
