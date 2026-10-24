@@ -82,6 +82,23 @@ with no queue or cross-worker quota coordination. GeoDB's global send interval r
 The optional `admission` group configures `per_user_interval_seconds` and `max_concurrent`;
 a null legacy daily allowance requires this group. Cancellation and failure release permits.
 
+Acceptance also enables `auxiliary_model_limits` for requirement interpretation, review
+profiles, official search, evidence extraction and Product introductions. Caller-supplied
+input (including schema and a 2,048-token framing reserve) receives a 252,000-token local
+engineering check; output is capped at 16,384 tokens, retaining lower extraction/introduction
+caps. Oversized input fails before dispatch without truncating requirements or evidence.
+The optional group is absent from legacy snapshots and default development behavior.
+It applies through the Product/Developer dependency factory and explicit tools-CLI policy
+selection; injected external clients retain responsibility for their own limits.
+
+These limits are not a monetary guarantee. Local token counts are engineering admission,
+not provider-certified invoice counts. Hosted search can introduce internal model context
+and separately billed Bing requests. Azure bills the returned
+[`tool_usage.web_search.num_requests`](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/web-search#web-search-usage-and-billing),
+which cannot be bounded by counting `web_search_call` items or `max_tool_calls` alone.
+A live acceptance run requiring a strict dollar cap remains blocked until every charge
+has a verified pre-send bound. Timeout, missing usage, or a budget alert cannot establish it.
+
 The 10-day trip duration, 14-day date horizon, model-context bounds, source and ownership
 requirements, provider constraints and zero hidden retries are unchanged. A configured ceiling
 does not guarantee every round fits the request deadline. Rollback selects development;

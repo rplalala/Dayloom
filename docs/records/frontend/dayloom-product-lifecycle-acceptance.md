@@ -182,12 +182,43 @@ including 25 photos across preview, Save, reopening and copy. Frontend regressio
 on retry. Build, Ruff and lint passed, with the existing bundle-size advisory and two
 Fast Refresh warnings. These are scoped engineering checks, not a new formal benchmark.
 
-The authorized live allowance was at most two new generations plus one trip's complete
-photo acceptance, combined US$10. New generation was withheld at preflight: the configured
-baseline route and initial Details allowances alone can reach US$10.40 at public paid
-rates, before searches, model calls or Repair. No free-tier allowance was assumed and no
-requirements were reduced to force a cheaper pass. This leaves real long-trip generation
-and latency unverified. Pricing basis: [Google Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
+The initial combined US$10 live allowance could not cover generation's conservative
+resource envelope: baseline routes and initial Details alone could reach US$10.40.
+The later authorization permits one original nine-day Paris generation up to US$25,
+conditional on proving the complete charge bound before launch. Read-only Foundry portal
+inspection confirmed `gpt-6-luna`, version `2026-09-22`, **Global Standard** on `captone-trip`.
+No inference probe was used to discover the deployment type.
+
+The budget follow-up uses review base `7642656` and implementation `0b267cd`. Auxiliary
+caller-input admission and provider output caps now cover the previously uncapped paths;
+original requirements are never truncated. The selected profile and development defaults
+passed **438 offline tests**, including real SDK requests over an HTTP double. Initial
+adapter tests exposed an accidentally moved async observation decorator, corrected before
+commit. Broader regression found nineteen legacy-wire failures from a fixture bypassing
+construction; initializing its new optional field restored the complete regression group.
+Standards review found one HTTP-accounting regression: a wrapper hid the SDK bound method
+used to attach late observation hooks. Correction `eb34f4f` admits the request before
+passing the original method to observation. Eight failing offline SDK cases reproduced
+the omission across owned/injected clients and both policy modes. After correction and
+fixing a test-envelope field name, all **98 affected integration/observation tests passed**.
+The targeted recheck closed the finding; Spec review reported no findings. Ruff and diff checks passed. These checks establish
+request boundaries and observation coverage, not invoice limits.
+
+The offline arithmetic reserves **US$13.688** for Maps, including initial RAG, stage-wide
+Repair and nine Nearby calls. Pricing caller-submitted model allowances at Global Standard
+with the higher cache-write input rate gives **US$2.024620**; a conservative embedding
+allowance adds **US$0.0002048**. The resulting **US$15.7128248** scenario excludes hosted
+search's internal context and Bing charges, photos, fixed infrastructure and taxes. It is
+not a complete upper bound. Azure's billed Bing request count is not the exposed tool-call
+count, and a verified pre-send maximum remains unavailable. The full-run cost ceiling is
+therefore recorded as unavailable and launch as blocked. **Zero new generations ran**;
+all original hard requirements remain intact and real long-trip completion/latency remain
+unverified. Sources: [Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing),
+[Azure model rates](https://azure.microsoft.com/en-us/blog/gpt-6-astra-sol-and-luna-for-production-agents-in-microsoft-foundry/),
+[Azure search billing](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/web-search#web-search-usage-and-billing),
+and [Bing transaction rates](https://www.microsoft.com/en-us/bing/apis).
+Local evidence identifiers: `.scratch/paris-budget-preflight.{py,json}`,
+`paris-original-request.json` and `auxiliary-budget-retest.log`.
 
 One real photo acceptance ran against `fd93029` using the prescribed execution child and
 the rebuilt local Product. All **30 unique authorized slots** returned available in three
