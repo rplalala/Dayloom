@@ -171,6 +171,7 @@ def test_cleanup_on_terminal_failure(monkeypatch, termination):
         monkeypatch.setattr(module, "run_v0", runner)
         # A tiny injected allowance keeps this lifecycle test fast; production config is unchanged.
         config = SimpleNamespace(
+            generation_spend_usd=None,
             development_timeout_seconds=0.02 if termination == "timeout" else 5
         )
         runtime = module.RequestPlannerRuntime(config=config, dependency_factory=factory)
@@ -233,7 +234,7 @@ def test_successful_execution_keeps_result_when_cleanup_crosses_deadline(monkeyp
 
     monkeypatch.setattr(module, "run_v0", runner)
     runtime = module.RequestPlannerRuntime(
-        config=SimpleNamespace(development_timeout_seconds=0.02),
+        config=SimpleNamespace(development_timeout_seconds=0.02, generation_spend_usd=None),
         dependency_factory=factory,
     )
     output = asyncio.run(runtime.run("v0", make_request(), reference_date=REFERENCE))
@@ -262,7 +263,7 @@ def test_async_cleanup_finishes_before_propagating_original_outcome(monkeypatch,
 
     monkeypatch.setattr(module, "run_v0", runner)
     runtime = module.RequestPlannerRuntime(
-        config=SimpleNamespace(development_timeout_seconds=0.02),
+        config=SimpleNamespace(development_timeout_seconds=0.02, generation_spend_usd=None),
         dependency_factory=factory,
     )
     expected = {"timeout": TimeoutError, "failure": RuntimeError, "cancel": asyncio.CancelledError}

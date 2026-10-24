@@ -5,6 +5,7 @@ from typing import Protocol, runtime_checkable
 import httpx
 
 from backend.app.integrations.dispatch import mark_provider_send
+from backend.app.integrations.spending import install_spend_hooks
 from backend.app.observability.usage import install_http_hooks
 
 
@@ -47,6 +48,7 @@ class HttpxJSONTransport:
     ) -> object:
         try:
             async with httpx.AsyncClient(timeout=self._timeout_seconds) as client:
+                install_spend_hooks(client)
                 install_http_hooks(client)
                 request = client.build_request(
                     method,

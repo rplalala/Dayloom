@@ -22,6 +22,7 @@ from backend.app.integrations.azure_foundry.evidence_reasoner_prompt import (
     PROMPT_VERSION,
     SYSTEM_PROMPT,
 )
+from backend.app.integrations.spending import install_spend_hooks
 from backend.app.observability.usage import install_http_hooks, observe_sdk
 from backend.app.runtime.config_models import WebEvidenceConfig
 from backend.model_references import INSTRUCTION, ShortReferences
@@ -236,6 +237,7 @@ class AzureFoundryEvidenceReasoner:
                 timeout=config.timeout_seconds,
             )
         if self._owned_client is not None:
+            install_spend_hooks(self._owned_client._client)
             install_http_hooks(self._owned_client._client, "azure_foundry", "official_reasoning")
         self._responses = (
             responses_client if responses_client is not None else self._owned_client.responses

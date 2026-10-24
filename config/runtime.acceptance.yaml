@@ -1,5 +1,6 @@
 # Standalone Product acceptance policy; runtime.yaml remains the development policy.
 schema_version: 6
+generation_spend_usd: 25
 auxiliary_model_limits:
   input_tokens: 252000
   output_tokens: 16384
@@ -83,6 +84,7 @@ budget:
     review_enriched_places: 8
     profile_llm_calls: 8
 web_evidence:
+  provider: openai
   reasoning_effort: low
   max_tool_calls: 2
   search_context_size: low

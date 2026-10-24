@@ -119,7 +119,7 @@ def test_planner_factory_applies_selected_policy_to_all_auxiliary_clients(monkey
     ))
     for name in (
         "AzureFoundryStructuredLLMClient", "AzureFoundryWebEvidenceProvider",
-        "AzureFoundryEvidenceReasoner",
+        "AzureFoundryEvidenceReasoner", "OpenAIWebEvidenceProvider",
     ):
         monkeypatch.setattr(runtime, name, Client)
 

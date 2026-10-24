@@ -29,6 +29,7 @@ def get_planning_service() -> PlanningService:
             dependency_factory=create_product_planner_dependencies,
         ),
         get_date_provider(),
+        spend_limit_usd=load_product_runtime_config().generation_spend_usd,
     )
 
 

@@ -3,6 +3,11 @@
 from datetime import date
 from uuid import uuid4
 
+from backend.app.integrations.spending import (
+    SpendingBudget,
+    SpendingLimitError,
+    current_spending_budget,
+)
 from backend.app.observability.progress import ProgressTracer, current_progress
 from backend.app.observability.run_trace import NullRunTracer
 from backend.app.policies.trip_dates import (
@@ -43,10 +48,12 @@ class PlanningService:
         date_provider: DateProvider | None = None,
         *,
         introductions: ProductIntroductions | None = None,
+        spend_limit_usd=None,
     ) -> None:
         self._runtime = runtime
         self._date_provider = date_provider or SystemDateProvider()
         self._introductions = introductions or ProductIntroductions()
+        self._spend_limit_usd = spend_limit_usd
 
     def validate(
         self, request: PlanningRequest, *, reference_date: date | None = None
@@ -57,6 +64,17 @@ class PlanningService:
         return self._date_provider.today()
 
     async def plan(
+        self, request: PlanningRequest, *, reference_date: date | None = None,
+    ) -> ProductPlanResult:
+        if self._spend_limit_usd is None or current_spending_budget() is not None:
+            return await self._plan(request, reference_date=reference_date)
+        with SpendingBudget(self._spend_limit_usd).activate() as budget:
+            result = await self._plan(request, reference_date=reference_date)
+            if budget.blocked:
+                raise PlanningFailedError("Generation spending allowance exhausted")
+            return result
+
+    async def _plan(
         self, request: PlanningRequest, *, reference_date: date | None = None
     ) -> ProductPlanResult:
         """Run V3, then decorate only the final Product presentation."""
@@ -80,6 +98,11 @@ class PlanningService:
         except Exception as exc:
             raise PlanningFailedError("The active planner failed") from exc
         descriptions = await self._introductions.generate(result.itinerary, evidence)
+        budget = current_spending_budget()
+        if budget is not None and budget.blocked:
+            raise PlanningFailedError("Generation spending allowance exhausted") from (
+                SpendingLimitError("generation_spending_limit: incomplete generation")
+            )
         return present_product(result, evidence, descriptions)
 
 

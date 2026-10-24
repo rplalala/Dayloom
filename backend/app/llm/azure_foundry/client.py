@@ -12,6 +12,7 @@ from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, ValidationError
 
 from backend.app.evidence.experience_models import ExperienceProfileDraft
+from backend.app.integrations.spending import install_spend_hooks
 from backend.app.llm.azure_foundry.dto import (
     FoundryExperienceProfileDTO,
     FoundryInterpretationDTO,
@@ -172,6 +173,10 @@ class AzureFoundryStructuredLLMClient:
             **transport_options,
         )
 
+        if auxiliary_limits is not None:
+            install_spend_hooks(
+                getattr(getattr(self._chat_model, "root_async_client", None), "_client", None)
+            )
         install_http_hooks(
             getattr(getattr(self._chat_model, "root_async_client", None), "_client", None),
             "azure_foundry",

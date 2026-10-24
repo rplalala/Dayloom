@@ -1,5 +1,6 @@
 """Strict, immutable schema shared by the selectable runtime policies."""
 
+from decimal import Decimal
 from pathlib import Path
 from typing import Literal
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -178,6 +179,9 @@ class ClaimExtractionConfig(_ConfigModel):
 
 
 class WebEvidenceConfig(_ConfigModel):
+    provider: Literal["azure_foundry", "openai"] = Field(
+        default="azure_foundry", exclude_if=lambda value: value == "azure_foundry",
+    )
     reasoning_effort: Literal["low", "medium"]
     max_tool_calls: StrictInt = Field(ge=1, le=3)
     search_context_size: Literal["low", "medium", "high"]
@@ -475,6 +479,15 @@ class AuxiliaryModelLimits(_ConfigModel):
 
 
 class RuntimeConfig(_ConfigModel):
+    @model_validator(mode="after")
+    def spending_requires_model_limits(self):
+        if self.generation_spend_usd is not None and self.auxiliary_model_limits is None:
+            raise ValueError("A spending allowance requires explicit auxiliary model limits")
+        return self
+
+    generation_spend_usd: Decimal | None = Field(
+        default=None, gt=0, exclude_if=lambda value: value is None,
+    )
     auxiliary_model_limits: AuxiliaryModelLimits | None = Field(
         default=None, exclude_if=lambda value: value is None
     )

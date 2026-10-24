@@ -2,6 +2,7 @@
 
 from backend.app.integrations.google.common import ProviderResponseError
 from backend.app.integrations.http import ProviderHTTPError
+from backend.app.integrations.spending import SpendingLimitError
 from backend.app.llm.client import StructuredOutputError
 from backend.app.policies.preference_input import MESSAGES
 from backend.app.policies.requirement_feedback import ACQUISITION_FAILURES
@@ -67,7 +68,10 @@ def failure_outcome(error):
                 "The available place evidence could not verify all required visits.",
             )
         elif isinstance(
-            cause, (ToolBudgetExceededError, GenerationResourceError, SemanticPreparationLimit)
+            cause, (
+                ToolBudgetExceededError, GenerationResourceError,
+                SemanticPreparationLimit, SpendingLimitError,
+            )
         ):
             code, message = (
                 "planning_resource_limit",

@@ -69,6 +69,7 @@ class IntroductionClient:
 
 @asynccontextmanager
 async def create_introduction_client():
+    from backend.app.integrations.spending import install_spend_hooks
     from backend.app.runtime.config_loader import load_product_runtime_config
 
     settings = V0Settings()
@@ -78,6 +79,7 @@ async def create_introduction_client():
         max_retries=0,
         timeout=30,
     )
+    install_spend_hooks(getattr(client, "_client", None))
     try:
         yield IntroductionClient(
             client, settings.azure_openai_deployment,

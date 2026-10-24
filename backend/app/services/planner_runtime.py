@@ -19,6 +19,12 @@ from backend.app.integrations.azure_foundry.web_search import AzureFoundryWebEvi
 from backend.app.integrations.google import GooglePlacesProvider, GoogleRoutesProvider
 from backend.app.integrations.http import HttpxJSONTransport
 from backend.app.integrations.open_meteo import OpenMeteoWeatherProvider
+from backend.app.integrations.openai_search import OpenAIWebEvidenceProvider, SearchSettings
+from backend.app.integrations.spending import (
+    SpendingBudget,
+    SpendingLimitError,
+    current_spending_budget,
+)
 from backend.app.integrations.web.http_page_retriever import SafeHTMLPageRetriever
 from backend.app.llm.azure_foundry.client import AzureFoundryStructuredLLMClient
 from backend.app.llm.client import StructuredLLMClient
@@ -137,7 +143,13 @@ async def create_planner_dependencies(
             places=GooglePlacesProvider(api_key=google_key, transport=transport, tracer=tracer),
             weather=OpenMeteoWeatherProvider(transport=transport, tracer=tracer),
             routes=GoogleRoutesProvider(api_key=google_key, transport=transport, tracer=tracer),
-            web=own(AzureFoundryWebEvidenceProvider(**foundry)),
+            web=own(
+                OpenAIWebEvidenceProvider(
+                    api_key=SearchSettings().openai_api_key.get_secret_value(),
+                    config=config.web_evidence, auxiliary_limits=config.auxiliary_model_limits,
+                ) if config.web_evidence.provider == "openai"
+                else AzureFoundryWebEvidenceProvider(**foundry)
+            ),
             pages=own(SafeHTMLPageRetriever(config.web_evidence.page_retrieval)),
             reasoner=own(AzureFoundryEvidenceReasoner(**foundry)),
             llm_identity=settings.azure_openai_deployment,
@@ -157,6 +169,23 @@ class RequestPlannerRuntime:
         self._dependency_factory = dependency_factory
 
     async def run(
+        self, version, request, **kwargs,
+    ):
+        config = self._config or load_runtime_config()
+        existing = current_spending_budget()
+        if existing is not None or config.generation_spend_usd is None:
+            result = await self._run(version, request, **kwargs)
+            if existing is not None and existing.blocked:
+                raise SpendingLimitError("generation_spending_limit: incomplete generation")
+            return result
+        budget = SpendingBudget(config.generation_spend_usd)
+        with budget.activate():
+            result = await self._run(version, request, **kwargs)
+            if budget.blocked:
+                raise SpendingLimitError("generation_spending_limit: incomplete generation")
+            return result
+
+    async def _run(
         self,
         version: SystemVersion,
         request: PlanningRequest,

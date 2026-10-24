@@ -50,6 +50,36 @@ def test_product_service_hides_provider_failure():
     assert "provider secret" not in str(exc.value)
 
 
+def test_product_generation_and_introductions_share_one_allowance():
+    from backend.app.integrations.spending import current_spending_budget
+
+    observed = []
+    base = V0TestRuntime(FakeStructuredLLMClient([make_itinerary()]), "v3")
+
+    class Runtime:
+        async def run(self, *args, **kwargs):
+            budget = current_spending_budget()
+            observed.append(budget)
+            budget.reserve(Decimal(".02"), "fixture_planner")
+            return await base.run(*args, **kwargs)
+
+    class Introductions:
+        async def generate(self, *args):
+            budget = current_spending_budget()
+            observed.append(budget)
+            budget.reserve(Decimal(".01"), "fixture_introductions")
+            return {}
+
+    service = PlanningService(
+        Runtime(), FixedDateProvider(date(2026, 9, 11)),
+        introductions=Introductions(), spend_limit_usd=".04",
+    )
+    asyncio.run(service.plan(make_request(requirements=make_requirements())))
+    assert observed[0] is observed[1]
+    assert observed[0].reserved_usd == Decimal(".03")
+    assert current_spending_budget() is None
+
+
 def test_product_service_preserves_form_on_semantic_issue():
     request = make_request("Unclear preference")
     draft = empty_preference_draft().model_copy(update={"extraction_issues": ("ambiguous",)})

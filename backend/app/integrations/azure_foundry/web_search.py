@@ -7,6 +7,7 @@ from urllib.parse import urlsplit
 
 from openai import AsyncOpenAI
 
+from backend.app.integrations.spending import install_spend_hooks
 from backend.app.integrations.web.models import (
     WebActionObservation,
     WebActionType,
@@ -238,6 +239,7 @@ class AzureFoundryWebEvidenceProvider:
                 timeout=config.timeout_seconds,
             )
         if self._owned_client is not None:
+            install_spend_hooks(self._owned_client._client)
             install_http_hooks(self._owned_client._client, "azure_foundry", "official_search")
         self._responses = (
             responses_client if responses_client is not None else self._owned_client.responses
