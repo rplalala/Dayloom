@@ -1,0 +1,53 @@
+{
+  "schema_version": "rtpeval_requirement_agent_execution_1",
+  "operation": "authoring",
+  "origin": "external_codex",
+  "actor_ref": "codex-agent:/root/oct25_clean_author",
+  "execution_id": "ab18232c-6bfc-41c2-9647-c1e133091921",
+  "group_id": "case-04",
+  "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+  "requirement_spec_sha256": "e56553e214f3860890633cefbce091f339368b45a58795c845c7c2784a07cc36",
+  "started_at": "2026-10-24T10:52:31.7429321+11:00",
+  "completed_at": "2026-10-24T10:53:37.172477+11:00",
+  "configuration": {
+    "agent": "Codex",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "high",
+    "configuration_basis": "Coordinator confirmed actual child spawn configuration during this execution."
+  },
+  "context": {
+    "source": "complete_original_request",
+    "excluded": [
+      "planner_interpretation",
+      "generated_outputs",
+      "scores",
+      "mechanisms"
+    ]
+  },
+  "source_input_ref": {
+    "path": "input.json",
+    "sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "planning_request_2"
+  },
+  "requirement_spec_ref": {
+    "path": "requirements.json",
+    "sha256": "e56553e214f3860890633cefbce091f339368b45a58795c845c7c2784a07cc36",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "rationale": "The complete original request specifies a whole-trip WALK/TRANSIT restriction. Fairly full pacing and active use of both days remain soft preferences, as do gardens, major city sights and views. No particular venue, numerical daily quota, fixed time or repetition rule is stated. Singapore, inclusive dates 2026-10-25 through 2026-10-26, two adult travelers and the SGD 800 budget remain original input facts; no factual affordability PASS is asserted. No generated itinerary or result-bearing case material was read.",
+  "provenance_gaps": [
+    "Exact dispatch/start timestamp was not captured. started_at is the first explicitly observed local timestamp, captured after initial source/contract reading; initial authoring began earlier at an unknown time.",
+    "A full session transcript export is not available in this author output; no transcript_ref is fabricated."
+  ],
+  "validation": {
+    "native_executable_obligation_validation": "passed",
+    "all_soft_preference_quote_offsets": "passed",
+    "reviewed_intake": "correctly rejected pending review",
+    "reviewed_intake_diagnostic": "An explicit reviewed RequirementSpec is required",
+    "independent_review": "pending"
+  }
+}

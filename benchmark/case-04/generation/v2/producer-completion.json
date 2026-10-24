@@ -1,7 +1,19 @@
 {
-  "$case_material_ref": {
-    "path": "analysis/resources/selected-population.json",
-    "pointer": "/slots/2/primary_attempt/producer_completion",
-    "expanded_semantic_sha256": "e6581855df686a0ddcc32e75cac301284cbdb314737c64bd78af7177368e36a8"
-  }
+  "declared_by": "/root:offline_saved_output_qualification",
+  "declared_at": "2026-10-24T00:02:52.069764+00:00",
+  "policy_ref": "selected_workflow_1",
+  "producer_policy_ref": "selected_workflow_1",
+  "workflow_status": "completed",
+  "required_mechanisms": {
+    "generation": "completed",
+    "retrieval": "completed"
+  },
+  "observations": [
+    {
+      "mechanism": "retrieval",
+      "status": "partial"
+    }
+  ],
+  "failure_type": null,
+  "rationale": "Native completion predicate applied to exact saved invocation; no new provider or generation calls."
 }

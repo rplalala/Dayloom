@@ -1,8 +1,9 @@
 {
-  "implementation_revision": "df7ef14e570103d1541c92537f3b1a8af6f5cf03",
+  "schema_version": "case_completion_input_1",
+  "implementation_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
   "original_source": {
-    "logical_path": ".scratch/issue-217/captures/v3-a1/result.json",
-    "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
+    "logical_path": ".scratch/case04-oct25/captures/v3/result.json",
+    "sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
     "json_pointer": "/interpreted_requirements"
   },
   "contract": {
@@ -13,7 +14,7 @@
         "WALK"
       ],
       "requirement_refs": [
-        "semantic_4"
+        "semantic_2"
       ],
       "source_refs": [
         {
@@ -26,7 +27,7 @@
       ]
     },
     "daily_visit_constraints": [],
-    "request_sha256": "6a3c059b7419decb8dae6bd806a4edc89314e2ac8982510b75db638fd08df964",
+    "request_sha256": "082d5956b4285ac758e8a30426e27975d6ea215fa13eaf29b628f3eec7ba29b6",
     "daily_pace": [
       {
         "date": null,
@@ -34,24 +35,17 @@
         "exact_count": null,
         "source_refs": [
           {
-            "quote": "full itinerary",
+            "quote": "like a fairly full itinerary",
             "occurrence": 0,
-            "start": 77,
+            "start": 63,
             "end": 91,
-            "match_mode": "exact"
-          },
-          {
-            "quote": "prefer to make active use of both days.",
-            "occurrence": 0,
-            "start": 242,
-            "end": 281,
             "match_mode": "exact"
           }
         ]
       }
     ],
     "input_version": "planning_request_2",
-    "structured_input_sha256": "f2022a253c1a014d12522abd4c4ff743bdc19eec3071afeb6c29fd5bc272f885",
+    "structured_input_sha256": "4ea6e45dceb2b4369dc0dd1d38edb350cbcf7cfefa055f70bf35b6114ad09a6a",
     "structured_field_paths": [
       "destination",
       "start_date",
@@ -65,8 +59,8 @@
     "interpretation_origin": "model",
     "requirements": {
       "destination": "Singapore",
-      "start_date": "2026-10-24",
-      "end_date": "2026-10-25",
+      "start_date": "2026-10-25",
+      "end_date": "2026-10-26",
       "traveler_count": 2,
       "budget": {
         "amount": "800",
@@ -96,7 +90,7 @@
           "trip_scope": "ordinary"
         },
         "requirement_id": "semantic_1",
-        "normalized_text": "Include gardens as part of an itinerary that combines them with major city sights and views.",
+        "normalized_text": "Favor an itinerary combining gardens with major city sights and views.",
         "kind": "goal",
         "polarity": "favor",
         "strength": "medium",
@@ -106,81 +100,19 @@
         ],
         "source_refs": [
           {
-            "quote": "We would like a fairly full itinerary that combines gardens with major city sights and views.",
+            "quote": "like a fairly full itinerary that combines gardens with major city sights and views.",
             "occurrence": 0,
-            "start": 54,
+            "start": 63,
             "end": 147,
             "match_mode": "exact"
           }
         ]
       },
       {
-        "soft_coverage": {
-          "target": 1,
-          "origin": "ordinary_preference",
-          "focus_source": null
-        },
-        "experience_goal": {
-          "frequency": "one_off",
-          "count": null,
-          "target": "category",
-          "distinct_dates": false,
-          "explicit_primary_exception": false,
-          "trip_scope": "ordinary"
-        },
+        "soft_coverage": null,
+        "experience_goal": null,
         "requirement_id": "semantic_2",
-        "normalized_text": "Include major city sights and views alongside gardens in the itinerary.",
-        "kind": "goal",
-        "polarity": "favor",
-        "strength": "medium",
-        "scope": "selected_poi_set",
-        "subject_refs": [
-          "party"
-        ],
-        "source_refs": [
-          {
-            "quote": "We would like a fairly full itinerary that combines gardens with major city sights and views.",
-            "occurrence": 0,
-            "start": 54,
-            "end": 147,
-            "match_mode": "exact"
-          }
-        ]
-      },
-      {
-        "soft_coverage": null,
-        "experience_goal": null,
-        "requirement_id": "semantic_3",
-        "normalized_text": "Prefer a fairly full itinerary and active use of both days.",
-        "kind": "preference",
-        "polarity": "favor",
-        "strength": "medium",
-        "scope": "itinerary_style",
-        "subject_refs": [
-          "party"
-        ],
-        "source_refs": [
-          {
-            "quote": "full itinerary",
-            "occurrence": 0,
-            "start": 77,
-            "end": 91,
-            "match_mode": "exact"
-          },
-          {
-            "quote": "prefer to make active use of both days.",
-            "occurrence": 0,
-            "start": 242,
-            "end": 281,
-            "match_mode": "exact"
-          }
-        ]
-      },
-      {
-        "soft_coverage": null,
-        "experience_goal": null,
-        "requirement_id": "semantic_4",
-        "normalized_text": "Require transfers by public transport or walking only; exclude car, taxi, and ride-hailing transfers.",
+        "normalized_text": "Use only public transport and walking for transfers; do not use cars, taxis, or ride-hailing.",
         "kind": "constraint",
         "polarity": "favor",
         "strength": "hard",
@@ -197,6 +129,28 @@
             "match_mode": "exact"
           }
         ]
+      },
+      {
+        "soft_coverage": null,
+        "experience_goal": null,
+        "requirement_id": "semantic_3",
+        "normalized_text": "Favor making active use of both days.",
+        "kind": "preference",
+        "polarity": "favor",
+        "strength": "medium",
+        "scope": "itinerary_style",
+        "subject_refs": [
+          "party"
+        ],
+        "source_refs": [
+          {
+            "quote": "We prefer to make active use of both days.",
+            "occurrence": 0,
+            "start": 239,
+            "end": 281,
+            "match_mode": "exact"
+          }
+        ]
       }
     ],
     "subjects": [],
@@ -204,8 +158,7 @@
       {
         "intent_id": "discovery_1",
         "requirement_refs": [
-          "semantic_1",
-          "semantic_2"
+          "semantic_1"
         ],
         "purpose": "activity_or_category",
         "query_text": "Gardens, major city sights, and views"
@@ -213,5 +166,8 @@
     ],
     "experience_evidence_requests": [],
     "extraction_issues": []
-  }
+  },
+  "repair_status": "ACCEPTED_COMPLETE",
+  "v3_reason": "authorized_targets_complete",
+  "quantity_review_enabled": true
 }

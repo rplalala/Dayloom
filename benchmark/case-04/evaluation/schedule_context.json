@@ -1,0 +1,16 @@
+{
+  "schema_version": "rtpeval_schedule_context_1",
+  "batch_id": "case-04-oct25",
+  "revision": "oct25-20261024-r1",
+  "groups": [
+    {
+      "group_id": "case-04",
+      "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+      "reviewer_ref": "codex-agent:/root/oct25_source_reviewer",
+      "reviewed_at": "2026-10-24T10:55:50.044349+11:00",
+      "timezone": "Asia/Singapore",
+      "source_ref": "https://www.a-star.edu.sg/nmc/Research-and-Development/Labs/FL",
+      "rationale": "A*STAR National Metrology Centre states that Singapore Standard Time is UTC(SG) advanced by eight hours. Asia/Singapore is the IANA zone for the input destination; installed zoneinfo confirms UTC+08:00 on both requested dates. This is independently reviewed factual context, not a user time obligation."
+    }
+  ]
+}

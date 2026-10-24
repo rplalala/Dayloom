@@ -2,6 +2,6 @@
   "$case_material_ref": {
     "path": "analysis/poi-process/opportunities.json",
     "pointer": "/runs/1/rag_provenance",
-    "expanded_semantic_sha256": "6a6500970bb2f4429490e4c1966afb4726a193fc34166f781a97d295168e4087"
+    "expanded_semantic_sha256": "acb5cf40fd1312ca5104cc446f450d8807735e2a883655ea38c40a0a96303925"
   }
 }

@@ -1,69 +1,69 @@
 {
   "schema_version": "case_public_current_selection_1",
   "case_id": "case-04",
-  "case_revision": "rich3-20261024-r1",
-  "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+  "case_revision": "oct25-20261024-r1",
+  "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
   "versions": {
     "v0": {
-      "run_id": "case-04-current-path-v0-a1",
-      "selected_result_sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
-      "selected_input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-      "source_revision": "62f04cddad8635bbef12d116ea84346d0f9788a5",
+      "run_id": "case-04-oct25-v0-a1",
+      "selected_result_sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+      "selected_input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+      "source_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
       "completion_qualified": true,
-      "selection_origin": "qualified_current_system_rerun",
+      "selection_origin": "authorized_single_new_date_generation",
       "itinerary_projection": {
         "path": "generation/v0/itinerary.json",
         "original_source": {
-          "logical_path": ".scratch/rf18/case-04/assembled/sources/captures/v0/result.json",
-          "sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
+          "logical_path": ".scratch/case04-oct25/captures/v0/result.json",
+          "sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
           "json_pointer": "/itinerary"
         }
       }
     },
     "v1": {
-      "run_id": "case-04-current-path-v1-a1",
-      "selected_result_sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
-      "selected_input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-      "source_revision": "62f04cddad8635bbef12d116ea84346d0f9788a5",
+      "run_id": "case-04-oct25-v1-a1",
+      "selected_result_sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "selected_input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+      "source_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
       "completion_qualified": true,
-      "selection_origin": "qualified_current_system_rerun",
+      "selection_origin": "authorized_single_new_date_generation",
       "itinerary_projection": {
         "path": "generation/v1/itinerary.json",
         "original_source": {
-          "logical_path": ".scratch/rf18/case-04/assembled/sources/captures/v1/result.json",
-          "sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
+          "logical_path": ".scratch/case04-oct25/captures/v1/result.json",
+          "sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
           "json_pointer": "/itinerary"
         }
       }
     },
     "v2": {
-      "run_id": "case-04-completion-v2-a1",
-      "selected_result_sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
-      "selected_input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-      "source_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+      "run_id": "case-04-oct25-v2-a1",
+      "selected_result_sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+      "selected_input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+      "source_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
       "completion_qualified": true,
-      "selection_origin": "qualified_current_system_rerun",
+      "selection_origin": "authorized_single_new_date_generation",
       "itinerary_projection": {
         "path": "generation/v2/itinerary.json",
         "original_source": {
-          "logical_path": ".scratch/rf18/case-04/assembled/sources/captures/v2/result.json",
-          "sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
+          "logical_path": ".scratch/case04-oct25/captures/v2/result.json",
+          "sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
           "json_pointer": "/itinerary"
         }
       }
     },
     "v3": {
-      "run_id": "case-04-rich3-v3-a1",
-      "selected_result_sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
-      "selected_input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-      "source_revision": "a391c2c18846f40a727038a0cf4bd176239ba904",
+      "run_id": "case-04-oct25-v3-a1",
+      "selected_result_sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+      "selected_input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+      "source_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
       "completion_qualified": true,
-      "selection_origin": "authorized_single_rich3_generation",
+      "selection_origin": "authorized_single_new_date_generation",
       "itinerary_projection": {
         "path": "generation/v3/itinerary.json",
         "original_source": {
-          "logical_path": ".scratch/issue-217/captures/v3-a1/result.json",
-          "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
+          "logical_path": ".scratch/case04-oct25/captures/v3/result.json",
+          "sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
           "json_pointer": "/itinerary"
         }
       }
@@ -72,10 +72,8 @@
   "primary": "evaluation/primary/report.json",
   "pair": "evaluation/v3-pair/report.json",
   "status": "pending_researcher_acceptance",
-  "preceding_publication_git_revision": "7918a69c179262bd594e79bbd9faece5b63eb24e",
-  "historical_acceptance": "Former acceptance remains bound to its exact former outputs and reports; it does not accept this replacement.",
-  "source_note": "Current system compatibility is established by bounded reruns and source-compatible donor retention, not by claiming every selected result was newly generated.",
-  "preceding_publication_original_git_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+  "preceding_publication_git_revision": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
+  "historical_acceptance": "Earlier acceptance remains bound to its actual earlier selection.",
   "former_researcher_acceptance": {
     "status": "accepted",
     "accepted_on": "2026-10-18",
@@ -97,15 +95,14 @@
   },
   "researcher_acceptance": {
     "status": "pending",
-    "scope": "Complete replacement automatic selection, density derivations, Pair, process and resource views."
+    "scope": "Complete new-date four-version automatic selection and dependent analyses."
   },
-  "primary_report_expanded_semantic_sha256": "67b0190cff0e104b34bc91c389ba63f9486541b0b7ce45e87276678957c73e5d",
-  "pair_report_expanded_semantic_sha256": "6e060878f190bd0b93b25ee7f0c7214cbb314d41016448e9ef5ccce4c33db953",
+  "primary_report_expanded_semantic_sha256": "3965d0c327c89458e0eb4d0fd9d03ee0fc253ef1ab7ad321cbffc95384d32172",
+  "pair_report_expanded_semantic_sha256": "f1f277813d9b0c0380f7019b89279f8f7060c8c89e5f02bf4a5258ddcedfd013",
   "evaluation_input": {
     "path": "evaluation/input.json",
-    "original_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-    "published_sha256": "605e3ff99226b8df72361e3ced136faa4598358c07a3aa8c75957023d780a8a9"
+    "original_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+    "published_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0"
   },
-  "current_schedule_revision": "rescheduled/revision.json",
-  "completion_review": "analysis/repair/completion-review.json"
+  "source_note": "All four versions newly generated once from the same 25-26 October request. Earlier raw evidence and receipts remain immutable in private archives and Git history."
 }

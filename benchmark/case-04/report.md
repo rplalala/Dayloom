@@ -1,55 +1,41 @@
-# Case-04: Singapore schedules and evaluation
+# Case-04: Singapore automatic selection
 
 ## Current selection
 
-Singapore, **25–26 October 2026**, two adults, SGD 800, walking and public transport.
-The [current request](../inputs/case-04.json) and [V0–V3 schedules](itinerary.md)
-use Sunday and Monday. Each schedule is an offline one-day shift of its selected
-output, preserving visits, order and local clock times. No new generation or paid
-acquisition was performed. The [revision](rescheduled/revision.json) binds every
-schedule to its source; opening/access, transit and weather are not verified for
-the revised dates. The request describes a two-day trip rather than a weekend.
+Singapore, **25–26 October 2026**, two adults, SGD 800, gardens, major city sights
+and views, with walking and public transport only. All four versions were newly
+generated once from the same [request](../inputs/case-04.json) at source `4f4d0b5`.
+[Primary](evaluation/primary/report.json) and the same-run V3
+[Pair](evaluation/v3-pair/report.json) use `rtpeval_daily_density_3`.
 
-The automatic scores below remain bound to the **24–25 October**
-[evaluation input](evaluation/input.json) and original outputs. They are not scores
-for the date-revised schedules. Reviewed requirements and interests retain their
-original input bindings; the revised request has not undergone a new independent review.
-The [selection](selection.json) binds V0/V1 to source `62f04cd`, V2 to `986ff39`,
-and the new V3 invocation `case-04-rich3-v3-a1` to `a391c2c`.
-Primary and the same-run Pair use `rtpeval_daily_density_3`.
-
-This replacement is **pending researcher acceptance**. It is published for complete
-inspection; prior acceptance remains bound to the earlier selected artifacts.
+The complete replacement is **pending researcher acceptance** under
+[#218](https://github.com/rplalala/Dayloom/issues/218).
 
 ## Materials
 
 | Material | Current view |
 | --- | --- |
-| Input and semantic inputs | [Current request](../inputs/case-04.json), [evaluation input](evaluation/input.json), [original reviewed requirements](requirements/reviewed.json), [interest inventory](interests/inventory.json) |
-| Schedules and actual origins | [Complete daily schedules](itinerary.md) |
-| Final scoring | [Primary](evaluation/primary/report.json), [native quality](evaluation/primary/quality.json) |
-| Same-run V3 pair | [Independent report](evaluation/v3-pair/report.json), [exact source binding](evaluation/v3-pair/source-binding.json) |
-| Candidate process | [All stages, origins and omissions](analysis/poi-process/opportunities.json), [independent relevance](analysis/poi-process/relevance.json), [actual review records](interests/relevance-reviews.json) |
-| Repair | [Draft](analysis/repair/draft.json), [final primary](analysis/repair/final-primary.json), [complete Repair](analysis/repair/repair.json), [validation](analysis/repair/validation.json), [mechanism](analysis/repair/mechanism.json), [native research](analysis/repair/research.json) |
-| Offline completion review | [Result](analysis/repair/completion-review.json), [source contract](analysis/repair/completion-input.json), [replay command](../review_case04.py) |
-| Resources | [All-attempt ledger](analysis/resources/all-attempt-resources.json), [selected-cohort tradeoffs](analysis/resources/selected-tradeoffs.json), [new batch consumption](analysis/resources/refresh-execution.json) |
-| Publication integrity | [Material index](material-index.json) |
-| V0 selected generation | [Itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [usage summary](generation/v0/usage-summary.json), [provenance](generation/v0/provenance.json), [runtime](generation/v0/runtime-policy.json), [cost](generation/v0/cost-report.json) |
-| V1 selected generation | [Itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [usage summary](generation/v1/usage-summary.json), [provenance](generation/v1/provenance.json), [runtime](generation/v1/runtime-policy.json), [cost](generation/v1/cost-report.json) |
-| V2 selected generation | [Itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [usage summary](generation/v2/usage-summary.json), [provenance](generation/v2/provenance.json), [runtime](generation/v2/runtime-policy.json), [cost](generation/v2/cost-report.json) |
-| V3 selected generation | [Itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [usage summary](generation/v3/usage-summary.json), [provenance](generation/v3/provenance.json), [runtime](generation/v3/runtime-policy.json), [cost](generation/v3/cost-report.json) |
+| Source binding | [Selection](selection.json), [material index](material-index.json), [evaluated input](evaluation/input.json) |
+| Semantic preparation | [Reviewed requirements](requirements/reviewed.json), [interests](interests/inventory.json), [claims review](evaluation/preparation-review.json) |
+| Itineraries | [Complete daily schedules and transfers](itinerary.md) |
+| Final scoring | [Primary](evaluation/primary/report.json), [quality](evaluation/primary/quality.json) |
+| Same-run Pair | [Report](evaluation/v3-pair/report.json), [binding](evaluation/v3-pair/source-binding.json) |
+| Candidate process | [Stages and origins](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [judgments](interests/relevance-reviews.json) |
+| Repair | [Draft](analysis/repair/draft.json), [final primary](analysis/repair/final-primary.json), [decisions](analysis/repair/repair.json), [validation](analysis/repair/validation.json), [mechanism](analysis/repair/mechanism.json), [research](analysis/repair/research.json) |
+| Completion verification | [Original interpreted contract](analysis/repair/completion-input.json), [offline verifier](../review_case04.py) |
+| Resources | [Selected tradeoffs](analysis/resources/selected-tradeoffs.json), [current execution](analysis/resources/refresh-execution.json), [all-attempt ledger](analysis/resources/all-attempt-resources.json) |
 
-## Evaluated results: 24–25 October
+## Results
 
-| Version | Final / 100 | Auxiliary / 100 | Mean density deduction | Daily primary visits |
+| Version | Final / 100 | Auxiliary / 100 | Mean pace deduction | Daily primary visits |
 | --- | ---: | ---: | ---: | --- |
 | V0 | 66.6667 | 96.6667 | 30 | 4 / 4 |
-| V1 | 60.0000 | 100.0000 | 40 | 5 / 2 |
-| V2 | 85.0000 | 100.0000 | 15 | 4 / 3 |
+| V1 | 50.0000 | 100.0000 | 50 | 5 / 4 |
+| V2 | 61.0000 | 76.0000 | 15 | 4 / 3 |
 | V3 | 100.0000 | 100.0000 | 0 | 3 / 3 |
 
-The final score is the five-dimensional auxiliary score minus the equal-date mean
-density deduction, floored at zero. The native reports retain exact fractions.
+Final scores subtract the equal-date mean pace deduction from the five-dimensional
+auxiliary score, floored at zero. Native reports retain exact fractions.
 
 | Version | Dimension | PASS | FAIL | UNKNOWN |
 | --- | --- | ---: | ---: | ---: |
@@ -58,140 +44,110 @@ density deduction, floored at zero. The native reports retain exact fractions.
 | V0 | opening | 8 | 0 | 0 |
 | V0 | requirements | 1 | 0 | 0 |
 | V0 | routes | 5 | 1 | 0 |
-| V1 | grounding | 7 | 0 | 0 |
-| V1 | non_overlap | 12 | 0 | 0 |
-| V1 | opening | 7 | 0 | 0 |
+| V1 | grounding | 9 | 0 | 0 |
+| V1 | non_overlap | 16 | 0 | 0 |
+| V1 | opening | 9 | 0 | 0 |
 | V1 | requirements | 1 | 0 | 0 |
-| V1 | routes | 5 | 0 | 0 |
+| V1 | routes | 7 | 0 | 0 |
 | V2 | grounding | 7 | 0 | 0 |
 | V2 | non_overlap | 12 | 0 | 0 |
 | V2 | opening | 7 | 0 | 0 |
-| V2 | requirements | 1 | 0 | 0 |
-| V2 | routes | 5 | 0 | 0 |
+| V2 | requirements | 0 | 0 | 1 |
+| V2 | routes | 4 | 0 | 1 |
 | V3 | grounding | 6 | 0 | 0 |
 | V3 | non_overlap | 10 | 0 | 0 |
 | V3 | opening | 6 | 0 | 0 |
 | V3 | requirements | 1 | 0 | 0 |
 | V3 | routes | 4 | 0 | 0 |
 
-V0 has one route FAIL: Botanic Gardens to National Gallery requires 2,612 seconds
-against a 2,100-second submitted gap; the 512-second deficit exceeds the 300-second
-tolerance. All other common checks pass. Primary has no unresolved independent
-checks or acquisition failures. No missing-hours model assessment was needed.
+V0 fails the Singapore Botanic Gardens → National Museum transit check: the
+2,583-second route exceeds the 2,100-second scheduled gap by 483 seconds, beyond
+the 300-second tolerance. V2 omits the Sultan Mosque → Garden Rhapsody transfer claim; preparation
+preserves that omission. Its scheduled Suntec City break occupies its declared
+16:00–17:00 interval and is not a freely reusable window.
 
 ## Process and Repair
 
-The [independent same-run Pair](evaluation/v3-pair/report.json) scores the new V3
-draft **50 → 100**. Its auxiliary score stays 100; the density deduction falls
-from 50 to zero. Counts are **5/4 → 3/3**, with three actual deletions and no
-additions or replacements. These are the two stages of one V3 run.
+The same-run Pair scores **50 → 100**.
+V3 changes from **6/3 → 3/3** primary visits, with 3 removed, 0 added
+and 0 replaced visits. The result is `ACCEPTED_COMPLETE`;
+Rich completion is `complete` and the stop reason is `authorized_targets_complete`.
+Applicable return checks have no blocking findings or unverified checks. Other
+diagnostic UNKNOWN observations remain visible and are not relabelled PASS.
 
-| Attempt | Operation | Decision |
-| --- | --- | --- |
-| 1 | Delete Saturday Botanic Gardens | Adopted |
-| 2 | Delete Saturday Buddha Tooth Relic Temple | Adopted |
-| 3 | Delete Sunday Gardens by the Bay | Rejected: sourced experience goal satisfaction decreased |
-| 4 | Delete Sunday Singapore Skyline View | Adopted |
+All retained operations are reported in the [Repair decisions](analysis/repair/repair.json).
+The draft/final Pair measures two stages of this V3 invocation; independent V2
+generation is a separate comparison.
 
-All four proposals are deterministic `system_delete`; Repair made no model calls.
-The [offline completion review](analysis/repair/completion-review.json) of the saved
-24–25 October final validation returns **`complete`** under implementation `df7ef14`:
-both dates have three visits, minimum coverage is satisfied and no required check
-blocks completion. The same-day generic coverage finding remains UNKNOWN. It records
-unsupported remaining-hour planning, not missing coverage or an unresolved Rich count.
-Planner suitability, budget and semantic limitations remain visible in
-[validation](analysis/repair/validation.json). This is a completion reclassification
-using unchanged evidence, not a new run or a feasibility certificate for 25–26 October.
+The independent relevance review covers **112 venues × 3 interests**: **66 relevant
+and 270 UNKNOWN**. It retains 206 compatible historical judgments with their actual
+authors, timestamps and evidence, replaces four historical UNKNOWN labels with
+new official evidence, and adds 126 labels for 42 new candidates. The twelve-query,
+sixteen-open bound and unavailable official pages limit coverage. UNKNOWN labels
+remain unresolved; candidate names and discovery queries do not establish relevance.
 
-V1/V2 [candidate opportunities](analysis/poi-process/opportunities.json) and
-[relevance](analysis/poi-process/relevance.json) retain the captured donor results.
-Their joins were rebuilt against the new Primary canonical identities through the
-native offline research path. The 267 existing relevance verdicts remain 65 relevant
-and 202 unknown; only selection bindings change. Author, dates, evidence and
-rationales are retained. Partial discovery and UNKNOWN relevance remain limitations.
+## Resources
 
-## Resources and limitations
-
-| Authorized stage | Reference allowance, USD | Recorded reference cost, USD |
+| Stage | Reference allowance USD | Observed reference USD |
 | --- | ---: | ---: |
-| V3 generation | 10 | 2.12482589 |
-| Primary | 6 | 1.1608993 |
-| Pair | 4 | 1.205 |
-| Total | 20 | 4.49072519 |
+| v0 | 2 | 0.00551885 |
+| v1 | 8 | 1.90571106 |
+| v2 | 10 | 1.95410831 |
+| v3 | 10 | 2.127166475 |
+| primary | 6 | 1.120294175 |
+| pair | 4 | 1.056 |
 
-Each stage ran once, with zero outer retries. Pair sent 61 Google requests
-(24 Details, 20 Search, 17 Routes), all HTTP 200, with no model calls.
-Its native offline replay and the source-bound Repair, opportunity, relevance,
-population and selected-tradeoff reports pass. Copies and replays incur no new calls.
+Total reference consumption is **USD 8.168798870 / 40**.
+Each stage ran once, sequentially, with zero outer retries. Generation uses the
+native 8 October retail reference basis; independent evaluation uses the catalog
+checked on 24 October. These are estimates, not account invoices or hard dollar
+stops for generation. External Codex session costs are separate and unavailable.
 
-The [cumulative ledger](analysis/resources/all-attempt-resources.json) retains
-16 invocation identities and 890 distinct observed charge/transport events,
-including the replaced V3 and earlier failures. Its priced subtotal is
-USD 18.30296590; the complete total is unavailable because 15 historical events
-have conflicting prices. Transport-only observations have zero additional cost;
-their model charges are counted once. The selected-generation population contains
-exactly one V3 run. Actual account billing and external Codex assistance costs are
-unavailable; these are reference estimates, not invoices.
+Cumulative accounting retains **22 invocation identities**,
+**1291 distinct observed events** and a priced subtotal of
+**USD 26.471764770**. Its 15 historical unpriced/conflicting
+events prevent a complete total. Replaced generations and failed historical
+attempts remain in that population; copied artifacts and offline replay add no sends.
 
-## AI assistance
+## Verification and AI assistance
 
-External Codex coordinator `/root` prepared the 23–24 October 2026 source bindings,
-qualified saved outputs, replayed reports, computed density/resource summaries and
-wrote the reader material from the original request, selected captures, evaluator
-evidence and retained histories. This influenced selection and presentation, not
-new relevance judgments. The coordinator also implemented the narrow completion
-correction, replayed its saved inputs, and prepared the authorized offline date
-revision; no new independent semantic judgments or provider calls were made.
-`/root/execute_217_v3`, `/root/execute_217_primary` and
-`/root/execute_218_pair` executed the approved prepared jobs using
-`gpt-6.1-sol / medium`, one invocation each with zero outer retries. These external
-roles are separate from the studied Planner/evaluator model calls recorded in usage.
+All four exact native captures passed input/source binding and workflow qualification.
+Primary and Pair replay against their saved evidence without network calls. Native
+population, opportunity, relevance, Repair and tradeoff reports verify their selected
+sources. The public verifiers check the twelve-case exact arithmetic, ranks, usage,
+material hashes and new-date V3 completion. Product/runtime code is unchanged.
 
-`/root/review_217_claims` reviewed only the original request and submitted claims;
-its output-specific role assessment entered Primary preparation. An earlier role
-exposed to Planner annotations was excluded, as documented in the
-[Primary record](../../docs/records/evaluation/2026-10-24-rich-primary.md).
-`/root/standards_review_218` and `/root/spec_review_218` reviewed the committed
-replacement against repository standards and #218. The coordinator validated exact
-source projections, native replays, arithmetic, indexes and published references;
-agent review is not researcher acceptance.
-`/root/standards_rich_completion` and `/root/spec_rich_completion` independently
-reviewed the completion correction and date revision, including original source
-bindings and offline replay. Both reported no actionable findings.
+| Work | Actual external Codex performer |
+| --- | --- |
+| Requirements author | `/root/oct25_clean_author`, `gpt-6.1-sol / high` |
+| Independent requirements, interests and input context | `/root/oct25_source_reviewer`, `gpt-6.1-sol / high` |
+| Generation execution | `/root/oct25_execute_generations`, `gpt-6.1-sol / medium` |
+| Output-claim preparation | `/root/oct25_clean_output_review`, inherited configuration |
+| Primary / Pair execution | `/root/oct25_execute_primary`, `/root/oct25_execute_pair`, `gpt-6.1-sol / medium` |
+| Independent venue relevance | `/root/oct25_relevance_review`, inherited configuration |
+| Binding, offline reconstruction, publication and verification | `/root`, inherited configuration |
 
-Reused semantic author/reviewer identities and dates remain in the
-[requirements](requirements/reviewed.json) and [interest inventory](interests/inventory.json).
-The retained October 18 selection was coordinated by `/root`, executed by
-`/root/refresh_live_executor` using `gpt-6.1-sol / medium`, and inspected by
-`/root/refresh_standards_review` and `/root/refresh_spec_review`.
-Independent relevance performer `/root/relevance04_clean` received the source
-request, reviewed requirements/interests and unranked venue identities, excluding
-itineraries, scores and Planner relevance. A preceding handoff exposed case-status
-summaries and was excluded; only the clean-context judgments are selected.
-[Actual lookup limits and gaps](interests/relevance-assistance.json) remain available.
+The selected source-only roles did not receive itineraries or scores. The output
+review received submitted claims; relevance received stripped venue identities and
+independent official evidence. Two preliminary contexts were excluded after
+unintended result-summary/internal-field exposure and replaced with fresh contexts.
+Actual assistance is separate from Planner/evaluator calls and from human review.
+Full external transcripts, exact inherited model metadata, session token usage and
+billing are unavailable where not captured; retained partial records are labelled.
 
-The researcher authorized scope, data destinations and budgets; acceptance of this
-replacement remains pending. Exact external model identifiers outside the verified
-execution roles, complete transcripts, external token totals and billing are
-unavailable. Recorded source provenance is retained rather than inferred.
+Private evidence identifier: `.scratch/case04-oct25/`, containing exact original
+captures, source reviews, preparations, receipts, journals and offline reports.
+This identifier is not a public navigation dependency.
 
 ## Acceptance
 
-The original-date completion review and four revised-date schedules await the
-researcher's decision under
-[#218](https://github.com/rplalala/Dayloom/issues/218). Publication and merge do not
-constitute acceptance. The actual decision must precede
-[#219](https://github.com/rplalala/Dayloom/issues/219) content synchronization.
-Existing blinded answers remain tied to the itinerary shown to each reviewer.
+The replacement and its limitations are presented for researcher acceptance.
+Publication and merge do not supply that decision. Existing blinded answers remain
+bound to the itineraries actually shown; #219 and thesis synchronization await
+acceptance and are outside this delivery.
 
-Earlier acceptance records and original receipts remain immutable in private
-evidence and Git history; the exact preceding publication is recorded in the index.
+## Historical context
 
-## Historical provenance
-
-The original V3 invocation recorded `ACCEPTED_PARTIAL` / `unavailable`: the Rich
-completion gate treated an unsupported same-day quantity diagnostic as a required
-return check. Its original status, validation, receipts and process reports remain
-unchanged. The separately bound offline review corrects only this classification.
-V0–V2 used reference date 18 October; V3 used 24 October. All original outputs and
-their Primary/Pair evaluations cover 24–25 October.
+The prior 24–25 October publications and the intermediate offline date projection
+remain recoverable at [the preceding revision](https://github.com/rplalala/Dayloom/tree/4f4d0b5444faa2dbd42cee19bf18bd04e0b79371/benchmark/case-04).
+Original native evidence and earlier acceptance remain bound to those sources.

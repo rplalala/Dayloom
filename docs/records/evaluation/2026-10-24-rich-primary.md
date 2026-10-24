@@ -1,140 +1,83 @@
-# Case-04 Rich-policy generation and Primary
+# Case-04 new-date generation and independent evaluation
 
-On 24 October 2026 (Australia/Sydney), [Issue #217](https://github.com/rplalala/Dayloom/issues/217)
-executed one new V3 invocation and one independent four-final Primary at
-`a391c2c18846f40a727038a0cf4bd176239ba904`, following the implementation in
-[PR #222](https://github.com/rplalala/Dayloom/pull/222). The
-[source-bound result record](2026-10-24-rich-primary.json) retains exact fractions,
-per-date deductions, component counts, original source hashes and native receipt identities.
-The [density contract](../../contracts/0005-quality-human-review.md#daily-density)
-and [V3 completion contract](../../0005-validation-repair%28v3%29.md#final-rich-completion)
-define the rules used here.
+## Scope and source binding
 
-The original Singapore request, 24-25 October, two travelers, SGD 800 and
-WALK/TRANSIT-only transport, remained byte-identical. The actual application date
-was 24 October, inside the supported window; no clock or input date was changed.
-Accepted V0-V2 outputs retained their original generation revisions. Only V3 was
-regenerated. Unrelated local `.env.example` and `GLOSSARY.md` edits were excluded;
-this execution made no Planner, Product or evaluator implementation change.
+The authorized Singapore request covers **25–26 October 2026**, two adults,
+SGD 800, a fairly full garden/city/view itinerary and WALK/TRANSIT-only transport.
+Four new single invocations used source `4f4d0b5444faa2dbd42cee19bf18bd04e0b79371`
+and exact input SHA `11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0`.
+The real application reference date was 24 October in Australia/Sydney; the
+request passed the date window without a clock override. Runtime policy and
+product implementation were unchanged. Pre-existing `.env.example` and
+`GLOSSARY.md` edits were excluded from this work.
 
-## Four-final Primary
+The [current case report](../../../benchmark/case-04/report.md) owns the detailed
+results, resources and acceptance boundary; the [selection](../../../benchmark/case-04/selection.json)
+binds exact input, generation and evaluation sources. The
+[twelve-case report](../../../benchmark/report.md) owns aggregate results.
 
-All five dimensions were included: requirements, grounding, non-overlap, opening
-and routes. The table uses scores on a 0-100 scale; the JSON also preserves native
-normalized exact fractions. Density deductions are averaged equally across the
-two requested dates under `rtpeval_daily_density_3`.
+## Observed behavior
 
-| Final | Visits, 24 / 25 October | Daily deductions | Mean deduction | Five-dimensional auxiliary score | Overall score |
-| --- | --- | --- | --- | --- | --- |
-| V0 | 4 / 4 | 30 / 30 | 30 | 290/3 (96.666667) | 200/3 (66.666667) |
-| V1 | 5 / 2 | 70 / 10 | 40 | 100 | 60 |
-| V2 | 4 / 3 | 30 / 0 | 15 | 100 | 85 |
-| V3 | 3 / 3 | 0 / 0 | 0 | 100 | 100 |
+Primary final scores are **V0 66.6667, V1 50, V2 61, V3 100** under
+`rtpeval_daily_density_3`. Their primary-visit counts are respectively 4/4, 5/4,
+4/3 and 3/3. V0's Botanic Gardens → National Museum route needs 2,583 seconds
+against a 2,100-second scheduled gap; the 483-second deficit exceeds the
+300-second tolerance. V2 omits a Sultan Mosque → Garden Rhapsody transfer mode,
+leaving route and whole-trip transport-restriction UNKNOWNs. Missing claims
+were not repaired during evaluation. Acquisition completed without failed sends;
+evidence status remains unresolved because those substantive UNKNOWNs persist.
 
-The only five-dimensional FAIL was V0's Singapore Botanic Gardens to National
-Gallery Singapore transit leg: independent duration 2,612 seconds exceeded its
-2,100-second available interval by 512 seconds, beyond the 300-second tolerance.
-Its route dimension contained five PASS and one FAIL. Every other included
-component check passed. Independent UNKNOWN and acquisition-failure counts were
-zero. Missing-hours assessment was enabled before scoring, but its eligible
-population was empty, so no access-assessment model call was made.
+V3's draft has 6/3 visits and its final has 3/3 after three retained deletions.
+The native outcome is `ACCEPTED_COMPLETE`, Rich completion `complete`, with no
+blocking findings or unverified return checks. Unsupported diagnostic UNKNOWNs
+remain in the validation record. The independent same-run Pair and its continuing
+checks are reported separately from Planner completion.
 
-These are the observed four-final results for this exact selection, not a new
-twelve-case ranking or evidence that every Rich request will achieve the same score.
+## Execution and independent roles
 
-## Actual V3 outcome
+The user authorized autonomous completion through independent evaluation,
+dependent analysis, publication and merge, with final acceptance left to the
+researcher. The coordinator bounded the work at USD 40: V0 2, V1 8, V2 10, V3 10,
+Primary 6 and Pair 4. Each ran once, sequentially, with zero outer retries.
+Observed reference consumption is **USD 8.168798870**.
+Original retail reference rates are not account invoices; external Codex costs
+remain separate and unavailable. The current case report preserves cumulative
+historical price conflicts instead of inventing a complete all-attempt total.
 
-The draft contained five and four primary visits. Four deterministic deletion
-proposals produced the retained three/three final without a Repair model proposal:
+Fresh independent source-only author/reviewer roles bound the requirements,
+interests and destination context. A separate claims reviewer checked role/time
+and transport declarations before Primary. Venue relevance used independent
+official evidence and retained compatible historical decisions with original
+provenance; 270 of 336 labels remain UNKNOWN. Actual actor identities and available
+configuration metadata are in the case report and source records. Preliminary
+contexts exposed to excluded summary/internal fields were discarded and replaced
+with fresh reviewers. These agent judgments do not substitute for human acceptance.
 
-| Proposal | Decision |
-| --- | --- |
-| Remove Singapore Botanic Gardens on 24 October | Adopted |
-| Remove Buddha Tooth Relic Temple on 24 October | Adopted |
-| Remove Gardens by the Bay on 25 October | Rejected because sourced experience-goal satisfaction decreased |
-| Remove the Singapore skyline-view activity on 25 October | Adopted |
+## Verification and evidence retention
 
-The native Repair status was `ACCEPTED_PARTIAL`, reason
-`authorized_targets_complete`, with `unavailable` completion despite three visits
-and satisfied minimum coverage on each date. The completion gate incorrectly treated
-the unsupported same-day default-target observation as a required return check.
-The regression first reproduced this outcome, then passed after the narrow correction
-in `df7ef14e570103d1541c92537f3b1a8af6f5cf03`. The
-[offline review](../../../benchmark/case-04/analysis/repair/completion-review.json)
-of the identical saved final validation returns `complete`, retaining the coverage
-UNKNOWN and all other unsupported-capability observations. Original statuses and
-receipts remain unchanged; the correction made no new provider calls.
+Read-only retrieval compatibility passed with zero embedding sends. An initial
+standalone Windows preflight needed the existing selector event-loop convention;
+its subsequent sandbox database timeout disappeared under approved elevation.
+No database credentials, permissions or project configuration were changed.
 
-The [current schedules](../../../benchmark/case-04/itinerary.md) separately shift
-V0–V3 to 25–26 October under explicit user authorization. Visits, ordering and local
-clock times are retained, but original Primary/Pair scores remain bound to 24–25
-October. No new generation, independent semantic review or date-bound acquisition
-was performed for the shifted schedules.
+Native intake and semantic readiness passed. Primary and Pair replayed against
+their exact saved evidence. All five research tracks passed native source-bound
+reconstruction; public verification checks 48 final and 24 paired stages, exact
+ranks, 48 selected resource rows, material hashes and V3 completion. No production
+code changed, so the delivery uses these data-specific checks rather than repeating
+the prior full backend suite. The modified publication verifier passes Ruff.
 
-## Execution and resources
+Private evidence identifier `.scratch/case04-oct25/` retains the immutable captures,
+preparations, HTTP journals, receipts, usage, actual independent review records
+and offline reconstructions. Native original bytes are separate from LF-normalized
+public projection hashes. Current material is pending researcher acceptance;
+blinded answers and thesis prose are unchanged.
 
-The user authorized a USD 20 tool/API reference envelope, split as generation 10,
-Primary 6 and later Pair 4, with one invocation per stage, concurrency one and zero
-outer retries. Specific case-04 outbound data to Google Places/Routes and the
-existing Azure Foundry endpoint was explicitly authorized before Primary dispatch.
+## Historical context
 
-Generation retained the frozen runtime: 600-second request deadline, 420-second
-Repair stage, at most six proposal/replan model sends and twelve deterministic
-deletion attempts. Primary retained its USD 6 native reference guard, at most 400
-Google sends and two model sends, 900-second total timeout, 45-second request timeout
-and native token limits of 64,000 input / 8,192 output. Both used `gpt-6-luna`;
-Primary reasoning effort was `low`. Generation has no dollar-based hard stop.
-
-| Stage | Actual use | Reference USD |
-| --- | --- | --- |
-| V3 | 152.25 seconds; 94 HTTP sends; six model calls including embedding; 55,539 tokens; zero Repair model proposals | 2.12482589 |
-| Primary | 60 Google sends; one identity model call; 20,203 input and 748 output tokens; zero access-assessment calls | 1.1608993 |
-| Combined | One generation and one Primary; zero outer retries | 3.28572519 |
-
-Both native cost reports had zero unpriced events. These are reference estimates,
-not account invoices; actual billing and external Codex costs remain unavailable.
-Generation retained its 8 October reference basis. Primary used the 24 October
-public [model](https://developers.openai.com/api/docs/models/gpt-6-luna) and
-[Google API](https://developers.google.com/maps/billing-and-pricing/pricing) price
-check, with the model rates serving as a Foundry proxy and account adjustments excluded.
-
-## Verification and assistance
-
-Source/input/runtime/donor hashes, the actual date, deployment and retrieval
-identity passed pre-dispatch checks. Read-only retrieval preparation sent no
-embedding request. Native intake accepted the four-final package; semantic review
-coverage and numerical population were ready. Independent output review confirmed
-the source-linked counts and applicability of role, occupancy and transport claims.
-The unchanged original-request reviews retained their actual authors and timestamps.
-Native offline Primary replay reproduced the entire saved execution report exactly.
-
-The coordinator `/root` prepared bindings, verified artifacts and produced this
-derived record. `/root/execute_217_v3` and `/root/execute_217_primary` used the required
-`gpt-6.1-sol / medium` execution configuration. `/root/review_217_claims` reviewed
-sanitized submitted claims and the original request; its inherited exact model and
-effort were unavailable. External assistance is separate from the studied model
-calls, and none of these agent checks constitutes human acceptance.
-
-An initial output-review handoff exposed Planner transfer annotations. That review
-was excluded and replaced with a fresh reviewer using sanitized claims. A separate
-offline digest alarm came from Windows-default decoding of one UTF-8 place name;
-the native UTF-8 reader verified the unchanged package. Automatic approval then
-blocked process creation until the user explicitly authorized the outbound data.
-Both events preceded the sole Primary invocation and consumed no Primary requests.
-
-Private evidence identifiers are `.scratch/issue-217/captures/v3-a1`,
-`.scratch/issue-217/assembled` and `.scratch/issue-217/primary-a1`, including original
-draft/final/intermediate attempts, independent snapshots, receipts and usage.
-They are local evidence identifiers, not public links. The linked JSON identifies
-the exact native files and hashes needed by downstream work; original evidence is
-unchanged.
-
-## Handoff boundary
-
-This completes the generation/Primary stage. The existing accepted case-04
-selection remains the current publication. The new material is not yet
-researcher-accepted. [Issue #218](https://github.com/rplalala/Dayloom/issues/218)
-owns the same-run Pair, dependent analyses, other-case offline rescoring and
-replacement acceptance after the required Primary continuation instruction.
-[Issue #219](https://github.com/rplalala/Dayloom/issues/219) subsequently updates
-blind-review presentation content while preserving existing answers and statistics.
+The [earlier source-bound record](2026-10-24-rich-primary.json) preserves the
+24–25 October single-V3/Primary stage. Its original run and receipts remain
+unchanged. The [preceding publication](https://github.com/rplalala/Dayloom/tree/4f4d0b5444faa2dbd42cee19bf18bd04e0b79371/benchmark/case-04)
+also preserves the same-day completion correction and intermediate offline date
+projection. The current selection uses newly generated and independently evaluated
+25–26 October outputs; historical acceptance stays attached to its original sources.

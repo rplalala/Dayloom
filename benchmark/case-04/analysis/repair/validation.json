@@ -2,6 +2,6 @@
   "$case_material_ref": {
     "path": "analysis/repair/repair.json",
     "pointer": "/components/0/report",
-    "expanded_semantic_sha256": "d8919abef2c67421cb6498293b78b6c646d5eaba491d09189bfc78786d11ab94"
+    "expanded_semantic_sha256": "0e588e1271ddf8f9860d277c5fd0f7e57497b38082663a5d2985079627937cc3"
   }
 }

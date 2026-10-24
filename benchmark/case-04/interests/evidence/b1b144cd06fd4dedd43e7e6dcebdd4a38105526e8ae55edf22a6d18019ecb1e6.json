@@ -1,0 +1,22 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJkzwh8AMa2jERzvWXBxfZubI",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "codex-agent:/root/oct25_relevance_review",
+  "checked_at": "2026-10-24T00:05:34.329299+00:00",
+  "sources": [
+    {
+      "url": "https://sbg.nparks.gov.sg/attractions/the-gardens/",
+      "title": "Plant Collections & Gardens",
+      "access_status": "opened",
+      "facts": [
+        "The section explicitly titled Eco Garden and Eco Lake describes a planted ecological landscape containing hardwoods, bamboo and spices."
+      ],
+      "source_kind": "independent_official",
+      "checked_at": "2026-10-24T00:05:34.329299+00:00",
+      "limitations": []
+    }
+  ],
+  "scope": "Thematic relevance only; opening, routing, schedule and date feasibility are not adjudicated.",
+  "identity_binding": "Canonical identifier and name/address/coordinates from the stripped safe venue packet are identity aids only. Official descriptive facts establish relevance."
+}

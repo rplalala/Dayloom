@@ -1,148 +1,145 @@
 {
-  "schema_version": "independent_relevance_decisions_1",
+  "schema_version": "case04_relevance_assistance_1",
   "case_id": "case-04",
-  "case_revision": "current-path-20261018-r1",
-  "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-  "requirement_spec_sha256": "be37be6baccd447e555a74df2396996f1033569da1be5e1f37c079c0a2b1278e",
-  "interest_inventory_sha256": "15620cb188e5bcd3b3c01d5822ff241de308085bc5095f0bd1251232a4c460bd",
-  "reviewer_ref": "/root/relevance04_clean",
-  "reviewer_kind": "external_model",
-  "reviewed_at": "2026-10-18T04:52:41Z",
-  "model_identity": "inherited configuration; exact model identifier unavailable",
+  "case_revision": "oct25-20261024-r1",
+  "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+  "interest_inventory_sha256": "5a5541a3fc00c2857e8b20c40a8d2d514abfceed2c9c25a75746f39735b7f69b",
+  "requirement_spec_sha256": "df9ed5e7ff244f525c441a5689edb6dcf885f432442af9d36ac7dc50a6de6d16",
+  "role": "Independent source-only candidate relevance reviewer; external-model assistance, not human review",
+  "reviewer_ref": "codex-agent:/root/oct25_relevance_review",
+  "reviewed_at": "2026-10-24T00:05:34.329299+00:00",
+  "inputs": [
+    {
+      "path": "source-only/input.json",
+      "sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+      "media_type": "application/json",
+      "availability": "available"
+    },
+    {
+      "path": "source-only/requirements-reviewed.json",
+      "sha256": "df9ed5e7ff244f525c441a5689edb6dcf885f432442af9d36ac7dc50a6de6d16",
+      "media_type": "application/json",
+      "availability": "available"
+    },
+    {
+      "path": "interests.json",
+      "sha256": "5a5541a3fc00c2857e8b20c40a8d2d514abfceed2c9c25a75746f39735b7f69b",
+      "media_type": "application/json",
+      "availability": "available"
+    },
+    {
+      "path": "relevance-only/venues.json",
+      "sha256": "b0c2de5171b085b51c6580626b3dc070c6cd1cda50da8c10415a26b760c963d3",
+      "media_type": "application/json",
+      "availability": "available"
+    },
+    {
+      "path": "relevance-only/prior-source-only-reviews.json",
+      "sha256": "7b5a102725a7b07c4e00ad5b5db071de6b1bd4ee3f7853e6e441e8d87204aa62",
+      "media_type": "application/json",
+      "availability": "available"
+    }
+  ],
+  "permitted_material": "Original request, reviewed requirements, interests, safe stripped venue identities, historical independent judgments and their exact official evidence. Native relevance schema inspected. Root/benchmark AGENTS.md and documentation admission rules read.",
+  "excluded_material": "No benchmark README, itineraries, captures, scores, traces, old case reports or version-labelled process material read. No Planner/provider semantic labels used. No paid Planner or Google calls.",
+  "compatibility_review": {
+    "reviewer_ref": "codex-agent:/root/oct25_relevance_review",
+    "reviewer_kind": "external_model",
+    "reviewed_at": "2026-10-24T00:05:34.329299+00:00",
+    "judgment": "The old gardens, major-city-sights and views themes have the same meanings as the source-bound current interests. Canonical venue IDs and available identity aids are compatible with the historical exact-venue evidence. Changing trip dates alone does not change thematic relevance. Historical uncertainty and exact-target limitations remain valid; no new-date access or route inference is made.",
+    "interest_id_mapping": {
+      "gardens": "interest-gardens",
+      "major-city-sights": "interest-major-city-sights",
+      "views": "interest-views"
+    },
+    "source_packet_ref": {
+      "path": "relevance-only/prior-source-only-reviews.json",
+      "sha256": "7b5a102725a7b07c4e00ad5b5db071de6b1bd4ee3f7853e6e441e8d87204aa62",
+      "media_type": "application/json",
+      "availability": "available"
+    },
+    "venue_packet_ref": {
+      "path": "relevance-only/venues.json",
+      "sha256": "b0c2de5171b085b51c6580626b3dc070c6cd1cda50da8c10415a26b760c963d3",
+      "media_type": "application/json",
+      "availability": "available"
+    }
+  },
+  "search_queries": [
+    "site.singaporeflyer.com Singapore Flyer panoramic views",
+    "site.nparks.gov.sg TreeTop Walk panoramic views suspension bridge",
+    "site.nhb.gov.sg National Museum Singapore oldest museum landmark",
+    "site.nparks.gov.sg \"Jelutong Tower\" \"view\"",
+    "site.nparks.gov.sg \"Henderson Waves\" views",
+    "site.gardensbythebay.com.sg \"Active Garden\" \"Garden Rhapsody\"",
+    "site.visitsingapore.com \"Sultan Mosque\" \"Asian Civilisations Museum\"",
+    "Sultan Mosque [domains: visitsingapore.com]",
+    "Asian Civilisations Museum Peranakan Museum Indian Heritage Centre [domains: visitsingapore.com]",
+    "Haw Par Villa Hell Museum Chinatown Heritage Centre Battlebox [domains: visitsingapore.com]",
+    "Singapore Botanic Gardens Eco Lake Windsor Nature Park [domains: nparks.gov.sg,sbg.nparks.gov.sg]",
+    "\"Asian Civilisations Museum\" OR \"Chinatown Heritage Centre\" OR \"Haw Par Villa\" OR \"Battlebox\" [domains: visitsingapore.com]"
+  ],
+  "opened_urls": [
+    "https://www.singaporeflyer.com/en/ticket/singapore-flyer-ticket",
+    "https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/marina-bay/singapore-flyer/",
+    "https://www.nparks.gov.sg/visit/parks/central-catchment-nature-reserve/activities/hiking-nature-walk",
+    "https://www.nhb.gov.sg/nationalmuseum/about-us/our-building",
+    "https://www.roots.gov.sg/nhb/monuments",
+    "https://www.visitsingapore.com/content/dam/desktop/global/about-singapore/traveller-information/nhb-museum-guide.pdf",
+    "https://www.nparks.gov.sg/visit/parks/park-detail/central-catchment-nature-reserve",
+    "https://www.nparks.gov.sg/visit/parks/telok-blangah-hill-park/special-features/henderson-waves",
+    "https://www.gardensbythebay.com.sg/en/attractions.html",
+    "https://sbg.nparks.gov.sg/attractions/the-gardens/",
+    "https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/kampong-gelam/sultan-mosque/",
+    "https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/civic-district/peranakan-museum/",
+    "https://www.gardensbythebay.com.sg/en/things-to-do/attractions/active-garden.html",
+    "https://www.sg101.gov.sg/resources/archives/heritage-henderson-waves-bridge/",
+    "https://www.gardensbythebay.com.sg/en/about-us/media-room/2024.html",
+    "https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/civic-district/asian-civilisations-museum/"
+  ],
   "limits": {
-    "actual_opens": 50,
-    "actual_searches": 12,
-    "budget_exclusions": [
-      {
-        "canonical_place_id": "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
-        "name": "City View",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
-        "name": "Viewpoint Gardens by the Bay and Marina Bay Sands",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJ1WZDpv8b2jERQhRdwN8KE80",
-        "name": "Sentosa Merlion",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
-        "name": "Gardens by the Bay East (Panoramic view)",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
-        "name": "Downtown Viewpoint",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
-        "name": "Marina Bay Sands Garden Park",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
-        "name": "Viewpoint light show",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJC2PqwWgb2jERlTBRz4YkJtY",
-        "name": "Merlion Walk",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
-        "name": "Downtown Core",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJE6uwTPsZ2jERZFH4XI60LHw",
-        "name": "Garden by the Bay - Bay East",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJG9GVwT8a2jERvxDHau3hggQ",
-        "name": "Two Chefs Eating Place",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-        "name": "Bugis Street Food",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-        "name": "Singapore Skyline View",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
-        "name": "National Parks Board",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-        "name": "Daisy's Dream Kitchen",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
-        "name": "Garden by the Bay - Orchid Extravaganza",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
-        "name": "Marina Bay Overpass Viewing Point",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJjzZiUAIZ2jERNSoqcM46xEA",
-        "name": "Golden Garden",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJk8h8MoUZ2jERCnwwXpymc7o",
-        "name": "MBS Viewpoint",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
-        "name": "Supertree Grove Viewpoint",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJp_FOT5Ab2jERn8FGgYjk33E",
-        "name": "Mount Faber Top View Garden",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJq-yS9QYZ2jERF5vtZzLjV5A",
-        "name": "Marina Bay Sands Roof Garden",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-        "name": "Maddie’s Kitchen",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      },
-      {
-        "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
-        "name": "Beauty World Food Centre",
-        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
-      }
-    ],
-    "limitations": [
-      "All 89 canonical targets and all three interests were considered. Missing claims were not treated as negative evidence; no negative verdict was justified by the inspected evidence.",
-      "50 counts distinct official URL open attempts, including failures and JavaScript shells. Existing-page text finds retrieved excerpts without additional URL open attempts. No URL was retried.",
-      "12 targeted official-domain/site searches were used. Nonofficial results and embedded visitor social posts were not used for judgments.",
-      "Some official pages returned sparse text, failed, or supplied only search excerpts. Limits appear at venue level. Generic viewpoint pins were not equated with neighbouring attractions.",
-      "No itinerary, Planner label, candidate stage, output, score, report, capture, excluded local file, project provider/model API or database was inspected or invoked.",
-      "Opening availability, adult-access restrictions and transport feasibility are separate from relevance.",
-      "Bindings copied exactly from venues.json; source package file SHA256: 98c183e505ac0316ba13952357a323e05042c4b68d6bab616030dbee16ba5fe9."
-    ],
-    "existing_page_find_requests": 47
+    "search_queries_max": 12,
+    "search_queries_used": 12,
+    "opens_max": 16,
+    "opens_used": 16,
+    "paid_calls": 0
+  },
+  "counts": {
+    "venues": 112,
+    "interests": 3,
+    "labels": 336,
+    "historical_labels_available": 210,
+    "historical_verdicts": {
+      "unknown": 155,
+      "relevant": 55
+    },
+    "historical_labels_retained": 206,
+    "historical_unknown_labels_replaced_with_new_official_relevant_judgments": 4,
+    "new_venue_labels": 126,
+    "new_venue_verdicts": {
+      "unknown": 119,
+      "relevant": 7
+    },
+    "final_verdicts": {
+      "unknown": 270,
+      "relevant": 66
+    },
+    "copied_historical_evidence_files": 56,
+    "current_official_evidence_files": 11
+  },
+  "limitations": [
+    "Exact model identifier and reasoning configuration are not exposed to this reviewer; no model name is invented. The inherited reviewer metadata gap remains unchanged.",
+    "The initial safe venue packet had null names; the coordinator repaired it and the complete identity-only packet was reread before final judgments. No relevance was inferred from names.",
+    "The query/open limits do not support exhaustive independent research for every unresolved venue. Each pair is represented, with UNKNOWN where no sufficient exact-venue evidence was inspected. UNKNOWN is not a negative relevance claim.",
+    "Some official search extracts provided usable descriptions while direct pages were blocked, failed, or the returned long excerpt did not reach the relevant subsection; these cases are stated in each evidence record.",
+    "Current official pages included incidental opening, traffic and date advisories. They were not used for thematic labels or feasibility inference.",
+    "Reused evidence preserves historical bytes, hashes, actor and time; the current reviewer performs compatibility/rebinding, not a fabricated historical re-review.",
+    "Native research validation is reserved for the coordinator; this worker checks only source hashes, exact evidence copying and 112-by-3 coverage."
+  ],
+  "review_output_ref": {
+    "path": "analysis-input/relevance-reviews.json",
+    "sha256": "0e74e365a93ca6a8695263d3b63ff7d21cfcacbfa71140517d9177c979e43fe4",
+    "media_type": "application/json",
+    "availability": "available"
   }
 }

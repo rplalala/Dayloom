@@ -2,16 +2,16 @@
   "output_version": "itinerary_3",
   "transfers": [
     {
-      "from_activity_id": "day1-buddha-tooth-relic-temple",
-      "to_activity_id": "day1-merlion-park",
-      "origin_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-      "destination_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "from_activity_id": "day1-merlion",
+      "to_activity_id": "day1-gardens",
+      "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "destination_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
       "mode": "WALK",
       "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-24T09:00:00+08:00",
-      "arrival_time": "2026-10-24T09:23:27+08:00",
-      "provider_duration_seconds": 1407.0,
-      "distance_meters": 1658,
+      "departure_time": "2026-10-25T09:45:00+08:00",
+      "arrival_time": "2026-10-25T10:17:58+08:00",
+      "provider_duration_seconds": 1978.0,
+      "distance_meters": 2383,
       "reserve_seconds": 0.0,
       "routing_preference": null,
       "evidence_refs": [
@@ -22,56 +22,56 @@
       "unknowns": []
     },
     {
-      "from_activity_id": "day1-merlion-park",
-      "to_activity_id": "day1-national-gallery",
-      "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "from_activity_id": "day1-gardens",
+      "to_activity_id": "day1-flyer",
+      "origin_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-25T13:15:00+08:00",
+      "arrival_time": "2026-10-25T13:38:40+08:00",
+      "provider_duration_seconds": 1420.0,
+      "distance_meters": 1721,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day1-flyer",
+      "to_activity_id": "day1-skyline",
+      "origin_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "destination_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-25T15:00:00+08:00",
+      "arrival_time": "2026-10-25T15:17:01+08:00",
+      "provider_duration_seconds": 1021.0,
+      "distance_meters": 1201,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day1-skyline",
+      "to_activity_id": "day1-gallery",
+      "origin_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
       "destination_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
       "mode": "WALK",
       "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-24T10:30:00+08:00",
-      "arrival_time": "2026-10-24T10:38:39+08:00",
-      "provider_duration_seconds": 519.0,
-      "distance_meters": 594,
-      "reserve_seconds": 0.0,
-      "routing_preference": null,
-      "evidence_refs": [
-        "google_routes:compute_route_matrix"
-      ],
-      "calculation_basis": "walk_provider_estimate",
-      "validation_state": "PASS",
-      "unknowns": []
-    },
-    {
-      "from_activity_id": "day1-national-gallery",
-      "to_activity_id": "day1-fort-canning",
-      "origin_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-      "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
-      "mode": "WALK",
-      "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-24T13:00:00+08:00",
-      "arrival_time": "2026-10-24T13:16:59+08:00",
-      "provider_duration_seconds": 1019.0,
-      "distance_meters": 1119,
-      "reserve_seconds": 0.0,
-      "routing_preference": null,
-      "evidence_refs": [
-        "google_routes:compute_route_matrix"
-      ],
-      "calculation_basis": "walk_provider_estimate",
-      "validation_state": "PASS",
-      "unknowns": []
-    },
-    {
-      "from_activity_id": "day1-fort-canning",
-      "to_activity_id": "day1-helix-bridge",
-      "origin_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
-      "destination_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-      "mode": "WALK",
-      "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-24T14:30:00+08:00",
-      "arrival_time": "2026-10-24T15:04:40+08:00",
-      "provider_duration_seconds": 2080.0,
-      "distance_meters": 2510,
+      "departure_time": "2026-10-25T16:15:00+08:00",
+      "arrival_time": "2026-10-25T16:43:43+08:00",
+      "provider_duration_seconds": 1723.0,
+      "distance_meters": 2100,
       "reserve_seconds": 0.0,
       "routing_preference": null,
       "evidence_refs": [
@@ -83,15 +83,15 @@
     },
     {
       "from_activity_id": "day2-botanic-gardens",
-      "to_activity_id": "day2-singapore-flyer",
+      "to_activity_id": "day2-national-museum",
       "origin_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-      "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "destination_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
       "mode": "TRANSIT",
       "mode_source": "APPLICATION_TRANSIT_FALLBACK",
-      "departure_time": "2026-10-25T11:30:00+08:00",
-      "arrival_time": "2026-10-25T12:09:01+08:00",
-      "provider_duration_seconds": 2341.0,
-      "distance_meters": 8216,
+      "departure_time": "2026-10-26T10:00:00+08:00",
+      "arrival_time": "2026-10-26T10:43:03+08:00",
+      "provider_duration_seconds": 2583.0,
+      "distance_meters": 12990,
       "reserve_seconds": 0.0,
       "routing_preference": null,
       "evidence_refs": [
@@ -100,16 +100,56 @@
       "calculation_basis": "time_applicable",
       "validation_state": "PASS",
       "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-national-museum",
+      "to_activity_id": "day2-fort-canning",
+      "origin_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+      "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-26T13:00:00+08:00",
+      "arrival_time": "2026-10-26T13:11:37+08:00",
+      "provider_duration_seconds": 697.0,
+      "distance_meters": 716,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-fort-canning",
+      "to_activity_id": "day2-sultan-mosque",
+      "origin_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+      "destination_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-26T14:20:00+08:00",
+      "arrival_time": "2026-10-26T14:52:19+08:00",
+      "provider_duration_seconds": 1939.0,
+      "distance_meters": 2302,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
     }
   ],
   "route_diagnostics": [
     {
-      "from_activity_id": "day1-buddha-tooth-relic-temple",
-      "to_activity_id": "day1-merlion-park",
-      "origin": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-      "destination": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-      "departure": "2026-10-24T09:00:00+08:00",
-      "next_start": "2026-10-24T09:45:00+08:00",
+      "from_activity_id": "day1-merlion",
+      "to_activity_id": "day1-gardens",
+      "origin": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "destination": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "departure": "2026-10-25T09:45:00+08:00",
+      "next_start": "2026-10-25T10:30:00+08:00",
       "considered_modes": [
         "WALK",
         "TRANSIT"
@@ -124,31 +164,31 @@
           "reason": "time_connection_only",
           "evidence": [
             {
-              "duration_seconds": 1407,
+              "duration_seconds": 1978,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "WALK",
               "routing_preference": null,
               "departure_time": null,
-              "requested_at": "2026-10-18T03:28:17.986839+00:00",
-              "retrieved_at": "2026-10-18T03:28:18.777029+00:00",
+              "requested_at": "2026-10-23T23:57:39.250633+00:00",
+              "retrieved_at": "2026-10-23T23:57:39.938077+00:00",
               "basis": "walk_provider_estimate",
               "element": {
-                "origin_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-                "destination_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                "destination_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
                 "derived_from_destination_place_id": null,
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 1407,
+                "static_duration_seconds": 1978,
                 "fallback_info": null,
-                "requested_at": "2026-10-18T03:28:17.986839Z",
-                "retrieved_at": "2026-10-18T03:28:18.777029Z",
-                "origin_index": 4,
-                "destination_index": 0,
-                "distance_meters": 1658,
-                "duration_seconds": 1407,
+                "requested_at": "2026-10-23T23:57:39.250633Z",
+                "retrieved_at": "2026-10-23T23:57:39.938077Z",
+                "origin_index": 0,
+                "destination_index": 1,
+                "distance_meters": 2383,
+                "duration_seconds": 1978,
                 "availability": "available",
                 "unavailable_reason": null
               }
@@ -164,12 +204,12 @@
       ]
     },
     {
-      "from_activity_id": "day1-merlion-park",
-      "to_activity_id": "day1-national-gallery",
-      "origin": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-      "destination": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-      "departure": "2026-10-24T10:30:00+08:00",
-      "next_start": "2026-10-24T10:45:00+08:00",
+      "from_activity_id": "day1-gardens",
+      "to_activity_id": "day1-flyer",
+      "origin": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "destination": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "departure": "2026-10-25T13:15:00+08:00",
+      "next_start": "2026-10-25T14:00:00+08:00",
       "considered_modes": [
         "WALK",
         "TRANSIT"
@@ -184,16 +224,136 @@
           "reason": "time_connection_only",
           "evidence": [
             {
-              "duration_seconds": 519,
+              "duration_seconds": 1420,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "WALK",
               "routing_preference": null,
               "departure_time": null,
-              "requested_at": "2026-10-18T03:28:17.986839+00:00",
-              "retrieved_at": "2026-10-18T03:28:18.777029+00:00",
+              "requested_at": "2026-10-23T23:57:39.250633+00:00",
+              "retrieved_at": "2026-10-23T23:57:39.938077+00:00",
               "basis": "walk_provider_estimate",
               "element": {
-                "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                "origin_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1420,
+                "fallback_info": null,
+                "requested_at": "2026-10-23T23:57:39.250633Z",
+                "retrieved_at": "2026-10-23T23:57:39.938077Z",
+                "origin_index": 1,
+                "destination_index": 3,
+                "distance_meters": 1721,
+                "duration_seconds": 1420,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day1-flyer",
+      "to_activity_id": "day1-skyline",
+      "origin": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "destination": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+      "departure": "2026-10-25T15:00:00+08:00",
+      "next_start": "2026-10-25T15:30:00+08:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1021,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-23T23:57:39.250633+00:00",
+              "retrieved_at": "2026-10-23T23:57:39.938077+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                "destination_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1021,
+                "fallback_info": null,
+                "requested_at": "2026-10-23T23:57:39.250633Z",
+                "retrieved_at": "2026-10-23T23:57:39.938077Z",
+                "origin_index": 3,
+                "destination_index": 9,
+                "distance_meters": 1201,
+                "duration_seconds": 1021,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day1-skyline",
+      "to_activity_id": "day1-gallery",
+      "origin": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+      "destination": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+      "departure": "2026-10-25T16:15:00+08:00",
+      "next_start": "2026-10-25T17:00:00+08:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1723,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-23T23:57:39.940587+00:00",
+              "retrieved_at": "2026-10-23T23:57:40.325660+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
                 "destination_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
@@ -201,134 +361,14 @@
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 519,
+                "static_duration_seconds": 1723,
                 "fallback_info": null,
-                "requested_at": "2026-10-18T03:28:17.986839Z",
-                "retrieved_at": "2026-10-18T03:28:18.777029Z",
-                "origin_index": 0,
-                "destination_index": 2,
-                "distance_meters": 594,
-                "duration_seconds": 519,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
-    },
-    {
-      "from_activity_id": "day1-national-gallery",
-      "to_activity_id": "day1-fort-canning",
-      "origin": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-      "destination": "ChIJVSYjJKIZ2jERpRFinATD52s",
-      "departure": "2026-10-24T13:00:00+08:00",
-      "next_start": "2026-10-24T13:30:00+08:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 1019,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-18T03:28:17.986839+00:00",
-              "retrieved_at": "2026-10-18T03:28:18.777029+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-                "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 1019,
-                "fallback_info": null,
-                "requested_at": "2026-10-18T03:28:17.986839Z",
-                "retrieved_at": "2026-10-18T03:28:18.777029Z",
-                "origin_index": 2,
-                "destination_index": 3,
-                "distance_meters": 1119,
-                "duration_seconds": 1019,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
-    },
-    {
-      "from_activity_id": "day1-fort-canning",
-      "to_activity_id": "day1-helix-bridge",
-      "origin": "ChIJVSYjJKIZ2jERpRFinATD52s",
-      "destination": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-      "departure": "2026-10-24T14:30:00+08:00",
-      "next_start": "2026-10-24T15:30:00+08:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 2080,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-18T03:28:17.986839+00:00",
-              "retrieved_at": "2026-10-18T03:28:18.777029+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
-                "destination_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 2080,
-                "fallback_info": null,
-                "requested_at": "2026-10-18T03:28:17.986839Z",
-                "retrieved_at": "2026-10-18T03:28:18.777029Z",
+                "requested_at": "2026-10-23T23:57:39.940587Z",
+                "retrieved_at": "2026-10-23T23:57:40.325660Z",
                 "origin_index": 3,
-                "destination_index": 7,
-                "distance_meters": 2510,
-                "duration_seconds": 2080,
+                "destination_index": 4,
+                "distance_meters": 2100,
+                "duration_seconds": 1723,
                 "availability": "available",
                 "unavailable_reason": null
               }
@@ -345,11 +385,11 @@
     },
     {
       "from_activity_id": "day2-botanic-gardens",
-      "to_activity_id": "day2-singapore-flyer",
+      "to_activity_id": "day2-national-museum",
       "origin": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-      "destination": "ChIJzVHFNqkZ2jERboLN2YrltH8",
-      "departure": "2026-10-25T11:30:00+08:00",
-      "next_start": "2026-10-25T13:00:00+08:00",
+      "destination": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+      "departure": "2026-10-26T10:00:00+08:00",
+      "next_start": "2026-10-26T11:00:00+08:00",
       "considered_modes": [
         "WALK",
         "TRANSIT"
@@ -364,31 +404,31 @@
           "reason": "specific_mode_transfer_deficit",
           "evidence": [
             {
-              "duration_seconds": 5783,
+              "duration_seconds": 3998,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "WALK",
               "routing_preference": null,
               "departure_time": null,
-              "requested_at": "2026-10-18T03:28:17.986839+00:00",
-              "retrieved_at": "2026-10-18T03:28:18.777029+00:00",
+              "requested_at": "2026-10-23T23:57:39.250633+00:00",
+              "retrieved_at": "2026-10-23T23:57:39.938077+00:00",
               "basis": "walk_provider_estimate",
               "element": {
                 "origin_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-                "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                "destination_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
                 "derived_from_destination_place_id": null,
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 5783,
+                "static_duration_seconds": 3998,
                 "fallback_info": null,
-                "requested_at": "2026-10-18T03:28:17.986839Z",
-                "retrieved_at": "2026-10-18T03:28:18.777029Z",
-                "origin_index": 1,
-                "destination_index": 5,
-                "distance_meters": 6904,
-                "duration_seconds": 5783,
+                "requested_at": "2026-10-23T23:57:39.250633Z",
+                "retrieved_at": "2026-10-23T23:57:39.938077Z",
+                "origin_index": 2,
+                "destination_index": 7,
+                "distance_meters": 4812,
+                "duration_seconds": 3998,
                 "availability": "available",
                 "unavailable_reason": null
               }
@@ -401,31 +441,31 @@
           "reason": "time_connection_only",
           "evidence": [
             {
-              "duration_seconds": 2341,
+              "duration_seconds": 2583,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "TRANSIT",
               "routing_preference": null,
-              "departure_time": "2026-10-25T11:30:00+08:00",
-              "requested_at": "2026-10-18T03:28:51.709637+00:00",
-              "retrieved_at": "2026-10-18T03:28:52.055738+00:00",
+              "departure_time": "2026-10-26T10:00:00+08:00",
+              "requested_at": "2026-10-23T23:58:04.725397+00:00",
+              "retrieved_at": "2026-10-23T23:58:05.099691+00:00",
               "basis": "time_applicable",
               "element": {
                 "origin_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-                "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                "destination_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
                 "derived_from_destination_place_id": null,
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 2341,
+                "static_duration_seconds": 2583,
                 "fallback_info": null,
-                "requested_at": "2026-10-18T03:28:51.709637Z",
-                "retrieved_at": "2026-10-18T03:28:52.055738Z",
+                "requested_at": "2026-10-23T23:58:04.725397Z",
+                "retrieved_at": "2026-10-23T23:58:05.099691Z",
                 "origin_index": 0,
                 "destination_index": 0,
-                "distance_meters": 8216,
-                "duration_seconds": 2341,
+                "distance_meters": 12990,
+                "duration_seconds": 2583,
                 "availability": "available",
                 "unavailable_reason": null
               }
@@ -433,113 +473,233 @@
           ]
         }
       ]
-    }
-  ],
-  "reference_recommendations": [
-    {
-      "place_name": "Lian Xin Vegetarian",
-      "source_place_id": "ChIJ-c0qznIZ2jERtO9HJCNB-EI",
-      "reason": "Restaurant near Buddha Tooth Relic Temple (approximately 1 m straight-line).",
-      "associated_day": "2026-10-24",
-      "area": "288 S Bridge Rd, B1 Buddha Tooth Relic Temple and Museum, Singapore 058840",
-      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-c9baf331-e621-4df1-98f8-5fc4084fa6f2:0"
     },
     {
-      "place_name": "MOS Burger One Fullerton (Merlion Park)",
-      "source_place_id": "ChIJizw5GtwZ2jERyDOgK1yZYUk",
-      "reason": "Restaurant near Merlion Park (approximately 31 m straight-line).",
-      "associated_day": "2026-10-24",
-      "area": "1 Fullerton Rd, #01-10 One Fullerton, Singapore 049213",
-      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-1d32aed5-eec3-4ef8-87c4-fc128a827681:2"
-    },
-    {
-      "place_name": "Milli - Rooftop Dining & Bar | Club Lounge",
-      "source_place_id": "ChIJxya3-NoZ2jERtkMmQMYAzCM",
-      "reason": "Restaurant near National Gallery Singapore (approximately 23 m straight-line).",
-      "associated_day": "2026-10-24",
-      "area": "1 St Andrew's Rd, #05-02, #06-01 National Gallery Singapore, Singapore 178957",
-      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-2efc4594-210a-4bc3-a699-a3deb9b08f6d:1"
-    }
-  ],
-  "destination": "Singapore",
-  "start_date": "2026-10-24",
-  "end_date": "2026-10-25",
-  "days": [
-    {
-      "date": "2026-10-24",
-      "activities": [
+      "from_activity_id": "day2-national-museum",
+      "to_activity_id": "day2-fort-canning",
+      "origin": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+      "destination": "ChIJVSYjJKIZ2jERpRFinATD52s",
+      "departure": "2026-10-26T13:00:00+08:00",
+      "next_start": "2026-10-26T13:30:00+08:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
         {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-buddha-tooth-relic-temple",
-          "title": "Visit Buddha Tooth Relic Temple",
-          "place_name": "Buddha Tooth Relic Temple",
-          "source_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-          "location": "288 S Bridge Rd, Singapore 058840",
-          "start_time": "2026-10-24T08:00:00+08:00",
-          "end_time": "2026-10-24T09:00:00+08:00",
-          "estimated_cost": null,
-          "notes": null
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 697,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-23T23:57:39.940587+00:00",
+              "retrieved_at": "2026-10-23T23:57:40.325660+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+                "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 697,
+                "fallback_info": null,
+                "requested_at": "2026-10-23T23:57:39.940587Z",
+                "retrieved_at": "2026-10-23T23:57:40.325660Z",
+                "origin_index": 1,
+                "destination_index": 8,
+                "distance_meters": 716,
+                "duration_seconds": 697,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
         },
         {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-merlion-park",
-          "title": "See Merlion Park",
-          "place_name": "Merlion Park",
-          "source_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-          "location": "1 Fullerton Rd, Singapore 049213",
-          "start_time": "2026-10-24T09:45:00+08:00",
-          "end_time": "2026-10-24T10:30:00+08:00",
-          "estimated_cost": null,
-          "notes": "Dense drizzle is forecast; outdoor viewing conditions may be wet."
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-national-gallery",
-          "title": "Explore National Gallery Singapore",
-          "place_name": "National Gallery Singapore",
-          "source_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-          "location": "Singapore 178957",
-          "start_time": "2026-10-24T10:45:00+08:00",
-          "end_time": "2026-10-24T13:00:00+08:00",
-          "estimated_cost": null,
-          "notes": null
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-fort-canning",
-          "title": "Walk around Fort Canning Park",
-          "place_name": "Fort Canning Park",
-          "source_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
-          "location": "Singapore",
-          "start_time": "2026-10-24T13:30:00+08:00",
-          "end_time": "2026-10-24T14:30:00+08:00",
-          "estimated_cost": null,
-          "notes": "Dense drizzle is forecast; expect wet conditions for this outdoor visit."
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-helix-bridge",
-          "title": "Walk across The Helix Bridge",
-          "place_name": "The Helix Bridge",
-          "source_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-          "location": "Singapore",
-          "start_time": "2026-10-24T15:30:00+08:00",
-          "end_time": "2026-10-24T16:15:00+08:00",
-          "estimated_cost": null,
-          "notes": "Dense drizzle is forecast; bridge views may be affected by wet weather."
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
         }
       ]
     },
     {
+      "from_activity_id": "day2-fort-canning",
+      "to_activity_id": "day2-sultan-mosque",
+      "origin": "ChIJVSYjJKIZ2jERpRFinATD52s",
+      "destination": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+      "departure": "2026-10-26T14:20:00+08:00",
+      "next_start": "2026-10-26T15:10:00+08:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1939,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-23T23:57:39.940587+00:00",
+              "retrieved_at": "2026-10-23T23:57:40.325660+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+                "destination_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1939,
+                "fallback_info": null,
+                "requested_at": "2026-10-23T23:57:39.940587Z",
+                "retrieved_at": "2026-10-23T23:57:40.325660Z",
+                "origin_index": 2,
+                "destination_index": 6,
+                "distance_meters": 2302,
+                "duration_seconds": 1939,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "MOS Burger One Fullerton (Merlion Park)",
+      "source_place_id": "ChIJizw5GtwZ2jERyDOgK1yZYUk",
+      "reason": "Restaurant near Merlion Park (approximately 31 m straight-line).",
+      "associated_day": "2026-10-25",
+      "area": "1 Fullerton Rd, #01-10 One Fullerton, Singapore 049213",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-1ba490a7-b7af-43eb-b7e3-17a865bd546f:2"
+    },
+    {
+      "place_name": "Took Lae Dee",
+      "source_place_id": "ChIJ_bJ2ixYZ2jER4tDfVoKWL3E",
+      "reason": "Restaurant near Gardens by the Bay (approximately 64 m straight-line).",
+      "associated_day": "2026-10-25",
+      "area": "18 Marina Gardens Dr, Singapore 018953",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-4b90373e-2191-4a96-96af-c2f73e3bb26a:1"
+    },
+    {
+      "place_name": "Juice Je",
+      "source_place_id": "ChIJF9eKGVcZ2jER-bnUkuwnrsg",
+      "reason": "Cafe near Singapore Flyer (approximately 0 m straight-line).",
+      "associated_day": "2026-10-25",
+      "area": "30 Raffles Ave., Singapore Flyer, Singapore 039803",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-cc27c2a8-44f6-443e-83c9-00f68891cfb6:0"
+    }
+  ],
+  "destination": "Singapore",
+  "start_date": "2026-10-25",
+  "end_date": "2026-10-26",
+  "days": [
+    {
       "date": "2026-10-25",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-merlion",
+          "title": "Visit Merlion Park",
+          "place_name": "Merlion Park",
+          "source_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "location": "1 Fullerton Rd, Singapore 049213",
+          "start_time": "2026-10-25T09:00:00+08:00",
+          "end_time": "2026-10-25T09:45:00+08:00",
+          "estimated_cost": null,
+          "notes": "Forecast calls for moderate rain showers; expect wet conditions during this outdoor visit."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-gardens",
+          "title": "Explore Gardens by the Bay",
+          "place_name": "Gardens by the Bay",
+          "source_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "location": "18 Marina Gardens Dr, Singapore 018953",
+          "start_time": "2026-10-25T10:30:00+08:00",
+          "end_time": "2026-10-25T13:15:00+08:00",
+          "estimated_cost": null,
+          "notes": "Allow time to explore the gardens at an active but unhurried pace. Forecast indicates a high chance of moderate showers, which may affect outdoor areas."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-flyer",
+          "title": "Ride the Singapore Flyer",
+          "place_name": "Singapore Flyer",
+          "source_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "location": "30 Raffles Ave., Singapore 039803",
+          "start_time": "2026-10-25T14:00:00+08:00",
+          "end_time": "2026-10-25T15:00:00+08:00",
+          "estimated_cost": null,
+          "notes": "The supplied Places hours list the Flyer as open 10:00–22:00 on this date; ticket cost is not established by the supplied evidence."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-skyline",
+          "title": "Take in the Singapore skyline view",
+          "place_name": "Singapore Skyline View",
+          "source_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+          "location": "10 Bayfront Ave, Marina Bay Sands, Singapore 018956",
+          "start_time": "2026-10-25T15:30:00+08:00",
+          "end_time": "2026-10-25T16:15:00+08:00",
+          "estimated_cost": null,
+          "notes": "Forecast calls for moderate rain showers, which may affect visibility."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-gallery",
+          "title": "Visit National Gallery Singapore",
+          "place_name": "National Gallery Singapore",
+          "source_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "location": "Singapore 178957",
+          "start_time": "2026-10-25T17:00:00+08:00",
+          "end_time": "2026-10-25T18:30:00+08:00",
+          "estimated_cost": null,
+          "notes": "The supplied Places hours list the Gallery as open 10:00–19:00 on this date; admission details are not established by the supplied evidence."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-26",
       "activities": [
         {
           "activity_kind": "main_poi",
@@ -549,23 +709,49 @@
           "place_name": "Singapore Botanic Gardens",
           "source_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
           "location": "1 Cluny Rd, Singapore 259569",
-          "start_time": "2026-10-25T08:00:00+08:00",
-          "end_time": "2026-10-25T11:30:00+08:00",
+          "start_time": "2026-10-26T07:30:00+08:00",
+          "end_time": "2026-10-26T10:00:00+08:00",
           "estimated_cost": null,
-          "notes": "Moderate drizzle is forecast; outdoor paths and gardens may be wet."
+          "notes": "Forecast indicates a high chance of moderate rain showers; conditions may affect outdoor exploration."
         },
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "day2-singapore-flyer",
-          "title": "Take in city views at Singapore Flyer",
-          "place_name": "Singapore Flyer",
-          "source_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
-          "location": "30 Raffles Ave., Singapore 039803",
-          "start_time": "2026-10-25T13:00:00+08:00",
-          "end_time": "2026-10-25T14:00:00+08:00",
+          "activity_id": "day2-national-museum",
+          "title": "Visit National Museum of Singapore",
+          "place_name": "National Museum of Singapore",
+          "source_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "location": "93 Stamford Rd, Singapore 178897",
+          "start_time": "2026-10-26T11:00:00+08:00",
+          "end_time": "2026-10-26T13:00:00+08:00",
           "estimated_cost": null,
-          "notes": "Moderate drizzle is forecast and may affect visibility. Admission price is not established by the supplied evidence."
+          "notes": "The supplied Places hours list the Museum as open 10:00–19:00 on this date; admission details are not established by the supplied evidence."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-fort-canning",
+          "title": "Walk through Fort Canning Park",
+          "place_name": "Fort Canning Park",
+          "source_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "location": "Singapore",
+          "start_time": "2026-10-26T13:30:00+08:00",
+          "end_time": "2026-10-26T14:20:00+08:00",
+          "estimated_cost": null,
+          "notes": "Forecast calls for moderate rain showers; expect wet conditions on outdoor paths."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-sultan-mosque",
+          "title": "Visit Sultan Mosque",
+          "place_name": "Sultan Mosque",
+          "source_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+          "location": "3 Muscat St, Singapore 198833",
+          "start_time": "2026-10-26T15:10:00+08:00",
+          "end_time": "2026-10-26T15:50:00+08:00",
+          "estimated_cost": null,
+          "notes": "Scheduled within the supplied Places hours of 14:00–16:00 for this date."
         }
       ]
     }

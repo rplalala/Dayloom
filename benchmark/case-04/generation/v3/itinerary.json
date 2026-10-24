@@ -4,14 +4,14 @@
     "$case_material_ref": {
       "path": "analysis/repair/repair.json",
       "pointer": "/components/0/proposal/transfers",
-      "expanded_semantic_sha256": "017ef172c14242a2dc7a532d92461a7e7e5b4e9e3223508bf5e2f02b25186522"
+      "expanded_semantic_sha256": "32a7f6ba46825f36c2d099b5ad82f7ff89a6b351dfefc6be873b473451c677ab"
     }
   },
   "route_diagnostics": {
     "$case_material_ref": {
       "path": "analysis/repair/final-primary.json",
       "pointer": "/route_diagnostics",
-      "expanded_semantic_sha256": "154eeea8ee07ee4ccfdca961c53a52165f8dcc3fe4506c039163add605868854"
+      "expanded_semantic_sha256": "854b0c887a0e4a51dc184c16c4f99aeb287faacf67d1ce0972df601f06730dd6"
     }
   },
   "reference_recommendations": [
@@ -19,38 +19,38 @@
       "place_name": "Milli - Rooftop Dining & Bar | Club Lounge",
       "source_place_id": "ChIJxya3-NoZ2jERtkMmQMYAzCM",
       "reason": "Restaurant near National Gallery Singapore (approximately 23 m straight-line).",
-      "associated_day": "2026-10-24",
+      "associated_day": "2026-10-25",
       "area": "1 St Andrew's Rd, #05-02, #06-01 National Gallery Singapore, Singapore 178957",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-df2f6148-c6d8-4b2e-9d9a-778860a50175:1"
+      "source_ref": "google_places_nearby:nearby-3dfacd54-0f0c-4003-8dd2-73fb2766c441:1"
     },
     {
-      "place_name": "MOS Burger One Fullerton (Merlion Park)",
-      "source_place_id": "ChIJizw5GtwZ2jERyDOgK1yZYUk",
-      "reason": "Restaurant near Merlion Park (approximately 31 m straight-line).",
-      "associated_day": "2026-10-24",
-      "area": "1 Fullerton Rd, #01-10 One Fullerton, Singapore 049213",
+      "place_name": "Janice Wong cafe Supertree",
+      "source_place_id": "ChIJp8_1UQAZ2jERTZqqeL0zxU8",
+      "reason": "Cafe near Garden Rhapsody (approximately 28 m straight-line).",
+      "associated_day": "2026-10-25",
+      "area": "18 Marina Gardens Dr, #03-01 Supertree Observatory, Singapore 018953",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-3b466cce-0242-4858-9ae5-18c439ac0598:2"
+      "source_ref": "google_places_nearby:nearby-0c7aa5a2-e371-4d42-aa80-f840b9fc8aac:3"
     },
     {
-      "place_name": "Juice Je",
-      "source_place_id": "ChIJF9eKGVcZ2jER-bnUkuwnrsg",
-      "reason": "Cafe near Singapore Flyer (approximately 0 m straight-line).",
-      "associated_day": "2026-10-24",
-      "area": "30 Raffles Ave., Singapore Flyer, Singapore 039803",
+      "place_name": "Dame Museum Café",
+      "source_place_id": "ChIJcxmDvOkZ2jERwUnS5lCEC8M",
+      "reason": "Restaurant near National Museum of Singapore (approximately 15 m straight-line).",
+      "associated_day": "2026-10-26",
+      "area": "93 Stamford Rd, #01-04/05 National Museum of Singapore, Singapore 178897",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-f11feeba-0823-457a-b5e5-52ec0249ac78:0"
+      "source_ref": "google_places_nearby:nearby-5cae81fd-dfed-4920-988f-c37cd7b1ef39:1"
     }
   ],
   "destination": "Singapore",
-  "start_date": "2026-10-24",
-  "end_date": "2026-10-25",
+  "start_date": "2026-10-25",
+  "end_date": "2026-10-26",
   "days": {
     "$case_material_ref": {
       "path": "analysis/repair/repair.json",
       "pointer": "/components/0/proposal/days",
-      "expanded_semantic_sha256": "15c688656b3be002ad4a09eac162e347e43754782460006db6e39fe04ab4f1e7"
+      "expanded_semantic_sha256": "bcd1c0ecfa6bf2aed02ed8e55c78934f742701fab52b2a3a0dedbafb477fccce"
     }
   }
 }

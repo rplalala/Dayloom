@@ -4,181 +4,247 @@
   "route_diagnostics": [],
   "reference_recommendations": [
     {
-      "place_name": "Lau Pa Sat",
+      "place_name": "Satay by the Bay",
       "source_place_id": null,
-      "reason": "Optional food stop to consider around the Marina Bay and waterfront sights on October 24; it can add a local dining experience without taking time from the scheduled garden and landmark visits.",
-      "associated_day": "2026-10-24",
-      "area": "Marina Bay",
-      "uncertainty": "This is a model-knowledge suggestion. Proximity and availability are model estimates and have not been checked.",
+      "reason": "An optional casual food stop to consider near your Gardens by the Bay and Marina Bay visits on the first day; it can complement the garden-and-waterfront area without adding another scheduled sightseeing commitment.",
+      "associated_day": "2026-10-25",
+      "area": "Gardens by the Bay and Marina Bay",
+      "uncertainty": "Model-knowledge suggestion only. Proximity and availability are model estimates and have not been checked; opening hours and current offerings are unverified.",
       "source_ref": null
     },
     {
-      "place_name": "Maxwell Food Centre",
+      "place_name": "Fort Canning Park",
       "source_place_id": null,
-      "reason": "Optional place to consider for a meal near the scheduled Chinatown visit on October 25.",
-      "associated_day": "2026-10-25",
-      "area": "Chinatown",
-      "uncertainty": "This is a model-knowledge suggestion. Proximity and availability are model estimates and have not been checked.",
+      "reason": "An optional green-space extension to consider near the Civic District if you want another outdoor stop around the National Museum area; it is not included as a scheduled visit.",
+      "associated_day": "2026-10-26",
+      "area": "Civic District and National Museum of Singapore",
+      "uncertainty": "Model-knowledge suggestion only. Proximity and availability are model estimates and have not been checked; access conditions and current information are unverified.",
       "source_ref": null
     }
   ],
   "destination": "Singapore",
-  "start_date": "2026-10-24",
-  "end_date": "2026-10-25",
+  "start_date": "2026-10-25",
+  "end_date": "2026-10-26",
   "days": [
-    {
-      "date": "2026-10-24",
-      "activities": [
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-botanic-gardens",
-          "title": "Explore Singapore Botanic Gardens",
-          "place_name": "Singapore Botanic Gardens",
-          "source_place_id": null,
-          "location": "Singapore",
-          "start_time": "2026-10-24T09:00:00+08:00",
-          "end_time": "2026-10-24T11:30:00+08:00",
-          "estimated_cost": null,
-          "notes": "Allow time to explore the garden landscapes at an active but unhurried pace. Opening hours and access have not been checked."
-        },
-        {
-          "$case_material_ref": {
-            "path": "evaluation/primary/report.json",
-            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/0/claims/0/original",
-            "expanded_semantic_sha256": "d6fabef12d01d27f2c521982c9c27c4cf69b15fce1ad69c7b7276e50d6c21e7e"
-          }
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-national-gallery",
-          "title": "Visit National Gallery Singapore",
-          "place_name": "National Gallery Singapore",
-          "source_place_id": null,
-          "location": "Civic District",
-          "start_time": "2026-10-24T12:05:00+08:00",
-          "end_time": "2026-10-24T14:00:00+08:00",
-          "estimated_cost": null,
-          "notes": "A substantial stop in the Civic District. Opening hours and access have not been checked."
-        },
-        {
-          "$case_material_ref": {
-            "path": "evaluation/primary/report.json",
-            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/1/claims/0/original",
-            "expanded_semantic_sha256": "2d45d4607d2690ae914aee5498d6d205e41e6e6127c67efb36f7a054aea56376"
-          }
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-merlion-park",
-          "title": "Take in the waterfront and city views at Merlion Park",
-          "place_name": "Merlion Park",
-          "source_place_id": null,
-          "location": "Marina Bay",
-          "start_time": "2026-10-24T14:20:00+08:00",
-          "end_time": "2026-10-24T15:00:00+08:00",
-          "estimated_cost": null,
-          "notes": "A short waterfront stop for views across Marina Bay."
-        },
-        {
-          "$case_material_ref": {
-            "path": "evaluation/primary/report.json",
-            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/2/claims/0/original",
-            "expanded_semantic_sha256": "745e081a6fcbae93b22b06069a64f9062dc4095f3d44fc4386d3537587c186e5"
-          }
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day1-gardens-by-the-bay",
-          "title": "Explore Gardens by the Bay",
-          "place_name": "Gardens by the Bay",
-          "source_place_id": null,
-          "location": "Marina Bay",
-          "start_time": "2026-10-24T15:35:00+08:00",
-          "end_time": "2026-10-24T18:30:00+08:00",
-          "estimated_cost": null,
-          "notes": "Set aside time for the gardens and their distinctive landscaped areas. Opening hours, access, and any admission details have not been checked."
-        }
-      ]
-    },
     {
       "date": "2026-10-25",
       "activities": [
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "day2-fort-canning",
-          "title": "Walk through Fort Canning Park",
-          "place_name": "Fort Canning Park",
+          "activity_id": "day1_gardens",
+          "title": "Explore Gardens by the Bay",
+          "place_name": "Gardens by the Bay",
           "source_place_id": null,
-          "location": "Central Singapore",
+          "location": "Marina Bay",
           "start_time": "2026-10-25T09:00:00+08:00",
-          "end_time": "2026-10-25T10:30:00+08:00",
+          "end_time": "2026-10-25T11:30:00+08:00",
           "estimated_cost": null,
-          "notes": "An active start among the park's greenery and historic surroundings."
+          "notes": "Allow time to explore the gardens at a comfortable pace. Any indoor attractions or admission-dependent areas are optional; hours and availability have not been checked."
         },
         {
-          "$case_material_ref": {
-            "path": "evaluation/primary/report.json",
-            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/3/claims/0/original",
-            "expanded_semantic_sha256": "dd85511bc083dc9f1c3299dea634c613eebdf5d1ea4e38b731be44e6879daba9"
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day1_walk_to_skypark",
+          "title": "Walk to Marina Bay Sands SkyPark",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-25T11:30:00+08:00",
+          "end_time": "2026-10-25T11:50:00+08:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 20 minutes on foot, using the pedestrian connections toward Marina Bay Sands; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1_gardens",
+            "to_activity_id": "day1_skypark"
           }
         },
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "day2-buddha-tooth-relic-temple",
+          "activity_id": "day1_skypark",
+          "title": "Visit Marina Bay Sands SkyPark Observation Deck",
+          "place_name": "Marina Bay Sands SkyPark Observation Deck",
+          "source_place_id": null,
+          "location": "Marina Bay Sands, Marina Bay",
+          "start_time": "2026-10-25T11:50:00+08:00",
+          "end_time": "2026-10-25T13:00:00+08:00",
+          "estimated_cost": null,
+          "notes": "Plan for city and bay views. Admission, opening hours, and availability have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day1_walk_to_merlion",
+          "title": "Walk to Merlion Park",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-25T13:00:00+08:00",
+          "end_time": "2026-10-25T13:20:00+08:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 20 minutes on foot along the Marina Bay waterfront; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1_skypark",
+            "to_activity_id": "day1_merlion"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1_merlion",
+          "title": "See Merlion Park and the Marina Bay waterfront",
+          "place_name": "Merlion Park",
+          "source_place_id": null,
+          "location": "Marina Bay",
+          "start_time": "2026-10-25T13:20:00+08:00",
+          "end_time": "2026-10-25T14:00:00+08:00",
+          "estimated_cost": null,
+          "notes": "A short waterfront visit for landmark views and city-photo opportunities."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day1_walk_to_gallery",
+          "title": "Walk to National Gallery Singapore",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-25T14:00:00+08:00",
+          "end_time": "2026-10-25T14:15:00+08:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 15 minutes on foot from Merlion Park toward the Civic District; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1_merlion",
+            "to_activity_id": "day1_gallery"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1_gallery",
+          "title": "Explore National Gallery Singapore",
+          "place_name": "National Gallery Singapore",
+          "source_place_id": null,
+          "location": "Civic District",
+          "start_time": "2026-10-25T14:15:00+08:00",
+          "end_time": "2026-10-25T17:00:00+08:00",
+          "estimated_cost": null,
+          "notes": "Allow time for the art collections and historic Civic District setting. Opening hours, exhibitions, and admission details have not been checked."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2_botanic",
+          "title": "Explore Singapore Botanic Gardens",
+          "place_name": "Singapore Botanic Gardens",
+          "source_place_id": null,
+          "location": "Tanglin",
+          "start_time": "2026-10-26T08:30:00+08:00",
+          "end_time": "2026-10-26T11:00:00+08:00",
+          "estimated_cost": null,
+          "notes": "Start the day with a substantial garden walk. Any ticketed areas are optional; hours and availability have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day2_transit_to_museum",
+          "title": "Take public transit to National Museum of Singapore",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-26T11:00:00+08:00",
+          "end_time": "2026-10-26T11:35:00+08:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 35 minutes using MRT and station walks, via a central connection toward the museum; route and duration are not live-verified.",
+          "transport": {
+            "mode": "TRANSIT",
+            "from_activity_id": "day2_botanic",
+            "to_activity_id": "day2_museum"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2_museum",
+          "title": "Visit National Museum of Singapore",
+          "place_name": "National Museum of Singapore",
+          "source_place_id": null,
+          "location": "Civic District",
+          "start_time": "2026-10-26T11:35:00+08:00",
+          "end_time": "2026-10-26T13:00:00+08:00",
+          "estimated_cost": null,
+          "notes": "A focused visit to Singapore's national history museum. Opening hours, exhibitions, and admission details have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day2_transit_to_chinatown",
+          "title": "Take public transit to Buddha Tooth Relic Temple",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-26T13:00:00+08:00",
+          "end_time": "2026-10-26T13:35:00+08:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 35 minutes by public transit and station walks toward Chinatown; route and duration are not live-verified.",
+          "transport": {
+            "mode": "TRANSIT",
+            "from_activity_id": "day2_museum",
+            "to_activity_id": "day2_temple"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2_temple",
           "title": "Visit Buddha Tooth Relic Temple",
           "place_name": "Buddha Tooth Relic Temple",
           "source_place_id": null,
           "location": "Chinatown",
-          "start_time": "2026-10-25T11:00:00+08:00",
-          "end_time": "2026-10-25T12:15:00+08:00",
+          "start_time": "2026-10-26T13:35:00+08:00",
+          "end_time": "2026-10-26T14:30:00+08:00",
           "estimated_cost": null,
-          "notes": "Allow time to see the temple and its interior spaces respectfully. Opening hours and access have not been checked."
+          "notes": "Explore the temple's architecture and Chinatown setting respectfully. Visitor access and opening hours have not been checked."
         },
         {
-          "$case_material_ref": {
-            "path": "evaluation/primary/report.json",
-            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/4/claims/0/original",
-            "expanded_semantic_sha256": "7f995c0d8ec96f7e8718c0094f3dd08512a985d8302f1713dc94772f01503180"
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day2_transit_to_flyer",
+          "title": "Take public transit to Singapore Flyer",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-26T14:30:00+08:00",
+          "end_time": "2026-10-26T15:05:00+08:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 35 minutes using public transit and station walks toward Marina Bay; route and duration are not live-verified.",
+          "transport": {
+            "mode": "TRANSIT",
+            "from_activity_id": "day2_temple",
+            "to_activity_id": "day2_flyer"
           }
         },
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "day2-singapore-flyer",
-          "title": "Enjoy elevated city views from Singapore Flyer",
+          "activity_id": "day2_flyer",
+          "title": "Take in the city views at Singapore Flyer",
           "place_name": "Singapore Flyer",
           "source_place_id": null,
           "location": "Marina Bay",
-          "start_time": "2026-10-25T12:50:00+08:00",
-          "end_time": "2026-10-25T14:20:00+08:00",
+          "start_time": "2026-10-26T15:05:00+08:00",
+          "end_time": "2026-10-26T16:30:00+08:00",
           "estimated_cost": null,
-          "notes": "Time for the attraction and its panoramic city views. Opening hours, availability, and admission details have not been checked."
-        },
-        {
-          "$case_material_ref": {
-            "path": "evaluation/primary/report.json",
-            "pointer": "/quality/groups/0/versions/v0/primary_metrics/routes/checks/5/claims/0/original",
-            "expanded_semantic_sha256": "2f22a4ff49e7e6cba0c9fb9b09cd606c0144db4d56b6d63caed904841ce04783"
-          }
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "day2-artscience-museum",
-          "title": "Explore ArtScience Museum",
-          "place_name": "ArtScience Museum",
-          "source_place_id": null,
-          "location": "Marina Bay",
-          "start_time": "2026-10-25T14:40:00+08:00",
-          "end_time": "2026-10-25T16:30:00+08:00",
-          "estimated_cost": null,
-          "notes": "A final Marina Bay stop combining art, science, and distinctive architecture. Exhibitions, opening hours, and access have not been checked."
+          "notes": "Finish with elevated views across the city and bay. Operating hours, admission, and availability have not been checked."
         }
       ]
     }

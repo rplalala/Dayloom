@@ -5,7 +5,7 @@
   "applicability": "applicable",
   "population": {
     "population_id": "case-04-current-selected-population",
-    "revision": "20261024-rich3",
+    "revision": "oct25-20261024-r1",
     "unique_requests": 1,
     "planned_slots": 4
   },
@@ -13,7 +13,7 @@
     "$case_material_ref": {
       "path": "analysis/repair/research.json",
       "pointer": "/selection_profile",
-      "expanded_semantic_sha256": "a1691a05201df8abed116bb1f70150f0fe7fe83b39a0cd53bce2de02a5547f75"
+      "expanded_semantic_sha256": "f8831c46e38bb3a423148290f206b712fe7bc50c578538db061f10010ea6f760"
     }
   },
   "measurement_coverage": {
@@ -233,23 +233,23 @@
   "by_request": [
     {
       "case_id": "case-04",
-      "case_revision": "rich3-20261024-r1",
+      "case_revision": "oct25-20261024-r1",
       "repetition_ids": [
         "selected"
       ],
       "input_ref": {
-        "path": "assembled/sources/input.json",
-        "sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+        "path": "source-only/input.json",
+        "sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
         "media_type": "application/json",
         "availability": "available"
       },
       "metadata": {
-        "scope": "Explicitly selected native result cohort, retrospective. Not an all-history completion rate; all historical attempts are separately reconciled.",
+        "scope": "Four single authorized new-date invocations, selected after workflow qualification. Historical attempts remain in separate cumulative accounting.",
         "selected_sources": {
-          "v0": "62f04cddad8635bbef12d116ea84346d0f9788a5",
-          "v1": "62f04cddad8635bbef12d116ea84346d0f9788a5",
-          "v2": "986ff398adf64c7022f5b23c505f4c7194d13903",
-          "v3": "a391c2c18846f40a727038a0cf4bd176239ba904"
+          "v0": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
+          "v1": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
+          "v2": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371",
+          "v3": "4f4d0b5444faa2dbd42cee19bf18bd04e0b79371"
         }
       },
       "planned_versions": [
@@ -278,7 +278,7 @@
     "rows": [
       {
         "case_id": "case-04",
-        "case_revision": "rich3-20261024-r1",
+        "case_revision": "oct25-20261024-r1",
         "repetition_id": "selected",
         "status": "completed"
       }
@@ -299,68 +299,68 @@
   "slots": [
     {
       "case_id": "case-04",
-      "case_revision": "rich3-20261024-r1",
+      "case_revision": "oct25-20261024-r1",
       "version": "v0",
       "repetition_id": "selected",
-      "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
       "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
       "status": "completed",
       "reason_type": "explicit_current_selection",
       "primary_attempt": {
         "case_id": "case-04",
-        "case_revision": "rich3-20261024-r1",
+        "case_revision": "oct25-20261024-r1",
         "version": "v0",
         "repetition_id": "selected",
-        "attempt_id": "case-04-current-path-v0-a1-selected",
-        "run_id": "case-04-current-path-v0-a1",
+        "attempt_id": "case-04-oct25-v0-a1-selected",
+        "run_id": "case-04-oct25-v0-a1",
         "group_id": "case-04",
         "order": 1,
         "prior_attempt_id": null,
         "reason_type": "explicit_current_selection",
         "dispatched": true,
-        "dispatched_at": "2026-10-18T03:25:49.867033+00:00",
-        "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+        "dispatched_at": "2026-10-23T23:55:14.624423+00:00",
+        "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
         "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
         "execution_metadata": {
           "dispatch_mode": "awaited_single_invocation"
         },
         "producer_metadata_ref": {
           "path": "captures/v0/planner-dispatch.json",
-          "sha256": "26bfa41be563ee6eb29a288c6100b61c1ffc416c737b2dfd5ef765db5e24dabd",
+          "sha256": "c7dca89db9ff8cadcdfa70b4804b8b531722eec25b26ed69ff8df2d8e6d872d1",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_planner_dispatch_1"
         },
         "completion_ref": {
-          "path": "assembled/sources/captures/v0/producer-completion.json",
-          "sha256": "ada6acbef27183f31287c16b887f4688e2f1dd44691aa7f2c4bfb0993f06ccc0",
+          "path": "analysis-input/v0-completion.json",
+          "sha256": "0a13a59109fb1d1e2928d4da0e5436bb7c5728947b0424e62aa65fe8b146a449",
           "media_type": "application/json",
           "availability": "available"
         },
         "result_ref": {
-          "path": "assembled/sources/captures/v0/result.json",
-          "sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
+          "path": "captures/v0/result.json",
+          "sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
           "media_type": "application/json",
           "availability": "available"
         },
         "usage_ref": {
-          "path": "assembled/sources/captures/v0/usage.json",
-          "sha256": "5b7cf53b19268e6068d64cdd88f90092a26316b4a752c300434c16726469b34b",
+          "path": "captures/v0/usage.json",
+          "sha256": "9b73287156540f1b73562ddd87986979719e9d39a867f06b8dce8698a587f2bc",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_usage_1"
         },
         "provenance_ref": {
-          "path": "assembled/sources/captures/v0/producer-declaration-0-v0.json",
-          "sha256": "b36b4fc166e5271dab4b7d59943752f59a3831469ba9e8a778fbd72d867b05d0",
+          "path": "captures/v0/provenance.json",
+          "sha256": "142edce8a04568224ac0049edabd7602f90e7543bb20f22d22246256f3109df3",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_provenance_1"
         },
         "status": "completed",
         "producer_completion": {
-          "declared_by": "rtpeval.generate/selected_workflow_1",
-          "declared_at": "2026-10-18T03:26:36.464068+00:00",
+          "declared_by": "/root:offline_saved_output_qualification",
+          "declared_at": "2026-10-24T00:02:52.069764+00:00",
           "policy_ref": "selected_workflow_1",
           "producer_policy_ref": "selected_workflow_1",
           "workflow_status": "completed",
@@ -369,18 +369,7 @@
           },
           "observations": [],
           "failure_type": null,
-          "operator_selection_ref": {
-            "path": "../../generation-selection-ef0d988ec592446093225db9bc77bfd2.json",
-            "sha256": "0a1c4986f124392b0de47acfeadd834d55972a23424cf40608023a536ebfecd2",
-            "media_type": "application/json",
-            "availability": "available"
-          },
-          "operator_config_ref": {
-            "path": "../../registration-selection-live.json",
-            "sha256": "0a1c4986f124392b0de47acfeadd834d55972a23424cf40608023a536ebfecd2",
-            "media_type": "application/json",
-            "availability": "available"
-          }
+          "rationale": "Native completion predicate applied to exact saved invocation; no new provider or generation calls."
         }
       },
       "attempts": [
@@ -388,7 +377,7 @@
           "$case_material_ref": {
             "path": "analysis/resources/selected-population.json",
             "pointer": "/slots/0/primary_attempt",
-            "expanded_semantic_sha256": "47607d9eb9efa413842c3605ac6ebf7dfc91be4dd11c7a9b20e4bdb189341676"
+            "expanded_semantic_sha256": "6731cb0668df0d893221ad47b7606a56c857293a4821df6d90404ae43d672d0e"
           }
         }
       ],
@@ -396,68 +385,68 @@
     },
     {
       "case_id": "case-04",
-      "case_revision": "rich3-20261024-r1",
+      "case_revision": "oct25-20261024-r1",
       "version": "v1",
       "repetition_id": "selected",
-      "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
       "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
       "status": "completed",
       "reason_type": "explicit_current_selection",
       "primary_attempt": {
         "case_id": "case-04",
-        "case_revision": "rich3-20261024-r1",
+        "case_revision": "oct25-20261024-r1",
         "version": "v1",
         "repetition_id": "selected",
-        "attempt_id": "case-04-current-path-v1-a1-selected",
-        "run_id": "case-04-current-path-v1-a1",
+        "attempt_id": "case-04-oct25-v1-a1-selected",
+        "run_id": "case-04-oct25-v1-a1",
         "group_id": "case-04",
         "order": 1,
         "prior_attempt_id": null,
         "reason_type": "explicit_current_selection",
         "dispatched": true,
-        "dispatched_at": "2026-10-18T03:27:24.901750+00:00",
-        "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+        "dispatched_at": "2026-10-23T23:56:30.324538+00:00",
+        "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
         "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
         "execution_metadata": {
           "dispatch_mode": "awaited_single_invocation"
         },
         "producer_metadata_ref": {
           "path": "captures/v1/planner-dispatch.json",
-          "sha256": "73ab66d1867f33a448be5c8bcd0fd5d69046caeccff4accd37a899ffd1be415f",
+          "sha256": "7a7500fc85fb7983c60eb508df7f7d11f737605935c7035ad227544d2835095a",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_planner_dispatch_1"
         },
         "completion_ref": {
-          "path": "assembled/sources/captures/v1/producer-completion.json",
-          "sha256": "0c5f3ed2ad72ee21582c6601f3a40ba0857940192605a9c0a1c8e209d204024b",
+          "path": "analysis-input/v1-completion.json",
+          "sha256": "0a13a59109fb1d1e2928d4da0e5436bb7c5728947b0424e62aa65fe8b146a449",
           "media_type": "application/json",
           "availability": "available"
         },
         "result_ref": {
-          "path": "assembled/sources/captures/v1/result.json",
-          "sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
+          "path": "captures/v1/result.json",
+          "sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
           "media_type": "application/json",
           "availability": "available"
         },
         "usage_ref": {
-          "path": "assembled/sources/captures/v1/usage.json",
-          "sha256": "c7f7d95339ca03654b415858a0618d9d6f4c50c8273733eb9a4dc41e0832a8be",
+          "path": "captures/v1/usage.json",
+          "sha256": "a85cc844178575972485485f56095988ad98b2968cbf41fe92fb7e7ed4840674",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_usage_1"
         },
         "provenance_ref": {
-          "path": "assembled/sources/captures/v1/producer-declaration-0-v1.json",
-          "sha256": "3f923414fe3b24ca7bf0a75df1ccaf43b643f4a69098481e6733cd25cafd8fab",
+          "path": "captures/v1/provenance.json",
+          "sha256": "a37743afc1e2585f3b20cd7b9939c3250687672367fa4523212eb1fc8ac8378c",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_provenance_1"
         },
         "status": "completed",
         "producer_completion": {
-          "declared_by": "rtpeval.generate/selected_workflow_1",
-          "declared_at": "2026-10-18T03:28:54.395941+00:00",
+          "declared_by": "/root:offline_saved_output_qualification",
+          "declared_at": "2026-10-24T00:02:52.069764+00:00",
           "policy_ref": "selected_workflow_1",
           "producer_policy_ref": "selected_workflow_1",
           "workflow_status": "completed",
@@ -466,18 +455,7 @@
           },
           "observations": [],
           "failure_type": null,
-          "operator_selection_ref": {
-            "path": "../../generation-selection-67030bec9f774f29a8e718b646ac0395.json",
-            "sha256": "0a1c4986f124392b0de47acfeadd834d55972a23424cf40608023a536ebfecd2",
-            "media_type": "application/json",
-            "availability": "available"
-          },
-          "operator_config_ref": {
-            "path": "../../registration-selection-live.json",
-            "sha256": "0a1c4986f124392b0de47acfeadd834d55972a23424cf40608023a536ebfecd2",
-            "media_type": "application/json",
-            "availability": "available"
-          }
+          "rationale": "Native completion predicate applied to exact saved invocation; no new provider or generation calls."
         }
       },
       "attempts": [
@@ -485,7 +463,7 @@
           "$case_material_ref": {
             "path": "analysis/resources/selected-population.json",
             "pointer": "/slots/1/primary_attempt",
-            "expanded_semantic_sha256": "e92efa41abe78bde78a439372a65c793388f336d08736dc3da1da9850778a06b"
+            "expanded_semantic_sha256": "4645105321fa489a4df1bde022f4b14f7278edb37fa87e6eb508e940bc795925"
           }
         }
       ],
@@ -493,68 +471,68 @@
     },
     {
       "case_id": "case-04",
-      "case_revision": "rich3-20261024-r1",
+      "case_revision": "oct25-20261024-r1",
       "version": "v2",
       "repetition_id": "selected",
-      "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
       "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
       "status": "completed",
       "reason_type": "explicit_current_selection",
       "primary_attempt": {
         "case_id": "case-04",
-        "case_revision": "rich3-20261024-r1",
+        "case_revision": "oct25-20261024-r1",
         "version": "v2",
         "repetition_id": "selected",
-        "attempt_id": "case-04-completion-v2-a1-selected",
-        "run_id": "case-04-completion-v2-a1",
+        "attempt_id": "case-04-oct25-v2-a1-selected",
+        "run_id": "case-04-oct25-v2-a1",
         "group_id": "case-04",
         "order": 1,
         "prior_attempt_id": null,
         "reason_type": "explicit_current_selection",
         "dispatched": true,
-        "dispatched_at": "2026-10-18T04:40:25.304418+00:00",
-        "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+        "dispatched_at": "2026-10-23T23:58:34.289652+00:00",
+        "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
         "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
         "execution_metadata": {
           "dispatch_mode": "awaited_single_invocation"
         },
         "producer_metadata_ref": {
           "path": "captures/v2/planner-dispatch.json",
-          "sha256": "dce984547eebd00a954455d0e0e8081fba17ed3b1e58623914c7ad67f5de2f57",
+          "sha256": "8013cf86677ad763dd3f93c23eb8dad0ecaa28c5c63b4aa37fc8349ab503ddc4",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_planner_dispatch_1"
         },
         "completion_ref": {
-          "path": "assembled/sources/captures/v2/producer-completion.json",
-          "sha256": "717656293b35ab58297778c194a99873530332b8de8b92a04f67ed945015e440",
+          "path": "analysis-input/v2-completion.json",
+          "sha256": "27b5c1ee3b1145f1593a8f0e0ea6d999070680131a05509ab89e7ce9d5fbea91",
           "media_type": "application/json",
           "availability": "available"
         },
         "result_ref": {
-          "path": "assembled/sources/captures/v2/result.json",
-          "sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
+          "path": "captures/v2/result.json",
+          "sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
           "media_type": "application/json",
           "availability": "available"
         },
         "usage_ref": {
-          "path": "assembled/sources/captures/v2/usage.json",
-          "sha256": "b4f075575400158b30f9cce1cb967a7d94104fc09eb9deab4e150ab9031431c2",
+          "path": "captures/v2/usage.json",
+          "sha256": "7f94ad031b7380a65f519b9beee96bba4e40135968f6b0a65a2329df1e3e2184",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_usage_1"
         },
         "provenance_ref": {
-          "path": "assembled/sources/captures/v2/producer-declaration-0-v2.json",
-          "sha256": "737f759061f40469232229b6eff02cf06e10f43c518b386cb7f90ced8d05f953",
+          "path": "captures/v2/provenance.json",
+          "sha256": "dcba099250f2ffe6457b325743a3be89716fa57c93cd729d43381f4c35f52dd9",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_provenance_1"
         },
         "status": "completed",
         "producer_completion": {
-          "declared_by": "rtpeval.generate/selected_workflow_1",
-          "declared_at": "2026-10-18T04:42:53.677208+00:00",
+          "declared_by": "/root:offline_saved_output_qualification",
+          "declared_at": "2026-10-24T00:02:52.069764+00:00",
           "policy_ref": "selected_workflow_1",
           "producer_policy_ref": "selected_workflow_1",
           "workflow_status": "completed",
@@ -569,18 +547,7 @@
             }
           ],
           "failure_type": null,
-          "operator_selection_ref": {
-            "path": "../../generation-selection-23a4e34676bc4b7e9c0b62e1aa4f7cc1.json",
-            "sha256": "6b4a97afe1835ad6b01cb5047ca670f27fcf5f54f1c39cb27493d1e7cebaac3f",
-            "media_type": "application/json",
-            "availability": "available"
-          },
-          "operator_config_ref": {
-            "path": "../../completion-selection.json",
-            "sha256": "6b4a97afe1835ad6b01cb5047ca670f27fcf5f54f1c39cb27493d1e7cebaac3f",
-            "media_type": "application/json",
-            "availability": "available"
-          }
+          "rationale": "Native completion predicate applied to exact saved invocation; no new provider or generation calls."
         }
       },
       "attempts": [
@@ -588,7 +555,7 @@
           "$case_material_ref": {
             "path": "analysis/resources/selected-population.json",
             "pointer": "/slots/2/primary_attempt",
-            "expanded_semantic_sha256": "4f902c085ac5462513b9c3d6caa260505448fb49920575fb265c9e9f1475c437"
+            "expanded_semantic_sha256": "0c30db1a8d936ccec73d2d85cfad51ae22768386826e00c7e2a1026d68264fa5"
           }
         }
       ],
@@ -596,60 +563,60 @@
     },
     {
       "case_id": "case-04",
-      "case_revision": "rich3-20261024-r1",
+      "case_revision": "oct25-20261024-r1",
       "version": "v3",
       "repetition_id": "selected",
-      "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
       "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
       "status": "completed",
       "reason_type": "explicit_current_selection",
       "primary_attempt": {
         "case_id": "case-04",
-        "case_revision": "rich3-20261024-r1",
+        "case_revision": "oct25-20261024-r1",
         "version": "v3",
         "repetition_id": "selected",
-        "attempt_id": "case-04-rich3-v3-a1-selected",
-        "run_id": "case-04-rich3-v3-a1",
+        "attempt_id": "case-04-oct25-v3-a1-selected",
+        "run_id": "case-04-oct25-v3-a1",
         "group_id": "case-04",
         "order": 1,
         "prior_attempt_id": null,
         "reason_type": "explicit_current_selection",
         "dispatched": true,
-        "dispatched_at": "2026-10-23T15:20:54.669326+00:00",
-        "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+        "dispatched_at": "2026-10-24T00:00:47.781065+00:00",
+        "input_sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
         "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
         "execution_metadata": {
           "dispatch_mode": "awaited_single_invocation"
         },
         "producer_metadata_ref": {
-          "path": "new-v3/planner-dispatch.json",
-          "sha256": "748cd57b44acb7adf44640401ac3f2e26170b1e33eb8de5838c5dee2832075dc",
+          "path": "captures/v3/planner-dispatch.json",
+          "sha256": "9cd546584016051d23b735919d56d59b268b058d6f07cf7fa5d65745312c1105",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_planner_dispatch_1"
         },
         "completion_ref": {
           "path": "analysis-input/v3-completion.json",
-          "sha256": "0842241b6e5a78614c400a8365650cea856a260e77625ad2bcdd71c7fdc8b5a3",
+          "sha256": "e82afc63b5683218753e455ec93b5cdac965e3f8d69448d9464784bb2fc1459f",
           "media_type": "application/json",
           "availability": "available"
         },
         "result_ref": {
-          "path": "assembled/sources/new-v3/result.json",
-          "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
+          "path": "captures/v3/result.json",
+          "sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
           "media_type": "application/json",
           "availability": "available"
         },
         "usage_ref": {
-          "path": "assembled/sources/new-v3/usage.json",
-          "sha256": "20b4b3dcd05f0716c1167e82fa00b67a1262a5303ab8028a3869511f346812e9",
+          "path": "captures/v3/usage.json",
+          "sha256": "bf0b6b3bd3506b115e23a57fa19d03318f84517476088446b44d586c4dd9b784",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_usage_1"
         },
         "provenance_ref": {
-          "path": "assembled/sources/new-v3/provenance.json",
-          "sha256": "b012f6f5c85e559d3c2e727ea79fed4ca67b7d74ef09bed2ee4f8191bfd4759b",
+          "path": "captures/v3/provenance.json",
+          "sha256": "35ff51efb8c566c7b2b5888085fdef437aa772f392835031945d47cbc8bb53ca",
           "media_type": "application/json",
           "availability": "available",
           "schema_version": "rtpeval_provenance_1"
@@ -657,7 +624,7 @@
         "status": "completed",
         "producer_completion": {
           "declared_by": "/root:offline_saved_output_qualification",
-          "declared_at": "2026-10-23T15:24:12.378004+00:00",
+          "declared_at": "2026-10-24T00:02:52.069764+00:00",
           "policy_ref": "selected_workflow_1",
           "producer_policy_ref": "selected_workflow_1",
           "workflow_status": "completed",
@@ -674,12 +641,12 @@
             },
             {
               "mechanism": "repair",
-              "status": "ACCEPTED_PARTIAL",
+              "status": "ACCEPTED_COMPLETE",
               "reason": "authorized_targets_complete"
             }
           ],
           "failure_type": null,
-          "rationale": "Native completion predicate applied offline to the exact saved invocation; no provider calls or new planner run."
+          "rationale": "Native completion predicate applied to exact saved invocation; no new provider or generation calls."
         }
       },
       "attempts": [
@@ -687,7 +654,7 @@
           "$case_material_ref": {
             "path": "analysis/resources/selected-population.json",
             "pointer": "/slots/3/primary_attempt",
-            "expanded_semantic_sha256": "ecbd95b76b4d55938730466d93245e4ea410e327c937daa00434ce9c902f041a"
+            "expanded_semantic_sha256": "19afbee4837a0aeaf858fdbc1b640075fb9c7652dbf1103c250a77b1268a5d21"
           }
         }
       ],
@@ -697,153 +664,153 @@
   "source_bindings": [
     {
       "path": "analysis-input/census.json",
-      "sha256": "df57d9245df17cf18d667a45663213463d3281a5364125470bd007b02ea0a223",
+      "sha256": "0d102dc0721f1ca669afc8c60deba413c964cf6ca728866fd85af262cdceba3a",
       "schema_version": "rtpeval_research_census_1"
     },
     {
       "path": "analysis-input/population.json",
-      "sha256": "8a198b3e82e5e6076c0e56a0c58663423ff6fafe3d9c11c4fd5ab6f6866e559b",
+      "sha256": "d0c2d0bbd3567eb62451c239e11a5a5815bff60ae4df5cf5cd2f83ce6938f3b2",
       "schema_version": "rtpeval_research_population_1"
     },
     {
       "path": "analysis-input/profile.json",
-      "sha256": "b128033247276da03429aa585bb266c32ad06203825e4ab89c0f52099a58065c",
+      "sha256": "250996f20ab7beb398b5aaa3cb0aa5944b94733f8b1acd5eef97737aa1532e6a",
       "schema_version": "rtpeval_research_profile_1"
     },
     {
+      "path": "analysis-input/v0-completion.json",
+      "sha256": "0a13a59109fb1d1e2928d4da0e5436bb7c5728947b0424e62aa65fe8b146a449",
+      "schema_version": null
+    },
+    {
+      "path": "analysis-input/v1-completion.json",
+      "sha256": "0a13a59109fb1d1e2928d4da0e5436bb7c5728947b0424e62aa65fe8b146a449",
+      "schema_version": null
+    },
+    {
+      "path": "analysis-input/v2-completion.json",
+      "sha256": "27b5c1ee3b1145f1593a8f0e0ea6d999070680131a05509ab89e7ce9d5fbea91",
+      "schema_version": null
+    },
+    {
       "path": "analysis-input/v3-completion.json",
-      "sha256": "0842241b6e5a78614c400a8365650cea856a260e77625ad2bcdd71c7fdc8b5a3",
+      "sha256": "e82afc63b5683218753e455ec93b5cdac965e3f8d69448d9464784bb2fc1459f",
       "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v0/producer-completion.json",
-      "sha256": "ada6acbef27183f31287c16b887f4688e2f1dd44691aa7f2c4bfb0993f06ccc0",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v0/producer-declaration-0-v0.json",
-      "sha256": "b36b4fc166e5271dab4b7d59943752f59a3831469ba9e8a778fbd72d867b05d0",
-      "schema_version": "rtpeval_provenance_1"
-    },
-    {
-      "path": "assembled/sources/captures/v0/result.json",
-      "sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v0/runtime-policy.json",
-      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v0/usage.json",
-      "sha256": "5b7cf53b19268e6068d64cdd88f90092a26316b4a752c300434c16726469b34b",
-      "schema_version": "rtpeval_usage_1"
-    },
-    {
-      "path": "assembled/sources/captures/v1/producer-completion.json",
-      "sha256": "0c5f3ed2ad72ee21582c6601f3a40ba0857940192605a9c0a1c8e209d204024b",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v1/producer-declaration-0-v1.json",
-      "sha256": "3f923414fe3b24ca7bf0a75df1ccaf43b643f4a69098481e6733cd25cafd8fab",
-      "schema_version": "rtpeval_provenance_1"
-    },
-    {
-      "path": "assembled/sources/captures/v1/result.json",
-      "sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v1/runtime-policy.json",
-      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v1/usage.json",
-      "sha256": "c7f7d95339ca03654b415858a0618d9d6f4c50c8273733eb9a4dc41e0832a8be",
-      "schema_version": "rtpeval_usage_1"
-    },
-    {
-      "path": "assembled/sources/captures/v2/producer-completion.json",
-      "sha256": "717656293b35ab58297778c194a99873530332b8de8b92a04f67ed945015e440",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v2/producer-declaration-0-v2.json",
-      "sha256": "737f759061f40469232229b6eff02cf06e10f43c518b386cb7f90ced8d05f953",
-      "schema_version": "rtpeval_provenance_1"
-    },
-    {
-      "path": "assembled/sources/captures/v2/result.json",
-      "sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v2/runtime-policy.json",
-      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/captures/v2/usage.json",
-      "sha256": "b4f075575400158b30f9cce1cb967a7d94104fc09eb9deab4e150ab9031431c2",
-      "schema_version": "rtpeval_usage_1"
-    },
-    {
-      "path": "assembled/sources/input.json",
-      "sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/new-v3/provenance.json",
-      "sha256": "b012f6f5c85e559d3c2e727ea79fed4ca67b7d74ef09bed2ee4f8191bfd4759b",
-      "schema_version": "rtpeval_provenance_1"
-    },
-    {
-      "path": "assembled/sources/new-v3/result.json",
-      "sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
-      "schema_version": null
-    },
-    {
-      "path": "assembled/sources/new-v3/usage.json",
-      "sha256": "20b4b3dcd05f0716c1167e82fa00b67a1262a5303ab8028a3869511f346812e9",
-      "schema_version": "rtpeval_usage_1"
     },
     {
       "path": "captures/v0/planner-dispatch.json",
-      "sha256": "26bfa41be563ee6eb29a288c6100b61c1ffc416c737b2dfd5ef765db5e24dabd",
+      "sha256": "c7dca89db9ff8cadcdfa70b4804b8b531722eec25b26ed69ff8df2d8e6d872d1",
       "schema_version": "rtpeval_planner_dispatch_1"
     },
     {
-      "path": "captures/v1/planner-dispatch.json",
-      "sha256": "73ab66d1867f33a448be5c8bcd0fd5d69046caeccff4accd37a899ffd1be415f",
-      "schema_version": "rtpeval_planner_dispatch_1"
+      "path": "captures/v0/provenance.json",
+      "sha256": "142edce8a04568224ac0049edabd7602f90e7543bb20f22d22246256f3109df3",
+      "schema_version": "rtpeval_provenance_1"
     },
     {
-      "path": "captures/v2/planner-dispatch.json",
-      "sha256": "dce984547eebd00a954455d0e0e8081fba17ed3b1e58623914c7ad67f5de2f57",
-      "schema_version": "rtpeval_planner_dispatch_1"
+      "path": "captures/v0/result.json",
+      "sha256": "b5a07cc2358bf189df529dd08401767148b9d88a599f8fa33cbfe93c518519fd",
+      "schema_version": null
     },
     {
-      "path": "new-v3/planner-dispatch.json",
-      "sha256": "748cd57b44acb7adf44640401ac3f2e26170b1e33eb8de5838c5dee2832075dc",
-      "schema_version": "rtpeval_planner_dispatch_1"
-    },
-    {
-      "path": "new-v3/runtime-policy.json",
+      "path": "captures/v0/runtime-policy.json",
       "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
       "schema_version": null
     },
     {
+      "path": "captures/v0/usage.json",
+      "sha256": "9b73287156540f1b73562ddd87986979719e9d39a867f06b8dce8698a587f2bc",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "captures/v1/planner-dispatch.json",
+      "sha256": "7a7500fc85fb7983c60eb508df7f7d11f737605935c7035ad227544d2835095a",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "captures/v1/provenance.json",
+      "sha256": "a37743afc1e2585f3b20cd7b9939c3250687672367fa4523212eb1fc8ac8378c",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "captures/v1/result.json",
+      "sha256": "7b814e48d5b0b9ac8d595d5dba79049c8bfa13ad168986b03e12e607575349a1",
+      "schema_version": null
+    },
+    {
+      "path": "captures/v1/runtime-policy.json",
+      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+      "schema_version": null
+    },
+    {
+      "path": "captures/v1/usage.json",
+      "sha256": "a85cc844178575972485485f56095988ad98b2968cbf41fe92fb7e7ed4840674",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "captures/v2/planner-dispatch.json",
+      "sha256": "8013cf86677ad763dd3f93c23eb8dad0ecaa28c5c63b4aa37fc8349ab503ddc4",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "captures/v2/provenance.json",
+      "sha256": "dcba099250f2ffe6457b325743a3be89716fa57c93cd729d43381f4c35f52dd9",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "captures/v2/result.json",
+      "sha256": "aa54c6bc57635ba0af0ca28353644a993a646c050429de8d5be3b055c98fef63",
+      "schema_version": null
+    },
+    {
+      "path": "captures/v2/runtime-policy.json",
+      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+      "schema_version": null
+    },
+    {
+      "path": "captures/v2/usage.json",
+      "sha256": "7f94ad031b7380a65f519b9beee96bba4e40135968f6b0a65a2329df1e3e2184",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "captures/v3/planner-dispatch.json",
+      "sha256": "9cd546584016051d23b735919d56d59b268b058d6f07cf7fa5d65745312c1105",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "captures/v3/provenance.json",
+      "sha256": "35ff51efb8c566c7b2b5888085fdef437aa772f392835031945d47cbc8bb53ca",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "captures/v3/result.json",
+      "sha256": "bf101753e6d1239f7362a782255ed02cb3dddc920c0ab4100b8e7753902ef813",
+      "schema_version": null
+    },
+    {
+      "path": "captures/v3/runtime-policy.json",
+      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+      "schema_version": null
+    },
+    {
+      "path": "captures/v3/usage.json",
+      "sha256": "bf0b6b3bd3506b115e23a57fa19d03318f84517476088446b44d586c4dd9b784",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
       "path": "research.json",
-      "sha256": "5a5c52f8bc238402f5f3e9b73869a460dbde98beaabe0d1f6b48c401e69db56c",
+      "sha256": "c9b86d17c6525a18e68ff9c684437fbff9e7bb26056fe27d1b549c8a0d77f560",
       "schema_version": "rtpeval_research_declaration_1"
+    },
+    {
+      "path": "source-only/input.json",
+      "sha256": "11ebfbef8b31ed2f4c1986abb31633e081be2fc0e7804c5111078c68612c90b0",
+      "schema_version": null
     }
   ],
-  "population_digest": "f18061fa0b6957a0650a0152cdb83ab01c5af6be3fc33d7f6f5fefba8e8773f3",
-  "source_digest": "247ebb5163a52e5f440a5aa3bc6da7d1415b15618685d845feadea81bb6cfece",
+  "population_digest": "a7aa3c95ab9050027c6650b8be4a102c0ee7a004635c51f9bee2c0e8f4c0bf7e",
+  "source_digest": "fbec7fdaa76c058a9eb6cd59908a2ec4d77e9804664afc0be429d663881ea0fc",
   "diagnostics": [],
   "quality_qualification": "unchanged_native_four_version_intake",
-  "semantic_sha256": "4146ac9f4d997432a01b4ad0450b8fa903db919c05195ddd210bc4d4987c386e"
+  "semantic_sha256": "c8e4bafee25993c4ad22774b2cf23f602a3d575e233dd4c8f5bf9bd9ad0d3712"
 }
