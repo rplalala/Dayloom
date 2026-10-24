@@ -3,6 +3,16 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, expect, it, vi } from 'vitest';
 import { routes } from '../../app/router';
 import { createBrief } from './editor';
+import { TaskOutcome } from './TaskActions';
+import type { PlanningTask } from './taskClient';
+
+it('shows specific acquisition failures without asking the traveler to clarify wording', () => {
+  render(<TaskOutcome task={{ ...taskA, state: 'failed', created_at: '2026-10-24T00:00:00Z', updated_at: '2026-10-24T00:00:01Z', progress: { stage: 'planning', message: 'Planning stopped' }, outcome: {
+    code: 'requirements_unmet', message: 'The planner could not meet your requirements.', action: 'Your original requirements have been kept.',
+    issues: { issues: [{ issue_type: 'no_eligible_details', reason: 'No usable place details were available.', action: 'You can retry later.', source_refs: [], quote_status: 'unavailable', related_field: null, current_value: null }] },
+  } } as PlanningTask} />);
+  expect(screen.getByText('No usable place details were available.')).toBeVisible();
+});
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
@@ -33,6 +43,16 @@ async function openRevisionDialog() {
   const dialog = await screen.findByRole('dialog', { name: 'Keep your current brief?' });
   return within(dialog).findByRole('button', { name: 'Save current brief and revise' });
 }
+
+it('keeps capability failures distinct from requests to rewrite the brief', async () => {
+  const { router } = taskPage([{ ...taskA, state: 'needs_clarification', outcome: {
+    code: 'unsupported_hard_requirements', message: 'The planner cannot verify this non-negotiable requirement.', action: 'Your requirement has been kept.',
+  } }]);
+  expect(await screen.findByRole('heading', { name: 'Some requirements cannot be verified' })).toBeVisible();
+  await act(async () => { await router.navigate('/plan?task=task-a#generation-progress'); });
+  expect(await screen.findByRole('heading', { name: 'Planning progress' })).toBeVisible();
+  expect(screen.queryByText(/Update your brief before trying again/)).not.toBeInTheDocument();
+});
 
 it.each(['success', 'failure'])('a deferred save-and-revise %s cannot change the next task navigation', async result => {
   const { router, saves } = taskPage();

@@ -137,7 +137,7 @@ class CandidateAcquisition:
     async def run(self, contract, destination, window, *, supply):
         acq = self.acquisition
         r = contract.requirements
-        assessments = assess_requirements(contract)
+        assessments = assess_requirements(contract, category_visits=True)
         require_resolved_hard(assessments)
         capacities = supply.capacities(r, window)
         intents = []

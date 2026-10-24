@@ -61,7 +61,7 @@ PROFILES = {
         RequirementProfile(
             "preference_draft_15",
             "PreferenceDraftV15",
-            "preference_prompt_22",
+            "preference_prompt_23",
             FoundryDatedInterpretationDTO,
             IndexedSourceSpans,
             dated_prompt,

@@ -175,6 +175,9 @@ def main_visits(itinerary, pid, assessments=()):
 
 
 def protect_visits(original, proposed, context, *, protect_daily=True):
+    from backend.app.policies.category_visits import protect_required_categories
+
+    protect_required_categories(original, proposed, context.contract, context.semantic_assessments)
     if protect_daily:
         from backend.app.policies.daily_visit_constraints import protect_daily_visits
 

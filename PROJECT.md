@@ -94,6 +94,9 @@ Details: [shared architecture](docs/0001-system-architecture.md),
 - Ordinary positive POI interests use soft targets of one distinct qualifying POI,
   or two for an explicitly sourced trip focus. Explicit counts, dates, exclusions
   and exclusive restrictions take priority. Broad enjoyment does not invent quotas.
+- V1-V3 support [required category visits](docs/0002-requirements-evidence.md#required-category-visits)
+  without weakening hard strength or original meaning. Final scheduled coverage and
+  unresolved evidence remain visible; V3 Repair protects attained required coverage.
 - V1-V3 use bounded discovery, evidence acquisition, semantic assessment and
   deterministic candidate supply. Shared landmark opportunities remain available
   after preference targets are met. Candidate opportunity is not final fulfillment.

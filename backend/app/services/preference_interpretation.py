@@ -65,7 +65,9 @@ def empty_preference_draft() -> InterpretationDraft:
 
 
 @observed("requirements")
-async def interpret_preferences(request, reference_date, client, tracer=None):
+async def interpret_preferences(
+    request, reference_date, client, tracer=None, *, category_visits=False
+):
     request = validate_planning_request(request, reference_date)
     if request.additional_preferences:
         draft = await client.generate_structured(
@@ -80,6 +82,7 @@ async def interpret_preferences(request, reference_date, client, tracer=None):
         if request.additional_preferences
         else None
     )
+    contract = None
     try:
         from pydantic import ValidationError
 
@@ -94,8 +97,13 @@ async def interpret_preferences(request, reference_date, client, tracer=None):
         if checked.preference_input_assessment is None:
             raise RequirementBoundaryError("missing_preference_input_assessment")
         contract = canonicalize_requirements(draft, request)
-        require_resolved_hard(assess_requirements(contract))
+        require_resolved_hard(assess_requirements(contract, category_visits=category_visits))
     except Exception as exc:
+        from backend.app.policies.requirement_feedback import attach_requirement_feedback
+        from backend.app.schemas.interpreted_requirements import ClarificationRequired
+
+        if isinstance(exc, ClarificationRequired):
+            attach_requirement_feedback(exc, contract)
         if tracer:
             from backend.app.policies.preference_input import PreferenceInputBlocked
 

@@ -56,6 +56,13 @@ and sourced count/date/access protections; the application does not shorten a vi
 to fit hours. Removed-obligation progress stays distinct from verified resolution, and
 retained route endpoints require applicable checks of the actual changed chain.
 
+[Required category visits](0002-requirements-evidence.md#required-category-visits)
+use the same bounded count-repair path, including hard one-off obligations. All patch
+and day-replan acceptance preserves attained hard category coverage and distinct-date
+progress; quantity optimization cannot remove the sole supported required visit.
+Required category coverage that remains unverified emits an UNKNOWN finding and
+incomplete policy status rather than a confirmed, automatically repairable deficit.
+
 Repair receives compact current context, canonical candidates, target worksheets, allowed
 operations, route options and bounded feedback. Each editable activity includes
 application-computed `duration_seconds` for its current

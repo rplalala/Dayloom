@@ -4,6 +4,15 @@ import type { ProductDetail } from './types';
 
 const detail: ProductDetail = { schema_version: 'product_detail_1', id: 'private-server-id', title: 'Past journey', destination: 'Sydney', provenance: 'imported', trust: 'unverified_import', request: null, days: [{ date: '2020-01-01', activities: [] }], nearby: [{ place_name: 'Optional', anchor_activity_id: 'missing' }], transfers: [] };
 describe('faithful shared exports', () => {
+  it('preserves unresolved hard visits in both JSON and text exports', () => {
+    const unresolved: ProductDetail = { ...detail, completion: {
+      policy_completion: 'incomplete', policy_reasons: [], preference_coverage: [], minimum_daily_coverage: [],
+      required_experiences: [{ requirement: 'Visit a science centre', source_quotes: ['A science centre is required.'], target: 1, scheduled: 0, frequency: 'one_off', status: 'unverified', reason: 'matching_evidence_incomplete' }],
+    } };
+    expect(exportArtifact(unresolved).completion).toEqual(unresolved.completion);
+    expect(summaryText(unresolved)).toContain('A science centre is required.');
+    expect(summaryText(unresolved)).toContain('This requirement remains unresolved.');
+  });
   it('exports one versioned reusable wrapper without server authority', () => {
     const exported = exportArtifact(detail);
     expect(exported.schema_version).toBe('dayloom_export_1');

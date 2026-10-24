@@ -77,8 +77,20 @@ Product task outcomes distinguish `completed`, `needs_clarification`, `safety_bl
 `provider_blocked`, `failed` and `cancelled`. Typed actions retain the immutable submitted
 input. Clarification may show the owner's sourced quote; safety/provider block messages
 exclude sensitive source text and raw provider diagnostics.
+Requirement failures retain allowlisted codes, canonical requirement references and
+validated original quotations where available. Evidence, candidate and capacity
+shortfalls produce `failed` / `requirements_unmet` with specific reasons, rather than
+asking the traveler to clarify already clear wording. Unsupported hard capabilities
+remain explicit; the submitted requirement is never silently weakened.
 A completed task means that a preview is available. It retains separate policy
 completion and uncertainty; persistence does not imply global feasibility.
+Optional `completion.required_experiences` preserves each supported
+[required category visit](0002-requirements-evidence.md#required-category-visits), its
+original quote, target, scheduled count and satisfied/unmet/unverified explanation.
+Preview, Save, reopening and export retain this projection. Matching is a semantic
+judgment grounded in supplied place information, not an operating-fact guarantee.
+Historical records without the field or without a captured failure reason are not
+backfilled with inferred diagnoses.
 For new Rich results, optional `completion.pace_review` preserves the
 [final V3 completion](0005-validation-repair%28v3%29.md#final-rich-completion) status and
 each applicable day's `date`, `count`, `target_count` and `state`. It carries no internal

@@ -104,6 +104,14 @@ def validate_draft(
 
     judgments = {r.place_id: r for r in semantic_assessments}
     for issue in diagnostics.policy_issues:
+        if issue["reason"] == "required_category_unverified":
+            add(
+                "semantic_requirements", "UNKNOWN", issue["reason"],
+                requirement_ids=(issue["requirement_id"],),
+                evidence_refs=(f"requirements:{issue['requirement_id']}",),
+                adopted_evidence={"basis": "incomplete_category_matching_evidence"},
+            )
+            continue
         if issue["reason"] == "experience_goal_count_unmet":
             add(
                 "semantic_requirements",
