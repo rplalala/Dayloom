@@ -14,8 +14,10 @@ from backend.app.evidence.models import (
 from backend.app.evidence.opening_hours import planning_opening_hours
 from backend.app.llm.client import StructuredLLMClient
 from backend.app.observability.run_trace import RunTracer, TracePayloadMode
+from backend.app.policies.category_visits import required_category_visit
 from backend.app.policies.generation_diagnostics import observe_generation
 from backend.app.policies.itinerary_output import output_role_summary, validate_output_sources
+from backend.app.policies.requirement_feedback import attach_requirement_feedback
 from backend.app.policies.transport import select_transport_mode_from_intent
 from backend.app.policies.trip_dates import (
     TripDatePolicyError,
@@ -166,11 +168,21 @@ def build_tools_graph(
                 create_trip_date_window(state["reference_date"]),
             )
         except ClarificationRequired as exc:
-            from backend.app.policies.requirement_feedback import attach_requirement_feedback
-
             attach_requirement_feedback(exc, state["interpreted_requirements"])
             raise
-        candidates, places = project_selected_places(funnel, selection)
+        try:
+            candidates, places = project_selected_places(funnel, selection)
+        except NoViableCandidatesError as exc:
+            contract = state["interpreted_requirements"]
+            error = ClarificationRequired(
+                "no_qualified_candidates",
+                requirement_ids=tuple(
+                    r.requirement_id for r in contract.semantic_requirements
+                    if required_category_visit(r)
+                ),
+            )
+            attach_requirement_feedback(error, contract)
+            raise error from exc
         tracer.payload(
             "evidence", "selected_place_evidence", places, minimum_mode=TracePayloadMode.NORMALIZED
         )

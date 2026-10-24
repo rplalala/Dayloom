@@ -52,7 +52,7 @@ export function PlanProgress({ task, error, loading, check, onGenerateAgain, sub
   const running = task && taskActive(task);
   const done = task?.state === "completed";
   const current = task ? stageIndex[task.progress.stage] : undefined;
-  const message = !task ? "Ready when you are." : running ? task.progress.message : done ? "Your itinerary preview is ready." : task.state === "cancelled" ? "Planning stopped. Your travel brief is still here." : task.state === "needs_clarification" ? "A few details need your attention. Update your brief before trying again." : "Planning could not finish. Your travel brief is still here.";
+  const message = !task ? "Ready when you are." : running ? task.progress.message : done ? "Your itinerary preview is ready." : task.state === "cancelled" ? "Planning stopped. Your travel brief is still here." : task.state === "needs_clarification" ? (task.outcome?.message || "A few details need your attention. Update your brief before trying again.") : "Planning could not finish. Your travel brief is still here.";
   return <section className="flow-card progress-card" id="generation-progress"><div className="flow-title"><span className="step-number">02</span><div><h2>Planning progress</h2><p>{loading || error ? 'Checking planning progress.' : message}</p></div></div>
     <div className="progress-steps">{stages.map((label, index) => {
       const complete = done || (running && current !== undefined && index < current);

@@ -44,6 +44,16 @@ async function openRevisionDialog() {
   return within(dialog).findByRole('button', { name: 'Save current brief and revise' });
 }
 
+it('keeps capability failures distinct from requests to rewrite the brief', async () => {
+  const { router } = taskPage([{ ...taskA, state: 'needs_clarification', outcome: {
+    code: 'unsupported_hard_requirements', message: 'The planner cannot verify this non-negotiable requirement.', action: 'Your requirement has been kept.',
+  } }]);
+  expect(await screen.findByRole('heading', { name: 'Some requirements cannot be verified' })).toBeVisible();
+  await act(async () => { await router.navigate('/plan?task=task-a#generation-progress'); });
+  expect(await screen.findByRole('heading', { name: 'Planning progress' })).toBeVisible();
+  expect(screen.queryByText(/Update your brief before trying again/)).not.toBeInTheDocument();
+});
+
 it.each(['success', 'failure'])('a deferred save-and-revise %s cannot change the next task navigation', async result => {
   const { router, saves } = taskPage();
   fireEvent.click(await openRevisionDialog());

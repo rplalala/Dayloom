@@ -2,6 +2,7 @@
 
 from backend.app.policies.preference_input import MESSAGES
 from backend.app.policies.requirement_feedback import ACQUISITION_FAILURES
+from backend.app.policies.requirement_feedback import MESSAGES as REQUIREMENT_MESSAGES
 from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.app.services.planning import PlanningNeedsClarificationError
 from backend.app.services.product_presentation import public_clarification
@@ -9,6 +10,14 @@ from backend.app.services.product_presentation import public_clarification
 
 def failure_outcome(error):
     if isinstance(error, PlanningNeedsClarificationError):
+        if error.issues.get("code") == "unsupported_hard_requirements":
+            message, action = REQUIREMENT_MESSAGES["unsupported_hard_requirements"]
+            return "needs_clarification", {
+                "code": "unsupported_hard_requirements",
+                "message": message,
+                "action": action,
+                "issues": public_clarification(error.issues),
+            }
         if error.issues.get("code") in ACQUISITION_FAILURES:
             return "failed", {
                 "code": "requirements_unmet",

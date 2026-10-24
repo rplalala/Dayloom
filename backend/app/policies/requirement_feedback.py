@@ -45,6 +45,10 @@ MESSAGES = {
         "The search found no places with sufficient usable details for planning.",
         "Your requirements have been kept. You can retry when more evidence is available.",
     ),
+    "no_qualified_candidates": (
+        "Available place information did not establish any eligible visits.",
+        "Your requirements have been kept. More evidence is needed before planning can continue.",
+    ),
     "required_place_details_unusable": (
         "Usable planning details were unavailable for a required place.",
         "Your required visit has been kept; missing evidence cannot confirm it is feasible.",
@@ -63,6 +67,7 @@ ACQUISITION_FAILURES = frozenset(
     {
         "no_eligible_candidates",
         "no_eligible_details",
+        "no_qualified_candidates",
         "required_place_details_unusable",
         "required_place_ineligible",
         "required_capacity_conflict",

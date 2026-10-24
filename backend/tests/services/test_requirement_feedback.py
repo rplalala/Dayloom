@@ -37,6 +37,9 @@ def test_unsupported_hard_requirement_retains_its_source_and_reason_in_product_o
     issue = outcome["issues"]["issues"][0]
     assert issue["source_refs"][0]["quote"] == text
     assert "cannot verify" in issue["reason"]
+    assert "cannot verify" in outcome["message"]
+    assert "clarify" not in outcome["message"].lower()
+    assert "Review your brief" not in outcome["action"]
 
 
 @pytest.mark.parametrize("code", ["no_eligible_candidates", "no_eligible_details"])

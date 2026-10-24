@@ -124,10 +124,11 @@ def test_explicit_category_counts_retain_operator_and_number(frequency, count):
 
 
 @pytest.mark.parametrize("version", ["v1", "v2", "v3"])
+@pytest.mark.parametrize("qualified", [True, False])
 @pytest.mark.parametrize(
     "text", ["Must include: An art museum.", "A botanical garden is required."]
 )
-def test_real_tools_graphs_acquire_and_report_required_categories(version, text):
+def test_real_tools_graphs_acquire_and_report_required_categories(version, qualified, text):
     import json
 
     from backend.app.versions.v1.runner import run_v1
@@ -145,10 +146,12 @@ def test_real_tools_graphs_acquire_and_report_required_categories(version, text)
             payload = json.loads(kwargs["user_prompt"])
             result = await super().generate_poi_semantics_structured(**kwargs)
             for row in result["assessments"]:
+                if not qualified:
+                    row["role"] = "unresolved"
                 row["matches"] = [
                     {
                         "requirement_id": req["requirement_id"],
-                        "relation": "supported",
+                        "relation": "supported" if qualified else "unresolved",
                         "evidence_refs": row["evidence_refs"],
                     }
                     for req in payload["requirements"]
@@ -161,17 +164,30 @@ def test_real_tools_graphs_acquire_and_report_required_categories(version, text)
     if version == "v3":
         options.update(development_timeout_seconds=600, quantity_review_enabled=False)
     request = make_request(text)
-    result = asyncio.run(
-        {"v1": run_v1, "v2": run_v2, "v3": run_v3}[version](
-            request,
-            CategoryModel(),
-            Places(),
-            FakeWeatherProvider(),
-            FakeRoutesProvider(),
-            reference_date=date(2026, 9, 11),
-            **options,
-        )
+    operation = {"v1": run_v1, "v2": run_v2, "v3": run_v3}[version](
+        request,
+        CategoryModel(),
+        Places(),
+        FakeWeatherProvider(),
+        FakeRoutesProvider(),
+        reference_date=date(2026, 9, 11),
+        **options,
     )
+    if not qualified:
+        from backend.app.product.task_outcomes import failure_outcome
+        from backend.app.services.planning import PlanningNeedsClarificationError
+
+        with pytest.raises(ClarificationRequired) as caught:
+            asyncio.run(operation)
+        assert caught.value.code == "no_qualified_candidates"
+        state, outcome = failure_outcome(
+            PlanningNeedsClarificationError(request.trip_requirements(), caught.value.as_dict())
+        )
+        assert state == "failed" and outcome["code"] == "requirements_unmet"
+        assert outcome["issues"]["issues"][0]["source_refs"][0]["quote"] == text
+        assert "Review your brief" not in outcome["action"]
+        return
+    result = asyncio.run(operation)
     assert result.interpreted_requirements.semantic_requirements[0].strength == "hard"
     assert result.generation_diagnostics.goal_progress[0]["satisfied"] is True
     assert request.additional_preferences == text
