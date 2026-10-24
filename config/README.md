@@ -91,13 +91,42 @@ The optional group is absent from legacy snapshots and default development behav
 It applies through the Product/Developer dependency factory and explicit tools-CLI policy
 selection; injected external clients retain responsibility for their own limits.
 
-These limits are not a monetary guarantee. Local token counts are engineering admission,
-not provider-certified invoice counts. Hosted search can introduce internal model context
-and separately billed Bing requests. Azure bills the returned
-[`tool_usage.web_search.num_requests`](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/web-search#web-search-usage-and-billing),
-which cannot be bounded by counting `web_search_call` items or `max_tool_calls` alone.
-A live acceptance run requiring a strict dollar cap remains blocked until every charge
-has a verified pre-send bound. Timeout, missing usage, or a budget alert cannot establish it.
+`web_evidence.provider: openai` selects the pinned `gpt-4.1-mini-2025-04-14`
+Responses search adapter in acceptance mode. It uses the existing `OPENAI_API_KEY`,
+`web_search` domain filtering, explicit `max_tool_calls`, default service tier and zero
+SDK retries. Search observations retain the same official-domain and downstream evidence
+validation contract. The Foundry planner and evidence reasoner are unchanged. Omitted
+provider selection preserves the legacy Foundry adapter and configuration digest.
+
+`generation_spend_usd: 25` enables one request-local allowance across Product generation
+and introductions, the programmatic runtime, and the tools CLI with explicit acceptance
+configuration. Requests reserve their maximum recognized charge before HTTP dispatch.
+Concurrent requests share that allowance. Failed, cancelled and incomplete responses keep
+the full reservation; only complete reported model usage can release a conservative
+unused difference. Missing usage never means zero cost. A blocked allowance prevents
+subsequent sends and cannot produce a successful Product result.
+
+The tariff boundary admits these operations; unsupported models, hosted Bing tools,
+streaming/background execution and unpriced route options fail before dispatch:
+
+| Operation | Conservative reservation/accounting |
+| --- | --- |
+| Places search/Details | US$0.04 per request, retained on errors |
+| Routes Essentials matrix | US$0.005 per origin/destination element |
+| Foundry Luna without hosted tools | Full 1,050,000-token context plus explicit output cap; US$1/M input and US$2/M output, above verified Global Standard long-context/cache rates |
+| OpenAI search | Full 1,047,576-token context for initial and bounded tool continuations at US$0.40/M input, capped output at US$1.60/M, plus US$0.0132 per permitted search call (tool fee and fixed 8,000-token search block) |
+| `text-embedding-3-small` | US$0.006 per request, covering the 300,000-token endpoint maximum |
+| Existing Open-Meteo endpoint | No incremental API charge |
+
+Sources: [OpenAI model limits](https://developers.openai.com/api/docs/models/gpt-4.1-mini),
+[search pricing](https://developers.openai.com/api/docs/pricing),
+[Azure rates](https://azure.microsoft.com/en-us/blog/gpt-6-astra-sol-and-luna-for-production-agents-in-microsoft-foundry/),
+and [Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
+These are conservative API-charge bounds, not invoices or tax calculations. Photos,
+atmosphere media and fixed infrastructure are separate from generation. Local token checks
+remain engineering admission; monetary reservations use provider context maxima instead.
+The allowance never truncates requirements or substitutes a weaker evidence condition.
+Injected external transports remain responsible for honoring the same send boundary.
 
 The 10-day trip duration, 14-day date horizon, model-context bounds, source and ownership
 requirements, provider constraints and zero hidden retries are unchanged. A configured ceiling

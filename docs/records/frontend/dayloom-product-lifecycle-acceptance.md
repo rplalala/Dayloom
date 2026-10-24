@@ -204,21 +204,66 @@ fixing a test-envelope field name, all **98 affected integration/observation tes
 The targeted recheck closed the finding; Spec review reported no findings. Ruff and diff checks passed. These checks establish
 request boundaries and observation coverage, not invoice limits.
 
-The offline arithmetic reserves **US$13.688** for Maps, including initial RAG, stage-wide
-Repair and nine Nearby calls. Pricing caller-submitted model allowances at Global Standard
-with the higher cache-write input rate gives **US$2.024620**; a conservative embedding
-allowance adds **US$0.0002048**. The resulting **US$15.7128248** scenario excludes hosted
-search's internal context and Bing charges, photos, fixed infrastructure and taxes. It is
-not a complete upper bound. Azure's billed Bing request count is not the exposed tool-call
-count, and a verified pre-send maximum remains unavailable. The full-run cost ceiling is
-therefore recorded as unavailable and launch as blocked. **Zero new generations ran**;
-all original hard requirements remain intact and real long-trip completion/latency remain
-unverified. Sources: [Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing),
-[Azure model rates](https://azure.microsoft.com/en-us/blog/gpt-6-astra-sol-and-luna-for-production-agents-in-microsoft-foundry/),
-[Azure search billing](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/web-search#web-search-usage-and-billing),
-and [Bing transaction rates](https://www.microsoft.com/en-us/bing/apis).
-Local evidence identifiers: `.scratch/paris-budget-preflight.{py,json}`,
-`paris-original-request.json` and `auxiliary-budget-retest.log`.
+Initial offline arithmetic reserved US$13.688 for Maps, US$2.024620 for caller-payload
+model allowances and US$0.0002048 for embeddings. That US$15.7128248 scenario was not a
+complete upper bound because hosted Bing request counts and internal context were unbounded
+at the application boundary. No generation was launched under that incomplete estimate.
+
+The authorized follow-up replaces acceptance-mode search with pinned OpenAI Responses
+search, retaining the original domain filters, evidence extraction and requirement checks.
+Implementation `2271417` follows review base `e7f1c48`. A shared US$25 allowance reserves
+recognized provider charges before each send, including model context maxima, Maps,
+embedding and Product introductions. Completed model usage can release conservative unused
+reserves; failed or unaccounted sends keep them. Unpriced operations and unaffordable
+requests are blocked without rewriting the user's brief. The
+[profile reference](../../../config/README.md#product-acceptance-profile) owns the tariff
+and configuration details.
+
+Focused regression passed **128 tests**. The broader run had **470 passes and 24 failures**:
+legacy model fakes lacked SDK transports, and the development acceptance harness detected
+unnecessary hooks outside the selected spending policy. Restricting model-hook activation
+to explicit auxiliary limits preserved the legacy entry points; **385 affected tests** then
+passed. Earlier fixture updates added the optional spending-policy field and the newly
+selected search adapter to existing lifecycle/factory doubles. Ruff and diff checks passed.
+Standards and Spec reviews of the new increment each reported zero findings. The
+live execution used a hash-frozen original request, one exclusive start marker, and the
+normal account-owned task/preview lifecycle. An initial launch stopped before task creation
+because an archived `known_fields: null` key is no longer part of the request schema.
+Removing that empty legacy transport field from the submission copy passed offline schema
+validation; all original travel fields and the archived request remained unchanged. This
+preparation failure made no provider calls. The original saved trip was not overwritten.
+
+The single authorized generation completed in **321.61 seconds**, creating preview
+`820d4ade-96ad-4bbe-a708-a92abc9bd3d9` from task
+`8cc66f3f-ea49-4f19-a23e-f4a0d6a62a04`. All nine dates contain primary activities,
+with daily counts **3/2/3/3/3/3/3/3/3** (26 total). The spending ledger retained a
+conservative charge upper bound of **US$10.736931**, below US$25: model US$0.851931,
+Places US$3.96 and Routes US$5.925. This is an API charge bound, not an invoice.
+The guard observed 18 model sends, 99 Places sends, 65 route sends and one weather
+send. Repair made three model calls across six observed rounds and ended
+`ACCEPTED_PARTIAL` with `no_executable_candidate_operation`.
+
+This result does **not** establish complete hard-requirement acceptance. Final validation
+reported 49 PASS, 31 UNKNOWN and one NEEDS_REVIEW. The art-museum obligation was matched
+by semantic judgment, not an independently established operating fact. Although the raw
+avoidance text was preserved, interpretation assigned "Avoid very crowded places" medium
+preference strength and left its semantic check UNKNOWN. That does not prove preservation
+or satisfaction of a hard avoidance constraint. Rich coverage on 26 October also remained
+a soft-target review item. No requirement was manually removed to obtain this preview.
+
+The execution harness incorrectly used the default Windows asyncio loop rather than
+the application's selector-loop factory. PostgreSQL retrieval preparation raised
+`InterfaceError`; RAG was unavailable, with zero retrieval queries and zero embedding
+sends. The pipeline continued through its ordinary acquisition path. The new OpenAI
+search adapter was not invoked either, so this run establishes no live acceptance of
+that adapter; its evidence is the offline SDK/transport regression. The saved execution
+source and raw evidence remain unchanged. No additional paid generation or probe was
+launched, and Issue #231 remains open for these acceptance gaps.
+
+Local evidence identifiers: `.scratch/controlled-paris-run.py`,
+`.scratch/controlled-paris/`, `.scratch/paris-original-request.json`, and the earlier
+`.scratch/paris-budget-preflight.{py,json}`. Runtime outputs remain local evidence, not
+published requirements or an invoice.
 
 One real photo acceptance ran against `fd93029` using the prescribed execution child and
 the rebuilt local Product. All **30 unique authorized slots** returned available in three
