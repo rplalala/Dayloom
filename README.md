@@ -9,7 +9,8 @@ independently runnable planners for exploring how external evidence, retrieval
 and targeted repair affect itinerary quality.
 
 [Explore the prototype](https://dingzh.cc/Dayloom/prototype/) ·
-[Documentation](docs/README.md) · [Benchmark results](benchmark/report.md)
+[Command line](#command-line) · [Documentation](docs/README.md) ·
+[Benchmark results](benchmark/report.md)
 
 ## Features
 
@@ -23,6 +24,8 @@ and targeted repair affect itinerary quality.
   drafts and completed previews can be recovered before you choose to save a trip.
 - **Keep your trips together.** Search, rename and manage saved trips, browse
   activity-linked Nearby references, and import or export itinerary JSON.
+- **Work from the terminal.** Generate itineraries with any V0–V3 planner and use
+  RTPEval to evaluate selected outputs, inspect resource usage and replay saved evidence.
 
 The online link is an interactive design prototype with browser-local accounts
 and data. The full application runs locally with FastAPI and PostgreSQL; its
@@ -108,16 +111,63 @@ additional perspectives on itinerary quality.
 
 ## Command line
 
-The four planners have independent entry points at `scripts/run_v0.py` through
-`scripts/run_v3.py`; see [version execution](docs/guides/development.md#independent-version-execution)
-for inputs and runtime options.
+**RTPEval** is the installed CLI for running planners and working with evaluation
+material without the frontend. Install it with `uv sync --locked --group retrieval`;
+use the same provider and retrieval setup as the application. Node.js, Product
+accounts and Product migrations are not required for these commands.
 
-**RTPEval** provides generation, material collection, validation, evaluation and
-offline replay. Run `uv run rtpeval --help` to explore the commands. Its material
-workflow is selected generation or collection → external requirements review →
-attachment and finalization → accepted manifest → automatic report → offline replay.
-See the [evaluation guide](backend/evaluation/README.md) for commands, schemas,
-credentials and explicit execution limits.
+```powershell
+uv run rtpeval --help
+uv run rtpeval generate --help
+```
+
+### Generate an itinerary
+
+Save your destination, dates, traveler count, whole-trip budget/currency and optional
+preferences in `request.json`, following the
+[request example](docs/guides/development.md#independent-version-execution).
+Choose dates within the current supported planning window. To run V3:
+
+```powershell
+uv run rtpeval generate --version v3 --input-json request.json --runtime-config config/runtime.yaml --output-directory artifacts/my-trip-v3 --group-id my-trip --run-id my-trip-v3 --execute
+```
+
+Choose `v0`, `v1`, `v2` or `v3` with `--version`; omit `--runtime-config` for V0.
+`--execute` makes real provider calls. Without it, the command only prepares input
+and configuration offline. Each invocation needs a fresh output directory.
+Successful execution saves the itinerary as `result.json`, alongside usage,
+provenance and cost reports. V2/V3 require the compatible TripWorld database.
+
+The independent `scripts/run_v0.py` through `scripts/run_v3.py` entry points remain
+available for direct planner execution; the
+[version execution guide](docs/guides/development.md#independent-version-execution)
+describes their runtime and timeout options.
+
+### Evaluate and inspect results
+
+| Command | Purpose |
+| --- | --- |
+| `generate` | Prepare or run one selected planner and capture its outputs |
+| `batch collect / attach-requirements / finalize` | Collect selected outputs, attach independently reviewed requirements and produce an accepted manifest |
+| `validate` | Check a manifest and its source material offline |
+| `evaluate execute / prepare / replay` | Evaluate online, prepare a run offline, or replay saved evidence offline |
+| `suite` | Run and report on multiple selected cases |
+| `quality`, `usage`, `cost` | Inspect saved quality, resource usage and explicit-price accounting |
+
+For an already accepted four-version `manifest.json`:
+
+```powershell
+uv run rtpeval validate manifest.json
+uv run rtpeval evaluate execute manifest.json --directory artifacts/my-evaluation --options options.json --prices prices.json --env-file .env
+uv run rtpeval evaluate replay artifacts/my-evaluation
+```
+
+Online evaluation requires credentials, explicit limits in `options.json`, a dated
+price book in `prices.json` and a fresh output directory. Replay uses the saved
+evidence without provider calls. To prepare new material, follow the
+[collection and requirements-review workflow](backend/evaluation/README.md#installed-generation-and-material-handoff).
+The [evaluation guide](backend/evaluation/README.md) also covers V3 paired diagnostics,
+blinded review and mechanism reports. Use command-group and leaf `--help` for parameters.
 
 ## Documentation
 
