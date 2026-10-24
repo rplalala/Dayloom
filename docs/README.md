@@ -98,8 +98,9 @@ does not refresh accepted datasets.
   case-04 selection and link their assessed sources.
 - [Blinded-review report](../benchmark/blinded-results/report.md): completed human
   and GPT-6.1 sol xhigh assessments, dimension and task-level rankings, agreement
-  and differences. The accepted English/Chinese questionnaires and separate answer
-  exports are retained beside the report. [#196](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/196)
+  and differences. Current English/Chinese displays, original answer exports and
+  public source bindings sit beside the report; assessed questionnaires are linked
+  at their fixed Git revision. [#196](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/196)
   records completed publication of both reports and the final review artifacts.
 - [Benchmark workflow and case material](../benchmark/README.md): accepted datasets,
   public itinerary views, source-linked reports, private archive boundaries,

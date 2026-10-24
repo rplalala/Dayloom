@@ -194,7 +194,10 @@ binding checks. [Source hashes](source-binding.json) preserve both populations.
 
 Content synchronization uses the native source-linked display projection and the
 existing anonymous letter order. External Codex `/root` prepared the content,
-Chinese display translations, source bindings and equality checks under #219;
-exact inherited model metadata, session tokens and billing are unavailable.
+Chinese display translations, source bindings and equality checks under #219.
+`/root/review219_standards` and `/root/review219_spec` independently reviewed the
+committed content against repository standards and the Issue specification,
+including the bilingual changes. Exact inherited model metadata, session tokens
+and billing are unavailable.
 No reviewer answers were authored or reassessed. Thesis #220 consumes the accepted
 automatic selection and these source-bound blinded results as separate populations.

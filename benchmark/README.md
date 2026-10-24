@@ -309,7 +309,7 @@ benchmark/
     case-01.json
     ...
     case-12.json
-  blinded-results/                # final accepted questionnaires and answers
+  blinded-results/                # current displays, assessed-source links and answers
     report.md                     # readable comparison of the two reviews
     review.html
     review.zh-CN.html
@@ -408,10 +408,11 @@ detect an omitted category. Retain genuine empty/no-Repair/partial observations;
 unavailable evidence stays explicitly unavailable rather than being reconstructed
 from assumptions. Native execution/replay closures remain private.
 
-The [final blinded results](#final-blinded-results) are the published questionnaires
-and answer exports. Preparation, private version mappings, source bindings and
-native report/replay dependencies stay in private evidence storage. Additional
-human or corpus directories are created only for covered work.
+The [final blinded results](#final-blinded-results) link current itinerary displays,
+fixed-revision assessed questionnaires and original answer exports. A public binding
+summary identifies display and assessed-source hashes; preparation, private version
+mappings and native report/replay dependencies stay in private evidence storage.
+Additional human or corpus directories are created only for covered work.
 
 ### Private archive retention
 
