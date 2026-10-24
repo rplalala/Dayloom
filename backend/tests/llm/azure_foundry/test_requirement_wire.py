@@ -38,6 +38,7 @@ def run_wire(
 
     client = AzureFoundryStructuredLLMClient.__new__(AzureFoundryStructuredLLMClient)
     client._chat_model = SavedChat()
+    client._auxiliary_limits = None
     client._capture_secrets = ()
     client._requirement_config = {"contract": contract}
     client.requirement_capture = None

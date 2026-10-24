@@ -168,7 +168,12 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
     destination: "stop" | "group";
   } | null>(null);
   const [information, setInformation] = useState<Information | null>(null);
-  const media = usePlaceMedia(mediaEndpoint);
+  const media = usePlaceMedia(mediaEndpoint, [
+    ...detail.days.flatMap(day => day.activities
+      .filter(activity => activity.time_use !== 'free_window')
+      .map(activity => `activity:${activity.activity_id}`)),
+    ...detail.nearby.map((_, index) => `nearby:${index}`),
+  ]);
   const { groups, other } = useMemo(() => {
     const candidates: Group[] = detail.days.flatMap((day, i) =>
       day.activities

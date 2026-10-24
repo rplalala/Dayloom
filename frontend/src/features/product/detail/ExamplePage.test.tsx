@@ -12,7 +12,7 @@ it('renders a complete public example with the same photos, weather and routes a
   vi.stubGlobal('fetch', vi.fn(async (input: string) => {
     if (input === '/api/auth/current') return Response.json({}, { status: 401 });
     if (input === '/api/examples/london-example') return Response.json(london.detail);
-    if (input === '/api/examples/london-example/media') return Response.json({ items: Object.fromEntries(Object.keys(london.media_bindings).map(slot => [slot, photo])) });
+    if (input.startsWith('/api/examples/london-example/media?')) return Response.json({ items: Object.fromEntries(Object.keys(london.media_bindings).map(slot => [slot, photo])) });
     if (input === '/api/media/curated/london') return Response.json({ ...photo, alt: 'Tower Bridge, London' });
     return Response.json({}, { status: 404 });
   }));

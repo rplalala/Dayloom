@@ -37,6 +37,35 @@ def test_product_photos_use_the_shared_google_maps_key(monkeypatch):
     assert "shared-google-test-key" not in json.dumps(result)
 
 
+def test_batch_timeout_preserves_successes_and_cancels_remaining_provider_work():
+    from fastapi import Response
+
+    from backend.app.product.media import MediaProviders, resolve_photos
+
+    cancelled = []
+
+    async def provider(request):
+        if "/slow" in request.url.path:
+            try:
+                await asyncio.sleep(10)
+            finally:
+                cancelled.append(True)
+        from backend.tests.product.media_fakes import media_transport
+        return media_transport(request)
+
+    async def run():
+        adapter = MediaProviders(google_key="controlled", transport=httpx.MockTransport(provider))
+        result = await resolve_photos(
+            [("first", "fast"), ("second", "slow")], adapter, 960, 640, Response(),
+            batch_timeout_seconds=0.05,
+        )
+        assert result["items"]["first"]["status"] == "available"
+        assert result["items"]["second"]["status"] == "unavailable"
+        assert cancelled == [True]
+
+    asyncio.run(run())
+
+
 def bound_preview(owner, bindings=None):
     store = TaskStore()
     task, _ = store.accept(
@@ -269,6 +298,11 @@ def test_display_batch_limits_provider_work_and_survives_recreation(client):  # 
         )
         response = client.get(f"/api/previews/{detail.id}/media?width=200&height=1280")
         assert len(response.json()["items"]) == 12 and len(calls) == 24
+        assert response.json()["next_offset"] == 12
+        tail = client.get(f"/api/previews/{detail.id}/media?offset=12&height=1280").json()
+        assert tail["next_offset"] is None
+        assert set(response.json()["items"]) | set(tail["items"]) == set(detail._media_bindings)
+        assert len(calls) == 30
         assert all(
             request.url.params["maxHeightPx"] == "1280"
             for request in calls
@@ -320,6 +354,50 @@ def test_media_storage_constraints_and_public_migration_integrity(client, tmp_pa
     )
     with pytest.raises(ValueError, match="checksum"):
         migrate(dsn, tmp_path)
+
+
+def test_requested_slot_order_and_all_bindings_survive_save_and_copy(client):  # noqa: F811
+    from backend.app.product.media import MediaProviders, get_media_providers
+    from backend.tests.product.media_fakes import media_transport
+    from backend.tests.product.test_copies import copy, headers
+
+    owner = register(client)
+    calls = []
+
+    def transport(request):
+        calls.append(request)
+        return media_transport(request)
+
+    app.dependency_overrides[get_media_providers] = lambda: MediaProviders(
+        google_key="controlled", transport=httpx.MockTransport(transport)
+    )
+    try:
+        detail = bound_preview(owner["id"], {
+            f"activity:{i}": f"place-{i}" for i in range(25)
+        })
+        url = f"/api/previews/{detail.id}/media"
+        params = [("slot", slot) for slot in ["activity:24", "activity:1", "forged"]]
+        response = client.get(url, params=params).json()
+        assert list(response["items"]) == ["activity:24", "activity:1", "forged"]
+        assert response["items"]["forged"] == {"status": "unavailable"}
+        assert len(calls) == 4
+        oversized = [("slot", f"activity:{i}") for i in range(13)]
+        assert client.get(url, params=oversized).status_code == 422
+        assert len(calls) == 4
+        saved = client.post(
+            f"/api/previews/{detail.id}/save", json={}, headers=headers(owner)
+        ).json()["saved_trip_id"]
+        copied = copy(client, owner, "copied", saved, "complete-media-copy").json()["saved_trip_id"]
+        for endpoint in [url, f"/api/trips/{saved}/media", f"/api/trips/{copied}/media"]:
+            items, offset = {}, 0
+            while offset is not None:
+                page = client.get(endpoint, params={"offset": offset}).json()
+                items.update(page["items"])
+                offset = page["next_offset"]
+            assert set(items) == set(detail._media_bindings)
+            assert all(photo["status"] == "available" for photo in items.values())
+    finally:
+        app.dependency_overrides.clear()
 
 
 def test_decided_receipts_erase_bindings_and_never_resurrect_deleted_media(client):  # noqa: F811

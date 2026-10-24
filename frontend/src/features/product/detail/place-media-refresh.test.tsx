@@ -13,7 +13,7 @@ it("shows photographs in the itinerary before opening details and keeps full sou
   const endpoint = "/api/trips/offline/media";
   let reads = 0;
   vi.stubGlobal("fetch", vi.fn(async (url: string) => {
-    if (url !== endpoint) return Response.json({ status: "unavailable" });
+    if (!url.startsWith(endpoint + '?')) return Response.json({ status: "unavailable" });
     reads++;
     return Response.json({ items: { "activity:museum": { status: "available", kind: "verified_place", provider: "Google Maps", image_url: "https://lh3.googleusercontent.com/offline-fixture", source_url: "https://www.google.com/maps/photo/fixture", authors: [{ name: "Museum Photographer", url: "https://www.google.com/maps/contrib/123" }] } } });
   }));

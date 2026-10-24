@@ -122,6 +122,10 @@ remain binding. Missing evidence permits only the explicitly coded conservative 
 not fabricated driving or transit estimates.
 
 Rounds, per-stage work and total request deadlines are bounded by runtime configuration.
+Product acceptance selects the larger [resource profile](../config/README.md#product-acceptance-profile),
+including the union of scheduled and candidate identities in each model input. Independent
+development defaults remain selectable. Increasing those allowances does not change hard
+requirements, evidence checks or the rule that later failure retains the best accepted result.
 The V3 runner establishes the whole-request deadline before owned retrieval setup; later
 stages cannot reset it. Exhaustion, cancellation, no authorized target, rejected proposal
 and accepted repair are separate recorded outcomes. Final Nearby runs after final primary

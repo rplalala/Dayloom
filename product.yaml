@@ -1,6 +1,7 @@
 # Shared Dayloom deployment settings. Secrets belong in the ignored .env file.
 # Environment variables override these values for every runtime entry point.
 origin: http://localhost:5173
+runtime_profile: acceptance
 allow_insecure_loopback: true
 session_seconds: 3600
 database:

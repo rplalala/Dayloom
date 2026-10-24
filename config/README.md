@@ -1,7 +1,8 @@
 # Runtime configuration reference
 
-`config/runtime.yaml` is the single non-secret planner runtime policy source. This document explains
-its current values; it is not another default file. The tables enumerate every YAML leaf.
+`config/runtime.yaml` is the development policy; `config/runtime.acceptance.yaml` is the
+standalone Product acceptance policy. Both are complete, immutable non-secret configurations.
+The detailed tables below enumerate the development YAML; the profile table records acceptance differences.
 English names identify application policies, not measured optimal settings or user demands.
 
 Product options, shared database connections and Foundry endpoint/deployment settings
@@ -29,7 +30,7 @@ planning. Product version selection and primary prompts/K are unchanged.
 The V3 CLI supports `--repair-quantity-review` and `--no-repair-quantity-review`; an explicit
 flag overrides YAML, absence retains YAML. No other Repair CLI or environment budget overrides
 are introduced. `--development-timeout-seconds` remains explicit, positive, and bounded by
-`development_timeout_seconds`; YAML alone never grants 600 seconds. V3 counts from request
+`development_timeout_seconds`; CLI YAML alone does not activate a request timeout. V3 counts from request
 entry before dependency assembly. Existing `--reference-date`, input arguments and
 `--runtime-config` responsibilities are unchanged. `--rag-env-file` supplies the existing
 RAG environment with override disabled. Provider credentials remain in environment settings; deployment defaults come from
@@ -42,7 +43,100 @@ snapshots remain redacted. Each round records cumulative counters and actual cal
 missing usage is empty/unavailable, not an offline estimate. Per-round callbacks are additive to
 an existing outer usage callback. Do not add per-round totals to that same outer total twice.
 
+## Product acceptance profile
+
+Product selects `acceptance` through `product.yaml: runtime_profile`; an explicit
+`PRODUCT_RUNTIME_PROFILE=development` restores the development policy after restart.
+Independent V0-V3 entry points and Developer APIs retain development defaults. An explicit
+CLI `--runtime-config config/runtime.acceptance.yaml` opts a tools runner into acceptance.
+Snapshots record the complete selected policy and its digest. New optional/default fields
+are omitted from legacy development serialization, preserving old snapshot hashes.
+
+| Resource | Development | Product acceptance |
+| --- | --- | --- |
+| Canonical candidates / candidate searches / Details sends | 64 / 12 / 60 | 128 / 24 / 120 |
+| Initial supply ceiling | 20 | 40 |
+| Semantic calls / cumulative seconds | 6 / 120 | 12 / 240 |
+| Baseline route elements / calls / elements per request | 400 / 7 / 64 | 1600 / 32 / 64 |
+| Repair input identity union / rounds / proposal calls | 32 / 6 / 6 | 64 / 10 / 10 |
+| Repair stage / hard round / model seconds | 420 / 150 / 70 | 720 / 210 / 120 |
+| Repair reference round seconds | 120 | 180 |
+| Whole application request seconds | 600 | 1200 |
+| Nearby searches / references / stage seconds | 3 / 3 / 10 | Up to 10 / 20 / 45 |
+| Destination assistance | 100 attempts/process/UTC day | No daily cutoff; 1.1-second user cooldown, 1 concurrent provider call |
+| Preference polishing | 20 operations/process/UTC day, 1 concurrent | No daily cutoff; 2-second user cooldown, 4 concurrent provider calls |
+
+Acceptance supply estimates daily demand from sourced pace and hard dated totals, skips
+fixed full-day protections, and reserves for named identities plus category obligations and alternatives. Their overlap is not assumed before evidence.
+The supply target is a resource allocation, never a new visit quota. Resolved required
+identities use the selected supply ceiling instead of the development-only 16-identity gate.
+Acquisition, Details and semantic budgets can still limit available evidence; requirements
+are retained and final validation remains authoritative. The baseline budget must accommodate
+the square of the configured supply ceiling, and every provider request retains its own cap.
+
+Nearby uses at most one search and two references per trip day, within the configured
+ceilings. Cached anchor groups remain usable when the external-send allowance is zero.
+Assistance uses verified account IDs or the direct guest client address; untrusted forwarded
+headers cannot choose a rate-limit identity. Cooldowns and concurrency are process-local,
+with no queue or cross-worker quota coordination. GeoDB's global send interval remains binding.
+The optional `admission` group configures `per_user_interval_seconds` and `max_concurrent`;
+a null legacy daily allowance requires this group. Cancellation and failure release permits.
+
+Acceptance also enables `auxiliary_model_limits` for requirement interpretation, review
+profiles, official search, evidence extraction and Product introductions. Caller-supplied
+input (including schema and a 2,048-token framing reserve) receives a 252,000-token local
+engineering check; output is capped at 16,384 tokens, retaining lower extraction/introduction
+caps. Oversized input fails before dispatch without truncating requirements or evidence.
+The optional group is absent from legacy snapshots and default development behavior.
+It applies through the Product/Developer dependency factory and explicit tools-CLI policy
+selection; injected external clients retain responsibility for their own limits.
+
+`web_evidence.provider: openai` selects the pinned `gpt-4.1-mini-2025-04-14`
+Responses search adapter in acceptance mode. It uses the existing `OPENAI_API_KEY`,
+`web_search` domain filtering, explicit `max_tool_calls`, default service tier and zero
+SDK retries. Search observations retain the same official-domain and downstream evidence
+validation contract. The Foundry planner and evidence reasoner are unchanged. Omitted
+provider selection preserves the legacy Foundry adapter and configuration digest.
+
+`generation_spend_usd: 25` enables one request-local allowance across Product generation
+and introductions, the programmatic runtime, and the tools CLI with explicit acceptance
+configuration. Requests reserve their maximum recognized charge before HTTP dispatch.
+Concurrent requests share that allowance. Failed, cancelled and incomplete responses keep
+the full reservation; only complete reported model usage can release a conservative
+unused difference. Missing usage never means zero cost. A blocked allowance prevents
+subsequent sends and cannot produce a successful Product result.
+
+The tariff boundary admits these operations; unsupported models, hosted Bing tools,
+streaming/background execution and unpriced route options fail before dispatch:
+
+| Operation | Conservative reservation/accounting |
+| --- | --- |
+| Places search/Details | US$0.04 per request, retained on errors |
+| Routes Essentials matrix | US$0.005 per origin/destination element |
+| Foundry Luna without hosted tools | Full 1,050,000-token context plus explicit output cap; US$1/M input and US$2/M output, above verified Global Standard long-context/cache rates |
+| OpenAI search | Full 1,047,576-token context for initial and bounded tool continuations at US$0.40/M input, capped output at US$1.60/M, plus US$0.0132 per permitted search call (tool fee and fixed 8,000-token search block) |
+| `text-embedding-3-small` | US$0.006 per request, covering the 300,000-token endpoint maximum |
+| Existing Open-Meteo endpoint | No incremental API charge |
+
+Sources: [OpenAI model limits](https://developers.openai.com/api/docs/models/gpt-4.1-mini),
+[search pricing](https://developers.openai.com/api/docs/pricing),
+[Azure rates](https://azure.microsoft.com/en-us/blog/gpt-6-astra-sol-and-luna-for-production-agents-in-microsoft-foundry/),
+and [Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
+These are conservative API-charge bounds, not invoices or tax calculations. Photos,
+atmosphere media and fixed infrastructure are separate from generation. Local token checks
+remain engineering admission; monetary reservations use provider context maxima instead.
+The allowance never truncates requirements or substitutes a weaker evidence condition.
+Injected external transports remain responsible for honoring the same send boundary.
+
+The 10-day trip duration, 14-day date horizon, model-context bounds, source and ownership
+requirements, provider constraints and zero hidden retries are unchanged. A configured ceiling
+does not guarantee every round fits the request deadline. Rollback selects development;
+existing saved trips and original requirements are not migrated or weakened.
+
 ## Counting, timing and invariants
+
+Numerical examples in this section use the development profile. Acceptance overrides are
+defined above; both profiles use the same counting, deadline and adoption rules.
 
 Repair acquisition allowances are **stage totals, never multiplied by the round count**. Cache hits do not
 consume new sends. Actual sent failures consume sending budget; failed pre-send reservations do
@@ -118,11 +212,11 @@ so it may exhaust four calls before using 32 elements. No live WALK compatibilit
 Schema ceilings below bound the approved engineering envelope, not universal provider limits.
 The strict patch DTO separately caps edit count at 50. Runtime values may be lowered within
 validated relationships; expanding the envelope requires an explicit code/policy change.
-Quality-first keeps its existing coordinated C64/send40/K20/P8 and baseline 400/7/64 requirements;
+Quality-first validates coordinated candidate, Details, supply and full baseline-matrix capacities;
 profile/review capacity relationships and RAG query-position/token relationships still apply.
 No historical compatibility field is silently repurposed as a Repair allowance.
 
-## Current YAML values and every effective path
+## Development YAML values and effective paths
 
 The unit and counting scope are described in each row. Values are copied from the current YAML;
 a local documentation coverage test detects a missing path or stale value.
@@ -135,40 +229,40 @@ a local documentation coverage test detects a missing path or stale value.
 | `input_assistance.destination.result_limit` | `5` | integer; 1..5 | Maximum normalized GeoDB suggestions per request. |
 | `input_assistance.destination.timeout_seconds` | `3` | seconds; > 0, <= 3 | One GeoDB request deadline, with no retry. |
 | `input_assistance.destination.minimum_interval_seconds` | `1.1` | seconds; >= 1.1 | Minimum spacing between outbound requests per process. |
-| `input_assistance.destination.daily_attempts_per_process` | `100` | integer; 1..100 | UTC-day local send cap, including failed sends. |
+| `input_assistance.destination.daily_attempts_per_process` | `100` | integer 1..100 or null with admission | UTC-day local send cap, including failed sends. |
 | `input_assistance.polishing.source_max_chars` | `4000` | integer; 1..4000 | Maximum source length for optional polishing; normal planning keeps its own limit. |
 | `input_assistance.polishing.source_max_tokens` | `1500` | integer; 1..1500 | Maximum source token count before any model construction. |
 | `input_assistance.polishing.model_input_tokens_per_call` | `8000` | integer; 1..8000 | Prompt, context and schema estimate cap for the single draft call. |
 | `input_assistance.polishing.draft_output_tokens` | `2000` | integer; 1..2000 | Maximum draft response tokens. |
 | `input_assistance.polishing.call_timeout_seconds` | `20` | seconds; > 0, <= 20 | Deadline for each model call. |
 | `input_assistance.polishing.total_timeout_seconds` | `40` | seconds; > 0, <= 40 | End-to-end model operation deadline. |
-| `input_assistance.polishing.daily_operations_per_process` | `20` | integer; 1..20 | UTC-day admitted polishing operations per process. |
+| `input_assistance.polishing.daily_operations_per_process` | `20` | integer 1..20 or null with admission | UTC-day admitted polishing operations per process. |
 | `reference_discovery.policy_version` | `"nearby_references_1"` | string; = "nearby_references_1" | Final-primary Nearby reference contract identifier. |
-| `reference_discovery.max_requests` | `3` | integer; >= 0, <= 3 | Nearby sending allowance per request, after the whole Repair stage. Zero disables the allowance. |
+| `reference_discovery.max_requests` | `3` | integer; 0..10 | Nearby sending allowance per request, after the whole Repair stage. Zero disables the allowance. |
 | `reference_discovery.max_result_count` | `10` | integer; >= 1, <= 10 | Provider result count per Nearby request. Zero is invalid. |
 | `reference_discovery.radius_metres` | `800` | number; > 0, <= 800 | Nearby search radius around an actual final anchor. Zero is invalid. |
 | `reference_discovery.anchor_reuse_metres` | `300` | number; >= 0, <= 300 | Maximum anchor separation for reusing a Nearby result. Zero removes the corresponding tolerance. |
-| `reference_discovery.deadline_seconds` | `10` | number; > 0, <= 10 | Independent final Nearby phase cap; Repair subtracts this same value from remaining request time as its reservation. Zero is invalid. |
+| `reference_discovery.deadline_seconds` | `10` | seconds; > 0, <= 45 | Independent final Nearby phase cap; Repair subtracts this same value from remaining request time as its reservation. Zero is invalid. |
 | `reference_discovery.request_timeout_seconds` | `4` | number; > 0, <= 4 | Per-Nearby-request timeout. Zero is invalid. |
 | `reference_discovery.retries` | `0` | integer; = 0 | Fixed zero retry contract. Zero is the only supported value. |
-| `reference_discovery.max_references` | `3` | integer; >= 0, <= 3 | Maximum attached references per final anchor policy. Zero disables the allowance. |
+| `reference_discovery.max_references` | `3` | integer; 0..20 | Maximum attached references per final anchor policy. Zero disables the allowance. |
 | `reference_discovery.rank_preference` | `"DISTANCE"` | string; = "DISTANCE" | Fixed provider distance ranking. |
 | `reference_discovery.included_types` | `["restaurant", "cafe", "park", "museum"]` | array; schema-validated | Fixed four reference categories; changes require a reference policy contract change. |
 | `app.time_zone` | `"Australia/Sydney"` | string; schema-validated | Backend trusted reference-day calendar. Existing date contract is unchanged. |
-| `budget.candidates` | `64` | integer; 1..64 | Primary canonical candidate processing capacity per request, not scheduled visits. Zero is invalid. |
-| `budget.final_pois` | `20` | integer; 1..20 | Maximum primary supply capacity. Duration policy selects the effective K; this does not force K20 for shorter trips. Zero is invalid. |
+| `budget.candidates` | `64` | integer; 1..128 | Primary canonical candidate processing capacity per request, not scheduled visits. Zero is invalid. |
+| `budget.final_pois` | `20` | integer; 1..40 | Maximum primary supply capacity. Duration policy selects the effective K; this does not force K20 for shorter trips. Zero is invalid. |
 | `budget.places.destination_search_calls` | `1` | integer; 1..1 | Destination resolution searches per primary request. Zero is invalid. |
-| `budget.places.candidate_search_calls` | `12` | integer; 1..12 | Initial candidate discovery search calls per primary request. Zero is invalid. |
-| `budget.places.detail_calls` | `60` | integer; 1..60 | Shared primary Details sending allowance. Repair has a separate stage allowance and the same request cache/failure state. Zero is invalid. |
+| `budget.places.candidate_search_calls` | `12` | integer; 1..24 | Initial candidate discovery search calls per primary request. Zero is invalid. |
+| `budget.places.detail_calls` | `60` | integer; 1..120 | Shared primary Details sending allowance. Repair has a separate stage allowance and the same request cache/failure state. Zero is invalid. |
 | `budget.places.review_detail_calls` | `8` | integer; 0..8 | Primary review-bearing Details allowance. Zero disables the allowance. |
 | `budget.weather.calls` | `2` | integer; 0..3 | Primary weather operation allowance; Repair reuses weather. Zero disables the allowance. |
 | `budget.routes.matrix_elements` | `64` | integer; 1..100 | Compatibility single-matrix counter retained in ToolBudgetLimits. Active baseline/alternative acquisition uses the dedicated counters below; it is not an extra V3 allowance. Zero is invalid. |
 | `budget.routes.baseline_elements_per_request` | `64` | integer; 1..64 | Maximum actual origin count times destination count per primary baseline matrix. Zero is invalid. |
-| `budget.routes.baseline_elements_per_run` | `400` | integer; 1..400 | Total directed primary baseline elements per request. Zero is invalid. |
-| `budget.routes.baseline_calls` | `7` | integer; 1..7 | Primary baseline matrix calls per request. Zero is invalid. |
-| `budget.routes.alternative_pairs` | `32` | integer; 0..16 | Primary alternative selected-pair capacity. Zero disables the allowance. |
-| `budget.routes.alternative_matrix_calls` | `32` | integer; 0..16 | Primary alternative matrix call allowance. Zero disables the allowance. |
-| `budget.routes.alternative_elements` | `64` | integer; 0..32 | Primary alternative actual matrix element allowance, including unavailable results. Zero disables the allowance. |
+| `budget.routes.baseline_elements_per_run` | `400` | integer; 1..1600 | Total directed primary baseline elements per request. Zero is invalid. |
+| `budget.routes.baseline_calls` | `7` | integer; 1..32 | Primary baseline matrix calls per request. Zero is invalid. |
+| `budget.routes.alternative_pairs` | `32` | integer; 0..32 | Primary alternative selected-pair capacity. Zero disables the allowance. |
+| `budget.routes.alternative_matrix_calls` | `32` | integer; 0..32 | Primary alternative matrix call allowance. Zero disables the allowance. |
+| `budget.routes.alternative_elements` | `64` | integer; 0..64 | Primary alternative actual matrix element allowance, including unavailable results. Zero disables the allowance. |
 | `budget.web.evidence_tasks` | `8` | integer; 0..20 | Primary official-evidence tasks; not individual search tool invocations. Zero disables the allowance. |
 | `budget.web.page_fetches` | `8` | integer; 0..20 | Primary page-fetch budget. Zero disables the allowance. |
 | `budget.experience.review_enriched_places` | `8` | integer; 0..8 | Primary places selected for review enrichment. Zero disables the allowance. |
@@ -221,9 +315,9 @@ a local documentation coverage test detects a missing path or stale value.
 | `main_generation.input_tokens` | `252000` | integer; >= 1, <= 252000 | Per-primary-call serialized input engineering ceiling. Zero is invalid. |
 | `main_generation.output_tokens` | `16384` | integer; >= 1, <= 16384 | Per-primary-call structured output ceiling. Zero is invalid. |
 | `main_generation.framing_tokens` | `2048` | integer; >= 2048, <= 2048 | Per-primary-call message framing token reserve. Zero is invalid. |
-| `development_timeout_seconds` | `600` | integer; >= 1, <= 600 | Maximum permitted explicit development CLI request allowance. Presence alone does not enable this timeout; V3 requires an explicit allowance from entry. Zero is invalid. |
-| `v3_repair.max_rounds` | `6` | integer; >= 1, <= 6 | Model rounds per Repair stage, shared across dates/targets. System deletions use their own attempt ceiling. Zero is invalid. |
-| `v3_repair.max_model_calls` | `6` | integer; >= 0, <= 6 | Proposal model sending ceiling per entire stage; zero disables Repair model proposals. Must not exceed max_rounds. |
+| `development_timeout_seconds` | `600` | integer; 1..1200 | Maximum permitted explicit development CLI request allowance. Presence alone does not enable this timeout; V3 requires an explicit allowance from entry. Zero is invalid. |
+| `v3_repair.max_rounds` | `6` | integer; 1..10 | Model rounds per Repair stage, shared across dates/targets. System deletions use their own attempt ceiling. Zero is invalid. |
+| `v3_repair.max_model_calls` | `6` | integer; 0..10 | Proposal model sending ceiling per entire stage; zero disables Repair model proposals. Must not exceed max_rounds. |
 | `v3_repair.max_deletion_attempts` | `12` | integer; >= 0, <= 120 | System deletion attempts per stage, separately bounded from proposal model sends and sharing stage time/provider limits. Zero disables enumeration. |
 | `v3_repair.reason_compression.max_calls` | `1` | integer; >= 0, <= 1 | Separate stage-wide explanation compression attempts; zero disables compression. |
 | `v3_repair.reason_compression.input_tokens` | `32000` | integer; >= 1, <= 32000 | Complete compression system/user/schema/framing input ceiling; overflow stops before dispatch. |
@@ -232,9 +326,9 @@ a local documentation coverage test detects a missing path or stale value.
 | `v3_repair.quantity_review_enabled` | `true` | boolean; schema-validated | Default coverage review-target activation; CLI can explicitly disable it. It never turns NEEDS_REVIEW into CONFIRMED. |
 | `v3_repair.alternatives_per_gap` | `2` | integer; >= 1 | Distinct alternatives per authorized quantity gap as a preparation reference. Fewer options may still be used. Zero is invalid. |
 | `v3_repair.exploration_positions` | `2` | integer; >= 0, <= 2 | Reusable exploration positions within the same input union across the stage, not extra candidates or per-date quotas. Zero removes reserved presentation opportunities. Zero removes the corresponding tolerance. |
-| `v3_repair.timing.stage_seconds` | `420` | number; > 0, <= 420 | Maximum Repair wall-clock duration, additionally bounded by entry deadline minus Nearby reservation. Zero is invalid. |
-| `v3_repair.timing.round_seconds` | `150` | number; > 0, <= 150 | Maximum wall-clock allocation for one candidate/model/recheck round. Zero is invalid. |
-| `v3_repair.timing.model_seconds` | `70` | number; > 0, <= 70 | Maximum model wait per call; dynamically shortened by remaining round time minus recheck reserve. Zero is invalid. |
+| `v3_repair.timing.stage_seconds` | `420` | seconds; > 0, <= 720 | Maximum Repair wall-clock duration, additionally bounded by entry deadline minus Nearby reservation. Zero is invalid. |
+| `v3_repair.timing.round_seconds` | `150` | seconds; > 0, <= 210 | Maximum wall-clock allocation for one candidate/model/recheck round. Zero is invalid. |
+| `v3_repair.timing.model_seconds` | `70` | seconds; > 0, <= 120 | Maximum model wait per call; dynamically shortened by remaining round time minus recheck reserve. Zero is invalid. |
 | `v3_repair.timing.preparation_seconds` | `60` | number; >= 0, <= 60 | Maximum optional candidate and pre-proposal route acquisition window per round. Zero disables new preparation work, not cached reuse or the model. Zero removes the corresponding tolerance. |
 | `v3_repair.timing.recheck_reserve_seconds` | `20` | number; > 0 | Round time retained after model wait for route acquisition and application revalidation. Zero is invalid. |
 | `v3_repair.timing.minimum_model_seconds` | `30` | number; > 0 | Minimum available model allocation required to start a call. Zero is invalid. |
@@ -243,7 +337,7 @@ a local documentation coverage test detects a missing path or stale value.
 | `v3_repair.input.input_tokens` | `252000` | integer; >= 1, <= 252000 | Per-model-call total system/user/schema/framing engineering ceiling; overflow preserves latest adopted itinerary. Zero is invalid. This application ceiling does not certify provider context capacity. |
 | `v3_repair.input.output_tokens` | `16384` | integer; >= 1, <= 16384 | Per-model-call strict output limit forwarded without mutating primary client defaults. Zero is invalid. |
 | `v3_repair.input.framing_tokens` | `2048` | integer; >= 1 | Per-call framing reserve included in input count; must be positive and below input_tokens. Zero is invalid. |
-| `v3_repair.input.identity_capacity` | `32` | integer; >= 1, <= 32 | Per-call distinct canonical union: scheduled context plus presented additions plus other operation identities. Ledger is separate and is not serialized wholesale. Zero is invalid. |
+| `v3_repair.input.identity_capacity` | `32` | integer; 1..64 | Per-call distinct canonical union: scheduled context plus presented additions plus other operation identities. Ledger is separate and is not serialized wholesale. Zero is invalid. |
 | `v3_repair.input.activity_capacity` | `120` | integer; >= 1, <= 120 | Maximum protected plus editable itinerary activities per projection; necessary context is never truncated to pass. Zero is invalid. |
 | `v3_repair.input.candidate_characters` | `12000` | integer; >= 1, <= 12000 | Maximum serialized characters per projected candidate; fail closed rather than delete facts. Zero is invalid. |
 | `v3_repair.input.feedback_characters` | `12000` | integer; >= 1, <= 12000 | Maximum compact previous-round feedback characters; overflow stops iteration without rollback. Full raw history is not included. Zero is invalid. |
@@ -472,7 +566,7 @@ Pre-generation allowances are totals minus reservations; post-generation can use
 remaining capacity. Pair admission occurs only on selection for supplementary processing,
 not enumeration. Cache reuse bypasses new-send quotas. Initial acquisition and Repair
 share request evidence/cache/failure history but retain separate send budgets. Baseline
-remains 7 requests / 400 elements / 64 elements per request. The historical single-matrix
+uses the selected profile's call/element ceilings and the unchanged per-request bound. The historical single-matrix
 compatibility setting is not an extra allowance. Application envelopes for supplementary
 pairs/requests/elements are now 32/32/64; these are not provider absolute limits.
 
@@ -481,7 +575,7 @@ same-valued Repair ceiling. Output remains 16384 and framing 2048. Actual prompt
 counts fail closed on overflow. Provider context compatibility and actual completion remain
 runtime concerns; offline sizing is not model usage. No new CLI overrides were added;
 `--runtime-config` selects the immutable snapshot, and explicit development timeout retains
-its existing opt-in semantics. The 600-second request deadline is never extended by route
+its existing opt-in semantics. The selected request deadline is never extended by route
 or Repair phases. The V3 initial-route guard uses the existing minimum model and recheck
 reserves as downstream headroom, in addition to the authoritative Nearby reserve.
 

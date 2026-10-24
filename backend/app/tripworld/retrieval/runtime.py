@@ -12,6 +12,7 @@ from openai import AsyncOpenAI
 from pgvector.psycopg import register_vector_async
 from psycopg.rows import dict_row
 
+from backend.app.integrations.spending import install_spend_hooks
 from backend.app.observability.usage import install_http_hooks, observe_sdk
 from backend.app.runtime.database import DatabaseSettings
 from backend.app.tripworld.database.policy import POLICY_VERSION
@@ -135,6 +136,7 @@ class RuntimeRetrieval:
             )
             # Attach to this owned SDK client's actual transport (httpx2 in the installed stack).
             http = self.client._client
+            install_spend_hooks(http)
             install_http_hooks(http, "openai", "embedding")
             active = {}
 

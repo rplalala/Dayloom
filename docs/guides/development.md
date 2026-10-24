@@ -144,6 +144,14 @@ process values. It serves `frontend/dist`,
 including direct navigation/reload of Product and Developer routes; missing APIs and
 assets retain their HTTP errors. Rebuild the frontend after changing its source.
 
+Product uses `runtime_profile: acceptance` from `product.yaml`. To restore development
+resource limits, set `$env:PRODUCT_RUNTIME_PROFILE='development'` before starting the server;
+remove that override to use the YAML choice. Restart the backend after policy changes.
+Independent V0-V3 and Developer defaults remain development. See the
+[profile reference](../../config/README.md#product-acceptance-profile) for coordinated values,
+snapshot compatibility and unchanged correctness boundaries. Loading a larger profile does
+not authorize paid acceptance runs; establish a request-specific cost bound first.
+
 `--check` validates configuration, both local tokenizer vocabularies, Product database
 access and TripWorld manifest/embedding-space compatibility. It reads local databases
 without model, query-embedding, map, weather or image requests. Passing it establishes

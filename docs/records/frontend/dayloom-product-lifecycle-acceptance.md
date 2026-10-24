@@ -1,8 +1,8 @@
 # Dayloom Product lifecycle acceptance
 
 Lifecycle validation uses isolated PostgreSQL and Chromium with controlled external
-adapters. A separately authorized one-use check also validates the complete local
-runtime against real providers; the two scopes remain distinct below.
+adapters. Separately authorized bounded checks validate the local runtime and saved-trip
+media against real providers; their scopes remain distinct below.
 
 ## Event and scope
 
@@ -142,6 +142,164 @@ findings. Existing `.env.example` and `GLOSSARY.md` work remained excluded; deli
 at this event is local commits, not a published deployment.
 
 ## Verification and evidence
+
+### Complete media and acceptance resources (24 October 2026)
+
+[Issue #231](https://github.com/rplalala/Dayloom/issues/231) follows the generic required-category
+correction merged through [PR #230](https://github.com/rplalala/Dayloom/pull/230).
+The review base is `ff239237`; implementation commits are `cc2864d` and `fd93029`, with
+the independent-obligation correction in `a5d9f86`. Current resource values and selection
+belong to the [profile reference](../../../config/README.md#product-acceptance-profile).
+
+A saved nine-day Paris trip had all 30 authorized media bindings, but the API selected
+only the first 12 JSONB entries: three Nearby and nine Repair activities. Eighteen original
+activities were never attempted. An offline provider that returned every photo successfully
+reproduced the omission. Ordered bounded pagination removed the whole-trip truncation;
+timeout tests also established that completed photos survive a failed slot or later batch.
+
+Acceptance resources were tested through actual V1-V3 graphs with external doubles.
+One-, nine- and ten-day Rich inputs received 9, 36 and 40 initial supply identities. Hard
+dated counts, full-day protections and category obligations retained their sourced values.
+Repair accepted a 42-identity input union without the old 32-identity restriction. The
+Nearby regression exposed a separate hardcoded three-anchor-group limit, which was removed
+while preserving cached reuse with zero send allowance. Assistance completed 105 sequential
+operations without a small daily cutoff; account isolation, cancellation and concurrency
+were checked separately.
+
+Standards review found no issues. Spec review reproduced an undersized supply for ten
+named REQUIRED identities plus ten potentially disjoint category visits: the old formula
+reserved only sixteen identities. A failing regression established the gap; the correction
+reserves twenty obligations plus seven alternatives, leaves original requirements unchanged,
+and passed the focused recheck.
+
+The broad offline run finished with **1,871 passed, 29 skipped** across runtime, policies,
+services, versions, API and schemas. Its first pass had five stale assertions for the old
+resource bounds/error wording; these were updated and the complete group rerun successfully.
+The correction then passed **115 affected tests**. Isolated PostgreSQL lifecycle/media tests
+passed **64**, account/admission tests **8**, and the media browser journey passed **3**,
+including 25 photos across preview, Save, reopening and copy. Frontend regression had
+**268 passed, one unchanged UI-wait timeout**; the complete affected file passed all **8**
+on retry. Build, Ruff and lint passed, with the existing bundle-size advisory and two
+Fast Refresh warnings. These are scoped engineering checks, not a new formal benchmark.
+
+The initial combined US$10 live allowance could not cover generation's conservative
+resource envelope: baseline routes and initial Details alone could reach US$10.40.
+The later authorization permits one original nine-day Paris generation up to US$25,
+conditional on proving the complete charge bound before launch. Read-only Foundry portal
+inspection confirmed `gpt-6-luna`, version `2026-09-22`, **Global Standard** on `captone-trip`.
+No inference probe was used to discover the deployment type.
+
+The budget follow-up uses review base `7642656` and implementation `0b267cd`. Auxiliary
+caller-input admission and provider output caps now cover the previously uncapped paths;
+original requirements are never truncated. The selected profile and development defaults
+passed **438 offline tests**, including real SDK requests over an HTTP double. Initial
+adapter tests exposed an accidentally moved async observation decorator, corrected before
+commit. Broader regression found nineteen legacy-wire failures from a fixture bypassing
+construction; initializing its new optional field restored the complete regression group.
+Standards review found one HTTP-accounting regression: a wrapper hid the SDK bound method
+used to attach late observation hooks. Correction `eb34f4f` admits the request before
+passing the original method to observation. Eight failing offline SDK cases reproduced
+the omission across owned/injected clients and both policy modes. After correction and
+fixing a test-envelope field name, all **98 affected integration/observation tests passed**.
+The targeted recheck closed the finding; Spec review reported no findings. Ruff and diff checks passed. These checks establish
+request boundaries and observation coverage, not invoice limits.
+
+Initial offline arithmetic reserved US$13.688 for Maps, US$2.024620 for caller-payload
+model allowances and US$0.0002048 for embeddings. That US$15.7128248 scenario was not a
+complete upper bound because hosted Bing request counts and internal context were unbounded
+at the application boundary. No generation was launched under that incomplete estimate.
+
+The authorized follow-up replaces acceptance-mode search with pinned OpenAI Responses
+search, retaining the original domain filters, evidence extraction and requirement checks.
+Implementation `2271417` follows review base `e7f1c48`. A shared US$25 allowance reserves
+recognized provider charges before each send, including model context maxima, Maps,
+embedding and Product introductions. Completed model usage can release conservative unused
+reserves; failed or unaccounted sends keep them. Unpriced operations and unaffordable
+requests are blocked without rewriting the user's brief. The
+[profile reference](../../../config/README.md#product-acceptance-profile) owns the tariff
+and configuration details.
+
+Focused regression passed **128 tests**. The broader run had **470 passes and 24 failures**:
+legacy model fakes lacked SDK transports, and the development acceptance harness detected
+unnecessary hooks outside the selected spending policy. Restricting model-hook activation
+to explicit auxiliary limits preserved the legacy entry points; **385 affected tests** then
+passed. Earlier fixture updates added the optional spending-policy field and the newly
+selected search adapter to existing lifecycle/factory doubles. Ruff and diff checks passed.
+Standards and Spec reviews of the new increment each reported zero findings. The
+live execution used a hash-frozen original request, one exclusive start marker, and the
+normal account-owned task/preview lifecycle. An initial launch stopped before task creation
+because an archived `known_fields: null` key is no longer part of the request schema.
+Removing that empty legacy transport field from the submission copy passed offline schema
+validation; all original travel fields and the archived request remained unchanged. This
+preparation failure made no provider calls. The original saved trip was not overwritten.
+
+The single authorized generation completed in **321.61 seconds**, creating preview
+`820d4ade-96ad-4bbe-a708-a92abc9bd3d9` from task
+`8cc66f3f-ea49-4f19-a23e-f4a0d6a62a04`. All nine dates contain primary activities,
+with daily counts **3/2/3/3/3/3/3/3/3** (26 total). The spending ledger retained a
+conservative charge upper bound of **US$10.736931**, below US$25: model US$0.851931,
+Places US$3.96 and Routes US$5.925. This is an API charge bound, not an invoice.
+The guard observed 18 model sends, 99 Places sends, 65 route sends and one weather
+send. Repair made three model calls across six observed rounds and ended
+`ACCEPTED_PARTIAL` with `no_executable_candidate_operation`.
+
+Final validation reported 49 PASS, 31 UNKNOWN and one NEEDS_REVIEW. The art-museum
+obligation was matched by semantic judgment, not an independently established operating
+fact. Interpretation assigned "Avoid very crowded places" medium preference strength
+and left its semantic check UNKNOWN. This matches the intended Product treatment of
+vague crowding avoidance as a best-effort preference; it is not a hard-constraint
+downgrade or an acceptance blocker by itself. Explicit hard requirements remain binding.
+Rich coverage on 26 October also
+remained a soft-target review item. No requirement was manually removed to obtain this
+preview, and the validation counts do not independently establish every operating fact.
+
+The execution harness incorrectly used the default Windows asyncio loop rather than
+the application's selector-loop factory. PostgreSQL retrieval preparation raised
+`InterfaceError`; RAG was unavailable, with zero retrieval queries and zero embedding
+sends. The pipeline continued through its ordinary acquisition path. The new OpenAI
+search adapter was not invoked either, so this run establishes no live acceptance of
+that adapter; its evidence is the offline SDK/transport regression. The saved execution
+source and raw evidence remain unchanged. No additional paid generation or probe was
+launched. Live retrieval and search coverage remain explicitly unverified; these do not
+invalidate the separately observed ordinary-acquisition result.
+
+The user confirmed the resulting Product experience on 24 October 2026. The harness
+correction reuses `scripts.run_api.create_api_loop`; its separate local copy passed an
+offline Selector-loop check, and the existing launcher regression passed one test.
+Pytest reported only a sandbox cache-write warning. The official Product readiness
+command also passed local database/retrieval preparation without external calls. The
+original frozen script's SHA-256 was unchanged. These checks do not establish live
+retrieval/search coverage or authorize another paid attempt. The smoke policy now
+requires this shared loop factory before source freezing. No Product preference logic
+or V0-V3 behavior changed during this closeout. Git delivery is tracked by
+[PR #232](https://github.com/rplalala/Dayloom/pull/232) for
+[Issue #231](https://github.com/rplalala/Dayloom/issues/231).
+
+Local evidence identifiers: `.scratch/controlled-paris-run.py`,
+`.scratch/controlled-paris/`, `.scratch/paris-original-request.json`, and the earlier
+`.scratch/paris-budget-preflight.{py,json}`. The separate
+`.scratch/controlled-paris-loop-correction.py` and
+`.scratch/controlled-paris-loop-verification.json` identify the unexecuted correction and
+its offline receipt; future execution requires a new approved freeze. Runtime outputs remain local evidence, not
+published requirements or an invoice.
+
+One real photo acceptance ran against `fd93029` using the prescribed execution child and
+the rebuilt local Product. All **30 unique authorized slots** returned available in three
+HTTP-200 batches of **12/12/6**. The browser rendered 33 photo elements (some repeated in
+different layouts), all with loaded image pixels. It completed in **9.297 seconds**, with
+no request-guard violations, retries, new generations or saved-record mutations. The
+bounded adapter permits at most 30 Details and 30 Photo metadata requests; a conservative
+US$0.025 + US$0.007 per-slot assumption gives **US$0.96**. Actual provider sends and billing
+were not independently invoiced. Atmosphere images were excluded from this place-photo check.
+
+Local evidence identifiers: `.scratch/acceptance-regression-final.log`,
+`acceptance-product.log`, `accounts-admission.log`, `mixed-obligations-green.log`,
+`media-browser-regression.log`, `acceptance-frontend.log`, `acceptance-frontend-retest.log`,
+and `live-media-acceptance.{json,png}`. The photo run used runtime digest
+`54d73997e8529504ab89f69bb480046f4d2259d73336051d9c600671ce7332d5` and execution-script digest
+`02c1e57d5229bd69f9d1c35da69ca026dc78183885d156a5a2f8507da8185d5d`.
+These local artifacts preserve original evidence; the source and outcome above are sufficient
+to understand the event without them.
 
 ### Published Product integration
 

@@ -81,6 +81,8 @@ def validate_output_sources(itinerary, *, places=None, supplied_ids=()):
     if any(r.source_ref is not None for r in references):
         raise ValueError("Model-authored source_ref is not allowed")
     if places is None:
+        if len(references) > 3:
+            raise ValueError("V0 accepts at most three model-knowledge references")
         if any(a.source_place_id is not None for a in activities) or any(
             r.source_place_id is not None for r in references
         ):

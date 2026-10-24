@@ -57,11 +57,17 @@ project runs `postgres` against the retained runtime volume. Git delivery is tra
 [#208](https://github.com/rplalala/Dayloom/issues/208); hosting remains separate and
 pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
 
+The complete-media and acceptance-resource follow-up was accepted by the user on
+24 October 2026. [PR #232](https://github.com/rplalala/Dayloom/pull/232) delivers
+[Issue #231](https://github.com/rplalala/Dayloom/issues/231); the [acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#complete-media-and-acceptance-resources-24-october-2026)
+retains the bounded live result and unverified retrieval/search coverage.
+
 One ignored root `.env` supplies credentials and machine-specific overrides. Root
 `product.yaml` supplies Product options, shared database connection fields and Foundry
 endpoint/deployment settings. `scripts/run_database.py` passes the same resolved
 connection settings to Compose. Planning policies
-remain in `config/runtime.yaml`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
+use `config/runtime.yaml` for development and `config/runtime.acceptance.yaml` for Product
+acceptance, selected by `product.yaml: runtime_profile`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
 See the [development guide](docs/guides/development.md#local-postgresql-naming-and-storage)
 for storage retention, overrides and isolated test settings.
 
@@ -254,7 +260,7 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 
 ## 5. Configuration, evidence and limitations
 
-`config/runtime.yaml` and typed runtime configuration own active limits;
+The development and Product acceptance runtime files and typed configuration own active limits;
 [config reference](config/README.md) explains them. Entry-point deadlines and stage
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.

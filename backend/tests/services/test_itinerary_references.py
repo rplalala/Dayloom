@@ -48,7 +48,7 @@ def evidence(pid="cafe"):
     )
 
 
-@pytest.mark.parametrize("count", [0, 1, 3])
+@pytest.mark.parametrize("count", [0, 1, 3, 20])
 def test_shared_reference_bounds_and_no_times_or_costs(count):
     result = itinerary([reference(i) for i in range(count)])
     assert len(result.reference_recommendations) == count
@@ -58,7 +58,7 @@ def test_shared_reference_bounds_and_no_times_or_costs(count):
             & item.model_dump().keys()
         )
     with pytest.raises(ValidationError):
-        itinerary([reference(i) for i in range(4)])
+        itinerary([reference(i) for i in range(21)])
 
 
 def test_activity_times_required_and_historical_defaults():
@@ -93,6 +93,8 @@ def test_duplicates_and_overlap_are_invalid():
 
 
 def test_v0_source_ownership_and_single_generation():
+    with pytest.raises(ValueError, match="at most three"):
+        validate_output_sources(itinerary([reference(i) for i in range(4)]))
     request = make_request()
     request = request.model_copy(update={"destination": "Kyoto", "end_date": date(2026, 9, 12)})
     client = FakeStructuredLLMClient([itinerary([reference()])])

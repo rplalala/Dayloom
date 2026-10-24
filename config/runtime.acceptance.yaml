@@ -1,0 +1,214 @@
+# Standalone Product acceptance policy; runtime.yaml remains the development policy.
+schema_version: 6
+generation_spend_usd: 25
+auxiliary_model_limits:
+  input_tokens: 252000
+  output_tokens: 16384
+  framing_tokens: 2048
+landmark_nomination:
+  max_calls: 1
+  max_names: 12
+  input_tokens: 8000
+  output_tokens: 2000
+  call_timeout_seconds: 20
+  supplementary_searches: 4
+input_assistance:
+  destination:
+    min_chars: 2
+    max_chars: 100
+    result_limit: 5
+    timeout_seconds: 3
+    minimum_interval_seconds: 1.1
+    daily_attempts_per_process: null
+    admission:
+      per_user_interval_seconds: 1.1
+      max_concurrent: 1
+  polishing:
+    source_max_chars: 4000
+    source_max_tokens: 1500
+    model_input_tokens_per_call: 8000
+    draft_output_tokens: 2000
+    call_timeout_seconds: 20
+    total_timeout_seconds: 40
+    daily_operations_per_process: null
+    admission:
+      per_user_interval_seconds: 2
+      max_concurrent: 4
+reference_discovery:
+  scale_by_duration: true
+  policy_version: nearby_references_1
+  max_requests: 10
+  max_result_count: 10
+  radius_metres: 800
+  anchor_reuse_metres: 300
+  deadline_seconds: 45
+  request_timeout_seconds: 4
+  retries: 0
+  max_references: 20
+  rank_preference: DISTANCE
+  included_types:
+  - restaurant
+  - cafe
+  - park
+  - museum
+app:
+  time_zone: Australia/Sydney
+budget:
+  candidates: 128
+  final_pois: 40
+  places:
+    destination_search_calls: 1
+    candidate_search_calls: 24
+    detail_calls: 120
+    review_detail_calls: 8
+  weather:
+    calls: 2
+  routes:
+    matrix_elements: 64
+    baseline_elements_per_request: 64
+    baseline_elements_per_run: 1600
+    baseline_calls: 32
+    alternative_pairs: 32
+    alternative_matrix_calls: 32
+    alternative_elements: 64
+    post_generation_reserved_pairs: 16
+    post_generation_reserved_requests: 16
+    post_generation_reserved_elements: 32
+    work_seconds: 120
+    post_generation_reserved_seconds: 30
+    provider_timeout_seconds: 20
+  web:
+    evidence_tasks: 8
+    page_fetches: 8
+  experience:
+    review_enriched_places: 8
+    profile_llm_calls: 8
+web_evidence:
+  provider: openai
+  reasoning_effort: low
+  max_tool_calls: 2
+  search_context_size: low
+  timeout_seconds: 20
+  authority_domain_overrides: []
+  page_retrieval:
+    max_targets_per_need: 2
+    max_redirects: 2
+    timeout_seconds: 10
+    max_response_bytes: 262144
+    max_text_chars: 20000
+  claim_extraction:
+    max_native_sources: 3
+    max_native_snippet_chars: 1200
+    max_candidates_per_call: 3
+    max_calls_per_need: 3
+    max_extraction_output_units: 1200
+logging:
+  level: INFO
+  console: true
+trace:
+  enabled: true
+  directory: logs
+  payload_level: metadata
+  capture_llm: true
+  capture_tools: true
+  capture_evidence: true
+  raw_provider_payloads: false
+  max_payload_bytes: 10000000
+tripworld_discovery:
+  version: tripworld_runtime_1
+  top_k: 20
+  resolution_entities: 30
+  details_calls: 30
+  fallback_calls: 4
+  radius_km: 15
+  identity_radius_km: 1
+  deadline_seconds: 360
+  embedding_timeout: 8
+  sql_timeout: 60
+  connect_timeout: 10
+  google_timeout: 4
+  retries: 0
+  max_queries: 4
+  max_positions: 80
+  total_query_tokens: 2048
+acquisition:
+  policy_id: quality_first_1
+  details_deadline_seconds: 120
+  details_timeout_seconds: 20
+main_generation:
+  enabled: true
+  input_tokens: 252000
+  output_tokens: 16384
+  framing_tokens: 2048
+development_timeout_seconds: 1200
+transport:
+  walk_route_max_km: 3
+  transit_max_minutes: 45
+  drive_max_minutes: 30
+  drive_reserve_minutes: 10
+  walk_radius_km: 2
+  motor_radius_km: 5
+  max_leg_minutes: 45
+v3_repair:
+  max_rounds: 10
+  max_model_calls: 10
+  max_deletion_attempts: 12
+  reason_compression:
+    max_calls: 1
+    input_tokens: 32000
+    output_tokens: 8192
+    timeout_seconds: 30
+  quantity_review_enabled: true
+  overfull_review_enabled: false
+  daily_main_min: 2
+  daily_main_max: 5
+  move_max_days: 1
+  blank_day_start_hour: 9
+  blank_day_end_hour: 18
+  alternatives_per_gap: 2
+  exploration_positions: 2
+  timing:
+    stage_seconds: 720
+    round_seconds: 210
+    model_seconds: 120
+    preparation_seconds: 60
+    recheck_reserve_seconds: 20
+    minimum_model_seconds: 30
+    round_reference_seconds: 180
+    finalization_reserve_seconds: 1
+  input:
+    input_tokens: 252000
+    output_tokens: 16384
+    framing_tokens: 2048
+    identity_capacity: 64
+    activity_capacity: 120
+    candidate_characters: 12000
+    feedback_characters: 12000
+  acquisition:
+    google: 6
+    fallback: 1
+    embedding: 1
+    retrieval: 1
+    canonical: 30
+    details: 30
+    routes: 24
+    post_proposal_route_reserve: 8
+    elements: 32
+    top_k: 10
+    provider_timeout_seconds: 20
+  spatial:
+    detour_floor_km: 1
+    detour_ratio: 0.5
+    fallback_distance_km: 1
+    fallback_reserve_minutes: 45
+    daily_added_minutes: 90
+poi_semantics:
+  max_calls: 12
+  batch_size: 32
+  input_tokens: 32000
+  output_tokens: 8192
+  call_timeout_seconds: 45
+  total_seconds: 240
+  exploration_fraction: 0.3333333333333333
+  exception_alternatives: 2
+resource_profile: acceptance

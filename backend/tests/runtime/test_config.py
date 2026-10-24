@@ -209,6 +209,9 @@ def test_every_yaml_budget_has_one_enforced_hard_limit(tmp_path, key) -> None:
     if key is ToolBudgetKey.REVIEW_ENRICHED_PLACES:
         data["budget"]["places"]["review_detail_calls"] = limit.maximum
         data["budget"]["experience"]["profile_llm_calls"] = limit.maximum
+    if key is ToolBudgetKey.FINAL_POIS:
+        data["budget"]["routes"]["baseline_elements_per_run"] = 1600
+        data["budget"]["routes"]["baseline_calls"] = 32
     target[path[-1]] = limit.maximum
     _write_config(config_path, data)
     assert load_runtime_config_file(config_path).budget.as_key_limits()[key] == limit.maximum

@@ -22,6 +22,7 @@ from backend.app.integrations.azure_foundry.evidence_reasoner_prompt import (
     PROMPT_VERSION,
     SYSTEM_PROMPT,
 )
+from backend.app.integrations.spending import install_spend_hooks
 from backend.app.observability.usage import install_http_hooks, observe_sdk
 from backend.app.runtime.config_models import WebEvidenceConfig
 from backend.model_references import INSTRUCTION, ShortReferences
@@ -222,7 +223,9 @@ class AzureFoundryEvidenceReasoner:
         api_key: str,
         config: WebEvidenceConfig,
         responses_client: Any | None = None,
+        auxiliary_limits=None,
     ) -> None:
+        self._auxiliary_limits = auxiliary_limits
         self._deployment = deployment
         self._config = config
         self._owned_client = None
@@ -234,6 +237,7 @@ class AzureFoundryEvidenceReasoner:
                 timeout=config.timeout_seconds,
             )
         if self._owned_client is not None:
+            install_spend_hooks(self._owned_client._client)
             install_http_hooks(self._owned_client._client, "azure_foundry", "official_reasoning")
         self._responses = (
             responses_client if responses_client is not None else self._owned_client.responses
@@ -291,10 +295,9 @@ class AzureFoundryEvidenceReasoner:
         references = ShortReferences(
             input_data, {"place_id": "p", "source_key": "s", "task_id": "t"}
         )
-        raw = await observe_sdk(
-            self._responses.create,
-            usage_operation="official_reasoning",
-            usage_provider="azure_foundry",
+        from backend.app.services.auxiliary_model_limits import bound_response_request
+
+        options = dict(
             model=self._deployment,
             input=[
                 {"role": "system", "content": SYSTEM_PROMPT + "\n" + INSTRUCTION},
@@ -313,6 +316,12 @@ class AzureFoundryEvidenceReasoner:
             },
             reasoning={"effort": self._config.reasoning_effort},
             max_output_tokens=self._config.claim_extraction.max_extraction_output_units,
+        )
+        raw = await observe_sdk(
+            self._responses.create,
+            usage_operation="official_reasoning",
+            usage_provider="azure_foundry",
+            **bound_response_request(options, self._auxiliary_limits),
         )
         response_text = _response_text(raw)
         try:

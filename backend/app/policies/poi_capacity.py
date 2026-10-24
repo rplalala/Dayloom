@@ -1,7 +1,7 @@
 """Pure trip-duration capacities for the revised V1-A candidate funnel."""
 
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 
 from backend.app.policies.trip_dates import (
     MAX_TRIP_DAYS,
@@ -101,3 +101,44 @@ def quality_capacities(start_date, end_date, window, required=0):
     return EffectivePOICapacities(
         values, values.c_raw, values.r_pool, k, values.review_pool_cap, ()
     )
+
+
+def acceptance_capacities(contract, window, limits, required=0):
+    """Reserve alternatives for sourced visit demand; supply is never a visit quota."""
+    from backend.app.policies.category_visits import required_category_visit
+    from backend.app.policies.daily_visit_constraints import hard_count_floor, hard_exact_count
+    from backend.app.services.generation_resources import GenerationResourceError
+    from backend.pace_policy import zero_penalty_counts
+
+    request = contract.requirements
+    validate_requested_trip_dates(request.start_date, request.end_date, window)
+    days = (request.end_date - request.start_date).days + 1
+    if required > limits.max_final_pois:
+        raise GenerationResourceError("required_identity_supply_limit")
+    pace = {row.date: row for row in contract.daily_pace or ()}
+    demand = 0
+    for index in range(days):
+        day = request.start_date + timedelta(days=index)
+        if any(
+            row.status == "fixed" and row.full_day is True and (not row.dates or day in row.dates)
+            for row in contract.time_protections or ()
+        ):
+            continue
+        policy = pace.get(day, pace.get(None))
+        exact = hard_exact_count(contract, day)
+        target = exact if exact is not None else min(
+            zero_penalty_counts(policy.profile, policy.exact_count) if policy else (), default=2
+        )
+        demand += max(target, hard_count_floor(contract, day))
+    obligations = sum(
+        row.experience_goal.count or 1
+        for row in contract.semantic_requirements if required_category_visit(row)
+    )
+    # Named identities and category obligations may be disjoint until evidence proves otherwise.
+    demand = max(demand, obligations + required)
+    target = min(limits.max_final_pois, max(8, demand + max(6, (demand + 2) // 3)))
+    values = POICapacities(
+        days, min(limits.max_candidates, max(48, 4 * target)),
+        min(limits.max_place_detail_calls, 2 * target), target, min(8, (target + 1) // 2),
+    )
+    return apply_poi_operating_budgets(values, limits)

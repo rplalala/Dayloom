@@ -12,6 +12,7 @@ from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, ValidationError
 
 from backend.app.evidence.experience_models import ExperienceProfileDraft
+from backend.app.integrations.spending import install_spend_hooks
 from backend.app.llm.azure_foundry.dto import (
     FoundryExperienceProfileDTO,
     FoundryInterpretationDTO,
@@ -146,7 +147,9 @@ class AzureFoundryStructuredLLMClient:
         requirement_capture=None,
         http_client: httpx.Client | None = None,
         http_async_client: httpx.AsyncClient | None = None,
+        auxiliary_limits=None,
     ) -> None:
+        self._auxiliary_limits = auxiliary_limits
         self.requirement_capture = requirement_capture
         self._capture_secrets = (api_key,)
         self._requirement_config = {
@@ -170,6 +173,10 @@ class AzureFoundryStructuredLLMClient:
             **transport_options,
         )
 
+        if auxiliary_limits is not None:
+            install_spend_hooks(
+                getattr(getattr(self._chat_model, "root_async_client", None), "_client", None)
+            )
         install_http_hooks(
             getattr(getattr(self._chat_model, "root_async_client", None), "_client", None),
             "azure_foundry",
@@ -210,6 +217,22 @@ class AzureFoundryStructuredLLMClient:
                 self.last_call_metadata.setdefault("secondary_errors", []).append(
                     "capture_failure:" + type(exc).__name__
                 )
+
+    def _auxiliary_options(self, system_prompt, user_prompt, schema):
+        from backend.app.services.auxiliary_model_limits import bound_response_request
+
+        if self._auxiliary_limits is None:
+            return {}
+        if isinstance(schema, type) and issubclass(schema, BaseModel):
+            schema = schema.model_json_schema()
+        bounded = bound_response_request({
+            "input": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "text": {"format": schema},
+        }, self._auxiliary_limits)
+        return {"max_output_tokens": bounded["max_output_tokens"]}
 
     @staged("requirements")
     async def _interpret(self, system_prompt, user_prompt):
@@ -279,11 +302,14 @@ class AzureFoundryStructuredLLMClient:
                         "capture_failure:" + type(exc).__name__
                     )
 
+        auxiliary_options = self._auxiliary_options(system_prompt, user_prompt, wire)
         stage = "transport"
         try:
             # A dictionary schema selects SDK responses.create, not eager Pydantic parse.
             # Capture completed content BEFORE JSON/DTO/domain validation can discard it.
-            raw = await self._chat_model.bind(response_format=wire).ainvoke(
+            raw = await self._chat_model.bind(
+                response_format=wire, **auxiliary_options
+            ).ainvoke(
                 [
                     SystemMessage(content=system_prompt),
                     HumanMessage(content=user_prompt),
@@ -429,6 +455,8 @@ class AzureFoundryStructuredLLMClient:
             if response_schema is not V1Itinerary:
                 raise ValueError("Primary generation limits apply only to V1/V2 main output")
             options["max_output_tokens"] = _generation_config.output_tokens
+        elif response_schema is ExperienceProfileDraft:
+            options.update(self._auxiliary_options(system_prompt, user_prompt, wire_schema))
         structured_model = self._chat_model.with_structured_output(
             wire_schema,
             **options,

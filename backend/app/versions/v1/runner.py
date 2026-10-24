@@ -20,12 +20,14 @@ from backend.app.integrations.google import (
 )
 from backend.app.integrations.http import HttpxJSONTransport
 from backend.app.integrations.open_meteo import OpenMeteoWeatherProvider
+from backend.app.integrations.openai_search import OpenAIWebEvidenceProvider, SearchSettings
 from backend.app.integrations.protocols import (
     NearbyPlacesProvider,
     PlacesProvider,
     RoutesProvider,
     WeatherProvider,
 )
+from backend.app.integrations.spending import SpendingBudget, SpendingLimitError
 from backend.app.integrations.web.extraction_protocols import OfficialEvidenceReasoner
 from backend.app.integrations.web.http_page_retriever import SafeHTMLPageRetriever
 from backend.app.integrations.web.protocols import PageRetriever, WebEvidenceProvider
@@ -355,17 +357,23 @@ def _create_official_web_providers(
     *,
     existing=(None, None, None),
     owned_clients=None,
+    auxiliary_limits=None,
 ) -> tuple[WebEvidenceProvider, PageRetriever, OfficialEvidenceReasoner]:
     endpoint = str(settings.azure_openai_endpoint)
     deployment = settings.azure_openai_deployment
     api_key = settings.azure_openai_api_key.get_secret_value()
     factories = (
-        lambda: AzureFoundryWebEvidenceProvider(
-            endpoint=endpoint, deployment=deployment, api_key=api_key, config=config
+        lambda: OpenAIWebEvidenceProvider(
+            api_key=SearchSettings().openai_api_key.get_secret_value(), config=config,
+            auxiliary_limits=auxiliary_limits,
+        ) if config.provider == "openai" else AzureFoundryWebEvidenceProvider(
+            endpoint=endpoint, deployment=deployment, api_key=api_key, config=config,
+            auxiliary_limits=auxiliary_limits,
         ),
         lambda: SafeHTMLPageRetriever(config.page_retrieval),
         lambda: AzureFoundryEvidenceReasoner(
-            endpoint=endpoint, deployment=deployment, api_key=api_key, config=config
+            endpoint=endpoint, deployment=deployment, api_key=api_key, config=config,
+            auxiliary_limits=auxiliary_limits,
         ),
     )
     result = []
@@ -469,7 +477,11 @@ def main(
                 settings, effective_tracer
             )
             if llm_client is None:
-                llm_client = create_foundry_client(settings)
+                options = (
+                    {"auxiliary_limits": runtime_config.auxiliary_model_limits}
+                    if runtime_config.auxiliary_model_limits is not None else {}
+                )
+                llm_client = create_foundry_client(settings, **options)
                 owned_clients.append(llm_client)
             places_provider = places_provider or default_places
             weather_provider = weather_provider or default_weather
@@ -480,6 +492,7 @@ def main(
                     runtime_config.web_evidence,
                     existing=(web_provider, page_retriever, official_reasoner),
                     owned_clients=owned_clients,
+                    auxiliary_limits=runtime_config.auxiliary_model_limits,
                 )
 
         if (
@@ -519,6 +532,7 @@ def main(
                     ),
                 ),
                 owned_clients,
+                spend_limit_usd=runtime_config.generation_spend_usd,
             ),
             loop_factory=loop_factory,
         )
@@ -562,9 +576,15 @@ def main(
     return 0
 
 
-async def _run_with_owned_clients(operation, owned_clients):
+async def _run_with_owned_clients(operation, owned_clients, *, spend_limit_usd=None):
     """CLI-created adapters close on the same loop; injected collaborators are borrowed."""
     try:
+        if spend_limit_usd is not None:
+            with SpendingBudget(spend_limit_usd).activate() as budget:
+                result = await operation
+                if budget.blocked:
+                    raise SpendingLimitError("generation_spending_limit: incomplete generation")
+                return result
         return await operation
     finally:
         await _close_owned_clients(owned_clients)

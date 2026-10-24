@@ -731,10 +731,15 @@ after the same owner check as detail; missing/other-owner IDs return 404. Saved-
 receipts delegate to the surviving owned trip, while discarded/deleted outcomes return
 no images. Public `GET /api/examples/{example_id}/media` resolves only the two bundled
 maps, with identical response and work bounds. Each request admits 200–1280px dimensions,
-at most 12 ordered slots, three parallel resolutions and a 12-second batch deadline.
+at most 12 ordered slots, three parallel resolutions and a 30-second batch deadline.
+There is no itinerary-wide slot cap. Repeated `slot` parameters select only server-authorized
+bindings; an unknown slot is unavailable without a provider call. Without explicit slots,
+`offset` and `next_offset` page through all bindings. The browser requests every activity
+in itinerary order followed by Nearby, in sequential batches, rather than using JSONB key order.
 Each Google slot performs at most
-one fresh `photos` Details request and one media metadata request, with a 3-second HTTP
-timeout and 256 KiB response limit. Redirects and arbitrary fetch destinations are
+one fresh `photos` Details request and one media metadata request, with an 8-second HTTP
+timeout, an 8-second complete-slot deadline and 256 KiB response limit. Completed photos
+survive another slot's timeout or a later failed batch. Redirects and arbitrary fetch destinations are
 rejected. Responses use `Cache-Control: no-store`; no Google photo metadata cache or
 automatic retry is introduced. Product requests place metadata when an owned itinerary
 or curated example opens, so authorized photographs appear directly in activity and
@@ -751,7 +756,8 @@ place detail dialog contains Google Maps attribution, all supplied author names 
 safe profile/source links beside the photograph. The label uses `translate="no"`,
 an unwrapped 12px normal-weight sans serif label and gray text on a light background.
 Unavailable metadata, absent identity/keys and expired/failed image loads retain the
-labelled illustration. Preview access and Save remain independent of media success.
+labelled illustration. Unattempted slots show Photo pending and active batches show Loading photo;
+neither is labelled unavailable before an attempt finishes. Preview access and Save remain independent of media success.
 Unsplash atmosphere-credit disclosure is unchanged.
 
 This list/detail split does not meet Google's documented requirement to include
@@ -785,11 +791,20 @@ Optional server keys and controlled acceptance are documented in the
 
 ## Configuration, evidence and verification
 
-[runtime.yaml](../config/runtime.yaml) and typed loaders own active tunable values;
+[runtime.yaml](../config/runtime.yaml), [runtime.acceptance.yaml](../config/runtime.acceptance.yaml)
+and typed loaders own the selectable development and Product acceptance values;
 [configuration guide](../config/README.md) explains them. Avoid copying historic budgets
 from execution plans. Usage counters, actual HTTP sends, output tokens and billed cost
 are separate measurements. Missing evidence stays unknown. Opt-in captures and ignored
 raw artifacts support development diagnosis without becoming a fresh-clone dependency.
+
+Product defaults to the [acceptance resource profile](../config/README.md#product-acceptance-profile).
+Optional input assistance uses account-level cooldowns and provider concurrency instead of
+small process-wide daily cutoffs. Guests remain supported by direct client-address identity.
+Terminal outcomes distinguish resource limits, timeout, provider failure and insufficient
+requirement evidence; these failures keep the original requirements and allow an explicit
+retry without asking the user to rewrite them. Unsupported hard capabilities and genuinely
+ambiguous input retain their separate feedback paths.
 
 Operational commands and verification entry points are in
 [the development guide](guides/development.md). Dated engineering evidence is indexed in

@@ -7,6 +7,7 @@ from urllib.parse import urlsplit
 
 from openai import AsyncOpenAI
 
+from backend.app.integrations.spending import install_spend_hooks
 from backend.app.integrations.web.models import (
     WebActionObservation,
     WebActionType,
@@ -224,7 +225,9 @@ class AzureFoundryWebEvidenceProvider:
         api_key: str,
         config: WebEvidenceConfig,
         responses_client: Any | None = None,
+        auxiliary_limits=None,
     ) -> None:
+        self._auxiliary_limits = auxiliary_limits
         self._deployment = deployment
         self._config = config
         self._owned_client = None
@@ -236,6 +239,7 @@ class AzureFoundryWebEvidenceProvider:
                 timeout=config.timeout_seconds,
             )
         if self._owned_client is not None:
+            install_spend_hooks(self._owned_client._client)
             install_http_hooks(self._owned_client._client, "azure_foundry", "official_search")
         self._responses = (
             responses_client if responses_client is not None else self._owned_client.responses
@@ -251,11 +255,10 @@ class AzureFoundryWebEvidenceProvider:
         return f"azure_foundry:{self._deployment}"
 
     async def search(self, request: WebEvidenceSearchRequest) -> WebSearchObservation:
+        from backend.app.services.auxiliary_model_limits import bound_response_request
+
         started = time.monotonic()
-        raw = await observe_sdk(
-            self._responses.create,
-            usage_operation="official_search",
-            usage_provider="azure_foundry",
+        options = dict(
             model=self._deployment,
             input=request.task_instruction,
             tools=[
@@ -269,6 +272,12 @@ class AzureFoundryWebEvidenceProvider:
             reasoning={"effort": self._config.reasoning_effort},
             max_tool_calls=self._config.max_tool_calls,
             include=["web_search_call.action.sources", "web_search_call.results"],
+        )
+        raw = await observe_sdk(
+            self._responses.create,
+            usage_operation="official_search",
+            usage_provider="azure_foundry",
+            **bound_response_request(options, self._auxiliary_limits),
         )
         return normalize_luna_response(
             raw, request, latency_ms=round((time.monotonic() - started) * 1000)
