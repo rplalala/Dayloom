@@ -86,10 +86,9 @@ Actual account billing and external Codex costs are not established.
 ## Blinded results and interpretation
 
 The [blinded report](blinded-results/report.md) retains its completed human and
-model reviews, answers, ties, ranks and scoring structure. Its case-04 responses
-remain bound to the assessed questionnaire. Current English/Chinese display
-content matches the accepted case-04 selection; retained responses do not assess
-that display and are not merged into its automatic score.
+model reviews, answers, ties, ranks and scoring structure. Its English/Chinese
+questionnaires and confirmed results match the accepted twelve-case selection.
+Blinded ranks remain separate from automatic scores.
 
 ## Reproducibility and acceptance
 
@@ -100,5 +99,5 @@ Pair and all five applicable research tracks also replay from private saved evid
 without network calls. Original captures, receipts and prior acceptance are preserved.
 
 The [selection index](README.md#accepted-selections) locates each accepted case.
-Case-04 acceptance is recorded under #218; the blinded report identifies its
-assessed population separately. Thesis synchronization continues under #220.
+Case-04 acceptance is recorded under #218; the blinded report links its questionnaire
+and confirmed answer exports. Thesis synchronization continues under #220.

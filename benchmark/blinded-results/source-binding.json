@@ -1,30 +1,14 @@
 {
   "schema_version": "blinded_display_binding_1",
-  "purpose": "Current content display; existing ratings assess the separately retained questionnaire.",
+  "purpose": "Completed human and model assessments of the current English/Chinese questionnaire.",
   "accepted_automatic_revision": "daaf9ba7ebe2cb7d881946bdce47e4f757f4f626",
   "automatic_acceptance_date": "2026-10-24",
   "automatic_acceptance_issue": "https://github.com/rplalala/Dayloom/issues/218#issuecomment-6377527970",
-  "assessed": {
-    "git_revision": "daaf9ba7ebe2cb7d881946bdce47e4f757f4f626",
-    "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
-    "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
-    "batch_revision": 1,
-    "artifacts": {
-      "review.html": "e9c673c538242c1541fdb64ebcb0667237d4013ad39a130f3a4ebefaa26e7673",
-      "review.zh-CN.html": "6a83d2d1e6471ecdd91e5f9b1722921755973903505d9970809eea9014f3bdc6",
-      "answers_human.json": "24a1219ae23f2bfa3e54554bd06559c76a93104b705b8880ad49b1eebd8ba1bc",
-      "answers_6.1sol.json": "7685fc65600c043871e3dbaffc2e292bb5f8e4cd2f4b613d873c98b645d2f6cc",
-      "report.md": "51905021892b7ce2616dab8e44dbc7d7d37381065defbf15fcbfb6b8fe5161b4"
-    }
-  },
   "current": {
     "presentation_id": "57a5e0017504e69f7a58bddaee45daa9",
     "presentation_hash": "8bf11d5fb95848762ac1acdf6ea3ae8bfa466d9e47d872182f30d0f0778799d7",
     "batch_revision": 2,
-    "changed_tasks": [
-      "task-4"
-    ],
-    "assessment_status": "not_assessed",
+    "assessment_status": "completed",
     "source_selection": "../case-04/selection.json",
     "task_semantic_sha256": {
       "task-1": "cc37a9bf58559e76e019780e37adcb437f2d609cd30d39a5ab9aa6596816536e",
@@ -41,11 +25,22 @@
       "task-12": "c59e219e501ddd1036fba15f07792f2665ac3f5b4f8577d0306393025ca003d3"
     },
     "artifacts": {
-      "review.html": "5bc6600a395ba7cd84716049f1dc2ab74d0487f7ebf391f3d79951c6d87d6f51",
-      "review.zh-CN.html": "ef5f39c6f9d2c4f2ec429becbd26655e1eaffa4c7382e710b1188f86d11a348f"
+      "review.html": "3a6aa1e28b3b7561382a0ba803e4e7d154beba68fd773d6c36465525de6eb0b9",
+      "review.zh-CN.html": "97ec1652928d025f8c05a166d7ca249111e31296dcea22690b7cc0dc528fb2b5",
+      "answers_human.json": "72b8d1f2aacbca8561fd41ecb8025b1582718a100e8f30d8936354f0fd6c026e",
+      "answers_6.1sol.json": "d754ee5bbcb68dd4ed567037d52d7e34a413646fc81cf133530524400446e726"
     }
   },
-  "answers": "Both exports remain byte-identical and bound to the assessed presentation.",
-  "mapping_provenance": "Existing version means use verified content-derived correspondence; original private assignment was not recovered or replaced.",
-  "private_evidence_identifier": ".scratch/issue-219/ (originals, native display preparation, content-derived mapping, checks)"
+  "answers": "answers_human.json and answers_6.1sol.json contain the confirmed results and bind directly to the current questionnaire.",
+  "mapping_provenance": "Version correspondence is derived by uniquely matching displayed activity content to the selected sources.",
+  "private_evidence_identifier": ".scratch/issue-219/ (display preparation, translations and content-derived correspondence)",
+  "assessment_confirmation": {
+    "date": "2026-10-24",
+    "source": "Researcher confirmation of the human and GPT-6.1 sol xhigh rankings for the current questionnaire.",
+    "recorded_at": "2026-10-24T00:55:34.838989+00:00",
+    "case04_explanations": {
+      "source": "External Codex drafted the explanatory text; the researcher approved its inclusion. The confirmed rankings are unchanged.",
+      "recorded_at": "2026-10-24T01:04:16.393802+00:00"
+    }
+  }
 }

@@ -93,14 +93,13 @@ does not refresh accepted datasets.
 - [Benchmark report](../benchmark/report.md): accepted automatic selection,
   mean-score order **V3 > V2 > V1 > V0**, exact twelve-case totals, same-run Pair
   summaries and selected-generation resources. Case-04 uses four new outputs and
-  independent evaluations for 25–26 October; existing blinded answers retain their
-  original reviewed itinerary bindings; current blinded displays match the accepted
-  case-04 selection and link their assessed sources.
+  independent evaluations for 25–26 October; blinded questionnaires and confirmed
+  human/model results match the accepted selections.
 - [Blinded-review report](../benchmark/blinded-results/report.md): completed human
   and GPT-6.1 sol xhigh assessments, dimension and task-level rankings, agreement
-  and differences. Current English/Chinese displays, original answer exports and
-  public source bindings sit beside the report; assessed questionnaires are linked
-  at their fixed Git revision. [#196](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/196)
+  and differences. English/Chinese questionnaires, directly importable human/model
+  answers and public source bindings sit beside the report.
+  [#196](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/196)
   records completed publication of both reports and the final review artifacts.
 - [Benchmark workflow and case material](../benchmark/README.md): accepted datasets,
   public itinerary views, source-linked reports, private archive boundaries,

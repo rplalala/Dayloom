@@ -73,22 +73,20 @@ Three examples show the different patterns:
 ## Evaluation method
 
 One human and one GPT-6.1 sol xhigh reviewer each assessed the same 12 requests
-and four anonymous plans per request in the assessed questionnaire linked below.
+and four anonymous plans per request in the English/Chinese questionnaire linked below.
 Both completed all 36 rankings across preference match, pace and practical usefulness.
-The current English/Chinese displays contain the accepted automatic itineraries;
-the retained ratings assess the archived questionnaire, including its case-04 content.
+The questionnaire contains the accepted automatic itineraries, including Singapore
+for 25–26 October 2026. The researcher confirmed both reviewers' results for this
+questionnaire on 24 October 2026.
 
 Tied plans receive the average of their occupied positions: `A = B > C > D`
 becomes 1.5, 1.5, 3 and 4. Each dimension mean averages 12 ranks; the overall
 mean averages all 36, separately for each reviewer. Results are rounded to three
 decimal places after calculation.
 
-Version correspondence was derived by uniquely matching the assessed plans' complete
-activity content to their selected sources at the [recorded publication](https://github.com/rplalala/Dayloom/tree/77ac8a4858ee6b08ea41a8012f9983a726298d02/benchmark).
-This content-derived correspondence is retained; it is not a recovered private
-assignment file. The [source binding](source-binding.json) identifies the assessed
-questionnaire and current display separately. No retained rating assesses the
-current case-04 itinerary or establishes a reviewer judgment of its Repair behavior.
+Version correspondence is derived by uniquely matching each displayed plan's
+activity content to its accepted selected source. The [source binding](source-binding.json)
+identifies the questionnaire, answer exports and researcher confirmation.
 
 ### GPT-6.1 sol xhigh
 
@@ -117,8 +115,8 @@ current case-04 itinerary or establishes a reviewer judgment of its Repair behav
 These results describe one human and one model assessment of this set. Mean
 ranks summarize placements, not the size of a quality difference or evidence of
 general planner superiority. Pair judgments within a case are correlated. The
-human gave no written reasons, limiting explanation of disagreements; the model
-provided reasons for all 36 rankings.
+human gave no written reasons, limiting explanation of disagreements. The model
+answer file contains written reasons for all 36 rankings.
 
 ## Appendix: task-level rankings and source files
 
@@ -179,25 +177,16 @@ a task and do not represent fixed versions across tasks.
 
 ### Source files
 
-Current itinerary displays: [English](review.html), [Chinese](review.zh-CN.html).
-Task 4 presents the accepted Singapore selection for 25–26 October 2026; the
-other eleven tasks and the three-dimensional ranking format are unchanged.
-
-Assessed questionnaires: [English](https://github.com/rplalala/Dayloom/blob/daaf9ba7ebe2cb7d881946bdce47e4f757f4f626/benchmark/blinded-results/review.html),
-[Chinese](https://github.com/rplalala/Dayloom/blob/daaf9ba7ebe2cb7d881946bdce47e4f757f4f626/benchmark/blinded-results/review.zh-CN.html).
+Questionnaires: [English](review.html), [Chinese](review.zh-CN.html).
 Answers: [Human](answers_human.json), [GPT-6.1 sol xhigh](answers_6.1sol.json).
-These assessed questionnaires and original answer exports were accepted on
-19 October 2026 (Australia/Sydney). All answer text, rankings, ties and reported
-statistics remain attached to that presentation. Current displays have a distinct
-presentation identity and hash; old answer imports are rejected by the existing
-binding checks. [Source hashes](source-binding.json) preserve both populations.
+Each answer file contains all 12 completed tasks and imports directly into either
+language version. [Source bindings](source-binding.json) record questionnaire and
+answer hashes, completion status and the researcher's confirmation.
 
-Content synchronization uses the native source-linked display projection and the
-existing anonymous letter order. External Codex `/root` prepared the content,
-Chinese display translations, source bindings and equality checks under #219.
-`/root/review219_standards` and `/root/review219_spec` independently reviewed the
-committed content against repository standards and the Issue specification,
-including the bilingual changes. Exact inherited model metadata, session tokens
-and billing are unavailable.
-No reviewer answers were authored or reassessed. Thesis #220 consumes the accepted
-automatic selection and these source-bound blinded results as separate populations.
+Questionnaire preparation uses the native source-linked display projection and
+anonymous letter order. External Codex `/root` prepared the content, Chinese
+translations and source checks under #219, with independent Standards/Spec review
+by `/root/review219_standards` and `/root/review219_spec`, and drafted the
+researcher-approved case-04 explanations. Exact inherited model metadata, session
+tokens and billing are unavailable. Thesis #220 consumes the automatic scores and
+blinded rankings as separate evaluation tracks.
