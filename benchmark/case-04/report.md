@@ -126,11 +126,14 @@ material hashes and new-date V3 completion. Product/runtime code is unchanged.
 | Primary / Pair execution | `/root/oct25_execute_primary`, `/root/oct25_execute_pair`, `gpt-6.1-sol / medium` |
 | Independent venue relevance | `/root/oct25_relevance_review`, inherited configuration |
 | Binding, offline reconstruction, publication and verification | `/root`, inherited configuration |
+| Standards / Spec delivery review | `/root/oct25_standards_review`, `/root/oct25_spec_review`, inherited configuration |
 
 The selected source-only roles did not receive itineraries or scores. The output
 review received submitted claims; relevance received stripped venue identities and
 independent official evidence. Two preliminary contexts were excluded after
 unintended result-summary/internal-field exposure and replaced with fresh contexts.
+Delivery reviewers inspect the committed change against repository rules and #218;
+they do not author semantic inputs or substitute for researcher acceptance.
 Actual assistance is separate from Planner/evaluator calls and from human review.
 Full external transcripts, exact inherited model metadata, session token usage and
 billing are unavailable where not captured; retained partial records are labelled.
