@@ -48,7 +48,7 @@ an existing outer usage callback. Do not add per-round totals to that same outer
 
 Product selects `acceptance` through `product.yaml: runtime_profile`; an explicit
 `PRODUCT_RUNTIME_PROFILE=development` restores the development policy after restart.
-Independent V0-V3 entry points and Developer APIs retain development defaults. An explicit
+Independent V0-V3 entry points retain development defaults. An explicit
 CLI `--runtime-config config/runtime.acceptance.yaml` opts a tools runner into acceptance.
 Snapshots record the complete selected policy and its digest. New optional/default fields
 are omitted from legacy development serialization, preserving old snapshot hashes.
@@ -116,51 +116,59 @@ input includes schema and a 2,048-token framing reserve within the acceptance to
 allowance in the table. Lower extraction/introduction output caps remain applicable.
 Oversized input fails before dispatch without truncating requirements or evidence.
 The optional group is absent from legacy snapshots and default development behavior.
-It applies through the Product/Developer dependency factory and explicit tools-CLI policy
+It applies through the Product/programmatic dependency factory and explicit tools-CLI policy
 selection; injected external clients retain responsibility for their own limits.
 
 The typed ceilings distinguish provider capacity from the profile's operating allowance.
 For the current Foundry GPT-6 Luna deployment, the published limits are 922,000 input
 tokens, 128,000 output tokens and a shared 1,050,000-token context. Acceptance leaves
-input headroom below that bound. The pinned official-search model has its own 32,768-token
-output ceiling; larger auxiliary settings are capped at that adapter boundary.
+input headroom below that bound. The retained optional OpenAI search adapter has a
+32,768-token output ceiling; larger auxiliary settings are capped at that adapter boundary.
 Sources: [Azure model capabilities](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure#gpt-6),
 [OpenAI GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) and
 [OpenAI GPT-4.1 Mini](https://developers.openai.com/api/docs/models/gpt-4.1-mini).
 These are documented capabilities, not an account-specific quota or long-request live test.
 
-`web_evidence.provider: openai` selects the pinned `gpt-4.1-mini-2025-04-14`
-Responses search adapter in acceptance mode. It uses the existing `OPENAI_API_KEY`,
-`web_search` domain filtering, explicit `max_tool_calls`, default service tier and zero
-SDK retries. Search observations retain the same official-domain and downstream evidence
-validation contract. The Foundry planner and evidence reasoner are unchanged. Omitted
-provider selection preserves the legacy Foundry adapter and configuration digest.
+Development and Product acceptance use Azure Foundry web search with the configured
+Foundry endpoint, deployment and key. Explicit `provider: azure_foundry` selects this
+adapter; omitting the field preserves the same adapter and legacy configuration digest.
+Search retains domain filtering, `max_tool_calls`, timeouts, caller-input/output limits
+and zero SDK retries. The existing optional `provider: openai` adapter remains available
+to explicitly configured runtimes, but is not selected by either standard profile.
+`OPENAI_API_KEY` is still required for TripWorld query embeddings.
 
 `generation_spend_usd: 25` enables one request-local allowance across Product generation
 and introductions, the programmatic runtime, and the tools CLI with explicit acceptance
-configuration. Requests reserve their maximum recognized charge before HTTP dispatch.
+configuration. Protected requests reserve their maximum recognized charge before HTTP dispatch.
 Concurrent requests share that allowance. Failed, cancelled and incomplete responses keep
 the full reservation; only complete reported model usage can release a conservative
 unused difference. Missing usage never means zero cost. A blocked allowance prevents
-subsequent sends and cannot produce a successful Product result.
+subsequent protected sends and cannot produce a successful Product result.
+
+Requests whose sole hosted tool is `web_search` are explicitly excluded from dollar
+admission and accounting, including their search-model tokens. This applies to the
+Azure adapter and the retained OpenAI adapter. They neither reserve the allowance nor
+fail its tariff check. Their existing task/call/time/input/output limits still apply.
+The spending snapshot lists attempted exclusions in `excluded_operations`; absence of
+a search reservation is not a zero-cost observation. Consequently, US$25 bounds only
+protected operations and is not an upper bound on the complete generation bill.
 The larger resource ceilings do not increase this allowance or promise every maximum
 can be consumed together. More evidence, model work or context can increase actual cost
 and latency; the same monetary protection can stop a run before its count or time ceiling.
 
-The tariff boundary admits these operations; unsupported models, hosted Bing tools,
-streaming/background execution and unpriced route options fail before dispatch:
+The tariff boundary admits these protected operations; outside the web-search exemption,
+unsupported models, hosted tools, streaming/background execution and unpriced route
+options fail before dispatch:
 
 | Operation | Conservative reservation/accounting |
 | --- | --- |
 | Places search/Details | US$0.04 per request, retained on errors |
 | Routes Essentials matrix | US$0.005 per origin/destination element |
 | Foundry Luna without hosted tools | Full 1,050,000-token context plus explicit output cap; US$1/M input and US$2/M output, above verified Global Standard long-context/cache rates |
-| OpenAI search | Full 1,047,576-token context for initial and bounded tool continuations at US$0.40/M input, capped output at US$1.60/M, plus US$0.0132 per permitted search call (tool fee and fixed 8,000-token search block) |
 | `text-embedding-3-small` | US$0.006 per request, covering the 300,000-token endpoint maximum |
 | Existing Open-Meteo endpoint | No incremental API charge |
 
-Sources: [OpenAI model limits](https://developers.openai.com/api/docs/models/gpt-4.1-mini),
-[search pricing](https://developers.openai.com/api/docs/pricing),
+Sources: [OpenAI pricing](https://developers.openai.com/api/docs/pricing),
 [Azure rates](https://azure.microsoft.com/en-us/blog/gpt-6-astra-sol-and-luna-for-production-agents-in-microsoft-foundry/),
 and [Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
 These are conservative API-charge bounds, not invoices or tax calculations. Photos,
@@ -659,7 +667,7 @@ keys are rejected. Unauthorized canonical repeats remain automatic policy target
 authorized revisits remain protected, and unassessed multiplicity stays UNKNOWN.
 The internal optional review-target list no longer accepts repetition. Historical captures
 retain their original schemas and may require the matching historical code for replay.
-Product selects acceptance while Developer and independent V3 default to development;
+Product selects acceptance while independent V3 defaults to development;
 restart existing backend processes to reload cached configuration.
 CLI `--no-repair-quantity-review` still explicitly disables quantity
 review for one run. Budgets, operation permissions and V0-V2 behavior are unchanged.

@@ -1,6 +1,5 @@
-"""Thin HTTP contracts for product and developer planning."""
+"""Thin HTTP contracts for Product planning."""
 
-from datetime import date
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -53,12 +52,3 @@ ProductPlanningResponse = Annotated[
     | ProviderBlockedResponse,
     Field(discriminator="status"),
 ]
-
-
-class DeveloperPlanningRequest(BaseModel):
-    """Engine selection is separate from the shared user form."""
-
-    model_config = ConfigDict(extra="forbid")
-    version: Literal["v0", "v1", "v2", "v3"]
-    request: PlanningRequest
-    reference_date: date | None = None

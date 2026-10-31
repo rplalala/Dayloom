@@ -632,15 +632,29 @@ model allowances and US$0.0002048 for embeddings. That US$15.7128248 scenario wa
 complete upper bound because hosted Bing request counts and internal context were unbounded
 at the application boundary. No generation was launched under that incomplete estimate.
 
-The authorized follow-up replaces acceptance-mode search with pinned OpenAI Responses
+The 24 October follow-up replaced acceptance-mode search with pinned OpenAI Responses
 search, retaining the original domain filters, evidence extraction and requirement checks.
-Implementation `2271417` follows review base `e7f1c48`. A shared US$25 allowance reserves
+Implementation `2271417` followed review base `e7f1c48`. A shared US$25 allowance reserved
 recognized provider charges before each send, including model context maxima, Maps,
 embedding and Product introductions. Completed model usage can release conservative unused
 reserves; failed or unaccounted sends keep them. Unpriced operations and unaffordable
 requests are blocked without rewriting the user's brief. The
 [profile reference](../../../config/README.md#product-acceptance-profile) owns the tariff
 and configuration details.
+
+On 1 November, the user authorized restoring Azure search and excluding web search from
+dollar protection. Implementation `832346e` and console alignment `c74e8bb`, reviewed
+from `4cbb473`, restore the existing Azure adapter in Product acceptance. Pure web-search
+requests no longer undergo dollar admission or enter the protected total; other requests
+retain their monetary guard, and search retains its task/call/time/input/output bounds.
+Spending snapshots identify exclusions rather than representing search as free. The
+console checks Azure model/search together and OpenAI embeddings separately. Offline
+validation passed 100 focused backend cases and five configuration-page cases, plus
+build and static checks. Initial regressions established the former tariff rejection;
+probe assertions were updated for two Azure attempts and one OpenAI attempt. A frontend
+temporary-file permission error was resolved with a workspace-local temp directory.
+No real provider calls or full regression ran for this restoration. Historical execution
+and billing observations below retain their original 24 October policy and evidence.
 
 Focused regression passed **128 tests**. The broader run had **470 passes and 24 failures**:
 legacy model fakes lacked SDK transports, and the development acceptance harness detected

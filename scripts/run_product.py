@@ -18,11 +18,11 @@ def check_runtime():
 
     from backend.app.product.settings import ProductSettings
     from backend.app.runtime.config_loader import load_runtime_config
+    from backend.app.runtime.event_loop import create_api_loop
     from backend.app.runtime.token_counting import tokenizer
     from backend.app.tripworld.retrieval.query_tokens import tokenizer as embedding_tokenizer
     from backend.app.tripworld.retrieval.runtime import RuntimeRetrieval
     from backend.app.versions.v1.config import V1Settings
-    from scripts.run_api import create_api_loop
 
     settings = ProductSettings()
     V1Settings()
@@ -49,7 +49,10 @@ def main(argv=None):
     from pydantic import ValidationError
 
     from backend.app.product.application import create_product_application
-    from scripts.run_api import create_api_loop
+    from backend.app.product.configuration import FIELDS, LocalConfiguration
+    from backend.app.product.configuration_api import enable_local_configuration
+    from backend.app.runtime.deployment import ProductPolicySettings
+    from backend.app.runtime.event_loop import create_api_loop
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", default="127.0.0.1")
@@ -59,14 +62,37 @@ def main(argv=None):
     )
     args = parser.parse_args(argv)
     os.chdir(PROJECT_ROOT)
+    external_environment = dict(os.environ)
     load_dotenv(PROJECT_ROOT / ".env", override=False)
+    manager = None
     try:
         application = create_product_application()
-        settings = check_runtime()
-        origin = urlsplit(settings.origin)
+        policy = ProductPolicySettings()
+        origin = urlsplit(policy.origin)
         expected_port = origin.port or (443 if origin.scheme == "https" else 80)
         if origin.scheme == "http" and expected_port != args.port:
             parser.error("The listening port must match product.yaml origin or PRODUCT_ORIGIN")
+        if (args.host in {"127.0.0.1", "localhost", "::1"}
+                and origin.scheme == "http"
+                and origin.hostname in {"localhost", "127.0.0.1", "::1"}):
+            manager = LocalConfiguration(
+                PROJECT_ROOT, origin=policy.origin, environment=external_environment,
+            )
+            # Pin editable fields, including missing values, until process restart.
+            # Existing settings readers must not pick up partially applied edits.
+            for key in list(os.environ):
+                if key.upper() in FIELDS:
+                    del os.environ[key]
+            os.environ.update(manager.initial)
+        try:
+            check_runtime()
+            ready = True
+        except Exception:
+            if args.check or manager is None:
+                raise
+            ready = False
+        if manager is not None:
+            enable_local_configuration(application, manager, ready=ready)
     except ValidationError as error:
         fields = ", ".join(".".join(map(str, item["loc"])) for item in error.errors())
         raise SystemExit("Invalid runtime configuration fields: " + fields) from None
@@ -76,13 +102,22 @@ def main(argv=None):
             "Product local readiness failed (" + type(error).__name__ + "). "
             "Check frontend build, Product migrations, provider settings and TripWorld resources."
         ) from None
-    print("Local Product resources ready; real providers configured; no live calls performed.")
+    if ready:
+        print("Local Product resources ready; real providers configured; no live calls performed.")
+    else:
+        print("Local setup required. Open " + manager.origin + "/config to configure providers "
+              "and inspect local resources.")
     if args.check:
         return
     import uvicorn
 
-    print("Dayloom: " + settings.origin)
-    server = uvicorn.Server(uvicorn.Config(application, host=args.host, port=args.port))
+    print("Dayloom: " + policy.origin)
+    if manager is not None:
+        print("Local configuration: " + manager.origin + "/config")
+        print("Management token (valid for this process): " + manager.token)
+    server = uvicorn.Server(uvicorn.Config(
+        application, host=args.host, port=args.port, proxy_headers=False,
+    ))
     asyncio.run(server.serve(), loop_factory=create_api_loop)
 
 

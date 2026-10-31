@@ -149,7 +149,7 @@ cannot certify opening, access, route feasibility or whole-trip affordability.
 
 Unknown amounts remain unknown. Currency and expense scope are preserved; no exchange rate
 or unsupported cost is invented to fit the budget. Provider/model/application provenance and
-unsupported factual claims remain inspectable in Developer output. Product presentation uses
+unsupported factual claims remain inspectable in programmatic planner output. Product presentation uses
 an allowlist; it does not expose internal prompts or raw provider envelopes as user content.
 
 ## Generation diagnostics and counting contract
@@ -227,7 +227,7 @@ of close anchors do not merge distant areas transitively. The configured first-a
 can exclude later areas. Search uses DISTANCE and the configured circle/types/results limit;
 actual-anchor distance is rechecked after reuse. The current defaults and independent
 send/time/retry ceilings are documented under
-[reference discovery configuration](../config/README.md#current-yaml-values-and-every-effective-path).
+[reference discovery configuration](../config/README.md#development-yaml-values-and-effective-paths).
 
 The provider field mask is limited to identity, display name, coordinates, formatted address,
 primary/type collections, business status and attribution. It requests no wildcard, ratings,

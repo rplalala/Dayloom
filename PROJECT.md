@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-31.
+Current source of truth. Updated 2026-11-01.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -69,13 +69,23 @@ connection settings to Compose. Planning policies
 use `config/runtime.yaml` for development and `config/runtime.acceptance.yaml` for Product
 acceptance, selected by `product.yaml: runtime_profile`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
 Acceptance uses larger input and supply capacity with bounded execution budgets and a shared per-run
-spending guard; the [profile reference](config/README.md#product-acceptance-profile) owns
+spending guard that excludes web search. Both standard profiles use Azure Foundry search;
+the [profile reference](config/README.md#product-acceptance-profile) owns
 current values and the development rollback.
 See the [development guide](docs/guides/development.md#local-postgresql-naming-and-storage)
 for storage retention, overrides and isolated test settings.
 
-Product UI/API uses V3 and an allowlisted presentation contract. Developer mode
-exposes V0-V3 independently. Current input assistance includes destination suggestions,
+The local Product launcher also serves `/config` with independent loopback-only
+management access. It edits existing provider settings in `.env`, shows local
+resource readiness and offers explicit bounded API capability checks. Saved
+changes require restart. Incomplete local installs
+can open the console while business APIs remain paused. Database/data preparation,
+model providers, spending policies and V0-V3 mechanisms retain their current scope.
+See the [configuration guide](docs/guides/development.md#local-configuration-console).
+
+Product UI/API uses V3 and an allowlisted presentation contract. V0-V3 remain
+independently accessible through command-line and programmatic entry points. The Developer
+web page and its dedicated APIs are removed. Current input assistance includes destination suggestions,
 currency/date controls and optional user-reviewed preference polishing.
 Itinerary activity/Nearby photographs now reuse validated links within the browser tab
 session; the [media contract](docs/0007-application-operations.md#browser-tab-photo-session)
@@ -363,8 +373,8 @@ serves the built frontend and normal API together using the daily database and r
 providers. One separately authorized Sydney one-day journey passed generation,
 preview, explicit Save and My trips reload on 22 October, with real model, map/route,
 weather, embedding and image HTTP success evidence. This does not establish general
-provider quality, full billing, public deployment or scale. Independent V0–V3,
-Developer and research commands retain their entrypoints and behavior. Git delivery
+provider quality, full billing, public deployment or scale. Independent V0–V3
+and research commands retain their entrypoints and behavior. Git delivery
 is complete through PR #210, #208 and the accepted follow-up in PR #232 / #231.
 Additional live runs, public hosting and research
 require separate scope; no version freeze follows from acceptance.

@@ -5,16 +5,11 @@ import json
 from datetime import date
 
 import pytest
-from httpx import ASGITransport, AsyncClient
 from pydantic import BaseModel
 
-from backend.app.api.dependencies import get_developer_planning_service, get_planning_service
 from backend.app.api.streaming import planning_events, planning_stream
-from backend.app.main import app
 from backend.app.observability.progress import ProgressObserver, observed
 from backend.app.schemas.planning import PlanningResult
-from backend.app.services.planning import DeveloperPlanningService, PlanningService
-from backend.tests.fakes import FixedDateProvider
 from backend.tests.request_fixtures import make_request
 from backend.tests.versions.v0.fakes import make_itinerary
 
@@ -33,58 +28,26 @@ class Runtime:
         )
 
 
-def post_stream(developer=False, invalid=False):
+def test_stream_final_result_and_ordered_events():
     runtime = Runtime()
-    provider = FixedDateProvider(date(2026, 9, 11))
-    service = (
-        DeveloperPlanningService(runtime, provider)
-        if developer
-        else PlanningService(runtime, provider)
-    )
-    dependency = get_developer_planning_service if developer else get_planning_service
-    request = make_request().model_dump(mode="json")
-    if invalid:
-        request.update(start_date="2027-01-01", end_date="2027-01-03")
-    body = {"version": "v3", "request": request} if developer else request
 
-    async def send():
-        app.dependency_overrides[dependency] = lambda: service
-        try:
-            async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as c:
-                return await c.post(
-                    "/api/dev/planning/stream" if developer else "/api/planning/stream", json=body
-                )
-        finally:
-            app.dependency_overrides.pop(dependency, None)
+    async def consume():
+        observer = ProgressObserver(developer=True, version="v3")
+        return [event async for event in planning_events(
+            lambda: runtime.run("v3", make_request(), reference_date=date(2026, 9, 11)),
+            observer,
+        )]
 
-    return asyncio.run(send()), runtime
-
-
-@pytest.mark.parametrize("developer", [True])
-def test_stream_final_result_and_ordered_events(developer):
-    response, runtime = post_stream(developer)
-    assert response.status_code == 200
-    assert response.headers["content-type"].startswith("text/event-stream")
     events = [
-        json.loads(line[6:]) for line in response.text.splitlines() if line.startswith("data: ")
+        json.loads(line[6:])
+        for chunk in asyncio.run(consume()) for line in chunk.splitlines()
+        if line.startswith("data: ")
     ]
-    assert [e["sequence"] for e in events] == list(range(1, len(events) + 1))
+    assert [event["sequence"] for event in events] == list(range(1, len(events) + 1))
     assert events[0]["type"] == "started" and events[-1]["type"] == "result"
-    assert len({e["run_id"] for e in events}) == 1
+    assert len({event["run_id"] for event in events}) == 1
     assert runtime.calls == ["v3"]
-    if developer:
-        assert events[-1]["result"]["system_version"] == "v3"
-    else:
-        assert events[-1]["result"]["status"] == "completed"
-        assert "system_version" not in response.text and '"version"' not in response.text
-
-
-@pytest.mark.parametrize("developer", [True])
-def test_invalid_stream_request_is_http_422_before_execution(developer):
-    response, runtime = post_stream(developer, invalid=True)
-    assert response.status_code == 422
-    assert not runtime.calls
-    assert response.headers["content-type"].startswith("application/json")
+    assert events[-1]["result"]["system_version"] == "v3"
 
 
 def test_error_after_stream_start_is_terminal_event_without_private_message():

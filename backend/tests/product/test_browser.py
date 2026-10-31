@@ -151,7 +151,7 @@ def test_logout_invalidation_survives_product_unmount_and_later_login(browser_ap
             "JSON.parse(sessionStorage.getItem('dayloom.editor.v1')).actionId"
         )
         assert old_action
-        first.goto(base + "/dev")
+        first.goto(base + "/config")
         second = context.new_page()
         second.goto(base + "/account")
         second.get_by_role("button", name="Log out", exact=True).last.click()
@@ -331,6 +331,8 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
             page.screenshot(path=str(SCRATCH / f"brief-{width}.png"), full_page=True)
             assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.goto(base + "/dev")
-        expect(page.get_by_text("Local development and research")).to_be_visible()
+        expect(page.get_by_role(
+            "heading", name="That route is not on the itinerary.",
+        )).to_be_visible()
     finally:
         context.close()

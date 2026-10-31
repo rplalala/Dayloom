@@ -1,25 +1,110 @@
 # Application interfaces and engineering operation
 
-Current application boundary, consolidated 2026-10-31.
+Current application boundary, consolidated 2026-11-01.
 Product implements the account-owned brief/draft → task → recoverable preview →
 explicit Save/Discard lifecycle, with a mixed library, historical import/export,
 independent copies, known-input replanning and credited media. Product HTTP/stream
 entrypoints observe that same durable task. Actual verification and consequential
 corrections are recorded in [lifecycle acceptance](records/frontend/dayloom-product-lifecycle-acceptance.md).
 
-## Product and Developer surfaces
+## Product and independent planner surfaces
 
 Product presents V3 through a version-agnostic API and an allowlisted user contract.
-Developer mode selects V0-V3 independently and retains diagnostics needed for engineering.
+Command-line and programmatic entry points select V0-V3 independently and retain diagnostics
+needed for engineering. The Developer web page and its dedicated APIs are removed;
+`/dev` and its child routes display the existing not-found page.
 React owns form state, progress and rendering. FastAPI validates input, invokes application
 services and serializes outcomes. An application-owned coordinator runs Product work;
-observers read persisted snapshots. Developer retains request-owned streaming and cancellation.
+observers read persisted snapshots.
 Stale responses must not overwrite an edited request.
 
 Inputs share destination text, currency selection, ISO dates and optional preferences.
 Server date policy owns admissibility; browser display must not change dates through
 timezone conversion or locale-dependent parsing. An input change invalidates the appropriate
 previous result. Product completion reasons are policy observations, not global feasibility.
+
+## Local configuration console
+
+`/config` is a standalone React route outside traveler session/task providers. The
+normal Product launcher enables its management interface only for an HTTP loopback
+origin and loopback listener. The API-only application leaves management disabled.
+No configuration database or account role is introduced. Operational steps belong
+to the [local configuration guide](guides/development.md#local-configuration-console).
+
+| Editable setting | Existing consumer |
+| --- | --- |
+| `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_DEPLOYMENT`, `AZURE_OPENAI_API_KEY` | Current Foundry model calls and web search |
+| `OPENAI_API_KEY` | TripWorld query embeddings |
+| `GOOGLE_MAPS_API_KEY` | Planning and place photographs |
+| `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional atmosphere photographs; existing `UNSPLASH_API_KEY` remains an alias |
+
+The console validates existing Foundry v1 endpoint/deployment syntax and writes
+only these fields. It adds neither model selection nor provider adaptation.
+Database credentials, JWT signing secrets, planning policies and retrieval data
+remain outside its write surface. Managed setting names in environment and dotenv
+are case-insensitive, matching existing consumers; interpolation variable references
+retain their case-sensitive dotenv semantics. Process environment values take precedence over
+dotenv, including alias selection and interpolation; YAML supplies deployment
+defaults. A read captures dotenv once; its opaque revision covers that text and
+the resolved editable values, including YAML deployment defaults.
+
+Management requires an in-memory, randomly generated process token. Successful
+unlock creates a separate 30-minute HttpOnly, SameSite=Strict cookie scoped to
+`/api/config`, with a session-bound CSRF token for writes. Access checks require a
+loopback peer, the exact configured Host, and exact Origin on writes; forwarded
+client headers are disabled by the Product launcher. Failed unlock attempts are
+bounded, as are active management sessions and request-body size. API responses
+use `Cache-Control: no-store`; validation/errors exclude submitted values.
+
+Secret fields return presence only. An omitted field is retained; an explicit
+empty change clears it. Writes replace existing managed bindings in place, preserving
+their spelling and order so dependent interpolation still resolves; only absent settings
+are appended. Unrelated bindings are retained. Saves use a cross-process file lock and
+atomic replacement, and reject stale revisions with HTTP 409. The
+running Product pins editable provider settings at startup, so saves require a
+restart and cannot reconfigure in-flight work. Setup mode leaves configuration and
+static delivery available while business APIs return HTTP 503; a successful restart
+is required to enable business operations. Check local readiness returns local
+resource readiness without external provider requests or a claim of valid credentials.
+
+Check API on each provider card and Check all APIs explicitly invoke
+`POST /api/config/check` with a saved revision and a fixed service identifier.
+They use the same management protections as saves. The server captures the saved
+effective values, rejects an old revision before sending, and marks results stale
+if configuration changes during the check. The browser clears results on edits,
+save, reload and lock, and does not display stale results as successful. Results
+remain in page memory only. A new saved key can be checked before restart without
+changing the running planner's pinned settings.
+
+| Service | Capability checked | Maximum HTTP attempts |
+| --- | --- | --- |
+| Azure Foundry | One tiny strict structured Responses result and one completed web search from the saved deployment | 2 |
+| OpenAI | `text-embedding-3-small` with 1,536 finite dimensions | 1 |
+| Google Maps | One Places text search, a 1-by-1 walking route matrix, photo details and photo media URI | 4 |
+| Unsplash (optional) | Metadata for one existing catalog photograph | 1 |
+
+Each invocation allows at most eight outbound HTTP attempts and a 60-second shared
+deadline. Individual requests allow 15 seconds, or 30 seconds for web search,
+within the remaining deadline. There are no automatic retries or redirects; only
+one check runs per local instance. Response bodies are limited to 128 KiB. Foundry
+uses the same approved HTTPS Azure v1 endpoint admission as the editor; all other
+hosts are fixed. Google photo resource identifiers are validated before use.
+Credentials stay in request headers and never enter URLs or returned diagnostics.
+
+Checks use fixed public sample queries and coordinates, not traveler inputs.
+They do not run planning, download images or alter planning budgets. They may
+incur provider charges; HTTP/time limits are not a monetary spending cap. Startup,
+page loading and local readiness never trigger these checks. Missing settings,
+authentication, permission/API enablement, billing, quota, rate limit, network,
+timeout and unverified responses have separate safe outcomes. A timeout does not
+prove an invalid key; missing sample photos are inconclusive. Provider error text,
+payloads and credentials are excluded from results. A passing sample establishes
+only that capability at the check time, not all permissions or planning readiness.
+
+Implementation: [configuration](../backend/app/product/configuration.py),
+[management interface](../backend/app/product/configuration_api.py),
+[local probes](../backend/app/product/local_readiness.py),
+[API checks](../backend/app/product/api_checks.py).
 
 ## Product diagnostics
 
@@ -76,7 +161,7 @@ untrusted client observations, not authenticated account audit evidence.
 body to 4 KiB, validates an allowlist and accepts at most 20 reports per direct peer
 per minute per process. The browser deduplicates and limits itself to 10 reports per
 minute. Abort-driven fetch cancellation is not a reported network failure; diagnostic
-requests cannot recursively report themselves. Developer pages do not emit browser reports.
+requests cannot recursively report themselves.
 
 Operation files rotate under an inter-process write lock. Finished run retention is
 applied when a new run starts or by the local maintenance command; active runs are
@@ -104,6 +189,8 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 
 | Endpoint | Input and result | Source of truth |
 | --- | --- | --- |
+| `/api/config`, `/session`, `/readiness` | Local management unlock/lock, redacted reads, revision-checked provider writes and read-only resource checks | [Local configuration](#local-configuration-console) |
+| `POST /api/config/check` | Saved revision and fixed service identifier; bounded explicit API capability results, attempt count and stale flag | [Local configuration](#local-configuration-console) |
 | `POST /api/auth/register` | Normalized email, password and display name; atomic account/profile and browser session | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/auth/current` | Validated account, initials and session-bound CSRF token | [Account boundary](../backend/app/product/auth.py) |
@@ -126,8 +213,6 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `GET /api/previews/{id}/media`, `/api/trips/{id}/media` | Owner-authorized display metadata for private verified bindings | [Media](#verified-place-media-and-curated-atmosphere) |
 | `GET /api/media/curated/{key}` | Fixed public destination/atmosphere catalog metadata | [Media](#verified-place-media-and-curated-atmosphere) |
 | `GET /api/planning/date-window` | `allowedStart`, `allowedEnd`, `maxTripDays` from server date policy | [Product router](../backend/app/api/product/planning.py), [date policy](../backend/app/policies/trip_dates.py) |
-| `POST /api/dev/planning` | `{version, request, reference_date?}`; version is `v0` through `v3`, output is full `PlanningResult` | [Developer router](../backend/app/api/developer/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
-| `POST /api/dev/planning/stream` | Same version-selected input/result through an independent SSE request | [Developer router](../backend/app/api/developer/planning.py) |
 | `GET /api/input-assistance/destinations?q=...` | Bounded normalized GeoDB suggestions for UI selection; no planner evidence | [Assistance router](../backend/app/api/input_assistance.py), [schemas](../backend/app/schemas/input_assistance.py) |
 | `POST /api/input-assistance/preferences/polish` | `original_text`, `context`, `client_revision`; `suggested`, `unchanged` or `needs_input` | [Assistance router](../backend/app/api/input_assistance.py), [schemas](../backend/app/schemas/input_assistance.py) |
 | `POST /api/diagnostics/client-errors` | Exact-origin, size/rate-limited untrusted browser error or export-action report | [Product diagnostics](#product-diagnostics) |
@@ -137,7 +222,7 @@ The shared request uses `input_version=planning_request_2`, destination, ISO sta
 dates, traveler count, mandatory total budget/currency and optional preferences.
 [PlanningRequest](../backend/app/schemas/request.py) owns field validation; do not copy
 the complete schema into UI or operational prose. Product does not accept engine selection
-or a research reference-date override. Developer's optional reference date supports explicit
+or a research reference-date override. Programmatic planners' optional reference date supports explicit
 engineering fixtures and does not authorize historical live evidence acquisition.
 
 Product task outcomes distinguish `completed`, `needs_clarification`, `safety_blocked`,
@@ -189,10 +274,9 @@ Rich chosen in the form, inherited from new-brief account defaults, restored in 
 selected again after replanning uses the same active V3 rule. Preference text and span
 ownership remain unchanged; the option does not inject a hard exact-three requirement.
 Invalid submission/date/currency fields fail with 422
-before external work. Developer retains its research responses and HTTP failure policy.
+before external work. Programmatic planners retain full results and exception behavior.
 
-The [frontend Product API](../frontend/src/features/planning/api.ts) and
-[Developer API](../frontend/src/features/developer-planning/api.ts) bind these wire contracts;
+The [frontend Product API](../frontend/src/features/planning/api.ts) binds these wire contracts;
 the [shared stream parser](../frontend/src/shared/api/planningStream.ts) handles delivery.
 Changing a schema requires the corresponding backend and client seam checks.
 
@@ -240,7 +324,7 @@ Conflicting cookie/bearer credentials are rejected. Missing, expired, malformed 
 revoked sessions return 401; account validation never echoes submitted passwords.
 Logout increments `token_version`, invalidating previously issued tokens across clients.
 Product planning POST endpoints require the same authentication; date-window and
-input-assistance reads remain guest-accessible. Developer authentication is unchanged.
+input-assistance reads remain guest-accessible.
 
 The Product React shell exposes home, a shared brief editor, login/register, guest
 example cards, an authenticated saved-trip/draft library with a genuine empty state,
@@ -374,7 +458,7 @@ and key stay account-scoped through expiry. Explicit logout/revocation clears it
 response cannot overwrite another edited brief or submit it with an unresolved earlier
 operation identity. The HTTP adapter returns 202; SSE observes revision snapshots, then
 emits the same task/preview IDs with its allowlisted public detail. Disconnect detaches
-only the observer. Developer streaming and independent V0–V3 entrypoints are unchanged.
+only the observer. Independent V0–V3 entrypoints retain their own execution lifecycle.
 
 Clarification, safety/provider blocks, infrastructure failure, interruption and
 cancellation retain immutable submitted input. Section 02 renders public action text
@@ -395,7 +479,7 @@ last running stage as current progress.
 The Product dependency factory adds English writing policy only to primary/Repair
 provider system prompts, preserving request/source text and proper names. It admits the
 final effective prompt under existing limits and records effective sizing separately.
-It adds no translation send or retry. Developer/direct V0–V3 keep their default factory;
+It adds no translation send or retry. Direct V0–V3 calls keep their default factory;
 adapter tests verify policy placement, not universal live-model language compliance.
 
 ### Explicit preview decisions and normalized saved trips
@@ -737,8 +821,8 @@ The fixed r7 pages remain the visual reference for Product layout, colors, icons
 controls. Readability refinements raise essential text sizes and muted-text contrast,
 flatten nested activity frames on narrow screens and compact the initial planning form.
 The `original.css`, `refinements.css`, `prototype.css` and
-`nearby.css` layers retain their order under the Product scope; legacy Developer
-styles stay outside that scope. Real authentication, progress, decisions and source
+`nearby.css` layers retain their order under the Product scope. Real authentication,
+progress, decisions and source
 claims replace the prototype's browser simulations within that visual language.
 My trips remains selected in desktop and mobile navigation while reading trip, draft,
 example or preview details, or importing an itinerary.
@@ -770,7 +854,7 @@ the public collection's allowlisted API order does not change.
 
 `backend/app/product/detail.py:ProductDetail` owns the `product_detail_1` contract,
 mirrored by `frontend/src/features/product/detail/types.ts` and rendered by
-`TripDetail`. It is separate from engine/research DTOs and the Developer view. Actual
+`TripDetail`. It is separate from engine/research DTOs. Actual
 ordered day/activity arrays, including empty days, are preserved. ISO date/time strings
 are validated without datetime reserialization, retaining supplied precision and offsets.
 Weather, costs, introductions, original request information and completion information
@@ -1060,7 +1144,7 @@ Product detail omits internal completion reviews, policy reason codes, raw route
 claims and source anchor IDs. Route timing conflicts and uncertainty remain visible
 in plain language. The copyable/plain-text itinerary summary uses the same travel
 vocabulary without serialized internal objects; the versioned JSON export retains
-its existing compatibility contract. Developer/research data and entry points are
+its existing compatibility contract. Independent research data and entry points are
 unchanged.
 
 #### Destination covers
@@ -1134,7 +1218,7 @@ reports and route ledgers. Confirmed final connection conflicts remain visible r
 being silently removed. Provider seconds/metres and application reserves display separately.
 One optional primary-POI introduction batch runs after successful planning inside the remaining
 request deadline. It can use normalized summaries or explicitly unverified model knowledge;
-failure omits introductions without discarding the itinerary. Developer and Nearby do not
+failure omits introductions without discarding the itinerary. Independent planners and Nearby do not
 trigger this call, and introductions cannot change validation or research output.
 
 ## Streams, progress and cancellation
@@ -1146,19 +1230,17 @@ identity plus the public detail. Navigation, disconnect and logout detach observ
 none is an explicit Stop action. The browser uses canonical reads for reconnect recovery,
 without resending generation automatically.
 
-Developer retains [request-owned stream delivery](../backend/app/api/streaming.py):
+The internal [request-owned stream helper](../backend/app/api/streaming.py) remains available:
 `started`, `stage`, optional `detail`, and terminal `result`, `error` or `cancelled`.
 Events carry request-local `run_id`, increasing `sequence`, `type`, `elapsed_ms` and
-`version`. Stage text is allowlisted; diagnostic detail is Developer-only.
+`version`. Stage text is allowlisted; diagnostic detail requires the internal debug mode.
 [ProgressObserver](../backend/app/observability/progress.py) bounds buffering and reports
 `dropped_events`. Heartbeat comments follow 15 seconds without an event. Terminal
 errors cannot change the already-sent HTTP status. Disconnect cancels and awaits that
 request's producer/owned transports; it does not guarantee external termination or billing.
 
-`/dev` launches four independent streams from a copied input, locks the active form,
-and retains per-run/all-stop and same-snapshot reruns. Controller/group identities fence
-late results; idle edits clear the result group. Its event history is bounded and the
-complete final JSON is retained separately. The shared parser handles sequences,
-UTF-8/chunk framing, comments and premature EOF without automatic execution retry.
-Workflow position follows observed stages, rather than elapsed-time percentage or an
-arrival-time promise; stage completion is not proof that Repair succeeded.
+The helper is not exposed through a Developer HTTP endpoint. Product's shared stream
+parser handles sequences, UTF-8/chunk framing, comments and premature EOF without
+automatic execution retry. Workflow position follows observed stages, rather than
+elapsed-time percentage or an arrival-time promise; stage completion is not proof
+that Repair succeeded.

@@ -13,7 +13,7 @@ def test_built_product_serves_navigation_assets_and_the_real_api(tmp_path):
     assets.mkdir()
     (assets / "app.js").write_text("window.dayloom = true;", encoding="utf-8")
     with TestClient(create_product_application(tmp_path)) as client:
-        for path in ("/", "/plan", "/trips/saved-trip", "/planning/task-id", "/dev"):
+        for path in ("/", "/plan", "/trips/saved-trip", "/planning/task-id", "/config"):
             response = client.get(path)
             assert response.status_code == 200
             assert "Dayloom application" in response.text

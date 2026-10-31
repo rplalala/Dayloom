@@ -2,7 +2,6 @@
 
 from backend.app.api.schemas.planning import (
     CompletedPlanningResponse,
-    DeveloperPlanningRequest,
     NeedsClarificationResponse,
     ProductPlanningRequest,
     ProductPlanningResponse,
@@ -10,7 +9,6 @@ from backend.app.api.schemas.planning import (
 
 __all__ = [
     "CompletedPlanningResponse",
-    "DeveloperPlanningRequest",
     "NeedsClarificationResponse",
     "ProductPlanningRequest",
     "ProductPlanningResponse",

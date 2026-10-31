@@ -320,23 +320,17 @@ def test_actual_product_api_separates_user_safety_and_system_errors(outcome):
         assert body["outcome"]["issues"]["issues"][0]["source_refs"][0]["quote"] == NY
 
 
-def test_developer_api_contract_failure_is_502_not_input_422():
+def test_programmatic_planning_preserves_contract_failure():
     from backend.app.services.planning import DeveloperPlanningService
-    from backend.tests.api.test_developer_planning import post_developer_planning
     from backend.tests.fakes import V0TestRuntime
 
     client = FakeStructuredLLMClient(
         [draft(issue(source_refs=[{"quote": "fabricated", "occurrence": 0}]))]
     )
-    status, body = post_developer_planning(
-        DeveloperPlanningService(V0TestRuntime(client)),
-        {
-            "version": "v0",
-            "reference_date": "2026-09-11",
-            "request": make_request(NY).model_dump(mode="json"),
-        },
-    )
-    assert status == 502 and body["detail"]["status"] == "invalid_model_contract"
+    with pytest.raises(RequirementBoundaryError):
+        asyncio.run(DeveloperPlanningService(V0TestRuntime(client)).plan(
+            "v0", make_request(NY), reference_date=REFERENCE,
+        ))
 
 
 def test_v0_cli_contract_failure_exit_is_system_failure(tmp_path, capsys):

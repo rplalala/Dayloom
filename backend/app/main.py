@@ -9,12 +9,12 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict
 
-from backend.app.api.developer.planning import router as developer_planning_router
 from backend.app.api.input_assistance import router as input_assistance_router
 from backend.app.api.product.planning import router as product_planning_router
 from backend.app.observability.product_http import ProductHTTPLogging
 from backend.app.observability.product_http import router as diagnostics_router
 from backend.app.product.auth import router as account_router
+from backend.app.product.configuration_api import router as configuration_router
 from backend.app.product.copies import router as copies_router
 from backend.app.product.drafts import router as drafts_router
 from backend.app.product.examples import router as examples_router
@@ -60,9 +60,9 @@ def create_app() -> FastAPI:
         version="0.1.0",
     )
     application.include_router(product_planning_router)
+    application.include_router(configuration_router)
     application.add_middleware(ProductHTTPLogging)
     application.include_router(diagnostics_router)
-    application.include_router(developer_planning_router)
     application.include_router(input_assistance_router)
     application.include_router(account_router)
     application.include_router(copies_router)
@@ -76,12 +76,19 @@ def create_app() -> FastAPI:
 
     @application.exception_handler(RequestValidationError)
     async def safe_auth_validation(request: Request, exc: RequestValidationError):
-        if request.url.path.startswith("/api/auth/") or request.url.path == "/api/profile":
+        configuration_request = request.url.path.startswith("/api/config")
+        if (
+            request.url.path.startswith("/api/auth/") or configuration_request
+            or request.url.path == "/api/profile"
+        ):
+            message = (
+                "Invalid configuration field" if configuration_request else "Invalid account field"
+            )
             return JSONResponse(
                 status_code=422,
                 content={
                     "detail": [
-                        {"loc": error["loc"], "type": error["type"], "msg": "Invalid account field"}
+                        {"loc": error["loc"], "type": error["type"], "msg": message}
                         for error in exc.errors()
                     ]
                 },

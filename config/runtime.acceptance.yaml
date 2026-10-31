@@ -84,7 +84,7 @@ budget:
     review_enriched_places: 12
     profile_llm_calls: 12
 web_evidence:
-  provider: openai
+  provider: azure_foundry
   reasoning_effort: low
   max_tool_calls: 2
   search_context_size: medium

@@ -29,7 +29,7 @@ and targeted repair affect itinerary quality.
 
 The online link is an interactive design prototype with browser-local accounts
 and data. The full application runs locally with FastAPI and PostgreSQL; its
-Product interface uses V3, while Developer mode exposes all four versions.
+Product interface uses V3; independent command-line entry points expose all four versions.
 
 ## How it works
 
@@ -56,8 +56,9 @@ model and travel-provider credentials.
 
 From the repository root:
 
-1. Copy [`.env.example`](.env.example) to `.env` and fill in the private credentials,
-   database password and a signing secret of at least 32 characters. Review
+1. Copy [`.env.example`](.env.example) to `.env` and set the database password
+   and a signing secret of at least 32 characters. Provider credentials can be
+   entered later in the local configuration console. Review
    [`product.yaml`](product.yaml) for database and model deployment settings.
 2. Install dependencies with `uv sync --locked --group retrieval` and
    `npm --prefix frontend ci`.
@@ -69,13 +70,21 @@ Once those resources are ready, build and start the full application:
 ```powershell
 npm --prefix frontend run build
 uv run python scripts/migrate_product.py
-uv run python scripts/run_product.py --check
 uv run python scripts/run_product.py
 ```
 
-Open [localhost:5173](http://localhost:5173). Create an account to submit planning
-tasks and save trips. The readiness check verifies local resources without calling
-external providers; planning and other online features use real services.
+Open [local configuration](http://localhost:5173/config) and unlock it with the
+management token printed in the running terminal. Configure the existing Foundry,
+OpenAI and Google Maps services, save, and restart Dayloom. Missing local resources
+are shown with preparation guidance; an incomplete installation starts in setup mode.
+Optional Check API buttons verify saved service access with small, potentially
+billed requests. Startup and Check local readiness do not call provider APIs.
+The [configuration guide](docs/guides/development.md#local-configuration-console)
+explains access, environment overrides and checks.
+
+Once ready, open [localhost:5173](http://localhost:5173) and create an account to
+submit planning tasks and save trips. Local readiness checks do not call external
+providers; planning and other online features use real services.
 
 For separate API/Vite development, database setup and troubleshooting, see the
 [development guide](docs/guides/development.md).

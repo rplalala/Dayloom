@@ -1,6 +1,6 @@
 # Development guide
 
-Current entry points, reconciled 2026-10-23. [PROJECT.md](../../PROJECT.md) owns status
+Current entry points, reconciled 2026-11-01. [PROJECT.md](../../PROJECT.md) owns status
 and authorization; [architecture](../0001-system-architecture.md) and
 [application contracts](../0007-application-operations.md) explain the code and APIs.
 Commands below are references, not evidence of execution or approval for a live run.
@@ -36,10 +36,11 @@ Vite proxies `/api` and `/health` to `http://127.0.0.1:8000`.
 The [API launcher](../../scripts/run_api.py) selects the Windows event loop needed by
 async PostgreSQL access. Use it for local Windows API development. `GET /health`
 checks the application process; it does not certify provider or corpus readiness.
-Product routes include `/`, `/plan`, `/trips`, `/import`, `/login`, `/account`, `/planning`,
-`/planning/:taskId` and `/previews/:previewId`; Developer is `/dev`.
-The Product r7 shell has its own shared brief surface. Developer retains independent
-V0-V3 and the existing structured form. Product generation HTTP endpoints require
+Product routes include `/`, `/config`, `/plan`, `/trips`, `/import`, `/login`, `/account`, `/planning`,
+`/planning/:taskId` and `/previews/:previewId`. The retired `/dev` route shows the
+not-found page, and `/api/dev/planning` and its stream endpoint return HTTP 404.
+The Product r7 shell has its own shared brief surface. Independent V0-V3 execution
+uses the command-line or programmatic entry points. Product generation HTTP endpoints require
 authentication and submit the durable account-owned task lifecycle.
 
 Populate local `.env` from [the non-secret example](../../.env.example).
@@ -141,13 +142,13 @@ The root `product.yaml` configures `http://localhost:5173` and explicitly allows
 local HTTP. `--port` must match the configured origin's port. The launcher loads
 `.env` from the repository root without overriding existing
 process values. It serves `frontend/dist`,
-including direct navigation/reload of Product and Developer routes; missing APIs and
+including direct navigation/reload of Product routes; missing APIs and
 assets retain their HTTP errors. Rebuild the frontend after changing its source.
 
 Product uses `runtime_profile: acceptance` from `product.yaml`. To restore development
 resource limits, set `$env:PRODUCT_RUNTIME_PROFILE='development'` before starting the server;
 remove that override to use the YAML choice. Restart the backend after policy changes.
-Independent V0-V3 and Developer defaults remain development. See the
+Independent V0-V3 defaults remain development. See the
 [profile reference](../../config/README.md#product-acceptance-profile) for coordinated values,
 snapshot compatibility and unchanged correctness boundaries. Loading a larger profile does
 not authorize paid acceptance runs; establish a request-specific cost bound first.
@@ -163,6 +164,62 @@ Use the existing daily database for this runtime. Disposable automated-test data
 and the substituted human-walkthrough database remain separate; accounts and drafts do
 not move between them automatically. The normal API-only/Vite development commands
 above remain available, and independent V0–V3 entrypoints are unchanged.
+
+## Local configuration console
+
+Build the frontend and start `uv run python scripts/run_product.py` with its default
+loopback binding. Open the exact configured origin plus `/config`, normally
+`http://localhost:5173/config`. The terminal prints a random management token valid
+for that running process. Enter it to open a separate 30-minute management session;
+traveler registration and database access are not required. Lock the page when done.
+Restarting Dayloom invalidates management sessions and produces a new token. A lost
+token can be recovered from the running terminal or replaced by restarting.
+
+The console edits only the current provider settings defined in the
+[configuration contract](../0007-application-operations.md#local-configuration-console).
+Keep the deployment supported by the current runtime profile; changing a name does
+not add model compatibility. Existing process environment overrides are shown as
+locked fields. Saved keys are not returned to the browser. A blank replacement
+input keeps the saved key; use its explicit Clear action to remove it.
+
+Save writes the repository's ignored `.env` atomically, preserves unrelated settings,
+and rejects stale revisions. Reload saved configuration after an edit conflict.
+Provider settings, including initially missing values, remain pinned in the running
+Product process. Finish active tasks, stop the server and rerun the same command
+after saving. Starting another CLI process reads the saved configuration immediately.
+
+Without `--check`, incomplete local readiness starts setup mode: `/` redirects to
+`/config`, static navigation remains available, and business APIs return
+`local_setup_required` with HTTP 503. Saving does not unlock those APIs until a
+successful restart. `--check` still exits with an error for incomplete readiness.
+The console is disabled for non-loopback bindings, nonlocal/HTTPS origins and the
+API-only launcher; those entrypoints retain strict startup behavior where applicable.
+Use the exact configured hostname rather than an alternate localhost address.
+
+Check local readiness inspects provider-setting presence, application settings,
+read-only database access, Product migrations, both tokenizers and TripWorld
+compatibility. It does not call external providers or verify API keys. Database
+passwords, signing keys, volume selection, migrations and corpus/tokenizer
+preparation remain manual tasks described in this guide. Invalid `.env` syntax or
+invalid YAML must be corrected in a text editor before starting the console.
+
+To verify service access, save or reload pending edits, then click Check API on a
+provider card or Check all APIs. These buttons send small real provider requests
+and may incur charges. They test the saved effective settings, including a newly
+saved key before restart; successful checks do not apply that key to the running
+planner. Results show each capability, elapsed time and safe failure guidance.
+Configuration changes invalidate the results. Reload after a conflict and check
+again explicitly. Missing sample photos can leave the photo check unverified.
+The Azure card checks model responses and web search with the same Foundry settings;
+the OpenAI card checks retrieval embeddings. Search uses Azure in both standard profiles.
+The [configuration contract](../0007-application-operations.md#local-configuration-console)
+defines capabilities and request/time limits. Development tests mock these requests;
+passing those tests does not establish that installation credentials work.
+
+Normal Product actions also use configured services and may incur charges.
+The console does not run planning, change its budgets or introduce a new model
+provider. Startup and local readiness remain offline with respect to provider APIs.
+Do not publish its terminal token, `.env` or local `.env.*` lock/temp files.
 
 ## Product diagnostics
 
@@ -616,7 +673,7 @@ read-only clean-clone check. Do not rebuild vectors or destroy a volume to follo
 | Entry | Responsibility |
 | --- | --- |
 | [Version runners](../0001-system-architecture.md#concrete-code-map) | Independent execution and shared graph seams |
-| [API boundary](../0007-application-operations.md#http-contract-map) | Product/Developer request, result and stream contracts |
+| [API boundary](../0007-application-operations.md#http-contract-map) | Product request, result and stream contracts |
 | [Evaluation package](../../backend/evaluation/README.md) | Offline intake, independent review, scoring and human package commands |
 | [Evaluation development tools](../../backend/evaluation/tools/route_requests_cli.py) | V0 smoke request/budget preparation; not Product runtime or final quality scoring |
 | [Data tools](../../tools/data/tripworld_database.py) | Explicit ingestion, embedding, integrity and query operations |

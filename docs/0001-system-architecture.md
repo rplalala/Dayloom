@@ -28,7 +28,7 @@ vendor HTTP calls throughout graph nodes.
 | V3 | V2 plus structured validation, authorized targeted repair and re-validation | scripts/run_v3.py |
 
 Product uses **V3**, verified in [PlanningService](../backend/app/services/planning.py).
-Developer mode exposes all four. V0 remains free of external travel acquisition;
+Independent command-line and programmatic entry points expose all four. V0 remains free of external travel acquisition;
 its ordinary LLM calls do not make it a tool-based planner. V1/V2 do not invoke V3
 repair. Shared correctness fixes apply to dependent versions without disguising
 them as a later version's exclusive mechanism. A milestone and a user-approved freeze
@@ -53,7 +53,7 @@ flowchart TD
   K --> L
   C --> M[Shared itinerary output]
   L --> M
-  M --> N[Allowlisted Product presentation or Developer result]
+  M --> N[Allowlisted Product presentation or programmatic result]
 ```
 
 Requirements retain form/text provenance. Discovery opportunity, candidate admission,
@@ -117,13 +117,13 @@ by this design. Engineering changes require a concrete need and a separately agr
 
 ## Concrete code map
 
-Follow this call chain when tracing a planning request. Product and Developer share runtime
+Follow this call chain when tracing a planning request. Product and programmatic callers share runtime
 ports but have different application result boundaries.
 
 | Boundary | Concrete owner | Responsibility and next step |
 | --- | --- | --- |
-| React route/form | [router](../frontend/src/app/router.tsx), [PlanningForm](../frontend/src/features/planning/components/PlanningForm.tsx) | Product `/plan` and Developer `/dev`; copied request snapshots and explicit submission |
-| HTTP | [Product router](../backend/app/api/product/planning.py), [Developer router](../backend/app/api/developer/planning.py) | Typed validation and ordinary/streamed delivery; see [HTTP map](0007-application-operations.md#http-contract-map) |
+| React route/form | [router](../frontend/src/app/router.tsx), [BriefPage](../frontend/src/features/product/BriefPage.tsx) | Product `/plan`; copied request snapshots and explicit submission |
+| HTTP | [Product router](../backend/app/api/product/planning.py) | Typed validation and ordinary/streamed delivery; see [HTTP map](0007-application-operations.md#http-contract-map) |
 | Application | [planning.py](../backend/app/services/planning.py) | `PlanningService` dispatches V3, gathers final evidence and presents Product; `DeveloperPlanningService` returns the selected version's full result |
 | Request lifecycle | [planner_runtime.py](../backend/app/services/planner_runtime.py) | `PlannerRuntime` port and `RequestPlannerRuntime`: immutable configuration, request-owned dependencies, deadlines and awaited cleanup |
 | V0 | [runner](../backend/app/versions/v0/runner.py), [graph](../backend/app/versions/v0/graph.py) | Interpret requirements, plain generation and source acceptance; no external travel tools |

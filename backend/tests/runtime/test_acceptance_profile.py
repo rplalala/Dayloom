@@ -34,6 +34,7 @@ def test_acceptance_profile_supports_larger_work_while_development_remains_selec
     assert config.poi_semantics.max_calls == 12
     assert config.poi_semantics.total_seconds == 240
     assert config.generation_spend_usd == 25
+    assert config.web_evidence.provider == "azure_foundry"
     assert load_runtime_profile("development") == load_runtime_config()
     development = ToolBudget(tool_limits(load_runtime_config()))
     with pytest.raises(ToolBudgetExceededError):
