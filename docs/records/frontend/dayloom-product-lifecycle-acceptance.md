@@ -336,6 +336,15 @@ database probe initially timed out inside the sandbox; the same read-only check 
 outside it without changing credentials or configuration. `runtime-readiness.json` in the
 refinement evidence directory records this bounded result.
 
+Combined delivery verification at `046a2a0` exposed two controlled-search cases still
+expecting the withdrawn three-call allowance after the approved policy returned to two.
+The adapter correctly followed the current configuration. Test-only correction
+`148afd6` restored the two-call expectation; all 227 affected backend tests then passed,
+with 11 database-dependent cases skipped because no isolated test database was configured.
+Independent Standards and Spec review of `df169d8...148afd6` left no unresolved findings.
+The repeated 152-value floor audit retained every original allowance and the US$25 guard;
+development YAML bytes remained unchanged. Delivery ran targeted checks, not a full regression.
+
 Evidence identifiers under `.scratch/acceptance-limits-tests/` are
 `pytest-20261031-145843.log` / `results-20261031-145843.xml` for the 218-case gate,
 `pytest-20261031-150446.log` / `results-20261031-150446.xml` for the nine graph cases,
