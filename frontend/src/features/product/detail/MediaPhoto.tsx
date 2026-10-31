@@ -7,7 +7,8 @@ import { Icon } from '../Icon';
 import { Link } from 'react-router-dom';
 import { validPhoto } from './photoSession';
 
-export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, onImageError, onRetry, children, link, creditInDetails = false }: {
+export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, onImageError, onRetry, children, link, creditInDetails = false, slot }: {
+  slot?: string;
   onImageError?: () => void; onRetry?: () => void;
   creditInDetails?: boolean; link?: { to: string; label: string }; media?: DisplayMedia; label: string; atmosphere?: boolean; fallback?: string; className?: string; onOpen?: () => void; children?: ReactNode;
 }) {
@@ -31,7 +32,7 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
     {media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
   </> : pendingLabel;
   const picture = onOpen ? <button type="button" className="media-open" aria-label={`View ${label}`} onClick={onOpen}>{visual}</button> : link ? <Link className="media-image-link" to={link.to} aria-label={link.label}>{visual}</Link> : visual;
-  return <figure data-photo-state={failed ? 'unavailable' : media?.status || 'unattempted'} aria-busy={media?.status === 'loading'} className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}
+  return <figure data-photo-slot={slot} data-photo-state={failed ? 'unavailable' : media?.status || 'unattempted'} aria-busy={media?.status === 'loading'} className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}
     onPointerEnter={event => { if (atmosphere && event.pointerType !== "touch") setCreditsOpen(true); }}
     onPointerLeave={event => { if (!event.currentTarget.contains(document.activeElement)) setCreditsOpen(false); }}
     onFocus={() => setCreditsOpen(true)}
@@ -50,7 +51,7 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
 export function PlacePhoto({ slot, label, className, onOpen, children, fallback, fullCredit = false }: { fullCredit?: boolean; slot: string; label: string; className?: string; onOpen?: () => void; children?: ReactNode; fallback?: string }) {
   const media = useContext(PlaceMedia);
   const actions = useContext(PlaceMediaActions);
-  return <MediaPhoto fallback={fallback || illustrationFor(label)} creditInDetails={!fullCredit} media={media[slot]} label={label} className={className} onOpen={onOpen}
+  return <MediaPhoto slot={slot} fallback={fallback || illustrationFor(label)} creditInDetails={!fullCredit} media={media[slot]} label={label} className={className} onOpen={onOpen}
     onImageError={media[slot] && actions ? () => actions.imageFailed(slot, media[slot]) : undefined}
     onRetry={actions ? () => actions.refresh(slot) : undefined}>{children}</MediaPhoto>;
 }
@@ -62,7 +63,7 @@ export function SupportingPhoto({ slot, label, className = '', onOpen }: {
   const actions = useContext(PlaceMediaActions);
   if (media?.kind !== 'atmosphere' || !validPhoto(media)) return null;
   return <div className={`supporting-photo ${className}`}>
-    <MediaPhoto atmosphere media={media} label={label} onOpen={onOpen}
+    <MediaPhoto slot={slot} atmosphere media={media} label={label} onOpen={onOpen}
       onImageError={() => actions?.imageFailed(slot, media)} />
     <span className="supporting-photo-label">Atmosphere photo</span>
   </div>;
