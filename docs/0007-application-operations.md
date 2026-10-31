@@ -168,8 +168,8 @@ or unresolved travel checks in plain travel language; sourced exceptions retain 
 separate indication. Historical records without this optional field keep their original
 completion content, without backfilling or relabelling.
 
-Rich chosen in the form, inherited from account defaults, restored in a draft or
-carried through replanning uses the same active V3 rule. Preference text and span
+Rich chosen in the form, inherited from new-brief account defaults, restored in a draft or
+selected again after replanning uses the same active V3 rule. Preference text and span
 ownership remain unchanged; the option does not inject a hard exact-three requirement.
 Invalid submission/date/currency fields fail with 422
 before external work. Developer retains its research responses and HTTP failure policy.
@@ -595,16 +595,17 @@ reconcile ownership without reclaiming detached wording. Dismiss, polish and log
 return never generate an itinerary. Draft persistence stores the editor snapshot;
 task submission validates the separate confirmed planning request.
 
-### Replanning saved itineraries
+### Replanning itineraries
 
-The authenticated saved-detail **Plan again** and **Plan another journey** actions open the editable brief
-and clears its prior draft and submission identity. Only the snapshot's original
-`request` seeds destination, dates, travelers, budget/currency and literal preference
-text. Imported `known_fields` limits that mapping; absent or explicit null values remain
-blank, including a visibly unselected currency. The complete generated request remains
-complete, while partial or absent imported requests are not filled from itinerary dates,
-activities, generated descriptions or profile defaults. Required/avoided controls and
-preference bindings start empty; an original composed preference remains literal text.
+The **Plan again** and **Plan another journey** actions in saved details, previews and
+examples open the editable brief and clear its prior draft and submission identity.
+Only the snapshot's original `request` seeds destination, dates, travelers and
+budget/currency. Imported `known_fields` limits that mapping; absent or explicit null
+values remain blank, including a visibly unselected currency. Missing basics are not
+filled from itinerary dates, activities, generated descriptions or profile defaults.
+All **Personalize your trip** fields start empty: interests, pace, transport preferences,
+required/avoided places and additional preferences. Original composed preference text,
+current editor choices and preference bindings are not carried into the new brief.
 
 Opening or reopening this brief sends no generation or provider-refresh request. Replan
 uses the same origin fence as drafts and restored editors, so a late new-brief initializer

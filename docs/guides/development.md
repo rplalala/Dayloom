@@ -327,7 +327,7 @@ complete generated and partial historical imported sources, fills unknown values
 saves new previews independently. It checks current generation validation, owner isolation,
 zero writes on form opening, unchanged source requests and latest defaults on a genuinely
 new brief. Screenshots belong to `.scratch/replan-browser`; task signals and server logs
-remain under `.scratch/task-browser`. The [replan contract](../0007-application-operations.md#replanning-saved-itineraries)
+remain under `.scratch/task-browser`. The [replan contract](../0007-application-operations.md#replanning-itineraries)
 defines which original facts may seed the form.
 
 The editor journey uses the same isolated database and strict subprocess environment,
