@@ -11,7 +11,6 @@ from urllib.parse import urlsplit
 
 import httpx
 
-from backend.app.integrations.openai_search import MODEL as OPENAI_SEARCH_MODEL
 from backend.app.product.configuration_validation import supported_foundry_endpoint
 
 MAX_REQUESTS = 8
@@ -77,8 +76,8 @@ class ApiChecker:
                 run = _CheckRun(client, values, self.clock)
                 for group, name, operation in (
                     ("foundry", "foundry", run.foundry),
+                    ("foundry", "foundry_search", run.search),
                     ("openai", "openai_embeddings", run.embeddings),
-                    ("openai", "openai_search", run.search),
                     ("google", "google_places", run.places),
                     ("google", "google_routes", run.routes),
                     ("google", "google_photos", run.photos),
@@ -172,13 +171,16 @@ class _CheckRun:
                     )
                 return json.loads(content)
 
-    async def foundry(self):
+    def foundry_url(self):
         endpoint = self.values["AZURE_OPENAI_ENDPOINT"]
         if not supported_foundry_endpoint(endpoint):
             raise ProbeFailure("invalid_configuration")
+        return endpoint.rstrip("/") + "/responses"
+
+    async def foundry(self):
         data = await self.request(
             "POST",
-            endpoint.rstrip("/") + "/responses",
+            self.foundry_url(),
             headers={"Authorization": "Bearer " + self.values["AZURE_OPENAI_API_KEY"]},
             json={
                 "model": self.values["AZURE_OPENAI_DEPLOYMENT"],
@@ -250,13 +252,14 @@ class _CheckRun:
     async def search(self):
         data = await self.request(
             "POST",
-            "https://api.openai.com/v1/responses",
+            self.foundry_url(),
             timeout=WEB_TIMEOUT_SECONDS,
-            headers=self.openai_headers(),
+            headers={"Authorization": "Bearer " + self.values["AZURE_OPENAI_API_KEY"]},
             json={
-                "model": OPENAI_SEARCH_MODEL,
+                "model": self.values["AZURE_OPENAI_DEPLOYMENT"],
                 "store": False,
                 "max_output_tokens": 512,
+                "reasoning": {"effort": "low"},
                 "input": "Search for the official Sydney Opera House website. Reply briefly.",
                 "tools": [
                     {

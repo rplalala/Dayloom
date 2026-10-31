@@ -12,10 +12,10 @@ const sections: { service: Exclude<Service, 'all'>; title: string; description: 
   { service: 'foundry', title: 'Azure Foundry', description: 'Connect the model deployment used by this installation.', fields: [
     ['AZURE_OPENAI_ENDPOINT', 'Foundry endpoint', 'HTTPS endpoint ending in /openai/v1.'],
     ['AZURE_OPENAI_DEPLOYMENT', 'Deployment', 'Use the deployment supported by the current runtime profile.'],
-    ['AZURE_OPENAI_API_KEY', 'Foundry API key', 'Used for itinerary planning and supporting model calls.'],
+    ['AZURE_OPENAI_API_KEY', 'Foundry API key', 'Used for itinerary planning, web search and supporting model calls.'],
   ] },
-  { service: 'openai', title: 'OpenAI', description: 'Connect the existing retrieval and web evidence services.', fields: [
-    ['OPENAI_API_KEY', 'OpenAI API key', 'Used for TripWorld query embeddings and the configured web search.'],
+  { service: 'openai', title: 'OpenAI', description: 'Connect the existing retrieval embedding service.', fields: [
+    ['OPENAI_API_KEY', 'OpenAI API key', 'Used for TripWorld query embeddings.'],
   ] },
   { service: 'google', title: 'Google Maps', description: 'Find places, calculate connections and display place photographs.', fields: [
     ['GOOGLE_MAPS_API_KEY', 'Google Maps API key', 'Shared by planning and place photographs.'],
@@ -25,7 +25,7 @@ const sections: { service: Exclude<Service, 'all'>; title: string; description: 
   ] },
 ];
 const apiNames: Record<string, string> = {
-  foundry: 'Structured model response', openai_embeddings: 'Query embeddings', openai_search: 'Web search',
+  foundry: 'Structured model response', foundry_search: 'Web search', openai_embeddings: 'Query embeddings',
   google_places: 'Places', google_routes: 'Routes', google_photos: 'Place photos', unsplash: 'Photo metadata',
 };
 const apiStatuses: Record<string, string> = {

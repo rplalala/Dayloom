@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, expect, it, vi } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import { ConfigurationPage } from './ConfigurationPage';
@@ -87,6 +87,7 @@ it('checks APIs only on click and invalidates results when settings are edited',
       : url.endsWith('/check') ? { revision, stale: false, request_count: 8,
         checked_at: '2026-11-01T00:00:00Z', service: 'all', results: [
           { id: 'foundry', service: 'foundry', status: 'passed', message: 'Model responded.', latency_ms: 5 },
+          { id: 'foundry_search', service: 'foundry', status: 'passed', message: 'Search responded.', latency_ms: 8 },
           { id: 'openai_embeddings', service: 'openai', status: 'authentication_failed', message: 'The service rejected the credential.', latency_ms: 10 },
         ] }
       : { revision, restart_required: false, running_ready: true, fields: {
@@ -99,7 +100,9 @@ it('checks APIs only on click and invalidates results when settings are edited',
   expect(calls.some(call => call.url.endsWith('/check'))).toBe(false);
   expect(screen.getByText(/may incur charges/)).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Check all APIs' }));
-  await screen.findByText('Passed');
+  await screen.findByText('Search responded.');
+  expect(within(screen.getByLabelText('Azure Foundry API results')).getByText('Web search')).toBeInTheDocument();
+  expect(within(screen.getByLabelText('OpenAI API results')).queryByText('Web search')).not.toBeInTheDocument();
   expect(screen.getByText('Authentication failed')).toBeInTheDocument();
   const check = calls.find(call => call.url.endsWith('/check'))!;
   expect(check.init?.method).toBe('POST');

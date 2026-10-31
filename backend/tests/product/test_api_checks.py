@@ -24,6 +24,14 @@ def structured_response():
 
 def successful_provider(request):
     if request.url.host.endswith("azure.com"):
+        if json.loads(request.content).get("tools"):
+            return httpx.Response(
+                200,
+                json={
+                    "status": "completed",
+                    "output": [{"type": "web_search_call", "status": "completed"}],
+                },
+            )
         return httpx.Response(200, json=structured_response())
     if request.url.path == "/v1/embeddings":
         return httpx.Response(
@@ -32,16 +40,6 @@ def successful_provider(request):
                 "model": "text-embedding-3-small",
                 "data": [
                     {"index": 0, "embedding": [0.001] * 1536},
-                ],
-            },
-        )
-    if request.url.path == "/v1/responses":
-        return httpx.Response(
-            200,
-            json={
-                "status": "completed",
-                "output": [
-                    {"type": "web_search_call", "status": "completed"},
                 ],
             },
         )
@@ -85,18 +83,21 @@ def successful_provider(request):
     raise AssertionError("Unexpected external request")
 
 
-def test_foundry_checks_the_saved_deployment_with_one_bounded_structured_call(provider_values):
+def test_foundry_checks_model_and_search_with_the_saved_azure_credentials(provider_values):
     import asyncio
 
+    provider_values.pop("OPENAI_API_KEY")
     requests = []
 
     def respond(request):
         requests.append(request)
-        return httpx.Response(200, json=structured_response())
+        return successful_provider(request)
 
     checker = ApiChecker(transport=httpx.MockTransport(respond))
     result = asyncio.run(checker.check("foundry", provider_values))
-    assert result["request_count"] == 1
+    assert result["request_count"] == 2
+    assert all(item["status"] == "passed" for item in result["results"])
+    assert [item["id"] for item in result["results"]] == ["foundry", "foundry_search"]
     assert result["results"][0]["status"] == "passed"
     assert result["results"][0]["id"] == "foundry"
     assert str(requests[0].url) == "https://example.services.ai.azure.com/openai/v1/responses"
@@ -105,6 +106,12 @@ def test_foundry_checks_the_saved_deployment_with_one_bounded_structured_call(pr
     assert payload["text"]["format"]["type"] == "json_schema"
     assert payload["store"] is False
     assert 0 < payload["max_output_tokens"] <= 1024
+    search = json.loads(requests[1].content)
+    assert str(requests[1].url) == str(requests[0].url)
+    assert requests[1].headers["Authorization"] == "Bearer synthetic-foundry"
+    assert search["model"] == "gpt-6-luna"
+    assert search["tools"][0]["type"] == "web_search"
+    assert search["max_tool_calls"] == 1
     assert "synthetic-foundry" not in json.dumps(result)
 
 
@@ -126,8 +133,8 @@ def test_all_services_check_distinct_permissions_with_exactly_eight_requests(pro
     assert result["request_count"] == len(requests) == 8
     assert [item["id"] for item in result["results"]] == [
         "foundry",
+        "foundry_search",
         "openai_embeddings",
-        "openai_search",
         "google_places",
         "google_routes",
         "google_photos",
@@ -138,17 +145,18 @@ def test_all_services_check_distinct_permissions_with_exactly_eight_requests(pro
         next(
             r.content
             for r in requests
-            if r.url.host == "api.openai.com" and r.url.path == "/v1/responses"
+            if r.url.host.endswith("azure.com") and json.loads(r.content).get("tools")
         )
     )
     assert search["max_tool_calls"] == 1
     assert search["tool_choice"] == "required"
+    assert all(r.url.path == "/v1/embeddings" for r in requests if r.url.host == "api.openai.com")
     assert all("synthetic-" not in str(request.url) for request in requests)
     assert "synthetic-" not in json.dumps(result)
 
 
 @pytest.mark.parametrize(
-    "service,expected", [("foundry", 1), ("openai", 2), ("google", 4), ("unsplash", 1)]
+    "service,expected", [("foundry", 2), ("openai", 1), ("google", 4), ("unsplash", 1)]
 )
 def test_service_buttons_only_send_their_own_requests(provider_values, service, expected):
     import asyncio
@@ -209,8 +217,8 @@ def test_provider_errors_are_classified_without_retries_or_secret_leaks(
             provider_values,
         )
     )
-    assert len(requests) == result["request_count"] == 1
-    assert result["results"][0]["status"] == status
+    assert len(requests) == result["request_count"] == 2
+    assert all(item["status"] == status for item in result["results"])
     assert "synthetic-foundry" not in json.dumps(result)
     assert "private failure" not in json.dumps(result)
 
@@ -265,8 +273,8 @@ def test_network_failures_are_not_reported_as_bad_credentials(provider_values, f
             provider_values,
         )
     )
-    assert result["request_count"] == 1
-    assert result["results"][0]["status"] == status
+    assert result["request_count"] == 2
+    assert all(item["status"] == status for item in result["results"])
     assert "synthetic-foundry" not in json.dumps(result)
 
 
@@ -285,8 +293,8 @@ def test_redirects_are_not_followed(provider_values):
             provider_values,
         )
     )
-    assert len(requests) == 1
-    assert result["results"][0]["status"] == "provider_error"
+    assert len(requests) == 2
+    assert all(item["status"] == "provider_error" for item in result["results"])
 
 
 def test_failed_places_lookup_does_not_hide_route_permission_result(provider_values):
@@ -322,7 +330,7 @@ def test_response_size_is_bounded(provider_values):
         ).check("foundry", provider_values)
     )
     assert result["results"][0]["status"] == "invalid_response"
-    assert result["request_count"] == 1
+    assert result["request_count"] == 2
 
 
 def test_deadline_stops_remaining_sends(provider_values):
@@ -366,7 +374,7 @@ def test_concurrent_checks_cannot_multiply_requests_and_cancellation_releases_sl
         with pytest.raises(asyncio.CancelledError):
             await first
         release.set()
-        assert (await checker.check("foundry", provider_values))["request_count"] == 1
+        assert (await checker.check("foundry", provider_values))["request_count"] == 2
 
     asyncio.run(scenario())
 
@@ -377,6 +385,7 @@ def test_an_in_flight_request_has_a_real_timeout(provider_values, monkeypatch):
     from backend.app.product import api_checks
 
     monkeypatch.setattr(api_checks, "REQUEST_TIMEOUT_SECONDS", 0.01)
+    monkeypatch.setattr(api_checks, "WEB_TIMEOUT_SECONDS", 0.01)
 
     async def slow(request):
         await asyncio.Event().wait()
@@ -387,8 +396,8 @@ def test_an_in_flight_request_has_a_real_timeout(provider_values, monkeypatch):
             provider_values,
         )
     )
-    assert result["request_count"] == 1
-    assert result["results"][0]["status"] == "timeout"
+    assert result["request_count"] == 2
+    assert all(item["status"] == "timeout" for item in result["results"])
 
 
 def test_request_cap_remains_enforced_when_other_probes_are_pending(provider_values, monkeypatch):

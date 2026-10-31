@@ -167,4 +167,4 @@ def test_simultaneous_admin_checks_return_busy_without_extra_sends(checked_clien
         finally:
             release.set()
         assert first.result(timeout=3).status_code == 200
-    assert len(requests) == 1
+    assert len(requests) == 2
