@@ -77,3 +77,52 @@ it('clears typed secrets when the management session expires', async () => {
   expect(screen.queryByDisplayValue('unsaved-private')).not.toBeInTheDocument();
   expect(screen.getByRole('alert')).toHaveTextContent(/session has expired/);
 });
+
+it('checks APIs only on click and invalidates results when settings are edited', async () => {
+  const calls: { url: string; init?: RequestInit }[] = [];
+  const revision = 'd'.repeat(64);
+  vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
+    calls.push({ url, init });
+    const value = url.endsWith('/session') ? { csrf_token: 'csrf' }
+      : url.endsWith('/check') ? { revision, stale: false, request_count: 8,
+        checked_at: '2026-11-01T00:00:00Z', service: 'all', results: [
+          { id: 'foundry', service: 'foundry', status: 'passed', message: 'Model responded.', latency_ms: 5 },
+          { id: 'openai_embeddings', service: 'openai', status: 'authentication_failed', message: 'The service rejected the credential.', latency_ms: 10 },
+        ] }
+      : { revision, restart_required: false, running_ready: true, fields: {
+        OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false },
+      } };
+    return new Response(JSON.stringify(value));
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  await screen.findByLabelText('OpenAI API key');
+  expect(calls.some(call => call.url.endsWith('/check'))).toBe(false);
+  expect(screen.getByText(/may incur charges/)).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Check all APIs' }));
+  await screen.findByText('Passed');
+  expect(screen.getByText('Authentication failed')).toBeInTheDocument();
+  const check = calls.find(call => call.url.endsWith('/check'))!;
+  expect(check.init?.method).toBe('POST');
+  expect(JSON.parse(check.init!.body as string)).toEqual({ revision, service: 'all' });
+  expect((check.init!.headers as Record<string, string>)['X-CSRF-Token']).toBe('csrf');
+  expect(calls.some(call => call.init?.method === 'PUT')).toBe(false);
+  fireEvent.change(screen.getByLabelText('OpenAI API key'), { target: { value: 'unsaved' } });
+  expect(screen.queryByText('Passed')).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Check all APIs' })).toBeDisabled();
+  expect(screen.getByRole('button', { name: 'Check OpenAI API' })).toBeDisabled();
+});
+
+it('never displays a stale result as a passed check', async () => {
+  const revision = 'e'.repeat(64);
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => new Response(JSON.stringify(
+    url.endsWith('/session') ? { csrf_token: 'csrf' }
+      : url.endsWith('/check') ? { revision, stale: true, service: 'foundry',
+        checked_at: '2026-11-01T00:00:00Z', request_count: 1,
+        results: [{ id: 'foundry', service: 'foundry', status: 'passed', message: 'Old result.', latency_ms: 1 }] }
+      : { revision, restart_required: false, running_ready: true, fields: {} },
+  ))));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  fireEvent.click(await screen.findByRole('button', { name: 'Check Azure Foundry API' }));
+  await screen.findByText(/Configuration changed while/);
+  expect(screen.queryByText('Passed')).not.toBeInTheDocument();
+});

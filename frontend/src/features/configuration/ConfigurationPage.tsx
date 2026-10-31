@@ -5,22 +5,36 @@ import './configuration.css';
 type Field = { value: string | null; secret: boolean; configured: boolean; locked: boolean };
 type Configuration = { revision: string; restart_required: boolean; running_ready: boolean; fields: Record<string, Field> };
 type Readiness = { ready: boolean; missing: string[]; credentials_verified: boolean; resources: { id: string; ready: boolean }[] };
-const sections = [
-  { title: 'Azure Foundry', description: 'Connect the model deployment used by this installation.', fields: [
+type Service = 'all' | 'foundry' | 'openai' | 'google' | 'unsplash';
+type ApiResult = { id: string; service: Service; status: string; message: string; latency_ms: number; http_status?: number };
+type ApiReport = { revision: string; stale: boolean; service: Service; checked_at: string; request_count: number; results: ApiResult[] };
+const sections: { service: Exclude<Service, 'all'>; title: string; description: string; fields: string[][] }[] = [
+  { service: 'foundry', title: 'Azure Foundry', description: 'Connect the model deployment used by this installation.', fields: [
     ['AZURE_OPENAI_ENDPOINT', 'Foundry endpoint', 'HTTPS endpoint ending in /openai/v1.'],
     ['AZURE_OPENAI_DEPLOYMENT', 'Deployment', 'Use the deployment supported by the current runtime profile.'],
     ['AZURE_OPENAI_API_KEY', 'Foundry API key', 'Used for itinerary planning and supporting model calls.'],
   ] },
-  { title: 'OpenAI', description: 'Connect the existing retrieval and web evidence services.', fields: [
+  { service: 'openai', title: 'OpenAI', description: 'Connect the existing retrieval and web evidence services.', fields: [
     ['OPENAI_API_KEY', 'OpenAI API key', 'Used for TripWorld query embeddings and the configured web search.'],
   ] },
-  { title: 'Google Maps', description: 'Find places, calculate connections and display place photographs.', fields: [
+  { service: 'google', title: 'Google Maps', description: 'Find places, calculate connections and display place photographs.', fields: [
     ['GOOGLE_MAPS_API_KEY', 'Google Maps API key', 'Shared by planning and place photographs.'],
   ] },
-  { title: 'Unsplash', description: 'Optional atmosphere photographs. Illustrations are used when unavailable.', fields: [
+  { service: 'unsplash', title: 'Unsplash', description: 'Optional atmosphere photographs. Illustrations are used when unavailable.', fields: [
     ['PRODUCT_UNSPLASH_ACCESS_KEY', 'Unsplash access key', 'Optional. Existing UNSPLASH_API_KEY settings are also recognized.'],
   ] },
 ];
+const apiNames: Record<string, string> = {
+  foundry: 'Structured model response', openai_embeddings: 'Query embeddings', openai_search: 'Web search',
+  google_places: 'Places', google_routes: 'Routes', google_photos: 'Place photos', unsplash: 'Photo metadata',
+};
+const apiStatuses: Record<string, string> = {
+  passed: 'Passed', not_configured: 'Not configured', authentication_failed: 'Authentication failed',
+  permission_denied: 'Permission denied', billing_required: 'Billing required', quota_exceeded: 'Quota exhausted',
+  rate_limited: 'Rate limited', not_found: 'Deployment / resource not found', network_error: 'Network error',
+  timeout: 'Timed out', provider_error: 'Provider error', invalid_configuration: 'Invalid configuration',
+  invalid_response: 'Response not verified', not_checked: 'Not checked', inconclusive: 'Not verified',
+};
 const resourceHelp: Record<string, [string, string]> = {
   product_settings: ['Application settings', 'Prepare DAYLOOM_DB_PASSWORD and PRODUCT_JWT_SECRET (at least 32 characters) in .env.'],
   database: ['PostgreSQL', 'Start the local database using scripts/run_database.py.'],
@@ -41,10 +55,12 @@ const errors: Record<string, string> = {
   too_many_attempts: 'Too many attempts. Wait a minute before trying again.',
   too_many_sessions: 'Too many management sessions are open. Lock another session or restart Dayloom.',
   local_configuration_unavailable: 'Local configuration is available through scripts/run_product.py on a loopback address.',
+  api_check_in_progress: 'Another API check is already running. Wait for it to finish.',
+  api_check_failed: 'The API check could not complete. No automatic retry was made.',
 };
 
 class ConfigurationFailure extends Error {
-  constructor(public status: number, code: string) {
+  constructor(public status: number, public code: string) {
     super(errors[code] || 'The configuration request failed. Check that Dayloom is running at its configured local address.');
   }
 }
@@ -67,6 +83,7 @@ export function ConfigurationPage() {
   const [token, setToken] = useState('');
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [readiness, setReadiness] = useState<Readiness | null>(null);
+  const [apiReports, setApiReports] = useState<Partial<Record<Service, ApiReport>>>({});
   const [initializing, setInitializing] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -96,8 +113,9 @@ export function ConfigurationPage() {
     try { await action(); }
     catch (failure) {
       if (failure instanceof ConfigurationFailure && failure.status === 401) {
-        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setToken('');
+        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setToken(''); setApiReports({});
       }
+      if (failure instanceof ConfigurationFailure && ['configuration_changed', 'configuration_unreadable'].includes(failure.code)) setApiReports({});
       setError(failure instanceof ConfigurationFailure ? failure.message : 'Could not reach the local application. Try again.');
     } finally { setBusy(false); }
   }
@@ -117,7 +135,7 @@ export function ConfigurationPage() {
     void perform(async () => {
       const saved = await request<Configuration>('', { method: 'PUT', headers: { 'X-CSRF-Token': csrf },
         body: JSON.stringify({ revision: config!.revision, changes: edits }) });
-      setConfig(saved); setEdits({}); setReadiness(null);
+      setConfig(saved); setEdits({}); setReadiness(null); setApiReports({});
       setNotice('Saved. Restart Dayloom from the terminal after active tasks finish to apply your changes.');
     });
   }
@@ -130,13 +148,39 @@ export function ConfigurationPage() {
       return next;
     });
     setNotice('');
+    setApiReports({});
+  }
+
+  function checkApis(service: Service) {
+    if (!config || Object.keys(edits).length) return;
+    const revision = config.revision;
+    void perform(async () => {
+      setApiReports(current => service === 'all' ? {} : { ...current, [service]: undefined });
+      const report = await request<ApiReport>('/check', { method: 'POST',
+        headers: { 'X-CSRF-Token': csrf }, body: JSON.stringify({ revision, service }) });
+      if (report.stale || report.revision !== revision) {
+        setApiReports({});
+        setError('Configuration changed while checks were running. Reload saved configuration and check again.');
+        return;
+      }
+      setApiReports(current => {
+        const next = { ...current };
+        for (const section of sections) {
+          if (service === 'all' || service === section.service) {
+            next[section.service] = { ...report, results: report.results.filter(item => item.service === section.service) };
+          }
+        }
+        return next;
+      });
+      setNotice(`API checks finished with ${report.request_count} HTTP attempts. Review the results below.`);
+    });
   }
 
   return <div className="config-page">
     <header className="config-header"><Link to="/" className="config-brand">Dayloom<span>Local configuration</span></Link>
       {config && <button type="button" disabled={busy} onClick={() => void perform(async () => {
         await request('/session', { method: 'DELETE', headers: { 'X-CSRF-Token': csrf } });
-        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null);
+        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setApiReports({});
       })}>Lock configuration</button>}
     </header>
     <main className="config-content">
@@ -156,6 +200,12 @@ export function ConfigurationPage() {
             <strong>{config.running_ready ? 'Application started with ready local resources.' : 'Setup is incomplete. Planning is paused.'}</strong>
             <span>{config.restart_required ? 'Saved configuration differs from the running process. Restart required.' : 'No saved provider changes are waiting for a restart.'}</span>
           </aside>
+          <section className="config-card config-api-intro" aria-label="API connectivity checks">
+            <div><h2>Check service access</h2><p>API checks send small requests to your saved services and may incur charges.
+              All checks use at most 8 HTTP attempts and 60 seconds, with no automatic retries.</p>
+              <p>Requests are sent only when you click Check API or Check all APIs. Save or reload any edits first.</p></div>
+            <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis('all')}>Check all APIs</button>
+          </section>
           <form onSubmit={save}>
             <div className="config-grid">{sections.map(section => <section className="config-card" key={section.title}>
               <h2>{section.title}</h2><p>{section.description}</p>
@@ -172,14 +222,25 @@ export function ConfigurationPage() {
                     value={edited ? edits[key] : field.secret ? '' : field.value || ''}
                     onChange={event => edit(key, event.target.value, field.secret)} />
                     {field.secret && field.configured && !field.locked && <button type="button" disabled={busy}
-                      aria-label={`Clear ${label}`} onClick={() => setEdits(current => ({ ...current, [key]: '' }))}>Clear</button>}
+                      aria-label={`Clear ${label}`} onClick={() => {
+                        setEdits(current => ({ ...current, [key]: '' })); setApiReports({}); setNotice('');
+                      }}>Clear</button>}
                   </div><small id={`${key}-help`}>{help}</small>
                 </div>;
               })}
+              <div className="config-api-actions"><button type="button" aria-label={`Check ${section.title} API`}
+                disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis(section.service)}>Check API</button></div>
+              {apiReports[section.service] && <div className="config-api-results" aria-label={`${section.title} API results`} aria-live="polite">
+                <p className="config-api-time">Checked {new Date(apiReports[section.service]!.checked_at).toLocaleString()}</p>
+                <ul>{apiReports[section.service]!.results.map(result => <li key={result.id} data-status={result.status}>
+                  <div><strong>{apiNames[result.id] || result.id}</strong><span className="config-api-status">{apiStatuses[result.status] || 'Not verified'}</span></div>
+                  <p>{result.message}</p><small>{result.latency_ms} ms{result.http_status ? ` · HTTP ${result.http_status}` : ''}</small>
+                </li>)}</ul>
+              </div>}
             </section>)}</div>
             <div className="config-actions"><button className="config-primary" type="submit" disabled={busy || !Object.keys(edits).length}>Save configuration</button>
               <button type="button" disabled={busy} onClick={() => void perform(async () => {
-                setConfig(await request<Configuration>('')); setEdits({}); setReadiness(null);
+                setConfig(await request<Configuration>('')); setEdits({}); setReadiness(null); setApiReports({});
               })}>Reload saved configuration</button>
               <span>Keys are stored locally and are never displayed after saving.</span>
             </div>

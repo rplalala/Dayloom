@@ -37,10 +37,23 @@
 .config-resources li p { margin-bottom: 0; font-size: .82rem; }
 .config-ready { color: #285642; }
 .config-missing { color: #94502b; }
+.config-api-intro { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.5rem; }
+.config-api-intro p { font-size: .86rem; margin: .6rem 0 0; max-width: 760px; }
+.config-api-intro button { flex-shrink: 0; }
+.config-api-actions { margin-top: 1.5rem; padding-top: 1.1rem; border-top: 1px solid #dce1d6; }
+.config-api-results ul { list-style: none; padding: 0; margin: 0; }
+.config-api-results li { padding: .85rem 0; border-bottom: 1px solid #e5e8df; }
+.config-api-results li > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4rem; font-size: .85rem; }
+.config-api-results li p { font-size: .8rem; margin: .45rem 0; }
+.config-api-results small, .config-api-results .config-api-time { color: #69786c; font-size: .72rem; }
+.config-api-status { color: #94502b; }
+.config-api-results [data-status="passed"] .config-api-status { color: #285642; }
+.config-api-results :is([data-status="not_checked"], [data-status="not_configured"], [data-status="inconclusive"]) .config-api-status { color: #69786c; }
 .config-footer { padding: 1rem 1.25rem 2rem; text-align: center; color: #69786c; font-size: .75rem; line-height: 1.8; }
 @media (max-width: 700px) {
   .config-grid { grid-template-columns: 1fr; }
   .config-card { padding: 1.25rem; }
   .config-resource-heading { flex-direction: column; }
+  .config-api-intro { flex-direction: column; }
   .config-header { align-items: flex-start; }
 }
