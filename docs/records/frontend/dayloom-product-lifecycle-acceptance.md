@@ -155,6 +155,7 @@ and [itinerary source acceptance](../../0003-itinerary-transport.md).
 | [#236](https://github.com/rplalala/Dayloom/issues/236) roles/lifecycle/cards | `f5f9a5b` | `6f305f7`, `6fd26ce` | 129 backend/API/browser; 56 frontend |
 | [#237](https://github.com/rplalala/Dayloom/issues/237) grounding/guidance | `371a7bb` | `347ff0d`, `3a48956` | 239 backend/API/browser; 58 frontend |
 | [#238](https://github.com/rplalala/Dayloom/issues/238) supporting media/session | `833151e` | `caa0f7b`, `e307d0a`, `a9482ea` | 427 backend/adapter/API/browser; 67 frontend |
+| [#239](https://github.com/rplalala/Dayloom/issues/239) complete integration | `fe4c007` | `2b2983d` | 2 complete API/PostgreSQL/browser journeys; 4 affected photo-component checks |
 
 Counts cover overlapping targeted sets, rather than a combined full-suite run.
 The media slice includes 128 feature/schema/browser checks and 299 controlled Foundry
@@ -175,20 +176,85 @@ received attention outside category coverage; supporting and Google resources no
 deletion/preview-decision fences; and actual strict Foundry Primary/Civil responses carry
 the bounded nullable theme through the mapper. Both axes returned zero remaining
 findings for each corrected implementation range. Valid older Google cache keys keep
-their original acquisition time during key upgrade.
+their original acquisition time during key upgrade. Final independent reviews of the
+complete `f5f9a5b...2b2983d` range each reported zero remaining findings.
 
-Controlled Chromium at 1440px and 390px uses the real Product API and disposable isolated
-PostgreSQL, with external adapters replaced. Checks cover preview/Save/reload, independent
-copy, roles and source claims, separate experience labels/navigation, transport/Nearby,
-JSON export/reimport, smaller supporting imagery, keyboard/touch credits and positive
-natural image dimensions after decode. Session checks cover theme sharing, fixed expiry,
-selected refresh, account/resource invalidation and rejected late writes.
+The final controlled Chromium journeys at 1440px and 390px use the real Product API and
+disposable isolated PostgreSQL, with external HTTP transports replaced. Before either
+execution, the native planning projection establishes 27 principal visits, 2 supporting
+activities, 18 Nearby entries and 9 supplied transfers: all 47 intended photo slots and
+2 unique atmosphere themes participate. Ordinary page requests and ordered batches are
+forwarded intact; no slot sampling, response cropping or product-limit adjustment occurs.
 
-The local Product database applied migration 009 once. No historical classification or
-content backfill ran. Intermediate Sydney repair/proposal material does not establish
-authoritative final-role proof; historical missing roles remain unknown. No live
-generation/provider acceptance, full regression or product-limit change ran. Complete-page
-integration and the final historical-evidence audit remain [#239](https://github.com/rplalala/Dayloom/issues/239).
+| Phase, per viewport | Slot metadata acquisitions | Google HTTP operations | Unsplash searches | Adoption tracking |
+| --- | ---: | ---: | ---: | ---: |
+| Cold preview | 47 | 90 | 2 | 2 |
+| Cold saved detail after explicit Save | 47 | 90 | 2 | 2 |
+| Saved-detail reload | 0 | 0 | 0 | 0 |
+| Selected supporting-photo refresh | 1 | 0 | 1 | 1 |
+| Delayed refresh released after cross-tab logout | 1 | 0 | 1 | 1 |
+| Total budget and observed result | 96 | 180 | 6 | 6 |
+
+Both complete journeys passed in 48.61 seconds with no skips. The separately counted
+fixed-cover requests were 5 on desktop and 4 on mobile, within the preflight allowance
+of six page mounts with at most two covers each. The test checks all slots for positive
+natural width/height and awaits image decode before full-page captures. Controlled image
+bytes establish loading/layout behavior, rather than real-provider photographic quality.
+Save, application recreation, reopening and independent copy preserve roles, themes,
+guidance, transfers and Nearby. Downloaded JSON round-trips preserve display declarations
+while imports remain unverified and cannot establish fulfillment or private bindings.
+Original cache acquisition times and credits survive reload; selected refresh leaves
+neighbors unchanged. Cross-tab logout hides private images, clears both provider caches
+and rejects a delayed success; owned detail and both media paths return 401 after logout
+and 404 to another account. Logout retains its existing account-wide session revocation.
+Unit checks additionally cover repeated-theme sharing, fixed expiry and resource deletion.
+
+The initial integration invocations exposed test-harness errors: a whole-page quote
+assertion included the user's original brief, imported preview data was read outside its
+receipt snapshot, and mobile/held-response checks lacked stable dispatch targets. The
+corrected assertions retain all intended slots and the same budgets. Retained non-green
+output and the final passing output remain distinct under the ignored
+`.scratch/activity-media-lifecycle/`, alongside decoded full-page and supporting-card
+captures and `sydney-role-audit.txt`.
+
+The local Product database applied migration 009 once. A read-only Sydney audit links
+saved trip `722fe131-1c0c-4cda-8eae-dc78d0bbd3fa` revision 1 to task
+`93f76c9d-a611-4f9f-bce0-22db32a22194` and the retained authoritative
+`20261031T053401Z_66de64ec-759c-41ef-8c19-174c1c3dd3c8/evidence/0003_final_primary.json`.
+Its SHA-256 is `7d229646253d4916bef0ce00dbc8eb8bac0e38fd27c590a5eb192ea6d8686864`.
+All 29 activity IDs, names and times match: 27 final principal roles and 2 final supporting
+roles (`syd-1103-food`, `syd-1105-waterfront-walk`). After explicit authorization, a
+separately previewed transaction at `c66515b` restored those 29 roles and advanced the
+saved revision from 1 to 2. Before-state preservation, locked-row checks and a fresh
+read-only comparison verified that every non-role activity field, request/completion,
+photo binding, weather, transfer and Nearby record remained unchanged; only the trip's
+revision and update timestamp accompanied the role changes. Themes remain absent because
+the final evidence does not supply them. Both supporting activities use the existing
+`general` atmosphere fallback, rather than an inferred meal/walk theme.
+
+The normal local Product was still running older backend modules without the supporting
+media endpoint. Local readiness and zero active planning tasks were checked before
+restarting the normal same-origin server with the current code. A bounded real-provider
+browser acceptance then covered this saved trip at 1440px and 390px: 27 principal cards,
+2 independently timed white supporting cards, 17 unchanged transfers and 18 optional
+Nearby entries. All 47 photo slots loaded and decoded, comprising 45 verified-place
+photos and 2 labeled atmosphere photos. Keyboard/touch credits and mobile overflow checks
+passed; representative screenshots were visually inspected. The two supporting slots
+shared one general-theme lookup. Reload issued zero photo-metadata lookups and preserved
+all 47 cached acquisition times and supplied credits.
+
+The first live invocation passed desktop checks but stopped on a harness assertion that
+mistook 18 Nearby entries for 18 mobile disclosure groups. The actual nine groups contain
+two entries each. The corrected harness derived the group count from the detail and
+passed in 17.25 seconds, without changing application code or page requests. Both
+invocations together used 92 of the original 94 metadata-slot budget and 7 of 8 fixed-cover
+requests; each cold page used 46 slot lookups because the two supporting slots shared
+one lookup. No request-budget violation, browser page error or generation request occurred.
+Actual provider HTTP counts and billing were not queried. The original and corrected
+frozen scripts/results remain separate under the ignored `.scratch/sydney-role-backfill/`,
+with transactional preview/apply/readback receipts and decoded desktop/mobile captures.
+No new planning, automatic classification of other records, full regression or product-limit
+change ran; closing the isolated acceptance context did not log out the user's other sessions.
 
 ### Browser photo session acceptance (31 October 2026)
 
