@@ -128,7 +128,12 @@ async def create_planner_dependencies(
             yield PlannerDependencies(llm=llm)
             return
 
-        transport = HttpxJSONTransport()
+        transport = HttpxJSONTransport(timeout_seconds=max(
+            config.acquisition.details_timeout_seconds,
+            config.budget.routes.provider_timeout_seconds,
+            config.v3_repair.acquisition.provider_timeout_seconds
+            if version == SystemVersion.V3 and config.v3_repair is not None else 0,
+        ))
         # The transport/page retriever own HTTP clients inside each operation.
         google_key = settings.google_maps_api_key.get_secret_value()
         foundry = {
