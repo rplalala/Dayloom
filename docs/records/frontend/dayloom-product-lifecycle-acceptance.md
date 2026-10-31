@@ -143,6 +143,72 @@ at this event is local commits, not a published deployment.
 
 ## Verification and evidence
 
+### Product diagnostics (31 October 2026)
+
+The Product diagnostic follow-up uses fixed base `fb55367`, implementation commits
+`5de626c` and `0372553`, review correction `992b7a1`, test-expectation correction
+`276c4ff` and failure-budget correction `5704142`. The implementation is committed;
+the documentation update is separate. Its current contract and operating commands
+belong in [application operations](../../0007-application-operations.md#product-diagnostics)
+and the [development guide](../../guides/development.md#product-diagnostics).
+
+Diagnosis found that Product supplied only its public progress observer to the planner,
+so enabling native file tracing did not preserve Product Repair evidence. An existing
+preview had fewer main visits than its Rich target, but the missing native stopping
+record prevented a defensible explanation of why Repair stopped. The follow-up fans
+out progress and file tracing and retains a compact independent completion summary;
+it cannot reconstruct that historical cause.
+
+Independent Standards and Spec reviews exposed the Uvicorn access formatter's
+five-argument contract, a retention-root junction escape, missing standalone stage
+timings, completion data lost before Product's own truncation, and externally cancelled
+V3 work losing consumed tool counters. Failing regressions preceded the separate fixes.
+Final rechecks through `5704142` reported zero unresolved findings on both axes.
+The final failure-budget regression also verifies conservative spending reservations
+survive unsuccessful runs; those bounds are not provider invoices.
+
+The offline gates use invocation-isolated disposable PostgreSQL databases and controlled
+providers. The affected Product/media/task set passed 101 tests, the corrected input-gate
+module passed 68, and the final diagnostic/API/service set passed 82. A real Chromium →
+Vite → FastAPI check passed and matched the browser's failed request ID to persisted
+operations without an access-formatter error. Frontend validation passed 272 tests in
+45 files, production build/typecheck and lint, with the existing two Fast Refresh warnings
+and bundle-size advisory. The initial unconstrained frontend run had one clipboard
+wait timeout; its focused check and complete two-worker rerun passed.
+
+The complete backend invocation passed 5,058 tests and skipped 73 in 2,615.35 seconds.
+The skips comprise 66 opt-in browser cases, five alternate-volume cases and two cases
+requiring unavailable Windows symlink privileges. The invocation started from `0372553`
+with the then-uncommitted diagnostic corrections. Later resource/media/terminal-write
+and spending changes are covered by the final targeted gates above.
+
+That broad run retained one dependency deprecation warning and two thread warnings
+while an unchanged census-export test decoded localized `cmd /c mklink /J` output
+under forced UTF-8. Its filesystem assertions passed. The exact case then passed with
+thread warnings treated as errors and only that invocation's Python UTF-8 mode disabled,
+matching the native command's encoding. No project source, system code page or host
+permissions changed for this environment contrast; the original broad-run warnings
+remain in its log.
+
+Earlier broad attempts exposed Windows temporary-path length, test setup isolation and
+obsolete error-code expectations. An isolated baseline probe reproduced the three
+expectation failures with the original planning method; only those assertions were
+updated to the already-current public outcomes. Those partial or failed invocations
+are not substituted for a complete passing run.
+
+Local evidence identifiers under `.scratch/product-logging-tests/` include
+`pytest-20261031-132923.log` / `results-20261031-132923.xml` for the complete backend run,
+`pytest-20261031-141347.log` / `results-20261031-141347.xml` for the encoding contrast,
+`pytest-20261031-133707.log` / `results-20261031-133707.xml` for the 101-case gate,
+`pytest-20261031-132811.log` / `results-20261031-132811.xml` for the 68-case gate and
+`pytest-20261031-132739.log` for the baseline contrast. The controlled browser result
+is retained in the test tool receipt and `.scratch/browser/` runtime output. After a
+restart at `5704142`, `runtime-readiness.json` records four bounded local GETs: home,
+login and health returned 200; unauthenticated current-account returned 401. Every
+request had a distinct UUID matched to the operation file, and the new server output
+had no logging formatter error. This readiness check performed zero provider calls
+and established no live retrieval, embedding, search or model-quality result.
+
 ### Complete media and acceptance resources (24 October 2026)
 
 [Issue #231](https://github.com/rplalala/Dayloom/issues/231) follows the generic required-category

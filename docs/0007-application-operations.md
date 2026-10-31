@@ -1,6 +1,6 @@
 # Application interfaces and engineering operation
 
-Current application boundary, consolidated 2026-10-22.
+Current application boundary, consolidated 2026-10-31.
 Product implements the account-owned brief/draft → task → recoverable preview →
 explicit Save/Discard lifecycle, with a mixed library, historical import/export,
 independent copies, known-input replanning and credited media. Product HTTP/stream
@@ -20,6 +20,67 @@ Inputs share destination text, currency selection, ISO dates and optional prefer
 Server date policy owns admissibility; browser display must not change dates through
 timezone conversion or locale-dependent parsing. An input change invalidates the appropriate
 previous result. Product completion reasons are policy observations, not global feasibility.
+
+## Product diagnostics
+
+Product retains server-side diagnostics alongside its public progress stream. HTTP
+requests receive a server-generated `X-Request-ID`; background execution additionally
+records `task_id`, `execution_id`, `run_id`, account UUID and fence. A task execution
+uses its execution UUID as the run UUID. These identifiers associate submission,
+planner work and the eventual persistence decision without relying on email addresses.
+
+The local operation log records request method, route template, HTTP status, duration,
+bounded result/path identifiers and public error codes, including UUID resources in
+empty deletion responses. It covers accounts/profiles, drafts,
+planning tasks, previews, Save/Discard, trips, copies, imports, examples, input assistance
+and media. Service logs and sanitized exception chains retain exception types and code
+locations; request bodies, response bodies, credentials and URL query strings are excluded.
+Media availability counts and explicit missing-credential, missing-photo, invalid-metadata
+and provider-failure reasons distinguish display fallback from HTTP success. Task failure
+logs separately identify committed outcomes and failed or rejected terminal writes.
+
+Planning diagnostics reuse native planner events and payload controls while retaining
+the progress observer. Each run has policy/input metadata, ordered events, optional
+payloads, a numeric budget summary and an independent final summary. Available records
+cover requirements, candidate acquisition and RAG, identity/semantic decisions, generation,
+validation, Repair proposals/admission/retention and finalization. Initial/final itineraries
+and validation reports are separated from the large final event under existing size limits.
+The separate 64 KiB final summary preserves the stopping reason, Repair status, selected
+round, pace completion, compact validation findings and Product completion even when
+detailed events are truncated. V3 emits compact completion before truncating its full
+outcome. Per-stage timings retain their inclusive, non-additive scope. Truncation and
+collection/write failures remain explicit. A completed
+planning service invocation is distinct from the coordinator's committed `task_completed`
+event; stale results have `task_result_not_committed` instead.
+
+Numeric observation uses the existing model callbacks and HTTP adapters, including
+request-local hook cleanup. Usage includes stage/call identity, timings and reported
+tokens where available; missing or uninstrumented usage is not inferred as zero.
+Cancellation retains consumed tool counts and limits; unavailable budget sources are
+explicitly incomplete. Active spending reservations are retained on success, failure and
+cancellation and labelled conservative upper bounds rather than invoices.
+Diagnostic collection neither authorizes retries nor changes planning budgets or policies.
+
+The browser reports uncaught errors, unhandled rejections, React render errors and
+failed same-origin API requests. It sends error types, bounded code locations, route
+structure and the failed response's request ID, without error messages, form text or
+query parameters. Local exports and clipboard outcomes use explicit action names;
+requesting a download does not prove the file was saved. All browser reports are
+untrusted client observations, not authenticated account audit evidence.
+`POST /api/diagnostics/client-errors` requires the configured exact Origin, limits the
+body to 4 KiB, validates an allowlist and accepts at most 20 reports per direct peer
+per minute per process. The browser deduplicates and limits itself to 10 reports per
+minute. Abort-driven fetch cancellation is not a reported network failure; diagnostic
+requests cannot recursively report themselves. Developer pages do not emit browser reports.
+
+Operation files rotate under an inter-process write lock. Finished run retention is
+applied when a new run starts or by the local maintenance command; active runs are
+protected, with abandoned markers eligible after 24 hours. Cleanup only traverses the
+owned Product run namespace and excludes symlink directories and unrelated files.
+Storage failures warn without replacing the business result or taking ownership of
+cancellation. Diagnostics stay outside Product DTOs and Git. Configuration, retention
+limits and lookup commands are in the [development guide](guides/development.md#product-diagnostics).
+Independent V0-V3 entrypoints keep their existing tracing and planning behavior.
 
 ## Input assistance
 
@@ -64,6 +125,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `POST /api/dev/planning/stream` | Same version-selected input/result through an independent SSE request | [Developer router](../backend/app/api/developer/planning.py) |
 | `GET /api/input-assistance/destinations?q=...` | Bounded normalized GeoDB suggestions for UI selection; no planner evidence | [Assistance router](../backend/app/api/input_assistance.py), [schemas](../backend/app/schemas/input_assistance.py) |
 | `POST /api/input-assistance/preferences/polish` | `original_text`, `context`, `client_revision`; `suggested`, `unchanged` or `needs_input` | [Assistance router](../backend/app/api/input_assistance.py), [schemas](../backend/app/schemas/input_assistance.py) |
+| `POST /api/diagnostics/client-errors` | Exact-origin, size/rate-limited untrusted browser error or export-action report | [Product diagnostics](#product-diagnostics) |
 | `GET /health` | Process health response | [Application](../backend/app/main.py) |
 
 The shared request uses `input_version=planning_request_2`, destination, ISO start/end

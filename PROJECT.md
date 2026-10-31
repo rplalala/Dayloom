@@ -74,6 +74,12 @@ for storage retention, overrides and isolated test settings.
 Product UI/API uses V3 and an allowlisted presentation contract. Developer mode
 exposes V0-V3 independently. Current input assistance includes destination suggestions,
 currency/date controls and optional user-reviewed preference polishing.
+Product diagnostics now correlate HTTP operations, durable tasks and planner runs,
+preserving native Repair decisions, bounded payloads and independent completion/usage
+summaries alongside public progress. Local lookup and retention are described in the
+[development guide](docs/guides/development.md#product-diagnostics); the
+[application contract](docs/0007-application-operations.md#product-diagnostics) defines
+coverage and privacy. Earlier Product runs without persisted diagnostics cannot be reconstructed.
 
 Details: [shared architecture](docs/0001-system-architecture.md),
 [frontend design](docs/0007-application-operations.md), and the
