@@ -328,7 +328,9 @@ def test_examples_and_fixed_london_cover_use_the_same_fallback_chain(client):  #
             ]["fallback"]
             == "google_no_photos"
         )
-        assert client.get("/api/media/curated/london").json()["fallback"] == "google_no_photos"
+        cover = client.get("/api/media/curated/london").json()
+        assert cover["fallback"] == "google_no_photos"
+        assert cover["alt"] == "London atmosphere"
         assert len(calls) == 7
         assert calls[-2].url.params["query"] == "London"
     finally:

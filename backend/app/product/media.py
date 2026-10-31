@@ -577,5 +577,8 @@ async def curated_media(
             fallback_query="Tower Bridge London",
             city_query="London",
         )
-        return {**photo, "alt": "Tower Bridge, London"}
+        alt = (
+            "Tower Bridge, London" if photo.get("kind") == "verified_place" else "London atmosphere"
+        )
+        return {**photo, "alt": alt}
     return await providers.curated(key, width)
