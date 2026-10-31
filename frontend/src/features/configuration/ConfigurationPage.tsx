@@ -190,10 +190,13 @@ export function ConfigurationPage() {
       {notice && <p className="config-message" role="status">{notice}</p>}
       {initializing ? <p role="status">Checking local management session…</p> : !config ?
         <section className="config-card config-unlock"><h2>Unlock configuration</h2>
-          <p>Copy the management token printed by the running Dayloom terminal. This access is separate from traveler accounts.</p>
+          <p id="management-token-location">Open the terminal window where you started Dayloom. Find <code>Management token (valid for this process):</code> and copy the value after the colon.</p>
+          <p id="management-token-help">The token is generated at startup and is not stored in .env. If you cannot find the terminal,
+            stop Dayloom and run <code>uv run python scripts/run_product.py</code> from the project folder to print a new token.
+            Restarting invalidates the previous token. This access is separate from traveler accounts.</p>
           <form onSubmit={unlock}><label htmlFor="management-token">Management token</label>
             <input id="management-token" type="password" autoComplete="off" value={token} required maxLength={256}
-              onChange={event => setToken(event.target.value)} />
+              aria-describedby="management-token-location management-token-help" onChange={event => setToken(event.target.value)} />
             <button className="config-primary" type="submit" disabled={busy}>{busy ? 'Unlocking…' : 'Unlock configuration'}</button>
           </form></section> : <>
           <aside className="config-message" aria-label="Application status">
