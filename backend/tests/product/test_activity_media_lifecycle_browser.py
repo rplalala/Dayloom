@@ -58,17 +58,28 @@ def complete_images(page, slots, mobile):
 
 def provider_counts(offset):
     lines = (SCRATCH / "api.log").read_text(encoding="utf-8")[offset:].splitlines()
-    return Counter(
+    counts = Counter(
         "google"
         if "https://places.googleapis.com/" in line
+        else "covers"
+        if "/photos/destination-" in line
         else "search"
         if "https://api.unsplash.com/search/photos" in line
         else "adoption"
         if "/photos/supporting-first/download" in line
-        else "curated"
+        else "covers"
         for line in lines
         if "httpx: HTTP Request: GET https://" in line
     )
+    # Queries are redacted. Each successful controlled destination adoption has
+    # exactly one preceding search; count that pair outside itinerary-slot work.
+    cover_adoptions = sum(
+        "httpx: HTTP Request: GET https://api.unsplash.com/photos/destination-" in line
+        for line in lines
+    )
+    counts["search"] -= cover_adoptions
+    counts["covers"] += cover_adoptions
+    return counts
 
 
 @pytest.mark.parametrize("width", [1440, 390])
@@ -289,9 +300,9 @@ def test_complete_roles_media_lifecycle(browser_app, monkeypatch, width):
         assert {key: counts[key] for key in ("google", "search", "adoption")} == {
             key: budget[key] for key in ("google", "search", "adoption")
         }
-        # Curated covers are separate: two detail mounts, reload, account tab,
-        # logout landing and next account library, with up to two covers per mount.
-        assert counts["curated"] <= 2 * (2 + 1 + 1 + 1 + 1)
+        # Destination covers search and adopt separately from the scheduled slots.
+        # Login/landing retains its fixed catalog; allow up to two covers per mount.
+        assert counts["covers"] <= 2 * 2 * (2 + 1 + 1 + 1 + 1)
         print(
             f"Full-page result ({width}px): {dict(counts)}, "
             f"metadata slots={len(metadata)}, reload misses=0"

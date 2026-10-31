@@ -10,10 +10,10 @@ import type {
 import "./detail.css";
 import { Icon } from "../Icon";
 import { WeatherRow } from "./WeatherRow";
-import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice } from "./display";
+import { monthDay, weekday, dottedDate, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice } from "./display";
 import { ExperienceGuidance } from './ExperienceGuidance';
 import { ExportControls } from './ExportControls';
-import { CuratedPhoto, PlacePhoto, SupportingPhoto } from './MediaPhoto';
+import { DestinationPhoto, PlacePhoto, SupportingPhoto } from './MediaPhoto';
 import { PlaceMedia, PlaceMediaActions, usePlaceMedia } from './media';
 import { photoFingerprint, photoGeneration } from './photoSession';
 
@@ -360,7 +360,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
   return (
     <PlaceMediaActions.Provider value={combinedMedia}><PlaceMedia.Provider value={combinedMedia.items}><div className="detail-page">
       <section className="detail-hero">
-        <div className="detail-cover"><CuratedPhoto image={destinationCover(detail.destination)} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
+        <div className="detail-cover"><DestinationPhoto destination={detail.destination} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
         <div className="container detail-hero-inner">
           <Link to={mode === "preview" ? "/plan?recover=1" : "/trips"} className="detail-back"><Icon name="back" size={17} />{mode === "preview" ? "Back to previews" : "Back to My trips"}</Link>
           <span className="detail-eyebrow">YOUR JOURNEY, DAY BY DAY</span>

@@ -10,6 +10,18 @@ const photo = { status: 'available' as const, kind: 'atmosphere' as const, provi
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.restoreAllMocks(); });
 
+it('does not reuse theme-only photos acquired before destination-aware search', () => {
+  writePhoto(resource, scope(), 'a', photo);
+  const saved = JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!);
+  for (const entry of saved.entries) {
+    entry.key = JSON.stringify(JSON.parse(entry.key).slice(0, 10));
+    entry.sharedKey = JSON.stringify(JSON.parse(entry.sharedKey).slice(0, 10));
+  }
+  sessionStorage.setItem('dayloom.photos.session.v1', JSON.stringify(saved));
+  expect(readPhoto(resource, scope(), 'a')).toBeUndefined();
+  expect(readPhoto(resource, scope(), 'b')).toBeUndefined();
+});
+
 it('shares theme metadata at its original acquisition time and refreshes one slot independently', () => {
   const clock = vi.spyOn(Date, 'now').mockReturnValue(1800000000000);
   writePhoto(resource, scope(), 'a', photo);

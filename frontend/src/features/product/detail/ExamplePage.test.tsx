@@ -13,13 +13,17 @@ it('renders a complete public example with the same photos, weather and routes a
     if (input === '/api/auth/current') return Response.json({}, { status: 401 });
     if (input === '/api/examples/london-example') return Response.json(london.detail);
     if (input.startsWith('/api/examples/london-example/media?')) return Response.json({ items: Object.fromEntries(Object.keys(london.media_bindings).map(slot => [slot, photo])) });
-    if (input === '/api/media/curated/london') return Response.json({ ...photo, alt: 'Tower Bridge, London' });
+    if (input.startsWith('/api/media/destination?')) {
+      expect(new URL(input, 'http://localhost').searchParams.get('destination')).toBe(london.detail.destination);
+      return Response.json({ ...photo, provider: 'Unsplash', kind: 'atmosphere',
+        image_url: 'https://images.unsplash.com/london', alt: 'London atmosphere' });
+    }
     return Response.json({}, { status: 404 });
   }));
   render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ['/examples/london-example'] })} />);
   await screen.findByRole('heading', { name: london.detail.title });
   expect(await screen.findByRole('img', { name: 'Tower of London · place photograph' })).toBeVisible();
-  expect(await screen.findByRole('img', { name: 'Tower Bridge, London' })).toBeVisible();
+  expect(await screen.findByRole('img', { name: 'London atmosphere' })).toBeVisible();
   expect(screen.getByRole('button', { name: 'WALK · 8 min · Fits your schedule →' })).toBeVisible();
   expect(screen.queryByText(/unavailable|Avg —/i)).not.toBeInTheDocument();
   await userEvent.click(screen.getByLabelText('Weather details for Oct 15'));

@@ -26,14 +26,17 @@ def photo(identity):
 
 
 @pytest.mark.parametrize("invalid_first", [False, True])
-def test_search_selects_only_first_result_and_tracks_only_valid_new_adoption(invalid_first):
+@pytest.mark.parametrize("destination", ["Melbourne", "New York"])
+def test_search_selects_only_first_result_and_tracks_only_valid_new_adoption(
+    invalid_first, destination
+):
     calls = []
 
     def provider(request):
         calls.append(request)
         if request.url.path == "/search/photos":
             assert dict(request.url.params) == {
-                "query": "relaxed meal",
+                "query": f"{destination} relaxed meal",
                 "page": "1",
                 "per_page": "1",
                 "order_by": "relevant",
@@ -48,7 +51,7 @@ def test_search_selects_only_first_result_and_tracks_only_valid_new_adoption(inv
         return httpx.Response(200, json={"url": "https://images.unsplash.com/first"})
 
     service = MediaProviders(unsplash_key="controlled", transport=httpx.MockTransport(provider))
-    result = asyncio.run(service.supporting("meal", 960, 640))
+    result = asyncio.run(service.supporting("meal", 960, 640, destination=destination))
     assert result["status"] == ("unavailable" if invalid_first else "available")
     assert len(calls) == (1 if invalid_first else 2)
     if not invalid_first:
@@ -79,7 +82,9 @@ def test_search_failures_do_not_retry_or_select_another_photo(failure):
         )
 
     service = MediaProviders(unsplash_key="controlled", transport=httpx.MockTransport(provider))
-    assert asyncio.run(service.supporting("meal", 360, 240))["status"] == "unavailable"
+    assert asyncio.run(service.supporting("meal", 360, 240, destination="Melbourne"))[
+        "status"
+    ] == "unavailable"
     assert len(calls) == 1
 
 
@@ -89,15 +94,20 @@ def test_missing_access_and_unknown_theme_do_not_send_provider_requests():
 
     assert (
         asyncio.run(
-            MediaProviders(transport=httpx.MockTransport(no_network)).supporting("meal", 360, 240)
+            MediaProviders(transport=httpx.MockTransport(no_network)).supporting(
+                "meal", 360, 240, destination="Melbourne"
+            )
         )["status"]
         == "unavailable"
     )
     service = MediaProviders(unsplash_key="controlled", transport=httpx.MockTransport(no_network))
     assert (
-        asyncio.run(service.supporting("private arbitrary user wording", 360, 240))["status"]
+        asyncio.run(service.supporting(
+            "private arbitrary user wording", 360, 240, destination="Melbourne"
+        ))["status"]
         == "unavailable"
     )
+    assert asyncio.run(service.supporting("meal", 360, 240))["status"] == "unavailable"
 
 
 def test_owned_supporting_slots_share_one_theme_search_and_reject_other_roles(client):  # noqa: F811
@@ -146,6 +156,7 @@ def test_owned_supporting_slots_share_one_theme_search_and_reject_other_roles(cl
         )
         assert result.status_code == 200, result.text
         assert len(calls) == 2
+        assert calls[0].url.params["query"] == "Sydney relaxed meal"
         assert result.json()["items"]["activity:meal1"]["kind"] == "atmosphere"
         assert result.json()["items"]["activity:meal1"] == result.json()["items"]["activity:meal2"]
         for aid in ("main", "old", "free"):

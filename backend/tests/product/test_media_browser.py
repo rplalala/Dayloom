@@ -116,7 +116,7 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.locator(".detail-cover").get_by_role(
             "button", name="Photo credits", exact=True
         ).click()
-        expect(page.get_by_role("link", name="Dan Freeman").first).to_be_visible()
+        expect(page.get_by_role("link", name="Supporting Photographer").first).to_be_visible()
         # Copy reuses persisted server bindings; only subsequent display requests resolve photos.
         original_id = saved_url.rsplit("/", 1)[-1]
         copy_posts, generation_posts = [], []

@@ -13,11 +13,17 @@ def media_transport(request):
                 "No photo venue Melbourne",
                 "Chicamocha Melbourne",
                 "Photo-empty city",
-            } or query.endswith(" Photo-empty city"):
+            } or query.endswith(" Photo-empty city") or query.startswith("Photo-empty city "):
                 return httpx.Response(200, json={"results": []})
             identity = {
                 "Federation Square Melbourne": "square-fallback",
                 "Melbourne": "city-fallback",
+                "New York": "new-york-cover",
+                "Sydney": "destination-sydney",
+                "Sydney, Australia": "destination-sydney",
+                "London, United Kingdom": "destination-london",
+                "Melbourne scenic walk": "melbourne-walk",
+                "New York scenic walk": "new-york-walk",
             }.get(query, "supporting-first")
             return httpx.Response(
                 200,

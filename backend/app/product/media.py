@@ -2,6 +2,7 @@
 
 import asyncio
 import re
+from functools import partial
 from typing import Annotated, Literal
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from uuid import UUID
@@ -212,11 +213,30 @@ class MediaProviders:
             )
             return unavailable()
 
-    async def supporting(self, theme, width, height):
-        if theme not in ATMOSPHERE_QUERIES or not self.unsplash_key:
+    async def supporting(self, theme, width, height, *, destination=None):
+        city = destination_photo_query({"destination": destination})
+        if theme not in ATMOSPHERE_QUERIES or not self.unsplash_key or not city:
             return unavailable(provider="unsplash", reason="supporting_search_unavailable")
-        media = await self._unsplash_search(ATMOSPHERE_QUERIES[theme], width, height, theme=theme)
+        media = await self._unsplash_search(
+            f"{city} {ATMOSPHERE_QUERIES[theme]}", width, height, theme=theme
+        )
         return {**media, "theme": theme} if media["status"] == "available" else media
+
+    async def destination(self, destination, width, height):
+        query = destination_photo_query({"destination": destination})
+        if not query:
+            return unavailable(provider="unsplash", reason="destination_missing")
+        try:
+            async with asyncio.timeout(8):
+                media = await self._unsplash_search(
+                    query, width, height, purpose="destination_cover"
+                )
+        except TimeoutError:
+            return unavailable(provider="unsplash", reason="cover_timeout")
+        return (
+            {**media, "alt": f"{query} atmosphere"}
+            if media["status"] == "available" else media
+        )
 
     async def _unsplash_search(
         self, query, width, height, *, theme=None, purpose=None, city_query=None
@@ -323,6 +343,18 @@ Providers = Annotated[MediaProviders, Depends(get_media_providers)]
 Dimension = Annotated[int, Query(ge=200, le=1280)]
 Slot = Annotated[str, StringConstraints(min_length=1, max_length=300)]
 RequestedSlots = Annotated[list[Slot] | None, Query(max_length=MAX_PLACE_PHOTOS)]
+
+
+@router.get("/api/media/destination")
+async def destination_media(
+    destination: Annotated[str, Query(min_length=1, max_length=120)],
+    providers: Providers,
+    response: Response,
+    width: Dimension = 960,
+    height: Dimension = 640,
+):
+    response.headers["Cache-Control"] = "no-store"
+    return await providers.destination(destination, width, height)
 
 
 def owned_bindings(kind, resource_id, owner):
@@ -488,15 +520,16 @@ def owned_detail(kind, resource_id, owner):
     return detail
 
 
-def owned_supporting_slots(kind, resource_id, owner):
+def owned_supporting_context(kind, resource_id, owner):
     detail = owned_detail(kind, resource_id, owner)
-    return [
+    slots = [
         (f"activity:{activity['activity_id']}", activity.get("atmosphere_theme") or "general")
         for day in detail["days"]
         for activity in day["activities"]
         if activity.get("activity_kind") == "generic_activity"
         and activity.get("time_use") == "scheduled"
     ]
+    return slots, destination_photo_query(detail)
 
 
 @router.get("/api/{kind}/{resource_id}/supporting-media")
@@ -511,7 +544,9 @@ async def supporting_media(
     offset: Annotated[int, Query(ge=0)] = 0,
     slot: RequestedSlots = None,
 ):
-    slots = await asyncio.to_thread(owned_supporting_slots, kind, resource_id, user["id"])
+    slots, destination = await asyncio.to_thread(
+        owned_supporting_context, kind, resource_id, user["id"]
+    )
     return await resolve_photos(
         slots,
         providers,
@@ -520,7 +555,7 @@ async def supporting_media(
         response,
         offset=offset,
         slots=slot,
-        lookup=providers.supporting,
+        lookup=partial(providers.supporting, destination=destination),
         share_values=True,
         source_provider="unsplash",
     )

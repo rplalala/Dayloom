@@ -125,7 +125,8 @@ function clearStorage() {
 export function photoKey(resource: string, scope: PhotoScope, slot: string): string {
   return JSON.stringify([scope.owner, scope.generation, resource, scope.snapshot,
     scope.width || 960, scope.height || 640, slot, scope.provider || 'Google Maps',
-    scope.kind || 'verified_place', scope.provider === 'Unsplash' ? scope.themes?.[slot] || 'general' : null]);
+    scope.kind || 'verified_place', scope.provider === 'Unsplash' ? scope.themes?.[slot] || 'general' : null,
+    ...(scope.provider === 'Unsplash' ? ['destination-v1'] : [])]);
 }
 
 export function photoRequestKey(resource: string, scope: PhotoScope, slot: string): string {

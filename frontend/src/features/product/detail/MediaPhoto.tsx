@@ -73,16 +73,31 @@ export function SupportingPhoto({ slot, label, className = '', onOpen, fullCredi
   </div>;
 }
 
+function useCoverMedia(endpoint?: string) {
+  const [result, setResult] = useState<{ key: string; media: DisplayMedia } | null>(null);
+  useEffect(() => {
+    if (!endpoint) return;
+    const controller = new AbortController();
+    requestJson<DisplayMedia>(endpoint, { signal: controller.signal })
+      .then(media => { if (!controller.signal.aborted) setResult({ key: endpoint, media }); })
+      .catch(() => {});
+    return () => controller.abort();
+  }, [endpoint]);
+  return result?.key === endpoint ? result?.media : undefined;
+}
+
 export function CuratedPhoto({ image = 'nature', label, className, fallback, link }: {
   link?: { to: string; label: string }; image?: 'sydney' | 'london' | 'nature'; label: string; className?: string; fallback?: string;
 }) {
-  const [result, setResult] = useState<{ key: string; media: DisplayMedia } | null>(null);
-  useEffect(() => {
-    const controller = new AbortController();
-    requestJson<DisplayMedia>(`/api/media/curated/${image}`, { signal: controller.signal })
-      .then(media => { if (!controller.signal.aborted) setResult({ key: image, media }); })
-      .catch(() => {});
-    return () => controller.abort();
-  }, [image]);
-  return <MediaPhoto atmosphere link={link} media={result?.key === image ? result.media : undefined} label={label} fallback={fallback || `/dayloom/${image === 'london' ? 'city' : image}.svg`} className={className} />;
+  const media = useCoverMedia(`/api/media/curated/${image}`);
+  return <MediaPhoto atmosphere link={link} media={media} label={label} fallback={fallback || `/dayloom/${image === 'london' ? 'city' : image}.svg`} className={className} />;
+}
+
+export function DestinationPhoto({ destination, label, className, fallback, link }: {
+  destination: string; label: string; className?: string; fallback?: string;
+  link?: { to: string; label: string };
+}) {
+  const query = destination.trim().replace(/\s+/g, ' ').slice(0, 120);
+  const media = useCoverMedia(query ? `/api/media/destination?destination=${encodeURIComponent(query)}` : undefined);
+  return <MediaPhoto atmosphere link={link} media={media} label={label} fallback={fallback || '/dayloom/nature.svg'} className={className} />;
 }
