@@ -280,6 +280,7 @@ def primary_output():
         activities.append(
             {
                 "activity_kind": "main_poi",
+                "atmosphere_theme": None,
                 "time_use": "scheduled",
                 "activity_id": f"generated-visit-{i + 1}",
                 "title": f"Visit {name}",
