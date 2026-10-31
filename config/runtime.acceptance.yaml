@@ -58,37 +58,37 @@ budget:
   final_pois: 60
   places:
     destination_search_calls: 2
-    candidate_search_calls: 48
-    detail_calls: 240
-    review_detail_calls: 24
+    candidate_search_calls: 24
+    detail_calls: 160
+    review_detail_calls: 12
   weather:
     calls: 4
   routes:
     matrix_elements: 64
     baseline_elements_per_request: 64
     baseline_elements_per_run: 3600
-    baseline_calls: 128
-    alternative_pairs: 128
-    alternative_matrix_calls: 256
-    alternative_elements: 512
-    post_generation_reserved_pairs: 32
-    post_generation_reserved_requests: 64
-    post_generation_reserved_elements: 128
-    work_seconds: 300
-    post_generation_reserved_seconds: 60
-    provider_timeout_seconds: 30
+    baseline_calls: 64
+    alternative_pairs: 64
+    alternative_matrix_calls: 64
+    alternative_elements: 128
+    post_generation_reserved_pairs: 16
+    post_generation_reserved_requests: 16
+    post_generation_reserved_elements: 32
+    work_seconds: 120
+    post_generation_reserved_seconds: 30
+    provider_timeout_seconds: 20
   web:
-    evidence_tasks: 16
-    page_fetches: 16
+    evidence_tasks: 8
+    page_fetches: 8
   experience:
-    review_enriched_places: 24
-    profile_llm_calls: 24
+    review_enriched_places: 12
+    profile_llm_calls: 12
 web_evidence:
   provider: openai
   reasoning_effort: low
-  max_tool_calls: 3
+  max_tool_calls: 2
   search_context_size: medium
-  timeout_seconds: 45
+  timeout_seconds: 30
   authority_domain_overrides: []
   page_retrieval:
     max_targets_per_need: 2
@@ -116,31 +116,31 @@ trace:
   max_payload_bytes: 10000000
 tripworld_discovery:
   version: tripworld_runtime_1
-  top_k: 30
-  resolution_entities: 60
-  details_calls: 60
-  fallback_calls: 8
+  top_k: 20
+  resolution_entities: 30
+  details_calls: 30
+  fallback_calls: 4
   radius_km: 15
   identity_radius_km: 1
-  deadline_seconds: 600
-  embedding_timeout: 20
-  sql_timeout: 120
-  connect_timeout: 20
-  google_timeout: 10
+  deadline_seconds: 360
+  embedding_timeout: 10
+  sql_timeout: 60
+  connect_timeout: 10
+  google_timeout: 8
   retries: 0
-  max_queries: 8
-  max_positions: 240
-  total_query_tokens: 4096
+  max_queries: 4
+  max_positions: 80
+  total_query_tokens: 2048
 acquisition:
   policy_id: quality_first_1
-  details_deadline_seconds: 240
-  details_timeout_seconds: 30
+  details_deadline_seconds: 180
+  details_timeout_seconds: 20
 main_generation:
   enabled: true
   input_tokens: 900000
   output_tokens: 32768
   framing_tokens: 2048
-development_timeout_seconds: 2700
+development_timeout_seconds: 1200
 transport:
   walk_route_max_km: 3
   transit_max_minutes: 45
@@ -150,14 +150,14 @@ transport:
   motor_radius_km: 5
   max_leg_minutes: 45
 v3_repair:
-  max_rounds: 20
-  max_model_calls: 20
+  max_rounds: 10
+  max_model_calls: 10
   max_deletion_attempts: 12
   reason_compression:
     max_calls: 1
     input_tokens: 64000
     output_tokens: 16384
-    timeout_seconds: 60
+    timeout_seconds: 30
   quantity_review_enabled: true
   overfull_review_enabled: false
   daily_main_min: 2
@@ -168,13 +168,13 @@ v3_repair:
   alternatives_per_gap: 2
   exploration_positions: 2
   timing:
-    stage_seconds: 1800
-    round_seconds: 420
-    model_seconds: 240
-    preparation_seconds: 120
-    recheck_reserve_seconds: 30
+    stage_seconds: 720
+    round_seconds: 210
+    model_seconds: 120
+    preparation_seconds: 60
+    recheck_reserve_seconds: 20
     minimum_model_seconds: 30
-    round_reference_seconds: 300
+    round_reference_seconds: 180
     finalization_reserve_seconds: 5
   input:
     input_tokens: 900000
@@ -185,17 +185,17 @@ v3_repair:
     candidate_characters: 12000
     feedback_characters: 12000
   acquisition:
-    google: 16
-    fallback: 4
-    embedding: 2
-    retrieval: 2
-    canonical: 60
-    details: 60
-    routes: 64
-    post_proposal_route_reserve: 16
-    elements: 128
-    top_k: 20
-    provider_timeout_seconds: 30
+    google: 8
+    fallback: 2
+    embedding: 1
+    retrieval: 1
+    canonical: 30
+    details: 30
+    routes: 32
+    post_proposal_route_reserve: 8
+    elements: 64
+    top_k: 10
+    provider_timeout_seconds: 20
   spatial:
     detour_floor_km: 1
     detour_ratio: 0.5
@@ -203,12 +203,12 @@ v3_repair:
     fallback_reserve_minutes: 45
     daily_added_minutes: 90
 poi_semantics:
-  max_calls: 24
+  max_calls: 12
   batch_size: 32
   input_tokens: 64000
   output_tokens: 16384
-  call_timeout_seconds: 90
-  total_seconds: 600
+  call_timeout_seconds: 60
+  total_seconds: 240
   exploration_fraction: 0.3333333333333333
   exception_alternatives: 2
 resource_profile: acceptance

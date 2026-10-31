@@ -32,13 +32,13 @@ def test_acceptance_admits_larger_evidence_work_but_still_stops_at_its_budget():
     for key, amount in (
         (ToolBudgetKey.CANDIDATES, 200),
         (ToolBudgetKey.PLACE_DETAIL_CALLS, 160),
-        (ToolBudgetKey.REVIEW_DETAIL_CALLS, 16),
-        (ToolBudgetKey.REVIEW_ENRICHED_PLACES, 16),
-        (ToolBudgetKey.EXPERIENCE_PROFILE_LLM_CALLS, 16),
+        (ToolBudgetKey.REVIEW_DETAIL_CALLS, 12),
+        (ToolBudgetKey.REVIEW_ENRICHED_PLACES, 12),
+        (ToolBudgetKey.EXPERIENCE_PROFILE_LLM_CALLS, 12),
         (ToolBudgetKey.FINAL_POIS, 50),
         (ToolBudgetKey.BASELINE_ROUTE_MATRIX_CALLS, 60),
         (ToolBudgetKey.BASELINE_ROUTE_MATRIX_ELEMENTS, 2500),
-        (ToolBudgetKey.ALTERNATIVE_ROUTE_MATRIX_CALLS, 96),
+        (ToolBudgetKey.ALTERNATIVE_ROUTE_MATRIX_CALLS, 64),
     ):
         budget.consume(key, amount)
     before = budget.summary()
@@ -47,20 +47,27 @@ def test_acceptance_admits_larger_evidence_work_but_still_stops_at_its_budget():
     assert budget.summary() == before
 
 
-def test_acceptance_repair_can_continue_beyond_the_old_stage_envelope():
+@pytest.mark.parametrize("request_deadline,expected_remaining", [(1300, 720), (500, 355)])
+def test_acceptance_repair_preserves_large_input_with_bounded_time_and_shared_calls(
+    request_deadline, expected_remaining
+):
     from backend.app.versions.v3.repair_budget import RepairBudget, RepairLimit
 
     config = load_runtime_profile("acceptance")
     assert config.v3_repair.input.input_tokens >= 500_000
     assert config.main_generation.output_tokens >= 32_768
-    assert config.tripworld_discovery.max_queries >= 8
+    now = [100]
     budget = RepairBudget(
-        100 + config.development_timeout_seconds, clock=lambda: 100, runtime_config=config,
+        request_deadline, clock=lambda: now[0], runtime_config=config,
     )
-    assert budget.remaining() == 1800
-    budget.charge(model=11, google=8, fallback=2, embedding=2, retrieval=2,
-                  canonical=40, details=40, routes=40, elements=80)
+    assert budget.remaining() == expected_remaining
+    budget.charge(model=9, google=8, fallback=2, embedding=1, retrieval=1,
+                  canonical=30, details=30, routes=32, elements=64)
+    budget.round_index = 2
+    budget.charge(model=1)
     before = dict(budget.used)
     with pytest.raises(RepairLimit):
-        budget.charge(model=config.v3_repair.max_model_calls)
+        budget.charge(model=1)
     assert dict(budget.used) == before
+    now[0] += expected_remaining + 1
+    assert budget.remaining() == 0

@@ -16,7 +16,7 @@ from backend.tests.versions.v0.fakes import make_itinerary, make_requirements
 REFERENCE = date(2026, 9, 11)
 
 
-@pytest.mark.parametrize("profile,expected", [("development", 20), ("acceptance", 30)])
+@pytest.mark.parametrize("profile,expected", [("development", 20), ("acceptance", 20)])
 def test_maps_http_timeout_follows_the_selected_profile(monkeypatch, profile, expected):
     import httpx
     from pydantic import SecretStr

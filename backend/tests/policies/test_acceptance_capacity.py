@@ -78,7 +78,7 @@ def test_long_acceptance_trip_uses_the_larger_review_allowance():
         original, create_trip_date_window(date(2026, 9, 11)),
         tool_limits(load_runtime_profile("acceptance")),
     )
-    assert capacities.review_pool_cap == 18
+    assert capacities.review_pool_cap == 12
     assert capacities.k_final == 36
     assert original.model_dump() == before
 

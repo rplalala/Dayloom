@@ -121,4 +121,4 @@ def test_rich_trip_uses_demand_sized_initial_supply(version, days, expected):
     assert model.repair_calls == 0
     assert all(len(item.origins) * len(item.destinations) <= 64 for item in routes.requests)
     # Initial baseline and mixed-mode alternatives have separate finite envelopes.
-    assert sum(len(item.origins) * len(item.destinations) for item in routes.requests) <= 4112
+    assert sum(len(item.origins) * len(item.destinations) for item in routes.requests) <= 3728
