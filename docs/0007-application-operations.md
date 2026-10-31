@@ -923,7 +923,7 @@ This is an application-managed metadata cache, independent of HTTP image caching
 it does not change the media endpoint's `no-store` response directive.
 
 Each entry expires **one hour after successful acquisition**. Reads and reloads never
-extend expiry. Storage is bounded to **1,000 entries and approximately 1 MiB of serialized
+extend expiry. Storage is bounded to **1,000 entries and approximately 5 MiB of serialized
 data**, evicting the oldest entries first. Corrupt/unsupported records, future timestamps,
 disallowed URLs, denied storage and quota failures fall back to ordinary media loading.
 Only successful photos are retained; loading, unavailable and error states are not cached.
