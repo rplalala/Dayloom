@@ -67,7 +67,7 @@ export function HomePage() {
               "Weather and travel estimates beside your plans.",
             ],
             [
-              "info",
+              "checklist",
               "Clarity where it counts",
               "See which details still need confirmation.",
             ],

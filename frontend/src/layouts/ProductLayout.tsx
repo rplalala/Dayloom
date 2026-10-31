@@ -126,7 +126,7 @@ function ProductShell() {
         <h2 id="about-dayloom-title">Dayloom</h2>
         <p>A destination, a few ideas, a rhythm that feels like you. Bring your days together in one clear itinerary.</p>
         <div className="detail-note"><strong>Your travel ideas</strong><span>Keep unfinished briefs, save itineraries, and return to your own collection.</span></div>
-        <div className="detail-note"><strong>Planning &amp; recovery</strong><span>Your confirmed brief guides each planning task. You can return to its progress, then save or discard the preview when it is ready.</span></div>
+        <div className="detail-note"><strong>A trip that feels like you</strong><span>Choose a destination, add your dates and interests, and explore your days together in one itinerary.</span></div>
         <div className="detail-note"><strong>Travel details</strong><span>Check opening times, weather, connections and booking requirements before you go. Unconfirmed information stays visible.</span></div>
         <div className="detail-note"><strong>Images</strong><span>Destination and atmosphere images offer inspiration. Illustrations are labeled, and place photographs show their source when available.</span></div>
         <div className="modal-actions"><button type="button" className="btn btn-primary" onClick={() => setAbout(false)}>Continue exploring</button></div>

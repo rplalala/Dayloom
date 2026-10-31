@@ -165,14 +165,14 @@ def test_copy_uncommitted_lost_reply_requires_get_then_explicit_same_key_retry(b
         page.get_by_role("button", name="Keep a copy", exact=True).click()
         page.get_by_role("button", name="Check copy status", exact=True).click()
         expect(
-            page.get_by_role("button", name="Retry copy with same key", exact=True)
+            page.get_by_role("button", name="Retry copy", exact=True)
         ).to_be_visible()
         assert page.request.get(base + "/api/library").json()["total"] == 0
         page.unroute("**/api/copies", lose)
         with page.expect_request(
             lambda request: request.method == "POST" and request.url.endswith("/api/copies")
         ) as sent:
-            page.get_by_role("button", name="Retry copy with same key", exact=True).click()
+            page.get_by_role("button", name="Retry copy", exact=True).click()
         assert sent.value.post_data_json["operation_key"] == keys[0]
         expect(page.get_by_role("link", name="View saved copy", exact=True)).to_be_visible()
     finally:

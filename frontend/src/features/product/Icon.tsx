@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-// Product line icons. Unknown names retain the prototype's info fallback.
+// Product line icons. Unknown names use the general information glyph.
 const icons: Record<string, ReactNode> = {
   "arrow": <><path d="M5 12h14m-6-6 6 6-6 6"/></>,
   "back": <><path d="M19 12H5m6 6-6-6 6-6"/></>,
@@ -38,6 +38,7 @@ const icons: Record<string, ReactNode> = {
   "shield": <><path d="m12 2 8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></>,
   "bookmark": <><path d="M5 3h14v18l-7-5-7 5V3Z"/></>,
   "list": <><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></>,
+  "checklist": <><path d="M10 5h11M10 12h11M10 19h11M3 5l1 1 2-2M3 12l1 1 2-2M3 19l1 1 2-2"/></>,
   "sliders": <><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></>,
   "globe": <><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18M12 3c-5 5-5 13 0 18"/></>,
   "leaf": <><path d="M20 4C11 4 5 8 5 15a5 5 0 0 0 5 5c7 0 10-7 10-16ZM4 21c3-7 7-10 11-12"/></>,

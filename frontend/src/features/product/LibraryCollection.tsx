@@ -24,6 +24,7 @@ export function LibraryCollection() {
   const [page, setPage] = useState<LibraryPageResult | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const emptyCollection = page?.total === 0 && !search;
   const [action, setAction] = useState<{ kind: "menu" | "rename" | "delete"; card: LibraryCard } | null>(null);
   const [title, setTitle] = useState("");
   const [copyNotice, setCopyNotice] = useState<PreviewDecision | null>(null);
@@ -91,18 +92,27 @@ export function LibraryCollection() {
   }
   return <>
     {copyNotice && <div className="toast show library-copy-notice" role="status"><span>An independent copy was added to My trips.</span><Link to={`/trips/${copyNotice.saved_trip_id}`}>View saved copy</Link><button type="button" aria-label="Dismiss copy notice" onClick={() => setCopyNotice(null)}><Icon name="close" size={15} /></button></div>}
-    <section className="library-intro">
+    {!emptyCollection && <section className="library-intro">
       <div className="library-count"><span className="eyebrow">YOUR COLLECTION</span><strong>{page ? String(page.total).padStart(2, "0") : "—"}</strong><span>{search ? "matching trips and drafts" : "saved trips and drafts"}</span></div>
       <div className="library-copy"><h2>Good places.<br /><em>Worth keeping.</em></h2><p>Plans to look forward to. Memories to return to.</p></div>
       <button className="btn btn-primary btn-large" onClick={() => { session.newBrief(); navigate("/plan"); }}><Icon name="plus" size={18} /> Create a trip</button>
-    </section>
-    <div className="library-tools trips-toolbar">
+    </section>}
+    {!emptyCollection && <div className="library-tools trips-toolbar">
       <form className="search-box" role="search" onSubmit={event => { event.preventDefault(); setSearch(query); setOffset(0); }}><Icon name="search" size={18} /><input aria-label="Search trips" value={query} maxLength={100} placeholder="Search by trip name or destination" onChange={event => setQuery(event.target.value)} /></form>
       <label className="sort-box"><Icon name="sliders" size={16} /><select aria-label="Sort trips" value={sort} onChange={event => { setSort(event.target.value); setOffset(0); }}><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="name">By name</option></select></label>
-    </div>
+    </div>}
     {error && !action && <div role="alert"><p>{error}</p><button className="btn btn-light" onClick={() => setReload(n => n + 1)}>Retry collection</button></div>}
     {!page && !error && <p role="status">Loading your collection…</p>}
-    {page && page.total === 0 && (search ? <div className="empty-state"><Icon name="search" size={32} /><h3>No trips found</h3><p>Try a shorter name or a different destination.</p></div> : <div className="library-empty"><Icon name="layers" size={38} /><h2>Your next chapter starts here.</h2><p>Your saved trips and travel briefs will find their home here.</p><button className="btn btn-primary btn-large" onClick={() => { session.newBrief(); navigate("/plan"); }}>Plan your first trip <Icon name="arrow" size={16} /></button></div>)}
+    {page && page.total === 0 && (search ? <div className="empty-state"><Icon name="search" size={32} /><h3>No trips found</h3><p>Try a shorter name or a different destination.</p></div> : <section className="library-welcome" aria-labelledby="library-welcome-title">
+      <div className="library-welcome-art" aria-hidden="true"><img src="/dayloom/journey.svg" alt="" /></div>
+      <div className="library-welcome-copy">
+        <span className="eyebrow">A LITTLE INSPIRATION, A NEW BEGINNING</span>
+        <h2 id="library-welcome-title">Somewhere new is waiting.</h2>
+        <p>A city you have been dreaming of. A few days to make your own. Start with an idea — your journeys will grow from here.</p>
+        <button type="button" className="btn btn-primary btn-large" onClick={() => { session.newBrief(); navigate("/plan"); }}>Plan your first trip <Icon name="arrow" size={17} /></button>
+        <span className="library-welcome-note">Your saved trips and travel briefs, all in one place.</span>
+      </div>
+    </section>)}
     {page && <div className="trip-grid">{page.items.map(card => {
       const path = card.kind === "draft" ? `/drafts/${card.id}` : `/trips/${card.id}`;
       const duration = isValidISODate(card.start_date || "") && isValidISODate(card.end_date || "") ? Math.max(0, Math.round((Date.parse(card.end_date) - Date.parse(card.start_date)) / 86400000) + 1) : card.kind === "draft" ? 0 : null;

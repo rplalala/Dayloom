@@ -169,9 +169,9 @@ def test_expired_import_hides_input_before_refresh_and_recovers_same_key(browser
         page.get_by_role("link", name="Log in", exact=True).last.click()
         login(page, email)
         page.get_by_role("button", name="Check import status").click()
-        expect(page.get_by_role("button", name="Retry import with same key")).to_be_visible()
+        expect(page.get_by_role("button", name="Retry import")).to_be_visible()
         assert len(keys) == 1
-        page.get_by_role("button", name="Retry import with same key").click()
+        page.get_by_role("button", name="Retry import").click()
         expect(page.get_by_role("heading", name="Old journey", exact=True)).to_be_visible()
         assert keys[0] == keys[1]
     finally:
