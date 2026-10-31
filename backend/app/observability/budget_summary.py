@@ -43,6 +43,11 @@ REPAIR_KEYS = (
     "google fallback embedding retrieval canonical details routes elements preparation_routes "
     "model reason_compression cache_hits qualified_reuse duplicate_hits"
 )
+REPAIR_INPUT_KEYS = (
+    "round_index total_tokens system_tokens user_tokens schema_tokens framing_tokens "
+    "input_ceiling output_ceiling input_identity_union candidate_count "
+    "context_tokens candidate_tokens evidence_tokens requirements_findings_tokens"
+).split()
 
 
 def reported_usage(value):
@@ -159,6 +164,8 @@ class BudgetSummary:
                 index = metadata.get("round_index")
                 if metadata.get("attempted") is True and type(index) is int and index > 0:
                     self.call(name, str(index), metadata)
+        elif event == "v3_repair_input_sizing":
+            self.stages["repair"]["input_sizing"] = select(payload, REPAIR_INPUT_KEYS)
         elif event == "v3_repair_round":
             index = payload.get("round_index")
             if type(index) is int and index > 0:

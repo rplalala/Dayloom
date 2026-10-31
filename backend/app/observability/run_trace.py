@@ -305,7 +305,7 @@ class FileRunTracer:
         )
         return marker
 
-    def _write_run_json(self, *, status: str, **updates: object) -> None:
+    def _run_metadata(self, *, status: str, **updates: object) -> dict[str, object]:
         value: dict[str, object] = {
             "run_id": str(self._context.run_id),
             "system_version": self._context.system_version,
@@ -326,6 +326,10 @@ class FileRunTracer:
             "final_outcome": None,
         }
         value.update(updates)
+        return value
+
+    def _write_run_json(self, *, status: str, **updates: object) -> None:
+        value = self._run_metadata(status=status, **updates)
         (self.run_directory / "run.json").write_text(self._serialize(value), encoding="utf-8")
 
     def event(self, event_type: str, payload: object | None = None) -> None:

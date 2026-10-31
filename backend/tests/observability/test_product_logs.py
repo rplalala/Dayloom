@@ -38,6 +38,64 @@ def test_missing_usage_remains_null_instead_of_a_secret_marker(tmp_path):
     assert data["password"] == "[REDACTED]"
 
 
+def test_long_text_and_uppercase_database_urls_remain_sanitized(tmp_path):
+    logs = ProductLogs(ProductLogSettings(directory=tmp_path))
+    prefix = "x-" * 100000
+    value = logs.sanitize({"text": prefix + " POSTGRESQL://reader:private-value@db.invalid/main"})
+    assert value["text"] == prefix + " POSTGRESQL://[REDACTED]@db.invalid/main"
+
+
+def test_large_completed_outcome_cannot_erase_run_metadata(tmp_path):
+    from dataclasses import replace
+
+    from backend.app.observability.product_logs import ProductRunTracer
+    from backend.app.runtime.config_loader import load_runtime_profile, runtime_config_snapshot
+    from backend.tests.observability.test_run_trace import _context
+
+    config = load_runtime_profile("acceptance")
+    snapshot, digest = runtime_config_snapshot(config)
+    context = replace(_context(), runtime_config=snapshot, runtime_config_sha256=digest)
+    logs = ProductLogs(ProductLogSettings(directory=tmp_path, max_event_bytes=512))
+    with log_context(task_id="task-metadata", execution_id="execution-metadata"):
+        tracer = ProductRunTracer(context, logs=logs, trace=config.trace)
+    tracer.finish(status="completed", requirements=None, tool_usage={},
+                  outcome={"final_primary": "x" * 1_000_000})
+    metadata = json.loads((tracer.run_directory / "run.json").read_text())
+    assert metadata["run_id"] == str(context.run_id)
+    assert metadata["task_id"] == "task-metadata"
+    assert metadata["execution_id"] == "execution-metadata"
+    assert metadata["status"] == "completed"
+    assert metadata["runtime_config_sha256"] == digest
+    assert metadata["input"]["destination"] == context.request.destination
+    assert metadata["finished_at"]
+    assert (tracer.run_directory / "run.json").stat().st_size <= 65536
+
+
+def test_repair_overflow_sizing_survives_detailed_event_limits(tmp_path, monkeypatch):
+    from backend.app.observability.product_logs import ProductRunTracer
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.tests.observability.test_run_trace import _context
+    from backend.tests.versions.v3.test_repair import Model, run
+
+    logs = ProductLogs(ProductLogSettings(directory=tmp_path, max_event_bytes=512))
+    tracer = ProductRunTracer(_context(), logs=logs, trace=load_runtime_config().trace)
+    # Control the real overflow boundary; these are fixture counts, not measurements.
+    monkeypatch.setattr("backend.app.versions.v3.repair_projection.count_tokens", lambda _: 100000)
+    model = Model()
+    result = run(model=model, tracer=tracer)
+    assert result.status == "SKIPPED"
+    assert model.calls == 0
+    tracer.finish(status="completed", requirements=None, tool_usage={}, outcome=None)
+    tracer.close("completed")
+    summary = json.loads((tracer.run_directory / "summary.json").read_text())
+    budget = json.loads((tracer.run_directory / "budget.json").read_text())
+    for counts in (summary["repair_input_sizing"], budget["stages"]["repair"]["input_sizing"]):
+        assert counts["total_tokens"] == result.sizing["total_tokens"]
+        assert counts["total_tokens"] > counts["input_ceiling"]
+        assert counts["candidate_tokens"] == result.sizing["candidate_tokens"]
+        assert counts["evidence_tokens"] == result.sizing["evidence_tokens"]
+
+
 def test_product_rotation_retains_valid_json_and_other_resources(tmp_path):
     unrelated = tmp_path / "keep.txt"
     unrelated.write_text("unrelated")

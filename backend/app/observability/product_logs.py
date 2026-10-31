@@ -39,6 +39,16 @@ _USAGE_FIELDS = {
     "cached_input_tokens",
     "cache_write_input_tokens",
     "reasoning_tokens",
+    "system_tokens",
+    "user_tokens",
+    "schema_tokens",
+    "framing_tokens",
+    "context_tokens",
+    "candidate_tokens",
+    "evidence_tokens",
+    "requirements_findings_tokens",
+    "engineering_tokens",
+    "total_query_tokens",
 }
 
 
@@ -132,7 +142,10 @@ class ProductLogs:
         for secret in self._secrets:
             encoded = encoded.replace(json.dumps(secret)[1:-1], "[REDACTED]")
         # URLs with userinfo can contain database passwords without a labelled field.
-        encoded = re.sub(r"([a-z][a-z0-9+.-]*://)[^/\s\"@]+@", r"\1[REDACTED]@", encoded)
+        encoded = re.sub(
+            r"(?<![a-z0-9+.-])([a-z][a-z0-9+.-]*://)[^/\s\"@]+@",
+            r"\1[REDACTED]@", encoded, flags=re.I,
+        )
         return json.loads(encoded)
 
     @property
@@ -332,9 +345,25 @@ class ProductRunTracer(FileRunTracer):
         return encoded
 
     def _write_run_json(self, *, status, **updates):
-        super()._write_run_json(
+        value = self._run_metadata(
             status=status, **{**updates, **self.correlation, "system_stage": "product-v3"}
         )
+        # Metadata has its own allowance; a large outcome must not erase identity,
+        # configuration or completion timestamps when detailed events are bounded.
+        value = self.logs.sanitize(value)
+        for key, limit in (
+            ("input", 16_384), ("runtime_config", 24_576),
+            ("tool_usage", 8_192), ("final_outcome", 8_192),
+        ):
+            bounded = self.logs.bounded(value[key], limit)
+            if bounded != value[key]:
+                self.incomplete = True
+                if key == "final_outcome":
+                    bounded.update(summary_file="summary.json", event_file="events.jsonl")
+            value[key] = bounded
+        pending = self.run_directory / "run.json.tmp"
+        pending.write_text(json.dumps(value, ensure_ascii=True, default=str), encoding="utf-8")
+        pending.replace(self.run_directory / "run.json")
 
     def _disable(self, exc):
         self.logs.warning()
@@ -344,6 +373,10 @@ class ProductRunTracer(FileRunTracer):
     def event(self, event_type, payload=None):
         try:
             self._budget_summary.observe(event_type, payload)
+            if event_type == "v3_repair_input_sizing" and isinstance(payload, dict):
+                from backend.app.observability.budget_summary import REPAIR_INPUT_KEYS, select
+
+                self.summary["repair_input_sizing"] = select(payload, REPAIR_INPUT_KEYS)
             if event_type == "product_stage" and isinstance(payload, dict):
                 self._observe_stage(payload)
             if event_type == "v3_completion_summary" and isinstance(payload, dict):
@@ -475,6 +508,7 @@ class ProductRunTracer(FileRunTracer):
                     "repair_status",
                     "selected_round_index",
                     "primary_tool_usage_status",
+                    "repair_input_sizing",
                     "policy_completion",
                 )
                 if key in value

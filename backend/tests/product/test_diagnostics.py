@@ -2,6 +2,7 @@
 # ruff: noqa: F811
 
 import asyncio
+import json
 from contextlib import asynccontextmanager
 from datetime import date
 
@@ -58,8 +59,9 @@ def test_account_draft_and_saved_operations_have_audit_results(client, monkeypat
 
 
 @pytest.mark.parametrize("trace_limit", [512, 1_000_000])
+@pytest.mark.parametrize("profile", ["development", "acceptance"])
 def test_real_v3_task_records_repair_and_preserves_public_projection(
-    client, monkeypatch, tmp_path, trace_limit
+    client, monkeypatch, tmp_path, trace_limit, profile
 ):
     monkeypatch.setenv("PRODUCT_LOG_DIRECTORY", str(tmp_path))
     monkeypatch.setenv("PRODUCT_LOG_ENABLED", "true")
@@ -77,9 +79,9 @@ def test_real_v3_task_records_repair_and_preserves_public_projection(
         async def generate(self, *args):
             return {}
 
-    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.app.runtime.config_loader import load_runtime_profile
 
-    config = load_runtime_config()
+    config = load_runtime_profile(profile)
     config = config.model_copy(
         update={"trace": config.trace.model_copy(update={"max_payload_bytes": trace_limit})}
     )
@@ -120,6 +122,12 @@ def test_real_v3_task_records_repair_and_preserves_public_projection(
         assert summary["stop_reason"]
         assert summary["repair_status"]
         assert summary["validation_counts"]
+        directory = next((tmp_path / "runs").iterdir())
+        metadata = json.loads((directory / "run.json").read_text())
+        assert metadata["task_id"] == task_id
+        assert metadata["runtime_config"]["v3_repair"]["input"]["input_tokens"] == (
+            900000 if profile == "acceptance" else 252000
+        )
         if trace_limit == 512:
             assert summary["upstream_details_truncated"]
         assert any(row.get("event") == "v3_finalized" for row in rows)
