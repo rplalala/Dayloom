@@ -311,6 +311,7 @@ class FoundryActivityDTO(FoundryTransportDTO):
     """Transport representation of one itinerary activity."""
 
     activity_kind: Literal["main_poi", "generic_activity", "transport", "free_time"]
+    atmosphere_theme: Literal["meal", "rest", "explore", "walk", "general"] | None
     time_use: Literal["scheduled", "free_window"]
     activity_id: str
     title: str

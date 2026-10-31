@@ -37,13 +37,13 @@ it('merges same-theme lookups across page batches and leaves neighbors unchanged
   expect(after.filter((entry: { key: string }) => JSON.parse(entry.key)[6] !== slots[0])).toEqual(before.filter((entry: { key: string }) => JSON.parse(entry.key)[6] !== slots[0]));
 });
 
-it('merges concurrent subscribers and rejects late cache writes after invalidation', async () => {
+it.each(['owner', 'resource'])('merges concurrent subscribers and rejects late writes after %s invalidation', async kind => {
   let resolve!: (response: Response) => void;
   const fetch = vi.fn(() => new Promise<Response>(done => { resolve = done; }));
   vi.stubGlobal('fetch', fetch);
   render(<><Photos chosen={[slots[0]]} /><Photos chosen={[slots[1]]} /></>);
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
-  invalidatePhotos({ owner: 'alice' });
+  invalidatePhotos({ owner: 'alice', ...(kind === 'resource' && { resource: '/api/trips/owned/media' }) });
   resolve(new Response(JSON.stringify({ items: { [slots[0]]: photo(1) } })));
   await waitFor(() => expect(JSON.parse(screen.getByRole('status', { name: slots[1] }).textContent!)).toEqual({}));
   expect(sessionStorage.getItem('dayloom.photos.session.v1')).not.toContain('images.unsplash.com');

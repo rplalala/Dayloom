@@ -1,5 +1,5 @@
 import { afterEach, expect, it, vi } from 'vitest';
-import { evictPhoto, photoGeneration, readPhoto, writePhoto, type PhotoScope } from './photoSession';
+import { evictPhoto, invalidatePhotos, photoGeneration, readPhoto, writePhoto, type PhotoScope } from './photoSession';
 
 const resource = '/api/trips/owned/supporting-media?width=360&height=240';
 const scope = (): PhotoScope => ({ owner: 'alice', generation: photoGeneration('alice'), snapshot: 'trip-v1',
@@ -30,4 +30,11 @@ it('keeps provider, theme, resource and owner boundaries independent', () => {
   expect(readPhoto('/api/trips/other/supporting-media', scope(), 'b')).toBeUndefined();
   writePhoto('/api/trips/owned/media', { ...scope(), provider: undefined, kind: undefined }, 'a', photo);
   expect(readPhoto('/api/trips/owned/media', { ...scope(), provider: undefined, kind: undefined }, 'a')).toBeUndefined();
+});
+
+it.each(['trips', 'previews'])('invalidates supporting metadata through the shared %s decision resource', kind => {
+  const current = resource.replace('/trips/', `/${kind}/`);
+  writePhoto(current, scope(), 'a', photo);
+  invalidatePhotos({ owner: 'alice', resource: `/api/${kind}/owned/media` });
+  expect(readPhoto(current, scope(), 'a')).toBeUndefined();
 });

@@ -11,8 +11,14 @@ const maxBytes = 1024 * 1024;
 const fences = new Map<string, number>();
 const listeners = new Set<() => void>();
 
+function resourceIdentity(resource: string): string {
+  const path = resource.split('?')[0];
+  return /^\/api\/(trips|previews|examples)\/[^/]+\/(supporting-)?media$/.test(path)
+    ? path.replace(/\/supporting-media$/, '/media') : resource;
+}
+
 export function photoFence(resource: string, scope?: PhotoScope): number {
-  const key = JSON.stringify([scope?.owner ?? null, resource]);
+  const key = JSON.stringify([scope?.owner ?? null, resourceIdentity(resource)]);
   if (!fences.has(key)) fences.set(key, 0);
   return fences.get(key)!;
 }
@@ -24,7 +30,7 @@ export function subscribePhotos(listener: () => void): () => void {
 
 export function invalidatePhotos(filter: { owner?: string | null; resource?: string; privateOnly?: boolean } = {}) {
   const matches = (owner: string | null, resource: string) =>
-    (!filter.privateOnly || owner !== null) && (filter.owner === undefined || owner === filter.owner) && (!filter.resource || resource === filter.resource);
+    (!filter.privateOnly || owner !== null) && (filter.owner === undefined || owner === filter.owner) && (!filter.resource || resourceIdentity(resource) === resourceIdentity(filter.resource));
   for (const [key, value] of fences) {
     const [owner, resource] = JSON.parse(key);
     if (matches(owner, resource)) fences.set(key, value + 1);
@@ -137,9 +143,11 @@ export function readPhoto(resource: string, scope: PhotoScope, slot: string): Di
   const key = photoKey(resource, scope, slot);
   const sharedKey = scope.provider === 'Unsplash' ? photoRequestKey(resource, scope, slot) : undefined;
   const allowed = values.filter(entry => entry.owner === scope.owner && entry.resource === resource && matchesScope(entry.media, scope, slot));
-  const entry = allowed.find(entry => entry.key === key) || (sharedKey && allowed.find(entry => entry.sharedKey === sharedKey));
+  const legacyKey = !sharedKey && JSON.stringify(JSON.parse(key).slice(0, 7));
+  const legacy = legacyKey && allowed.find(entry => entry.key === legacyKey);
+  const entry = allowed.find(entry => entry.key === key) || (sharedKey && allowed.find(entry => entry.sharedKey === sharedKey)) || legacy;
   if (!entry) return undefined;
-  if (entry.key !== key) save([...values.filter(value => value.key !== key), { ...entry, key }]);
+  if (entry.key !== key) save([...values.filter(value => value.key !== key && (!legacy || value.key !== legacy.key)), { ...entry, key }]);
   return entry.media;
 }
 

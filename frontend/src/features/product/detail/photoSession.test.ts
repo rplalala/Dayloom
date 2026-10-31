@@ -20,6 +20,17 @@ it('expires thirty minutes after acquisition without extending on reads or resto
   expect(readPhoto(resource, scope(), 'museum')).toBeUndefined();
 });
 
+it('reuses a valid pre-provider-key Google entry without resetting acquisition time', () => {
+  const clock = vi.spyOn(Date, 'now').mockReturnValue(1800000000000);
+  writePhoto(resource, scope(), 'museum', photo);
+  const saved = JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!);
+  saved.entries[0].key = JSON.stringify(JSON.parse(saved.entries[0].key).slice(0, 7));
+  sessionStorage.setItem('dayloom.photos.session.v1', JSON.stringify(saved));
+  clock.mockReturnValue(1800000060000);
+  expect(readPhoto(resource, scope(), 'museum')).toEqual(photo);
+  expect(JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!).entries[0].fetchedAt).toBe(1800000000000);
+});
+
 it.each([null, undefined])('reuses successful photos when the provider omits the optional source link (%s)', source => {
   writePhoto(resource, scope(), 'museum', { ...photo, source_url: source });
   expect(readPhoto(resource, scope(), 'museum')?.image_url).toBe(photo.image_url);

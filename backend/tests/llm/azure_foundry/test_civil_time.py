@@ -11,9 +11,11 @@ from backend.app.schemas.itinerary_projection import V1Itinerary
 from backend.tests.llm.azure_foundry.test_client import FakeChatOpenAI, make_activity, make_client
 
 
-def test_primary_civil_wire_maps_null_offsets_after_reference_restoration(monkeypatch):
+@pytest.mark.parametrize("theme", [None, "meal", "rest", "explore", "walk", "general"])
+def test_primary_civil_wire_maps_null_offsets_after_reference_restoration(monkeypatch, theme):
     activity = make_activity().model_dump(mode="json")
     activity.pop("transport")
+    activity["atmosphere_theme"] = theme
     activity["source_place_id"] = "p01"
     for key, clock in [("start_time", "10:00:00"), ("end_time", "11:00:00")]:
         activity[key] = {"date": "2026-10-25", "time": clock, "utc_offset": None}
@@ -37,6 +39,7 @@ def test_primary_civil_wire_maps_null_offsets_after_reference_restoration(monkey
     )
     assert result.days[0].activities[0].start_time.isoformat() == "2026-10-25T10:00:00+01:00"
     assert result.days[0].activities[0].source_place_id == "canonical"
+    assert result.days[0].activities[0].atmosphere_theme == theme
     assert raw == original
 
 
