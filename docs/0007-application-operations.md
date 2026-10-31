@@ -41,7 +41,9 @@ to the [local configuration guide](guides/development.md#local-configuration-con
 The console validates existing Foundry v1 endpoint/deployment syntax and writes
 only these fields. It adds neither model selection nor provider adaptation.
 Database credentials, JWT signing secrets, planning policies and retrieval data
-remain outside its write surface. Process environment values take precedence over
+remain outside its write surface. Managed setting names in environment and dotenv
+are case-insensitive, matching existing consumers; interpolation variable references
+retain their case-sensitive dotenv semantics. Process environment values take precedence over
 dotenv, including alias selection and interpolation; YAML supplies deployment
 defaults. A read captures dotenv once; its opaque revision covers that text and
 the resolved editable values, including YAML deployment defaults.
@@ -55,8 +57,10 @@ bounded, as are active management sessions and request-body size. API responses
 use `Cache-Control: no-store`; validation/errors exclude submitted values.
 
 Secret fields return presence only. An omitted field is retained; an explicit
-empty change clears it. Writes preserve unrelated dotenv bindings, use a cross-process
-file lock and atomic replacement, and reject stale revisions with HTTP 409. The
+empty change clears it. Writes replace existing managed bindings in place, preserving
+their spelling and order so dependent interpolation still resolves; only absent settings
+are appended. Unrelated bindings are retained. Saves use a cross-process file lock and
+atomic replacement, and reject stale revisions with HTTP 409. The
 running Product pins editable provider settings at startup, so saves require a
 restart and cannot reconfigure in-flight work. Setup mode leaves configuration and
 static delivery available while business APIs return HTTP 503; a successful restart
