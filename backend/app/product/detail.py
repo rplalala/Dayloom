@@ -13,6 +13,7 @@ from backend.app.schemas.generation_diagnostics import MinimumDailyCoverage
 from backend.app.schemas.itinerary import ActivityKind
 from backend.app.schemas.product import (
     AtmosphereTheme,
+    AttentionItem,
     PaceReview,
     PreferenceCoverage,
     RequiredExperienceCoverage,
@@ -123,6 +124,9 @@ class DetailTransfer(DetailModel):
 
 
 class DetailCompletion(DetailModel):
+    attention_items: list[AttentionItem] = Field(
+        default_factory=list, exclude_if=lambda value: not value
+    )
     required_experiences: list[RequiredExperienceCoverage] = Field(
         default_factory=list, exclude_if=lambda value: not value
     )

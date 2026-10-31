@@ -102,6 +102,7 @@ export type ProductDetail = {
   transfers: DetailTransfer[];
   nearby: DetailNearby[];
   completion?: {
+    attention_items?: { title: string; description: string; planned_visits?: RequiredExperience['planned_visits'] }[];
     required_experiences?: RequiredExperience[];
     pace_review?: PaceReview | null;
     source_claims?: string[];

@@ -186,7 +186,10 @@ def present_product(result, evidence, introductions=None):
             )
         )
     completion = getattr(getattr(result, "v3", None), "soft_pace", {}).get("completion")
+    from backend.app.services.product_guidance import attention_items
+
     projected = ProductPlanResult(
+        attention_items=attention_items(result),
         required_experiences=tuple(
             dict(
                 requirement=row["requirement"], source_quotes=row["source_quotes"],

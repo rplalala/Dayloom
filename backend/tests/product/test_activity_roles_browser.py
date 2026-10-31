@@ -47,6 +47,14 @@ def test_generated_experiences_show_distinct_guidance_after_save_and_reload(
             ],
             completion={
                 "policy_completion": "incomplete",
+                "attention_items": [
+                    {
+                        "title": "Sydney Opera House",
+                        "description": (
+                            "Your requested visits or dates for this place are not fully arranged."
+                        ),
+                    }
+                ],
                 "required_experiences": [
                     {
                         "requirement": "An art museum",
@@ -80,6 +88,9 @@ def test_generated_experiences_show_distinct_guidance_after_save_and_reload(
         expect(page.get_by_role("region", name="Trip highlights")).to_contain_text("An art museum")
         expect(page.get_by_role("region", name="Still to arrange")).to_contain_text(
             "A waterfront walk"
+        )
+        expect(page.get_by_role("region", name="Still to arrange")).to_contain_text(
+            "Sydney Opera House"
         )
         expect(page.get_by_text(quotes[0], exact=True)).to_have_count(0)
         expect(page.get_by_text("matching visits scheduled", exact=False)).to_have_count(0)

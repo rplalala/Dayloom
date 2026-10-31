@@ -83,6 +83,16 @@ const detail: ProductDetail = {
 };
 
 describe("Product detail", () => {
+  it('keeps an unmet named visit visible even without category coverage records', () => {
+    render(<MemoryRouter><TripDetail detail={{ ...detail, completion: {
+      policy_completion: 'incomplete', policy_reasons: ['required_visit_obligation_unmet'],
+      preference_coverage: [], minimum_daily_coverage: [], attention_items: [{
+        title: 'Sydney Opera House', description: 'Your requested visits or dates for this place are not fully arranged.',
+      }],
+    } }} /></MemoryRouter>);
+    expect(within(screen.getByRole('region', { name: 'Still to arrange' })).getByText('Sydney Opera House')).toBeVisible();
+    expect(screen.queryByText('required_visit_obligation_unmet')).not.toBeInTheDocument();
+  });
   it('labels shared-quote experiences separately and navigates only a known planned visit', async () => {
     const user = userEvent.setup();
     const source = 'Must include: an art museum, a waterfront walk.';

@@ -124,6 +124,14 @@ class RequiredExperienceCoverage(ProductModel):
     )
 
 
+class AttentionItem(ProductModel):
+    title: str
+    description: str
+    planned_visits: tuple[ExperienceVisit, ...] = Field(
+        default=(), exclude_if=lambda value: not value
+    )
+
+
 class PaceReview(ProductModel):
     status: Literal[
         "complete",
@@ -138,6 +146,9 @@ class PaceReview(ProductModel):
 
 class ProductPlanResult(ProductModel):
     _media_bindings: dict[str, str] = PrivateAttr(default_factory=dict)
+    attention_items: tuple[AttentionItem, ...] = Field(
+        default=(), exclude_if=lambda value: not value
+    )
     preference_coverage: tuple[PreferenceCoverage, ...] = ()
     required_experiences: tuple[RequiredExperienceCoverage, ...] = Field(
         default=(), exclude_if=lambda value: not value

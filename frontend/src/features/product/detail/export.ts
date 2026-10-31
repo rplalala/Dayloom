@@ -28,6 +28,7 @@ export function summaryText(detail: ProductDetail) {
     lines.push('', row.requirement, requiredExperienceNotice(
       detail.trust === 'unverified_import' ? { ...row, status: 'unverified' } : row));
   }
+  for (const item of detail.completion?.attention_items || []) lines.push('', item.title, item.description);
   for (const day of detail.days) {
     lines.push('', day.date);
     const weather = day.weather;

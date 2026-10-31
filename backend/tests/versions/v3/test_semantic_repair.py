@@ -298,9 +298,12 @@ def test_unmet_named_count_remains_incomplete_in_product_after_failed_repair():
     result.itinerary = repair.final
     result.requirements = ctx.contract.requirements
     result.generation_diagnostics = repair.adopted_report.diagnostics
+    result.interpreted_requirements = ctx.contract
     public = present_product(result, evidence)
     assert public.policy_completion == "incomplete"
     assert "required_visit_obligation_unmet" in public.policy_reasons
+    assert public.attention_items[0].title == named.place_text
+    assert "not fully arranged" in public.attention_items[0].description
 
 
 def test_model_transport_endpoint_is_rejected_before_canonical_visit_checks():
