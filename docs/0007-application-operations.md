@@ -197,8 +197,9 @@ abuse controls; this design does not establish a public deployment guarantee.
 
 ## Product experience and persistence design
 
-The implemented lifecycle follows the fixed Dayloom r7 visual and interaction
-reference, with initials replacing the deferred avatar upload. The unified specification
+The implemented lifecycle uses the Dayloom r7 visual and interaction foundation,
+with Product presentation refinements and initials replacing the deferred avatar upload.
+The unified specification
 [#198](https://github.com/rplalala/Dayloom/issues/198) owns originating requirements and
 confirmed acceptance seams; its native children own task state. #119 retains the
 historical design/mapping role. The sections below define current behavior.
@@ -227,6 +228,19 @@ input-assistance reads remain guest-accessible. Developer authentication is unch
 The Product React shell exposes home, a shared brief editor, login/register, guest
 example cards, an authenticated saved-trip/draft library with a genuine empty state,
 and an initials-only account page.
+
+Product copy explains traveler actions and travel information; development histories,
+internal operation identifiers and research controls stay outside these pages. About
+describes the travel experience, and the home confirmation feature uses a checklist glyph.
+The login tab displays the public test-account hint without filling or submitting the
+form; registration remains separate. This test
+hint is distinct from the private provider/deployment credentials excluded above.
+
+An empty owned library shows a responsive journey illustration and one primary planning
+action, without redundant collection counts or search/sort controls. A search with no
+matches retains its controls and distinct no-results guidance. The planning action starts
+a new brief through the existing initialization policy.
+
 Authentication restores a guest brief and return intent without generating. Editor
 recovery and a pending action identity stay in tab-local session storage, never in the
 JWT or shared local storage. Expiry hides account/editor content and quarantines it
