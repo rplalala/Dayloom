@@ -279,6 +279,23 @@ def test_empty_yaml_retains_environment_only_configuration_support(tmp_path):
     assert manager.view()["fields"]["AZURE_OPENAI_DEPLOYMENT"]["value"] == "gpt-6-luna"
 
 
+def test_unassigned_dotenv_bindings_allow_existing_defaults_and_aliases(tmp_path):
+    (tmp_path / "product.yaml").write_text(
+        "foundry:\n  endpoint: https://example.services.ai.azure.com/openai/v1\n"
+        "  deployment: gpt-6-luna\n",
+        encoding="utf-8",
+    )
+    (tmp_path / ".env").write_text(
+        "AZURE_OPENAI_ENDPOINT\nPRODUCT_UNSPLASH_ACCESS_KEY\nUNSPLASH_API_KEY=synthetic-legacy\n",
+        encoding="utf-8",
+    )
+    manager = LocalConfiguration(tmp_path, origin="http://localhost:5173", environment={})
+    assert manager.initial["AZURE_OPENAI_ENDPOINT"] == (
+        "https://example.services.ai.azure.com/openai/v1"
+    )
+    assert manager.initial["PRODUCT_UNSPLASH_ACCESS_KEY"] == "synthetic-legacy"
+
+
 def test_concurrent_file_replacement_cannot_tag_old_fields_with_new_revision(tmp_path, monkeypatch):
     from pathlib import Path
 

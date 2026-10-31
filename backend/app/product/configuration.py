@@ -111,12 +111,19 @@ class LocalConfiguration:
                 "AZURE_OPENAI_DEPLOYMENT": options.foundry.deployment,
             }
         values = {
-            key: self.environment.get(key, local.get(key, defaults.get(key, ""))) or ""
+            key: next(
+                (
+                    source[key]
+                    for source in (self.environment, local, defaults)
+                    if source.get(key) is not None
+                ),
+                "",
+            )
             for key in FIELDS
         }
         for source in (self.environment, local):
             for key in ("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"):
-                if key in source:
+                if source.get(key) is not None:
                     values["PRODUCT_UNSPLASH_ACCESS_KEY"] = source[key] or ""
                     return text, values
         return text, values
@@ -132,10 +139,10 @@ class LocalConfiguration:
                     "secret": secret,
                     "configured": bool(values[key]),
                     "value": None if secret else values[key],
-                    "locked": key in self.environment
+                    "locked": self.environment.get(key) is not None
                     or (
                         key == "PRODUCT_UNSPLASH_ACCESS_KEY"
-                        and "UNSPLASH_API_KEY" in self.environment
+                        and self.environment.get("UNSPLASH_API_KEY") is not None
                     ),
                 }
                 for key, secret in FIELDS.items()
