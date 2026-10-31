@@ -372,6 +372,24 @@ deployment, supply publicly accessible application Terms of Use and Privacy Poli
 incorporating the provider terms/privacy requirements; local substituted acceptance does
 not establish a deployment or live-provider acceptance.
 
+The local/private itinerary photo session cache is specified in the
+[media contract](../0007-application-operations.md#browser-tab-photo-session).
+Its controlled browser checks need no database, API server, provider credentials or
+live photo calls. They start an isolated Vite process and intercept HTTP boundaries:
+
+```powershell
+$env:PRODUCT_BROWSER_TESTS = "1"
+uv run pytest backend/tests/product/test_photo_session_browser.py -q -p no:cacheprovider --basetemp=.scratch/pytest-photo-session
+```
+
+These checks exercise real reloads, partial misses, expiry, attribution, bounded image
+recovery, tab closure/restored storage and authentication/owned-detail rejection. They
+verify frontend behavior with controlled responses, not live Google validity or database
+authorization. The focused frontend cache, media and session tests also cover storage
+bounds/failures, concurrent requests, account isolation and late-response fencing.
+`PRODUCT_PHOTO_TEST_WEB_PORT` overrides the default test port 5123. The separate
+database-backed journeys below retain their existing prerequisites.
+
 With the isolated Product test database and browser ports configured, run:
 
 ```powershell

@@ -805,8 +805,8 @@ transaction and carries it into the independent trip through the normalized writ
 directly decided Copy receipts keep an empty map. Imported claims and client Copy bodies
 cannot supply bindings. Keep a copy carries a curated example's private map into the
 same independent saved representation. Copies resolve display metadata separately after persistence.
-Public detail, JSON/text export and research results omit the map;
-no expiring photo resource name, CDN URL, author metadata or image bytes are persisted.
+Public detail, JSON/text export and research results omit the map. The database does
+not persist expiring photo resource names, image URLs, author metadata or image bytes.
 
 `GET /api/previews/{id}/media` and `/api/trips/{id}/media` return display metadata only
 after the same owner check as detail; missing/other-owner IDs return 404. Saved-preview
@@ -822,11 +822,63 @@ Each Google slot performs at most
 one fresh `photos` Details request and one media metadata request, with an 8-second HTTP
 timeout, an 8-second complete-slot deadline and 256 KiB response limit. Completed photos
 survive another slot's timeout or a later failed batch. Redirects and arbitrary fetch destinations are
-rejected. Responses use `Cache-Control: no-store`; no Google photo metadata cache or
-automatic retry is introduced. Product requests place metadata when an owned itinerary
-or curated example opens, so authorized photographs appear directly in activity and
-Nearby lists. Refresh place photos in a place dialog explicitly resolves fresh metadata without replanning
-or refreshing itinerary facts.
+rejected. Responses retain `Cache-Control: no-store`; the backend has no photo metadata
+cache or automatic retry. The browser's explicit session cache below determines which
+slots need fresh metadata. Activity and Nearby lists display authorized photographs
+when an owned itinerary or curated example opens. **Refresh photo** in a place dialog
+resolves only the selected slot, without replanning or refreshing itinerary facts.
+
+#### Browser tab photo session
+
+The local/private Product uses `sessionStorage` to retain successful verified-place
+photo URLs with Google Maps attribution and all supplied author/source links. An omitted
+optional source link does not prevent caching a valid photograph. The cache does not
+store image bytes, credentials, tokens, full itineraries or private media bindings.
+This is an application-managed metadata cache, independent of HTTP image caching;
+it does not change the media endpoint's `no-store` response directive.
+
+Each entry expires **30 minutes after successful acquisition**. Reads and reloads never
+extend expiry. Storage is bounded to **200 entries and approximately 1 MiB of serialized
+data**, evicting the oldest entries first. Corrupt/unsupported records, future timestamps,
+disallowed URLs, denied storage and quota failures fall back to ordinary media loading.
+Only successful photos are retained; loading, unavailable and error states are not cached.
+
+Keys separate account, login/invalidation generation, endpoint/resource identity,
+detail snapshot fingerprint, requested dimensions and slot. Saved trips, previews,
+independent copies and public examples cannot share private entries. Bundled examples
+use a guest scope. The snapshot fingerprint detects changes; it grants no authorization.
+Private photos remain hidden until authentication and the server's owned-detail read
+succeed. Reads validate the current scope, entry shape, expiry and provider URL rules.
+Valid hits bypass the media endpoint for those slots; only misses/expired entries enter
+the existing ordered batches of at most 12. Successful batches remain reusable if a
+later batch fails. Concurrent same-slot consumers share requests, including development
+StrictMode effects. Abandoned requests are canceled when their last consumer leaves,
+and late responses cannot render or persist into an invalidated scope.
+
+Logout, session expiry/revocation, account switch and cross-tab session invalidation
+clear private entries and hide their active photos. Confirmed trip deletion and preview
+decisions invalidate the relevant resource. Changed snapshots or slot sets cannot reuse
+old entries. A media 401 clears the owner's photos; 403/404 invalidates the resource.
+Normal authentication and ownership checks remain required after every page reload.
+
+A cached URL that fails image loading is evicted and receives **one automatic
+reacquisition per slot per display cycle**. A further failure shows an illustration
+with **Retry photo**. Manual refresh/retry affects only that slot and cannot extend
+neighboring entries' expiry. Photographs still load directly from Google's image host;
+cache hits do not guarantee zero image network requests or zero billing.
+
+Reload retains the tab's storage session, and normal tab closure ends it. Browser
+closed-tab, crash and session restoration may restore `sessionStorage`; restored entries
+still undergo the fixed expiry check. This is not secure deletion or a guarantee of
+isolation for browser-created duplicate tabs. External application links use `noopener`.
+There is no unconditional `beforeunload`/`pagehide` purge, durable browser storage,
+server/CDN image cache, service worker or cross-tab photo-sharing mechanism.
+
+The separate fixed destination/atmosphere catalog continues resolving metadata on
+display; this cache covers itinerary activity and Nearby slots. Provider-license review
+and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
+
+#### Photo presentation
 
 Activity thumbnails use a 4:3 crop and align with the text's top edge on desktop and
 tablet, including long introductions. At widths up to 560px they use a full-width

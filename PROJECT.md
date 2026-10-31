@@ -77,6 +77,9 @@ for storage retention, overrides and isolated test settings.
 Product UI/API uses V3 and an allowlisted presentation contract. Developer mode
 exposes V0-V3 independently. Current input assistance includes destination suggestions,
 currency/date controls and optional user-reviewed preference polishing.
+Itinerary activity/Nearby photographs now reuse validated links within the browser tab
+session; the [media contract](docs/0007-application-operations.md#browser-tab-photo-session)
+defines expiry, isolation, bounded recovery and browser lifecycle limits.
 Product diagnostics now correlate HTTP operations, durable tasks and planner runs,
 preserving native Repair decisions, bounded payloads and independent completion/usage
 summaries alongside public progress. Local lookup and retention are described in the
