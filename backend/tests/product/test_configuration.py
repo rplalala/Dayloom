@@ -243,3 +243,74 @@ def test_expired_management_session_is_rejected(tmp_path, monkeypatch):
         monkeypatch.setattr(configuration, "monotonic", lambda: 10**20)
         assert client.get("/api/config/session").status_code == 401
         assert client.get("/api/config").status_code == 401
+
+
+def test_external_unsplash_alias_precedes_dotenv_canonical_key(tmp_path):
+    (tmp_path / ".env").write_text("PRODUCT_UNSPLASH_ACCESS_KEY=dotenv-private\n", encoding="utf-8")
+    manager = LocalConfiguration(
+        tmp_path,
+        origin="http://localhost:5173",
+        environment={"UNSPLASH_API_KEY": "external-private"},
+    )
+    assert manager.initial["PRODUCT_UNSPLASH_ACCESS_KEY"] == "external-private"
+    assert manager.view()["fields"]["PRODUCT_UNSPLASH_ACCESS_KEY"]["locked"] is True
+
+
+def test_dotenv_interpolation_preserves_external_environment_precedence(tmp_path):
+    (tmp_path / ".env").write_text(
+        "CREDENTIAL_SOURCE=dotenv-private\nOPENAI_API_KEY=${CREDENTIAL_SOURCE}\n",
+        encoding="utf-8",
+    )
+    manager = LocalConfiguration(
+        tmp_path,
+        origin="http://localhost:5173",
+        environment={"CREDENTIAL_SOURCE": "external-private"},
+    )
+    assert manager.initial["OPENAI_API_KEY"] == "external-private"
+
+
+def test_empty_yaml_retains_environment_only_configuration_support(tmp_path):
+    (tmp_path / "product.yaml").write_text("", encoding="utf-8")
+    manager = LocalConfiguration(
+        tmp_path,
+        origin="http://localhost:5173",
+        environment={"AZURE_OPENAI_DEPLOYMENT": "gpt-6-luna"},
+    )
+    assert manager.view()["fields"]["AZURE_OPENAI_DEPLOYMENT"]["value"] == "gpt-6-luna"
+
+
+def test_concurrent_file_replacement_cannot_tag_old_fields_with_new_revision(tmp_path, monkeypatch):
+    from pathlib import Path
+
+    path = tmp_path / ".env"
+    path.write_text("AZURE_OPENAI_DEPLOYMENT=original\n", encoding="utf-8")
+    _, client = connect_manager(tmp_path)
+    with client:
+        original = client.get("/api/config").json()
+        read_text = Path.read_text
+        replaced = False
+
+        def replace_after_read(source, *args, **kwargs):
+            nonlocal replaced
+            text = read_text(source, *args, **kwargs)
+            if source == path and not replaced:
+                replaced = True
+                path.write_text("AZURE_OPENAI_DEPLOYMENT=concurrent\n", encoding="utf-8")
+            return text
+
+        monkeypatch.setattr(Path, "read_text", replace_after_read)
+        response = client.get("/api/config").json()
+        assert response["fields"]["AZURE_OPENAI_DEPLOYMENT"]["value"] == "original"
+        assert response["revision"] == original["revision"]
+        assert (
+            client.put(
+                "/api/config",
+                json={
+                    "revision": response["revision"],
+                    "changes": {
+                        "AZURE_OPENAI_DEPLOYMENT": "stale-edit",
+                    },
+                },
+            ).status_code
+            == 409
+        )

@@ -17,10 +17,6 @@ import { ImportPage } from '../features/product/ImportPage';
 import { CopyRecoveryPage } from '../features/product/CopyRecoveryPage';
 
 export const routes: RouteObject[] = [
-  { path: 'config', lazy: async () => {
-    const { ConfigurationPage } = await import('../features/configuration/ConfigurationPage');
-    return { Component: ConfigurationPage };
-  } },
   {
     element: <ProductLayout />,
     children: [
@@ -46,6 +42,10 @@ export const routes: RouteObject[] = [
       { index: true, element: <DeveloperPlannerPage /> },
     ],
   },
+  { path: 'config', lazy: async () => {
+    const { ConfigurationPage } = await import('../features/configuration/ConfigurationPage');
+    return { Component: ConfigurationPage };
+  } },
   { path: "*", element: <NotFoundPage /> },
 ];
 

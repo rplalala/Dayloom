@@ -13,8 +13,8 @@ from time import monotonic
 from urllib.parse import urlsplit
 
 import yaml
-from dotenv import dotenv_values
 from dotenv.parser import parse_stream
+from dotenv.variables import parse_variables
 
 from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader
 
@@ -69,7 +69,7 @@ class LocalConfiguration:
         self.sessions = {}
         self.attempts = deque(maxlen=10)
         self.lock = threading.Lock()
-        self.initial = self.values()
+        self.initial = self.snapshot()[1]
         self.running_ready = True
         self.resource_probe = None
 
@@ -78,18 +78,32 @@ class LocalConfiguration:
         if path.is_symlink():
             raise ConfigurationError("configuration_symlink_rejected")
         text = path.read_text(encoding="utf-8") if path.exists() else ""
-        if len(text) > 1_048_576 or any(item.error for item in parse_stream(StringIO(text))):
+        bindings = list(parse_stream(StringIO(text)))
+        if len(text) > 1_048_576 or any(item.error for item in bindings):
             raise ConfigurationError("invalid_dotenv")
-        return text, dict(dotenv_values(stream=StringIO(text)))
+        resolved = {}
+        for item in bindings:
+            if item.key is None:
+                continue
+            # Match load_dotenv(override=False), without mutating global process
+            # state while a configuration request is being served.
+            environment = {**resolved, **self.environment}
+            resolved[item.key] = (
+                "".join(atom.resolve(environment) for atom in parse_variables(item.value))
+                if item.value is not None
+                else None
+            )
+        return text, resolved
 
-    def values(self):
-        _, local = self.read()
+    def snapshot(self):
+        text, local = self.read()
         path = self.root / "product.yaml"
-        options = DeploymentOptions.model_validate(
+        data = (
             yaml.load(path.read_text(encoding="utf-8"), Loader=DeploymentYamlLoader)
             if path.exists()
             else {}
         )
+        options = DeploymentOptions.model_validate({} if data is None else data)
         defaults = {}
         if options.foundry:
             defaults = {
@@ -100,17 +114,15 @@ class LocalConfiguration:
             key: self.environment.get(key, local.get(key, defaults.get(key, ""))) or ""
             for key in FIELDS
         }
-        if "PRODUCT_UNSPLASH_ACCESS_KEY" not in self.environment and (
-            "PRODUCT_UNSPLASH_ACCESS_KEY" not in local
-        ):
-            values["PRODUCT_UNSPLASH_ACCESS_KEY"] = (
-                self.environment.get("UNSPLASH_API_KEY", local.get("UNSPLASH_API_KEY", "")) or ""
-            )
-        return values
+        for source in (self.environment, local):
+            for key in ("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"):
+                if key in source:
+                    values["PRODUCT_UNSPLASH_ACCESS_KEY"] = source[key] or ""
+                    return text, values
+        return text, values
 
     def view(self):
-        values = self.values()
-        text, _ = self.read()
+        text, values = self.snapshot()
         return {
             "revision": hashlib.sha256(text.encode()).hexdigest(),
             "restart_required": values != self.initial,
@@ -220,16 +232,16 @@ class LocalConfiguration:
     def readiness(self):
         from backend.app.product.local_readiness import check_local_resources
 
-        values = self.values()
+        view = self.view()
         required = [key for key in FIELDS if key != "PRODUCT_UNSPLASH_ACCESS_KEY"]
         resources = (self.resource_probe or check_local_resources)()
-        missing = [key for key in required if not values[key]]
+        missing = [key for key in required if not view["fields"][key]["configured"]]
         return {
             "ready": not missing and all(item["ready"] for item in resources),
             "missing": missing,
             "resources": resources,
             "credentials_verified": False,
-            "restart_required": self.view()["restart_required"],
+            "restart_required": view["restart_required"],
             "running_ready": self.running_ready,
         }
 
