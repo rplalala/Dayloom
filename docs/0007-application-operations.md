@@ -41,7 +41,8 @@ only these fields. It adds neither model selection nor provider adaptation.
 Database credentials, JWT signing secrets, planning policies and retrieval data
 remain outside its write surface. Process environment values take precedence over
 dotenv, including alias selection and interpolation; YAML supplies deployment
-defaults. A read's values and revision come from one captured dotenv snapshot.
+defaults. A read captures dotenv once; its opaque revision covers that text and
+the resolved editable values, including YAML deployment defaults.
 
 Management requires an in-memory, randomly generated process token. Successful
 unlock creates a separate 30-minute HttpOnly, SameSite=Strict cookie scoped to
@@ -57,12 +58,47 @@ file lock and atomic replacement, and reject stale revisions with HTTP 409. The
 running Product pins editable provider settings at startup, so saves require a
 restart and cannot reconfigure in-flight work. Setup mode leaves configuration and
 static delivery available while business APIs return HTTP 503; a successful restart
-is required to enable business operations. Local resource checks return readiness
-without external provider requests or a claim of valid credentials.
+is required to enable business operations. Check local readiness returns local
+resource readiness without external provider requests or a claim of valid credentials.
+
+Check API on each provider card and Check all APIs explicitly invoke
+`POST /api/config/check` with a saved revision and a fixed service identifier.
+They use the same management protections as saves. The server captures the saved
+effective values, rejects an old revision before sending, and marks results stale
+if configuration changes during the check. The browser clears results on edits,
+save, reload and lock, and does not display stale results as successful. Results
+remain in page memory only. A new saved key can be checked before restart without
+changing the running planner's pinned settings.
+
+| Service | Capability checked | Maximum HTTP attempts |
+| --- | --- | --- |
+| Azure Foundry | One tiny strict structured Responses result from the saved deployment | 1 |
+| OpenAI | `text-embedding-3-small` with 1,536 finite dimensions; one completed web search using the existing search model | 2 |
+| Google Maps | One Places text search, a 1-by-1 walking route matrix, photo details and photo media URI | 4 |
+| Unsplash (optional) | Metadata for one existing catalog photograph | 1 |
+
+Each invocation allows at most eight outbound HTTP attempts and a 60-second shared
+deadline. Individual requests allow 15 seconds, or 30 seconds for web search,
+within the remaining deadline. There are no automatic retries or redirects; only
+one check runs per local instance. Response bodies are limited to 128 KiB. Foundry
+uses the same approved HTTPS Azure v1 endpoint admission as the editor; all other
+hosts are fixed. Google photo resource identifiers are validated before use.
+Credentials stay in request headers and never enter URLs or returned diagnostics.
+
+Checks use fixed public sample queries and coordinates, not traveler inputs.
+They do not run planning, download images or alter planning budgets. They may
+incur provider charges; HTTP/time limits are not a monetary spending cap. Startup,
+page loading and local readiness never trigger these checks. Missing settings,
+authentication, permission/API enablement, billing, quota, rate limit, network,
+timeout and unverified responses have separate safe outcomes. A timeout does not
+prove an invalid key; missing sample photos are inconclusive. Provider error text,
+payloads and credentials are excluded from results. A passing sample establishes
+only that capability at the check time, not all permissions or planning readiness.
 
 Implementation: [configuration](../backend/app/product/configuration.py),
 [management interface](../backend/app/product/configuration_api.py),
-[local probes](../backend/app/product/local_readiness.py).
+[local probes](../backend/app/product/local_readiness.py),
+[API checks](../backend/app/product/api_checks.py).
 
 ## Product diagnostics
 
@@ -148,6 +184,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | Endpoint | Input and result | Source of truth |
 | --- | --- | --- |
 | `/api/config`, `/session`, `/readiness` | Local management unlock/lock, redacted reads, revision-checked provider writes and read-only resource checks | [Local configuration](#local-configuration-console) |
+| `POST /api/config/check` | Saved revision and fixed service identifier; bounded explicit API capability results, attempt count and stale flag | [Local configuration](#local-configuration-console) |
 | `POST /api/auth/register` | Normalized email, password and display name; atomic account/profile and browser session | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/auth/current` | Validated account, initials and session-bound CSRF token | [Account boundary](../backend/app/product/auth.py) |

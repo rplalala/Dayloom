@@ -76,7 +76,8 @@ for storage retention, overrides and isolated test settings.
 
 The local Product launcher also serves `/config` with independent loopback-only
 management access. It edits existing provider settings in `.env`, shows local
-resource readiness, and requires restart after saving. Incomplete local installs
+resource readiness and offers explicit bounded API capability checks. Saved
+changes require restart. Incomplete local installs
 can open the console while business APIs remain paused. Database/data preparation,
 model providers, spending policies and V0-V3 mechanisms retain their current scope.
 See the [configuration guide](docs/guides/development.md#local-configuration-console).

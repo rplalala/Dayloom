@@ -202,9 +202,21 @@ passwords, signing keys, volume selection, migrations and corpus/tokenizer
 preparation remain manual tasks described in this guide. Invalid `.env` syntax or
 invalid YAML must be corrected in a text editor before starting the console.
 
-Normal Product actions use the real configured services and may incur charges.
-The console itself does not run planning, change budgets or introduce a new model
-provider. Do not publish its terminal token, `.env` or local `.env.*` lock/temp files.
+To verify service access, save or reload pending edits, then click Check API on a
+provider card or Check all APIs. These buttons send small real provider requests
+and may incur charges. They test the saved effective settings, including a newly
+saved key before restart; successful checks do not apply that key to the running
+planner. Results show each capability, elapsed time and safe failure guidance.
+Configuration changes invalidate the results. Reload after a conflict and check
+again explicitly. Missing sample photos can leave the photo check unverified.
+The [configuration contract](../0007-application-operations.md#local-configuration-console)
+defines capabilities and request/time limits. Development tests mock these requests;
+passing those tests does not establish that installation credentials work.
+
+Normal Product actions also use configured services and may incur charges.
+The console does not run planning, change its budgets or introduce a new model
+provider. Startup and local readiness remain offline with respect to provider APIs.
+Do not publish its terminal token, `.env` or local `.env.*` lock/temp files.
 
 ## Product diagnostics
 

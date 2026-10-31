@@ -77,6 +77,8 @@ Open [local configuration](http://localhost:5173/config) and unlock it with the
 management token printed in the running terminal. Configure the existing Foundry,
 OpenAI and Google Maps services, save, and restart Dayloom. Missing local resources
 are shown with preparation guidance; an incomplete installation starts in setup mode.
+Optional Check API buttons verify saved service access with small, potentially
+billed requests. Startup and Check local readiness do not call provider APIs.
 The [configuration guide](docs/guides/development.md#local-configuration-console)
 explains access, environment overrides and checks.
 
