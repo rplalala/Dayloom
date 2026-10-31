@@ -1,7 +1,8 @@
 """Request-local, conservative USD reservations at the HTTP send boundary.
 
 Rates deliberately exceed list prices for model tokens and Places. Failed or
-unaccounted sends retain their full reservation. No estimate truncates user input.
+unaccounted sends retain their full reservation. Web search is explicitly excluded
+from dollar admission and totals. No estimate truncates user input.
 """
 
 import json
@@ -12,7 +13,6 @@ from decimal import Decimal
 from backend.app.runtime.model_limits import (
     FOUNDRY_LUNA_CONTEXT_TOKENS,
     FOUNDRY_LUNA_MAX_OUTPUT_TOKENS,
-    OPENAI_SEARCH_MAX_OUTPUT_TOKENS,
 )
 
 _active = ContextVar("generation_spending", default=None)
@@ -30,6 +30,7 @@ class SpendingBudget:
             raise ValueError("A positive finite USD allowance is required")
         self.reserved_usd = D(0)
         self.events = []
+        self.excluded_operations = set()
         self.blocked = False
 
     @contextmanager
@@ -70,6 +71,7 @@ class SpendingBudget:
             "charged_upper_usd": str(self.reserved_usd),
             "blocked": self.blocked,
             "events": self.events,
+            "excluded_operations": sorted(self.excluded_operations),
         }
 
 
@@ -104,6 +106,16 @@ def _quote(request):
         (".openai.azure.com", ".services.ai.azure.com", ".cognitiveservices.azure.com")
     )
     if path.endswith("/responses") and (azure or host == "api.openai.com"):
+        tools = body.get("tools", [])
+        if (
+            request.method == "POST"
+            and isinstance(tools, list)
+            and len(tools) == 1
+            and isinstance(tools[0], dict)
+            and tools[0].get("type") == "web_search"
+        ):
+            # Exclusion is not a zero-dollar quote. Adapter time/call bounds remain.
+            return None
         outputs = body.get("max_output_tokens")
         if not isinstance(outputs, int) or isinstance(outputs, bool) or outputs < 1:
             raise SpendingLimitError("An explicit supported output ceiling is required")
@@ -119,20 +131,6 @@ def _quote(request):
             rates = (D("1"), D("2"), D(0))
             amount = (D(FOUNDRY_LUNA_CONTEXT_TOKENS) + D(outputs) * 2) / 1000000
             return amount, "foundry_model", rates
-        calls = body.get("max_tool_calls")
-        tools = body.get("tools", [])
-        if (
-            host == "api.openai.com"
-            and body.get("model") == "gpt-4.1-mini-2025-04-14"
-            and outputs <= OPENAI_SEARCH_MAX_OUTPUT_TOKENS
-            and (calls in (1, 2, 3) and len(tools) == 1 and tools[0].get("type") == "web_search")
-        ):
-            # Reserve full context for initial + each tool continuation, plus
-            # the fixed 8k search-content block and $0.01 tool charge per call.
-            fixed = D(calls) * D(".0132")
-            rates = (D(".4"), D("1.6"), fixed)
-            amount = (D(1047576 * (calls + 1)) * rates[0] + D(outputs) * rates[1]) / 1000000 + fixed
-            return amount, "openai_search", rates
     raise SpendingLimitError("No verified tariff for this external request")
 
 
@@ -149,7 +147,11 @@ def install_spend_hooks(client):
         if budget is None:
             return
         try:
-            amount, operation, rates = _quote(request)
+            quote = _quote(request)
+            if quote is None:
+                budget.excluded_operations.add("web_search")
+                return
+            amount, operation, rates = quote
             event = budget.reserve(amount, operation)
         except Exception:
             budget.blocked = True

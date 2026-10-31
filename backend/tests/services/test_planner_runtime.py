@@ -46,6 +46,7 @@ def test_maps_http_timeout_follows_the_selected_profile(monkeypatch, profile, ex
         async with module.create_planner_dependencies(
             SystemVersion.V3, load_runtime_profile(profile), module.NullRunTracer(None),
         ) as dependencies:
+            assert dependencies.web.cache_identity == "azure_foundry:gpt-6-luna"
             await dependencies.places.search_text(PlaceSearchRequest(
                 text_query="Sydney", page_size=1, field_mask=",".join(PLACES_DESTINATION_FIELDS),
             ))
