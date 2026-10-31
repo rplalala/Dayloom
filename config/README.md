@@ -56,28 +56,40 @@ are omitted from legacy development serialization, preserving old snapshot hashe
 | Resource | Development | Product acceptance |
 | --- | --- | --- |
 | Main/Repair input / output tokens | 252000 / 16384 | 900000 / 32768 |
-| Canonical candidates / candidate searches / Details sends | 64 / 12 / 60 | 256 / 48 / 240 |
+| Canonical candidates / candidate searches / Details sends | 64 / 12 / 60 | 256 / 24 / 160 |
 | Initial supply ceiling | 20 | 60 |
-| Review Details / enriched places / profile calls | 8 / 8 / 8 | 24 / 24 / 24 |
-| Semantic calls / cumulative seconds | 6 / 120 | 24 / 600 |
-| Semantic input / output tokens / per-call seconds | 32000 / 8192 / 45 | 64000 / 16384 / 90 |
-| Baseline route elements / calls / elements per request | 400 / 7 / 64 | 3600 / 128 / 64 |
-| Alternative route pairs / calls / elements | 32 / 32 / 64 | 128 / 256 / 512 |
-| Route work / post-generation reserved seconds | 120 / 30 | 300 / 60 |
-| RAG queries / Top-K / returned positions | 4 / 20 / 80 | 8 / 30 / 240 |
-| RAG resolution / Details / fallback sends | 30 / 30 / 4 | 60 / 60 / 8 |
-| RAG query tokens / stage seconds | 2048 / 360 | 4096 / 600 |
-| Official evidence tasks / page fetches | 8 / 8 | 16 / 16 |
-| Official search tool calls per request | 2 | 3 |
-| Repair input identity union / rounds / proposal calls | 32 / 6 / 6 | 128 / 20 / 20 |
-| Repair Google / fallback / Details sends | 6 / 1 / 30 | 16 / 4 / 60 |
-| Repair route calls / elements | 24 / 32 | 64 / 128 |
-| Repair stage / hard round / model seconds | 420 / 150 / 70 | 1800 / 420 / 240 |
-| Repair preparation / reference round seconds | 60 / 120 | 120 / 300 |
-| Whole application request seconds | 600 | 2700 |
+| Review Details / enriched places / profile calls | 8 / 8 / 8 | 12 / 12 / 12 |
+| Semantic calls / cumulative seconds | 6 / 120 | 12 / 240 |
+| Semantic input / output tokens / per-call seconds | 32000 / 8192 / 45 | 64000 / 16384 / 60 |
+| Baseline route elements / calls / elements per request | 400 / 7 / 64 | 3600 / 64 / 64 |
+| Alternative route pairs / calls / elements | 32 / 32 / 64 | 64 / 64 / 128 |
+| Route work / post-generation reserved seconds | 120 / 30 | 120 / 30 |
+| RAG queries / Top-K / returned positions | 4 / 20 / 80 | 4 / 20 / 80 |
+| RAG resolution / Details / fallback sends | 30 / 30 / 4 | 30 / 30 / 4 |
+| RAG query tokens / stage seconds | 2048 / 360 | 2048 / 360 |
+| Official evidence tasks / page fetches | 8 / 8 | 8 / 8 |
+| Official search tool calls per request | 2 | 2 |
+| Repair input identity union / rounds / proposal calls | 32 / 6 / 6 | 128 / 10 / 10 |
+| Repair Google / fallback / Details sends | 6 / 1 / 30 | 8 / 2 / 30 |
+| Repair route calls / elements | 24 / 32 | 32 / 64 |
+| Repair stage / hard round / model seconds | 420 / 150 / 70 | 720 / 210 / 120 |
+| Repair preparation / reference round seconds | 60 / 120 | 60 / 180 |
+| Whole application request seconds | 600 | 1200 |
 | Nearby searches / references / stage seconds | 3 / 3 / 10 | Up to 10 / 20 / 45 |
 | Destination assistance | 100 attempts/process/UTC day | No daily cutoff; 1.1-second user cooldown, 1 concurrent provider call |
 | Preference polishing | 20 operations/process/UTC day, 1 concurrent | No daily cutoff; 2-second user cooldown, 4 concurrent provider calls |
+
+The acceptance policy retains large input and supply capacity while bounding actual work.
+Its floor is the original acceptance policy at `413fe7f`: no numerical allowance is
+lower than that revision. Repair count and time limits return to that original policy;
+the request budget is 20 minutes, with at most 12 minutes for Repair and ten shared
+proposal rounds. Remaining phase/request time can end Repair before every round is used.
+Nested deadlines are not additive, and timeout cleanup may finish after the budget expires.
+The development column is a separate policy, not the original acceptance floor.
+Details acquisition has 180 seconds; Maps requests retain a 20-second timeout, official
+search has 30 seconds, and Repair reason compression has 30 seconds. RAG embedding and
+Google timeouts are 10 and 8 seconds. Other RAG transport limits retain the original policy.
+These are engineering allowances, not measured latency or quality guarantees.
 
 Acceptance supply estimates daily demand from sourced pace and hard dated totals, skips
 fixed full-day protections, and reserves for named identities plus category obligations and alternatives. Their overlap is not assumed before evidence.
@@ -85,7 +97,7 @@ The supply target is a resource allocation, never a new visit quota. Resolved re
 identities use the selected supply ceiling instead of the development-only 16-identity gate.
 Acceptance review capacity follows the configured review budgets and half the supply
 target, rounded up, rather than a fixed eight-place ceiling. A nine-day Rich request
-normally reserves 36 supply identities and permits 18 review-enriched places under this policy.
+normally reserves 36 supply identities and permits 12 review-enriched places under this policy.
 Acquisition, Details and semantic budgets can still limit available evidence; requirements
 are retained and final validation remains authoritative. The baseline budget must accommodate
 the square of the configured supply ceiling, and every provider request retains its own cap.

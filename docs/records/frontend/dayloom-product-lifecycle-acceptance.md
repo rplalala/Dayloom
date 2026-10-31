@@ -209,14 +209,15 @@ request had a distinct UUID matched to the operation file, and the new server ou
 had no logging formatter error. This readiness check performed zero provider calls
 and established no live retrieval, embedding, search or model-quality result.
 
-### Expanded generation resources (31 October 2026)
+### Generation capacity and execution budgets (31 October 2026)
 
 The resource follow-up uses fixed base `413fe7f`, implementation `b230625`, large-run
 diagnostic correction `bbffad8`, graph-test correction `5a36300` and Maps transport
-correction `ff76f79`. Documentation is
-updated separately. The approved scope expands Product acceptance generation, evidence,
-route, RAG, semantic and Repair allowances; the user explicitly retained the US$25
-per-generation spending guard. Current values belong in the
+correction `ff76f79`. The later execution-budget refinement uses fixed base `ef0b5e0`
+and implementation `75735db`. The approved scope retains larger Product input and supply
+capacity while bounding evidence, route, RAG, semantic and Repair work; the user retained
+the US$25 per-generation spending guard and required every allowance to remain at least
+as large as the original acceptance policy at `413fe7f`. Current values belong in the
 [profile reference](../../../config/README.md#product-acceptance-profile).
 
 A nine-day manual Product run completed its preview but retained only 20 primary visits
@@ -236,6 +237,15 @@ development policy and reaches a successful proposal under acceptance; an unauth
 patch remains rejected. Development configuration bytes and serialized defaults remain
 unchanged. The acceptance review strategy now follows its configured allowance instead
 of silently keeping a fixed eight-place cap.
+
+The first expansion also allowed a 45-minute request and 20 Repair rounds within a
+30-minute stage. The user rejected that much execution headroom. The refinement keeps
+the expanded input capacity but restores the original request, Repair count and timing
+budgets; evidence acquisition increases only where approved. An initial proposal below
+the original count/time limits was withdrawn before implementation. A recursive comparison
+of all 152 numeric leaves against `413fe7f` found no reductions, and the independent
+development YAML remained unchanged. No new retry, acceptance bypass or provider call
+was introduced by this refinement.
 
 Large-outcome regression also exposed a long-field credential-redaction scan. A bounded
 stack capture located execution in the URL-userinfo regex; adding a scheme boundary
@@ -259,6 +269,23 @@ including actual controlled request timeout metadata. Both independent review ax
 reported zero findings and rechecked both corrections.
 Ruff and diff checks passed. The full backend invocation was stopped at the user's
 request before completion; it supplies no whole-suite verdict for this change.
+
+The refinement first failed its revised public budget-boundary test against the broader
+policy, then passed all 152 targeted tests after the configuration and related expectations
+were updated. This gate includes nine actual V1-V3 graph cases for one-, nine- and ten-day
+Rich trips, shared Repair call exhaustion and request-clipped deadlines, spending admission,
+and the real controlled HTTP timeout boundary. Both review axes reported zero findings
+for `ef0b5e0...75735db`; Ruff and diff checks passed. No full regression or live generation
+was run for this refinement. Its local evidence identifiers are
+`.scratch/acceptance-balanced-tests/targeted.xml` and `floor-audit.json` in the same directory.
+This validates configured boundaries, not real-provider latency or itinerary quality.
+After a read-only check found no active tasks, the local Product service restarted at
+`75735db` to load the policy. Local readiness passed: home, login and health returned 200;
+unauthenticated current-account returned 401. All four responses carried request IDs,
+the new logs contained no formatter errors, and no provider calls were made. The local
+database probe initially timed out inside the sandbox; the same read-only check succeeded
+outside it without changing credentials or configuration. `runtime-readiness.json` in the
+refinement evidence directory records this bounded result.
 
 Evidence identifiers under `.scratch/acceptance-limits-tests/` are
 `pytest-20261031-145843.log` / `results-20261031-145843.xml` for the 218-case gate,
