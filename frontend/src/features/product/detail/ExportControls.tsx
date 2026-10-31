@@ -1,4 +1,5 @@
 import { isDialogBackdropClick } from '../../../shared/dialog';
+import { reportProductAction } from '../../../shared/productDiagnostics';
 import { useEffect, useRef, useState } from 'react';
 import type { ProductDetail } from './types';
 import { exportArtifact, summaryText } from './export';
@@ -39,6 +40,7 @@ export function ExportControls({ detail }: { detail: ProductDetail }) {
     const anchor = document.createElement('a');
     anchor.href = url; anchor.download = `${detail.title.replace(/[^a-z0-9_-]+/gi, '-').slice(0, 70) || 'itinerary'}.${kind}`;
     anchor.click(); setModal(null); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    reportProductAction(kind === 'json' ? 'json_download_requested' : 'text_download_requested', detail.id);
   }
   async function copy() {
     const generation = ++copyGeneration.current;
@@ -48,8 +50,10 @@ export function ExportControls({ detail }: { detail: ProductDetail }) {
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(text);
+      reportProductAction('summary_copied', id);
       if (stillCurrent()) setNotice('Itinerary summary copied.');
     } catch {
+      reportProductAction('summary_copy_fallback', id);
       if (stillCurrent()) { setFallbackText(text); setModal('summary'); }
     }
   }
