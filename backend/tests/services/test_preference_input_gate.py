@@ -308,7 +308,8 @@ def test_actual_product_api_separates_user_safety_and_system_errors(outcome):
     assert len(client.calls) == 1
     if outcome in ("contract", "timeout", "provider"):
         assert status == 202 and body["state"] == "failed"
-        assert body["outcome"]["code"] == "planning_failed"
+        expected_code = "planning_timeout" if outcome == "timeout" else "provider_unavailable"
+        assert body["outcome"]["code"] == expected_code
         assert "PRIVATE" not in str(body) and "SECRET" not in str(body)
     elif outcome == "safety":
         assert status == 202 and body["state"] == "safety_blocked"
