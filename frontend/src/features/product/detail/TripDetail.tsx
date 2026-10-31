@@ -13,7 +13,8 @@ import { WeatherRow } from "./WeatherRow";
 import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice, requiredExperienceNotice } from "./display";
 import { ExportControls } from './ExportControls';
 import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
-import { PlaceMedia, usePlaceMedia } from './media';
+import { PlaceMedia, PlaceMediaActions, usePlaceMedia } from './media';
+import { photoFingerprint, photoGeneration } from './photoSession';
 
 type Group = {
   key: string;
@@ -54,7 +55,7 @@ function InformationDialog({
 }: {
   information: Information;
   close: () => void;
-  refreshPhotos?: () => void;
+  refreshPhotos?: (slot: string) => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const dismiss = () => {
@@ -84,7 +85,7 @@ function InformationDialog({
       <div className="modal-icon"><Icon name={information.icon} size={23} /></div>
       <h2 id="detail-dialog-title">{information.title}</h2>
       {information.photo && <div className="photo-large"><PlacePhoto fullCredit className="dialog-place-photo" {...information.photo} /></div>}
-      {information.photo && refreshPhotos && <button type="button" className="inline-action media-refresh" onClick={refreshPhotos}>Refresh place photos</button>}
+      {information.photo && refreshPhotos && <button type="button" className="inline-action media-refresh" onClick={() => refreshPhotos(information.photo!.slot)}>Refresh photo</button>}
       {information.introduction && <p>{information.introduction}</p>}
       {information.stats && <div className="route-big-stats"><div><strong>{information.stats.duration}</strong><span>Estimated duration</span></div><div><strong>{information.stats.distance}</strong><span>Route distance</span></div></div>}
       {information.notes.map((note, i) => <div className="detail-note" key={i}><strong className={note.className}>{note.heading}</strong><span>{note.body}</span></div>)}
@@ -155,7 +156,7 @@ function NearbyRows({
   ));
 }
 
-export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: { detail: ProductDetail; mediaEndpoint?: string; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved" }) {
+export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, actions, mode }: { detail: ProductDetail; mediaEndpoint?: string; mediaOwner?: string | null; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved" }) {
   const paceMessage = paceNotice(detail.completion?.pace_review);
   const positionOf = (item: DetailNearby) => detail.nearby.indexOf(item);
   const [filter, setFilter] = useState<string | null>(null);
@@ -173,7 +174,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
       .filter(activity => activity.time_use !== 'free_window')
       .map(activity => `activity:${activity.activity_id}`)),
     ...detail.nearby.map((_, index) => `nearby:${index}`),
-  ]);
+  ], mediaOwner === undefined ? undefined : { owner: mediaOwner, generation: photoGeneration(mediaOwner), snapshot: photoFingerprint(detail) });
   const { groups, other } = useMemo(() => {
     const candidates: Group[] = detail.days.flatMap((day, i) =>
       day.activities
@@ -314,7 +315,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
     0,
   );
   return (
-    <PlaceMedia.Provider value={media.items}><div className="detail-page">
+    <PlaceMediaActions.Provider value={media}><PlaceMedia.Provider value={media.items}><div className="detail-page">
       <section className="detail-hero">
         <div className="detail-cover"><CuratedPhoto image={destinationCover(detail.destination)} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
         <div className="container detail-hero-inner">
@@ -801,6 +802,6 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
           refreshPhotos={mediaEndpoint ? media.refresh : undefined}
         />
       )}
-    </div></PlaceMedia.Provider>
+    </div></PlaceMedia.Provider></PlaceMediaActions.Provider>
   );
 }

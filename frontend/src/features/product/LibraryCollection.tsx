@@ -12,6 +12,7 @@ import type { PreviewDecision } from "./PreviewDecision";
 import type { ProductDetail } from "./detail/types";
 import { destinationCover } from './detail/display';
 import { CuratedPhoto } from './detail/MediaPhoto';
+import { invalidatePhotos } from './detail/photoSession';
 
 export function LibraryCollection() {
   const session = useSession();
@@ -76,6 +77,7 @@ export function LibraryCollection() {
         kind === "copy" ? "POST" : kind === "delete" ? "DELETE" : "PATCH", account.csrf_token,
         kind === "delete" ? (card.kind === "saved" ? { revision: card.revision, confirmed: true } : undefined) : { revision: card.revision, ...(kind === "rename" && { title }) });
       if (current.current.account?.id !== account.id) return;
+      if (kind === 'delete' && card.kind === 'saved') invalidatePhotos({ owner: account.id, resource: `/api/trips/${encodeURIComponent(card.id)}/media` });
       setAction(null); setOffset(0); setReload(n => n + 1);
     } catch (failure) {
       if (current.current.account?.id !== account.id) return;

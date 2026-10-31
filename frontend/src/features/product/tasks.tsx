@@ -8,6 +8,7 @@ import { planTaskLink, taskRequest, TaskFailure, taskActive, taskNeedsAttention,
 import { DecisionReceipt, PreviewDecisionControls } from './PreviewDecision';
 import { Icon } from './Icon';
 import { replanBrief } from './replan';
+import { invalidatePhotos, photoGeneration } from './detail/photoSession';
 
 const viewedKey = (owner: string, task: PlanningTask) => `dayloom.task.viewed.${owner}.${task.id}.${task.revision}`;
 
@@ -143,16 +144,25 @@ export function PreviewPage() {
   const { previewId } = useParams();
   const { account, refresh, replaceBrief } = useSession();
   const navigate = useNavigate();
-  const [result, setResult] = useState<{ id?: string; owner?: string; preview?: Preview; error?: string }>({});
+  const authorization = account ? JSON.stringify([account.id, account.csrf_token, photoGeneration(account.id)]) : '';
+  const [result, setResult] = useState<{ id?: string; authorization?: string; preview?: Preview; error?: string }>({});
   useEffect(() => {
     if (!account) return;
     const controller = new AbortController();
-    taskRequest<Preview>(`/api/previews/${encodeURIComponent(previewId || '')}`, { signal: controller.signal }).then(preview => { if (!controller.signal.aborted) setResult({ id: previewId, owner: account.id, preview }); }, error => { if (!controller.signal.aborted) { setResult({ id: previewId, owner: account.id, error: 'This preview is unavailable.' }); if (error instanceof TaskFailure && error.status === 401) void refresh(); } });
+    taskRequest<Preview>(`/api/previews/${encodeURIComponent(previewId || '')}`, { signal: controller.signal }).then(preview => {
+      if (controller.signal.aborted) return;
+      if (preview.state !== 'pending') invalidatePhotos({ owner: account.id, resource: `/api/previews/${encodeURIComponent(previewId || '')}/media` });
+      setResult({ id: previewId, authorization, preview });
+    }, error => { if (!controller.signal.aborted) {
+      invalidatePhotos({ owner: account.id, resource: `/api/previews/${encodeURIComponent(previewId || '')}/media` });
+      setResult({ id: previewId, authorization, error: 'This preview is unavailable.' });
+      if (error instanceof TaskFailure && error.status === 401) void refresh();
+    } });
     return () => controller.abort();
-  }, [previewId, account, refresh]);
+  }, [previewId, account, refresh, authorization]);
   if (!account) return <div className="container page"><h1>Log in to recover this preview.</h1><Link to={`/login?return=${encodeURIComponent(`/previews/${previewId}`)}`}>Log in</Link></div>;
-  if (result.owner !== account.id || result.id !== previewId) return <p className="container page" role="status">Loading preview…</p>;
+  if (result.authorization !== authorization || result.id !== previewId) return <p className="container page" role="status">Loading preview…</p>;
   if (result.preview && result.preview.state !== 'pending') return <DecisionReceipt decision={result.preview} />;
   if (result.error || !result.preview?.snapshot) return <div className="container page"><h1>{result.error || 'This preview is unavailable.'}</h1><Link to="/plan#result">Return to Plan</Link></div>;
-  return <TripDetail mode="preview" detail={result.preview.snapshot} mediaEndpoint={`/api/previews/${previewId}/media`} onReplan={() => { replaceBrief(replanBrief(result.preview!.snapshot!.request), "replan"); navigate("/plan"); }} actions={<PreviewDecisionControls saveClassName="btn btn-glass" key={`${account.id}:${account.csrf_token}:${previewId}`} preview={result.preview} onDecision={preview => setResult({ id: previewId, owner: account.id, preview })} />} />;
+  return <TripDetail mode="preview" mediaOwner={account.id} detail={result.preview.snapshot} mediaEndpoint={`/api/previews/${previewId}/media`} onReplan={() => { replaceBrief(replanBrief(result.preview!.snapshot!.request), "replan"); navigate("/plan"); }} actions={<PreviewDecisionControls saveClassName="btn btn-glass" key={`${account.id}:${account.csrf_token}:${previewId}`} preview={result.preview} onDecision={preview => setResult({ id: previewId, authorization, preview })} />} />;
 }

@@ -26,7 +26,7 @@ it("shows photographs in the itinerary before opening details and keeps full sou
   fireEvent.click(screen.getByRole("button", { name: "View City museum" }));
   const dialog = screen.getByRole("dialog");
   await waitFor(() => expect(reads).toBe(1));
-  fireEvent.click(within(dialog).getByRole("button", { name: "Refresh place photos" }));
+  fireEvent.click(within(dialog).getByRole("button", { name: "Refresh photo" }));
   expect(await within(dialog).findByRole("img", { name: "City museum · place photograph" })).toBeVisible();
   expect(within(dialog).getByRole("link", { name: "Museum Photographer" })).toBeVisible();
   expect(within(dialog).getByRole("link", { name: "Photo source" })).toHaveAttribute("href", "https://www.google.com/maps/photo/fixture");

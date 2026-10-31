@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSession } from './session';
 import { Icon } from './Icon';
 import { submissionGeneration, taskRequest, TaskFailure, type Preview } from './taskClient';
+import { invalidatePhotos } from './detail/photoSession';
 
 export type PreviewDecision = { id: string; state: 'saved' | 'discarded'; saved_trip_id: string | null; outcome: 'saved' | 'discarded' | 'saved_result_deleted' };
 
@@ -38,6 +39,7 @@ export function PreviewDecisionControls({ preview, onDecision, showDiscard = tru
     function apply(value: Preview | PreviewDecision) {
       if (!valid()) return;
       if (value.state !== 'pending') {
+        invalidatePhotos({ owner: expected.id, resource: `/api/previews/${encodeURIComponent(preview.id)}/media` });
         setConfirm(false);
         onDecision({ ...preview, ...value, snapshot: null });
       } else {

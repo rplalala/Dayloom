@@ -105,7 +105,7 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.goto(saved_url)
         page.unroute("https://lh3.googleusercontent.com/**")
         page.get_by_role("button", name="View Place poi-0-1", exact=True).click()
-        page.get_by_role("button", name="Refresh place photos", exact=True).click()
+        page.get_by_role("button", name="Refresh photo", exact=True).click()
         expect(
             page.get_by_role("dialog").get_by_role("link", name="Controlled Photographer")
         ).to_be_visible()

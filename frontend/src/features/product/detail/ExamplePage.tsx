@@ -48,5 +48,5 @@ export function ExamplePage() {
         <Link to="/trips">Browse examples →</Link>
       </div>
     );
-  return <TripDetail key={result.detail.id} detail={result.detail} mediaEndpoint={`/api/examples/${encodeURIComponent(result.detail.id)}/media`} onReplan={() => { replaceBrief(replanBrief(result.detail!.request), "replan"); navigate("/plan"); }} actions={<CopyControls buttonClassName="btn btn-glass" kind="example" source={result.detail.id} title={result.detail.title} />} />;
+  return <TripDetail key={result.detail.id} detail={result.detail} mediaOwner={null} mediaEndpoint={`/api/examples/${encodeURIComponent(result.detail.id)}/media`} onReplan={() => { replaceBrief(replanBrief(result.detail!.request), "replan"); navigate("/plan"); }} actions={<CopyControls buttonClassName="btn btn-glass" kind="example" source={result.detail.id} title={result.detail.title} />} />;
 }
