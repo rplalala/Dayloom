@@ -390,17 +390,6 @@ class ProductRunTracer(FileRunTracer):
                 self.summary["last_repair_decision"] = payload
             if event_type == "product_presented":
                 self.summary["product_result"] = payload
-                from backend.app.integrations.spending import current_spending_budget
-
-                budget = current_spending_budget()
-                if budget:
-                    snapshot = budget.snapshot()
-                    self.summary["spending_upper_bound_not_invoice"] = {
-                        key: value for key, value in snapshot.items() if key != "events"
-                    }
-                    self.summary["spending_upper_bound_not_invoice"]["event_count"] = len(
-                        snapshot["events"]
-                    )
             bounded = self.logs.bounded(payload)
             if bounded != self.logs.sanitize(payload):
                 self.incomplete = True
@@ -493,6 +482,7 @@ class ProductRunTracer(FileRunTracer):
             retained.update(collection_status="incomplete", summary_details_truncated=True)
             for key in (
                 "pace_completion",
+                "spending_upper_bound_not_invoice",
                 "stages",
                 "usage",
                 "validation_counts",
@@ -521,6 +511,17 @@ class ProductRunTracer(FileRunTracer):
             return
         self._closed = True
         try:
+            from backend.app.integrations.spending import current_spending_budget
+
+            budget = current_spending_budget()
+            if budget:
+                snapshot = budget.snapshot()
+                self.summary["spending_upper_bound_not_invoice"] = {
+                    key: value for key, value in snapshot.items() if key != "events"
+                }
+                self.summary["spending_upper_bound_not_invoice"]["event_count"] = len(
+                    snapshot["events"]
+                )
             if not hasattr(self, "_final_tool_usage"):
                 self._budget_summary.incomplete = True
                 self.incomplete = True

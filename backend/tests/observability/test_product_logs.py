@@ -193,3 +193,28 @@ def test_oversized_summary_keeps_stop_reason_within_its_separate_limit(tmp_path)
     assert summary["stop_reason"] == "model_call_limit"
     assert summary["product_result"]["policy_completion"] == "incomplete"
     assert summary["summary_details_truncated"]
+
+
+def test_failed_run_keeps_the_active_spending_bound(tmp_path):
+    from decimal import Decimal
+
+    from backend.app.integrations.spending import SpendingBudget, SpendingLimitError
+    from backend.app.observability.product_logs import ProductRunTracer
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.tests.observability.test_run_trace import _context
+
+    logs = ProductLogs(ProductLogSettings(directory=tmp_path))
+    tracer = ProductRunTracer(_context(), logs=logs, trace=load_runtime_config().trace)
+    budget = SpendingBudget("2")
+    with budget.activate():
+        budget.reserve(Decimal("1"), "places")
+        with pytest.raises(SpendingLimitError):
+            budget.reserve(Decimal("2"), "places")
+        tracer.close("failed")
+    snapshot = logs.read(summaries_only=True)[0]["spending_upper_bound_not_invoice"]
+    assert snapshot == {
+        "limit_usd": "2",
+        "charged_upper_usd": "1",
+        "blocked": True,
+        "event_count": 1,
+    }
