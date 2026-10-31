@@ -21,6 +21,10 @@ from backend.app.runtime.budget_limits import (
     validate_baseline_per_request_elements,
     validate_budget_values,
 )
+from backend.app.runtime.model_limits import (
+    FOUNDRY_LUNA_MAX_INPUT_TOKENS,
+    FOUNDRY_LUNA_MAX_OUTPUT_TOKENS,
+)
 from backend.app.versions.v2.config import RAGConfig
 
 
@@ -111,9 +115,9 @@ class RoutesBudgetConfig(_ConfigModel):
     post_generation_reserved_pairs: StrictInt = Field(default=0, ge=0)
     post_generation_reserved_requests: StrictInt = Field(default=0, ge=0)
     post_generation_reserved_elements: StrictInt = Field(default=0, ge=0)
-    work_seconds: float = Field(default=120, gt=0, le=120)
+    work_seconds: float = Field(default=120, gt=0, le=300)
     post_generation_reserved_seconds: float = Field(default=30, ge=0)
-    provider_timeout_seconds: float = Field(default=20, gt=0, le=20)
+    provider_timeout_seconds: float = Field(default=20, gt=0, le=30)
 
     @model_validator(mode="after")
     def reservations_fit(self):
@@ -295,14 +299,14 @@ class ReferenceDiscoveryConfig(_ConfigModel):
 
 class AcquisitionConfig(_ConfigModel):
     policy_id: Literal["conservative_1", "quality_first_1"] = "conservative_1"
-    details_deadline_seconds: float = Field(default=120, gt=0, le=120)
-    details_timeout_seconds: float = Field(default=20, gt=0, le=20)
+    details_deadline_seconds: float = Field(default=120, gt=0, le=240)
+    details_timeout_seconds: float = Field(default=20, gt=0, le=30)
 
 
 class MainGenerationConfig(_ConfigModel):
     enabled: bool = False
-    input_tokens: int = Field(default=96000, ge=1, le=252000)
-    output_tokens: int = Field(default=16384, ge=1, le=16384)
+    input_tokens: int = Field(default=96000, ge=1, le=FOUNDRY_LUNA_MAX_INPUT_TOKENS)
+    output_tokens: int = Field(default=16384, ge=1, le=FOUNDRY_LUNA_MAX_OUTPUT_TOKENS)
     framing_tokens: int = Field(default=2048, ge=2048, le=2048)
 
 
@@ -311,17 +315,17 @@ class _RepairConfigModel(_ConfigModel):
 
 
 class RepairAcquisitionConfig(_RepairConfigModel):
-    google: StrictInt = Field(ge=0, le=6)
-    fallback: StrictInt = Field(ge=0, le=1)
-    embedding: StrictInt = Field(ge=0, le=1)
-    retrieval: StrictInt = Field(ge=0, le=1)
-    canonical: StrictInt = Field(ge=0, le=30)
-    details: StrictInt = Field(ge=0, le=30)
-    routes: StrictInt = Field(ge=0, le=24)
-    post_proposal_route_reserve: StrictInt = Field(ge=0, le=24)
-    elements: StrictInt = Field(ge=0, le=32)
-    top_k: StrictInt = Field(ge=1, le=10)
-    provider_timeout_seconds: float = Field(gt=0, le=20)
+    google: StrictInt = Field(ge=0, le=16)
+    fallback: StrictInt = Field(ge=0, le=4)
+    embedding: StrictInt = Field(ge=0, le=2)
+    retrieval: StrictInt = Field(ge=0, le=2)
+    canonical: StrictInt = Field(ge=0, le=60)
+    details: StrictInt = Field(ge=0, le=60)
+    routes: StrictInt = Field(ge=0, le=64)
+    post_proposal_route_reserve: StrictInt = Field(ge=0, le=64)
+    elements: StrictInt = Field(ge=0, le=128)
+    top_k: StrictInt = Field(ge=1, le=20)
+    provider_timeout_seconds: float = Field(gt=0, le=30)
 
     @model_validator(mode="after")
     def consistent(self):
@@ -335,10 +339,10 @@ class RepairAcquisitionConfig(_RepairConfigModel):
 
 
 class RepairTimingConfig(_RepairConfigModel):
-    stage_seconds: float = Field(gt=0, le=720)
-    round_seconds: float = Field(gt=0, le=210)
-    model_seconds: float = Field(gt=0, le=120)
-    preparation_seconds: float = Field(ge=0, le=60)
+    stage_seconds: float = Field(gt=0, le=1800)
+    round_seconds: float = Field(gt=0, le=420)
+    model_seconds: float = Field(gt=0, le=240)
+    preparation_seconds: float = Field(ge=0, le=120)
     recheck_reserve_seconds: float = Field(gt=0)
     minimum_model_seconds: float = Field(gt=0)
     round_reference_seconds: float = Field(gt=0)
@@ -359,11 +363,11 @@ class RepairTimingConfig(_RepairConfigModel):
 
 
 class RepairInputConfig(_RepairConfigModel):
-    input_tokens: StrictInt = Field(ge=1, le=252000)
-    output_tokens: StrictInt = Field(ge=1, le=16384)
+    input_tokens: StrictInt = Field(ge=1, le=FOUNDRY_LUNA_MAX_INPUT_TOKENS)
+    output_tokens: StrictInt = Field(ge=1, le=FOUNDRY_LUNA_MAX_OUTPUT_TOKENS)
     framing_tokens: StrictInt = Field(ge=1)
-    identity_capacity: StrictInt = Field(ge=1, le=64)
-    activity_capacity: StrictInt = Field(ge=1, le=120)
+    identity_capacity: StrictInt = Field(ge=1, le=128)
+    activity_capacity: StrictInt = Field(ge=1, le=240)
     candidate_characters: StrictInt = Field(ge=1, le=12000)
     feedback_characters: StrictInt = Field(ge=1, le=12000)
 
@@ -402,14 +406,14 @@ class RepairSpatialConfig(TransportPolicyConfig):
 
 class RepairReasonCompressionConfig(_RepairConfigModel):
     max_calls: StrictInt = Field(ge=0, le=1)
-    input_tokens: StrictInt = Field(ge=1, le=32000)
-    output_tokens: StrictInt = Field(ge=1, le=8192)
-    timeout_seconds: float = Field(gt=0, le=30)
+    input_tokens: StrictInt = Field(ge=1, le=64000)
+    output_tokens: StrictInt = Field(ge=1, le=16384)
+    timeout_seconds: float = Field(gt=0, le=60)
 
 
 class V3RepairConfig(_RepairConfigModel):
-    max_rounds: StrictInt = Field(ge=1, le=10)
-    max_model_calls: StrictInt = Field(ge=0, le=10)
+    max_rounds: StrictInt = Field(ge=1, le=20)
+    max_model_calls: StrictInt = Field(ge=0, le=20)
     max_deletion_attempts: StrictInt = Field(default=12, ge=0, le=120)
     quantity_review_enabled: StrictBool
     overfull_review_enabled: StrictBool
@@ -443,8 +447,8 @@ class V3RepairConfig(_RepairConfigModel):
 class POISemanticsConfig(_RepairConfigModel):
     max_calls: StrictInt = Field(ge=1)
     batch_size: StrictInt = Field(ge=1, le=32)
-    input_tokens: StrictInt = Field(ge=1, le=32000)
-    output_tokens: StrictInt = Field(ge=1, le=8192)
+    input_tokens: StrictInt = Field(ge=1, le=64000)
+    output_tokens: StrictInt = Field(ge=1, le=16384)
     call_timeout_seconds: float = Field(gt=0)
     total_seconds: float = Field(gt=0)
     exploration_fraction: float = Field(gt=0, le=1)
@@ -467,8 +471,8 @@ class LandmarkNominationConfig(_RepairConfigModel):
 
 
 class AuxiliaryModelLimits(_ConfigModel):
-    input_tokens: StrictInt = Field(default=252000, gt=0, le=252000)
-    output_tokens: StrictInt = Field(default=16384, gt=0, le=16384)
+    input_tokens: StrictInt = Field(default=252000, gt=0, le=FOUNDRY_LUNA_MAX_INPUT_TOKENS)
+    output_tokens: StrictInt = Field(default=16384, gt=0, le=FOUNDRY_LUNA_MAX_OUTPUT_TOKENS)
     framing_tokens: StrictInt = Field(default=2048, ge=0)
 
     @model_validator(mode="after")
@@ -501,7 +505,7 @@ class RuntimeConfig(_ConfigModel):
     v3_repair: V3RepairConfig | None = None
     acquisition: AcquisitionConfig = Field(default_factory=AcquisitionConfig)
     main_generation: MainGenerationConfig = Field(default_factory=MainGenerationConfig)
-    development_timeout_seconds: int = Field(default=600, ge=1, le=1200)
+    development_timeout_seconds: int = Field(default=600, ge=1, le=2700)
     schema_version: Literal[6]
     app: AppConfig
     budget: BudgetConfig

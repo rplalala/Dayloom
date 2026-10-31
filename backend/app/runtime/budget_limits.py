@@ -36,24 +36,24 @@ BASELINE_ROUTE_MATRIX_PER_REQUEST_HARD_LIMIT = BudgetHardLimit(1, 64)
 
 
 TOOL_BUDGET_HARD_LIMITS: dict[ToolBudgetKey, BudgetHardLimit] = {
-    ToolBudgetKey.CANDIDATES: BudgetHardLimit(1, 128),
-    ToolBudgetKey.DESTINATION_SEARCH_CALLS: BudgetHardLimit(1, 1),
-    ToolBudgetKey.CANDIDATE_SEARCH_CALLS: BudgetHardLimit(1, 24),
-    ToolBudgetKey.PLACE_DETAIL_CALLS: BudgetHardLimit(1, 120),
-    ToolBudgetKey.REVIEW_DETAIL_CALLS: BudgetHardLimit(0, 8),
-    ToolBudgetKey.REVIEW_ENRICHED_PLACES: BudgetHardLimit(0, 8),
-    ToolBudgetKey.EXPERIENCE_PROFILE_LLM_CALLS: BudgetHardLimit(0, 8),
-    ToolBudgetKey.FINAL_POIS: BudgetHardLimit(1, 40),
+    ToolBudgetKey.CANDIDATES: BudgetHardLimit(1, 256),
+    ToolBudgetKey.DESTINATION_SEARCH_CALLS: BudgetHardLimit(1, 2),
+    ToolBudgetKey.CANDIDATE_SEARCH_CALLS: BudgetHardLimit(1, 48),
+    ToolBudgetKey.PLACE_DETAIL_CALLS: BudgetHardLimit(1, 240),
+    ToolBudgetKey.REVIEW_DETAIL_CALLS: BudgetHardLimit(0, 24),
+    ToolBudgetKey.REVIEW_ENRICHED_PLACES: BudgetHardLimit(0, 24),
+    ToolBudgetKey.EXPERIENCE_PROFILE_LLM_CALLS: BudgetHardLimit(0, 24),
+    ToolBudgetKey.FINAL_POIS: BudgetHardLimit(1, 60),
     ToolBudgetKey.WEB_EVIDENCE_TASKS: BudgetHardLimit(0, 20),
     ToolBudgetKey.PAGE_FETCHES: BudgetHardLimit(0, 20),
     # Transitional single-matrix counter used only by the current V1 graph.
     ToolBudgetKey.ROUTE_MATRIX_ELEMENTS: BudgetHardLimit(1, 100),
-    ToolBudgetKey.BASELINE_ROUTE_MATRIX_ELEMENTS: BudgetHardLimit(1, 1600),
-    ToolBudgetKey.BASELINE_ROUTE_MATRIX_CALLS: BudgetHardLimit(1, 32),
-    ToolBudgetKey.ALTERNATIVE_ROUTE_ELEMENTS: BudgetHardLimit(0, 64),
-    ToolBudgetKey.ALTERNATIVE_ROUTE_PAIRS: BudgetHardLimit(0, 32),
-    ToolBudgetKey.ALTERNATIVE_ROUTE_MATRIX_CALLS: BudgetHardLimit(0, 32),
-    ToolBudgetKey.WEATHER_CALLS: BudgetHardLimit(0, 3),
+    ToolBudgetKey.BASELINE_ROUTE_MATRIX_ELEMENTS: BudgetHardLimit(1, 3600),
+    ToolBudgetKey.BASELINE_ROUTE_MATRIX_CALLS: BudgetHardLimit(1, 128),
+    ToolBudgetKey.ALTERNATIVE_ROUTE_ELEMENTS: BudgetHardLimit(0, 512),
+    ToolBudgetKey.ALTERNATIVE_ROUTE_PAIRS: BudgetHardLimit(0, 128),
+    ToolBudgetKey.ALTERNATIVE_ROUTE_MATRIX_CALLS: BudgetHardLimit(0, 256),
+    ToolBudgetKey.WEATHER_CALLS: BudgetHardLimit(0, 6),
 }
 
 

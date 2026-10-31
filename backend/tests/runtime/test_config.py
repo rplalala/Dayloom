@@ -210,8 +210,10 @@ def test_every_yaml_budget_has_one_enforced_hard_limit(tmp_path, key) -> None:
         data["budget"]["places"]["review_detail_calls"] = limit.maximum
         data["budget"]["experience"]["profile_llm_calls"] = limit.maximum
     if key is ToolBudgetKey.FINAL_POIS:
-        data["budget"]["routes"]["baseline_elements_per_run"] = 1600
-        data["budget"]["routes"]["baseline_calls"] = 32
+        data["budget"]["routes"]["baseline_elements_per_run"] = 3600
+        data["budget"]["routes"]["baseline_calls"] = 128
+    if key is ToolBudgetKey.ALTERNATIVE_ROUTE_PAIRS:
+        data["budget"]["routes"]["alternative_elements"] = 128
     target[path[-1]] = limit.maximum
     _write_config(config_path, data)
     assert load_runtime_config_file(config_path).budget.as_key_limits()[key] == limit.maximum
@@ -351,7 +353,7 @@ def test_repair_input_ceiling_accepts_authorized_capacity_and_rejects_overflow()
     assert values["input_tokens"] == 252000
     assert RepairInputConfig.model_validate(values).input_tokens == 252000
     with pytest.raises(ValidationError):
-        RepairInputConfig.model_validate({**values, "input_tokens": 252001})
+        RepairInputConfig.model_validate({**values, "input_tokens": 922001})
 
 
 def test_rag_time_and_work_bounds_remain_finite():
@@ -359,8 +361,8 @@ def test_rag_time_and_work_bounds_remain_finite():
 
     effective = load_runtime_config().tripworld_discovery
     for values in (
-        {"sql_timeout": 0}, {"sql_timeout": 61}, {"deadline_seconds": 361},
-        {"top_k": 21}, {"max_queries": 5}, {"retries": 1},
+        {"sql_timeout": 0}, {"sql_timeout": 121}, {"deadline_seconds": 601},
+        {"top_k": 31}, {"max_queries": 9}, {"retries": 1},
     ):
         with pytest.raises(ValidationError):
             RAGConfig.model_validate({**effective.model_dump(), **values})
