@@ -81,8 +81,8 @@ The shared SQL database and login role are `dayloom`. The `app` schema stores Pr
 accounts, drafts, tasks and trips; `tripworld` stores retrieval entities and embeddings.
 One PostgreSQL service hosts both schemas. Database connection values belong to the
 `database` section of `product.yaml`; normal `.env` files need only its private password
-and any machine-specific volume override. The local retained test database is
-`dayloom_test`; automated acceptance uses explicitly isolated databases instead.
+and any machine-specific volume override. Automated acceptance requires an explicitly
+isolated test database; historical test databases are not runtime dependencies.
 
 | Environment override | YAML source / meaning |
 | --- | --- |
@@ -163,6 +163,56 @@ Use the existing daily database for this runtime. Disposable automated-test data
 and the substituted human-walkthrough database remain separate; accounts and drafts do
 not move between them automatically. The normal API-only/Vite development commands
 above remain available, and independent V0–V3 entrypoints are unchanged.
+
+## Product diagnostics
+
+Product writes rotating `operations*.jsonl` and per-run directories under `logs/product`.
+Run directories contain `run.json`, `events.jsonl`, `budget.json`, `summary.json` and
+enabled payload categories. `run.json` retains identity, timestamps and the configuration
+digest under an independent metadata allowance, with markers for oversized fields.
+`summary.json` and `budget.json` preserve the latest available Repair input token total,
+ceiling and numeric component counts even when detailed events are truncated.
+`summary.json` reports service completion, available Repair
+stop reasons, pace, stage timings and collection status under a separate 64 KiB cap.
+Correlate it with `task_completed`, `task_finished` or
+`task_result_not_committed` to determine whether the preview was persisted.
+The [diagnostic contract](../0007-application-operations.md#product-diagnostics) defines
+coverage, correlation, privacy and browser reporting.
+
+Configure Product storage through ignored `.env` or process overrides. Relative
+directories resolve from the repository root. Restart the backend after changes.
+
+| Environment key | Default | Meaning |
+| --- | --- | --- |
+| `PRODUCT_LOG_ENABLED` | `true` | Enable Product operation and planning files |
+| `PRODUCT_LOG_DIRECTORY` | `logs/product` | Server-side Product diagnostic root |
+| `PRODUCT_LOG_MAX_FILE_BYTES` | `5000000` | Operation-file rotation threshold |
+| `PRODUCT_LOG_BACKUPS` | `5` | Number of operation-file backups |
+| `PRODUCT_LOG_MAX_EVENT_BYTES` | `128000` | Detailed event/payload content limit |
+| `PRODUCT_LOG_MAX_RUN_BYTES` | `50000000` | Per-run event/payload collection budget; metadata and final summaries are separate |
+| `PRODUCT_LOG_MAX_STORAGE_BYTES` | `500000000` | Finished-run retention budget, applied during maintenance |
+| `PRODUCT_LOG_RETENTION_DAYS` | `30` | Maximum retained age of inactive finished runs |
+
+Planner `trace.enabled`, payload levels and category switches remain in the selected
+runtime profile. Default `metadata` retains structured events, final summaries and
+bounded initial/final validation snapshots; `normalized` additionally retains eligible
+normalized payloads, and `raw` permits eligible model payloads. Tool raw payloads also
+require `trace.raw_provider_payloads`. These settings do not authorize extra provider
+calls. `VITE_PRODUCT_DIAGNOSTICS=false` disables browser collection at frontend build time.
+
+Inspect locally without accessing a database or provider:
+
+```powershell
+.venv/Scripts/python.exe scripts/product_logs.py --summary
+.venv/Scripts/python.exe scripts/product_logs.py --task-id <task-uuid>
+.venv/Scripts/python.exe scripts/product_logs.py --run-id <execution-uuid> --summary
+.venv/Scripts/python.exe scripts/product_logs.py --prune --summary
+```
+
+Use `--directory` for another explicitly selected Product log root. Diagnostic output
+can contain private travel requests and normalized evidence; keep it local. Logging
+starts with the new implementation and cannot reconstruct missing historical Repair
+records. Do not remove a running server's logs or the retained database volume to reset diagnostics.
 
 ## Product account setup and acceptance
 
@@ -277,7 +327,7 @@ complete generated and partial historical imported sources, fills unknown values
 saves new previews independently. It checks current generation validation, owner isolation,
 zero writes on form opening, unchanged source requests and latest defaults on a genuinely
 new brief. Screenshots belong to `.scratch/replan-browser`; task signals and server logs
-remain under `.scratch/task-browser`. The [replan contract](../0007-application-operations.md#replanning-saved-itineraries)
+remain under `.scratch/task-browser`. The [replan contract](../0007-application-operations.md#replanning-itineraries)
 defines which original facts may seed the form.
 
 The editor journey uses the same isolated database and strict subprocess environment,
@@ -321,6 +371,24 @@ for identity, provider, refresh and request bounds. Before a future public Googl
 deployment, supply publicly accessible application Terms of Use and Privacy Policy
 incorporating the provider terms/privacy requirements; local substituted acceptance does
 not establish a deployment or live-provider acceptance.
+
+The local/private itinerary photo session cache is specified in the
+[media contract](../0007-application-operations.md#browser-tab-photo-session).
+Its controlled browser checks need no database, API server, provider credentials or
+live photo calls. They start an isolated Vite process and intercept HTTP boundaries:
+
+```powershell
+$env:PRODUCT_BROWSER_TESTS = "1"
+uv run pytest backend/tests/product/test_photo_session_browser.py -q -p no:cacheprovider --basetemp=.scratch/pytest-photo-session
+```
+
+These checks exercise real reloads, partial misses, expiry, attribution, bounded image
+recovery, tab closure/restored storage and authentication/owned-detail rejection. They
+verify frontend behavior with controlled responses, not live Google validity or database
+authorization. The focused frontend cache, media and session tests also cover storage
+bounds/failures, concurrent requests, account isolation and late-response fencing.
+`PRODUCT_PHOTO_TEST_WEB_PORT` overrides the default test port 5123. The separate
+database-backed journeys below retain their existing prerequisites.
 
 With the isolated Product test database and browser ports configured, run:
 

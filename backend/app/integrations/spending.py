@@ -9,6 +9,12 @@ from contextlib import contextmanager
 from contextvars import ContextVar
 from decimal import Decimal
 
+from backend.app.runtime.model_limits import (
+    FOUNDRY_LUNA_CONTEXT_TOKENS,
+    FOUNDRY_LUNA_MAX_OUTPUT_TOKENS,
+    OPENAI_SEARCH_MAX_OUTPUT_TOKENS,
+)
+
 _active = ContextVar("generation_spending", default=None)
 D = Decimal
 
@@ -99,22 +105,26 @@ def _quote(request):
     )
     if path.endswith("/responses") and (azure or host == "api.openai.com"):
         outputs = body.get("max_output_tokens")
-        if not isinstance(outputs, int) or isinstance(outputs, bool) or not 1 <= outputs <= 16384:
+        if not isinstance(outputs, int) or isinstance(outputs, bool) or outputs < 1:
             raise SpendingLimitError("An explicit supported output ceiling is required")
         if body.get("stream") or body.get("background") or body.get("previous_response_id"):
             raise SpendingLimitError("Unpriced response execution mode")
         if body.get("service_tier", "default") not in ("default", "auto"):
             raise SpendingLimitError("Unpriced service tier")
         if azure and body.get("model") == "gpt-6-luna" and not body.get("tools"):
+            if outputs > FOUNDRY_LUNA_MAX_OUTPUT_TOKENS:
+                raise SpendingLimitError("Output exceeds the supported Foundry model ceiling")
             # Full published context, not a local tokenizer estimate. $1/$2 per
             # million exceeds verified Global Standard long-context/cache rates.
             rates = (D("1"), D("2"), D(0))
-            return (D(1050000) + D(outputs) * 2) / 1000000, "foundry_model", rates
+            amount = (D(FOUNDRY_LUNA_CONTEXT_TOKENS) + D(outputs) * 2) / 1000000
+            return amount, "foundry_model", rates
         calls = body.get("max_tool_calls")
         tools = body.get("tools", [])
         if (
             host == "api.openai.com"
             and body.get("model") == "gpt-4.1-mini-2025-04-14"
+            and outputs <= OPENAI_SEARCH_MAX_OUTPUT_TOKENS
             and (calls in (1, 2, 3) and len(tools) == 1 and tools[0].get("type") == "web_search")
         ):
             # Reserve full context for initial + each tool continuation, plus

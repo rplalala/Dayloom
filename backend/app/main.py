@@ -12,6 +12,8 @@ from pydantic import BaseModel, ConfigDict
 from backend.app.api.developer.planning import router as developer_planning_router
 from backend.app.api.input_assistance import router as input_assistance_router
 from backend.app.api.product.planning import router as product_planning_router
+from backend.app.observability.product_http import ProductHTTPLogging
+from backend.app.observability.product_http import router as diagnostics_router
 from backend.app.product.auth import router as account_router
 from backend.app.product.copies import router as copies_router
 from backend.app.product.drafts import router as drafts_router
@@ -42,6 +44,8 @@ def create_app() -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(application):
+        from backend.app.observability.product_service_logs import configure_product_service_logs
+        configure_product_service_logs()
         try:
             yield
         finally:
@@ -56,6 +60,8 @@ def create_app() -> FastAPI:
         version="0.1.0",
     )
     application.include_router(product_planning_router)
+    application.add_middleware(ProductHTTPLogging)
+    application.include_router(diagnostics_router)
     application.include_router(developer_planning_router)
     application.include_router(input_assistance_router)
     application.include_router(account_router)

@@ -143,6 +143,221 @@ at this event is local commits, not a published deployment.
 
 ## Verification and evidence
 
+### Browser photo session acceptance (31 October 2026)
+
+[Issue #233](https://github.com/rplalala/Dayloom/issues/233) was checked against the
+normal local Product at `b065410` (implementation `d019890`), serving the built frontend,
+real API/database and configured photo providers. No implementation changes were present.
+An isolated Chromium context used an existing administrator-owned Sydney saved itinerary;
+no planning, Save, Delete or other itinerary mutation was performed.
+
+Read-only preflight counted **29 activity slots and 18 Nearby slots: 47 total**, with
+45 verified bindings and two unbound slots. The complete browser request list agreed
+with those counts. Each full-page execution had a 95-slot budget: 47 initial requests,
+up to 47 reload misses/image recovery requests and one selected-photo refresh, plus
+six separately bounded curated-metadata requests. Product limits were unchanged.
+All 47 slots were forwarded without cropping, sampling or substituted responses, in
+the existing ordered batches **12, 12, 12, 11**. The 45 bound photos were cached;
+the two unbound slots remained unavailable with illustration fallbacks.
+
+| Check | Observed result |
+| --- | --- |
+| Full-page reload reuse | All 45 cached photos were reused without reacquisition or extended timestamps. Only the two uncached slots were requested, together in one media request. |
+| Selected-photo refresh | One media request for one selected slot; neighboring timestamps unchanged, Google Maps credit visible, and the refreshed image loaded and decoded successfully. |
+| Logout isolation | Logout in a second tab cleared all private cache entries and activity/Nearby photos in the original tab. Reload made zero private media requests, and the owned-detail read returned 401. |
+
+The first full-page execution passed request/cache assertions but its refresh screenshot
+was captured before the new image appeared. The corrected harness waits for every
+available place image to complete with a positive natural width, awaits decoding and
+two animation frames, then captures evidence. The complete rerun passed in 21.09 seconds.
+Both full-page executions forwarded **50/95 photo slots each** (47 initial, two reload,
+one manual refresh) and **4/6 curated-metadata requests each**, with no budget violations.
+Their combined actual usage was **100 photo slots, eight curated-metadata requests and
+zero generation requests**. These are browser metadata request counts, not confirmed
+provider HTTP counts or billing. No full regression was run. The existing account-wide
+token revocation applies to logout, including other sessions using the same account.
+
+The earlier 40-slot harness stopped after forwarding 36 slots; its next 11-slot batch
+would have exceeded that script budget. A subsequent two-slot sample passed three
+behavior checks but did not complete whole-page acceptance. Those preliminary attempts
+used 39 slots in total, separately from the complete executions above; their original
+evidence remains unchanged.
+
+Historical local evidence identifiers are `.scratch/photo-browser-acceptance/result.json`
+and `.scratch/photo-browser-acceptance/sample/result.json` for the preliminary attempts,
+`.scratch/photo-browser-acceptance/full/result.json` for the first full-page execution,
+and `.scratch/photo-browser-acceptance/full-decoded/result.json` with four screenshots
+for the final complete image-verified result. The final frozen harness SHA256 was
+`1492fc95d437e52982fa73a231ae5e30db9929938dd3a896d758bbc17d90c8e1`.
+The separate sandbox launch failure made no business requests. Current cache behavior
+is defined in the [media contract](../../0007-application-operations.md#browser-tab-photo-session).
+
+### Product diagnostics (31 October 2026)
+
+The Product diagnostic follow-up uses fixed base `fb55367`, implementation commits
+`5de626c` and `0372553`, review correction `992b7a1`, test-expectation correction
+`276c4ff` and failure-budget correction `5704142`. The implementation is committed;
+the documentation update is separate. Its current contract and operating commands
+belong in [application operations](../../0007-application-operations.md#product-diagnostics)
+and the [development guide](../../guides/development.md#product-diagnostics).
+
+Diagnosis found that Product supplied only its public progress observer to the planner,
+so enabling native file tracing did not preserve Product Repair evidence. An existing
+preview had fewer main visits than its Rich target, but the missing native stopping
+record prevented a defensible explanation of why Repair stopped. The follow-up fans
+out progress and file tracing and retains a compact independent completion summary;
+it cannot reconstruct that historical cause.
+
+Independent Standards and Spec reviews exposed the Uvicorn access formatter's
+five-argument contract, a retention-root junction escape, missing standalone stage
+timings, completion data lost before Product's own truncation, and externally cancelled
+V3 work losing consumed tool counters. Failing regressions preceded the separate fixes.
+Final rechecks through `5704142` reported zero unresolved findings on both axes.
+The final failure-budget regression also verifies conservative spending reservations
+survive unsuccessful runs; those bounds are not provider invoices.
+
+The offline gates use invocation-isolated disposable PostgreSQL databases and controlled
+providers. The affected Product/media/task set passed 101 tests, the corrected input-gate
+module passed 68, and the final diagnostic/API/service set passed 82. A real Chromium →
+Vite → FastAPI check passed and matched the browser's failed request ID to persisted
+operations without an access-formatter error. Frontend validation passed 272 tests in
+45 files, production build/typecheck and lint, with the existing two Fast Refresh warnings
+and bundle-size advisory. The initial unconstrained frontend run had one clipboard
+wait timeout; its focused check and complete two-worker rerun passed.
+
+The complete backend invocation passed 5,058 tests and skipped 73 in 2,615.35 seconds.
+The skips comprise 66 opt-in browser cases, five alternate-volume cases and two cases
+requiring unavailable Windows symlink privileges. The invocation started from `0372553`
+with the then-uncommitted diagnostic corrections. Later resource/media/terminal-write
+and spending changes are covered by the final targeted gates above.
+
+That broad run retained one dependency deprecation warning and two thread warnings
+while an unchanged census-export test decoded localized `cmd /c mklink /J` output
+under forced UTF-8. Its filesystem assertions passed. The exact case then passed with
+thread warnings treated as errors and only that invocation's Python UTF-8 mode disabled,
+matching the native command's encoding. No project source, system code page or host
+permissions changed for this environment contrast; the original broad-run warnings
+remain in its log.
+
+Earlier broad attempts exposed Windows temporary-path length, test setup isolation and
+obsolete error-code expectations. An isolated baseline probe reproduced the three
+expectation failures with the original planning method; only those assertions were
+updated to the already-current public outcomes. Those partial or failed invocations
+are not substituted for a complete passing run.
+
+Local evidence identifiers under `.scratch/product-logging-tests/` include
+`pytest-20261031-132923.log` / `results-20261031-132923.xml` for the complete backend run,
+`pytest-20261031-141347.log` / `results-20261031-141347.xml` for the encoding contrast,
+`pytest-20261031-133707.log` / `results-20261031-133707.xml` for the 101-case gate,
+`pytest-20261031-132811.log` / `results-20261031-132811.xml` for the 68-case gate and
+`pytest-20261031-132739.log` for the baseline contrast. The controlled browser result
+is retained in the test tool receipt and `.scratch/browser/` runtime output. After a
+restart at `5704142`, `runtime-readiness.json` records four bounded local GETs: home,
+login and health returned 200; unauthenticated current-account returned 401. Every
+request had a distinct UUID matched to the operation file, and the new server output
+had no logging formatter error. This readiness check performed zero provider calls
+and established no live retrieval, embedding, search or model-quality result.
+
+### Generation capacity and execution budgets (31 October 2026)
+
+The resource follow-up uses fixed base `413fe7f`, implementation `b230625`, large-run
+diagnostic correction `bbffad8`, graph-test correction `5a36300` and Maps transport
+correction `ff76f79`. The later execution-budget refinement uses fixed base `ef0b5e0`
+and implementation `75735db`. The approved scope retains larger Product input and supply
+capacity while bounding evidence, route, RAG, semantic and Repair work; the user retained
+the US$25 per-generation spending guard and required every allowance to remain at least
+as large as the original acceptance policy at `413fe7f`. Current values belong in the
+[profile reference](../../../config/README.md#product-acceptance-profile).
+
+A nine-day manual Product run completed its preview but retained only 20 primary visits
+against the Rich target of 27. Its native decision identifies
+`RepairInputOverflow:repair_input_overflow`, with no proposal-model call. The input
+allowance was an application limit, below the provider's published envelope. This run's
+exact overflow total and component counts were not retained. Candidate count approached
+its allowance, reviews reached eight and route work recorded budget stops; those facts
+do not independently establish a causal explanation for the remaining visit deficit.
+
+The selected correction expands the finite operating envelope while reusing the existing
+Repair mechanism. Typed limits, adapter output bounds and monetary admission were
+updated together. Controlled tests reproduce the old configuration rejection and its
+hidden output gate, then admit larger work while preserving atomic budget rejection.
+The same input builder with fixture token counts skips proposal generation under the
+development policy and reaches a successful proposal under acceptance; an unauthorized
+patch remains rejected. Development configuration bytes and serialized defaults remain
+unchanged. The acceptance review strategy now follows its configured allowance instead
+of silently keeping a fixed eight-place cap.
+
+The first expansion also allowed a 45-minute request and 20 Repair rounds within a
+30-minute stage. The user rejected that much execution headroom. The refinement keeps
+the expanded input capacity but restores the original request, Repair count and timing
+budgets; evidence acquisition increases only where approved. An initial proposal below
+the original count/time limits was withdrawn before implementation. A recursive comparison
+of all 152 numeric leaves against `413fe7f` found no reductions, and the independent
+development YAML remained unchanged. No new retry, acceptance bypass or provider call
+was introduced by this refinement.
+
+Large-outcome regression also exposed a long-field credential-redaction scan. A bounded
+stack capture located execution in the URL-userinfo regex; adding a scheme boundary
+removed overlapping scans while retaining redaction, including uppercase database URLs.
+The original metadata regression then failed promptly because the large outcome erased
+`run.json`. Independent bounded metadata now preserves task/run identity, timestamps and
+the configuration digest. A separate compact event retains Repair input sizing in both
+summaries even when the model is not called or detailed events are truncated. Allowlisted
+numeric token components remain numeric; credentials retain redaction.
+
+The final affected-interface gate passed 218 tests, covering configuration, spending,
+native tracing, Repair and real Product HTTP/task/PostgreSQL paths with controlled
+providers. Nine additional actual V1-V3 graph cases passed for one-, nine- and ten-day
+Rich requests. Their initial run reached six passes and one failure because an old test
+still imposed the former aggregate route allowance. The separate test correction uses
+the approved baseline-plus-alternatives envelope and retains the per-request provider
+bound. A final two-profile HTTP probe also reproduced a fixed 20-second transport
+timeout shadowing the higher configured allowance. The transport now follows the
+selected Maps phase settings; all 19 runtime ownership/dispatch/cleanup tests then passed,
+including actual controlled request timeout metadata. Both independent review axes
+reported zero findings and rechecked both corrections.
+Ruff and diff checks passed. The full backend invocation was stopped at the user's
+request before completion; it supplies no whole-suite verdict for this change.
+
+The refinement first failed its revised public budget-boundary test against the broader
+policy, then passed all 152 targeted tests after the configuration and related expectations
+were updated. This gate includes nine actual V1-V3 graph cases for one-, nine- and ten-day
+Rich trips, shared Repair call exhaustion and request-clipped deadlines, spending admission,
+and the real controlled HTTP timeout boundary. Both review axes reported zero findings
+for `ef0b5e0...75735db`; Ruff and diff checks passed. No full regression or live generation
+was run for this refinement. Its local evidence identifiers are
+`.scratch/acceptance-balanced-tests/targeted.xml` and `floor-audit.json` in the same directory.
+This validates configured boundaries, not real-provider latency or itinerary quality.
+After a read-only check found no active tasks, the local Product service restarted at
+`75735db` to load the policy. Local readiness passed: home, login and health returned 200;
+unauthenticated current-account returned 401. All four responses carried request IDs,
+the new logs contained no formatter errors, and no provider calls were made. The local
+database probe initially timed out inside the sandbox; the same read-only check succeeded
+outside it without changing credentials or configuration. `runtime-readiness.json` in the
+refinement evidence directory records this bounded result.
+
+Combined delivery verification at `046a2a0` exposed two controlled-search cases still
+expecting the withdrawn three-call allowance after the approved policy returned to two.
+The adapter correctly followed the current configuration. Test-only correction
+`148afd6` restored the two-call expectation; all 227 affected backend tests then passed,
+with 11 database-dependent cases skipped because no isolated test database was configured.
+Independent Standards and Spec review of `df169d8...148afd6` left no unresolved findings.
+The repeated 152-value floor audit retained every original allowance and the US$25 guard;
+development YAML bytes remained unchanged. Delivery ran targeted checks, not a full regression.
+
+Evidence identifiers under `.scratch/acceptance-limits-tests/` are
+`pytest-20261031-145843.log` / `results-20261031-145843.xml` for the 218-case gate,
+`pytest-20261031-150446.log` / `results-20261031-150446.xml` for the nine graph cases,
+`unit-20261031-151859.log` / `unit-20261031-151859.xml` for the runtime transport gate,
+`pytest-20261031-144744.log` for the redaction stack,
+`pytest-20261031-150411.log` for the old graph assertion and
+`pytest-20261031-150150.log` for the interrupted full invocation. Following a restart
+at `ff76f79`, `runtime-readiness-final.json` records home/login/health returning 200 and
+unauthenticated current-account returning 401, all associated with server request IDs.
+The new server output had zero logging formatter errors. Local readiness performed
+zero provider calls. No new live itinerary or provider-quality result was produced;
+the expanded limits still share the retained monetary ceiling and can leave unresolved goals.
+
 ### Complete media and acceptance resources (24 October 2026)
 
 [Issue #231](https://github.com/rplalala/Dayloom/issues/231) follows the generic required-category

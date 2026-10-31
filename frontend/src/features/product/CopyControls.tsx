@@ -61,7 +61,7 @@ function CopyAction({ kind, source, title, label = kind === 'example' ? 'Keep a 
       if (!valid()) return;
       if (failure instanceof TaskFailure && failure.status === 401) { setLocked(true); void session.refresh(); return; }
       if (check && failure instanceof TaskFailure && failure.status === 404) {
-        remember({ ...next, uncertain: false }); setError(statusOnly ? 'No copy is recorded yet. This recovery entry can only check status.' : 'No copy is recorded yet. You may explicitly retry with the same key.');
+        remember({ ...next, uncertain: false }); setError(statusOnly ? 'We could not find a saved copy. Return to My trips to try again.' : 'We could not find a saved copy. You can try copying it again.');
       } else if (!check && failure instanceof TaskFailure && failure.status === 404) {
         remember({ ...next, key: null, uncertain: false }); setError('The source itinerary is no longer available.');
       } else {
@@ -75,7 +75,7 @@ function CopyAction({ kind, source, title, label = kind === 'example' ? 'Keep a 
     {decision ? <div role="status"><p>{decision.outcome === 'saved_result_deleted' ? 'This saved copy was deleted. It will not be recreated.' : 'An independent copy was added to My trips.'}</p>
       {decision.outcome === 'saved' && <Link className="btn btn-light" to={`/trips/${decision.saved_trip_id}`}>View saved copy</Link>}
       {!statusOnly && <button type="button" className="btn btn-light" onClick={() => { remember({ owner: session.account?.id || null, generation: session.account ? submissionGeneration(session.account.id) : '', kind, source, title, key: null, uncertain: false }); setDecision(null); setError(''); }}>Start another copy</button>}
-    </div> : <button type="button" aria-label={!intent.uncertain && !busy ? ariaLabel : undefined} className={buttonClassName} disabled={busy || session.status === 'loading'} onClick={() => void perform(intent.uncertain)}>{buttonIcon}{busy ? 'Checking copy…' : statusOnly || intent.uncertain ? 'Check copy status' : intent.key ? 'Retry copy with same key' : label}</button>}
+    </div> : <button type="button" aria-label={!intent.uncertain && !busy ? ariaLabel : undefined} className={buttonClassName} disabled={busy || session.status === 'loading'} onClick={() => void perform(intent.uncertain)}>{buttonIcon}{busy ? 'Checking copy…' : statusOnly || intent.uncertain ? 'Check copy status' : intent.key ? 'Retry copy' : label}</button>}
     {error && <p role="alert">{error}</p>}
   </div>;
 }

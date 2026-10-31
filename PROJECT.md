@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-24.
+Current source of truth. Updated 2026-10-31.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -52,13 +52,13 @@ recorded and do not automatically re-freeze any version.
 The complete local Dayloom Product was accepted by the user on 23 October 2026 at
 `b40fcfa55f919a570fbfcec10bde110ac7029a89`, after the final photo-layout corrections.
 The built frontend and normal API share `http://localhost:5173`; the `dayloom` Compose
-project runs `postgres` against the retained runtime volume. Git delivery is tracked by
-[PR #210](https://github.com/rplalala/Dayloom/pull/210) and
+project runs `postgres` against the retained runtime volume. Git delivery is complete through
+merged [PR #210](https://github.com/rplalala/Dayloom/pull/210) and completed
 [#208](https://github.com/rplalala/Dayloom/issues/208); hosting remains separate and
 pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
 
 The complete-media and acceptance-resource follow-up was accepted by the user on
-24 October 2026. [PR #232](https://github.com/rplalala/Dayloom/pull/232) delivers
+24 October 2026. Merged [PR #232](https://github.com/rplalala/Dayloom/pull/232) completes
 [Issue #231](https://github.com/rplalala/Dayloom/issues/231); the [acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#complete-media-and-acceptance-resources-24-october-2026)
 retains the bounded live result and unverified retrieval/search coverage.
 
@@ -68,12 +68,24 @@ endpoint/deployment settings. `scripts/run_database.py` passes the same resolved
 connection settings to Compose. Planning policies
 use `config/runtime.yaml` for development and `config/runtime.acceptance.yaml` for Product
 acceptance, selected by `product.yaml: runtime_profile`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
+Acceptance uses larger input and supply capacity with bounded execution budgets and a shared per-run
+spending guard; the [profile reference](config/README.md#product-acceptance-profile) owns
+current values and the development rollback.
 See the [development guide](docs/guides/development.md#local-postgresql-naming-and-storage)
 for storage retention, overrides and isolated test settings.
 
 Product UI/API uses V3 and an allowlisted presentation contract. Developer mode
 exposes V0-V3 independently. Current input assistance includes destination suggestions,
 currency/date controls and optional user-reviewed preference polishing.
+Itinerary activity/Nearby photographs now reuse validated links within the browser tab
+session; the [media contract](docs/0007-application-operations.md#browser-tab-photo-session)
+defines expiry, isolation, bounded recovery and browser lifecycle limits.
+Product diagnostics now correlate HTTP operations, durable tasks and planner runs,
+preserving native Repair decisions, bounded payloads and independent completion/usage
+summaries alongside public progress. Local lookup and retention are described in the
+[development guide](docs/guides/development.md#product-diagnostics); the
+[application contract](docs/0007-application-operations.md#product-diagnostics) defines
+coverage and privacy. Earlier Product runs without persisted diagnostics cannot be reconstructed.
 
 Details: [shared architecture](docs/0001-system-architecture.md),
 [frontend design](docs/0007-application-operations.md), and the
@@ -353,7 +365,8 @@ preview, explicit Save and My trips reload on 22 October, with real model, map/r
 weather, embedding and image HTTP success evidence. This does not establish general
 provider quality, full billing, public deployment or scale. Independent V0–V3,
 Developer and research commands retain their entrypoints and behavior. Git delivery
-is tracked in PR #210 and #208. Additional live runs, public hosting and research
+is complete through PR #210, #208 and the accepted follow-up in PR #232 / #231.
+Additional live runs, public hosting and research
 require separate scope; no version freeze follows from acceptance.
 
 Evaluation extensions are developed independently:
@@ -384,7 +397,12 @@ The [benchmark report](benchmark/report.md) gives the automatic mean-score order
 **V3 > V2 > V1 > V0**, exact ranks, Pair summaries and selected-generation resources.
 Original evidence and all-attempt costs remain preserved. The researcher accepted
 the complete replacement on 24 October 2026 under #218. Blinded display content
-is synchronized under #219; thesis synchronization continues under #220.
+is synchronized under #219. Thesis synchronization under
+[#220](https://github.com/rplalala/Dayloom/issues/220) is complete and was accepted
+by the author on 24 October 2026. The separate local thesis repository contains
+the final English PDF, LaTeX sources, Chinese companions, reproducible extraction
+scripts and matching Overleaf export. Acceptance does not establish school archival
+submission or final project sign-off.
 
 The [blinded-review report](benchmark/blinded-results/report.md) covers one human
 and one GPT-6.1 sol xhigh assessment of the twelve accepted itinerary comparisons.
@@ -410,6 +428,25 @@ own the detailed sequence and material boundaries. Blind judgments do not change
 accepted automatic scores. Private mappings and native report/replay dependencies
 remain in private evidence storage; corpus measurement and controlled studies
 remain optional work.
+
+### School archival submission
+
+The supervisor requires a repository under the University GitHub Enterprise
+organization `ThesisProjects-ECE`, containing the final thesis PDF, source code,
+relevant datasets, experiment scripts and instructions sufficient to reproduce or
+verify the findings. Confidential or restricted material needs an appropriate
+access and distribution arrangement. Required thesis and clearance forms must be
+uploaded as clearly named PDFs to the supervisor's designated OneDrive folder;
+both submissions precede final project sign-off.
+
+School archival submission is pending. Current preparation covers local inventory
+and completeness verification; upload, repository creation, form submission and
+new paid execution remain outside that scope. The project Git repository excludes
+the separate `thesis/` working repository,
+TripWorld runtime data and private native experiment archives; a source-only copy
+does not by itself include the complete research submission. Archive preparation
+must account for these dependencies and historical producer-code requirements.
+GitHub Issues own subsequent task state.
 
 ### Earlier evaluator acceptance
 

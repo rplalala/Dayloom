@@ -53,7 +53,7 @@ def test_rich_initial_supply_includes_the_pace_target_and_alternatives(days, exp
     )
     assert capacities.k_final == expected
     assert capacities.r_pool >= expected
-    assert capacities.c_raw <= 128
+    assert capacities.c_raw <= 256
     assert original.model_dump() == before
 
 
@@ -67,6 +67,20 @@ def test_seventeen_required_identities_do_not_hit_the_development_gate():
         required=17,
     )
     assert capacities.k_final >= 17
+
+
+def test_long_acceptance_trip_uses_the_larger_review_allowance():
+    from backend.app.policies.poi_capacity import acceptance_capacities
+
+    original = contract(9)
+    before = original.model_dump()
+    capacities = acceptance_capacities(
+        original, create_trip_date_window(date(2026, 9, 11)),
+        tool_limits(load_runtime_profile("acceptance")),
+    )
+    assert capacities.review_pool_cap == 12
+    assert capacities.k_final == 36
+    assert original.model_dump() == before
 
 
 def test_named_required_places_and_category_obligations_reserve_independent_capacity():

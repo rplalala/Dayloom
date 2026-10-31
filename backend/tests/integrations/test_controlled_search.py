@@ -2,6 +2,7 @@ import asyncio
 import json
 
 import httpx
+import pytest
 
 from backend.app.integrations.openai_search import OpenAIWebEvidenceProvider
 from backend.app.integrations.spending import SpendingBudget
@@ -9,7 +10,8 @@ from backend.app.runtime.config_loader import load_runtime_profile
 from backend.tests.integrations.azure_foundry.test_web_search import _request
 
 
-def test_search_preserves_task_domains_and_reserves_before_real_sdk_send():
+@pytest.mark.parametrize("large_auxiliary", [False, True])
+def test_search_preserves_task_domains_and_reserves_before_real_sdk_send(large_auxiliary):
     sent = []
     budget = SpendingBudget("2")
 
@@ -44,6 +46,11 @@ def test_search_preserves_task_domains_and_reserves_before_real_sdk_send():
         client = OpenAIWebEvidenceProvider(
             api_key="fixture",
             config=load_runtime_profile("acceptance").web_evidence,
+            auxiliary_limits=(
+                load_runtime_profile("acceptance").auxiliary_model_limits.model_copy(
+                    update={"output_tokens": 128000}
+                ) if large_auxiliary else None
+            ),
             http_client=httpx.AsyncClient(transport=httpx.MockTransport(respond)),
         )
         try:
@@ -55,6 +62,7 @@ def test_search_preserves_task_domains_and_reserves_before_real_sdk_send():
     result = asyncio.run(run())
     assert sent[0]["input"] == _request().task_instruction
     assert sent[0]["max_tool_calls"] == 2
+    assert sent[0]["max_output_tokens"] == (32768 if large_auxiliary else 16384)
     assert sent[0]["tools"][0]["filters"]["allowed_domains"] == ["example.org"]
     assert [hit.allowed_domain for hit in result.hits] == [True, False]
     assert budget.reserved_usd < 1

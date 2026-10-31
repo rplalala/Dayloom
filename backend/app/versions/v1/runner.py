@@ -266,6 +266,11 @@ async def run_tools_planner(
     except asyncio.CancelledError as exc:
         if capture is not None:
             capture.finish(rag=extension.report if extension else None, failure=exc)
+        effective_tracer.event("run_cancelled", {"error": type(exc).__name__})
+        effective_tracer.finish(
+            status="cancelled", requirements=None, tool_usage=budget.summary(),
+            outcome=None, error={"error": type(exc).__name__},
+        )
         raise
     except Exception as exc:
         if capture is not None:

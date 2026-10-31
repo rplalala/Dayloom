@@ -59,10 +59,35 @@ def test_model_reservation_uses_full_context_and_only_refunds_reported_usage(usa
     asyncio.run(run())
 
 
+def test_larger_foundry_output_is_admitted_without_bypassing_shared_spending():
+    sent = []
+
+    async def run():
+        budget = SpendingBudget("1.5")
+        async with httpx.AsyncClient(transport=httpx.MockTransport(
+            lambda request: sent.append(request) or httpx.Response(500)
+        )) as client:
+            install_spend_hooks(client)
+            with budget.activate():
+                results = await asyncio.gather(*[
+                    client.post("https://fixture.openai.azure.com/openai/v1/responses", json={
+                        "model": "gpt-6-luna", "max_output_tokens": 32768,
+                        "input": "Keep every requirement and retain a finite charge ceiling.",
+                    }) for _ in range(2)
+                ], return_exceptions=True)
+        assert len(sent) == 1
+        assert sum(isinstance(result, SpendingLimitError) for result in results) == 1
+        assert budget.blocked
+        assert budget.reserved_usd == Decimal("1.115536")
+
+    asyncio.run(run())
+
+
 @pytest.mark.parametrize("body", [
     {"model": "unpriced", "max_output_tokens": 100},
     {"model": "gpt-6-luna", "max_output_tokens": 100, "tools": [{"type": "web_search"}]},
     {"model": "gpt-6-luna", "max_output_tokens": 100, "stream": True},
+    {"model": "gpt-6-luna", "max_output_tokens": 128001},
 ])
 def test_unknown_or_hosted_bing_charges_never_reach_transport(body):
     async def run():

@@ -9,6 +9,7 @@ from backend.app.integrations.azure_foundry.web_search import normalize_luna_res
 from backend.app.integrations.spending import install_spend_hooks
 from backend.app.observability.usage import observe_sdk
 from backend.app.runtime.config_models import AuxiliaryModelLimits
+from backend.app.runtime.model_limits import OPENAI_SEARCH_MAX_OUTPUT_TOKENS
 from backend.app.runtime.settings import RuntimeSettings
 
 MODEL = "gpt-4.1-mini-2025-04-14"
@@ -44,6 +45,9 @@ class OpenAIWebEvidenceProvider:
         options = bound_response_request(
             {
                 "model": MODEL,
+                "max_output_tokens": min(
+                    self._limits.output_tokens, OPENAI_SEARCH_MAX_OUTPUT_TOKENS
+                ),
                 "input": request.task_instruction,
                 "tools": [
                     {

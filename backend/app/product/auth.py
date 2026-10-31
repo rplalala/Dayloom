@@ -173,6 +173,7 @@ def register(body: Registration, request: Request, response: Response):
             row["display_name"] = body.display_name
     except UniqueViolation as exc:
         raise HTTPException(409, {"code": "email_unavailable"}) from exc
+    request.state.account = row
     return create_session(row, response, settings)
 
 
@@ -189,6 +190,7 @@ def login(body: Credentials, request: Request, response: Response):
     valid = password_hasher.verify(body.password, row["password_hash"] if row else dummy_hash)
     if not row or not valid:
         raise HTTPException(401, {"code": "invalid_credentials"})
+    request.state.account = row
     return create_session(row, response, settings)
 
 

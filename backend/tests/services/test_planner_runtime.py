@@ -16,6 +16,45 @@ from backend.tests.versions.v0.fakes import make_itinerary, make_requirements
 REFERENCE = date(2026, 9, 11)
 
 
+@pytest.mark.parametrize("profile,expected", [("development", 20), ("acceptance", 20)])
+def test_maps_http_timeout_follows_the_selected_profile(monkeypatch, profile, expected):
+    import httpx
+    from pydantic import SecretStr
+
+    from backend.app.integrations.google.places import PLACES_DESTINATION_FIELDS
+    from backend.app.integrations.models import PlaceSearchRequest
+    from backend.app.runtime.config_loader import load_runtime_profile
+
+    monkeypatch.setattr(module, "V1Settings", lambda: SimpleNamespace(
+        azure_openai_endpoint="https://fixture.invalid/openai/v1",
+        azure_openai_deployment="gpt-6-luna",
+        azure_openai_api_key=SecretStr("fixture-not-a-secret"),
+        google_maps_api_key=SecretStr("fixture-maps-not-a-secret"),
+    ))
+    monkeypatch.setattr(module, "SearchSettings", lambda: SimpleNamespace(
+        openai_api_key=SecretStr("fixture-search-not-a-secret"),
+    ))
+    requests = []
+
+    async def send(self, request, **kwargs):
+        requests.append(request)
+        return httpx.Response(200, json={"places": []}, request=request)
+
+    monkeypatch.setattr(httpx.AsyncClient, "send", send)
+
+    async def scenario():
+        async with module.create_planner_dependencies(
+            SystemVersion.V3, load_runtime_profile(profile), module.NullRunTracer(None),
+        ) as dependencies:
+            await dependencies.places.search_text(PlaceSearchRequest(
+                text_query="Sydney", page_size=1, field_mask=",".join(PLACES_DESTINATION_FIELDS),
+            ))
+
+    asyncio.run(scenario())
+    assert len(requests) == 1
+    assert requests[0].extensions["timeout"]["read"] == expected
+
+
 def test_real_sdk_transports_are_isolated_across_request_cleanup(monkeypatch):
     from pydantic import SecretStr
 

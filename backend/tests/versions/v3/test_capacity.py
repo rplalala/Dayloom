@@ -9,6 +9,26 @@ from backend.app.integrations.dispatch import mark_provider_send
 from backend.app.versions.v3.repair_budget import RepairBudget
 
 
+def test_acceptance_large_repair_reaches_model_and_keeps_patch_validation(monkeypatch):
+    from backend.app.runtime.config_loader import load_runtime_profile
+    from backend.tests.versions.v3.test_repair import Model, edit, run
+
+    # Use the same full input builder with a deterministic 300k-token envelope.
+    monkeypatch.setattr("backend.app.versions.v3.repair_projection.count_tokens", lambda _: 100000)
+    development, acceptance = (load_runtime_profile(name) for name in ("development", "acceptance"))
+    old_model = Model()
+    old = run(model=old_model, runtime_config=development)
+    assert old.status == "SKIPPED" and old_model.calls == 0
+    model = Model()
+    result = run(model=model, runtime_config=acceptance)
+    assert model.calls == 1
+    assert result.status == "ACCEPTED_COMPLETE", result.reason
+    unauthorized = Model(edits=[edit(activity_id="outside-authorized-scope")])
+    rejected = run(model=unauthorized, runtime_config=acceptance)
+    assert unauthorized.calls == 1
+    assert rejected.status == "REJECTED"
+
+
 def test_google_reservation_and_cross_round_terminal_failure():
     async def scenario():
         budget = RepairBudget(monotonic() + 600)

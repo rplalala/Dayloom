@@ -139,6 +139,7 @@ def acceptance_capacities(contract, window, limits, required=0):
     target = min(limits.max_final_pois, max(8, demand + max(6, (demand + 2) // 3)))
     values = POICapacities(
         days, min(limits.max_candidates, max(48, 4 * target)),
-        min(limits.max_place_detail_calls, 2 * target), target, min(8, (target + 1) // 2),
+        min(limits.max_place_detail_calls, 2 * target), target,
+        min(limits.max_review_enriched_places, (target + 1) // 2),
     )
     return apply_poi_operating_budgets(values, limits)

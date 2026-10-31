@@ -2,8 +2,8 @@
 schema_version: 6
 generation_spend_usd: 25
 auxiliary_model_limits:
-  input_tokens: 252000
-  output_tokens: 16384
+  input_tokens: 900000
+  output_tokens: 32768
   framing_tokens: 2048
 landmark_nomination:
   max_calls: 1
@@ -54,23 +54,23 @@ reference_discovery:
 app:
   time_zone: Australia/Sydney
 budget:
-  candidates: 128
-  final_pois: 40
+  candidates: 256
+  final_pois: 60
   places:
-    destination_search_calls: 1
+    destination_search_calls: 2
     candidate_search_calls: 24
-    detail_calls: 120
-    review_detail_calls: 8
+    detail_calls: 160
+    review_detail_calls: 12
   weather:
-    calls: 2
+    calls: 4
   routes:
     matrix_elements: 64
     baseline_elements_per_request: 64
-    baseline_elements_per_run: 1600
-    baseline_calls: 32
-    alternative_pairs: 32
-    alternative_matrix_calls: 32
-    alternative_elements: 64
+    baseline_elements_per_run: 3600
+    baseline_calls: 64
+    alternative_pairs: 64
+    alternative_matrix_calls: 64
+    alternative_elements: 128
     post_generation_reserved_pairs: 16
     post_generation_reserved_requests: 16
     post_generation_reserved_elements: 32
@@ -81,14 +81,14 @@ budget:
     evidence_tasks: 8
     page_fetches: 8
   experience:
-    review_enriched_places: 8
-    profile_llm_calls: 8
+    review_enriched_places: 12
+    profile_llm_calls: 12
 web_evidence:
   provider: openai
   reasoning_effort: low
   max_tool_calls: 2
-  search_context_size: low
-  timeout_seconds: 20
+  search_context_size: medium
+  timeout_seconds: 30
   authority_domain_overrides: []
   page_retrieval:
     max_targets_per_need: 2
@@ -123,22 +123,22 @@ tripworld_discovery:
   radius_km: 15
   identity_radius_km: 1
   deadline_seconds: 360
-  embedding_timeout: 8
+  embedding_timeout: 10
   sql_timeout: 60
   connect_timeout: 10
-  google_timeout: 4
+  google_timeout: 8
   retries: 0
   max_queries: 4
   max_positions: 80
   total_query_tokens: 2048
 acquisition:
   policy_id: quality_first_1
-  details_deadline_seconds: 120
+  details_deadline_seconds: 180
   details_timeout_seconds: 20
 main_generation:
   enabled: true
-  input_tokens: 252000
-  output_tokens: 16384
+  input_tokens: 900000
+  output_tokens: 32768
   framing_tokens: 2048
 development_timeout_seconds: 1200
 transport:
@@ -155,8 +155,8 @@ v3_repair:
   max_deletion_attempts: 12
   reason_compression:
     max_calls: 1
-    input_tokens: 32000
-    output_tokens: 8192
+    input_tokens: 64000
+    output_tokens: 16384
     timeout_seconds: 30
   quantity_review_enabled: true
   overfull_review_enabled: false
@@ -175,25 +175,25 @@ v3_repair:
     recheck_reserve_seconds: 20
     minimum_model_seconds: 30
     round_reference_seconds: 180
-    finalization_reserve_seconds: 1
+    finalization_reserve_seconds: 5
   input:
-    input_tokens: 252000
-    output_tokens: 16384
+    input_tokens: 900000
+    output_tokens: 32768
     framing_tokens: 2048
-    identity_capacity: 64
-    activity_capacity: 120
+    identity_capacity: 128
+    activity_capacity: 240
     candidate_characters: 12000
     feedback_characters: 12000
   acquisition:
-    google: 6
-    fallback: 1
+    google: 8
+    fallback: 2
     embedding: 1
     retrieval: 1
     canonical: 30
     details: 30
-    routes: 24
+    routes: 32
     post_proposal_route_reserve: 8
-    elements: 32
+    elements: 64
     top_k: 10
     provider_timeout_seconds: 20
   spatial:
@@ -205,9 +205,9 @@ v3_repair:
 poi_semantics:
   max_calls: 12
   batch_size: 32
-  input_tokens: 32000
-  output_tokens: 8192
-  call_timeout_seconds: 45
+  input_tokens: 64000
+  output_tokens: 16384
+  call_timeout_seconds: 60
   total_seconds: 240
   exploration_fraction: 0.3333333333333333
   exception_alternatives: 2

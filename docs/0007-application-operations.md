@@ -1,6 +1,6 @@
 # Application interfaces and engineering operation
 
-Current application boundary, consolidated 2026-10-22.
+Current application boundary, consolidated 2026-10-31.
 Product implements the account-owned brief/draft → task → recoverable preview →
 explicit Save/Discard lifecycle, with a mixed library, historical import/export,
 independent copies, known-input replanning and credited media. Product HTTP/stream
@@ -20,6 +20,72 @@ Inputs share destination text, currency selection, ISO dates and optional prefer
 Server date policy owns admissibility; browser display must not change dates through
 timezone conversion or locale-dependent parsing. An input change invalidates the appropriate
 previous result. Product completion reasons are policy observations, not global feasibility.
+
+## Product diagnostics
+
+Product retains server-side diagnostics alongside its public progress stream. HTTP
+requests receive a server-generated `X-Request-ID`; background execution additionally
+records `task_id`, `execution_id`, `run_id`, account UUID and fence. A task execution
+uses its execution UUID as the run UUID. These identifiers associate submission,
+planner work and the eventual persistence decision without relying on email addresses.
+
+The local operation log records request method, route template, HTTP status, duration,
+bounded result/path identifiers and public error codes, including UUID resources in
+empty deletion responses. It covers accounts/profiles, drafts,
+planning tasks, previews, Save/Discard, trips, copies, imports, examples, input assistance
+and media. Service logs and sanitized exception chains retain exception types and code
+locations; request bodies, response bodies, credentials and URL query strings are excluded.
+Media availability counts and explicit missing-credential, missing-photo, invalid-metadata
+and provider-failure reasons distinguish display fallback from HTTP success. Task failure
+logs separately identify committed outcomes and failed or rejected terminal writes.
+
+Planning diagnostics reuse native planner events and payload controls while retaining
+the progress observer. Each run has policy/input metadata, ordered events, optional
+payloads, a numeric budget summary and an independent final summary. Available records
+cover requirements, candidate acquisition and RAG, identity/semantic decisions, generation,
+validation, Repair proposals/admission/retention and finalization. Initial/final itineraries
+and validation reports are separated from the large final event under existing size limits.
+`run.json` has a separate metadata allowance below 64 KiB, preserving run/task identity,
+timestamps and the configuration digest when large outcome or configuration fields receive
+explicit truncation markers. Repair input sizing is emitted independently before its
+decision, including overflow without a model call; numeric total, candidate, context,
+evidence and schema counts survive in both the final and budget summaries.
+The separate 64 KiB final summary preserves the stopping reason, Repair status, selected
+round, pace completion, compact validation findings and Product completion even when
+detailed events are truncated. V3 emits compact completion before truncating its full
+outcome. Per-stage timings retain their inclusive, non-additive scope. Truncation and
+collection/write failures remain explicit. A completed
+planning service invocation is distinct from the coordinator's committed `task_completed`
+event; stale results have `task_result_not_committed` instead.
+
+Numeric observation uses the existing model callbacks and HTTP adapters, including
+request-local hook cleanup. Usage includes stage/call identity, timings and reported
+tokens where available; missing or uninstrumented usage is not inferred as zero.
+Cancellation retains consumed tool counts and limits; unavailable budget sources are
+explicitly incomplete. Active spending reservations are retained on success, failure and
+cancellation and labelled conservative upper bounds rather than invoices.
+Diagnostic collection neither authorizes retries nor changes planning budgets or policies.
+
+The browser reports uncaught errors, unhandled rejections, React render errors and
+failed same-origin API requests. It sends error types, bounded code locations, route
+structure and the failed response's request ID, without error messages, form text or
+query parameters. Local exports and clipboard outcomes use explicit action names;
+requesting a download does not prove the file was saved. All browser reports are
+untrusted client observations, not authenticated account audit evidence.
+`POST /api/diagnostics/client-errors` requires the configured exact Origin, limits the
+body to 4 KiB, validates an allowlist and accepts at most 20 reports per direct peer
+per minute per process. The browser deduplicates and limits itself to 10 reports per
+minute. Abort-driven fetch cancellation is not a reported network failure; diagnostic
+requests cannot recursively report themselves. Developer pages do not emit browser reports.
+
+Operation files rotate under an inter-process write lock. Finished run retention is
+applied when a new run starts or by the local maintenance command; active runs are
+protected, with abandoned markers eligible after 24 hours. Cleanup only traverses the
+owned Product run namespace and excludes symlink directories and unrelated files.
+Storage failures warn without replacing the business result or taking ownership of
+cancellation. Diagnostics stay outside Product DTOs and Git. Configuration, retention
+limits and lookup commands are in the [development guide](guides/development.md#product-diagnostics).
+Independent V0-V3 entrypoints keep their existing tracing and planning behavior.
 
 ## Input assistance
 
@@ -64,6 +130,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `POST /api/dev/planning/stream` | Same version-selected input/result through an independent SSE request | [Developer router](../backend/app/api/developer/planning.py) |
 | `GET /api/input-assistance/destinations?q=...` | Bounded normalized GeoDB suggestions for UI selection; no planner evidence | [Assistance router](../backend/app/api/input_assistance.py), [schemas](../backend/app/schemas/input_assistance.py) |
 | `POST /api/input-assistance/preferences/polish` | `original_text`, `context`, `client_revision`; `suggested`, `unchanged` or `needs_input` | [Assistance router](../backend/app/api/input_assistance.py), [schemas](../backend/app/schemas/input_assistance.py) |
+| `POST /api/diagnostics/client-errors` | Exact-origin, size/rate-limited untrusted browser error or export-action report | [Product diagnostics](#product-diagnostics) |
 | `GET /health` | Process health response | [Application](../backend/app/main.py) |
 
 The shared request uses `input_version=planning_request_2`, destination, ISO start/end
@@ -101,8 +168,8 @@ or unresolved travel checks in plain travel language; sourced exceptions retain 
 separate indication. Historical records without this optional field keep their original
 completion content, without backfilling or relabelling.
 
-Rich chosen in the form, inherited from account defaults, restored in a draft or
-carried through replanning uses the same active V3 rule. Preference text and span
+Rich chosen in the form, inherited from new-brief account defaults, restored in a draft or
+selected again after replanning uses the same active V3 rule. Preference text and span
 ownership remain unchanged; the option does not inject a hard exact-three requirement.
 Invalid submission/date/currency fields fail with 422
 before external work. Developer retains its research responses and HTTP failure policy.
@@ -130,8 +197,9 @@ abuse controls; this design does not establish a public deployment guarantee.
 
 ## Product experience and persistence design
 
-The implemented lifecycle follows the fixed Dayloom r7 visual and interaction
-reference, with initials replacing the deferred avatar upload. The unified specification
+The implemented lifecycle uses the Dayloom r7 visual and interaction foundation,
+with Product presentation refinements and initials replacing the deferred avatar upload.
+The unified specification
 [#198](https://github.com/rplalala/Dayloom/issues/198) owns originating requirements and
 confirmed acceptance seams; its native children own task state. #119 retains the
 historical design/mapping role. The sections below define current behavior.
@@ -160,6 +228,19 @@ input-assistance reads remain guest-accessible. Developer authentication is unch
 The Product React shell exposes home, a shared brief editor, login/register, guest
 example cards, an authenticated saved-trip/draft library with a genuine empty state,
 and an initials-only account page.
+
+Product copy explains traveler actions and travel information; development histories,
+internal operation identifiers and research controls stay outside these pages. About
+describes the travel experience, and the home confirmation feature uses a checklist glyph.
+The login tab displays the public test-account hint without filling or submitting the
+form; registration remains separate. This test
+hint is distinct from the private provider/deployment credentials excluded above.
+
+An empty owned library shows a responsive journey illustration and one primary planning
+action, without redundant collection counts or search/sort controls. A search with no
+matches retains its controls and distinct no-results guidance. The planning action starts
+a new brief through the existing initialization policy.
+
 Authentication restores a guest brief and return intent without generating. Editor
 recovery and a pending action identity stay in tab-local session storage, never in the
 JWT or shared local storage. Expiry hides account/editor content and quarantines it
@@ -514,16 +595,17 @@ reconcile ownership without reclaiming detached wording. Dismiss, polish and log
 return never generate an itinerary. Draft persistence stores the editor snapshot;
 task submission validates the separate confirmed planning request.
 
-### Replanning saved itineraries
+### Replanning itineraries
 
-The authenticated saved-detail **Plan again** and **Plan another journey** actions open the editable brief
-and clears its prior draft and submission identity. Only the snapshot's original
-`request` seeds destination, dates, travelers, budget/currency and literal preference
-text. Imported `known_fields` limits that mapping; absent or explicit null values remain
-blank, including a visibly unselected currency. The complete generated request remains
-complete, while partial or absent imported requests are not filled from itinerary dates,
-activities, generated descriptions or profile defaults. Required/avoided controls and
-preference bindings start empty; an original composed preference remains literal text.
+The **Plan again** and **Plan another journey** actions in saved details, previews and
+examples open the editable brief and clear its prior draft and submission identity.
+Only the snapshot's original `request` seeds destination, dates, travelers and
+budget/currency. Imported `known_fields` limits that mapping; absent or explicit null
+values remain blank, including a visibly unselected currency. Missing basics are not
+filled from itinerary dates, activities, generated descriptions or profile defaults.
+All **Personalize your trip** fields start empty: interests, pace, transport preferences,
+required/avoided places and additional preferences. Original composed preference text,
+current editor choices and preference bindings are not carried into the new brief.
 
 Opening or reopening this brief sends no generation or provider-refresh request. Replan
 uses the same origin fence as drafts and restored editors, so a late new-brief initializer
@@ -723,8 +805,8 @@ transaction and carries it into the independent trip through the normalized writ
 directly decided Copy receipts keep an empty map. Imported claims and client Copy bodies
 cannot supply bindings. Keep a copy carries a curated example's private map into the
 same independent saved representation. Copies resolve display metadata separately after persistence.
-Public detail, JSON/text export and research results omit the map;
-no expiring photo resource name, CDN URL, author metadata or image bytes are persisted.
+Public detail, JSON/text export and research results omit the map. The database does
+not persist expiring photo resource names, image URLs, author metadata or image bytes.
 
 `GET /api/previews/{id}/media` and `/api/trips/{id}/media` return display metadata only
 after the same owner check as detail; missing/other-owner IDs return 404. Saved-preview
@@ -740,11 +822,63 @@ Each Google slot performs at most
 one fresh `photos` Details request and one media metadata request, with an 8-second HTTP
 timeout, an 8-second complete-slot deadline and 256 KiB response limit. Completed photos
 survive another slot's timeout or a later failed batch. Redirects and arbitrary fetch destinations are
-rejected. Responses use `Cache-Control: no-store`; no Google photo metadata cache or
-automatic retry is introduced. Product requests place metadata when an owned itinerary
-or curated example opens, so authorized photographs appear directly in activity and
-Nearby lists. Refresh place photos in a place dialog explicitly resolves fresh metadata without replanning
-or refreshing itinerary facts.
+rejected. Responses retain `Cache-Control: no-store`; the backend has no photo metadata
+cache or automatic retry. The browser's explicit session cache below determines which
+slots need fresh metadata. Activity and Nearby lists display authorized photographs
+when an owned itinerary or curated example opens. **Refresh photo** in a place dialog
+resolves only the selected slot, without replanning or refreshing itinerary facts.
+
+#### Browser tab photo session
+
+The local/private Product uses `sessionStorage` to retain successful verified-place
+photo URLs with Google Maps attribution and all supplied author/source links. An omitted
+optional source link does not prevent caching a valid photograph. The cache does not
+store image bytes, credentials, tokens, full itineraries or private media bindings.
+This is an application-managed metadata cache, independent of HTTP image caching;
+it does not change the media endpoint's `no-store` response directive.
+
+Each entry expires **30 minutes after successful acquisition**. Reads and reloads never
+extend expiry. Storage is bounded to **200 entries and approximately 1 MiB of serialized
+data**, evicting the oldest entries first. Corrupt/unsupported records, future timestamps,
+disallowed URLs, denied storage and quota failures fall back to ordinary media loading.
+Only successful photos are retained; loading, unavailable and error states are not cached.
+
+Keys separate account, login/invalidation generation, endpoint/resource identity,
+detail snapshot fingerprint, requested dimensions and slot. Saved trips, previews,
+independent copies and public examples cannot share private entries. Bundled examples
+use a guest scope. The snapshot fingerprint detects changes; it grants no authorization.
+Private photos remain hidden until authentication and the server's owned-detail read
+succeed. Reads validate the current scope, entry shape, expiry and provider URL rules.
+Valid hits bypass the media endpoint for those slots; only misses/expired entries enter
+the existing ordered batches of at most 12. Successful batches remain reusable if a
+later batch fails. Concurrent same-slot consumers share requests, including development
+StrictMode effects. Abandoned requests are canceled when their last consumer leaves,
+and late responses cannot render or persist into an invalidated scope.
+
+Logout, session expiry/revocation, account switch and cross-tab session invalidation
+clear private entries and hide their active photos. Confirmed trip deletion and preview
+decisions invalidate the relevant resource. Changed snapshots or slot sets cannot reuse
+old entries. A media 401 clears the owner's photos; 403/404 invalidates the resource.
+Normal authentication and ownership checks remain required after every page reload.
+
+A cached URL that fails image loading is evicted and receives **one automatic
+reacquisition per slot per display cycle**. A further failure shows an illustration
+with **Retry photo**. Manual refresh/retry affects only that slot and cannot extend
+neighboring entries' expiry. Photographs still load directly from Google's image host;
+cache hits do not guarantee zero image network requests or zero billing.
+
+Reload retains the tab's storage session, and normal tab closure ends it. Browser
+closed-tab, crash and session restoration may restore `sessionStorage`; restored entries
+still undergo the fixed expiry check. This is not secure deletion or a guarantee of
+isolation for browser-created duplicate tabs. External application links use `noopener`.
+There is no unconditional `beforeunload`/`pagehide` purge, durable browser storage,
+server/CDN image cache, service worker or cross-tab photo-sharing mechanism.
+
+The separate fixed destination/atmosphere catalog continues resolving metadata on
+display; this cache covers itinerary activity and Nearby slots. Provider-license review
+and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
+
+#### Photo presentation
 
 Activity thumbnails use a 4:3 crop and align with the text's top edge on desktop and
 tablet, including long introductions. At widths up to 560px they use a full-width

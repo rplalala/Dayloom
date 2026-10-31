@@ -1,15 +1,13 @@
 """Application services separating HTTP clients from research planners."""
 
 from datetime import date
-from uuid import uuid4
 
 from backend.app.integrations.spending import (
     SpendingBudget,
     SpendingLimitError,
     current_spending_budget,
 )
-from backend.app.observability.progress import ProgressTracer, current_progress
-from backend.app.observability.run_trace import NullRunTracer
+from backend.app.observability.product_logs import planning_diagnostics
 from backend.app.policies.trip_dates import (
     DateProvider,
     SystemDateProvider,
@@ -77,11 +75,24 @@ class PlanningService:
     async def _plan(
         self, request: PlanningRequest, *, reference_date: date | None = None
     ) -> ProductPlanResult:
+        effective_date = reference_date or self._date_provider.today()
+        with planning_diagnostics(
+            request, effective_date, config=getattr(self._runtime, "diagnostics_config", None)
+        ) as tracer:
+            result = await self._execute(request, reference_date=effective_date, tracer=tracer)
+            tracer.event("product_presented", {
+                "pace_review": result.pace_review,
+                "policy_completion": result.policy_completion,
+                "policy_reasons": result.policy_reasons,
+                "required_experiences": result.required_experiences,
+                "preference_coverage": result.preference_coverage,
+                "minimum_daily_coverage": result.minimum_daily_coverage,
+            })
+            return result
+
+    async def _execute(self, request, *, reference_date, tracer):
         """Run V3, then decorate only the final Product presentation."""
-        observer = current_progress()
-        evidence = ProductEvidenceCollector(
-            ProgressTracer(observer) if observer else NullRunTracer(uuid4())
-        )
+        evidence = ProductEvidenceCollector(tracer)
         try:
             result = await self._runtime.run(
                 SystemVersion.V3,

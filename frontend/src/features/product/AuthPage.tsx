@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSession } from "./session";
 import { CuratedPhoto } from './detail/MediaPhoto';
 import { Icon } from './Icon';
+import './auth.css';
 
 type AuthMode = "login" | "register";
 type AuthFields = { display_name: string; email: string; password: string; confirm: string };
@@ -89,6 +90,14 @@ export function AuthPage() {
               ? "Pick up where your travel ideas left off."
               : "Create an account for the journeys ahead."}
           </p>
+          {mode === "login" && <aside className="auth-test-account" aria-label="Test account">
+            <div className="auth-test-heading"><Icon name="spark" size={17} /><strong>Try Dayloom</strong></div>
+            <p>Explore with the test account.</p>
+            <dl>
+              <div><dt>Email</dt><dd>admin@admin.com</dd></div>
+              <div><dt>Password</dt><dd>admin123456</dd></div>
+            </dl>
+          </aside>}
           <form
             onSubmit={async (event) => {
               event.preventDefault();

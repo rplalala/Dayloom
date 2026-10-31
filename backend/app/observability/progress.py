@@ -70,8 +70,11 @@ def progress_scope(observer):
 class ProgressObserver:
     """Bounded per-request buffer; a slow reader receives an explicit loss notice."""
 
-    def __init__(self, *, developer=False, version=None, clock=monotonic, capacity=256):
-        self.run_id = uuid4()
+    def __init__(
+        self, *, developer=False, version=None, clock=monotonic, capacity=256, run_id=None
+    ):
+        self.run_id = run_id or uuid4()
+        self.diagnostic_sink = None
         self.developer, self.version, self.clock = developer, version, clock
         self.started = clock()
         self.sequence = 0
@@ -91,6 +94,11 @@ class ProgressObserver:
         }
         if self.developer:
             event["version"] = self.version
+        if self.diagnostic_sink is not None:
+            try:
+                self.diagnostic_sink(event)
+            except Exception:
+                pass  # Diagnostics never take ownership of planning/progress.
         if len(self.buffer) == self.buffer.maxlen:
             self.buffer.popleft()
             self.dropped += 1

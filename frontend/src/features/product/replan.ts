@@ -1,7 +1,7 @@
 import { createBrief, type Brief } from './editor';
 import type { ProductDetail } from './detail/types';
 
-/** Original request facts alone seed a new editor; missing facts stay visibly blank. */
+/** Keep only known trip basics; personalization starts empty and missing facts stay blank. */
 export function replanBrief(request: ProductDetail['request']): Brief {
   const brief = { ...createBrief(), currency: '' };
   if (!request) return brief;
@@ -14,6 +14,5 @@ export function replanBrief(request: ProductDetail['request']): Brief {
     brief.budget = String(request.budget.amount);
     brief.currency = request.budget.currency;
   }
-  if (known('additional_preferences') && request.additional_preferences != null) brief.preferences = request.additional_preferences;
   return brief;
 }

@@ -295,6 +295,8 @@ async def run_repair_once(
                 "edits": [e.model_dump(mode="json") for e in effective_patch.edits],
             }
         if tracer is not None:
+            if sizing:
+                tracer.event("v3_repair_input_sizing", {"round_index": round_index, **sizing})
             # Separate compact artifacts survive truncation of the full V3 outcome.
             for name, value in (
                 ("components", components),

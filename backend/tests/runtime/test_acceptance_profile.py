@@ -16,23 +16,24 @@ def test_acceptance_profile_supports_larger_work_while_development_remains_selec
     config = load_runtime_profile("acceptance")
     budget = ToolBudget(tool_limits(config))
     for key, quantity in [
-        (ToolBudgetKey.CANDIDATES, 128),
+        (ToolBudgetKey.CANDIDATES, 256),
         (ToolBudgetKey.CANDIDATE_SEARCH_CALLS, 24),
-        (ToolBudgetKey.PLACE_DETAIL_CALLS, 120),
-        (ToolBudgetKey.FINAL_POIS, 40),
-        (ToolBudgetKey.BASELINE_ROUTE_MATRIX_ELEMENTS, 1600),
-        (ToolBudgetKey.BASELINE_ROUTE_MATRIX_CALLS, 32),
+        (ToolBudgetKey.PLACE_DETAIL_CALLS, 160),
+        (ToolBudgetKey.FINAL_POIS, 60),
+        (ToolBudgetKey.BASELINE_ROUTE_MATRIX_ELEMENTS, 3600),
+        (ToolBudgetKey.BASELINE_ROUTE_MATRIX_CALLS, 64),
     ]:
         budget.consume(key, quantity)
         with pytest.raises(ToolBudgetExceededError):
             budget.consume(key)
-    assert config.v3_repair.input.identity_capacity == 64
+    assert config.v3_repair.input.identity_capacity == 128
     assert config.v3_repair.max_rounds == config.v3_repair.max_model_calls == 10
     assert config.v3_repair.timing.stage_seconds == 720
     assert config.v3_repair.timing.model_seconds == 120
     assert config.development_timeout_seconds == 1200
     assert config.poi_semantics.max_calls == 12
     assert config.poi_semantics.total_seconds == 240
+    assert config.generation_spend_usd == 25
     assert load_runtime_profile("development") == load_runtime_config()
     development = ToolBudget(tool_limits(load_runtime_config()))
     with pytest.raises(ToolBudgetExceededError):

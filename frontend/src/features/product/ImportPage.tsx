@@ -66,9 +66,9 @@ function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string
       if (!valid()) return;
       if (response.status === 401) { setLocked(true); await refresh(); return; }
       if (response.ok) { const preview = body as Preview; navigate(`/previews/${preview.id}`); return; }
-      if (check && response.status === 404) { remember({ ...next, uncertain: false }); setError('No import is recorded yet. You may explicitly retry with the same key.'); return; }
+      if (check && response.status === 404) { remember({ ...next, uncertain: false }); setError('We could not find this import. You can try importing it again.'); return; }
       if (!check && response.status >= 400 && response.status < 500) remember({ ...next, key: response.status === 409 ? key : null, uncertain: response.status === 409 });
-      setError(`${body.detail?.path || ''} ${body.detail?.message || (response.status === 409 ? 'This operation key belongs to different content. Check its status.' : 'Import could not be confirmed. Check status before retrying.')}`.trim());
+      setError(`${body.detail?.path || ''} ${body.detail?.message || (response.status === 409 ? 'An earlier import used different content. Check its status before starting another.' : 'Import could not be confirmed. Check status before retrying.')}`.trim());
     } catch { if (valid()) setError('Import response was not received. Check status before explicitly retrying.'); }
     finally { if (valid()) setBusy(false); }
   }
@@ -83,7 +83,7 @@ function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string
     <p className="small-muted">One itinerary, up to 5 MiB. Missing weather, photographs and costs are allowed.</p>
     {error && <p className="form-error" role="alert">{error}</p>}
     <div className="modal-actions"><Link className="btn btn-light" to="/trips" state={{ focusImport: true }} aria-disabled={busy || undefined} onClick={event => { if (busy) event.preventDefault(); }}>Cancel</Link>
-      {!accountId ? <Link className="btn btn-primary" to="/login?return=/import">Log in to preview</Link> : intent.uncertain ? <button className="btn btn-primary" disabled={busy} onClick={() => void perform(true)}>Check import status</button> : <button aria-label={intent.key ? "Retry import with same key" : "Preview import"} className="btn btn-primary" disabled={busy || !intent.content.trim()} onClick={() => void perform()}>{intent.key ? 'Retry import with same key' : 'Preview itinerary'} <Icon name="arrow" size={16} /></button>}
+      {!accountId ? <Link className="btn btn-primary" to="/login?return=/import">Log in to preview</Link> : intent.uncertain ? <button className="btn btn-primary" disabled={busy} onClick={() => void perform(true)}>Check import status</button> : <button aria-label={intent.key ? "Retry import" : "Preview import"} className="btn btn-primary" disabled={busy || !intent.content.trim()} onClick={() => void perform()}>{intent.key ? 'Retry import' : 'Preview itinerary'} <Icon name="arrow" size={16} /></button>}
       {intent.key && <button className="btn btn-light" disabled={busy} onClick={() => { editRevision.current += 1; remember({ owner: accountId, generation: currentGeneration, content: '', key: null, uncertain: false }); setError(''); }}>Start new import</button>}
     </div></dialog></>;
 }

@@ -1,0 +1,13 @@
+.dayloom .auth-test-account {
+  margin: 0 0 24px;
+  padding: 17px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--soft);
+}
+.dayloom .auth-test-heading { display: flex; align-items: center; gap: 8px; color: var(--accent); font-size: 13px; }
+.dayloom .auth-test-account p { margin: 5px 0 13px; color: var(--muted); font-size: 12px; }
+.dayloom .auth-test-account dl { display: grid; gap: 7px; margin: 0; font-size: 12px; }
+.dayloom .auth-test-account dl > div { display: grid; grid-template-columns: 65px minmax(0, 1fr); gap: 10px; }
+.dayloom .auth-test-account dt { color: var(--muted); }
+.dayloom .auth-test-account dd { margin: 0; font-weight: 650; overflow-wrap: anywhere; }

@@ -11,6 +11,8 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Response
 from pydantic import AliasChoices, Field, SecretStr, StringConstraints
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from backend.app.observability.product_logs import operation
+from backend.app.observability.usage import install_http_hooks
 from backend.app.product.auth import CurrentUser
 from backend.app.product.database import connect
 from backend.app.product.examples import example_detail
@@ -60,7 +62,9 @@ def safe_url(value, host, *, subdomains=False):
     return None
 
 
-def unavailable():
+def unavailable(*, provider=None, reason=None):
+    if reason:
+        operation("media_unavailable", {"provider": provider, "reason": reason})
     return {"status": "unavailable"}
 
 
@@ -76,6 +80,7 @@ class MediaProviders:
         self.transport = transport
 
     async def _json(self, client, url, **kwargs):
+        install_http_hooks(client, "media", "media_metadata")
         async with client.stream("GET", url, **kwargs) as response:
             response.raise_for_status()
             body = bytearray()
@@ -91,8 +96,10 @@ class MediaProviders:
             return data
 
     async def google(self, place_id, width, height):
-        if not self.google_key or not re.fullmatch(r"[A-Za-z0-9_-]{1,256}", place_id):
-            return unavailable()
+        if not self.google_key:
+            return unavailable(provider="google", reason="credentials_missing")
+        if not re.fullmatch(r"[A-Za-z0-9_-]{1,256}", place_id):
+            return unavailable(provider="google", reason="invalid_place_id")
         try:
             async with httpx.AsyncClient(
                 transport=self.transport, timeout=8, follow_redirects=False, trust_env=False
@@ -104,13 +111,13 @@ class MediaProviders:
                 )
                 photos = data.get("photos")
                 if not isinstance(photos, list) or not photos:
-                    return unavailable()
+                    return unavailable(provider="google", reason="no_photos")
                 photo = photos[0]
                 resource = photo.get("name", "")
                 if not re.fullmatch(
                     r"places/" + re.escape(place_id) + r"/photos/[A-Za-z0-9_-]{1,2048}", resource
                 ):
-                    return unavailable()
+                    return unavailable(provider="google", reason="invalid_photo_reference")
                 media = await self._json(
                     client,
                     f"https://places.googleapis.com/v1/{resource}/media",
@@ -119,26 +126,26 @@ class MediaProviders:
                 )
                 image = safe_url(media.get("photoUri"), "googleusercontent.com", subdomains=True)
                 if not image:
-                    return unavailable()
+                    return unavailable(provider="google", reason="invalid_photo_url")
                 authors = []
                 supplied = photo.get("authorAttributions", [])
                 if not isinstance(supplied, list) or len(supplied) > 20:
-                    return unavailable()
+                    return unavailable(provider="google", reason="invalid_attribution")
                 for author in supplied:
                     name = author.get("displayName")
                     if not isinstance(name, str) or not name.strip() or len(name) > 500:
-                        return unavailable()
+                        return unavailable(provider="google", reason="invalid_attribution")
                     uri = author.get("uri")
                     profile = safe_url(uri, "www.google.com") or safe_url(uri, "maps.google.com")
                     if uri and not profile:
-                        return unavailable()
+                        return unavailable(provider="google", reason="invalid_attribution_url")
                     authors.append({"name": name, "url": profile})
                 source = photo.get("googleMapsUri")
                 source_url = safe_url(source, "www.google.com") or safe_url(
                     source, "maps.google.com"
                 )
                 if source and not source_url:
-                    return unavailable()
+                    return unavailable(provider="google", reason="invalid_source_url")
                 return {
                     "status": "available",
                     "image_url": image,
@@ -147,13 +154,16 @@ class MediaProviders:
                     "kind": "verified_place",
                     "source_url": source_url,
                 }
-        except (httpx.HTTPError, ValueError, TypeError, AttributeError):
+        except (httpx.HTTPError, ValueError, TypeError, AttributeError) as error:
+            operation(
+                "media_provider_failed", {"provider": "google", "error_type": type(error).__name__}
+            )
             return unavailable()
 
     async def curated(self, key, width):
         photo_id, alt = CURATED[key]
         if not self.unsplash_key:
-            return unavailable()
+            return unavailable(provider="unsplash", reason="credentials_missing")
         try:
             async with httpx.AsyncClient(
                 transport=self.transport, timeout=8, follow_redirects=False, trust_env=False
@@ -167,7 +177,7 @@ class MediaProviders:
                     },
                 )
             if data.get("id") != photo_id:
-                return unavailable()
+                return unavailable(provider="unsplash", reason="invalid_photo_reference")
             image = safe_url(data["urls"]["raw"], "images.unsplash.com")
             user = data["user"]
             profile = safe_url(user["links"]["html"], "unsplash.com")
@@ -180,7 +190,7 @@ class MediaProviders:
                 or not isinstance(author, str)
                 or not author.strip()
             ):
-                return unavailable()
+                return unavailable(provider="unsplash", reason="invalid_provider_metadata")
             parsed = urlsplit(image)
             parameters = [
                 (key, value)
@@ -207,7 +217,11 @@ class MediaProviders:
                 "alt": alt,
                 "kind": "atmosphere",
             }
-        except (httpx.HTTPError, ValueError, TypeError, KeyError, AttributeError):
+        except (httpx.HTTPError, ValueError, TypeError, KeyError, AttributeError) as error:
+            operation(
+                "media_provider_failed",
+                {"provider": "unsplash", "error_type": type(error).__name__},
+            )
             return unavailable()
 
 
@@ -265,20 +279,21 @@ async def resolve_photos(
 
     async def resolve(slot, place):
         if place is None:
+            operation("media_unavailable", {"provider": "google", "reason": "binding_unavailable"})
             return
         async with semaphore:
             try:
                 async with asyncio.timeout(provider_timeout_seconds):
                     items[slot] = await providers.google(place, width, height)
-            except Exception:
+            except Exception as error:
                 # One display failure must not erase completed slots; cancellation propagates.
-                pass
+                operation("media_slot_failed", {"error_type": type(error).__name__})
 
     try:
         async with asyncio.timeout(batch_timeout_seconds):
             await asyncio.gather(*(resolve(slot, place) for slot, place in bindings))
     except TimeoutError:
-        pass
+        operation("media_batch_timeout")
     next_offset = offset + len(bindings)
     return {
         "items": items, "limit": MAX_PLACE_PHOTOS,

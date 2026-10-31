@@ -9,6 +9,7 @@ import {
 } from "react";
 import { createBrief, restoreBrief, type Brief } from "./editor";
 import { briefFromProfile } from "./profile";
+import { invalidatePhotos } from './detail/photoSession';
 export type { Brief } from "./editor";
 
 export type Account = {
@@ -61,6 +62,7 @@ function generation(owner: string): string {
 
 function invalidate(owner: string | null) {
   if (!owner) return;
+  invalidatePhotos({ owner });
   try {
     localStorage.setItem(invalidationPrefix + owner, crypto.randomUUID());
     sessionStorage.removeItem('dayloom.copy.intent.v1');
@@ -91,6 +93,7 @@ function sessionBlocked(): boolean {
 }
 
 function beginLogin(next: Account) {
+  invalidatePhotos({ privateOnly: true });
   const previous = activeLogin();
   if (previous && previous.id !== next.id) invalidate(previous.id);
   try {
@@ -188,6 +191,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     }
   }, []);
   const clear = useCallback(() => {
+    invalidatePhotos({ privateOnly: true });
     try { sessionStorage.removeItem('dayloom.task.intent.v1'); } catch { /* Account content stays hidden in memory. */ }
     try { sessionStorage.removeItem('dayloom.copy.intent.v1'); } catch { /* Invalidation also fences recovery. */ }
     recovery.current = {
@@ -212,6 +216,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const adopt = useCallback(
     (next: Account) => {
       if (loggingOut.current || sessionBlocked()) return;
+      const previousOwner = accountRef.current?.id || recovery.current.owner || activeLogin()?.id;
+      if (previousOwner && previousOwner !== next.id) invalidatePhotos({ owner: previousOwner });
       if (
         recovery.current.owner &&
         (recovery.current.owner !== next.id ||
@@ -271,6 +277,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         return;
       }
       if (response.status !== 401) throw new Error("Session unavailable");
+      invalidatePhotos({ privateOnly: true });
       if (
         [
           "session_revoked",
@@ -301,6 +308,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     } catch {
       // An ambiguous network failure hides account data, retaining recovery for a later check.
       if (version === epoch.current) {
+        invalidatePhotos({ privateOnly: true });
         accountRef.current = null;
         setAccount(null);
         setBrief(
@@ -323,6 +331,20 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       void refresh();
     };
     const storage = (event: StorageEvent) => {
+      const owner = accountRef.current?.id || recovery.current.owner;
+      if (owner && event.key === activeKey && activeLogin()?.id === owner) {
+        invalidatePhotos({ owner });
+        epoch.current++;
+        accountRef.current = null;
+        setAccount(null);
+        setStatus('loading');
+        void refresh();
+        return;
+      }
+      if (owner && (event.key === null || event.key === invalidationPrefix + owner || event.key === activeKey)) {
+        epoch.current++;
+        clear();
+      }
       if (event.key !== noticeKey || !event.newValue) return;
       try {
         const notice = JSON.parse(event.newValue);
