@@ -37,9 +37,10 @@ The [API launcher](../../scripts/run_api.py) selects the Windows event loop need
 async PostgreSQL access. Use it for local Windows API development. `GET /health`
 checks the application process; it does not certify provider or corpus readiness.
 Product routes include `/`, `/config`, `/plan`, `/trips`, `/import`, `/login`, `/account`, `/planning`,
-`/planning/:taskId` and `/previews/:previewId`; Developer is `/dev`.
-The Product r7 shell has its own shared brief surface. Developer retains independent
-V0-V3 and the existing structured form. Product generation HTTP endpoints require
+`/planning/:taskId` and `/previews/:previewId`. The retired `/dev` route shows the
+not-found page, and `/api/dev/planning` and its stream endpoint return HTTP 404.
+The Product r7 shell has its own shared brief surface. Independent V0-V3 execution
+uses the command-line or programmatic entry points. Product generation HTTP endpoints require
 authentication and submit the durable account-owned task lifecycle.
 
 Populate local `.env` from [the non-secret example](../../.env.example).
@@ -141,13 +142,13 @@ The root `product.yaml` configures `http://localhost:5173` and explicitly allows
 local HTTP. `--port` must match the configured origin's port. The launcher loads
 `.env` from the repository root without overriding existing
 process values. It serves `frontend/dist`,
-including direct navigation/reload of Product and Developer routes; missing APIs and
+including direct navigation/reload of Product routes; missing APIs and
 assets retain their HTTP errors. Rebuild the frontend after changing its source.
 
 Product uses `runtime_profile: acceptance` from `product.yaml`. To restore development
 resource limits, set `$env:PRODUCT_RUNTIME_PROFILE='development'` before starting the server;
 remove that override to use the YAML choice. Restart the backend after policy changes.
-Independent V0-V3 and Developer defaults remain development. See the
+Independent V0-V3 defaults remain development. See the
 [profile reference](../../config/README.md#product-acceptance-profile) for coordinated values,
 snapshot compatibility and unchanged correctness boundaries. Loading a larger profile does
 not authorize paid acceptance runs; establish a request-specific cost bound first.
@@ -672,7 +673,7 @@ read-only clean-clone check. Do not rebuild vectors or destroy a volume to follo
 | Entry | Responsibility |
 | --- | --- |
 | [Version runners](../0001-system-architecture.md#concrete-code-map) | Independent execution and shared graph seams |
-| [API boundary](../0007-application-operations.md#http-contract-map) | Product/Developer request, result and stream contracts |
+| [API boundary](../0007-application-operations.md#http-contract-map) | Product request, result and stream contracts |
 | [Evaluation package](../../backend/evaluation/README.md) | Offline intake, independent review, scoring and human package commands |
 | [Evaluation development tools](../../backend/evaluation/tools/route_requests_cli.py) | V0 smoke request/budget preparation; not Product runtime or final quality scoring |
 | [Data tools](../../tools/data/tripworld_database.py) | Explicit ingestion, embedding, integrity and query operations |

@@ -135,8 +135,8 @@ are distinct from runtime discovery/query limits.
 Gate execution precedes lazy travel/retrieval acquisition. Provider refusals, model-authored
 safety decisions and malformed output remain distinct. Product retains the form and clears
 stale feedback on edit, renders quotations as text and does not echo sensitive safety quotes.
-Developer contract failures use HTTP 502 versus clarification 422; CLI failure and
-clarification have distinct exit outcomes. Default telemetry excludes raw preference quotes.
+Programmatic calls preserve contract failures as exceptions; CLI failure and clarification
+have distinct exit outcomes. Default telemetry excludes raw preference quotes.
 
 ## Dated total primary visit counts
 

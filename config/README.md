@@ -48,7 +48,7 @@ an existing outer usage callback. Do not add per-round totals to that same outer
 
 Product selects `acceptance` through `product.yaml: runtime_profile`; an explicit
 `PRODUCT_RUNTIME_PROFILE=development` restores the development policy after restart.
-Independent V0-V3 entry points and Developer APIs retain development defaults. An explicit
+Independent V0-V3 entry points retain development defaults. An explicit
 CLI `--runtime-config config/runtime.acceptance.yaml` opts a tools runner into acceptance.
 Snapshots record the complete selected policy and its digest. New optional/default fields
 are omitted from legacy development serialization, preserving old snapshot hashes.
@@ -116,7 +116,7 @@ input includes schema and a 2,048-token framing reserve within the acceptance to
 allowance in the table. Lower extraction/introduction output caps remain applicable.
 Oversized input fails before dispatch without truncating requirements or evidence.
 The optional group is absent from legacy snapshots and default development behavior.
-It applies through the Product/Developer dependency factory and explicit tools-CLI policy
+It applies through the Product/programmatic dependency factory and explicit tools-CLI policy
 selection; injected external clients retain responsibility for their own limits.
 
 The typed ceilings distinguish provider capacity from the profile's operating allowance.
@@ -667,7 +667,7 @@ keys are rejected. Unauthorized canonical repeats remain automatic policy target
 authorized revisits remain protected, and unassessed multiplicity stays UNKNOWN.
 The internal optional review-target list no longer accepts repetition. Historical captures
 retain their original schemas and may require the matching historical code for replay.
-Product selects acceptance while Developer and independent V3 default to development;
+Product selects acceptance while independent V3 defaults to development;
 restart existing backend processes to reload cached configuration.
 CLI `--no-repair-quantity-review` still explicitly disables quantity
 review for one run. Budgets, operation permissions and V0-V2 behavior are unchanged.

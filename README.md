@@ -29,7 +29,7 @@ and targeted repair affect itinerary quality.
 
 The online link is an interactive design prototype with browser-local accounts
 and data. The full application runs locally with FastAPI and PostgreSQL; its
-Product interface uses V3, while Developer mode exposes all four versions.
+Product interface uses V3; independent command-line entry points expose all four versions.
 
 ## How it works
 
