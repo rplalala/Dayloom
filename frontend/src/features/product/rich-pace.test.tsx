@@ -3,6 +3,7 @@ import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { afterEach, expect, it, vi } from "vitest";
 import { routes } from "../../app/router";
 import { createBrief, pacePrompts, togglePace } from "./editor";
+import type { ProductDetail } from "./detail/types";
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
@@ -29,10 +30,12 @@ it.each(["selection", "account default", "restored draft", "replan"])(
         schema_version: "product_detail_1", id: "saved", title: "Saved Rich trip",
         destination: "Sydney", provenance: "generated", trust: "generated_projection",
         request: sourceRequest, days: [], nearby: [], transfers: [],
-        completion: { pace_review: { status: "partial", days: [
+        completion: { policy_completion: "unassessed", policy_reasons: [],
+          preference_coverage: [], minimum_daily_coverage: [],
+          pace_review: { status: "partial", days: [
           { date: "2026-09-12", count: 2, target_count: 3, state: "residual" },
         ] } },
-      });
+      } satisfies ProductDetail);
       if (url === "/api/planning/tasks" && options?.method === "POST") {
         const body = JSON.parse(String(options.body));
         requests.push(body.request);
