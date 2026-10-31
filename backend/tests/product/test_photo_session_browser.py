@@ -146,7 +146,11 @@ class PhotoBoundary:
                                 "url": "https://www.google.com/maps/contrib/123",
                             }
                         ],
-                        "source_url": "https://www.google.com/maps/photo/fixture",
+                        "source_url": (
+                            None
+                            if slot == "activity:stop-19"
+                            else "https://www.google.com/maps/photo/fixture"
+                        ),
                     }
                     for slot in slots
                 }

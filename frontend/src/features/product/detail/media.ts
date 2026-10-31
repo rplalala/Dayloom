@@ -9,7 +9,7 @@ export type DisplayMedia = {
   provider?: string;
   authors?: { name: string; url?: string | null }[];
   alt?: string;
-  source_url?: string;
+  source_url?: string | null;
 };
 export const PlaceMedia = createContext<Record<string, DisplayMedia>>({});
 export const PlaceMediaActions = createContext<{

@@ -65,7 +65,7 @@ export function validPhoto(value: unknown): value is DisplayMedia {
   const media = value as DisplayMedia;
   return media.status === 'available' && media.kind === 'verified_place' && media.provider === 'Google Maps' &&
     safeUrl(media.image_url, ['googleusercontent.com'], true) &&
-    safeUrl(media.source_url, ['www.google.com', 'maps.google.com']) &&
+    (media.source_url == null || safeUrl(media.source_url, ['www.google.com', 'maps.google.com'])) &&
     Array.isArray(media.authors) && media.authors.length <= 100 && media.authors.every(author =>
       author && typeof author.name === 'string' && author.name.length <= 2000 &&
       (author.url == null || safeUrl(author.url, ['www.google.com', 'maps.google.com']))) &&

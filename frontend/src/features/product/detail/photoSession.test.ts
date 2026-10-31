@@ -20,6 +20,12 @@ it('expires thirty minutes after acquisition without extending on reads or resto
   expect(readPhoto(resource, scope(), 'museum')).toBeUndefined();
 });
 
+it.each([null, undefined])('reuses successful photos when the provider omits the optional source link (%s)', source => {
+  writePhoto(resource, scope(), 'museum', { ...photo, source_url: source });
+  expect(readPhoto(resource, scope(), 'museum')?.image_url).toBe(photo.image_url);
+  expect(readPhoto(resource, scope(), 'museum')?.authors).toEqual(photo.authors);
+});
+
 it('separates account, generation, resource, snapshot and requested dimensions', () => {
   const original = scope();
   writePhoto(resource, original, 'museum', photo);

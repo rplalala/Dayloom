@@ -332,6 +332,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     };
     const storage = (event: StorageEvent) => {
       const owner = accountRef.current?.id || recovery.current.owner;
+      if (owner && event.key === activeKey && activeLogin()?.id === owner) {
+        invalidatePhotos({ owner });
+        epoch.current++;
+        accountRef.current = null;
+        setAccount(null);
+        setStatus('loading');
+        void refresh();
+        return;
+      }
       if (owner && (event.key === null || event.key === invalidationPrefix + owner || event.key === activeKey)) {
         epoch.current++;
         clear();
