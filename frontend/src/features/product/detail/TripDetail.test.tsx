@@ -83,15 +83,55 @@ const detail: ProductDetail = {
 };
 
 describe("Product detail", () => {
+  it('keeps an unmet named visit visible even without category coverage records', () => {
+    render(<MemoryRouter><TripDetail detail={{ ...detail, completion: {
+      policy_completion: 'incomplete', policy_reasons: ['required_visit_obligation_unmet'],
+      preference_coverage: [], minimum_daily_coverage: [], attention_items: [{
+        title: 'Sydney Opera House', description: 'Your requested visits or dates for this place are not fully arranged.',
+      }],
+    } }} /></MemoryRouter>);
+    expect(within(screen.getByRole('region', { name: 'Still to arrange' })).getByText('Sydney Opera House')).toBeVisible();
+    expect(screen.queryByText('required_visit_obligation_unmet')).not.toBeInTheDocument();
+  });
+  it('labels shared-quote experiences separately and navigates only a known planned visit', async () => {
+    const user = userEvent.setup();
+    const source = 'Must include: an art museum, a waterfront walk.';
+    const journey: ProductDetail = { ...detail, provenance: 'generated', trust: 'generated_projection',
+      days: [{ ...detail.days[0], activities: [{ ...detail.days[0].activities[0], place_name: 'Art Gallery', activity_kind: 'main_poi' },
+        { ...detail.days[0].activities[0], activity_id: 'walk', title: 'Waterfront walk', activity_kind: 'generic_activity', place_name: null }] }],
+      completion: { policy_completion: 'incomplete', policy_reasons: [], preference_coverage: [], minimum_daily_coverage: [],
+        required_experiences: [
+          { requirement: 'An art museum', source_quotes: [source], target: 1, scheduled: 2, frequency: 'one_off', status: 'satisfied', reason: 'supported_visit_coverage',
+            planned_visits: [{ activity_id: 'later', date: '2026-10-15', place_name: 'Art Gallery' }] },
+          { requirement: 'A waterfront walk', source_quotes: [source], target: 1, scheduled: 0, frequency: 'one_off', status: 'unverified', reason: 'matching_evidence_incomplete',
+            planned_visits: [{ activity_id: 'invented', date: '2026-10-16', place_name: 'Imaginary promenade' }] },
+          { requirement: 'A science museum', source_quotes: [], target: 1, scheduled: 0, frequency: 'one_off', status: 'unmet', reason: 'required_visits_not_scheduled' },
+        ] },
+    };
+    render(<MemoryRouter><TripDetail detail={journey} /></MemoryRouter>);
+    expect(within(screen.getByRole('region', { name: 'Trip highlights' })).getByText('An art museum')).toBeVisible();
+    const confirmation = screen.getByRole('region', { name: 'Needs confirmation' });
+    expect(within(confirmation).getByText('A waterfront walk')).toBeVisible();
+    expect(within(confirmation).getByText('Confirm the exact place or route for this experience before you go.')).toBeVisible();
+    expect(within(screen.getByRole('region', { name: 'Still to arrange' })).getByText('A science museum')).toBeVisible();
+    expect(within(screen.getByRole('region', { name: 'Still to arrange' })).queryByText('A waterfront walk')).not.toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'Trip highlights' })).queryByText('A waterfront walk')).not.toBeInTheDocument();
+    expect(screen.queryByText(source)).not.toBeInTheDocument();
+    expect(screen.queryByText(/matching visits|At least|Some travel details/)).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Imaginary promenade/ })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'View Art Gallery · Oct 15' }));
+    expect(screen.getByRole('group', { name: 'Art Gallery on 2026-10-15' })).toHaveFocus();
+  });
   it.each(["preview", "saved"] as const)("retains unmet required experiences in %s", mode => {
     render(<MemoryRouter><TripDetail mode={mode} detail={{ ...detail, completion: {
       policy_completion: "incomplete", policy_reasons: [], preference_coverage: [], minimum_daily_coverage: [],
       required_experiences: [{ requirement: "Include a botanical garden", source_quotes: ["A botanical garden is required."], target: 1, scheduled: 0,
         frequency: "one_off", status: "unmet", reason: "no_confirmed_match" }],
     } }} /></MemoryRouter>);
-    expect(screen.getByRole("heading", { name: "Required experiences" })).toBeVisible();
-    expect(screen.getByText("A botanical garden is required.")).toBeVisible();
-    expect(screen.getByText(/No confirmed matching place was found/)).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Still to arrange" })).toBeVisible();
+    expect(screen.getByText("Include a botanical garden")).toBeVisible();
+    expect(screen.getByText(/This experience is still missing/)).toBeVisible();
+    expect(screen.queryByText(/matching visits scheduled|At least|A botanical garden is required/)).not.toBeInTheDocument();
     expect(screen.queryByText(/no_confirmed_match|semantic_1/)).not.toBeInTheDocument();
   });
   it.each(["preview", "saved"] as const)("keeps an unmet Rich pace visible in %s", mode => {
@@ -101,7 +141,7 @@ describe("Product detail", () => {
         { date: "2026-10-15", count: 2, target_count: 3, state: "residual" },
       ] },
     } }} /></MemoryRouter>);
-    expect(screen.getByText("Rich pace is not fully met. Some days do not have three main visits.")).toBeVisible();
+    expect(screen.getByText("Some days have a lighter schedule than your chosen pace.")).toBeVisible();
     expect(screen.queryByText(/Repair success|Repair complete/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/rtpeval|ACCEPTED_PARTIAL|residual/)).not.toBeInTheDocument();
   });

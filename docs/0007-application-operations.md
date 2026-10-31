@@ -154,17 +154,34 @@ completion and uncertainty; persistence does not imply global feasibility.
 Optional `completion.required_experiences` preserves each supported
 [required category visit](0002-requirements-evidence.md#required-category-visits), its
 original quote, target, scheduled count and satisfied/unmet/unverified explanation.
+Optional `planned_visits` carries only supported final activity/date/place associations.
 Preview, Save, reopening and export retain this projection. Matching is a semantic
 judgment grounded in supplied place information, not an operating-fact guarantee.
 Historical records without the field or without a captured failure reason are not
-backfilled with inferred diagnoses.
+backfilled with inferred diagnoses. The detail and text summary use each normalized
+experience label, separating Trip highlights, Needs confirmation and Still to arrange.
+Satisfied experiences appear as highlights; unverified experiences ask the traveler to
+confirm their exact place or route, while unmet experiences remain to arrange. A generic
+supporting activity can already be scheduled while its corresponding experience remains
+unverified; a matching title does not change fulfillment. Text summaries use the same
+distinction without rewriting native statuses or counts. Raw matching counts, thresholds,
+shared source sentences and evidence-state prose are not displayed.
+Optional `completion.attention_items` preserves named-place and dated hard-request gaps
+as traveler-facing titles/descriptions, with known associations where available. Existing
+legacy named-gap reason codes receive a conservative explanation without inventing a
+place name/date. Unverified imports do not acquire fulfilled highlights or trusted navigation.
+The JSON artifact retains the original supported diagnostic projection as source content.
+Place links use only activity/date/name combinations actually present in the detail;
+replanning remains the explicit existing action and restores only basic trip information.
 For new Rich results, optional `completion.pace_review` preserves the
 [final V3 completion](0005-validation-repair%28v3%29.md#final-rich-completion) status and
 each applicable day's `date`, `count`, `target_count` and `state`. It carries no internal
 scores, finding IDs or debug flags. The same projection survives task result delivery,
 preview, Save and reopening. A partial preview remains a valid returned itinerary and
-does not acquire a successful-Repair badge. The detail page explains unmet Rich dates
-or unresolved travel checks in plain travel language; sourced exceptions retain a
+does not acquire a successful-Repair badge. The detail page explains a genuinely lighter
+Rich schedule in plain travel language; generic unavailable/not-attempted checking
+warnings are omitted, while local route, opening and price uncertainty remains visible.
+Sourced exceptions retain a
 separate indication. Historical records without this optional field keep their original
 completion content, without backfilling or relabelling.
 
@@ -446,6 +463,42 @@ prevent late responses from changing another brief or page. Saved results offer 
 controlled detail link. HTTP/SSE completed-task adapters read normalized saved detail when
 available and otherwise expose a safe `preview_decision`, including discarded/deleted
 receipts, so clearing a pending snapshot does not break completed observation.
+
+### Activity roles and timeline presentation
+
+The final planner's `activity_kind` survives Product projection, preview, normalized
+Save/read, application recreation and independent copy. Its values are `main_poi`,
+`generic_activity`, `transport`, `free_time` and `unknown`; role is independent of
+`time_use`. A scheduled meal, rest or exploration activity remains scheduled and
+does not become a free window or add a principal visit. Tools-based principal eligibility
+uses the [shared source/assessment boundary](0003-itinerary-transport.md); persistence
+does not reinterpret historical roles or time-use declarations.
+
+Principal visits use prominent place cards. Supporting (`generic_activity`) activities
+use compact, solid-border white cards with their own timeline dot, start/end times,
+title, description and accessible Details action. They remain distinct without a photo,
+including on mobile. Directed transfers retain the existing dashed connector, duration,
+distance and uncertainty. An explicitly declared transport activity uses that connector
+structure with its supplied interval and no activity dot/photo; it does not create a
+new transfer or imply new endpoint identities. Nearby remains optional and unscheduled,
+with the existing anchor/date rules.
+
+Migration `009_activity_roles.sql` adds role and nullable `atmosphere_theme` columns
+without modifying prior migration checksums. Optional themes pass through the existing
+strict model DTO/mapper and Product lifecycle; missing supporting themes use the general
+fallback without another model call or title classification. The
+[supporting atmosphere adapter](#supporting-atmosphere-photos) owns their bounded mapping.
+Transport is excluded from fresh activity-photo bindings.
+
+Missing historical roles remain unknown, and missing themes remain absent. Neither
+titles, illustrations, photo bindings nor map links establish a role. Neutral unknown/null
+fields are omitted from detail JSON to preserve legacy canonical import fingerprints
+and same-key receipt recovery. Non-neutral role/theme declarations survive JSON export
+and import as display claims; imported details retain `unverified_import` trust and
+never gain verified place/media identity or requirement fulfillment from these fields.
+No historical role backfill runs automatically. A future targeted backfill requires
+a dry-run and exact matching to trustworthy final-role material; intermediate/proposal
+traces alone cannot authorize it.
 
 ### Independent trip copies and kept examples
 
@@ -816,11 +869,13 @@ maps, with identical response and work bounds. Each request admits 200–1280px 
 at most 12 ordered slots, three parallel resolutions and a 30-second batch deadline.
 There is no itinerary-wide slot cap. Repeated `slot` parameters select only server-authorized
 bindings; an unknown slot is unavailable without a provider call. Without explicit slots,
-`offset` and `next_offset` page through all bindings. The browser requests every activity
-in itinerary order followed by Nearby, in sequential batches, rather than using JSONB key order.
+`offset` and `next_offset` page through all bindings. The browser requests verified-place
+activity slots in itinerary order followed by Nearby, in sequential batches, rather than
+using JSONB key order. Supporting slots use their separate authorized atmosphere path.
 Each Google slot performs at most
 one fresh `photos` Details request and one media metadata request, with an 8-second HTTP
-timeout, an 8-second complete-slot deadline and 256 KiB response limit. Completed photos
+timeout, an 8-second complete-slot deadline and 256 KiB response limit. The complete-slot
+deadline includes any provider fallback. Completed photos
 survive another slot's timeout or a later failed batch. Redirects and arbitrary fetch destinations are
 rejected. Responses retain `Cache-Control: no-store`; the backend has no photo metadata
 cache or automatic retry. The browser's explicit session cache below determines which
@@ -828,23 +883,54 @@ slots need fresh metadata. Activity and Nearby lists display authorized photogra
 when an owned itinerary or curated example opens. **Refresh photo** in a place dialog
 resolves only the selected slot, without replanning or refreshing itinerary facts.
 
+#### Place photo fallback
+
+For authorized activity and Nearby slots, Google remains the first provider. A successful
+Google Details response with absent or empty `photos` triggers an Unsplash search. The
+bounded query uses only the owned detail's structured place name and destination, falling
+back to destination or the fixed general search when labels are absent. Activity titles,
+private notes, preferences and complete itinerary bodies are not sent. Client query text,
+unbound slots and imported place-ID claims cannot authorize a search.
+
+Only a valid empty result list advances to a second search using the normalized structured
+destination alone. If that query equals the first query ignoring case, it is not repeated.
+The chain is **Google → Unsplash place name plus destination → destination atmosphere →
+illustration**, with at most two distinct Unsplash searches and only the first result of
+each. Both searches use the same [first-result validation and adoption rules](#supporting-atmosphere-photos)
+as supporting imagery. A missing key, unsafe or malformed first result, tracking failure,
+HTTP error or timeout stops resolution with an illustration; it does not broaden the search.
+Google authentication, quota, timeout, malformed-metadata and invalid-image-reference
+failures do not masquerade as confirmed photo absence. All stages share the original
+8-second complete-slot and 30-second batch deadlines, without additional retries or a
+server cache. Preview, Save/read, independent Copy and curated examples retain the chain.
+The legacy curated London endpoint uses its existing Tower Bridge binding; its fallback
+alt describes London atmosphere, while a verified Google photo retains the landmark alt.
+
+The display result carries `kind: atmosphere`, `theme: general` and
+`fallback: google_no_photos`. Details shows Atmosphere photo, Unsplash and the supplied
+photographer/source links as static text; the list keeps its original main-visit or
+Nearby layout. This imagery establishes neither a verified photograph of that place nor
+new identity, role or fulfillment authority. No native itinerary or saved binding is rewritten.
+
 #### Browser tab photo session
 
-The local/private Product uses `sessionStorage` to retain successful verified-place
-photo URLs with Google Maps attribution and all supplied author/source links. An omitted
+The local/private Product uses `sessionStorage` to retain successful verified-place,
+place-fallback, supporting-atmosphere and cover photo URLs with supplied attribution and safe author/source
+links. An omitted
 optional source link does not prevent caching a valid photograph. The cache does not
 store image bytes, credentials, tokens, full itineraries or private media bindings.
 This is an application-managed metadata cache, independent of HTTP image caching;
 it does not change the media endpoint's `no-store` response directive.
 
-Each entry expires **30 minutes after successful acquisition**. Reads and reloads never
-extend expiry. Storage is bounded to **200 entries and approximately 1 MiB of serialized
+Each entry expires **one hour after successful acquisition**. Reads and reloads never
+extend expiry. Storage is bounded to **1,000 entries and approximately 5 MiB of serialized
 data**, evicting the oldest entries first. Corrupt/unsupported records, future timestamps,
 disallowed URLs, denied storage and quota failures fall back to ordinary media loading.
 Only successful photos are retained; loading, unavailable and error states are not cached.
 
 Keys separate account, login/invalidation generation, endpoint/resource identity,
-detail snapshot fingerprint, requested dimensions and slot. Saved trips, previews,
+detail snapshot fingerprint, provider, media kind, controlled theme, requested dimensions
+and slot. Saved trips, previews,
 independent copies and public examples cannot share private entries. Bundled examples
 use a guest scope. The snapshot fingerprint detects changes; it grants no authorization.
 Private photos remain hidden until authentication and the server's owned-detail read
@@ -858,13 +944,16 @@ and late responses cannot render or persist into an invalidated scope.
 Logout, session expiry/revocation, account switch and cross-tab session invalidation
 clear private entries and hide their active photos. Confirmed trip deletion and preview
 decisions invalidate the relevant resource. Changed snapshots or slot sets cannot reuse
-old entries. A media 401 clears the owner's photos; 403/404 invalidates the resource.
+old entries. Google and supporting endpoints share the same resource invalidation identity,
+including size-query variants, so these events fence both provider families. A media 401
+clears the owner's photos; 403/404 invalidates the resource.
 Normal authentication and ownership checks remain required after every page reload.
 
 A cached URL that fails image loading is evicted and receives **one automatic
 reacquisition per slot per display cycle**. A further failure shows an illustration
 with **Retry photo**. Manual refresh/retry affects only that slot and cannot extend
-neighboring entries' expiry. Photographs still load directly from Google's image host;
+neighboring entries' expiry. A failed supporting image instead removes the thumbnail,
+retaining the compact activity card. Photographs load directly from the provider image host;
 cache hits do not guarantee zero image network requests or zero billing.
 
 Reload retains the tab's storage session, and normal tab closure ends it. Browser
@@ -874,25 +963,92 @@ isolation for browser-created duplicate tabs. External application links use `no
 There is no unconditional `beforeunload`/`pagehide` purge, durable browser storage,
 server/CDN image cache, service worker or cross-tab photo-sharing mechanism.
 
-The separate fixed destination/atmosphere catalog continues resolving metadata on
-display; this cache covers itinerary activity and Nearby slots. Provider-license review
+Destination covers and the fixed atmosphere catalog share this cache's lifetime, count and
+byte budget with itinerary activity and Nearby slots. Cover keys use the canonical request
+endpoint (including destination and requested dimensions), account/login generation,
+provider/kind and a dedicated cover snapshot/slot identity. Same-destination cards, results,
+drafts and detail heroes reuse metadata within an account; guest examples and the login
+image use a separate public scope. A cover is destination-level display metadata, so deleting
+an individual itinerary does not remove a cover shared with another itinerary. Account
+invalidation still clears all private covers and rejects their delayed writes. Provider-license review
 and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
+
+Successful place fallbacks use distinct Unsplash/atmosphere/place-fallback keys within the
+original owner, resource, snapshot, dimensions and slot boundaries. They never borrow
+supporting-theme aliases or another place's slot. A hit bypasses both provider stages and
+preserves acquisition time; unavailable results remain uncached. Selected refresh evicts
+only that slot's Google/fallback alternatives before resolving the chain again. Existing
+resource/account fences also reject delayed fallback writes. Valid legacy Google entries
+retain their original acquisition timestamps during compatibility handling.
+
+#### Supporting atmosphere photos
+
+`GET /api/{previews|trips}/{id}/supporting-media` reads the owner's actual detail and
+admits only explicitly scheduled `generic_activity` slots. Unknown historical roles,
+principal visits, transport and free windows do not acquire atmosphere slots from a
+title, photo or map link. Imported declarations remain display hints; an atmosphere
+photo never creates a verified place binding or requirement fulfillment.
+
+The search prefixes the following fixed theme suffix with the owner's normalized
+structured destination, bounded to 120 characters. For example, the `walk` theme searches
+`Melbourne scenic walk` or `New York scenic walk`. Missing destinations leave the card
+without imagery. Client destination/query overrides, activity titles and private text do
+not influence this server-owned context.
+
+| Structured theme | Fixed public search suffix |
+| --- | --- |
+| `meal` | `relaxed meal` |
+| `rest` | `peaceful rest` |
+| `explore` | `neighborhood exploration` |
+| `walk` | `scenic walk` |
+| `general` | `travel moments` |
+
+The existing server-side Unsplash key and provider boundary search page 1 with
+`per_page=1`, `order_by=relevant`, `orientation=landscape` and `content_filter=high`.
+Only `results[0]` may be adopted. The adapter validates the image, photographer/source
+links and exact returned photo download-tracking path, preserving hotlink parameters.
+Automatic selection records one adoption through the returned `download_location`;
+ordinary display/reload of valid cached metadata records none. There is no second-result
+choice, second Unsplash query, LLM picker, arbitrary query/URL proxy or retry. Private notes,
+preferences and itinerary bodies are not sent to this search.
+
+The existing slot, parallelism, HTTP/slot and batch bounds apply. Same-theme work is
+merged within a batch and across concurrent browser consumers. Session aliases stay
+within the same account/login/resource/snapshot/provider/kind/theme/dimension boundary,
+retain slot ownership and copy the original acquisition timestamp. Failure states may
+be shared during the active page attempt but are not persisted. A search-version marker
+prevents reuse of older theme-only images after destination-aware search is deployed;
+destination changes also change the existing detail snapshot fingerprint. Valid pre-extension
+Google cache keys are upgraded on read without resetting timestamps or refetching.
+Google-specific URL rules remain separate and unchanged.
+
+Supporting cards request 360×240 metadata and display 4:3 thumbnails at 112×84px on desktop
+and 88×66px at widths up to 800px, with 10px rounded crops. Thumbnails open the
+existing Details dialog. The Atmosphere photo label, Unsplash provider, photographer and
+source links appear only in Details as static, readable content, with keyboard/touch access.
+The image container accommodates the full caption and label without clipping; Escape
+closes the dialog even when a source link has focus. Missing credentials,
+empty/unsafe first results, tracking failure, timeout, rate limits or image failure leave
+the compact white card without imagery. Its time, title, notes and navigation remain
+usable; detail Refresh photo targets only its slot. Destination covers use their
+[separate cover boundary](#destination-covers) and cache identity within the shared budget.
 
 #### Photo presentation
 
-Activity thumbnails use a 4:3 crop and align with the text's top edge on desktop and
-tablet, including long introductions. At widths up to 560px they use a full-width
+Principal and historical activity thumbnails use a 4:3 crop and align with the text's
+top edge on desktop and tablet, including long introductions. At widths up to 560px they use a full-width
 16:9 crop above the text. Nearby thumbnails remain square across sidebar and inline
 rows. Both use cover cropping, consistent rounded corners and restrained spacing.
 
-Activity and Nearby lists show photographs without provider or author captions. The
+Verified-place activity and Nearby lists show photographs without provider or author captions. The
 place detail dialog contains Google Maps attribution, all supplied author names and
 safe profile/source links beside the photograph. The label uses `translate="no"`,
 an unwrapped 12px normal-weight sans serif label and gray text on a light background.
 Unavailable metadata, absent identity/keys and expired/failed image loads retain the
 labelled illustration. Unattempted slots show Photo pending and active batches show Loading photo;
 neither is labelled unavailable before an attempt finishes. Preview access and Save remain independent of media success.
-Unsplash atmosphere-credit disclosure is unchanged.
+Destination covers and fixed hero images retain their existing atmosphere-credit disclosure.
+Supporting images follow the [Details attribution rule](#supporting-atmosphere-photos).
 
 This list/detail split does not meet Google's documented requirement to include
 provided author attribution wherever the photograph is displayed. Keeping attribution
@@ -907,17 +1063,42 @@ vocabulary without serialized internal objects; the versioned JSON export retain
 its existing compatibility contract. Developer/research data and entry points are
 unchanged.
 
-Public `/api/media/curated/{sydney|london|nature}` uses two fixed officially identified Unsplash
-photo pages, resolving current API image/photographer metadata at display time. The
-Sydney harbour image is destination imagery; mountain imagery is explicitly general
-atmosphere. London resolves the curated example's verified Tower Bridge binding through
-the existing Google photo adapter. Destination covers follow the itinerary's city;
-the atmosphere catalog itself grants no additional attraction/business-photo authority.
-Unsplash hotlink tracking parameters survive bounded image resizing, and its photographer/source links carry
-application referral parameters. Credits appear on image hover or keyboard focus;
+#### Destination covers
+
+Itinerary detail, My trips and example cards, planning results and draft covers use public
+`GET /api/media/destination?destination=...`. The only search text is the structured
+destination label: whitespace is normalized and the query is bounded to 120 Unicode code
+points. Empty labels do not initiate provider work. The endpoint admits 200–1280px dimensions,
+uses `Cache-Control: no-store`, and shares the existing server-side Unsplash adapter and
+first-result validation/adoption rules. One search and its adoption share an eight-second
+complete deadline; the query is the destination itself, without an additional theme or
+fallback query. Only the first result is eligible. Missing credentials, empty or unsafe
+metadata, failed adoption, provider errors/timeouts and failed image loads display the
+stable local illustration. They never substitute a fixed photo from another city.
+
+Successful cover metadata uses the [browser tab photo session](#browser-tab-photo-session).
+Valid reload/navigation hits bypass both the metadata endpoint and its provider search/adoption.
+Reads do not renew acquisition time. Same-key concurrent mounts, including StrictMode,
+share request leases; abandoned work is canceled when its final consumer leaves. A failed
+cached image is evicted and receives one automatic reacquisition per display cycle; a
+further failure shows the illustration. Unavailable/error metadata is not cached. Denied
+storage and quota errors preserve ordinary display without reusable metadata. This stores
+URLs and credits, not image bytes, and does not guarantee zero image-host network traffic.
+Changing the destination cancels the previous request and fences its late response.
+The alt describes destination atmosphere, without granting verified place,
+role or experience fulfillment authority. Different queries may still yield the same
+provider-selected first photograph; no randomization or cross-city deduplication is added.
+
+Login retains its fixed Sydney image. The existing public
+`/api/media/curated/{sydney|london|nature}` catalog remains compatible: Sydney/nature resolve
+fixed Unsplash metadata, and London uses its curated example's Tower Bridge binding. These
+catalog choices no longer select itinerary destination covers.
+
+Unsplash hotlink tracking parameters survive bounded image resizing, and photographer/source
+links carry application referral parameters. Cover credits appear on image hover or keyboard focus;
 a small information control also opens them on touch devices, with explicit Close and
 Escape support. Credits remain operable above image navigation links and hero shading.
-There is no image search, image selection/download, avatar storage or photo archive. Missing access/media uses stable local illustrations.
+No image-byte archive, avatar storage, manual image picker or download proxy is added.
 This adapter follows the [Unsplash API documentation](https://unsplash.com/documentation)
 and [API guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines).
 Optional server keys and controlled acceptance are documented in the

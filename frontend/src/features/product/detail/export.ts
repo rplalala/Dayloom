@@ -25,9 +25,10 @@ export function summaryText(detail: ProductDetail) {
     'Confirm opening hours, prices and weather before you travel.',
   ];
   for (const row of detail.completion?.required_experiences || []) {
-    lines.push('', row.source_quotes.join(' ') || row.requirement,
-      `${row.scheduled} matching visits scheduled · ${row.frequency === 'exact' ? 'Exactly' : 'At least'} ${row.target} required`, requiredExperienceNotice(row));
+    lines.push('', row.requirement, requiredExperienceNotice(
+      detail.trust === 'unverified_import' ? { ...row, status: 'unverified' } : row));
   }
+  for (const item of detail.completion?.attention_items || []) lines.push('', item.title, item.description);
   for (const day of detail.days) {
     lines.push('', day.date);
     const weather = day.weather;

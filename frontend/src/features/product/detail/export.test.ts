@@ -10,8 +10,10 @@ describe('faithful shared exports', () => {
       required_experiences: [{ requirement: 'Visit a science centre', source_quotes: ['A science centre is required.'], target: 1, scheduled: 0, frequency: 'one_off', status: 'unverified', reason: 'matching_evidence_incomplete' }],
     } };
     expect(exportArtifact(unresolved).completion).toEqual(unresolved.completion);
-    expect(summaryText(unresolved)).toContain('A science centre is required.');
-    expect(summaryText(unresolved)).toContain('This requirement remains unresolved.');
+    expect(summaryText(unresolved)).toContain('Visit a science centre');
+    expect(summaryText(unresolved)).toContain('Confirm the exact place or route');
+    expect(summaryText(unresolved)).not.toContain('This experience is still missing');
+    expect(summaryText(unresolved)).not.toMatch(/matching visits scheduled|At least/);
   });
   it('exports one versioned reusable wrapper without server authority', () => {
     const exported = exportArtifact(detail);

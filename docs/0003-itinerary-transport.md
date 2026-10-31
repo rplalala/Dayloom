@@ -24,6 +24,18 @@ validity. Nearby identities resolve against that acquisition's evidence, which c
 from the primary supply. The application preserves attribution and deduplicates references
 against scheduled identities. An unused supply candidate is not automatically a reference.
 
+For new tools-based `itinerary_3` output, a declared `main_poi` must have an authorized
+acquired identity and an existing semantic assessment with `main_eligible=true`.
+Generation acceptance, V3 patch adoption/final selection and final Product projection
+use the same eligibility check. An unavailable place or missing/ineligible assessment
+cannot be replaced by a generic title, broad area or photo. Supported special-experience
+exceptions remain eligible under the existing assessment policy. A specific acquired
+promenade, park or lookout can ground a waterfront experience when its supplied semantic
+match supports it; a generic supporting walk cannot fulfill a required principal visit.
+Photo availability does not affect eligibility. V0 keeps its pure-model name proxy,
+and historical itinerary formats retain their compatibility path. No new model call,
+V1/V2 Repair stage or budget increase is introduced by this boundary.
+
 At V1-V3 output acceptance, each authorized `source_place_id` owns `place_name` and
 `location`: the application copies the supplied normalized PlaceEvidence's `name` and
 complete `formatted_address`, including null when the provider has no address. Model
@@ -293,6 +305,13 @@ being counted as scheduled visits. A generic free-window suggestion must not
 claim a completed booking, confirmed admission or a required visit's fulfillment.
 An original hard required visit is still checked independently; changing its
 output label does not remove that obligation or prove fulfillment.
+
+Optional `atmosphere_theme` is a display hint independent of role, time use and identity.
+The domain field remains optional and absent/null values preserve legacy serialization.
+The strict Foundry Activity, Primary and Civil transport DTOs carry a required nullable
+controlled value, and their shared mapper retains it without an extra model invocation.
+The [Product atmosphere contract](0007-application-operations.md#supporting-atmosphere-photos)
+defines its allowed themes, search mapping and media behavior.
 
 A primary park visit must be declared as such and carry its actual proposed
 place name; V0 may use a name without an external ID. V1-V3 retain authorized

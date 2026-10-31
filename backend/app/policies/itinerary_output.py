@@ -69,7 +69,29 @@ def output_role_summary(itinerary, supply):
     )
 
 
-def validate_output_sources(itinerary, *, places=None, supplied_ids=()):
+def validate_principal_places(itinerary, places, supplied_ids, assessments):
+    """New tools principals need both acquired identity and existing semantic eligibility."""
+    if itinerary.output_version != "itinerary_3":
+        return
+    allowed = set(supplied_ids)
+    acquired = {p.place_id: p for p in places if p.place_id in allowed}
+    rows = {row.place_id: row for row in assessments}
+    for day in itinerary.days:
+        for activity in day.activities:
+            if activity.activity_kind != "main_poi":
+                continue
+            place = acquired.get(activity.source_place_id)
+            row = rows.get(activity.source_place_id)
+            if (
+                place is None
+                or getattr(place, "availability", None) == "unavailable"
+                or row is None
+                or not row.main_eligible
+            ):
+                raise ValueError("Principal visit requires an eligible acquired place")
+
+
+def validate_output_sources(itinerary, *, places=None, supplied_ids=(), semantic_assessments=None):
     """Validate V0 output or restore supplied V1-V3 source facts at acceptance.
 
     Missing scheduled REQUIRED visits are observable in OutputRoleSummary, not repaired.
@@ -95,6 +117,8 @@ def validate_output_sources(itinerary, *, places=None, supplied_ids=()):
             "V1-V3 model transport activities are not allowed; use application transfers"
         )
     ledger = {p.place_id: p for p in places if p.place_id in supplied_ids}
+    if semantic_assessments is not None:
+        validate_principal_places(validated, places, supplied_ids, semantic_assessments)
     from backend.app.policies.schedule_time import ScheduleTimeContext, validate_endpoint
 
     time_context = ScheduleTimeContext([p for p in places if p.place_id in supplied_ids])

@@ -142,6 +142,7 @@ def test_nested_planning_serialization_schema_keeps_activity_contract() -> None:
     assert set(schema["properties"]) == {
         "activity_id",
         "activity_kind",
+        "atmosphere_theme",
         "time_use",
         "title",
         "place_name",

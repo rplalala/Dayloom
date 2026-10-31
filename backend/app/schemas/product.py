@@ -7,6 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field, PrivateAttr
 
 from backend.app.evidence.models import WeatherDayEvidence
 from backend.app.schemas.generation_diagnostics import MinimumDailyCoverage
+from backend.app.schemas.itinerary import ActivityKind, AtmosphereTheme
 from backend.app.schemas.request import Money, TravelRequirements
 
 
@@ -33,6 +34,8 @@ class ProductNearby(ProductModel):
 
 class ProductActivity(ProductModel):
     activity_id: str
+    activity_kind: ActivityKind = "unknown"
+    atmosphere_theme: AtmosphereTheme | None = None
     time_use: Literal["scheduled", "free_window"] | None = None
     title: str
     place_name: str | None
@@ -93,7 +96,16 @@ class PaceReviewDay(ProductModel):
     state: Literal["satisfied", "residual", "unavailable", "source_overridden"]
 
 
+class ExperienceVisit(ProductModel):
+    activity_id: str
+    date: date
+    place_name: str
+
+
 class RequiredExperienceCoverage(ProductModel):
+    planned_visits: tuple[ExperienceVisit, ...] = Field(
+        default=(), exclude_if=lambda value: not value
+    )
     requirement: str
     source_quotes: list[str]
     target: int = Field(ge=1)
@@ -106,6 +118,14 @@ class RequiredExperienceCoverage(ProductModel):
     ]
     basis: Literal["model_semantic_judgment_not_operating_fact"] = (
         "model_semantic_judgment_not_operating_fact"
+    )
+
+
+class AttentionItem(ProductModel):
+    title: str
+    description: str
+    planned_visits: tuple[ExperienceVisit, ...] = Field(
+        default=(), exclude_if=lambda value: not value
     )
 
 
@@ -123,6 +143,9 @@ class PaceReview(ProductModel):
 
 class ProductPlanResult(ProductModel):
     _media_bindings: dict[str, str] = PrivateAttr(default_factory=dict)
+    attention_items: tuple[AttentionItem, ...] = Field(
+        default=(), exclude_if=lambda value: not value
+    )
     preference_coverage: tuple[PreferenceCoverage, ...] = ()
     required_experiences: tuple[RequiredExperienceCoverage, ...] = Field(
         default=(), exclude_if=lambda value: not value

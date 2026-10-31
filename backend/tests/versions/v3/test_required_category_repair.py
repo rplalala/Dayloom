@@ -113,6 +113,45 @@ def test_free_window_does_not_fulfill_required_visit_even_with_a_matching_place(
     assert report.diagnostics.policy_completion == "incomplete"
 
 
+def test_scheduled_supporting_walk_does_not_fulfill_required_principal_experience():
+    original, ctx, _, _ = setup([[visit("a", "a")]], reviews=())
+    ctx = known_matches(required_context(ctx, matched_ids=("a",)))
+    original.days[0].activities[0].activity_kind = "generic_activity"
+    original.days[0].activities[0].time_use = "scheduled"
+    report = assess(original, ctx)
+    assert report.diagnostics.goal_progress[0]["matched"] == 0
+    assert report.diagnostics.policy_completion == "incomplete"
+
+
+def test_supported_planned_place_association_survives_product_projection_without_photo():
+    from types import SimpleNamespace
+
+    from backend.app.product.preview_projection import generated_detail
+    from backend.app.services.product_presentation import present_product
+    from backend.tests.request_fixtures import make_request
+    from backend.tests.services.test_product_presentation import example
+
+    original, ctx, _, _ = setup([[visit("a", "a")]], reviews=())
+    original.days[0].activities[0].activity_kind = "main_poi"
+    original.days[0].activities[0].time_use = "scheduled"
+    ctx = known_matches(required_context(ctx, matched_ids=("a",)))
+    result, evidence = example()
+    result.itinerary, result.requirements = original, ctx.contract.requirements
+    result.generation_diagnostics = assess(original, ctx).diagnostics
+    result.v3 = SimpleNamespace(
+        final_identity_ids=ctx.original_supply_ids, final_places=ctx.places, repair=None
+    )
+    result.semantic_assessment = {
+        "assessments": [r.model_dump(mode="json") for r in ctx.semantic_assessments]
+    }
+    public = present_product(result, evidence)
+    visit_row = public.required_experiences[0].planned_visits[0]
+    assert visit_row.activity_id == "a" and visit_row.date == original.days[0].date
+    assert not public._media_bindings
+    detail = generated_detail(public, make_request())
+    assert detail.completion.required_experiences[0].planned_visits[0] == visit_row
+
+
 @pytest.mark.parametrize("matching,status", [(True, "unmet"), (False, "unmet")])
 def test_product_keeps_required_coverage_through_preview_serialization(matching, status):
     from backend.app.product.detail import ProductDetail

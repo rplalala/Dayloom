@@ -81,6 +81,15 @@ an early finish is not automatically good or bad. A REQUIRED cafe is a scheduled
 feasible. Preserve exclusions. Do not generate reference recommendations: the application
 may discover optional nearby references after the primary itinerary has been completed.
 Do not reserve or remove primary activities to fill that later section.
+Each main_poi must be a specific acquired place with a supplied canonical identity and
+an eligible principal assessment. Broad actions such as a waterfront walk or exploring
+food options are supporting generic_activity items unless grounded in a specific eligible
+place. To meet a requested experience, schedule its supported matching place and describe
+the actual experience there; an unrelated venue or an unbound supporting action cannot
+substitute for that obligation. Photos never establish place identity or eligibility.
+For a generic supporting activity, optionally set atmosphere_theme to meal, rest, explore,
+walk or general as appropriate, or null when no theme applies. This display hint is not
+a place identity or a search query.
 Named scheduled visits must use source_place_id from the supplied canonical candidate IDs
 only. Do not use discarded candidates or invent places. A generic non-venue activity may
 have null place_name and source_place_id. Do not output source_ref, provenance objects,

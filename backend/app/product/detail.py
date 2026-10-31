@@ -10,7 +10,13 @@ from typing import Annotated, Literal
 from pydantic import AfterValidator, BaseModel, ConfigDict, Field, PrivateAttr
 
 from backend.app.schemas.generation_diagnostics import MinimumDailyCoverage
-from backend.app.schemas.product import PaceReview, PreferenceCoverage, RequiredExperienceCoverage
+from backend.app.schemas.itinerary import ActivityKind, AtmosphereTheme
+from backend.app.schemas.product import (
+    AttentionItem,
+    PaceReview,
+    PreferenceCoverage,
+    RequiredExperienceCoverage,
+)
 from backend.app.schemas.request import Money
 
 
@@ -73,6 +79,12 @@ class DetailActivity(DetailModel):
         default=None, exclude_if=lambda value: value is None
     )
     activity_id: str
+    activity_kind: ActivityKind = Field(
+        default="unknown", exclude_if=lambda value: value == "unknown"
+    )
+    atmosphere_theme: AtmosphereTheme | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     title: str
     time_use: Literal["scheduled", "free_window"] = "scheduled"
     place_name: str | None = None
@@ -111,6 +123,9 @@ class DetailTransfer(DetailModel):
 
 
 class DetailCompletion(DetailModel):
+    attention_items: list[AttentionItem] = Field(
+        default_factory=list, exclude_if=lambda value: not value
+    )
     required_experiences: list[RequiredExperienceCoverage] = Field(
         default_factory=list, exclude_if=lambda value: not value
     )

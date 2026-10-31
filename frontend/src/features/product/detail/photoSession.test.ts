@@ -8,16 +8,27 @@ const photo = { status: 'available' as const, kind: 'verified_place' as const, p
   authors: [{ name: 'Fixture photographer', url: 'https://www.google.com/maps/contrib/123' }] };
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.restoreAllMocks(); });
 
-it('expires thirty minutes after acquisition without extending on reads or restored storage', () => {
+it('expires one hour after acquisition without extending on reads or restored storage', () => {
   const clock = vi.spyOn(Date, 'now').mockReturnValue(1800000000000);
   writePhoto(resource, scope(), 'museum', photo);
   const saved = sessionStorage.getItem('dayloom.photos.session.v1')!;
-  clock.mockReturnValue(1800001740000);
+  clock.mockReturnValue(1800003540000);
   expect(readPhoto(resource, scope(), 'museum')).toEqual(photo);
   sessionStorage.clear();
   sessionStorage.setItem('dayloom.photos.session.v1', saved);
-  clock.mockReturnValue(1800001800000);
+  clock.mockReturnValue(1800003600000);
   expect(readPhoto(resource, scope(), 'museum')).toBeUndefined();
+});
+
+it('reuses a valid pre-provider-key Google entry without resetting acquisition time', () => {
+  const clock = vi.spyOn(Date, 'now').mockReturnValue(1800000000000);
+  writePhoto(resource, scope(), 'museum', photo);
+  const saved = JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!);
+  saved.entries[0].key = JSON.stringify(JSON.parse(saved.entries[0].key).slice(0, 7));
+  sessionStorage.setItem('dayloom.photos.session.v1', JSON.stringify(saved));
+  clock.mockReturnValue(1800000060000);
+  expect(readPhoto(resource, scope(), 'museum')).toEqual(photo);
+  expect(JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!).entries[0].fetchedAt).toBe(1800000000000);
 });
 
 it.each([null, undefined])('reuses successful photos when the provider omits the optional source link (%s)', source => {
@@ -69,16 +80,26 @@ it('rejects restored data with future timestamps or invalid metadata', () => {
   expect(readPhoto(resource, scope(), 'museum')).toBeUndefined();
 });
 
-it('evicts oldest entries at the count and serialized byte limits', () => {
-  for (let i = 0; i < 201; i++) writePhoto(resource, scope(), `slot:${i}`, photo);
+it('retains 1000 entries and evicts the oldest when another photo arrives', () => {
+  for (let i = 0; i < 1000; i++) writePhoto(resource, scope(), `slot:${i}`, photo);
+  expect(readPhoto(resource, scope(), 'slot:0')).toEqual(photo);
+  expect(readPhoto(resource, scope(), 'slot:999')).toEqual(photo);
+  writePhoto(resource, scope(), 'slot:1000', photo);
   expect(readPhoto(resource, scope(), 'slot:0')).toBeUndefined();
-  expect(readPhoto(resource, scope(), 'slot:200')).toEqual(photo);
-  invalidatePhotos();
-  const large = { ...photo, authors: Array.from({ length: 80 }, () => ({ name: 'X'.repeat(1900) })) };
-  for (let i = 0; i < 10; i++) writePhoto(resource, scope(), `large:${i}`, large);
-  expect(new Blob([sessionStorage.getItem('dayloom.photos.session.v1')!]).size).toBeLessThanOrEqual(1048576);
+  expect(readPhoto(resource, scope(), 'slot:1')).toEqual(photo);
+  expect(readPhoto(resource, scope(), 'slot:1000')).toEqual(photo);
+}, 30000);
+
+it('retains more than 1 MiB and evicts oldest photos at the 5 MiB serialized byte limit', () => {
+  // Multibyte names exercise bytes without exhausting jsdom's code-unit quota.
+  const large = { ...photo, authors: Array.from({ length: 80 }, () => ({ name: '\u20ac'.repeat(1900) })) };
+  for (let i = 0; i < 12; i++) writePhoto(resource, scope(), `large:${i}`, large);
+  const size = new Blob([sessionStorage.getItem('dayloom.photos.session.v1')!]).size;
+  expect(size).toBeGreaterThan(1048576);
+  expect(size).toBeLessThanOrEqual(5242880);
   expect(readPhoto(resource, scope(), 'large:0')).toBeUndefined();
-  expect(readPhoto(resource, scope(), 'large:9')).toEqual(large);
+  expect(readPhoto(resource, scope(), 'large:1')).toEqual(large);
+  expect(readPhoto(resource, scope(), 'large:11')).toEqual(large);
 });
 
 it('tolerates storage denial/quota failure and stores only whitelisted display metadata', () => {

@@ -505,6 +505,11 @@ class V3PostPrimary:
                 "active_related": repair.related_targets if repair else (),
             }
         )
+        from backend.app.policies.itinerary_output import validate_principal_places
+
+        validate_principal_places(
+            final, final_context.places, ids, final_context.semantic_assessments
+        )
         final_report = assess(
             final,
             final_context,

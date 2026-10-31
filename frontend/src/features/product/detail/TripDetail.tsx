@@ -10,9 +10,10 @@ import type {
 import "./detail.css";
 import { Icon } from "../Icon";
 import { WeatherRow } from "./WeatherRow";
-import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice, requiredExperienceNotice } from "./display";
+import { monthDay, weekday, dottedDate, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice } from "./display";
+import { ExperienceGuidance } from './ExperienceGuidance';
 import { ExportControls } from './ExportControls';
-import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
+import { DestinationPhoto, PlacePhoto, SupportingPhoto } from './MediaPhoto';
 import { PlaceMedia, PlaceMediaActions, usePlaceMedia } from './media';
 import { photoFingerprint, photoGeneration } from './photoSession';
 
@@ -27,7 +28,7 @@ type Information = {
   title: string;
   icon: string;
   introduction?: string;
-  photo?: { slot: string; label: string; fallback: string };
+  photo?: { slot: string; label: string; fallback: string; atmosphere?: boolean };
   notes: { heading: ReactNode; body: ReactNode; className?: string }[];
   stats?: { duration: string; distance: string };
   body?: string[];
@@ -42,6 +43,8 @@ const clock = (value?: string | null) =>
   value?.match(/T(\d{2}:\d{2})/)?.[1] || "Time unavailable";
 const cost = (money: DetailActivity["estimated_cost"]) =>
   money ? `${money.currency} ${money.amount}` : "Cost to confirm";
+const hasPlacePhoto = (activity: DetailActivity) => activity.time_use !== 'free_window'
+  && activity.activity_kind !== 'generic_activity' && activity.activity_kind !== 'transport';
 const modeName = (mode?: string | null) => ({ WALK: "Walking", TRANSIT: "Public transit", DRIVE: "Driving" }[mode || ""] || "Transport to confirm");
 const modeIcon = (mode?: string | null) => ({ WALK: "walk", TRANSIT: "bus", DRIVE: "car" }[mode || ""] || "info");
 const mapLink = (place: string, area?: string | null) =>
@@ -84,7 +87,9 @@ function InformationDialog({
       <button type="button" className="modal-close" aria-label="Close dialog" onClick={dismiss}><Icon name="close" size={21} /></button>
       <div className="modal-icon"><Icon name={information.icon} size={23} /></div>
       <h2 id="detail-dialog-title">{information.title}</h2>
-      {information.photo && <div className="photo-large"><PlacePhoto fullCredit className="dialog-place-photo" {...information.photo} /></div>}
+      {information.photo && <div className="photo-large">{information.photo.atmosphere
+        ? <SupportingPhoto fullCredit className="dialog-place-photo" {...information.photo} />
+        : <PlacePhoto fullCredit className="dialog-place-photo" {...information.photo} />}</div>}
       {information.photo && refreshPhotos && <button type="button" className="inline-action media-refresh" onClick={() => refreshPhotos(information.photo!.slot)}>Refresh photo</button>}
       {information.introduction && <p>{information.introduction}</p>}
       {information.stats && <div className="route-big-stats"><div><strong>{information.stats.duration}</strong><span>Estimated duration</span></div><div><strong>{information.stats.distance}</strong><span>Route distance</span></div></div>}
@@ -156,6 +161,26 @@ function NearbyRows({
   ));
 }
 
+function NearbyInline({ group, open, onToggle, show, positionOf }: {
+  group: Group;
+  open: boolean;
+  onToggle: () => void;
+  show: (value: Information) => void;
+  positionOf: (item: DetailNearby) => number;
+}) {
+  return <section className="nearby-inline" id={domId('inline', group.key)} data-nearby-key={group.key}>
+    <button className={`nearby-inline-trigger ${open ? 'open' : ''}`}
+      aria-label={`Show nearby for ${name(group.activity)} on ${group.date}`}
+      aria-expanded={open} aria-controls={domId('inline-items', group.key)} onClick={onToggle}>
+      <Icon name="pin" size={20} /> Nearby · {group.items.length} places <Icon name="down" size={20} />
+    </button>
+    <div className="nearby-inline-items" id={domId('inline-items', group.key)} hidden={!open}>
+      <p className="nearby-inline-note">Optional places · not scheduled visits</p>
+      <NearbyRows items={group.items} show={show} positionOf={positionOf} />
+    </div>
+  </section>;
+}
+
 export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, actions, mode }: { detail: ProductDetail; mediaEndpoint?: string; mediaOwner?: string | null; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved" }) {
   const paceMessage = paceNotice(detail.completion?.pace_review);
   const positionOf = (item: DetailNearby) => detail.nearby.indexOf(item);
@@ -171,10 +196,25 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
   const [information, setInformation] = useState<Information | null>(null);
   const media = usePlaceMedia(mediaEndpoint, [
     ...detail.days.flatMap(day => day.activities
-      .filter(activity => activity.time_use !== 'free_window')
+      .filter(hasPlacePhoto)
       .map(activity => `activity:${activity.activity_id}`)),
     ...detail.nearby.map((_, index) => `nearby:${index}`),
   ], mediaOwner === undefined ? undefined : { owner: mediaOwner, generation: photoGeneration(mediaOwner), snapshot: photoFingerprint(detail) });
+  const themes = Object.fromEntries(detail.days.flatMap(day => day.activities
+    .filter(activity => activity.activity_kind === 'generic_activity' && activity.time_use === 'scheduled')
+    .map(activity => [`activity:${activity.activity_id}`, activity.atmosphere_theme || 'general'])));
+  const supportingEndpoint = mediaEndpoint && Object.keys(themes).length
+    ? `${mediaEndpoint.replace(/\/media$/, '/supporting-media')}?width=360&height=240` : undefined;
+  const supportingMedia = usePlaceMedia(supportingEndpoint, Object.keys(themes), mediaOwner === undefined ? undefined : {
+    owner: mediaOwner, generation: photoGeneration(mediaOwner), snapshot: photoFingerprint(detail),
+    provider: 'Unsplash', kind: 'atmosphere', width: 360, height: 240, themes,
+  });
+  const combinedMedia = {
+    items: { ...media.items, ...supportingMedia.items },
+    refresh: (slot: string) => themes[slot] ? supportingMedia.refresh(slot) : media.refresh(slot),
+    imageFailed: (slot: string, value: Parameters<typeof media.imageFailed>[1]) =>
+      themes[slot] ? supportingMedia.imageFailed(slot, value) : media.imageFailed(slot, value),
+  };
   const { groups, other } = useMemo(() => {
     const candidates: Group[] = detail.days.flatMap((day, i) =>
       day.activities
@@ -278,7 +318,10 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
     setInformation({
       title: name(activity),
       icon: "pin",
-      photo: activity.time_use === "free_window" ? undefined : { slot: `activity:${activity.activity_id}`, label: name(activity), fallback: activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`) },
+      photo: activity.time_use === 'free_window' || activity.activity_kind === 'transport' ? undefined : {
+        slot: `activity:${activity.activity_id}`, label: name(activity), atmosphere: activity.activity_kind === 'generic_activity',
+        fallback: activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`),
+      },
       introduction: [activity.place_name, activity.location || "Location unavailable."].filter(Boolean).join("\n"),
       notes: [
         { heading: <><Icon name="clock" size={17} />{activity.time_use === "free_window" ? "Free time" : "Planned visit"}</>, body: `${dottedDate(activity.start_time)} · ${clock(activity.start_time)}–${clock(activity.end_time)}` },
@@ -315,9 +358,9 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
     0,
   );
   return (
-    <PlaceMediaActions.Provider value={media}><PlaceMedia.Provider value={media.items}><div className="detail-page">
+    <PlaceMediaActions.Provider value={combinedMedia}><PlaceMedia.Provider value={combinedMedia.items}><div className="detail-page">
       <section className="detail-hero">
-        <div className="detail-cover"><CuratedPhoto image={destinationCover(detail.destination)} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
+        <div className="detail-cover"><DestinationPhoto owner={mediaOwner ?? null} destination={detail.destination} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
         <div className="container detail-hero-inner">
           <Link to={mode === "preview" ? "/plan?recover=1" : "/trips"} className="detail-back"><Icon name="back" size={17} />{mode === "preview" ? "Back to previews" : "Back to My trips"}</Link>
           <span className="detail-eyebrow">YOUR JOURNEY, DAY BY DAY</span>
@@ -354,14 +397,11 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                   "Your days, places and connections, together in one itinerary."}
               </p>
               {paceMessage && <p className="footnote caution-text" role="status">{paceMessage}</p>}
-              {!!detail.completion?.required_experiences?.length && <section aria-label="Required experiences">
-                <h3>Required experiences</h3>
-                {detail.completion.required_experiences.map((row, index) => <div className="detail-note" key={index}>
-                  <strong>{row.source_quotes.join(" ") || row.requirement}</strong>
-                  <span>{row.scheduled} matching visits scheduled · {row.frequency === "exact" ? "Exactly" : "At least"} {row.target} required</span>
-                  <span className={row.status === "satisfied" ? undefined : "caution-text"}>{requiredExperienceNotice(row)}</span>
-                </div>)}
-              </section>}
+              <ExperienceGuidance detail={detail} onLocate={(date, activityId) => {
+                const day = detail.days.findIndex(day => day.date === date);
+                const activity = detail.days[day]?.activities.find(item => item.activity_id === activityId);
+                if (activity) locate({ key: keyFor(date, activityId), date, day: day + 1, activity, items: [] }, 'stop');
+              }} />
               <div className="stat-grid">
                 <div>
                   <strong>{String(detail.days.length).padStart(2, "0")}</strong>
@@ -466,32 +506,60 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                           const key = keyFor(day.date, activity.activity_id);
                           const group = groups.find((g) => g.key === key);
                           const free = activity.time_use === "free_window";
+                          const supporting = !free && activity.activity_kind === 'generic_activity';
+                          const transport = activity.activity_kind === 'transport';
+                          const cardRole = free ? 'free-window' : supporting ? 'supporting-activity'
+                            : activity.activity_kind === 'main_poi' ? 'principal-visit' : 'unknown-activity';
                           return (
                             <div
                               className="activity-wrap"
                               key={activity.activity_id}
                             >
-                              <div className="activity-item">
+                              {transport ? <div className="transport-event">
+                                <button type="button" id={domId('stop', key)}
+                                  className={`transfer-connector scheduled-transport ${selected?.key === key ? 'nearby-linked-selected' : ''}`}
+                                  aria-label={`${name(activity)} · ${clock(activity.start_time)}–${clock(activity.end_time)}`}
+                                  onClick={() => activityInfo(activity)}>
+                                  <span className="transfer-line" aria-hidden="true" />
+                                  <span className="transfer-copy">
+                                    <Icon name="route" size={17} />
+                                    <span>{name(activity)} <small>{clock(activity.start_time)}–{clock(activity.end_time)}</small></span>
+                                    <Icon name="chevron" size={14} />
+                                  </span>
+                                </button>
+                                {group && <>
+                                  <button className="mini-link detail-desktop-nearby transport-nearby"
+                                    aria-label={`Show ${group.items.length} nearby places for ${name(activity)} on ${day.date}`}
+                                    onClick={() => locate(group, 'group')}>
+                                    <Icon name="pin" size={13} /> Nearby · {group.items.length} <Icon name="chevron" size={12} />
+                                  </button>
+                                  <NearbyInline group={group} open={inlineOpen.has(key)}
+                                    onToggle={() => toggle(setInlineOpen, key)} show={setInformation} positionOf={positionOf} />
+                                </>}
+                              </div> : <div className={`activity-item ${supporting ? 'supporting-event' : ''}`}>
                                 <div className="activity-time">
                                   <strong>{clock(activity.start_time)}</strong>
                                   <span>{clock(activity.end_time)}</span>
                                 </div>
-                                <div className="activity-marker" />
+                                <div className="activity-marker" aria-hidden="true" />
                                 <div
-                                  className={`activity-content ${free ? "free-window" : ""} ${selected?.key === key ? "nearby-linked-selected" : ""}`}
+                                  className={`activity-content ${cardRole} ${selected?.key === key ? "nearby-linked-selected" : ""}`}
+                                  role="group"
                                   id={domId("stop", key)}
                                   tabIndex={-1}
                                   aria-label={`${name(activity)} on ${day.date}`}
                                 >
                                   {free && <span className="free-glyph"><Icon name="leaf" size={30} /></span>}
-                                  {!free && (
+                                  {hasPlacePhoto(activity) && (
                                     <PlacePhoto fallback={activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`)} className="activity-photo" slot={`activity:${activity.activity_id}`} label={name(activity)} onOpen={() => activityInfo(activity)} />
                                   )}
+                                  {supporting && <SupportingPhoto slot={`activity:${activity.activity_id}`}
+                                    label={name(activity)} onOpen={() => activityInfo(activity)} />}
                                   <div className="activity-details">
                                     <span className="activity-tag">
                                       {free
                                         ? "Free time · no fixed place"
-                                        : activity.category ||
+                                        : supporting ? "Along the way" : activity.activity_kind === 'main_poi' ? "Main visit" : activity.category ||
                                           "Planned activity"}
                                     </span>
                                     <h3>{name(activity)}</h3>
@@ -502,6 +570,9 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                                       <p className="activity-intro">
                                         {activity.introduction}
                                       </p>
+                                    )}
+                                    {supporting && !activity.introduction && activity.notes && (
+                                      <p className="activity-intro">{activity.notes}</p>
                                     )}
                                     <div className="activity-meta">
                                       <span>
@@ -546,44 +617,11 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                                     </div>
                                   </div>
                                   {group && (
-                                    <section
-                                      className="nearby-inline"
-                                      id={domId("inline", key)}
-                                      data-nearby-key={key}
-                                    >
-                                      <button
-                                        className={`nearby-inline-trigger ${inlineOpen.has(key) ? "open" : ""}`}
-                                        aria-label={`Show nearby for ${name(activity)} on ${day.date}`}
-                                        aria-expanded={inlineOpen.has(key)}
-                                        aria-controls={domId(
-                                          "inline-items",
-                                          key,
-                                        )}
-                                        onClick={() =>
-                                          toggle(setInlineOpen, key)
-                                        }
-                                      >
-                                        <Icon name="pin" size={20} /> Nearby · {group.items.length} places{" "}
-                                        <Icon name="down" size={20} />
-                                      </button>
-                                      <div
-                                        className="nearby-inline-items"
-                                        id={domId("inline-items", key)}
-                                        hidden={!inlineOpen.has(key)}
-                                      >
-                                        <p className="nearby-inline-note">
-                                          Optional places · not scheduled visits
-                                        </p>
-                                        <NearbyRows
-                                          items={group.items}
-                                          show={setInformation}
-                                          positionOf={positionOf}
-                                        />
-                                      </div>
-                                    </section>
+                                    <NearbyInline group={group} open={inlineOpen.has(key)}
+                                      onToggle={() => toggle(setInlineOpen, key)} show={setInformation} positionOf={positionOf} />
                                   )}
                                 </div>
-                              </div>
+                              </div>}
                               {detail.transfers
                                 .filter(
                                   (t) =>
@@ -799,7 +837,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
         <InformationDialog
           information={information}
           close={() => setInformation(null)}
-          refreshPhotos={mediaEndpoint ? media.refresh : undefined}
+          refreshPhotos={mediaEndpoint ? combinedMedia.refresh : undefined}
         />
       )}
     </div></PlaceMedia.Provider></PlaceMediaActions.Provider>

@@ -6,6 +6,7 @@ import type {
 
 export type IllustrationKey = "hero" | "sydney" | "art" | "city" | "nature";
 export type RequiredExperience = {
+  planned_visits?: { activity_id: string; date: string; place_name: string }[];
   requirement: string;
   source_quotes: string[];
   target: number;
@@ -27,6 +28,8 @@ export type DetailNearby = {
 export type DetailActivity = {
   illustration_key?: IllustrationKey | null;
   activity_id: string;
+  activity_kind?: 'main_poi' | 'generic_activity' | 'transport' | 'free_time' | 'unknown';
+  atmosphere_theme?: 'meal' | 'rest' | 'explore' | 'walk' | 'general' | null;
   title: string;
   time_use: "scheduled" | "free_window";
   place_name?: string | null;
@@ -99,6 +102,7 @@ export type ProductDetail = {
   transfers: DetailTransfer[];
   nearby: DetailNearby[];
   completion?: {
+    attention_items?: { title: string; description: string; planned_visits?: RequiredExperience['planned_visits'] }[];
     required_experiences?: RequiredExperience[];
     pace_review?: PaceReview | null;
     source_claims?: string[];

@@ -298,6 +298,14 @@ def apply_patch(
             )
         )
     type(result).model_validate(result.model_dump())
+    if context is not None and result.output_version == "itinerary_3":
+        from backend.app.policies.itinerary_output import validate_principal_places
+
+        acquired = {p.place_id: p for p in context.places}
+        acquired.update(allowed)
+        validate_principal_places(
+            result, tuple(acquired.values()), tuple(acquired), context.semantic_assessments
+        )
     if context is not None:
         from backend.app.versions.v3.repair_targets import check_blank_windows, protect_visits
 

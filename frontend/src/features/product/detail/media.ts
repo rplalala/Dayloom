@@ -5,6 +5,8 @@ import { acquirePhotos } from './mediaRequests';
 export type DisplayMedia = {
   status: 'loading' | 'available' | 'unavailable';
   kind?: 'verified_place' | 'atmosphere';
+  theme?: 'meal' | 'rest' | 'explore' | 'walk' | 'general';
+  fallback?: 'google_no_photos';
   image_url?: string;
   provider?: string;
   authors?: { name: string; url?: string | null }[];
@@ -35,6 +37,7 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
     let displayed: Record<string, DisplayMedia> = {};
     const cachedSlots = new Set<string>();
     const attempted = new Set<string>();
+    const themeResults = new Map<string, DisplayMedia>();
     const merge = (incoming: Record<string, DisplayMedia>) => {
       if (!valid()) return;
       displayed = { ...displayed, ...incoming };
@@ -46,12 +49,24 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
       releases.forEach(release => release());
       setResult({ context: '', fence, items: {} });
     });
-    const fetchSlots = async (batch: string[]) => {
+    const fetchSlots = async (batch: string[], force = false) => {
       if (!valid()) return;
+      if (!force && cacheScope?.provider === 'Unsplash') {
+        const shared = Object.fromEntries(batch.flatMap(slot => {
+          const photo = readPhoto(endpoint, cacheScope, slot) || themeResults.get(cacheScope.themes?.[slot] || 'general');
+          return photo ? [[slot, photo]] : [];
+        }));
+        merge(shared);
+        batch = batch.filter(slot => !shared[slot]);
+        if (!batch.length) return;
+      }
       merge(Object.fromEntries(batch.map(slot => [slot, { status: 'loading' }])));
       const request = acquirePhotos(endpoint, batch, cacheScope);
       releases.add(request.release);
       const incoming = await request.promise;
+      if (cacheScope?.provider === 'Unsplash') for (const [slot, value] of Object.entries(incoming)) {
+        themeResults.set(cacheScope.themes?.[slot] || 'general', value);
+      }
       request.release();
       releases.delete(request.release);
       merge(incoming);
@@ -60,7 +75,7 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
       if (!ordered.includes(slot) || !valid()) return;
       if (cacheScope) evictPhoto(endpoint, cacheScope, slot);
       cachedSlots.delete(slot);
-      void fetchSlots([slot]);
+      void fetchSlots([slot], true);
     };
     controls.current = { refresh, imageFailed: (slot, media) => {
       if (!valid() || displayed[slot] !== media || media.status !== 'available') return;

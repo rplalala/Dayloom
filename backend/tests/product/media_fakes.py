@@ -7,6 +7,49 @@ from backend.app.product.media import MediaProviders, get_media_providers
 
 def media_transport(request):
     if request.url.host == "api.unsplash.com":
+        if request.url.path == "/search/photos":
+            query = request.url.params.get("query", "")
+            if query in {
+                "No photo venue Melbourne",
+                "Chicamocha Melbourne",
+                "Photo-empty city",
+            } or query.endswith(" Photo-empty city") or query.startswith("Photo-empty city "):
+                return httpx.Response(200, json={"results": []})
+            identity = {
+                "Federation Square Melbourne": "square-fallback",
+                "Melbourne": "city-fallback",
+                "New York": "new-york-cover",
+                "Sydney": "destination-sydney",
+                "Sydney, Australia": "destination-sydney",
+                "London, United Kingdom": "destination-london",
+                "Melbourne scenic walk": "melbourne-walk",
+                "New York scenic walk": "new-york-walk",
+            }.get(query, "supporting-first")
+            return httpx.Response(
+                200,
+                json={
+                    "results": [
+                        {
+                            "id": identity,
+                            "urls": {
+                                "raw": f"https://images.unsplash.com/{identity}?ixid=controlled"
+                            },
+                            "links": {
+                                "html": f"https://unsplash.com/photos/{identity}",
+                                "download_location": f"https://api.unsplash.com/photos/{identity}/download?ixid=controlled",
+                            },
+                            "user": {
+                                "name": "Supporting Photographer",
+                                "links": {"html": "https://unsplash.com/@supporting"},
+                            },
+                        }
+                    ]
+                },
+            )
+        if request.url.path.endswith("/download"):
+            return httpx.Response(
+                200, json={"url": "https://images.unsplash.com/controlled-supporting"}
+            )
         photo_id = request.url.path.rsplit("/", 1)[-1]
         sydney = photo_id == "7Zb7kUyQg1E"
         return httpx.Response(
@@ -33,6 +76,8 @@ def media_transport(request):
                 200, json={"photoUri": "https://lh3.googleusercontent.com/controlled-place"}
             )
         place = request.url.path.rsplit("/", 1)[-1]
+        if place in {"no-photo-square", "no-photo-cafe", "no-photo-empty"}:
+            return httpx.Response(200, json={"photos": []})
         return httpx.Response(
             200,
             json={

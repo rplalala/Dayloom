@@ -16,6 +16,7 @@ from backend.activity_semantics import TimeUse, read_activity_claim
 from backend.app.schemas.request import Money
 
 ActivityKind = Literal["main_poi", "generic_activity", "transport", "free_time", "unknown"]
+AtmosphereTheme = Literal["meal", "rest", "explore", "walk", "general"]
 
 
 class TransportDeclaration(BaseModel):
@@ -34,6 +35,9 @@ class Activity(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
     activity_kind: ActivityKind = "unknown"
+    atmosphere_theme: AtmosphereTheme | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     time_use: TimeUse | None = None
     activity_id: str = Field(min_length=1)
     title: str = Field(min_length=1)

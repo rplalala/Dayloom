@@ -6,7 +6,7 @@ import { restoreBrief } from "./editor";
 import { submissionGeneration } from "./taskClient";
 import { isValidISODate } from "../planning/datePolicy";
 import { isListedCurrency } from "../planning/currencies";
-import { CuratedPhoto } from "./detail/MediaPhoto";
+import { DestinationPhoto } from "./detail/MediaPhoto";
 import { dottedDate } from "./detail/display";
 import { Icon } from "./Icon";
 import "./detail/detail.css";
@@ -48,7 +48,7 @@ function OwnedDraft({ id, owner, refresh }: { id: string; owner: string; refresh
   const dateLabel = (value: string) => dottedDate(isValidISODate(value) ? value : null);
   const scrollTo = (section: string) => document.getElementById(section)?.scrollIntoView({ block: "start", behavior: window.matchMedia?.("(prefers-reduced-motion:reduce)").matches ? "instant" : "smooth" });
   return <div className="detail-page">
-    <section className="detail-hero"><div className="detail-cover"><CuratedPhoto image={/sydney/i.test(editor.destination) ? "sydney" : "nature"} label={`${destination} destination atmosphere`} className="detail-hero-image" /><div className="detail-cover-shade" /></div><div className="container detail-hero-inner">
+    <section className="detail-hero"><div className="detail-cover"><DestinationPhoto owner={owner} destination={editor.destination} label={`${destination} destination atmosphere`} className="detail-hero-image" /><div className="detail-cover-shade" /></div><div className="container detail-hero-inner">
       <Link to="/trips" className="detail-back"><Icon name="back" size={17} />Back to My trips</Link><span className="detail-eyebrow">YOUR NEXT IDEA</span><h1>{draft.title}</h1>
       <div className="detail-meta"><span><Icon name="pin" size={17} />{destination}</span><span><Icon name="calendar" size={17} />{dateLabel(editor.start_date)} — {dateLabel(editor.end_date)}</span><span><Icon name="layers" size={17} />0 days / 0 stops</span>{travelers && <span><Icon name="users" size={17} />{travelers} travelers</span>}</div>
       <div className="detail-hero-buttons"><Link className="btn btn-primary" to={continuePath}><Icon name="spark" size={17} />Continue planning</Link></div>

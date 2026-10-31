@@ -143,6 +143,214 @@ at this event is local commits, not a published deployment.
 
 ## Verification and evidence
 
+### Activity roles, experience guidance and atmosphere media (31 October 2026)
+
+[Parent #235](https://github.com/rplalala/Dayloom/issues/235) combines durable roles,
+grounded principal visits, readable experience guidance and supporting atmosphere media.
+Current contracts belong in [application operations](../../0007-application-operations.md#activity-roles-and-timeline-presentation)
+and [itinerary source acceptance](../../0003-itinerary-transport.md).
+
+| Slice | Fixed review base | Implementation and separate corrections | Targeted checks |
+| --- | --- | --- | --- |
+| [#236](https://github.com/rplalala/Dayloom/issues/236) roles/lifecycle/cards | `f5f9a5b` | `6f305f7`, `6fd26ce` | 129 backend/API/browser; 56 frontend |
+| [#237](https://github.com/rplalala/Dayloom/issues/237) grounding/guidance | `371a7bb` | `347ff0d`, `3a48956` | 239 backend/API/browser; 58 frontend |
+| [#238](https://github.com/rplalala/Dayloom/issues/238) supporting media/session | `833151e` | `caa0f7b`, `e307d0a`, `a9482ea` | 427 backend/adapter/API/browser; 67 frontend |
+| [#239](https://github.com/rplalala/Dayloom/issues/239) complete integration | `fe4c007` | `2b2983d` | 2 complete API/PostgreSQL/browser journeys; 4 affected photo-component checks |
+
+Counts cover overlapping targeted sets, rather than a combined full-suite run.
+The media slice includes 128 feature/schema/browser checks and 299 controlled Foundry
+adapter cases. Four stale SDK preflight mock responses lacked the new nullable field;
+their 19-case affected file passed after aligning that fixture. No real SDK smoke ran.
+All listed checks passed without skips; TypeScript/Vite, ESLint and changed-file Ruff
+checks passed. Existing chunk-size, Fast Refresh and test-framework warnings remain.
+
+The original failure was loss of planner role data at Product projection/persistence.
+Migration 009 and the role projection/read path preserve explicit roles/themes while
+historical omissions remain unknown. A red compatibility check caught neutral defaults
+changing canonical import hashes and old same-key receipt recovery; omitting neutral
+metadata preserves the original contract.
+
+Independent Standards and Spec reviews identified and verified separate corrections:
+transport retained exact Nearby targets/mobile disclosure; named count/date obligations
+received attention outside category coverage; supporting and Google resources now share
+deletion/preview-decision fences; and actual strict Foundry Primary/Civil responses carry
+the bounded nullable theme through the mapper. Both axes returned zero remaining
+findings for each corrected implementation range. Valid older Google cache keys keep
+their original acquisition time during key upgrade. Final independent reviews of the
+complete `f5f9a5b...2b2983d` range each reported zero remaining findings.
+
+The final controlled Chromium journeys at 1440px and 390px use the real Product API and
+disposable isolated PostgreSQL, with external HTTP transports replaced. Before either
+execution, the native planning projection establishes 27 principal visits, 2 supporting
+activities, 18 Nearby entries and 9 supplied transfers: all 47 intended photo slots and
+2 unique atmosphere themes participate. Ordinary page requests and ordered batches are
+forwarded intact; no slot sampling, response cropping or product-limit adjustment occurs.
+
+| Phase, per viewport | Slot metadata acquisitions | Google HTTP operations | Unsplash searches | Adoption tracking |
+| --- | ---: | ---: | ---: | ---: |
+| Cold preview | 47 | 90 | 2 | 2 |
+| Cold saved detail after explicit Save | 47 | 90 | 2 | 2 |
+| Saved-detail reload | 0 | 0 | 0 | 0 |
+| Selected supporting-photo refresh | 1 | 0 | 1 | 1 |
+| Delayed refresh released after cross-tab logout | 1 | 0 | 1 | 1 |
+| Total budget and observed result | 96 | 180 | 6 | 6 |
+
+Both complete journeys passed in 48.61 seconds with no skips. The separately counted
+fixed-cover requests were 5 on desktop and 4 on mobile, within the preflight allowance
+of six page mounts with at most two covers each. The test checks all slots for positive
+natural width/height and awaits image decode before full-page captures. Controlled image
+bytes establish loading/layout behavior, rather than real-provider photographic quality.
+Save, application recreation, reopening and independent copy preserve roles, themes,
+guidance, transfers and Nearby. Downloaded JSON round-trips preserve display declarations
+while imports remain unverified and cannot establish fulfillment or private bindings.
+Original cache acquisition times and credits survive reload; selected refresh leaves
+neighbors unchanged. Cross-tab logout hides private images, clears both provider caches
+and rejects a delayed success; owned detail and both media paths return 401 after logout
+and 404 to another account. Logout retains its existing account-wide session revocation.
+Unit checks additionally cover repeated-theme sharing, fixed expiry and resource deletion.
+
+The initial integration invocations exposed test-harness errors: a whole-page quote
+assertion included the user's original brief, imported preview data was read outside its
+receipt snapshot, and mobile/held-response checks lacked stable dispatch targets. The
+corrected assertions retain all intended slots and the same budgets. Retained non-green
+output and the final passing output remain distinct under the ignored
+`.scratch/activity-media-lifecycle/`, alongside decoded full-page and supporting-card
+captures and `sydney-role-audit.txt`.
+
+The local Product database applied migration 009 once. A read-only Sydney audit links
+saved trip `722fe131-1c0c-4cda-8eae-dc78d0bbd3fa` revision 1 to task
+`93f76c9d-a611-4f9f-bce0-22db32a22194` and the retained authoritative
+`20261031T053401Z_66de64ec-759c-41ef-8c19-174c1c3dd3c8/evidence/0003_final_primary.json`.
+Its SHA-256 is `7d229646253d4916bef0ce00dbc8eb8bac0e38fd27c590a5eb192ea6d8686864`.
+All 29 activity IDs, names and times match: 27 final principal roles and 2 final supporting
+roles (`syd-1103-food`, `syd-1105-waterfront-walk`). After explicit authorization, a
+separately previewed transaction at `c66515b` restored those 29 roles and advanced the
+saved revision from 1 to 2. Before-state preservation, locked-row checks and a fresh
+read-only comparison verified that every non-role activity field, request/completion,
+photo binding, weather, transfer and Nearby record remained unchanged; only the trip's
+revision and update timestamp accompanied the role changes. Themes remain absent because
+the final evidence does not supply them. Both supporting activities use the existing
+`general` atmosphere fallback, rather than an inferred meal/walk theme.
+
+The normal local Product was still running older backend modules without the supporting
+media endpoint. Local readiness and zero active planning tasks were checked before
+restarting the normal same-origin server with the current code. A bounded real-provider
+browser acceptance then covered this saved trip at 1440px and 390px: 27 principal cards,
+2 independently timed white supporting cards, 17 unchanged transfers and 18 optional
+Nearby entries. All 47 photo slots loaded and decoded, comprising 45 verified-place
+photos and 2 labeled atmosphere photos. Keyboard/touch credits and mobile overflow checks
+passed; representative screenshots were visually inspected. The two supporting slots
+shared one general-theme lookup. Reload issued zero photo-metadata lookups and preserved
+all 47 cached acquisition times and supplied credits.
+
+The first live invocation passed desktop checks but stopped on a harness assertion that
+mistook 18 Nearby entries for 18 mobile disclosure groups. The actual nine groups contain
+two entries each. The corrected harness derived the group count from the detail and
+passed in 17.25 seconds, without changing application code or page requests. Both
+invocations together used 92 of the original 94 metadata-slot budget and 7 of 8 fixed-cover
+requests; each cold page used 46 slot lookups because the two supporting slots shared
+one lookup. No request-budget violation, browser page error or generation request occurred.
+Actual provider HTTP counts and billing were not queried. The original and corrected
+frozen scripts/results remain separate under the ignored `.scratch/sydney-role-backfill/`,
+with transactional preview/apply/readback receipts and decoded desktop/mobile captures.
+No new planning, automatic classification of other records, full regression or product-limit
+change ran; closing the isolated acceptance context did not log out the user's other sessions.
+
+The subsequent presentation correction uses fixed base `22dba65` and implementation
+`6fbb1e5`. Supporting credit links and the atmosphere label now live in Details, while
+unverified experiences request confirmation rather than appearing as missing arrangements.
+The saved Sydney walk remains a scheduled generic activity with unverified correspondence;
+no title-based fulfillment, native status/count rewrite or database change occurred.
+Initial component checks reproduced both misleading presentations. Screenshot inspection
+then exposed attribution clipped by the old fixed-height container, and a focused-link
+browser regression exposed the inherited hover-credit handler swallowing Escape.
+Both received behavioral corrections and targeted passing follow-ups.
+
+Thirty-one frontend cases passed, along with build/typecheck, ESLint and changed-file Ruff.
+Five controlled API/PostgreSQL/browser cases passed after the clipping correction; the
+two responsive cases passed again after the final focused-link Escape/readability fix.
+Full 47-slot reload/refresh/isolation coverage remains in the affected five-case set.
+Representative 1440px/390px captures verify the static caption and label within the visible
+container. Both independent implementation reviews reported zero findings. Evidence remains
+under the ignored `.scratch/activity-roles-details/` and `activity-media-details*` identifiers.
+This correction uses controlled image responses; it adds no real-provider acceptance,
+planning, product-limit change or full regression.
+
+The Google-photo fallback began at `690f272` with implementation `40cb804`. Read-only
+inspection of the newly generated Melbourne preview found 30 bound photo slots: 28 obtained
+Google photo metadata, while Federation Square and Nearby Chicamocha returned `no_photos`.
+The first fallback used one Unsplash place-name/destination search. Its 47 provider/API and
+71 frontend cases passed; after narrowing a mobile Details locator, both responsive
+fallback journeys passed, alongside the existing complete 47-slot journeys. Those checks
+used controlled provider responses. Original evidence remains under the ignored
+`.scratch/place-photo-fallback-*` identifiers.
+
+A subsequent single real search confirmed `Chicamocha Melbourne` returned HTTP 200 with
+zero results. The authorized destination-only extension starts at `1fb9425`, with
+implementation `6a49058` and review correction `1c9453e`. It preserves display provenance,
+per-slot session reuse and the original time bounds; the detailed current rule belongs in
+[application operations](../../0007-application-operations.md#place-photo-fallback).
+New empty-place/city tests first failed before the implementation. All 51 targeted media
+checks then passed; the affected checks passed again after review correction. Two real
+browser/API/isolated-database journeys passed at 1440px and 390px using controlled external
+responses. They cover destination adoption, both searches empty with illustrations,
+preview/Save, reload reuse with unchanged cache timestamps, selected refresh, decoded images,
+visible static credits and cross-tab logout. Standards review found no issues. Spec review
+found that a generic London city cover retained the Tower Bridge alt; a failing public API
+assertion reproduced it, and `1c9453e` corrected it. Spec recheck found no remaining issues.
+Changed-file Ruff and diff checks passed. No frontend implementation changed in this extension.
+
+At `1c9453e`, a bounded real-provider check requested only the owned Chicamocha slot once.
+Correlated logs show Google `no_photos`, an empty place search, destination broadening and
+Unsplash adoption: four metadata-provider HTTP requests, all 200. One actual image fetch
+returned a 29,321-byte JPEG that Chromium decoded at 360 × 239; visual inspection showed
+Melbourne city atmosphere, without establishing a photograph of Chicamocha itself. The
+single execution took 5.44 seconds with no retries, planning or model calls. Billing was
+not queried. This is single-slot API/image evidence, not a full live itinerary UI check.
+Local evidence identifiers are `.scratch/chicamocha-photo-check/`,
+`.scratch/city-photo-fallback-*` and `.scratch/city-photo-live/`. The normal local Product was
+restarted only after confirming no active planning tasks. No product limits, itinerary
+content or V0–V3 behavior changed; no full regression or new itinerary generation ran.
+
+### Destination-aware atmosphere (1 November 2026)
+
+At base `6b25c1e`, an offline reproduction showed Melbourne and New York selecting the
+same fixed `nature` cover; supporting searches also omitted destination context.
+Implementation `24849c9` introduced destination-specific first-result covers and owned
+city/theme searches. Separate review correction `efcf715` fixed UTF-16 truncation that
+could split a valid non-BMP character before URL encoding; a component check first
+reproduced `URIError`, then passed. The later authorized cover-cache extension starts at
+`2570ef7`, with implementation `64b1ebe`. It uses the existing tab store and shared request
+leases, preserving one-hour acquisition-based expiry, 1,000 entries and 5 MiB across all
+photo families. The [cover contract](../../0007-application-operations.md#destination-covers)
+and [supporting contract](../../0007-application-operations.md#supporting-atmosphere-photos)
+own the current rules.
+
+The destination-search stage passed 62 backend cases. The cache extension passed 101
+focused frontend cases across 16 files and four controlled browser journeys at 1440px
+and 390px. The cover journeys verify reload and return-navigation hits with unchanged
+acquisition times, independent destinations, supporting-only refresh, static Details
+credits, decoded controlled images, honest missing-image states and cross-tab logout.
+The existing Google-to-Unsplash fallback journeys also passed after their slot-only cache
+assertions were separated from cover entries in the shared store. Component checks cover
+one-hour expiry, StrictMode/concurrent request merging, guest/account separation, delayed
+response fencing, failed cached-image eviction with one recovery, fixed covers and denied
+storage. The initial remount check observed two metadata calls; it passed with one call
+after caching. Earlier 47-slot and photo/Save/Copy/import journeys passed for the preceding
+destination-search implementation; they are not a new full regression result.
+
+Initial search-stage London assertions expected the old fixed landmark cover, and the old
+provider counter charged destination searches to the itinerary budget. Correcting those
+test expectations and separating controlled cover search/adoption pairs resolved the
+failures. The public cover API, city-aware supporting search and old-theme-cache rejection
+also had failing checks before implementation. Search-stage review rechecks and both
+independent cache-extension reviews found no remaining issues. Build/typecheck, frontend
+ESLint and changed Python checks passed with existing advisories. Evidence identifiers
+include `.scratch/destination-media-browser/`, `.scratch/destination-existing-browser-retest.log`
+and `.scratch/cover-cache-browser.log`. All third-party responses and image bytes were
+controlled; no real-provider quality or billing acceptance is claimed. No full regression,
+new real itinerary generation, database migration or V0–V3 planner change was performed.
+
 ### Browser photo session acceptance (31 October 2026)
 
 [Issue #233](https://github.com/rplalala/Dayloom/issues/233) was checked against the

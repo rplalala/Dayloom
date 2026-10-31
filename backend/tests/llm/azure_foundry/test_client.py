@@ -85,6 +85,7 @@ def make_activity(
 ) -> FoundryV0ActivityDTO:
     return FoundryV0ActivityDTO(
         activity_kind="main_poi",
+        atmosphere_theme=None,
         time_use="scheduled",
         source_place_id=None,
         activity_id="activity-1",
