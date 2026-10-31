@@ -97,7 +97,7 @@ export function DestinationPhoto({ destination, label, className, fallback, link
   destination: string; label: string; className?: string; fallback?: string;
   link?: { to: string; label: string };
 }) {
-  const query = destination.trim().replace(/\s+/g, ' ').slice(0, 120);
+  const query = Array.from(destination.trim().replace(/\s+/g, ' ')).slice(0, 120).join('');
   const media = useCoverMedia(query ? `/api/media/destination?destination=${encodeURIComponent(query)}` : undefined);
   return <MediaPhoto atmosphere link={link} media={media} label={label} fallback={fallback || '/dayloom/nature.svg'} className={className} />;
 }

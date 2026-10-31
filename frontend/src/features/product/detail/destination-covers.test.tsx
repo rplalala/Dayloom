@@ -54,6 +54,17 @@ it('does not query a missing destination', () => {
   expect(screen.getByRole('img')).toHaveAttribute('src', '/dayloom/nature.svg');
 });
 
+it('preserves a complete Unicode character at the destination query boundary', async () => {
+  const destination = 'x'.repeat(119) + '\u{1F30D}' + 'ignored suffix';
+  const fetcher = vi.fn<(address: string) => Promise<Response>>(async () => Response.json({ status: 'unavailable' }));
+  vi.stubGlobal('fetch', fetcher);
+  render(<DestinationPhoto destination={destination} label="Destination atmosphere" />);
+  await waitFor(() => expect(fetcher).toHaveBeenCalledOnce());
+  const query = new URL(fetcher.mock.calls[0][0], 'http://localhost').searchParams.get('destination');
+  expect(query).toBe('x'.repeat(119) + '\u{1F30D}');
+  expect(screen.getByRole('img')).toHaveAttribute('src', '/dayloom/nature.svg');
+});
+
 it('ignores a late cover response when the destination changes', async () => {
   const responses = new Map<string, (response: Response) => void>();
   vi.stubGlobal('fetch', vi.fn((address: string) => new Promise<Response>(resolve => {
