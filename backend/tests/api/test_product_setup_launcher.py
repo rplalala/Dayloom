@@ -69,3 +69,30 @@ def test_check_and_nonlocal_launch_remain_strict(local_launcher, arguments):
     with patch.dict(os.environ, {}, clear=True), pytest.raises(SystemExit) as failure:
         run_product.main(arguments)
     assert "synthetic-private" not in str(failure.value)
+
+
+def test_launcher_pins_case_variants_without_shadowing_external_settings(
+    local_launcher, monkeypatch,
+):
+    import uvicorn
+
+    (local_launcher / ".env").write_text(
+        "openai_api_key=synthetic-dotenv\nOPENAI_API_KEY=synthetic-dotenv-upper\n",
+        encoding="utf-8",
+    )
+
+    class Server:
+        def __init__(self, config):
+            self.manager = config.app.state.local_configuration
+
+        async def serve(self):
+            assert self.manager.initial["OPENAI_API_KEY"] == "synthetic-external"
+            assert os.environ["OPENAI_API_KEY"] == "synthetic-external"
+            assert "openai_api_key" not in os.environ
+            from backend.app.integrations.openai_search import SearchSettings
+            assert SearchSettings().openai_api_key.get_secret_value() == "synthetic-external"
+
+    monkeypatch.setattr(uvicorn, "Server", Server)
+    # A plain dict reproduces Unix casing semantics on Windows without changing real credentials.
+    with patch.object(os, "environ", {"OPENAI_API_KEY": "synthetic-external"}):
+        run_product.main([])

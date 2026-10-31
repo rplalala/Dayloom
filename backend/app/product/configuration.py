@@ -73,6 +73,7 @@ class LocalConfiguration:
 
         self.root, self.origin = root, origin.rstrip("/")
         self.environment = dict(environment)
+        self._environment_settings = {key.upper(): value for key, value in environment.items()}
         self.token = secrets.token_urlsafe(32)
         self.sessions = {}
         self.attempts = deque(maxlen=10)
@@ -106,6 +107,8 @@ class LocalConfiguration:
 
     def snapshot(self):
         text, local = self.read()
+        # Settings names are case-insensitive; dotenv variable expansion above is not.
+        local = {key.upper(): value for key, value in local.items()}
         path = self.root / "product.yaml"
         data = (
             yaml.load(path.read_text(encoding="utf-8"), Loader=DeploymentYamlLoader)
@@ -123,14 +126,14 @@ class LocalConfiguration:
             key: next(
                 (
                     source[key]
-                    for source in (self.environment, local, defaults)
+                    for source in (self._environment_settings, local, defaults)
                     if source.get(key) is not None
                 ),
                 "",
             )
             for key in FIELDS
         }
-        for source in (self.environment, local):
+        for source in (self._environment_settings, local):
             for key in ("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"):
                 if source.get(key) is not None:
                     values["PRODUCT_UNSPLASH_ACCESS_KEY"] = source[key] or ""
@@ -148,10 +151,10 @@ class LocalConfiguration:
                     "secret": secret,
                     "configured": bool(values[key]),
                     "value": None if secret else values[key],
-                    "locked": self.environment.get(key) is not None
+                    "locked": self._environment_settings.get(key) is not None
                     or (
                         key == "PRODUCT_UNSPLASH_ACCESS_KEY"
-                        and self.environment.get("UNSPLASH_API_KEY") is not None
+                        and self._environment_settings.get("UNSPLASH_API_KEY") is not None
                     ),
                 }
                 for key, secret in FIELDS.items()
@@ -199,15 +202,22 @@ class LocalConfiguration:
             replacements = dict(changes)
             if "PRODUCT_UNSPLASH_ACCESS_KEY" in changes:
                 replacements["UNSPLASH_API_KEY"] = changes["PRODUCT_UNSPLASH_ACCESS_KEY"]
-            pieces = [
-                item.original.string
-                for item in parse_stream(StringIO(text))
-                if item.key not in replacements
-            ]
+            pieces, seen = [], set()
+            for item in parse_stream(StringIO(text)):
+                key = item.key.upper() if item.key is not None else None
+                if key not in replacements:
+                    pieces.append(item.original.string)
+                    continue
+                value = replacements[key].replace("\\", "\\\\").replace("'", "\\'")
+                # Keep spelling and order so dependent ${...} bindings still resolve.
+                pieces.append(f"{item.key}='{value}'\n")
+                seen.add(key)
             retained = "".join(pieces)
-            if retained and not retained.endswith("\n"):
-                retained += "\n"
             for key, value in replacements.items():
+                if key in seen:
+                    continue
+                if retained and not retained.endswith("\n"):
+                    retained += "\n"
                 quoted = value.replace("\\", "\\\\").replace("'", "\\'")
                 retained += f"{key}='{quoted}'\n"
             temporary = None

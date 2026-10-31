@@ -4,7 +4,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from backend.app.main import create_app
-from backend.app.product.configuration import LocalConfiguration
+from backend.app.product.configuration import FIELDS, LocalConfiguration
 from backend.app.product.configuration_api import enable_local_configuration
 
 
@@ -113,6 +113,72 @@ def test_environment_overrides_are_visible_but_not_editable(tmp_path):
         )
         assert response.status_code == 409
         assert "external-private" not in response.text
+
+
+@pytest.mark.parametrize("source", ["environment", "dotenv"])
+@pytest.mark.parametrize("key", [*FIELDS, "UNSPLASH_API_KEY"])
+def test_managed_names_keep_existing_case_insensitive_resolution(tmp_path, source, key):
+    value = (
+        "https://example.services.ai.azure.com/openai/v1"
+        if key == "AZURE_OPENAI_ENDPOINT" else "synthetic-case-value"
+    )
+    supplied = {key.lower(): value}
+    if source == "dotenv":
+        (tmp_path / ".env").write_text(f"{key.lower()}={value}\n", encoding="utf-8")
+    manager, client = connect_manager(
+        tmp_path, environment=supplied if source == "environment" else {},
+    )
+    canonical = "PRODUCT_UNSPLASH_ACCESS_KEY" if key == "UNSPLASH_API_KEY" else key
+    with client:
+        view = client.get("/api/config").json()
+        assert manager.initial[canonical] == value
+        assert view["fields"][canonical]["configured"] is True
+        assert view["fields"][canonical]["locked"] is (source == "environment")
+        assert manager.values_for_check(view["revision"])[canonical] == value
+        if source == "environment":
+            response = client.put("/api/config", json={
+                "revision": view["revision"], "changes": {canonical: ""},
+            })
+            assert response.status_code == 409
+
+
+def test_save_preserves_binding_order_case_variants_and_dependent_interpolation(tmp_path):
+    path = tmp_path / ".env"
+    path.write_text(
+        "openai_api_key=synthetic-first\nLOWER_COPY=${openai_api_key}\n"
+        "OPENAI_API_KEY=synthetic-last\nUPPER_COPY=${OPENAI_API_KEY}\n"
+        "# Retained comment\nUNRELATED=retained\n", encoding="utf-8",
+    )
+    manager = LocalConfiguration(tmp_path, origin="http://localhost:5173", environment={})
+    manager.save(manager.view()["revision"], {"OPENAI_API_KEY": "synthetic-new"})
+    assert path.read_text("utf-8") == (
+        "openai_api_key='synthetic-new'\nLOWER_COPY=${openai_api_key}\n"
+        "OPENAI_API_KEY='synthetic-new'\nUPPER_COPY=${OPENAI_API_KEY}\n"
+        "# Retained comment\nUNRELATED=retained\n"
+    )
+    restarted = LocalConfiguration(tmp_path, origin=manager.origin, environment={})
+    assert restarted.initial["OPENAI_API_KEY"] == "synthetic-new"
+    assert restarted.read()[1]["LOWER_COPY"] == "synthetic-new"
+    assert restarted.read()[1]["UPPER_COPY"] == "synthetic-new"
+
+
+def test_alias_clear_replaces_mixed_case_bindings_and_keeps_interpolation_case_sensitive(tmp_path):
+    path = tmp_path / ".env"
+    path.write_text(
+        "TOKEN_SOURCE=synthetic-upper\ntoken_source=synthetic-lower\n"
+        "openai_api_key=${token_source}\nGOOGLE_MAPS_API_KEY=${TOKEN_SOURCE}\n"
+        "UnSplash_Api_Key=synthetic-alias\nproduct_unsplash_access_key=synthetic-primary\n",
+        encoding="utf-8",
+    )
+    manager = LocalConfiguration(tmp_path, origin="http://localhost:5173", environment={})
+    assert manager.initial["OPENAI_API_KEY"] == "synthetic-lower"
+    assert manager.initial["GOOGLE_MAPS_API_KEY"] == "synthetic-upper"
+    manager.save(manager.view()["revision"], {"PRODUCT_UNSPLASH_ACCESS_KEY": ""})
+    assert "synthetic-alias" not in path.read_text("utf-8")
+    assert "synthetic-primary" not in path.read_text("utf-8")
+    assert LocalConfiguration(tmp_path, origin=manager.origin, environment={}).initial[
+        "PRODUCT_UNSPLASH_ACCESS_KEY"
+    ] == ""
 
 
 def test_session_requires_local_host_origin_and_csrf_and_can_be_revoked(tmp_path):

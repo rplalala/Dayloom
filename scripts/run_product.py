@@ -49,7 +49,7 @@ def main(argv=None):
     from pydantic import ValidationError
 
     from backend.app.product.application import create_product_application
-    from backend.app.product.configuration import LocalConfiguration
+    from backend.app.product.configuration import FIELDS, LocalConfiguration
     from backend.app.product.configuration_api import enable_local_configuration
     from backend.app.runtime.deployment import ProductPolicySettings
     from backend.app.runtime.event_loop import create_api_loop
@@ -80,6 +80,9 @@ def main(argv=None):
             )
             # Pin editable fields, including missing values, until process restart.
             # Existing settings readers must not pick up partially applied edits.
+            for key in list(os.environ):
+                if key.upper() in FIELDS:
+                    del os.environ[key]
             os.environ.update(manager.initial)
         try:
             check_runtime()
