@@ -1,13 +1,14 @@
 """Loopback-only management access, independent of Product account authentication."""
 
 from ipaddress import ip_address
-from typing import Annotated
+from typing import Annotated, Literal
 from urllib.parse import urlsplit
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from pydantic import BaseModel, ConfigDict, Field, SecretStr
 from starlette.responses import JSONResponse, RedirectResponse
 
+from backend.app.product.api_checks import CheckBusy
 from backend.app.product.configuration import (
     COOKIE,
     SESSION_SECONDS,
@@ -129,6 +130,12 @@ class SaveRequest(BaseModel):
     changes: dict[str, str] = Field(max_length=6)
 
 
+class ApiCheckRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
+    revision: str = Field(min_length=64, max_length=64)
+    service: Literal["all", "foundry", "openai", "google", "unsplash"]
+
+
 def configuration_operation(operation):
     try:
         return operation()
@@ -181,3 +188,16 @@ def save(body: SaveRequest, manager: Unlocked):
 @router.get("/readiness")
 def readiness(manager: Unlocked):
     return configuration_operation(manager.readiness)
+
+
+@router.post("/check")
+async def check_apis(body: ApiCheckRequest, manager: Unlocked):
+    values = configuration_operation(lambda: manager.values_for_check(body.revision))
+    try:
+        result = await manager.api_checker.check(body.service, values)
+    except CheckBusy:
+        raise HTTPException(409, {"code": "api_check_in_progress"}) from None
+    except Exception:
+        raise HTTPException(503, {"code": "api_check_failed"}) from None
+    current = configuration_operation(manager.view)
+    return {**result, "revision": body.revision, "stale": current["revision"] != body.revision}

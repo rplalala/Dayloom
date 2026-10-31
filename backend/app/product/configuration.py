@@ -1,6 +1,7 @@
 """Instance-local provider configuration; no traveler database or provider calls."""
 
 import hashlib
+import json
 import os
 import secrets
 import tempfile
@@ -10,12 +11,12 @@ from contextlib import contextmanager
 from io import StringIO
 from pathlib import Path
 from time import monotonic
-from urllib.parse import urlsplit
 
 import yaml
 from dotenv.parser import parse_stream
 from dotenv.variables import parse_variables
 
+from backend.app.product.configuration_validation import supported_foundry_endpoint
 from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader
 
 FIELDS = {
@@ -61,8 +62,15 @@ class ConfigurationError(Exception):
         self.code, self.status = code, status
 
 
+def _revision(text, values):
+    """Cover dotenv edits and effective deployment defaults in one opaque version."""
+    return hashlib.sha256(json.dumps([text, values], sort_keys=True).encode()).hexdigest()
+
+
 class LocalConfiguration:
     def __init__(self, root: Path, *, origin: str, environment: dict):
+        from backend.app.product.api_checks import ApiChecker
+
         self.root, self.origin = root, origin.rstrip("/")
         self.environment = dict(environment)
         self.token = secrets.token_urlsafe(32)
@@ -72,6 +80,7 @@ class LocalConfiguration:
         self.initial = self.snapshot()[1]
         self.running_ready = True
         self.resource_probe = None
+        self.api_checker = ApiChecker()
 
     def read(self):
         path = self.root / ".env"
@@ -131,7 +140,7 @@ class LocalConfiguration:
     def view(self):
         text, values = self.snapshot()
         return {
-            "revision": hashlib.sha256(text.encode()).hexdigest(),
+            "revision": _revision(text, values),
             "restart_required": values != self.initial,
             "running_ready": self.running_ready,
             "fields": {
@@ -149,6 +158,12 @@ class LocalConfiguration:
             },
         }
 
+    def values_for_check(self, revision):
+        text, values = self.snapshot()
+        if revision != _revision(text, values):
+            raise ConfigurationError("configuration_changed", 409)
+        return values
+
     def validate(self, changes):
         fields = self.view()["fields"]
         for key, value in changes.items():
@@ -163,28 +178,7 @@ class LocalConfiguration:
             ):
                 raise ConfigurationError("invalid_setting_value")
             if key == "AZURE_OPENAI_ENDPOINT" and value:
-                try:
-                    url = urlsplit(value)
-                    valid = (
-                        url.scheme == "https"
-                        and url.hostname
-                        and url.hostname.endswith(
-                            (
-                                ".openai.azure.com",
-                                ".services.ai.azure.com",
-                                ".cognitiveservices.azure.com",
-                            )
-                        )
-                        and url.port in (None, 443)
-                        and not url.username
-                        and not url.password
-                        and not url.query
-                        and not url.fragment
-                        and url.path.rstrip("/") == "/openai/v1"
-                    )
-                except ValueError:
-                    valid = False
-                if not valid:
+                if not supported_foundry_endpoint(value):
                     raise ConfigurationError("invalid_foundry_endpoint")
             if (
                 key == "AZURE_OPENAI_DEPLOYMENT"
