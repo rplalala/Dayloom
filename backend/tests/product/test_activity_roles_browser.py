@@ -86,7 +86,7 @@ def test_generated_experiences_show_distinct_guidance_after_save_and_reload(
         )
         page.goto(browser_app.base_url + f"/previews/{detail.id}")
         expect(page.get_by_role("region", name="Trip highlights")).to_contain_text("An art museum")
-        expect(page.get_by_role("region", name="Still to arrange")).to_contain_text(
+        expect(page.get_by_role("region", name="Needs confirmation")).to_contain_text(
             "A waterfront walk"
         )
         expect(page.get_by_role("region", name="Still to arrange")).to_contain_text(
@@ -102,7 +102,7 @@ def test_generated_experiences_show_distinct_guidance_after_save_and_reload(
         expect(
             page.get_by_role("group", name="Art Gallery on 2020-01-04", exact=True)
         ).to_be_focused()
-        expect(page.get_by_role("region", name="Still to arrange")).to_contain_text(
+        expect(page.get_by_role("region", name="Needs confirmation")).to_contain_text(
             "A waterfront walk"
         )
     finally:
@@ -168,7 +168,8 @@ def test_activity_structures_survive_save_reload_and_keyboard_details(browser_ap
         expect(supporting.get_by_text("Enjoy a relaxed break.", exact=True)).to_be_visible()
         expect(supporting.locator(":scope > figure, .activity-photo")).to_have_count(0)
         atmosphere = supporting.locator(".supporting-photo")
-        expect(atmosphere.get_by_text("Atmosphere photo", exact=True)).to_be_visible()
+        expect(atmosphere.get_by_text("Atmosphere photo", exact=True)).to_have_count(0)
+        expect(atmosphere.get_by_role("button", name="Photo credits", exact=True)).to_have_count(0)
         atmosphere.locator("img").evaluate(
             "async image => { await image.decode(); "
             "if (!(image.naturalWidth > 0 && image.naturalHeight > 0)) "
@@ -178,16 +179,32 @@ def test_activity_structures_survive_save_reload_and_keyboard_details(browser_ap
             atmosphere.bounding_box()["width"]
             < principal.locator(".activity-photo").bounding_box()["width"]
         )
-        credit = atmosphere.get_by_role("button", name="Photo credits", exact=True)
+        details = supporting.get_by_role("button", name="Details", exact=False)
         if width < 800:
-            credit.tap()
+            details.tap()
         else:
-            credit.focus()
+            details.focus()
             page.keyboard.press("Enter")
+        photo_dialog = page.get_by_role("dialog", name="Lunch by the water", exact=True)
         expect(
-            atmosphere.get_by_role("link", name="Supporting Photographer", exact=True)
+            photo_dialog.get_by_role("link", name="Supporting Photographer", exact=True)
         ).to_be_visible()
-        atmosphere.get_by_role("button", name="Hide photo credits", exact=True).click()
+        expect(photo_dialog.get_by_text("Atmosphere photo", exact=True)).to_be_visible()
+        expect(photo_dialog.get_by_role("button", name="Photo credits", exact=True)).to_have_count(
+            0
+        )
+        caption = photo_dialog.locator(".supporting-photo figcaption").bounding_box()
+        label = photo_dialog.get_by_text("Atmosphere photo", exact=True).bounding_box()
+        frame = photo_dialog.locator(".photo-large").bounding_box()
+        assert caption["y"] + caption["height"] <= frame["y"] + frame["height"]
+        assert label["y"] + label["height"] <= frame["y"] + frame["height"]
+        assert caption["y"] + caption["height"] <= label["y"]
+        scratch = Path(".scratch/activity-roles-details")
+        scratch.mkdir(parents=True, exist_ok=True)
+        photo_dialog.screenshot(path=str(scratch / f"supporting-details-{width}.png"))
+        photo_dialog.get_by_role("link", name="Supporting Photographer", exact=True).focus()
+        page.keyboard.press("Escape")
+        expect(photo_dialog).to_have_count(0)
         marker = supporting.locator("..").locator(".activity-marker")
         expect(marker).to_be_visible()
         assert supporting.evaluate("e => getComputedStyle(e).borderTopStyle") == "solid"
@@ -239,8 +256,6 @@ def test_activity_structures_survive_save_reload_and_keyboard_details(browser_ap
         assert exported_activity["time_use"] == "scheduled"
         assert exported["itinerary"]["nearby"][0]["anchor_activity_id"] == "meal"
         assert len(exported["itinerary"]["transfers"]) == 1
-        scratch = Path(".scratch/activity-roles-browser")
-        scratch.mkdir(parents=True, exist_ok=True)
         supporting.scroll_into_view_if_needed()
         page.screenshot(path=str(scratch / f"roles-{width}.png"), full_page=True)
         page.goto(browser_app.base_url + "/import")

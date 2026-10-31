@@ -7,7 +7,7 @@ import type { ProductDetail } from './types';
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
-it('shows a small atmosphere photo with operable credits and removes failed imagery cleanly', async () => {
+it('keeps supporting credits and atmosphere labeling in Details and removes failed imagery cleanly', async () => {
   const user = userEvent.setup();
   vi.stubGlobal('fetch', vi.fn(async (url: string) => new Response(JSON.stringify(
     String(url).includes('/supporting-media') ? { items: { 'activity:walk': {
@@ -25,9 +25,18 @@ it('shows a small atmosphere photo with operable credits and removes failed imag
   render(<MemoryRouter><TripDetail detail={detail} mediaEndpoint="/api/trips/owned/media" mediaOwner="alice" /></MemoryRouter>);
   const card = screen.getByRole('group', { name: 'Time to wander on 2026-10-15' });
   const image = await within(card).findByRole('img', { name: 'Scenic atmosphere' });
-  expect(within(card).getByText('Atmosphere photo')).toBeVisible();
-  await user.click(within(card).getByRole('button', { name: 'Photo credits' }));
-  expect(within(card).getByRole('link', { name: 'Photographer' })).toHaveAttribute('href', 'https://unsplash.com/@fixture');
+  expect(within(card).queryByText('Atmosphere photo')).not.toBeInTheDocument();
+  expect(within(card).queryByRole('button', { name: 'Photo credits' })).not.toBeInTheDocument();
+  fireEvent.pointerEnter(image);
+  expect(within(card).queryByRole('link', { name: 'Photographer' })).not.toBeInTheDocument();
+  await user.click(within(card).getByRole('button', { name: /Details/ }));
+  const dialog = screen.getByRole('dialog', { name: 'Time to wander' });
+  expect(within(dialog).getByText('Atmosphere photo')).toBeVisible();
+  expect(within(dialog).getByText('Unsplash')).toBeVisible();
+  expect(within(dialog).getByRole('link', { name: 'Photographer' })).toHaveAttribute('href', 'https://unsplash.com/@fixture');
+  expect(within(dialog).getByRole('link', { name: 'Photo source' })).toHaveAttribute('href', 'https://unsplash.com/photos/first');
+  expect(within(dialog).queryByRole('button', { name: 'Photo credits' })).not.toBeInTheDocument();
+  await user.click(within(dialog).getByRole('button', { name: 'Close dialog' }));
   fireEvent.error(image);
   await waitFor(() => expect(within(card).queryByRole('img')).not.toBeInTheDocument());
   expect(within(card).getByText('12:00–13:00')).toBeVisible();

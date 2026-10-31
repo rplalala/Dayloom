@@ -11,7 +11,8 @@ describe('faithful shared exports', () => {
     } };
     expect(exportArtifact(unresolved).completion).toEqual(unresolved.completion);
     expect(summaryText(unresolved)).toContain('Visit a science centre');
-    expect(summaryText(unresolved)).toContain('This experience is still missing');
+    expect(summaryText(unresolved)).toContain('Confirm the exact place or route');
+    expect(summaryText(unresolved)).not.toContain('This experience is still missing');
     expect(summaryText(unresolved)).not.toMatch(/matching visits scheduled|At least/);
   });
   it('exports one versioned reusable wrapper without server authority', () => {

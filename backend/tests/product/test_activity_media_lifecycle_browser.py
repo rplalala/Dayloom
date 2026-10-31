@@ -123,14 +123,14 @@ def test_complete_roles_media_lifecycle(browser_app, monkeypatch, width):
         complete_images(page, slots, width < 800)
         assert Counter(metadata) == Counter(slots)
         expect(page.get_by_role("region", name="Trip highlights")).to_contain_text("An art museum")
-        expect(page.get_by_role("region", name="Still to arrange")).to_contain_text(
+        expect(page.get_by_role("region", name="Needs confirmation")).to_contain_text(
             "A waterfront walk"
         )
         expect(page.get_by_text("matching visits scheduled", exact=False)).to_have_count(0)
         expect(
             page.get_by_text("Some travel details still need checking", exact=False)
         ).to_have_count(0)
-        for region in ("Trip highlights", "Still to arrange"):
+        for region in ("Trip highlights", "Needs confirmation"):
             expect(page.get_by_role("region", name=region)).not_to_contain_text("Must include:")
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         page.get_by_role("link", name="View saved itinerary", exact=True).click()
@@ -162,17 +162,27 @@ def test_complete_roles_media_lifecycle(browser_app, monkeypatch, width):
         expect(
             page.locator(".transfer-connector .activity-marker, .transfer-connector img")
         ).to_have_count(0)
-        credit = supporting.get_by_role("button", name="Photo credits", exact=True)
+        expect(supporting.get_by_text("Atmosphere photo", exact=True)).to_have_count(0)
+        expect(supporting.get_by_role("button", name="Photo credits", exact=True)).to_have_count(0)
+        details = supporting.get_by_role("button", name="Details", exact=False)
         if width < 800:
-            credit.tap()
+            details.tap()
         else:
-            credit.focus()
+            details.focus()
             page.keyboard.press("Enter")
+        photo_dialog = page.get_by_role("dialog", name="Explore local food options", exact=True)
         expect(
-            supporting.get_by_role("link", name="Supporting Photographer", exact=True)
+            photo_dialog.get_by_role("link", name="Supporting Photographer", exact=True)
         ).to_be_visible()
-        supporting.get_by_role("button", name="Hide photo credits", exact=True).click()
-        scratch = Path(".scratch/activity-media-lifecycle")
+        expect(photo_dialog.get_by_text("Atmosphere photo", exact=True)).to_be_visible()
+        caption = photo_dialog.locator(".supporting-photo figcaption").bounding_box()
+        label = photo_dialog.get_by_text("Atmosphere photo", exact=True).bounding_box()
+        frame = photo_dialog.locator(".photo-large").bounding_box()
+        assert caption["y"] + caption["height"] <= frame["y"] + frame["height"]
+        assert label["y"] + label["height"] <= frame["y"] + frame["height"]
+        assert caption["y"] + caption["height"] <= label["y"]
+        page.keyboard.press("Escape")
+        scratch = Path(".scratch/activity-media-details")
         scratch.mkdir(parents=True, exist_ok=True)
         complete_images(page, slots, width < 800)
         page.screenshot(path=str(scratch / f"full-page-{width}.png"), full_page=True)

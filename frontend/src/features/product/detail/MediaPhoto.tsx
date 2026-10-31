@@ -7,7 +7,8 @@ import { Icon } from '../Icon';
 import { Link } from 'react-router-dom';
 import { validPhoto } from './photoSession';
 
-export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, onImageError, onRetry, children, link, creditInDetails = false, slot }: {
+export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, onImageError, onRetry, children, link, creditInDetails = false, staticCredits = false, slot }: {
+  staticCredits?: boolean;
   slot?: string;
   onImageError?: () => void; onRetry?: () => void;
   creditInDetails?: boolean; link?: { to: string; label: string }; media?: DisplayMedia; label: string; atmosphere?: boolean; fallback?: string; className?: string; onOpen?: () => void; children?: ReactNode;
@@ -24,7 +25,7 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   const available = media?.status === 'available' && media.image_url && !failed;
   const pendingLabel = !atmosphere && !failed && (!media || media.status === 'loading')
     ? media ? 'Loading photo…' : 'Photo pending' : 'Illustration';
-  const placeCredit = Boolean(available && !atmosphere && !creditInDetails);
+  const placeCredit = Boolean(available && (!atmosphere || staticCredits) && !creditInDetails);
   const visual = available ? <img src={media.image_url} alt={atmosphere ? media.alt || label : `${label} · place photograph`} onError={() => { setFailed(true); onImageError?.(); }} referrerPolicy="no-referrer" /> : atmosphere ? <img src={fallback} alt={`${label} · illustration`} /> : <div className="media-placeholder" aria-label="Illustration, not a place photograph"><img src={fallback} alt="" aria-hidden="true" /></div>;
   const credit = available ? <>
     <span className="media-provider" translate="no">{media.provider}</span>
@@ -33,13 +34,13 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   </> : pendingLabel;
   const picture = onOpen ? <button type="button" className="media-open" aria-label={`View ${label}`} onClick={onOpen}>{visual}</button> : link ? <Link className="media-image-link" to={link.to} aria-label={link.label}>{visual}</Link> : visual;
   return <figure data-photo-slot={slot} data-photo-state={failed ? 'unavailable' : media?.status || 'unattempted'} aria-busy={media?.status === 'loading'} className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}
-    onPointerEnter={event => { if (atmosphere && event.pointerType !== "touch") setCreditsOpen(true); }}
+    onPointerEnter={event => { if (atmosphere && !staticCredits && event.pointerType !== "touch") setCreditsOpen(true); }}
     onPointerLeave={event => { if (!event.currentTarget.contains(document.activeElement)) setCreditsOpen(false); }}
     onFocus={() => setCreditsOpen(true)}
     onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setCreditsOpen(false); }}
-    onKeyDown={event => { if (atmosphere && event.key === "Escape") { event.preventDefault(); event.stopPropagation(); closeCredits(); } }}>
+    onKeyDown={event => { if (atmosphere && !staticCredits && !creditInDetails && event.key === "Escape") { event.preventDefault(); event.stopPropagation(); closeCredits(); } }}>
     {children ? <div className="media-detail-row"><div className="nearby-photo">{picture}{!available && <span className="media-credit" aria-hidden="true">{pendingLabel}</span>}</div>{children}</div> : picture}
-    {available && atmosphere ? <figcaption className="atmosphere-credit">
+    {available && atmosphere && !staticCredits && !creditInDetails ? <figcaption className="atmosphere-credit">
       <button type="button" className="photo-credit-toggle" ref={creditToggle} aria-label="Photo credits" aria-expanded={creditsOpen} aria-controls={creditsId} onClick={() => setCreditsOpen(true)}><Icon name="info" size={15} /></button>
       <span id={creditsId} className="photo-credit-content" hidden={!creditsOpen}>{credit}<button type="button" className="photo-credit-close" aria-label="Hide photo credits" onClick={closeCredits}><Icon name="close" size={12} /></button></span>
     </figcaption> : available && creditInDetails ? null : <figcaption className={children && !available ? "visually-hidden" : undefined} aria-label={!available && !atmosphere ? "Illustration" : undefined}>{credit}</figcaption>}
@@ -56,16 +57,16 @@ export function PlacePhoto({ slot, label, className, onOpen, children, fallback,
     onRetry={actions ? () => actions.refresh(slot) : undefined}>{children}</MediaPhoto>;
 }
 
-export function SupportingPhoto({ slot, label, className = '', onOpen }: {
-  slot: string; label: string; className?: string; onOpen?: () => void;
+export function SupportingPhoto({ slot, label, className = '', onOpen, fullCredit = false }: {
+  slot: string; label: string; className?: string; onOpen?: () => void; fullCredit?: boolean;
 }) {
   const media = useContext(PlaceMedia)[slot];
   const actions = useContext(PlaceMediaActions);
   if (media?.kind !== 'atmosphere' || !validPhoto(media)) return null;
   return <div className={`supporting-photo ${className}`}>
-    <MediaPhoto slot={slot} atmosphere media={media} label={label} onOpen={onOpen}
+    <MediaPhoto slot={slot} atmosphere staticCredits creditInDetails={!fullCredit} media={media} label={label} onOpen={onOpen}
       onImageError={() => actions?.imageFailed(slot, media)} />
-    <span className="supporting-photo-label">Atmosphere photo</span>
+    {fullCredit && <span className="supporting-photo-label">Atmosphere photo</span>}
   </div>;
 }
 

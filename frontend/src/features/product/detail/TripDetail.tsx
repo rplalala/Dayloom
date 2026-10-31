@@ -88,7 +88,7 @@ function InformationDialog({
       <div className="modal-icon"><Icon name={information.icon} size={23} /></div>
       <h2 id="detail-dialog-title">{information.title}</h2>
       {information.photo && <div className="photo-large">{information.photo.atmosphere
-        ? <SupportingPhoto className="dialog-place-photo" {...information.photo} />
+        ? <SupportingPhoto fullCredit className="dialog-place-photo" {...information.photo} />
         : <PlacePhoto fullCredit className="dialog-place-photo" {...information.photo} />}</div>}
       {information.photo && refreshPhotos && <button type="button" className="inline-action media-refresh" onClick={() => refreshPhotos(information.photo!.slot)}>Refresh photo</button>}
       {information.introduction && <p>{information.introduction}</p>}

@@ -23,10 +23,12 @@ export function ExperienceGuidance({ detail, onLocate }: {
       key={`${visit.date}:${visit.activity_id}`} onClick={() => onLocate(visit.date, visit.activity_id)}>
       View {visit.place_name} · {monthDay(visit.date)} <Icon name="chevron" size={13} />
     </button>);
-  return <>{[true, false].map(complete => {
-    const items = rows.filter(row => (trusted && row.status === 'satisfied') === complete);
-    if (!items.length && (complete || !extra.length)) return null;
-    const heading = complete ? 'Trip highlights' : 'Still to arrange';
+  return <>{(['satisfied', 'unverified', 'unmet'] as const).map(status => {
+    const complete = status === 'satisfied';
+    const items = rows.filter(row => (trusted ? row.status : 'unverified') === status);
+    const attention = status === 'unmet' ? extra : [];
+    if (!items.length && !attention.length) return null;
+    const heading = complete ? 'Trip highlights' : status === 'unverified' ? 'Needs confirmation' : 'Still to arrange';
     return <section className="experience-section" aria-label={heading} key={heading}>
       <h3>{heading}</h3>
       <ul className="experience-list">{items.map((row, index) => <li className="experience-line" key={index}>
@@ -35,7 +37,7 @@ export function ExperienceGuidance({ detail, onLocate }: {
           <p>{requiredExperienceNotice(trusted ? row : { ...row, status: 'unverified' })}</p>
           {visitLinks(row.planned_visits)}
         </div>
-      </li>)}{!complete && extra.map((item, index) => <li className="experience-line" key={`attention-${index}`}>
+      </li>)}{attention.map((item, index) => <li className="experience-line" key={`attention-${index}`}>
         <Icon name="info" size={19} /><div><strong>{item.title}</strong><p>{item.description}</p>
           {visitLinks(item.planned_visits)}
         </div>

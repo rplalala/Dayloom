@@ -27,10 +27,12 @@
 .dayloom .supporting-photo { flex:none; width:76px; align-self:flex-start; }
 .dayloom .supporting-photo .media-photo { width:100%; height:58px; border-radius:7px; overflow:visible; }
 .dayloom .supporting-photo .media-photo > img, .dayloom .supporting-photo .media-open { width:100%; height:100%; border-radius:7px; }
-.dayloom .supporting-photo-label { display:block; font-size:9px; color:var(--muted); margin-top:5px; }
+.dayloom .supporting-photo-label { display:block; font-size:12px; color:var(--muted); padding:0 8px 8px; }
 .dayloom .photo-large:empty { display:none; }
 .dayloom .detail-dialog .supporting-photo { width:100%; }
-.dayloom .detail-dialog .supporting-photo .media-photo { height:240px; }
+.dayloom .detail-dialog .photo-large:has(> .supporting-photo) { height:auto; max-height:none; }
+.dayloom .detail-dialog .supporting-photo .media-photo { height:auto; }
+.dayloom .detail-dialog .photo-large .supporting-photo .media-photo > img { flex:none; height:240px; }
 .dayloom .scheduled-transport .transfer-copy { text-align:left; }
 .dayloom .scheduled-transport small { display:block; }
 .dayloom .scheduled-transport { scroll-margin-top:100px; }

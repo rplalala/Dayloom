@@ -2,6 +2,7 @@ import type { ProductDetail, DetailTransfer, PaceReview, RequiredExperience } fr
 
 export function requiredExperienceNotice(row: RequiredExperience): string {
   if (row.status === "satisfied") return "Included in your itinerary.";
+  if (row.status === "unverified") return "Confirm the exact place or route for this experience before you go.";
   if (row.reason === "required_visits_not_scheduled") return "Your requested visits or dates are not fully arranged. Keep this in mind when reviewing your days.";
   return "This experience is still missing from the confirmed itinerary. You can plan again to include it.";
 }
