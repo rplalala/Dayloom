@@ -16,6 +16,46 @@ from backend.tests.product.test_accounts import client, register  # noqa: F401
 from backend.tests.product.test_supporting_media import photo
 
 
+@pytest.mark.parametrize("city_has_photo", [True, False])
+def test_empty_place_search_tries_city_once_before_illustration(city_has_photo):
+    calls, searches = [], []
+
+    def provider(request):
+        calls.append(request)
+        if request.url.host == "places.googleapis.com":
+            return httpx.Response(200, json={"photos": []})
+        if request.url.path == "/search/photos":
+            query = request.url.params["query"]
+            searches.append(query)
+            assert request.url.params["per_page"] == "1"
+            return httpx.Response(
+                200,
+                json={
+                    "results": [photo("city-first"), photo("second")]
+                    if query == "Melbourne" and city_has_photo
+                    else []
+                },
+            )
+        assert request.url.path == "/photos/city-first/download"
+        return httpx.Response(200, json={"url": "https://images.unsplash.com/city-first"})
+
+    adapter = MediaProviders(
+        google_key="controlled", unsplash_key="controlled", transport=httpx.MockTransport(provider)
+    )
+    result = asyncio.run(
+        adapter.google(
+            "cafe", 960, 640, fallback_query="Chicamocha Melbourne", city_query="Melbourne"
+        )
+    )
+    assert searches == ["Chicamocha Melbourne", "Melbourne"]
+    assert len(calls) == (4 if city_has_photo else 3)
+    if city_has_photo:
+        assert result["fallback"] == "google_no_photos" and result["kind"] == "atmosphere"
+        assert "city-first" in result["image_url"]
+    else:
+        assert result == {"status": "unavailable"}
+
+
 def test_google_no_photos_searches_first_unsplash_result_and_tracks_adoption():
     calls = []
 
@@ -34,7 +74,9 @@ def test_google_no_photos_searches_first_unsplash_result_and_tracks_adoption():
         google_key="controlled", unsplash_key="controlled", transport=httpx.MockTransport(provider)
     )
     media = asyncio.run(
-        adapter.google("square", 960, 640, fallback_query="Federation Square Melbourne")
+        adapter.google(
+            "square", 960, 640, fallback_query="Federation Square Melbourne", city_query="Melbourne"
+        )
     )
     assert media["status"] == "available"
     assert media["provider"] == "Unsplash" and media["kind"] == "atmosphere"
@@ -43,7 +85,7 @@ def test_google_no_photos_searches_first_unsplash_result_and_tracks_adoption():
     assert len(calls) == 3
 
 
-def fallback_preview(owner, *, include_empty=False):
+def fallback_preview(owner, *, include_empty=False, destination="Melbourne"):
     store = TaskStore()
     task, _ = store.accept(
         owner,
@@ -55,7 +97,7 @@ def fallback_preview(owner, *, include_empty=False):
     detail = ProductDetail(
         id=str(uuid4()),
         title="Private trip title",
-        destination="Melbourne",
+        destination=destination,
         provenance="generated",
         trust="generated_projection",
         days=[
@@ -96,7 +138,6 @@ def fallback_preview(owner, *, include_empty=False):
             )
         )
         detail._media_bindings["activity:empty"] = "no-photo-empty"
-    if include_empty:
         detail._media_bindings.update(
             {"activity:square": "no-photo-square", "nearby:0": "no-photo-cafe"}
         )
@@ -198,9 +239,13 @@ def test_unsplash_without_usable_first_photo_returns_illustration_state(fault):
         transport=httpx.MockTransport(provider),
     )
     assert asyncio.run(
-        adapter.google("square", 960, 640, fallback_query="Federation Square Melbourne")
+        adapter.google(
+            "square", 960, 640, fallback_query="Federation Square Melbourne", city_query="Melbourne"
+        )
     ) == {"status": "unavailable"}
-    assert len(calls) == (1 if fault == "no-key" else 3 if fault == "tracking-failure" else 2)
+    assert len(calls) == (
+        1 if fault == "no-key" else 3 if fault in {"tracking-failure", "empty"} else 2
+    )
 
 
 @pytest.mark.parametrize(
@@ -244,6 +289,7 @@ def test_fallback_is_only_for_confirmed_missing_google_photos(fault):
             960,
             640,
             fallback_query="Federation Square Melbourne",
+            city_query="Melbourne",
         )
     )
     if fault == "google-success":
@@ -264,6 +310,8 @@ def test_examples_and_fixed_london_cover_use_the_same_fallback_chain(client):  #
         if request.url.host == "places.googleapis.com":
             return httpx.Response(200, json={})
         if request.url.path == "/search/photos":
+            if request.url.params["query"] == "Tower Bridge London":
+                return httpx.Response(200, json={"results": []})
             return httpx.Response(200, json={"results": [photo("first")]})
         return httpx.Response(200, json={"url": "https://images.unsplash.com/first"})
 
@@ -281,8 +329,8 @@ def test_examples_and_fixed_london_cover_use_the_same_fallback_chain(client):  #
             == "google_no_photos"
         )
         assert client.get("/api/media/curated/london").json()["fallback"] == "google_no_photos"
-        assert len(calls) == 6
-        assert calls[-2].url.params["query"] == "Tower Bridge London"
+        assert len(calls) == 7
+        assert calls[-2].url.params["query"] == "London"
     finally:
         client.app.dependency_overrides.pop(get_media_providers, None)
 
@@ -299,6 +347,8 @@ def test_fallback_chain_keeps_the_existing_slot_timeout_and_completed_neighbors(
             return httpx.Response(200, json={})
         if request.url.path == "/search/photos":
             if request.url.params["query"] == "Slow place Melbourne":
+                return httpx.Response(200, json={"results": []})
+            if request.url.params["query"] == "Melbourne":
                 try:
                     await asyncio.sleep(1)
                 finally:
@@ -322,9 +372,63 @@ def test_fallback_chain_keeps_the_existing_slot_timeout_and_completed_neighbors(
                 "slow": "Slow place Melbourne",
             },
             provider_timeout_seconds=0.02,
+            city_query="Melbourne",
         )
         assert result["items"]["fast"]["fallback"] == "google_no_photos"
         assert result["items"]["slow"] == {"status": "unavailable"}
         assert cancelled == [True]
 
     asyncio.run(run())
+
+
+def test_city_search_is_not_repeated_when_it_is_already_the_primary_query():
+    calls = []
+
+    def provider(request):
+        calls.append(request)
+        return httpx.Response(
+            200, json={} if request.url.host == "places.googleapis.com" else {"results": []}
+        )
+
+    adapter = MediaProviders(
+        google_key="controlled", unsplash_key="controlled", transport=httpx.MockTransport(provider)
+    )
+    assert asyncio.run(
+        adapter.google("cafe", 960, 640, fallback_query="Melbourne", city_query="Melbourne")
+    ) == {"status": "unavailable"}
+    assert len(calls) == 2
+
+
+def test_owned_city_search_uses_destination_without_private_request_text(client):  # noqa: F811
+    from backend.app.product.media import get_media_providers
+
+    queries = []
+
+    def provider(request):
+        assert "Private" not in str(request.url)
+        if request.url.host == "places.googleapis.com":
+            return httpx.Response(200, json={})
+        if request.url.path == "/search/photos":
+            query = request.url.params["query"]
+            queries.append(query)
+            return httpx.Response(
+                200, json={"results": [] if query == "Chicamocha Melbourne" else [photo("city")]}
+            )
+        return httpx.Response(200, json={"url": "https://images.unsplash.com/city"})
+
+    adapter = MediaProviders(
+        google_key="controlled", unsplash_key="controlled", transport=httpx.MockTransport(provider)
+    )
+    client.app.dependency_overrides[get_media_providers] = lambda: adapter
+    try:
+        owner = register(client)
+        detail = fallback_preview(owner["id"])
+        items = client.get(f"/api/previews/{detail.id}/media").json()["items"]
+        assert items["nearby:0"]["fallback"] == "google_no_photos"
+        assert sorted(queries) == [
+            "Chicamocha Melbourne",
+            "Federation Square Melbourne",
+            "Melbourne",
+        ]
+    finally:
+        client.app.dependency_overrides.pop(get_media_providers, None)

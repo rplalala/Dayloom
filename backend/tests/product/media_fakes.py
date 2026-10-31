@@ -9,11 +9,15 @@ def media_transport(request):
     if request.url.host == "api.unsplash.com":
         if request.url.path == "/search/photos":
             query = request.url.params.get("query", "")
-            if query == "No photo venue Melbourne":
+            if query in {
+                "No photo venue Melbourne",
+                "Chicamocha Melbourne",
+                "Photo-empty city",
+            } or query.endswith(" Photo-empty city"):
                 return httpx.Response(200, json={"results": []})
             identity = {
                 "Federation Square Melbourne": "square-fallback",
-                "Chicamocha Melbourne": "cafe-fallback",
+                "Melbourne": "city-fallback",
             }.get(query, "supporting-first")
             return httpx.Response(
                 200,

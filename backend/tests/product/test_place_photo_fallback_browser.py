@@ -1,4 +1,4 @@
-"""Controlled real browser/API/DB check of all three photo fallback outcomes."""
+"""Controlled real browser/API/DB check of place and city fallback outcomes."""
 
 # Imported pytest fixtures retain their public names.
 # ruff: noqa: F811
@@ -30,7 +30,7 @@ def settled(page, mobile):
         expect(button).to_have_count(1)
         if button.get_attribute("aria-expanded") == "false":
             button.click()
-    for slot in ("activity:square", "nearby:0"):
+    for slot in ("activity:square", "nearby:0", "activity:empty"):
         page.wait_for_function(
             "slot => [...document.querySelectorAll('[data-photo-slot]')].some(e=>"
             "e.dataset.photoSlot===slot&&e.dataset.photoState==='available'&&"
@@ -38,9 +38,6 @@ def settled(page, mobile):
             "e.querySelector('img')?.naturalHeight>0)",
             arg=slot,
         )
-    expect(page.locator('[data-photo-slot="activity:empty"]')).to_have_attribute(
-        "data-photo-state", "unavailable"
-    )
     page.locator('[data-photo-state="available"][data-photo-slot] img').evaluate_all(
         "async images=>Promise.all(images.map(image=>image.decode()))"
     )
@@ -69,19 +66,20 @@ def test_place_fallback_details_reload_single_refresh_and_logout(browser_app, mo
         page.goto(base + f"/previews/{detail.id}")
         settled(page, width < 800)
         assert sorted(batches[0]) == ["activity:empty", "activity:square", "nearby:0"]
-        assert len(cache(page)) == 2
+        assert len(cache(page)) == 3
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         page.get_by_role("link", name="View saved itinerary", exact=True).click()
         settled(page, width < 800)
+        saved_url = page.url
         before = cache(page)
-        assert len(before) == 2 and {row["media"]["fallback"] for row in before} == {
+        assert len(before) == 3 and {row["media"]["fallback"] for row in before} == {
             "google_no_photos"
         }
         assert len({row["media"]["image_url"] for row in before}) == 2
         count = len(batches)
         page.reload()
         settled(page, width < 800)
-        assert batches[count:] == [["activity:empty"]]
+        assert batches[count:] == []
         assert cache(page) == before
         card = page.get_by_role("group", name="Federation Square on 2026-11-01", exact=True)
         expect(card).to_have_class("activity-content principal-visit ")
@@ -96,7 +94,7 @@ def test_place_fallback_details_reload_single_refresh_and_logout(browser_app, mo
         caption = dialog.locator("figcaption").bounding_box()
         frame = dialog.locator(".photo-large").bounding_box()
         assert caption["y"] + caption["height"] <= frame["y"] + frame["height"]
-        scratch = Path(".scratch/place-photo-fallback-browser")
+        scratch = Path(".scratch/city-photo-fallback-browser")
         scratch.mkdir(parents=True, exist_ok=True)
         dialog.locator("img").evaluate("async image=>image.decode()")
         dialog.screenshot(path=str(scratch / f"details-{width}.png"))
@@ -105,12 +103,32 @@ def test_place_fallback_details_reload_single_refresh_and_logout(browser_app, mo
         expect(dialog.locator('figure[data-photo-state="available"]')).to_have_count(1)
         assert batches[count:] == [["activity:square"]]
         after = cache(page)
-        assert next(row for row in after if "cafe-fallback" in row["media"]["image_url"]) == next(
-            row for row in before if "cafe-fallback" in row["media"]["image_url"]
-        )
+        assert [row for row in after if "city-fallback" in row["media"]["image_url"]] == [
+            row for row in before if "city-fallback" in row["media"]["image_url"]
+        ]
         dialog.get_by_role("link", name="Supporting Photographer", exact=True).focus()
         page.keyboard.press("Escape")
         expect(dialog).to_have_count(0)
+        missing = fallback_preview(owner["id"], include_empty=True, destination="Photo-empty city")
+        page.goto(base + f"/previews/{missing.id}")
+        page.wait_for_function(
+            "() => ['activity:square','activity:empty','nearby:0'].every(slot=>"
+            "[...document.querySelectorAll('[data-photo-slot]')].some(e=>"
+            "e.dataset.photoSlot===slot&&e.dataset.photoState==='unavailable'))"
+        )
+        expect(page.locator('[data-photo-slot="activity:empty"]')).to_have_attribute(
+            "data-photo-state", "unavailable"
+        )
+        expect(
+            page.get_by_role("group", name="No photo venue on 2026-11-01").get_by_label(
+                "Illustration", exact=True
+            )
+        ).to_be_visible()
+        assert cache(page) == after
+        count = len(batches)
+        page.goto(saved_url)
+        settled(page, width < 800)
+        assert batches[count:] == []
         second = context.new_page()
         second.goto(base + "/account")
         second.get_by_role("button", name="Log out", exact=True).last.click()
