@@ -51,7 +51,7 @@ it('isolates fallback scope, expiry and eviction without borrowing supporting-th
   const entries = JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!).entries;
   expect(entries).toHaveLength(1);
   expect(entries[0].fetchedAt).toBe(acquired);
-  writePhoto(endpoint, scope, 'old', fallback('old'), Date.now() - 30 * 60 * 1000);
+  writePhoto(endpoint, scope, 'old', fallback('old'), Date.now() - 60 * 60 * 1000);
   expect(readPhoto(endpoint, scope, 'old')).toBeUndefined();
   invalidatePhotos({ owner: 'alice' });
   expect(readPhoto(endpoint, scope, 'cafe')).toBeUndefined();

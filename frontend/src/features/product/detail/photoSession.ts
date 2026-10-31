@@ -6,7 +6,8 @@ export type PhotoScope = { owner: string | null; generation: string; snapshot: s
   themes?: Record<string, NonNullable<DisplayMedia['theme']>>; width?: number; height?: number };
 type Entry = { key: string; sharedKey?: string; owner: string | null; resource: string; fetchedAt: number; media: DisplayMedia };
 const storageKey = 'dayloom.photos.session.v1';
-const lifetime = 30 * 60 * 1000;
+const lifetime = 60 * 60 * 1000;
+const maxEntries = 1000;
 const maxBytes = 1024 * 1024;
 const fences = new Map<string, number>();
 const listeners = new Set<() => void>();
@@ -95,7 +96,7 @@ function entries(): Entry[] {
     if (!raw) return [];
     if (new Blob([raw]).size > maxBytes) { sessionStorage.removeItem(storageKey); return []; }
     const saved = JSON.parse(raw);
-    if (saved?.version !== 1 || !Array.isArray(saved.entries) || saved.entries.length > 200) return [];
+    if (saved?.version !== 1 || !Array.isArray(saved.entries) || saved.entries.length > maxEntries) return [];
     const now = Date.now();
     return saved.entries.filter((entry: Entry) => entry && typeof entry.key === 'string' &&
       (entry.owner === null || typeof entry.owner === 'string') && typeof entry.resource === 'string' &&
@@ -106,7 +107,7 @@ function entries(): Entry[] {
 function save(values: Entry[]) {
   try {
     values.sort((a, b) => a.fetchedAt - b.fetchedAt);
-    while (values.length > 200) values.shift();
+    while (values.length > maxEntries) values.shift();
     let serialized = JSON.stringify({ version: 1, entries: values });
     while (values.length && new Blob([serialized]).size > maxBytes) {
       values.shift();

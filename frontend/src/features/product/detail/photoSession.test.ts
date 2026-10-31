@@ -8,15 +8,15 @@ const photo = { status: 'available' as const, kind: 'verified_place' as const, p
   authors: [{ name: 'Fixture photographer', url: 'https://www.google.com/maps/contrib/123' }] };
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.restoreAllMocks(); });
 
-it('expires thirty minutes after acquisition without extending on reads or restored storage', () => {
+it('expires one hour after acquisition without extending on reads or restored storage', () => {
   const clock = vi.spyOn(Date, 'now').mockReturnValue(1800000000000);
   writePhoto(resource, scope(), 'museum', photo);
   const saved = sessionStorage.getItem('dayloom.photos.session.v1')!;
-  clock.mockReturnValue(1800001740000);
+  clock.mockReturnValue(1800003540000);
   expect(readPhoto(resource, scope(), 'museum')).toEqual(photo);
   sessionStorage.clear();
   sessionStorage.setItem('dayloom.photos.session.v1', saved);
-  clock.mockReturnValue(1800001800000);
+  clock.mockReturnValue(1800003600000);
   expect(readPhoto(resource, scope(), 'museum')).toBeUndefined();
 });
 
@@ -81,16 +81,20 @@ it('rejects restored data with future timestamps or invalid metadata', () => {
 });
 
 it('evicts oldest entries at the count and serialized byte limits', () => {
-  for (let i = 0; i < 201; i++) writePhoto(resource, scope(), `slot:${i}`, photo);
+  for (let i = 0; i < 1000; i++) writePhoto(resource, scope(), `slot:${i}`, photo);
+  expect(readPhoto(resource, scope(), 'slot:0')).toEqual(photo);
+  expect(readPhoto(resource, scope(), 'slot:999')).toEqual(photo);
+  writePhoto(resource, scope(), 'slot:1000', photo);
   expect(readPhoto(resource, scope(), 'slot:0')).toBeUndefined();
-  expect(readPhoto(resource, scope(), 'slot:200')).toEqual(photo);
+  expect(readPhoto(resource, scope(), 'slot:1')).toEqual(photo);
+  expect(readPhoto(resource, scope(), 'slot:1000')).toEqual(photo);
   invalidatePhotos();
   const large = { ...photo, authors: Array.from({ length: 80 }, () => ({ name: 'X'.repeat(1900) })) };
   for (let i = 0; i < 10; i++) writePhoto(resource, scope(), `large:${i}`, large);
   expect(new Blob([sessionStorage.getItem('dayloom.photos.session.v1')!]).size).toBeLessThanOrEqual(1048576);
   expect(readPhoto(resource, scope(), 'large:0')).toBeUndefined();
   expect(readPhoto(resource, scope(), 'large:9')).toEqual(large);
-});
+}, 30000);
 
 it('tolerates storage denial/quota failure and stores only whitelisted display metadata', () => {
   writePhoto(resource, scope(), 'museum', { ...photo, csrf_token: 'not-for-storage', media_bindings: { private: 'place-id' } } as typeof photo);
