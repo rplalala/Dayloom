@@ -970,7 +970,8 @@ be shared during the active page attempt but are not persisted. Valid pre-extens
 Google cache keys are upgraded on read without resetting timestamps or refetching.
 Google-specific URL rules remain separate and unchanged.
 
-Supporting cards request 360×240 metadata and display smaller thumbnails that open the
+Supporting cards request 360×240 metadata and display 4:3 thumbnails at 112×84px on desktop
+and 88×66px at widths up to 800px, with 10px rounded crops. Thumbnails open the
 existing Details dialog. The Atmosphere photo label, Unsplash provider, photographer and
 source links appear only in Details as static, readable content, with keyboard/touch access.
 The image container accommodates the full caption and label without clipping; Escape
