@@ -886,19 +886,25 @@ resolves only the selected slot, without replanning or refreshing itinerary fact
 #### Place photo fallback
 
 For authorized activity and Nearby slots, Google remains the first provider. A successful
-Google Details response with absent or empty `photos` triggers one Unsplash search. The
+Google Details response with absent or empty `photos` triggers an Unsplash search. The
 bounded query uses only the owned detail's structured place name and destination, falling
 back to destination or the fixed general search when labels are absent. Activity titles,
 private notes, preferences and complete itinerary bodies are not sent. Client query text,
 unbound slots and imported place-ID claims cannot authorize a search.
 
-The adapter applies the same [first-result validation and adoption rules](#supporting-atmosphere-photos)
-as supporting imagery. A missing key, empty/unsafe first result, tracking failure or timeout
-leaves an illustration; there is no second result or extra query. Google authentication,
-quota, timeout, malformed-metadata and invalid-image-reference failures do not masquerade
-as confirmed photo absence. Both stages share the existing slot/batch bounds, without
-additional retries or a server cache. Preview, Save/read, independent Copy and curated
-examples retain the chain; the fixed London cover uses its existing Tower Bridge binding.
+Only a valid empty result list advances to a second search using the normalized structured
+destination alone. If that query equals the first query ignoring case, it is not repeated.
+The chain is **Google → Unsplash place name plus destination → destination atmosphere →
+illustration**, with at most two distinct Unsplash searches and only the first result of
+each. Both searches use the same [first-result validation and adoption rules](#supporting-atmosphere-photos)
+as supporting imagery. A missing key, unsafe or malformed first result, tracking failure,
+HTTP error or timeout stops resolution with an illustration; it does not broaden the search.
+Google authentication, quota, timeout, malformed-metadata and invalid-image-reference
+failures do not masquerade as confirmed photo absence. All stages share the original
+8-second complete-slot and 30-second batch deadlines, without additional retries or a
+server cache. Preview, Save/read, independent Copy and curated examples retain the chain.
+The fixed London cover uses its existing Tower Bridge binding; its fallback alt describes
+London atmosphere, while a verified Google photo retains the landmark alt.
 
 The display result carries `kind: atmosphere`, `theme: general` and
 `fallback: google_no_photos`. Details shows Atmosphere photo, Unsplash and the supplied

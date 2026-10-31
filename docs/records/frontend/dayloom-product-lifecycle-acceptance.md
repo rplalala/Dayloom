@@ -276,26 +276,41 @@ under the ignored `.scratch/activity-roles-details/` and `activity-media-details
 This correction uses controlled image responses; it adds no real-provider acceptance,
 planning, product-limit change or full regression.
 
-The later Google-photo fallback starts at `690f272` with implementation `40cb804`.
-Read-only inspection of the newly generated Melbourne preview found 30 bound photo slots:
-28 obtained Google photo metadata, while Federation Square and Nearby Chicamocha returned
-`no_photos`. Retained later requests repeated that outcome; diagnosis made no extra provider
-call. The authorized fallback now uses one first-result Unsplash search after confirmed
-Google photo absence, followed by an illustration if no usable result exists. Display
-provenance and per-slot session reuse preserve the existing identity and timing boundaries;
-the detailed current rule belongs in [application operations](../../0007-application-operations.md#place-photo-fallback).
+The Google-photo fallback began at `690f272` with implementation `40cb804`. Read-only
+inspection of the newly generated Melbourne preview found 30 bound photo slots: 28 obtained
+Google photo metadata, while Federation Square and Nearby Chicamocha returned `no_photos`.
+The first fallback used one Unsplash place-name/destination search. Its 47 provider/API and
+71 frontend cases passed; after narrowing a mobile Details locator, both responsive
+fallback journeys passed, alongside the existing complete 47-slot journeys. Those checks
+used controlled provider responses. Original evidence remains under the ignored
+`.scratch/place-photo-fallback-*` identifiers.
 
-Targeted provider/API checks passed 47 cases, and frontend photo/cache/detail checks passed
-71 cases in 12 files. The initial four-case browser run passed desktop fallback and both
-existing complete 47-slot journeys; mobile stopped because expanded Nearby introduced a
-second Details button under the same card. After narrowing that locator, both new responsive
-fallback journeys passed in 31.03 seconds. They cover preview/Save, two distinct successful
-fallback slots, a third slot with no result from either provider, reload of only that genuine
-miss, unchanged cached timestamps, selected refresh, decoded imagery, unclipped static
-credits and cross-tab logout. Build/typecheck, ESLint, changed-file Ruff and diff checks
-passed with existing advisories. Both independent implementation reviews reported zero
-findings. Original/affected follow-up evidence remains under the ignored
-`.scratch/place-photo-fallback-*` identifiers. No full regression or new paid acceptance ran.
+A subsequent single real search confirmed `Chicamocha Melbourne` returned HTTP 200 with
+zero results. The authorized destination-only extension starts at `1fb9425`, with
+implementation `6a49058` and review correction `1c9453e`. It preserves display provenance,
+per-slot session reuse and the original time bounds; the detailed current rule belongs in
+[application operations](../../0007-application-operations.md#place-photo-fallback).
+New empty-place/city tests first failed before the implementation. All 51 targeted media
+checks then passed; the affected checks passed again after review correction. Two real
+browser/API/isolated-database journeys passed at 1440px and 390px using controlled external
+responses. They cover destination adoption, both searches empty with illustrations,
+preview/Save, reload reuse with unchanged cache timestamps, selected refresh, decoded images,
+visible static credits and cross-tab logout. Standards review found no issues. Spec review
+found that a generic London city cover retained the Tower Bridge alt; a failing public API
+assertion reproduced it, and `1c9453e` corrected it. Spec recheck found no remaining issues.
+Changed-file Ruff and diff checks passed. No frontend implementation changed in this extension.
+
+At `1c9453e`, a bounded real-provider check requested only the owned Chicamocha slot once.
+Correlated logs show Google `no_photos`, an empty place search, destination broadening and
+Unsplash adoption: four metadata-provider HTTP requests, all 200. One actual image fetch
+returned a 29,321-byte JPEG that Chromium decoded at 360 × 239; visual inspection showed
+Melbourne city atmosphere, without establishing a photograph of Chicamocha itself. The
+single execution took 5.44 seconds with no retries, planning or model calls. Billing was
+not queried. This is single-slot API/image evidence, not a full live itinerary UI check.
+Local evidence identifiers are `.scratch/chicamocha-photo-check/`,
+`.scratch/city-photo-fallback-*` and `.scratch/city-photo-live/`. The normal local Product was
+restarted only after confirming no active planning tasks. No product limits, itinerary
+content or V0–V3 behavior changed; no full regression or new itinerary generation ran.
 
 ### Browser photo session acceptance (31 October 2026)
 
