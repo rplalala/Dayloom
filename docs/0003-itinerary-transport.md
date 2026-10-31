@@ -24,6 +24,18 @@ validity. Nearby identities resolve against that acquisition's evidence, which c
 from the primary supply. The application preserves attribution and deduplicates references
 against scheduled identities. An unused supply candidate is not automatically a reference.
 
+For new tools-based `itinerary_3` output, a declared `main_poi` must have an authorized
+acquired identity and an existing semantic assessment with `main_eligible=true`.
+Generation acceptance, V3 patch adoption/final selection and final Product projection
+use the same eligibility check. An unavailable place or missing/ineligible assessment
+cannot be replaced by a generic title, broad area or photo. Supported special-experience
+exceptions remain eligible under the existing assessment policy. A specific acquired
+promenade, park or lookout can ground a waterfront experience when its supplied semantic
+match supports it; a generic supporting walk cannot fulfill a required principal visit.
+Photo availability does not affect eligibility. V0 keeps its pure-model name proxy,
+and historical itinerary formats retain their compatibility path. No new model call,
+V1/V2 Repair stage or budget increase is introduced by this boundary.
+
 At V1-V3 output acceptance, each authorized `source_place_id` owns `place_name` and
 `location`: the application copies the supplied normalized PlaceEvidence's `name` and
 complete `formatted_address`, including null when the provider has no address. Model

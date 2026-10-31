@@ -154,17 +154,29 @@ completion and uncertainty; persistence does not imply global feasibility.
 Optional `completion.required_experiences` preserves each supported
 [required category visit](0002-requirements-evidence.md#required-category-visits), its
 original quote, target, scheduled count and satisfied/unmet/unverified explanation.
+Optional `planned_visits` carries only supported final activity/date/place associations.
 Preview, Save, reopening and export retain this projection. Matching is a semantic
 judgment grounded in supplied place information, not an operating-fact guarantee.
 Historical records without the field or without a captured failure reason are not
-backfilled with inferred diagnoses.
+backfilled with inferred diagnoses. The detail and text summary use each normalized
+experience label, separating Trip highlights from Still to arrange; raw matching counts,
+thresholds, shared source sentences and evidence-state prose are not displayed.
+Optional `completion.attention_items` preserves named-place and dated hard-request gaps
+as traveler-facing titles/descriptions, with known associations where available. Existing
+legacy named-gap reason codes receive a conservative explanation without inventing a
+place name/date. Unverified imports do not acquire fulfilled highlights or trusted navigation.
+The JSON artifact retains the original supported diagnostic projection as source content.
+Place links use only activity/date/name combinations actually present in the detail;
+replanning remains the explicit existing action and restores only basic trip information.
 For new Rich results, optional `completion.pace_review` preserves the
 [final V3 completion](0005-validation-repair%28v3%29.md#final-rich-completion) status and
 each applicable day's `date`, `count`, `target_count` and `state`. It carries no internal
 scores, finding IDs or debug flags. The same projection survives task result delivery,
 preview, Save and reopening. A partial preview remains a valid returned itinerary and
-does not acquire a successful-Repair badge. The detail page explains unmet Rich dates
-or unresolved travel checks in plain travel language; sourced exceptions retain a
+does not acquire a successful-Repair badge. The detail page explains a genuinely lighter
+Rich schedule in plain travel language; generic unavailable/not-attempted checking
+warnings are omitted, while local route, opening and price uncertainty remains visible.
+Sourced exceptions retain a
 separate indication. Historical records without this optional field keep their original
 completion content, without backfilling or relabelling.
 
@@ -453,8 +465,9 @@ The final planner's `activity_kind` survives Product projection, preview, normal
 Save/read, application recreation and independent copy. Its values are `main_poi`,
 `generic_activity`, `transport`, `free_time` and `unknown`; role is independent of
 `time_use`. A scheduled meal, rest or exploration activity remains scheduled and
-does not become a free window or add a principal visit. Existing planning/counting
-policies and V0–V3 generation behavior are unchanged by this presentation boundary.
+does not become a free window or add a principal visit. Tools-based principal eligibility
+uses the [shared source/assessment boundary](0003-itinerary-transport.md); persistence
+does not reinterpret historical roles or time-use declarations.
 
 Principal visits use prominent place cards. Supporting (`generic_activity`) activities
 use compact, solid-border white cards with their own timeline dot, start/end times,

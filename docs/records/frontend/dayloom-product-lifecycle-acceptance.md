@@ -143,7 +143,7 @@ at this event is local commits, not a published deployment.
 
 ## Verification and evidence
 
-### Activity role lifecycle and timeline (31 October 2026)
+### Activity roles and grounded experiences (31 October 2026)
 
 [Issue #236](https://github.com/rplalala/Dayloom/issues/236), under
 [#235](https://github.com/rplalala/Dayloom/issues/235), addresses the loss of final
@@ -166,13 +166,27 @@ disclosure. Correction `6fd26ce` shares the existing disclosure component and re
 the target, selection and desktop entry without an activity dot/photo. Both axes rechecked
 the complete committed range and returned zero remaining findings.
 
-The final targeted set passed **129 backend/API/migration/browser checks** without
-skips and **56 frontend checks across eight files**. The browser checks use the real
+[Issue #237](https://github.com/rplalala/Dayloom/issues/237) adds the shared acquired-place/
+semantic eligibility check and traveler-facing experience guidance in `347ff0d`, with
+review base `371a7bb`. V0's pure-model identity path and historical formats remain
+independent. No extra semantic-selection calls, Repair stages or limits were introduced.
+Spec review found that category-only guidance omitted failed named count/date obligations;
+separate correction `3a48956` preserves these as named/dated attention items, without
+rewriting native counts or inventing missing associations. Standards and Spec rechecked
+the corrected range and each returned zero remaining findings.
+
+The grounding/guidance targeted set passed **239 backend/API/browser checks** without
+skips (142 source/version/semantic checks, 43 V3 wiring/time-use checks and 54 isolated
+Product lifecycle/import/browser checks), plus **58 frontend checks across eight files**.
+Affected native and browser cases were rerun after the separate review correction.
+The browser checks use the real
 Product API and a disposable isolated PostgreSQL database, controlled provider adapters
 and Chromium at 1440px and 390px. They cover Save/reload, distinct photo-free supporting
 cards and dashed transport, supplied times, historical unknowns, keyboard dialogs/focus,
 Nearby anchors (including desktop Locate focus and mobile disclosure for transport)
-and JSON export/reimport. The reimport harness explicitly starts a new
+and JSON export/reimport. Generated preview/save/reload also retains separate museum
+highlights and waterfront/named-place attention, with exact activity navigation.
+The reimport harness explicitly starts a new
 import before editing the completed form; the final two-width rerun passed. TypeScript
 and Vite build, ESLint and changed-file Ruff checks passed; existing chunk-size and two
 session-module Fast Refresh warnings remain.
@@ -182,9 +196,8 @@ receive the unknown role default; no role classification or content backfill run
 
 There was no live generation/provider acceptance, full regression, limit change or
 historical role backfill. Historical missing roles remain unknown; intermediate Sydney
-repair/proposal material does not establish an authoritative final backfill. Principal
-grounding/completion guidance and supporting Unsplash searches remain separate dependent
-tasks #237 and #238.
+repair/proposal material does not establish an authoritative final backfill. Supporting
+Unsplash searches and complete-page integration remain tasks #238 and #239.
 
 ### Browser photo session acceptance (31 October 2026)
 
