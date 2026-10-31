@@ -1,0 +1,46 @@
+.config-page { min-height: 100vh; background: #f5f3ec; color: #243b32; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+.config-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #dce1d6; padding: 1.25rem max(1.25rem, calc((100vw - 1080px) / 2)); background: #fffef9; }
+.config-brand { display: flex; align-items: baseline; flex-wrap: wrap; gap: 1rem; font-family: Georgia, serif; font-size: 1.8rem; text-decoration: none; }
+.config-brand span { font: 500 .8rem Inter, system-ui, sans-serif; color: #657369; }
+.config-content { max-width: 1120px; padding: 2.5rem 1.25rem; margin: auto; }
+.config-intro { max-width: 680px; margin-bottom: 2rem; }
+.config-eyebrow { letter-spacing: .15em; font-size: .72rem; font-weight: 700; color: #657369; }
+.config-page h1 { font: 400 clamp(2rem, 5vw, 3.2rem)/1.15 Georgia, serif; margin: .6rem 0 1rem; }
+.config-page h2 { margin: 0 0 .7rem; font: 400 1.6rem Georgia, serif; }
+.config-page p { line-height: 1.65; color: #596b60; }
+.config-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.config-card { border: 1px solid #dce1d6; background: #fffef9; border-radius: 16px; padding: 1.65rem; min-width: 0; }
+.config-card > p { margin: .5rem 0 1.5rem; font-size: .9rem; }
+.config-unlock { max-width: 600px; }
+.config-unlock form { display: grid; gap: .8rem; }
+.config-field { margin-top: 1.25rem; }
+.config-page label { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem; font-size: .88rem; font-weight: 650; margin-bottom: .55rem; }
+.config-page label span { font-size: .72rem; font-weight: 500; color: #69786c; }
+.config-page input { display: block; width: 100%; min-width: 0; border: 1px solid #cdd5c8; border-radius: 8px; padding: .8rem; background: #fff; color: #243b32; font: inherit; font-size: .88rem; }
+.config-page :is(input, button, a):focus-visible { outline: 3px solid #b5753b; outline-offset: 3px; }
+.config-page input:disabled { background: #f0f1eb; color: #68766d; }
+.config-input-row { display: flex; gap: .5rem; }
+.config-field small { display: block; font-size: .77rem; line-height: 1.6; color: #69786c; margin-top: .45rem; overflow-wrap: anywhere; }
+.config-page button { cursor: pointer; border: 1px solid #cdd5c8; border-radius: 8px; background: #fffef9; color: #294537; padding: .75rem 1rem; font: 600 .8rem Inter, system-ui, sans-serif; }
+.config-page button:disabled { cursor: default; opacity: .55; }
+.config-page button.config-primary { background: #285642; color: #fff; border-color: #285642; }
+.config-message { display: flex; flex-direction: column; gap: .45rem; border-radius: 10px; padding: 1rem 1.25rem; background: #e8eee1; margin: 0 0 1.5rem; font-size: .88rem; line-height: 1.6; }
+.config-message.config-error { background: #f8e7df; color: #823e2d; }
+.config-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin: 1.5rem 0 2rem; }
+.config-actions > span { font-size: .78rem; color: #69786c; flex-basis: 100%; }
+.config-resource-heading { display: flex; align-items: flex-start; gap: 1.5rem; justify-content: space-between; }
+.config-resource-heading p { font-size: .88rem; max-width: 650px; }
+.config-resource-heading button { flex-shrink: 0; }
+.config-resources ul { list-style: none; padding: 0; }
+.config-resources li { border-top: 1px solid #dce1d6; padding: 1rem 0; }
+.config-resources li > div { display: flex; justify-content: space-between; gap: 1rem; font-size: .9rem; }
+.config-resources li p { margin-bottom: 0; font-size: .82rem; }
+.config-ready { color: #285642; }
+.config-missing { color: #94502b; }
+.config-footer { padding: 1rem 1.25rem 2rem; text-align: center; color: #69786c; font-size: .75rem; line-height: 1.8; }
+@media (max-width: 700px) {
+  .config-grid { grid-template-columns: 1fr; }
+  .config-card { padding: 1.25rem; }
+  .config-resource-heading { flex-direction: column; }
+  .config-header { align-items: flex-start; }
+}
