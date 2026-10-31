@@ -146,35 +146,49 @@ at this event is local commits, not a published deployment.
 ### Browser photo session acceptance (31 October 2026)
 
 [Issue #233](https://github.com/rplalala/Dayloom/issues/233) was checked against the
-normal local Product at `d019890`, serving the built frontend, real API/database and
-configured photo providers. No implementation changes were present. An isolated
-Chromium context used an existing administrator-owned saved itinerary; no planning,
-Save, Delete or other itinerary mutation was performed.
+normal local Product at `b065410` (implementation `d019890`), serving the built frontend,
+real API/database and configured photo providers. No implementation changes were present.
+An isolated Chromium context used an existing administrator-owned Sydney saved itinerary;
+no planning, Save, Delete or other itinerary mutation was performed.
 
-The initial whole-page attempt forwarded 36 photo slots before its next batch exceeded
-the prepared 40-slot limit. It stopped before the three acceptance checks, so that
-attempt is not a pass. The follow-up retained the same cumulative limit and sampled
-two existing activity slots. Browser routing narrowed the supported `slot` query to
-those two and blocked seven non-sample batches before API access. Responses and
-providers remained real; the result does not establish whole-page photo acceptance.
+Read-only preflight counted **29 activity slots and 18 Nearby slots: 47 total**, with
+45 verified bindings and two unbound slots. The complete browser request list agreed
+with those counts. Each full-page execution had a 95-slot budget: 47 initial requests,
+up to 47 reload misses/image recovery requests and one selected-photo refresh, plus
+six separately bounded curated-metadata requests. Product limits were unchanged.
+All 47 slots were forwarded without cropping, sampling or substituted responses, in
+the existing ordered batches **12, 12, 12, 11**. The 45 bound photos were cached;
+the two unbound slots remained unavailable with illustration fallbacks.
 
 | Check | Observed result |
 | --- | --- |
-| Reload reuse | Both cached slots were reused; zero attempted or forwarded requests for either cached slot, and no extended timestamps. |
-| Selected-photo refresh | One media request for one selected slot; neighboring timestamps unchanged and Google Maps credit visible. |
-| Logout isolation | Logout in a second tab cleared the original tab's private cache and photos. Reload made zero private media requests, and the owned-detail read returned 401. |
+| Full-page reload reuse | All 45 cached photos were reused without reacquisition or extended timestamps. Only the two uncached slots were requested, together in one media request. |
+| Selected-photo refresh | One media request for one selected slot; neighboring timestamps unchanged, Google Maps credit visible, and the refreshed image loaded and decoded successfully. |
+| Logout isolation | Logout in a second tab cleared all private cache entries and activity/Nearby photos in the original tab. Reload made zero private media requests, and the owned-detail read returned 401. |
 
-The successful sample took 8.23 seconds and forwarded three photo slots plus four
-curated-metadata requests. Across both attempts the totals were **39/40 photo slots**,
-**7/10 curated-metadata requests** and **zero generation requests**. These are browser
-request observations, not confirmed provider HTTP counts or billing. No full regression
-was run. The existing account-wide token revocation applies to logout, including other
-sessions using the same account.
+The first full-page execution passed request/cache assertions but its refresh screenshot
+was captured before the new image appeared. The corrected harness waits for every
+available place image to complete with a positive natural width, awaits decoding and
+two animation frames, then captures evidence. The complete rerun passed in 21.09 seconds.
+Both full-page executions forwarded **50/95 photo slots each** (47 initial, two reload,
+one manual refresh) and **4/6 curated-metadata requests each**, with no budget violations.
+Their combined actual usage was **100 photo slots, eight curated-metadata requests and
+zero generation requests**. These are browser metadata request counts, not confirmed
+provider HTTP counts or billing. No full regression was run. The existing account-wide
+token revocation applies to logout, including other sessions using the same account.
+
+The earlier 40-slot harness stopped after forwarding 36 slots; its next 11-slot batch
+would have exceeded that script budget. A subsequent two-slot sample passed three
+behavior checks but did not complete whole-page acceptance. Those preliminary attempts
+used 39 slots in total, separately from the complete executions above; their original
+evidence remains unchanged.
 
 Historical local evidence identifiers are `.scratch/photo-browser-acceptance/result.json`
-for the stopped attempt and `.scratch/photo-browser-acceptance/sample/result.json` with
-three screenshots for the successful sample. The frozen sample harness SHA256 was
-`08c0a0f4cc689ce13b6f7d03485ef839c16cf6215afd34beb064c007bcda729e`.
+and `.scratch/photo-browser-acceptance/sample/result.json` for the preliminary attempts,
+`.scratch/photo-browser-acceptance/full/result.json` for the first full-page execution,
+and `.scratch/photo-browser-acceptance/full-decoded/result.json` with four screenshots
+for the final complete image-verified result. The final frozen harness SHA256 was
+`1492fc95d437e52982fa73a231ae5e30db9929938dd3a896d758bbc17d90c8e1`.
 The separate sandbox launch failure made no business requests. Current cache behavior
 is defined in the [media contract](../../0007-application-operations.md#browser-tab-photo-session).
 
