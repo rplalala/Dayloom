@@ -168,6 +168,10 @@ class RequestPlannerRuntime:
         self._config = config
         self._dependency_factory = dependency_factory
 
+    @property
+    def diagnostics_config(self):
+        return self._config or load_runtime_config()
+
     async def run(
         self, version, request, **kwargs,
     ):

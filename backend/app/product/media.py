@@ -11,6 +11,8 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Response
 from pydantic import AliasChoices, Field, SecretStr, StringConstraints
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from backend.app.observability.product_logs import operation
+from backend.app.observability.usage import install_http_hooks
 from backend.app.product.auth import CurrentUser
 from backend.app.product.database import connect
 from backend.app.product.examples import example_detail
@@ -76,6 +78,7 @@ class MediaProviders:
         self.transport = transport
 
     async def _json(self, client, url, **kwargs):
+        install_http_hooks(client, "media", "media_metadata")
         async with client.stream("GET", url, **kwargs) as response:
             response.raise_for_status()
             body = bytearray()
@@ -147,7 +150,10 @@ class MediaProviders:
                     "kind": "verified_place",
                     "source_url": source_url,
                 }
-        except (httpx.HTTPError, ValueError, TypeError, AttributeError):
+        except (httpx.HTTPError, ValueError, TypeError, AttributeError) as error:
+            operation(
+                "media_provider_failed", {"provider": "google", "error_type": type(error).__name__}
+            )
             return unavailable()
 
     async def curated(self, key, width):
@@ -207,7 +213,11 @@ class MediaProviders:
                 "alt": alt,
                 "kind": "atmosphere",
             }
-        except (httpx.HTTPError, ValueError, TypeError, KeyError, AttributeError):
+        except (httpx.HTTPError, ValueError, TypeError, KeyError, AttributeError) as error:
+            operation(
+                "media_provider_failed",
+                {"provider": "unsplash", "error_type": type(error).__name__},
+            )
             return unavailable()
 
 
@@ -270,15 +280,15 @@ async def resolve_photos(
             try:
                 async with asyncio.timeout(provider_timeout_seconds):
                     items[slot] = await providers.google(place, width, height)
-            except Exception:
+            except Exception as error:
                 # One display failure must not erase completed slots; cancellation propagates.
-                pass
+                operation("media_slot_failed", {"error_type": type(error).__name__})
 
     try:
         async with asyncio.timeout(batch_timeout_seconds):
             await asyncio.gather(*(resolve(slot, place) for slot, place in bindings))
     except TimeoutError:
-        pass
+        operation("media_batch_timeout")
     next_offset = offset + len(bindings)
     return {
         "items": items, "limit": MAX_PLACE_PHOTOS,

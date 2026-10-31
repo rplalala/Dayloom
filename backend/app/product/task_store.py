@@ -7,6 +7,7 @@ from uuid import uuid4
 
 from psycopg.types.json import Jsonb
 
+from backend.app.observability.product_logs import log_context, operation
 from backend.app.product.database import connect
 
 ACTIVE = ("pending", "running", "stopping")
@@ -84,6 +85,7 @@ class TaskStore:
         )
 
     def reconcile(self, owner=None):
+        recovered = []
         with connect(self.settings) as connection:
             condition = "state IN ('pending','running','stopping')"
             args = ()
@@ -94,7 +96,16 @@ class TaskStore:
                 "SELECT * FROM app.planning_tasks WHERE " + condition + " FOR UPDATE", args
             ).fetchall()
             for row in rows:
-                self._recover(connection, row)
+                if self._recover(connection, row):
+                    recovered.append(row)
+        for row in recovered:
+            with log_context(
+                task_id=row["id"], owner_id=row["owner_id"], execution_id=row["execution_id"]
+            ):
+                operation(
+                    "task_recovered",
+                    {"previous_state": row["state"], "state": "failed", "reason": "lease_expired"},
+                )
 
     def _recover(self, connection, row):
         deadline = row["pending_deadline"] if row["state"] == "pending" else row["lease_deadline"]
@@ -104,6 +115,11 @@ class TaskStore:
                 "revision=revision+1,updated_at=%s WHERE id=%s",
                 (Jsonb(INTERRUPTED), self.now(connection), row["id"]),
             )
+            with log_context(task_id=row["id"], owner_id=row["owner_id"]):
+                operation("task_recovery_attempted", {
+                    "previous_state": row["state"], "proposed_state": "failed",
+                    "reason": "lease_expired", "commit_status": "pending_transaction",
+                })
             return True
         return False
 

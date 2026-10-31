@@ -145,6 +145,7 @@ def isolated_environment(
             "PRODUCT_ALLOW_INSECURE_LOOPBACK": "true",
             "PRODUCT_ORIGIN": f"http://localhost:{web_port}",
             "PRODUCT_API_PROXY": f"http://127.0.0.1:{api_port}",
+            "PRODUCT_LOG_DIRECTORY": str(temporary_directory / "diagnostics"),
         }
     )
     return environment

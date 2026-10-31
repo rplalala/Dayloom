@@ -1,9 +1,10 @@
 """Application-owned execution; observation never owns a planner or its cancellation."""
 
 import asyncio
-from contextlib import suppress
+from contextlib import ExitStack, suppress
 from datetime import date
 
+from backend.app.observability.product_logs import log_context, operation, safe_error
 from backend.app.observability.progress import MESSAGES, ProgressObserver, progress_scope
 from backend.app.product.preview_projection import generated_detail
 from backend.app.product.task_outcomes import failure_outcome
@@ -44,12 +45,16 @@ class TaskCoordinator:
                 PlanningRequest.model_validate(original["request"])
             ) != request_fingerprint(request):
                 raise TaskConflict("operation_key_conflict", original["id"])
+            with log_context(task_id=original["id"], owner_id=owner):
+                operation("task_replayed", {"state": original["state"]})
             return original
         reference_date = service.reference_date()
         service.validate(request, reference_date=reference_date)
         task, created = await asyncio.to_thread(
             self.store.accept, owner, key, request, editor, reference_date
         )
+        with log_context(task_id=task["id"], owner_id=owner):
+            operation("task_accepted" if created else "task_replayed", {"state": task["state"]})
         self.start()
         if created:
             if self.schedule:
@@ -70,12 +75,16 @@ class TaskCoordinator:
         task.add_done_callback(self.workers.discard)
 
     async def _reconcile(self):
+        with log_context(reset=True):
+            await self._reconcile_loop()
+
+    async def _reconcile_loop(self):
         while True:
             try:
                 await asyncio.to_thread(self.store.reconcile)
-            except Exception:
+            except Exception as error:
                 # A temporary storage failure cannot grant execution authority.
-                pass
+                operation("task_reconcile_failed", {"error": safe_error(error)})
             await asyncio.sleep(self.reconcile_seconds)
 
     async def _heartbeat(self, claim, observer, worker):
@@ -95,19 +104,27 @@ class TaskCoordinator:
                 if not await asyncio.to_thread(self.store.renew, claim, progress):
                     # Stop may arrive through another app instance. Lost durable authority
                     # also stops this owner's transport; fencing alone only rejects writes.
+                    operation("task_lease_lost")
                     worker.cancel()
                     return
-            except Exception:
+            except Exception as error:
                 # No renewal was granted. A later attempt still checks the existing deadline.
+                operation("task_heartbeat_failed", {"error": safe_error(error)})
                 continue
 
     async def _run(self, task_id, service):
         claim, heartbeat = None, None
+        diagnostics = ExitStack()
         try:
             claim = await asyncio.to_thread(self.store.claim, task_id)
             if claim is None:
                 return
-            observer = ProgressObserver(developer=False)
+            diagnostics.enter_context(log_context(
+                task_id=claim["id"], execution_id=claim["execution_id"],
+                run_id=claim["execution_id"], owner_id=claim["owner_id"], fence=claim["fence"]
+            ))
+            operation("task_claimed")
+            observer = ProgressObserver(developer=False, run_id=claim["execution_id"])
             heartbeat = asyncio.create_task(
                 self._heartbeat(claim, observer, asyncio.current_task())
             )
@@ -119,13 +136,19 @@ class TaskCoordinator:
                     else date.fromisoformat(claim["reference_date"]),
                 )
             detail = generated_detail(result, PlanningRequest.model_validate(claim["request"]))
-            await asyncio.to_thread(self.store.complete, claim, detail)
+            committed = await asyncio.to_thread(self.store.complete, claim, detail)
+            operation(
+                "task_completed" if committed else "task_result_not_committed",
+                {"preview_id": detail.id},
+            )
         except asyncio.CancelledError:
+            operation("task_execution_cancelled")
             if claim:
                 with suppress(Exception):
                     await asyncio.to_thread(self.store.finish, claim, "failed", INTERRUPTED)
             raise
         except Exception as error:
+            operation("task_execution_failed", {"error": safe_error(error)})
             if claim:
                 state, outcome = failure_outcome(error)
                 with suppress(Exception):
@@ -139,7 +162,10 @@ class TaskCoordinator:
                 # service.plan unwinds its owned transport stack before this acknowledgement.
                 # This narrow transition cannot alter completion or another execution's fence.
                 with suppress(Exception):
-                    await asyncio.to_thread(self.store.acknowledge_stop, claim)
+                    acknowledged = await asyncio.to_thread(self.store.acknowledge_stop, claim)
+                    if acknowledged:
+                        operation("task_stop_acknowledged")
+            diagnostics.close()
 
     async def close(self):
         self.closed = True
