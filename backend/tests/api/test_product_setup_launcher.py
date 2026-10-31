@@ -20,6 +20,8 @@ def local_launcher(tmp_path, monkeypatch):
         "  deployment: gpt-6-luna\n",
         encoding="utf-8",
     )
+    # The real launcher changes cwd; register restoration for later tests.
+    monkeypatch.chdir(tmp_path)
     monkeypatch.setattr(run_product, "PROJECT_ROOT", tmp_path)
     monkeypatch.setitem(ProductPolicySettings.model_config, "env_file", tmp_path / ".env")
     monkeypatch.setitem(ProductPolicySettings.model_config, "yaml_file", tmp_path / "product.yaml")

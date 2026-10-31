@@ -30,8 +30,8 @@ def check_local_resources():
 
     def retrieval():
         from backend.app.runtime.config_loader import load_product_runtime_config
+        from backend.app.runtime.event_loop import create_api_loop
         from backend.app.tripworld.retrieval.runtime import RuntimeRetrieval
-        from scripts.run_api import create_api_loop
 
         async def prepare():
             config = load_product_runtime_config().tripworld_discovery

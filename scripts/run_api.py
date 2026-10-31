@@ -11,10 +11,10 @@ if str(PROJECT_ROOT) not in sys.path:
 
 
 def create_api_loop():
-    """Keep request resources on one loop; psycopg does not support Windows Proactor."""
-    if sys.platform == "win32":
-        return asyncio.SelectorEventLoop()
-    return asyncio.new_event_loop()
+    """Retain the launcher interface for the shared PostgreSQL loop policy."""
+    from backend.app.runtime.event_loop import create_api_loop as create_loop
+
+    return create_loop()
 
 
 def main(argv=None):

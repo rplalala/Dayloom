@@ -18,11 +18,11 @@ def check_runtime():
 
     from backend.app.product.settings import ProductSettings
     from backend.app.runtime.config_loader import load_runtime_config
+    from backend.app.runtime.event_loop import create_api_loop
     from backend.app.runtime.token_counting import tokenizer
     from backend.app.tripworld.retrieval.query_tokens import tokenizer as embedding_tokenizer
     from backend.app.tripworld.retrieval.runtime import RuntimeRetrieval
     from backend.app.versions.v1.config import V1Settings
-    from scripts.run_api import create_api_loop
 
     settings = ProductSettings()
     V1Settings()
@@ -52,7 +52,7 @@ def main(argv=None):
     from backend.app.product.configuration import LocalConfiguration
     from backend.app.product.configuration_api import enable_local_configuration
     from backend.app.runtime.deployment import ProductPolicySettings
-    from scripts.run_api import create_api_loop
+    from backend.app.runtime.event_loop import create_api_loop
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", default="127.0.0.1")
