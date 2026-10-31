@@ -38,7 +38,7 @@ def test_adopted_final_google_identity_survives_private_preview_projection():
 
 
 @pytest.mark.parametrize(
-    "condition", ["early-only", "unavailable", "other-provider", "free-window"]
+    "condition", ["early-only", "unavailable", "other-provider", "free-window", "transport"]
 )
 def test_lookalikes_and_nonadopted_evidence_do_not_grant_photo_identity(condition):
     result, evidence = example()
@@ -58,6 +58,8 @@ def test_lookalikes_and_nonadopted_evidence_do_not_grant_photo_identity(conditio
         place = place.model_copy(update={"source_ref": "imported:google_claim"})
     if condition == "free-window":
         activity.time_use = "free_window"
+    if condition == "transport":
+        activity.activity_kind = "transport"
     result.places = [place]
     result.v3 = SimpleNamespace(final_places=() if condition == "early-only" else (place,))
     assert not present_product(result, evidence)._media_bindings

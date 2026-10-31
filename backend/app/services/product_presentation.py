@@ -82,6 +82,10 @@ def present_product(result, evidence, introductions=None):
                 activities=[
                     ProductActivity(
                         activity_id=a.activity_id,
+                        activity_kind=a.activity_kind,
+                        atmosphere_theme=(
+                            "general" if a.activity_kind == "generic_activity" else None
+                        ),
                         time_use=a.time_use,
                         title=a.title,
                         place_name=a.place_name,
@@ -229,7 +233,11 @@ def present_product(result, evidence, introductions=None):
     nearby_position = 0
     for day in final.days:
         for activity in day.activities:
-            if activity.time_use != "free_window" and activity.source_place_id in verified:
+            if (
+                activity.time_use != "free_window"
+                and activity.activity_kind != "transport"
+                and activity.source_place_id in verified
+            ):
                 bindings[f"activity:{activity.activity_id}"] = activity.source_place_id
             for place_id in nearby_identities.get(activity.activity_id, []):
                 if place_id and activity.time_use != "free_window":

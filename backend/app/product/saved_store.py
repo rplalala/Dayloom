@@ -260,6 +260,8 @@ class SavedStore:
                     key: activity[key]
                     for key in (
                         "activity_id",
+                        "activity_kind",
+                        "atmosphere_theme",
                         "title",
                         "time_use",
                         "place_name",

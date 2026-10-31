@@ -10,6 +10,16 @@
 .dayloom .detail-dialog .photo-large .has-place-credit > img { flex:1; min-height:0; height:0; }
 .dayloom .detail-dialog .photo-large .has-place-credit > figcaption { flex:none; }
 .dayloom .day-events[hidden] { display:none; }
+.dayloom .principal-visit { min-height:150px; }
+.dayloom .principal-visit .activity-photo { width:136px; height:112px; }
+.dayloom .principal-visit .activity-details h3 { font-size:18px; }
+.dayloom .supporting-activity { background:#fff; border:1px solid var(--line); padding:10px 14px; }
+.dayloom .supporting-activity .activity-details h3 { font-size:15px; }
+.dayloom .supporting-activity .activity-intro { font-size:13px; margin-top:3px; line-height:1.5; }
+.dayloom .supporting-activity .activity-actions { margin-top:6px; }
+.dayloom .supporting-activity .activity-tag { font-size:11px; }
+.dayloom .scheduled-transport .transfer-copy { text-align:left; }
+.dayloom .scheduled-transport small { display:block; }
 .dayloom .activity-content:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
 .dayloom .nearby-body strong, .dayloom .detail-source-anchor { overflow-wrap:anywhere; }
 .dayloom .source-details { margin-top:18px; color:var(--muted); font-size:13px; }
@@ -49,4 +59,9 @@
   .dayloom .transfer-connector { padding:12px; }
   .dayloom .transfer-copy { margin-left:0; width:100%; }
   .dayloom .transfer-copy>span:first-child { flex-wrap:wrap; }
+  .dayloom .supporting-event { display:grid; grid-template-columns:41px 11px minmax(0,1fr); gap:6px; }
+  .dayloom .supporting-event .activity-time { display:flex; }
+  .dayloom .supporting-event .activity-marker { display:block; }
+  .dayloom .supporting-activity { padding:10px 12px; }
+  .dayloom .principal-visit .activity-photo { width:100%; height:110px; }
 }

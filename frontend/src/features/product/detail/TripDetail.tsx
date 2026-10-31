@@ -42,6 +42,8 @@ const clock = (value?: string | null) =>
   value?.match(/T(\d{2}:\d{2})/)?.[1] || "Time unavailable";
 const cost = (money: DetailActivity["estimated_cost"]) =>
   money ? `${money.currency} ${money.amount}` : "Cost to confirm";
+const hasPlacePhoto = (activity: DetailActivity) => activity.time_use !== 'free_window'
+  && activity.activity_kind !== 'generic_activity' && activity.activity_kind !== 'transport';
 const modeName = (mode?: string | null) => ({ WALK: "Walking", TRANSIT: "Public transit", DRIVE: "Driving" }[mode || ""] || "Transport to confirm");
 const modeIcon = (mode?: string | null) => ({ WALK: "walk", TRANSIT: "bus", DRIVE: "car" }[mode || ""] || "info");
 const mapLink = (place: string, area?: string | null) =>
@@ -171,7 +173,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
   const [information, setInformation] = useState<Information | null>(null);
   const media = usePlaceMedia(mediaEndpoint, [
     ...detail.days.flatMap(day => day.activities
-      .filter(activity => activity.time_use !== 'free_window')
+      .filter(hasPlacePhoto)
       .map(activity => `activity:${activity.activity_id}`)),
     ...detail.nearby.map((_, index) => `nearby:${index}`),
   ], mediaOwner === undefined ? undefined : { owner: mediaOwner, generation: photoGeneration(mediaOwner), snapshot: photoFingerprint(detail) });
@@ -278,7 +280,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
     setInformation({
       title: name(activity),
       icon: "pin",
-      photo: activity.time_use === "free_window" ? undefined : { slot: `activity:${activity.activity_id}`, label: name(activity), fallback: activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`) },
+      photo: !hasPlacePhoto(activity) ? undefined : { slot: `activity:${activity.activity_id}`, label: name(activity), fallback: activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`) },
       introduction: [activity.place_name, activity.location || "Location unavailable."].filter(Boolean).join("\n"),
       notes: [
         { heading: <><Icon name="clock" size={17} />{activity.time_use === "free_window" ? "Free time" : "Planned visit"}</>, body: `${dottedDate(activity.start_time)} · ${clock(activity.start_time)}–${clock(activity.end_time)}` },
@@ -466,32 +468,48 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                           const key = keyFor(day.date, activity.activity_id);
                           const group = groups.find((g) => g.key === key);
                           const free = activity.time_use === "free_window";
+                          const supporting = !free && activity.activity_kind === 'generic_activity';
+                          const transport = activity.activity_kind === 'transport';
+                          const cardRole = free ? 'free-window' : supporting ? 'supporting-activity'
+                            : activity.activity_kind === 'main_poi' ? 'principal-visit' : 'unknown-activity';
                           return (
                             <div
                               className="activity-wrap"
                               key={activity.activity_id}
                             >
-                              <div className="activity-item">
+                              {transport ? (
+                                <button type="button" className="transfer-connector scheduled-transport"
+                                  aria-label={`${name(activity)} · ${clock(activity.start_time)}–${clock(activity.end_time)}`}
+                                  onClick={() => activityInfo(activity)}>
+                                  <span className="transfer-line" aria-hidden="true" />
+                                  <span className="transfer-copy">
+                                    <Icon name="route" size={17} />
+                                    <span>{name(activity)} <small>{clock(activity.start_time)}–{clock(activity.end_time)}</small></span>
+                                    <Icon name="chevron" size={14} />
+                                  </span>
+                                </button>
+                              ) : <div className={`activity-item ${supporting ? 'supporting-event' : ''}`}>
                                 <div className="activity-time">
                                   <strong>{clock(activity.start_time)}</strong>
                                   <span>{clock(activity.end_time)}</span>
                                 </div>
-                                <div className="activity-marker" />
+                                <div className="activity-marker" aria-hidden="true" />
                                 <div
-                                  className={`activity-content ${free ? "free-window" : ""} ${selected?.key === key ? "nearby-linked-selected" : ""}`}
+                                  className={`activity-content ${cardRole} ${selected?.key === key ? "nearby-linked-selected" : ""}`}
+                                  role="group"
                                   id={domId("stop", key)}
                                   tabIndex={-1}
                                   aria-label={`${name(activity)} on ${day.date}`}
                                 >
                                   {free && <span className="free-glyph"><Icon name="leaf" size={30} /></span>}
-                                  {!free && (
+                                  {hasPlacePhoto(activity) && (
                                     <PlacePhoto fallback={activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`)} className="activity-photo" slot={`activity:${activity.activity_id}`} label={name(activity)} onOpen={() => activityInfo(activity)} />
                                   )}
                                   <div className="activity-details">
                                     <span className="activity-tag">
                                       {free
                                         ? "Free time · no fixed place"
-                                        : activity.category ||
+                                        : supporting ? "Along the way" : activity.activity_kind === 'main_poi' ? "Main visit" : activity.category ||
                                           "Planned activity"}
                                     </span>
                                     <h3>{name(activity)}</h3>
@@ -502,6 +520,9 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                                       <p className="activity-intro">
                                         {activity.introduction}
                                       </p>
+                                    )}
+                                    {supporting && !activity.introduction && activity.notes && (
+                                      <p className="activity-intro">{activity.notes}</p>
                                     )}
                                     <div className="activity-meta">
                                       <span>
@@ -583,7 +604,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                                     </section>
                                   )}
                                 </div>
-                              </div>
+                              </div>}
                               {detail.transfers
                                 .filter(
                                   (t) =>

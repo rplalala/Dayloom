@@ -27,6 +27,8 @@ export type DetailNearby = {
 export type DetailActivity = {
   illustration_key?: IllustrationKey | null;
   activity_id: string;
+  activity_kind?: 'main_poi' | 'generic_activity' | 'transport' | 'free_time' | 'unknown';
+  atmosphere_theme?: 'meal' | 'rest' | 'explore' | 'walk' | 'general' | null;
   title: string;
   time_use: "scheduled" | "free_window";
   place_name?: string | null;
