@@ -209,6 +209,70 @@ request had a distinct UUID matched to the operation file, and the new server ou
 had no logging formatter error. This readiness check performed zero provider calls
 and established no live retrieval, embedding, search or model-quality result.
 
+### Expanded generation resources (31 October 2026)
+
+The resource follow-up uses fixed base `413fe7f`, implementation `b230625`, large-run
+diagnostic correction `bbffad8`, graph-test correction `5a36300` and Maps transport
+correction `ff76f79`. Documentation is
+updated separately. The approved scope expands Product acceptance generation, evidence,
+route, RAG, semantic and Repair allowances; the user explicitly retained the US$25
+per-generation spending guard. Current values belong in the
+[profile reference](../../../config/README.md#product-acceptance-profile).
+
+A nine-day manual Product run completed its preview but retained only 20 primary visits
+against the Rich target of 27. Its native decision identifies
+`RepairInputOverflow:repair_input_overflow`, with no proposal-model call. The input
+allowance was an application limit, below the provider's published envelope. This run's
+exact overflow total and component counts were not retained. Candidate count approached
+its allowance, reviews reached eight and route work recorded budget stops; those facts
+do not independently establish a causal explanation for the remaining visit deficit.
+
+The selected correction expands the finite operating envelope while reusing the existing
+Repair mechanism. Typed limits, adapter output bounds and monetary admission were
+updated together. Controlled tests reproduce the old configuration rejection and its
+hidden output gate, then admit larger work while preserving atomic budget rejection.
+The same input builder with fixture token counts skips proposal generation under the
+development policy and reaches a successful proposal under acceptance; an unauthorized
+patch remains rejected. Development configuration bytes and serialized defaults remain
+unchanged. The acceptance review strategy now follows its configured allowance instead
+of silently keeping a fixed eight-place cap.
+
+Large-outcome regression also exposed a long-field credential-redaction scan. A bounded
+stack capture located execution in the URL-userinfo regex; adding a scheme boundary
+removed overlapping scans while retaining redaction, including uppercase database URLs.
+The original metadata regression then failed promptly because the large outcome erased
+`run.json`. Independent bounded metadata now preserves task/run identity, timestamps and
+the configuration digest. A separate compact event retains Repair input sizing in both
+summaries even when the model is not called or detailed events are truncated. Allowlisted
+numeric token components remain numeric; credentials retain redaction.
+
+The final affected-interface gate passed 218 tests, covering configuration, spending,
+native tracing, Repair and real Product HTTP/task/PostgreSQL paths with controlled
+providers. Nine additional actual V1-V3 graph cases passed for one-, nine- and ten-day
+Rich requests. Their initial run reached six passes and one failure because an old test
+still imposed the former aggregate route allowance. The separate test correction uses
+the approved baseline-plus-alternatives envelope and retains the per-request provider
+bound. A final two-profile HTTP probe also reproduced a fixed 20-second transport
+timeout shadowing the higher configured allowance. The transport now follows the
+selected Maps phase settings; all 19 runtime ownership/dispatch/cleanup tests then passed,
+including actual controlled request timeout metadata. Both independent review axes
+reported zero findings and rechecked both corrections.
+Ruff and diff checks passed. The full backend invocation was stopped at the user's
+request before completion; it supplies no whole-suite verdict for this change.
+
+Evidence identifiers under `.scratch/acceptance-limits-tests/` are
+`pytest-20261031-145843.log` / `results-20261031-145843.xml` for the 218-case gate,
+`pytest-20261031-150446.log` / `results-20261031-150446.xml` for the nine graph cases,
+`unit-20261031-151859.log` / `unit-20261031-151859.xml` for the runtime transport gate,
+`pytest-20261031-144744.log` for the redaction stack,
+`pytest-20261031-150411.log` for the old graph assertion and
+`pytest-20261031-150150.log` for the interrupted full invocation. Following a restart
+at `ff76f79`, `runtime-readiness-final.json` records home/login/health returning 200 and
+unauthenticated current-account returning 401, all associated with server request IDs.
+The new server output had zero logging formatter errors. Local readiness performed
+zero provider calls. No new live itinerary or provider-quality result was produced;
+the expanded limits still share the retained monetary ceiling and can leave unresolved goals.
+
 ### Complete media and acceptance resources (24 October 2026)
 
 [Issue #231](https://github.com/rplalala/Dayloom/issues/231) follows the generic required-category

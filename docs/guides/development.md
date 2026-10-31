@@ -168,7 +168,11 @@ above remain available, and independent V0–V3 entrypoints are unchanged.
 
 Product writes rotating `operations*.jsonl` and per-run directories under `logs/product`.
 Run directories contain `run.json`, `events.jsonl`, `budget.json`, `summary.json` and
-enabled payload categories. `summary.json` reports service completion, available Repair
+enabled payload categories. `run.json` retains identity, timestamps and the configuration
+digest under an independent metadata allowance, with markers for oversized fields.
+`summary.json` and `budget.json` preserve the latest available Repair input token total,
+ceiling and numeric component counts even when detailed events are truncated.
+`summary.json` reports service completion, available Repair
 stop reasons, pace, stage timings and collection status under a separate 64 KiB cap.
 Correlate it with `task_completed`, `task_finished` or
 `task_result_not_committed` to determine whether the preview was persisted.

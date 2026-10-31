@@ -45,6 +45,11 @@ payloads, a numeric budget summary and an independent final summary. Available r
 cover requirements, candidate acquisition and RAG, identity/semantic decisions, generation,
 validation, Repair proposals/admission/retention and finalization. Initial/final itineraries
 and validation reports are separated from the large final event under existing size limits.
+`run.json` has a separate metadata allowance below 64 KiB, preserving run/task identity,
+timestamps and the configuration digest when large outcome or configuration fields receive
+explicit truncation markers. Repair input sizing is emitted independently before its
+decision, including overflow without a model call; numeric total, candidate, context,
+evidence and schema counts survive in both the final and budget summaries.
 The separate 64 KiB final summary preserves the stopping reason, Repair status, selected
 round, pace completion, compact validation findings and Product completion even when
 detailed events are truncated. V3 emits compact completion before truncating its full
