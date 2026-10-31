@@ -209,6 +209,8 @@ saved key before restart; successful checks do not apply that key to the running
 planner. Results show each capability, elapsed time and safe failure guidance.
 Configuration changes invalidate the results. Reload after a conflict and check
 again explicitly. Missing sample photos can leave the photo check unverified.
+The Azure card checks model responses and web search with the same Foundry settings;
+the OpenAI card checks retrieval embeddings. Search uses Azure in both standard profiles.
 The [configuration contract](../0007-application-operations.md#local-configuration-console)
 defines capabilities and request/time limits. Development tests mock these requests;
 passing those tests does not establish that installation credentials work.

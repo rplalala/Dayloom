@@ -31,8 +31,8 @@ to the [local configuration guide](guides/development.md#local-configuration-con
 
 | Editable setting | Existing consumer |
 | --- | --- |
-| `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_DEPLOYMENT`, `AZURE_OPENAI_API_KEY` | Current Foundry model calls |
-| `OPENAI_API_KEY` | Existing query embeddings and configured OpenAI web evidence |
+| `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_DEPLOYMENT`, `AZURE_OPENAI_API_KEY` | Current Foundry model calls and web search |
+| `OPENAI_API_KEY` | TripWorld query embeddings |
 | `GOOGLE_MAPS_API_KEY` | Planning and place photographs |
 | `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional atmosphere photographs; existing `UNSPLASH_API_KEY` remains an alias |
 
@@ -72,8 +72,8 @@ changing the running planner's pinned settings.
 
 | Service | Capability checked | Maximum HTTP attempts |
 | --- | --- | --- |
-| Azure Foundry | One tiny strict structured Responses result from the saved deployment | 1 |
-| OpenAI | `text-embedding-3-small` with 1,536 finite dimensions; one completed web search using the existing search model | 2 |
+| Azure Foundry | One tiny strict structured Responses result and one completed web search from the saved deployment | 2 |
+| OpenAI | `text-embedding-3-small` with 1,536 finite dimensions | 1 |
 | Google Maps | One Places text search, a 1-by-1 walking route matrix, photo details and photo media URI | 4 |
 | Unsplash (optional) | Metadata for one existing catalog photograph | 1 |
 

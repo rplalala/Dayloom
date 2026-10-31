@@ -69,7 +69,8 @@ connection settings to Compose. Planning policies
 use `config/runtime.yaml` for development and `config/runtime.acceptance.yaml` for Product
 acceptance, selected by `product.yaml: runtime_profile`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
 Acceptance uses larger input and supply capacity with bounded execution budgets and a shared per-run
-spending guard; the [profile reference](config/README.md#product-acceptance-profile) owns
+spending guard that excludes web search. Both standard profiles use Azure Foundry search;
+the [profile reference](config/README.md#product-acceptance-profile) owns
 current values and the development rollback.
 See the [development guide](docs/guides/development.md#local-postgresql-naming-and-storage)
 for storage retention, overrides and isolated test settings.
