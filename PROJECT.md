@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-31.
+Current source of truth. Updated 2026-11-01.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -73,6 +73,13 @@ spending guard; the [profile reference](config/README.md#product-acceptance-prof
 current values and the development rollback.
 See the [development guide](docs/guides/development.md#local-postgresql-naming-and-storage)
 for storage retention, overrides and isolated test settings.
+
+The local Product launcher also serves `/config` with independent loopback-only
+management access. It edits existing provider settings in `.env`, shows local
+resource readiness, and requires restart after saving. Incomplete local installs
+can open the console while business APIs remain paused. Database/data preparation,
+model providers, spending policies and V0-V3 mechanisms retain their current scope.
+See the [configuration guide](docs/guides/development.md#local-configuration-console).
 
 Product UI/API uses V3 and an allowlisted presentation contract. Developer mode
 exposes V0-V3 independently. Current input assistance includes destination suggestions,

@@ -1,6 +1,6 @@
 # Application interfaces and engineering operation
 
-Current application boundary, consolidated 2026-10-31.
+Current application boundary, consolidated 2026-11-01.
 Product implements the account-owned brief/draft → task → recoverable preview →
 explicit Save/Discard lifecycle, with a mixed library, historical import/export,
 independent copies, known-input replanning and credited media. Product HTTP/stream
@@ -20,6 +20,49 @@ Inputs share destination text, currency selection, ISO dates and optional prefer
 Server date policy owns admissibility; browser display must not change dates through
 timezone conversion or locale-dependent parsing. An input change invalidates the appropriate
 previous result. Product completion reasons are policy observations, not global feasibility.
+
+## Local configuration console
+
+`/config` is a standalone React route outside traveler session/task providers. The
+normal Product launcher enables its management interface only for an HTTP loopback
+origin and loopback listener. The API-only application leaves management disabled.
+No configuration database or account role is introduced. Operational steps belong
+to the [local configuration guide](guides/development.md#local-configuration-console).
+
+| Editable setting | Existing consumer |
+| --- | --- |
+| `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_DEPLOYMENT`, `AZURE_OPENAI_API_KEY` | Current Foundry model calls |
+| `OPENAI_API_KEY` | Existing query embeddings and configured OpenAI web evidence |
+| `GOOGLE_MAPS_API_KEY` | Planning and place photographs |
+| `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional atmosphere photographs; existing `UNSPLASH_API_KEY` remains an alias |
+
+The console validates existing Foundry v1 endpoint/deployment syntax and writes
+only these fields. It adds neither model selection nor provider adaptation.
+Database credentials, JWT signing secrets, planning policies and retrieval data
+remain outside its write surface. Process environment values take precedence over
+dotenv, including alias selection and interpolation; YAML supplies deployment
+defaults. A read's values and revision come from one captured dotenv snapshot.
+
+Management requires an in-memory, randomly generated process token. Successful
+unlock creates a separate 30-minute HttpOnly, SameSite=Strict cookie scoped to
+`/api/config`, with a session-bound CSRF token for writes. Access checks require a
+loopback peer, the exact configured Host, and exact Origin on writes; forwarded
+client headers are disabled by the Product launcher. Failed unlock attempts are
+bounded, as are active management sessions and request-body size. API responses
+use `Cache-Control: no-store`; validation/errors exclude submitted values.
+
+Secret fields return presence only. An omitted field is retained; an explicit
+empty change clears it. Writes preserve unrelated dotenv bindings, use a cross-process
+file lock and atomic replacement, and reject stale revisions with HTTP 409. The
+running Product pins editable provider settings at startup, so saves require a
+restart and cannot reconfigure in-flight work. Setup mode leaves configuration and
+static delivery available while business APIs return HTTP 503; a successful restart
+is required to enable business operations. Local resource checks return readiness
+without external provider requests or a claim of valid credentials.
+
+Implementation: [configuration](../backend/app/product/configuration.py),
+[management interface](../backend/app/product/configuration_api.py),
+[local probes](../backend/app/product/local_readiness.py).
 
 ## Product diagnostics
 
@@ -104,6 +147,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 
 | Endpoint | Input and result | Source of truth |
 | --- | --- | --- |
+| `/api/config`, `/session`, `/readiness` | Local management unlock/lock, redacted reads, revision-checked provider writes and read-only resource checks | [Local configuration](#local-configuration-console) |
 | `POST /api/auth/register` | Normalized email, password and display name; atomic account/profile and browser session | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/auth/current` | Validated account, initials and session-bound CSRF token | [Account boundary](../backend/app/product/auth.py) |
