@@ -5,9 +5,10 @@ import './media.css';
 import { illustrationFor } from './display';
 import { Icon } from '../Icon';
 import { Link } from 'react-router-dom';
-import { validPhoto } from './photoSession';
+import { isPlaceFallback, validPhoto } from './photoSession';
 
-export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, onImageError, onRetry, children, link, creditInDetails = false, staticCredits = false, slot }: {
+export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, onImageError, onRetry, children, link, creditInDetails = false, staticCredits = false, creditLabel, slot }: {
+  creditLabel?: string;
   staticCredits?: boolean;
   slot?: string;
   onImageError?: () => void; onRetry?: () => void;
@@ -28,6 +29,7 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   const placeCredit = Boolean(available && (!atmosphere || staticCredits) && !creditInDetails);
   const visual = available ? <img src={media.image_url} alt={atmosphere ? media.alt || label : `${label} · place photograph`} onError={() => { setFailed(true); onImageError?.(); }} referrerPolicy="no-referrer" /> : atmosphere ? <img src={fallback} alt={`${label} · illustration`} /> : <div className="media-placeholder" aria-label="Illustration, not a place photograph"><img src={fallback} alt="" aria-hidden="true" /></div>;
   const credit = available ? <>
+    {creditLabel && <><span>{creditLabel}</span> · </>}
     <span className="media-provider" translate="no">{media.provider}</span>
     {media.authors?.map((author, i) => <span key={i}> · {author.url ? <a href={author.url} target="_blank" rel="noopener noreferrer">{author.name}</a> : author.name}</span>)}
     {media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
@@ -52,7 +54,8 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
 export function PlacePhoto({ slot, label, className, onOpen, children, fallback, fullCredit = false }: { fullCredit?: boolean; slot: string; label: string; className?: string; onOpen?: () => void; children?: ReactNode; fallback?: string }) {
   const media = useContext(PlaceMedia);
   const actions = useContext(PlaceMediaActions);
-  return <MediaPhoto slot={slot} fallback={fallback || illustrationFor(label)} creditInDetails={!fullCredit} media={media[slot]} label={label} className={className} onOpen={onOpen}
+  const atmosphere = validPhoto(media[slot]) && isPlaceFallback(media[slot]);
+  return <MediaPhoto slot={slot} atmosphere={atmosphere} staticCredits={atmosphere} creditLabel={atmosphere && fullCredit ? 'Atmosphere photo' : undefined} fallback={fallback || illustrationFor(label)} creditInDetails={!fullCredit} media={media[slot]} label={label} className={className} onOpen={onOpen}
     onImageError={media[slot] && actions ? () => actions.imageFailed(slot, media[slot]) : undefined}
     onRetry={actions ? () => actions.refresh(slot) : undefined}>{children}</MediaPhoto>;
 }

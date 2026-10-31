@@ -8,18 +8,25 @@ from backend.app.product.media import MediaProviders, get_media_providers
 def media_transport(request):
     if request.url.host == "api.unsplash.com":
         if request.url.path == "/search/photos":
+            query = request.url.params.get("query", "")
+            if query == "No photo venue Melbourne":
+                return httpx.Response(200, json={"results": []})
+            identity = {
+                "Federation Square Melbourne": "square-fallback",
+                "Chicamocha Melbourne": "cafe-fallback",
+            }.get(query, "supporting-first")
             return httpx.Response(
                 200,
                 json={
                     "results": [
                         {
-                            "id": "supporting-first",
+                            "id": identity,
                             "urls": {
-                                "raw": "https://images.unsplash.com/controlled-supporting?ixid=controlled"
+                                "raw": f"https://images.unsplash.com/{identity}?ixid=controlled"
                             },
                             "links": {
-                                "html": "https://unsplash.com/photos/supporting-first",
-                                "download_location": "https://api.unsplash.com/photos/supporting-first/download?ixid=controlled",
+                                "html": f"https://unsplash.com/photos/{identity}",
+                                "download_location": f"https://api.unsplash.com/photos/{identity}/download?ixid=controlled",
                             },
                             "user": {
                                 "name": "Supporting Photographer",
@@ -59,6 +66,8 @@ def media_transport(request):
                 200, json={"photoUri": "https://lh3.googleusercontent.com/controlled-place"}
             )
         place = request.url.path.rsplit("/", 1)[-1]
+        if place in {"no-photo-square", "no-photo-cafe", "no-photo-empty"}:
+            return httpx.Response(200, json={"photos": []})
         return httpx.Response(
             200,
             json={

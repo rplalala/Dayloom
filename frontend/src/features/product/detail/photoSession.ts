@@ -72,14 +72,15 @@ export function validPhoto(value: unknown): value is DisplayMedia {
   if (!value || typeof value !== 'object') return false;
   const media = value as DisplayMedia;
   if (media.status === 'available' && media.kind === 'atmosphere' && media.provider === 'Unsplash') {
-    return ['meal', 'rest', 'explore', 'walk', 'general'].includes(media.theme || '') &&
+    return (media.fallback === undefined || (media.fallback === 'google_no_photos' && media.theme === 'general')) &&
+      ['meal', 'rest', 'explore', 'walk', 'general'].includes(media.theme || '') &&
       safeUrl(media.image_url, ['images.unsplash.com']) && safeUrl(media.source_url, ['unsplash.com']) &&
       Array.isArray(media.authors) && media.authors.length > 0 && media.authors.length <= 100 &&
       media.authors.every(author => author && typeof author.name === 'string' && author.name.trim().length > 0
         && author.name.length <= 2000 && safeUrl(author.url, ['unsplash.com'])) &&
       (media.alt === undefined || typeof media.alt === 'string' && media.alt.length <= 2000);
   }
-  return media.status === 'available' && media.kind === 'verified_place' && media.provider === 'Google Maps' &&
+  return media.fallback === undefined && media.status === 'available' && media.kind === 'verified_place' && media.provider === 'Google Maps' &&
     safeUrl(media.image_url, ['googleusercontent.com'], true) &&
     (media.source_url == null || safeUrl(media.source_url, ['www.google.com', 'maps.google.com'])) &&
     Array.isArray(media.authors) && media.authors.length <= 100 && media.authors.every(author =>
@@ -132,9 +133,20 @@ export function photoRequestKey(resource: string, scope: PhotoScope, slot: strin
   return JSON.stringify(key);
 }
 
+export function isPlaceFallback(media?: DisplayMedia): boolean {
+  return media?.provider === 'Unsplash' && media.kind === 'atmosphere' && media.fallback === 'google_no_photos';
+}
+
+function fallbackKey(resource: string, scope: PhotoScope, slot: string): string {
+  const key = JSON.parse(photoKey(resource, scope, slot));
+  key.splice(7, 3, 'Unsplash', 'atmosphere', 'place_fallback');
+  return JSON.stringify(key);
+}
+
 function matchesScope(media: DisplayMedia, scope: PhotoScope, slot: string) {
+  if ((scope.provider || 'Google Maps') === 'Google Maps' && (scope.kind || 'verified_place') === 'verified_place' && isPlaceFallback(media)) return true;
   return media.provider === (scope.provider || 'Google Maps') && media.kind === (scope.kind || 'verified_place')
-    && (scope.provider !== 'Unsplash' || media.theme === (scope.themes?.[slot] || 'general'));
+    && (scope.provider !== 'Unsplash' || (!media.fallback && media.theme === (scope.themes?.[slot] || 'general')));
 }
 
 export function readPhoto(resource: string, scope: PhotoScope, slot: string): DisplayMedia | undefined {
@@ -142,28 +154,34 @@ export function readPhoto(resource: string, scope: PhotoScope, slot: string): Di
   const values = entries();
   const key = photoKey(resource, scope, slot);
   const sharedKey = scope.provider === 'Unsplash' ? photoRequestKey(resource, scope, slot) : undefined;
+  const alternate = scope.provider !== 'Unsplash' ? fallbackKey(resource, scope, slot) : undefined;
   const allowed = values.filter(entry => entry.owner === scope.owner && entry.resource === resource && matchesScope(entry.media, scope, slot));
   const legacyKey = !sharedKey && JSON.stringify(JSON.parse(key).slice(0, 7));
-  const legacy = legacyKey && allowed.find(entry => entry.key === legacyKey);
-  const entry = allowed.find(entry => entry.key === key) || (sharedKey && allowed.find(entry => entry.sharedKey === sharedKey)) || legacy;
+  const legacy = legacyKey && allowed.find(entry => entry.key === legacyKey && entry.media.provider === 'Google Maps');
+  const entry = allowed.find(entry => entry.key === key || (alternate && entry.key === alternate)) || (sharedKey && allowed.find(entry => entry.sharedKey === sharedKey)) || legacy;
   if (!entry) return undefined;
-  if (entry.key !== key) save([...values.filter(value => value.key !== key && (!legacy || value.key !== legacy.key)), { ...entry, key }]);
+  const storedKey = isPlaceFallback(entry.media) ? alternate! : key;
+  if (entry.key !== storedKey) save([...values.filter(value => value.key !== storedKey && (!legacy || value.key !== legacy.key)), { ...entry, key: storedKey }]);
   return entry.media;
 }
 
 export function writePhoto(resource: string, scope: PhotoScope, slot: string, media: DisplayMedia, fetchedAt = Date.now()) {
   if (!validPhoto(media) || !matchesScope(media, scope, slot)) return;
-  const key = photoKey(resource, scope, slot);
+  const primary = photoKey(resource, scope, slot);
+  const alternate = fallbackKey(resource, scope, slot);
+  const key = isPlaceFallback(media) ? alternate : primary;
   // Whitelist the display DTO; never persist extra provider or application fields.
   const photo: DisplayMedia = { status: 'available', kind: media.kind, provider: media.provider,
     image_url: media.image_url, source_url: media.source_url,
     authors: media.authors!.map(({ name, url }) => ({ name, ...(url && { url }) })),
     ...(media.theme && { theme: media.theme }),
+    ...(media.fallback && { fallback: media.fallback }),
     ...(media.alt && { alt: media.alt }) };
   const sharedKey = scope.provider === 'Unsplash' ? photoRequestKey(resource, scope, slot) : undefined;
-  save([...entries().filter(entry => entry.key !== key), { key, ...(sharedKey && { sharedKey }), owner: scope.owner, resource, fetchedAt, media: photo }]);
+  save([...entries().filter(entry => entry.key !== primary && (scope.provider === 'Unsplash' || entry.key !== alternate)), { key, ...(sharedKey && { sharedKey }), owner: scope.owner, resource, fetchedAt, media: photo }]);
 }
 
 export function evictPhoto(resource: string, scope: PhotoScope, slot: string) {
-  if (!save(entries().filter(entry => entry.key !== photoKey(resource, scope, slot)))) clearStorage();
+  const keys = [photoKey(resource, scope, slot), ...(scope.provider === 'Unsplash' ? [] : [fallbackKey(resource, scope, slot)])];
+  if (!save(entries().filter(entry => !keys.includes(entry.key)))) clearStorage();
 }

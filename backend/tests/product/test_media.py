@@ -265,6 +265,7 @@ def test_import_claims_never_create_media_authority(client):  # noqa: F811
     app.dependency_overrides[get_media_providers] = lambda: MediaProviders(
         google_key="controlled",
         transport=httpx.MockTransport(lambda request: pytest.fail("Import must not call Google")),
+        unsplash_key="controlled",
     )
     try:
         response = client.post("/api/imports", headers=headers, content=json.dumps(payload))

@@ -6,6 +6,7 @@ export type DisplayMedia = {
   status: 'loading' | 'available' | 'unavailable';
   kind?: 'verified_place' | 'atmosphere';
   theme?: 'meal' | 'rest' | 'explore' | 'walk' | 'general';
+  fallback?: 'google_no_photos';
   image_url?: string;
   provider?: string;
   authors?: { name: string; url?: string | null }[];
