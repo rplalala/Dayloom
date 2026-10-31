@@ -20,6 +20,9 @@
 .dayloom .supporting-activity .activity-tag { font-size:11px; }
 .dayloom .scheduled-transport .transfer-copy { text-align:left; }
 .dayloom .scheduled-transport small { display:block; }
+.dayloom .scheduled-transport { scroll-margin-top:100px; }
+.dayloom .transport-nearby { margin:0 0 10px 86px; }
+.dayloom .transport-event .nearby-inline { margin:0 12px 12px; }
 .dayloom .activity-content:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
 .dayloom .nearby-body strong, .dayloom .detail-source-anchor { overflow-wrap:anywhere; }
 .dayloom .source-details { margin-top:18px; color:var(--muted); font-size:13px; }

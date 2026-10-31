@@ -46,7 +46,10 @@ def test_activity_structures_survive_save_reload_and_keyboard_details(browser_ap
             "unknowns": ["Route not verified"],
         }
     ]
-    artifact["nearby"] = [{"place_name": "Optional café", "anchor_activity_id": "meal"}]
+    artifact["nearby"] = [
+        {"place_name": "Optional café", "anchor_activity_id": "meal"},
+        {"place_name": "Optional harbour lookout", "anchor_activity_id": "ride"},
+    ]
     try:
         page = context.new_page()
         register_browser(page, browser_app.base_url)
@@ -72,6 +75,18 @@ def test_activity_structures_survive_save_reload_and_keyboard_details(browser_ap
         )
         transport = page.get_by_role("button", name="Ride to the harbour · 13:00–13:30", exact=True)
         expect(transport).to_be_visible()
+        if width > 800:
+            page.get_by_role(
+                "button", name="Find Ride to the harbour in Day 1 itinerary", exact=True
+            ).click()
+            expect(transport).to_be_focused()
+        else:
+            disclosure = page.get_by_role(
+                "button", name="Show nearby for Ride to the harbour on 2020-01-04", exact=True
+            )
+            disclosure.click()
+            expect(page.get_by_text("Optional harbour lookout", exact=True).first).to_be_visible()
+            disclosure.click()
         expect(transport.locator(".activity-marker, img, figure")).to_have_count(0)
         assert (
             transport.locator(".transfer-copy").evaluate("e => getComputedStyle(e).borderTopStyle")

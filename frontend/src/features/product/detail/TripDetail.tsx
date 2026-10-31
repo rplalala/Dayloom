@@ -158,6 +158,26 @@ function NearbyRows({
   ));
 }
 
+function NearbyInline({ group, open, onToggle, show, positionOf }: {
+  group: Group;
+  open: boolean;
+  onToggle: () => void;
+  show: (value: Information) => void;
+  positionOf: (item: DetailNearby) => number;
+}) {
+  return <section className="nearby-inline" id={domId('inline', group.key)} data-nearby-key={group.key}>
+    <button className={`nearby-inline-trigger ${open ? 'open' : ''}`}
+      aria-label={`Show nearby for ${name(group.activity)} on ${group.date}`}
+      aria-expanded={open} aria-controls={domId('inline-items', group.key)} onClick={onToggle}>
+      <Icon name="pin" size={20} /> Nearby · {group.items.length} places <Icon name="down" size={20} />
+    </button>
+    <div className="nearby-inline-items" id={domId('inline-items', group.key)} hidden={!open}>
+      <p className="nearby-inline-note">Optional places · not scheduled visits</p>
+      <NearbyRows items={group.items} show={show} positionOf={positionOf} />
+    </div>
+  </section>;
+}
+
 export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, actions, mode }: { detail: ProductDetail; mediaEndpoint?: string; mediaOwner?: string | null; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved" }) {
   const paceMessage = paceNotice(detail.completion?.pace_review);
   const positionOf = (item: DetailNearby) => detail.nearby.indexOf(item);
@@ -477,8 +497,9 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                               className="activity-wrap"
                               key={activity.activity_id}
                             >
-                              {transport ? (
-                                <button type="button" className="transfer-connector scheduled-transport"
+                              {transport ? <div className="transport-event">
+                                <button type="button" id={domId('stop', key)}
+                                  className={`transfer-connector scheduled-transport ${selected?.key === key ? 'nearby-linked-selected' : ''}`}
                                   aria-label={`${name(activity)} · ${clock(activity.start_time)}–${clock(activity.end_time)}`}
                                   onClick={() => activityInfo(activity)}>
                                   <span className="transfer-line" aria-hidden="true" />
@@ -488,7 +509,16 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                                     <Icon name="chevron" size={14} />
                                   </span>
                                 </button>
-                              ) : <div className={`activity-item ${supporting ? 'supporting-event' : ''}`}>
+                                {group && <>
+                                  <button className="mini-link detail-desktop-nearby transport-nearby"
+                                    aria-label={`Show ${group.items.length} nearby places for ${name(activity)} on ${day.date}`}
+                                    onClick={() => locate(group, 'group')}>
+                                    <Icon name="pin" size={13} /> Nearby · {group.items.length} <Icon name="chevron" size={12} />
+                                  </button>
+                                  <NearbyInline group={group} open={inlineOpen.has(key)}
+                                    onToggle={() => toggle(setInlineOpen, key)} show={setInformation} positionOf={positionOf} />
+                                </>}
+                              </div> : <div className={`activity-item ${supporting ? 'supporting-event' : ''}`}>
                                 <div className="activity-time">
                                   <strong>{clock(activity.start_time)}</strong>
                                   <span>{clock(activity.end_time)}</span>
@@ -567,41 +597,8 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                                     </div>
                                   </div>
                                   {group && (
-                                    <section
-                                      className="nearby-inline"
-                                      id={domId("inline", key)}
-                                      data-nearby-key={key}
-                                    >
-                                      <button
-                                        className={`nearby-inline-trigger ${inlineOpen.has(key) ? "open" : ""}`}
-                                        aria-label={`Show nearby for ${name(activity)} on ${day.date}`}
-                                        aria-expanded={inlineOpen.has(key)}
-                                        aria-controls={domId(
-                                          "inline-items",
-                                          key,
-                                        )}
-                                        onClick={() =>
-                                          toggle(setInlineOpen, key)
-                                        }
-                                      >
-                                        <Icon name="pin" size={20} /> Nearby · {group.items.length} places{" "}
-                                        <Icon name="down" size={20} />
-                                      </button>
-                                      <div
-                                        className="nearby-inline-items"
-                                        id={domId("inline-items", key)}
-                                        hidden={!inlineOpen.has(key)}
-                                      >
-                                        <p className="nearby-inline-note">
-                                          Optional places · not scheduled visits
-                                        </p>
-                                        <NearbyRows
-                                          items={group.items}
-                                          show={setInformation}
-                                          positionOf={positionOf}
-                                        />
-                                      </div>
-                                    </section>
+                                    <NearbyInline group={group} open={inlineOpen.has(key)}
+                                      onToggle={() => toggle(setInlineOpen, key)} show={setInformation} positionOf={positionOf} />
                                   )}
                                 </div>
                               </div>}
