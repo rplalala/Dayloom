@@ -80,7 +80,7 @@ it('rejects restored data with future timestamps or invalid metadata', () => {
   expect(readPhoto(resource, scope(), 'museum')).toBeUndefined();
 });
 
-it('evicts oldest entries at the count and serialized byte limits', () => {
+it('retains 1000 entries and evicts the oldest when another photo arrives', () => {
   for (let i = 0; i < 1000; i++) writePhoto(resource, scope(), `slot:${i}`, photo);
   expect(readPhoto(resource, scope(), 'slot:0')).toEqual(photo);
   expect(readPhoto(resource, scope(), 'slot:999')).toEqual(photo);
@@ -88,13 +88,19 @@ it('evicts oldest entries at the count and serialized byte limits', () => {
   expect(readPhoto(resource, scope(), 'slot:0')).toBeUndefined();
   expect(readPhoto(resource, scope(), 'slot:1')).toEqual(photo);
   expect(readPhoto(resource, scope(), 'slot:1000')).toEqual(photo);
-  invalidatePhotos();
-  const large = { ...photo, authors: Array.from({ length: 80 }, () => ({ name: 'X'.repeat(1900) })) };
-  for (let i = 0; i < 10; i++) writePhoto(resource, scope(), `large:${i}`, large);
-  expect(new Blob([sessionStorage.getItem('dayloom.photos.session.v1')!]).size).toBeLessThanOrEqual(1048576);
-  expect(readPhoto(resource, scope(), 'large:0')).toBeUndefined();
-  expect(readPhoto(resource, scope(), 'large:9')).toEqual(large);
 }, 30000);
+
+it('retains more than 1 MiB and evicts oldest photos at the 5 MiB serialized byte limit', () => {
+  // Multibyte names exercise bytes without exhausting jsdom's code-unit quota.
+  const large = { ...photo, authors: Array.from({ length: 80 }, () => ({ name: '\u20ac'.repeat(1900) })) };
+  for (let i = 0; i < 12; i++) writePhoto(resource, scope(), `large:${i}`, large);
+  const size = new Blob([sessionStorage.getItem('dayloom.photos.session.v1')!]).size;
+  expect(size).toBeGreaterThan(1048576);
+  expect(size).toBeLessThanOrEqual(5242880);
+  expect(readPhoto(resource, scope(), 'large:0')).toBeUndefined();
+  expect(readPhoto(resource, scope(), 'large:1')).toEqual(large);
+  expect(readPhoto(resource, scope(), 'large:11')).toEqual(large);
+});
 
 it('tolerates storage denial/quota failure and stores only whitelisted display metadata', () => {
   writePhoto(resource, scope(), 'museum', { ...photo, csrf_token: 'not-for-storage', media_bindings: { private: 'place-id' } } as typeof photo);

@@ -8,7 +8,7 @@ type Entry = { key: string; sharedKey?: string; owner: string | null; resource: 
 const storageKey = 'dayloom.photos.session.v1';
 const lifetime = 60 * 60 * 1000;
 const maxEntries = 1000;
-const maxBytes = 1024 * 1024;
+const maxBytes = 5 * 1024 * 1024;
 const fences = new Map<string, number>();
 const listeners = new Set<() => void>();
 
