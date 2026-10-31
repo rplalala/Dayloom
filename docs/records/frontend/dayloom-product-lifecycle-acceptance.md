@@ -312,6 +312,41 @@ Local evidence identifiers are `.scratch/chicamocha-photo-check/`,
 restarted only after confirming no active planning tasks. No product limits, itinerary
 content or V0–V3 behavior changed; no full regression or new itinerary generation ran.
 
+### Destination-aware atmosphere (1 November 2026)
+
+At base `6b25c1e`, an offline reproduction showed Melbourne and New York selecting the
+same fixed `nature` cover; supporting searches also omitted destination context. The
+authorized implementation `24849c9` replaces itinerary cover selection with first-result
+destination search and prefixes supporting themes with the owned detail's destination.
+The [cover contract](../../0007-application-operations.md#destination-covers) and
+[supporting contract](../../0007-application-operations.md#supporting-atmosphere-photos)
+own current behavior. Theme-only cache entries are fenced without changing the one-hour,
+1,000-entry, 5 MiB limits or Google/place-fallback cache identities.
+
+Targeted checks passed 62 backend cases, 92 frontend cases across 16 files, and five
+browser journeys. New 1440px/390px journeys verify separate city queries, decoded
+controlled images, destination changes, supporting reload reuse, single-slot refresh,
+static Details attribution and unavailable-cover/card behavior. The affected existing
+47-slot journeys verify unchanged reload, refresh and cross-tab account isolation; the
+older photo/Save/Copy/import journey also passed. Initial London-example assertions still
+expected the fixed landmark cover, and the old provider counter counted destination
+searches against the itinerary budget. Updating those test expectations and separating
+controlled cover search/adoption pairs resolved both failures. The public cover API,
+city-aware supporting search and old-cache rejection each had a failing check before
+implementation.
+
+Both independent reviews found the same Unicode boundary defect: UTF-16 truncation could
+split a valid non-BMP character before URL encoding. A component regression reproduced
+`URIError`; separate correction `efcf715` truncates by Unicode code points. Ten affected
+cases, build/typecheck and changed-file ESLint passed afterward; both review rechecks found
+no remaining issues. Earlier whole-frontend ESLint and changed-backend Ruff passed with
+existing advisories. Local evidence identifiers include `.scratch/destination-media-browser/`
+and `.scratch/destination-existing-browser-retest.log`. All third-party responses and image
+bytes were controlled; no real-provider quality or billing acceptance is claimed. The local
+Product was restarted after confirming zero active planning tasks and serves the reviewed
+bundle with healthy API status. No full regression or new real itinerary generation ran.
+No database migration or V0–V3 planner changes were required.
+
 ### Browser photo session acceptance (31 October 2026)
 
 [Issue #233](https://github.com/rplalala/Dayloom/issues/233) was checked against the

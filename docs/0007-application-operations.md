@@ -903,8 +903,8 @@ Google authentication, quota, timeout, malformed-metadata and invalid-image-refe
 failures do not masquerade as confirmed photo absence. All stages share the original
 8-second complete-slot and 30-second batch deadlines, without additional retries or a
 server cache. Preview, Save/read, independent Copy and curated examples retain the chain.
-The fixed London cover uses its existing Tower Bridge binding; its fallback alt describes
-London atmosphere, while a verified Google photo retains the landmark alt.
+The legacy curated London endpoint uses its existing Tower Bridge binding; its fallback
+alt describes London atmosphere, while a verified Google photo retains the landmark alt.
 
 The display result carries `kind: atmosphere`, `theme: general` and
 `fallback: google_no_photos`. Details shows Atmosphere photo, Unsplash and the supplied
@@ -963,7 +963,7 @@ isolation for browser-created duplicate tabs. External application links use `no
 There is no unconditional `beforeunload`/`pagehide` purge, durable browser storage,
 server/CDN image cache, service worker or cross-tab photo-sharing mechanism.
 
-The separate fixed destination/atmosphere catalog continues resolving metadata on
+Destination covers and the separate fixed atmosphere catalog continue resolving metadata on
 display; this cache covers itinerary activity and Nearby slots. Provider-license review
 and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
 
@@ -983,7 +983,13 @@ principal visits, transport and free windows do not acquire atmosphere slots fro
 title, photo or map link. Imported declarations remain display hints; an atmosphere
 photo never creates a verified place binding or requirement fulfillment.
 
-| Structured theme | Fixed public search terms |
+The search prefixes the following fixed theme suffix with the owner's normalized
+structured destination, bounded to 120 characters. For example, the `walk` theme searches
+`Melbourne scenic walk` or `New York scenic walk`. Missing destinations leave the card
+without imagery. Client destination/query overrides, activity titles and private text do
+not influence this server-owned context.
+
+| Structured theme | Fixed public search suffix |
 | --- | --- |
 | `meal` | `relaxed meal` |
 | `rest` | `peaceful rest` |
@@ -1004,7 +1010,9 @@ The existing slot, parallelism, HTTP/slot and batch bounds apply. Same-theme wor
 merged within a batch and across concurrent browser consumers. Session aliases stay
 within the same account/login/resource/snapshot/provider/kind/theme/dimension boundary,
 retain slot ownership and copy the original acquisition timestamp. Failure states may
-be shared during the active page attempt but are not persisted. Valid pre-extension
+be shared during the active page attempt but are not persisted. A search-version marker
+prevents reuse of older theme-only images after destination-aware search is deployed;
+destination changes also change the existing detail snapshot fingerprint. Valid pre-extension
 Google cache keys are upgraded on read without resetting timestamps or refetching.
 Google-specific URL rules remain separate and unchanged.
 
@@ -1016,8 +1024,8 @@ The image container accommodates the full caption and label without clipping; Es
 closes the dialog even when a source link has focus. Missing credentials,
 empty/unsafe first results, tracking failure, timeout, rate limits or image failure leave
 the compact white card without imagery. Its time, title, notes and navigation remain
-usable; detail Refresh photo targets only its slot. Fixed destination covers remain a
-separate catalog and do not use this search/cache selection path.
+usable; detail Refresh photo targets only its slot. Destination covers use their
+[separate cover boundary](#destination-covers), outside this slot cache.
 
 #### Photo presentation
 
@@ -1033,7 +1041,7 @@ an unwrapped 12px normal-weight sans serif label and gray text on a light backgr
 Unavailable metadata, absent identity/keys and expired/failed image loads retain the
 labelled illustration. Unattempted slots show Photo pending and active batches show Loading photo;
 neither is labelled unavailable before an attempt finishes. Preview access and Save remain independent of media success.
-Fixed destination and hero images retain their existing atmosphere-credit disclosure.
+Destination covers and fixed hero images retain their existing atmosphere-credit disclosure.
 Supporting images follow the [Details attribution rule](#supporting-atmosphere-photos).
 
 This list/detail split does not meet Google's documented requirement to include
@@ -1049,17 +1057,35 @@ vocabulary without serialized internal objects; the versioned JSON export retain
 its existing compatibility contract. Developer/research data and entry points are
 unchanged.
 
-Public `/api/media/curated/{sydney|london|nature}` uses two fixed officially identified Unsplash
-photo pages, resolving current API image/photographer metadata at display time. The
-Sydney harbour image is destination imagery; mountain imagery is explicitly general
-atmosphere. London resolves the curated example's verified Tower Bridge binding through
-the existing Google photo adapter. Destination covers follow the itinerary's city;
-the atmosphere catalog itself grants no additional attraction/business-photo authority.
-Unsplash hotlink tracking parameters survive bounded image resizing, and its photographer/source links carry
-application referral parameters. Credits appear on image hover or keyboard focus;
+#### Destination covers
+
+Itinerary detail, My trips and example cards, planning results and draft covers use public
+`GET /api/media/destination?destination=...`. The only search text is the structured
+destination label: whitespace is normalized and the query is bounded to 120 Unicode code
+points. Empty labels do not initiate provider work. The endpoint admits 200–1280px dimensions,
+uses `Cache-Control: no-store`, and shares the existing server-side Unsplash adapter and
+first-result validation/adoption rules. One search and its adoption share an eight-second
+complete deadline; the query is the destination itself, without an additional theme or
+fallback query. Only the first result is eligible. Missing credentials, empty or unsafe
+metadata, failed adoption, provider errors/timeouts and failed image loads display the
+stable local illustration. They never substitute a fixed photo from another city.
+
+These covers remain outside the tab's itinerary-slot cache and resolve metadata when
+mounted or reloaded. Changing the destination cancels the previous request and fences its
+late response. The alt describes destination atmosphere, without granting verified place,
+role or experience fulfillment authority. Different queries may still yield the same
+provider-selected first photograph; no randomization or cross-city deduplication is added.
+
+Login retains its fixed Sydney image. The existing public
+`/api/media/curated/{sydney|london|nature}` catalog remains compatible: Sydney/nature resolve
+fixed Unsplash metadata, and London uses its curated example's Tower Bridge binding. These
+catalog choices no longer select itinerary destination covers.
+
+Unsplash hotlink tracking parameters survive bounded image resizing, and photographer/source
+links carry application referral parameters. Cover credits appear on image hover or keyboard focus;
 a small information control also opens them on touch devices, with explicit Close and
 Escape support. Credits remain operable above image navigation links and hero shading.
-There is no image search, image selection/download, avatar storage or photo archive. Missing access/media uses stable local illustrations.
+No image-byte archive, avatar storage, manual image picker or download proxy is added.
 This adapter follows the [Unsplash API documentation](https://unsplash.com/documentation)
 and [API guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines).
 Optional server keys and controlled acceptance are documented in the
