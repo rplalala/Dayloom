@@ -1,21 +1,20 @@
 import type { ProductDetail, DetailTransfer, PaceReview, RequiredExperience } from "./types";
 
 export function requiredExperienceNotice(row: RequiredExperience): string {
-  if (row.status === "satisfied") return "Required visits are scheduled based on available place information.";
-  if (row.reason === "matching_evidence_incomplete") return "Available information could not confirm enough matching visits. This requirement remains unresolved.";
-  if (row.reason === "no_confirmed_match") return "No confirmed matching place was found in the searched options. This requirement remains unmet.";
-  return "The itinerary does not meet the required visit count or date distribution. Your requirement has been kept.";
+  if (row.status === "satisfied") return "Included in your itinerary.";
+  if (row.reason === "required_visits_not_scheduled") return "Your requested visits or dates are not fully arranged. Keep this in mind when reviewing your days.";
+  return "This experience is still missing from the confirmed itinerary. You can plan again to include it.";
 }
 
 export function paceNotice(review?: PaceReview | null): string | null {
   if (!review) return null;
   if (review.status === "partial" && review.days.some(day => day.state === "residual" && day.target_count === 3)) {
-    return "Rich pace is not fully met. Some days do not have three main visits.";
+    return "Some days have a lighter schedule than your chosen pace.";
   }
   if (review.status === "partial" || review.status === "unavailable") {
-    return "Some travel details still need checking before you go.";
+    return null;
   }
-  if (review.status === "not_attempted") return "The planned pace has not been reviewed.";
+  if (review.status === "not_attempted") return null;
   if (review.days.some(day => day.state === "source_overridden")) {
     return "Your specific daily requests take priority over Rich pace.";
   }

@@ -1,5 +1,8 @@
 """Controlled real-browser/API/database acceptance for distinct timeline structures."""
 
+# Imported pytest fixtures retain their public names.
+# ruff: noqa: F811
+
 import json
 from pathlib import Path
 
@@ -9,6 +12,90 @@ from playwright.sync_api import expect
 from backend.tests.product.browser_harness import open_json_export
 from backend.tests.product.test_browser import browser_app, register_browser  # noqa: F401
 from backend.tests.product.test_imports import source
+from backend.tests.product.test_saved import pending
+
+
+def test_generated_experiences_show_distinct_guidance_after_save_and_reload(
+    browser_app, monkeypatch
+):  # noqa: F811
+    import os
+
+    monkeypatch.setenv("DAYLOOM_DB_URL", os.environ["DAYLOOM_DB_TEST_URL"])
+    context = browser_app.browser.new_context(viewport={"width": 1440, "height": 1000})
+    try:
+        page = context.new_page()
+        register_browser(page, browser_app.base_url)
+        owner = context.request.get(browser_app.base_url + "/api/auth/current").json()
+        quotes = ["Must include: an art museum, a waterfront walk."]
+        detail = pending(
+            owner["id"],
+            days=[
+                {
+                    "date": "2020-01-04",
+                    "activities": [
+                        {
+                            "activity_id": "museum",
+                            "title": "An afternoon of art",
+                            "place_name": "Art Gallery",
+                            "activity_kind": "main_poi",
+                            "time_use": "scheduled",
+                            "start_time": "2020-01-04T12:00:00+11:00",
+                            "end_time": "2020-01-04T13:00:00+11:00",
+                        }
+                    ],
+                }
+            ],
+            completion={
+                "policy_completion": "incomplete",
+                "required_experiences": [
+                    {
+                        "requirement": "An art museum",
+                        "source_quotes": quotes,
+                        "target": 1,
+                        "scheduled": 1,
+                        "frequency": "one_off",
+                        "status": "satisfied",
+                        "reason": "supported_visit_coverage",
+                        "planned_visits": [
+                            {
+                                "activity_id": "museum",
+                                "place_name": "Art Gallery",
+                                "date": "2020-01-04",
+                            }
+                        ],
+                    },
+                    {
+                        "requirement": "A waterfront walk",
+                        "source_quotes": quotes,
+                        "target": 1,
+                        "scheduled": 0,
+                        "frequency": "one_off",
+                        "status": "unverified",
+                        "reason": "matching_evidence_incomplete",
+                    },
+                ],
+            },
+        )
+        page.goto(browser_app.base_url + f"/previews/{detail.id}")
+        expect(page.get_by_role("region", name="Trip highlights")).to_contain_text("An art museum")
+        expect(page.get_by_role("region", name="Still to arrange")).to_contain_text(
+            "A waterfront walk"
+        )
+        expect(page.get_by_text(quotes[0], exact=True)).to_have_count(0)
+        expect(page.get_by_text("matching visits scheduled", exact=False)).to_have_count(0)
+        page.get_by_role("button", name="Save to My trips", exact=True).click()
+        page.get_by_role("link", name="View saved itinerary", exact=True).click()
+        page.reload()
+        navigation = page.get_by_role("button", name="View Art Gallery · Jan 4", exact=True)
+        navigation.click()
+        expect(
+            page.get_by_role("group", name="Art Gallery on 2020-01-04", exact=True)
+        ).to_be_focused()
+        expect(page.get_by_role("region", name="Still to arrange")).to_contain_text(
+            "A waterfront walk"
+        )
+    finally:
+        context.close()
 
 
 @pytest.mark.parametrize("width", [1440, 390])

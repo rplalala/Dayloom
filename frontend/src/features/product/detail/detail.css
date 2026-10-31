@@ -10,6 +10,12 @@
 .dayloom .detail-dialog .photo-large .has-place-credit > img { flex:1; min-height:0; height:0; }
 .dayloom .detail-dialog .photo-large .has-place-credit > figcaption { flex:none; }
 .dayloom .day-events[hidden] { display:none; }
+.dayloom .experience-section { margin:22px 0; }
+.dayloom .experience-list { list-style:none; padding:0; margin:0; }
+.dayloom .experience-line { display:flex; gap:12px; border-top:1px solid var(--line); padding:15px 0; }
+.dayloom .experience-line > .ico { flex:none; color:var(--accent); margin-top:3px; }
+.dayloom .experience-line p { color:var(--muted); font-size:14px; line-height:1.6; margin:6px 0; }
+.dayloom .experience-link { margin:6px 14px 0 0; text-align:left; }
 .dayloom .principal-visit { min-height:150px; }
 .dayloom .principal-visit .activity-photo { width:136px; height:112px; }
 .dayloom .principal-visit .activity-details h3 { font-size:18px; }

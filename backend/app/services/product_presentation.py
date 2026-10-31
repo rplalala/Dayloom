@@ -18,6 +18,20 @@ from backend.app.services.reference_discovery import NearbyReferenceEvidence
 def present_product(result, evidence, introductions=None):
     introductions = introductions or {}
     final = result.itinerary
+    outcome = getattr(result, "v3", None)
+    assessments = ()
+    if outcome is not None and hasattr(outcome, "final_identity_ids"):
+        from backend.app.policies.itinerary_output import validate_principal_places
+        from backend.app.schemas.poi_semantics import POISemanticAssessment
+
+        selected = getattr(getattr(outcome, "repair", None), "selected_semantic_assessments", None)
+        assessments = selected if selected is not None else tuple(
+            POISemanticAssessment.model_validate(row)
+            for row in (getattr(result, "semantic_assessment", None) or {}).get("assessments", ())
+        )
+        validate_principal_places(
+            final, outcome.final_places, outcome.final_identity_ids, assessments
+        )
     days = []
     activities = {a.activity_id: (d.date, a) for d in final.days for a in d.activities}
     nearby = {}
@@ -178,6 +192,17 @@ def present_product(result, evidence, introductions=None):
                 requirement=row["requirement"], source_quotes=row["source_quotes"],
                 target=row["expected"], scheduled=row["matched"], frequency=row["frequency"],
                 status=row["status"], reason=row["reason"],
+                planned_visits=tuple(
+                    dict(activity_id=a.activity_id, date=day.date, place_name=a.place_name)
+                    for day in final.days for a in day.activities
+                    if a.activity_kind == "main_poi" and a.place_name
+                    and any(
+                        assessment.place_id == a.source_place_id and assessment.main_eligible
+                        and any(m.requirement_id == row["requirement_id"]
+                                and m.relation == "supported" for m in assessment.matches)
+                        for assessment in assessments
+                    )
+                ),
             )
             for row in result.generation_diagnostics.goal_progress if row.get("required")
         ) if result.generation_diagnostics else (),

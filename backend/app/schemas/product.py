@@ -99,7 +99,16 @@ class PaceReviewDay(ProductModel):
     state: Literal["satisfied", "residual", "unavailable", "source_overridden"]
 
 
+class ExperienceVisit(ProductModel):
+    activity_id: str
+    date: date
+    place_name: str
+
+
 class RequiredExperienceCoverage(ProductModel):
+    planned_visits: tuple[ExperienceVisit, ...] = Field(
+        default=(), exclude_if=lambda value: not value
+    )
     requirement: str
     source_quotes: list[str]
     target: int = Field(ge=1)

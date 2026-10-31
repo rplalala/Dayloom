@@ -10,7 +10,8 @@ import type {
 import "./detail.css";
 import { Icon } from "../Icon";
 import { WeatherRow } from "./WeatherRow";
-import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice, requiredExperienceNotice } from "./display";
+import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice } from "./display";
+import { ExperienceGuidance } from './ExperienceGuidance';
 import { ExportControls } from './ExportControls';
 import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
 import { PlaceMedia, PlaceMediaActions, usePlaceMedia } from './media';
@@ -376,14 +377,11 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                   "Your days, places and connections, together in one itinerary."}
               </p>
               {paceMessage && <p className="footnote caution-text" role="status">{paceMessage}</p>}
-              {!!detail.completion?.required_experiences?.length && <section aria-label="Required experiences">
-                <h3>Required experiences</h3>
-                {detail.completion.required_experiences.map((row, index) => <div className="detail-note" key={index}>
-                  <strong>{row.source_quotes.join(" ") || row.requirement}</strong>
-                  <span>{row.scheduled} matching visits scheduled · {row.frequency === "exact" ? "Exactly" : "At least"} {row.target} required</span>
-                  <span className={row.status === "satisfied" ? undefined : "caution-text"}>{requiredExperienceNotice(row)}</span>
-                </div>)}
-              </section>}
+              <ExperienceGuidance detail={detail} onLocate={(date, activityId) => {
+                const day = detail.days.findIndex(day => day.date === date);
+                const activity = detail.days[day]?.activities.find(item => item.activity_id === activityId);
+                if (activity) locate({ key: keyFor(date, activityId), date, day: day + 1, activity, items: [] }, 'stop');
+              }} />
               <div className="stat-grid">
                 <div>
                   <strong>{String(detail.days.length).padStart(2, "0")}</strong>

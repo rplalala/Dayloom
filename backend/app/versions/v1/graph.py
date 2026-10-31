@@ -410,6 +410,7 @@ def build_tools_graph(
                 itinerary,
                 places=state["place_evidence"],
                 supplied_ids=state["review_selection"].policy_result.selected_place_ids,
+                semantic_assessments=state["review_selection"].semantic_assessments,
             )
         except Exception as exc:
             tracer.event("generation_failed", {"error": type(exc).__name__})

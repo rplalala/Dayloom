@@ -6,6 +6,7 @@ import type {
 
 export type IllustrationKey = "hero" | "sydney" | "art" | "city" | "nature";
 export type RequiredExperience = {
+  planned_visits?: { activity_id: string; date: string; place_name: string }[];
   requirement: string;
   source_quotes: string[];
   target: number;
