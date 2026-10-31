@@ -143,6 +143,41 @@ at this event is local commits, not a published deployment.
 
 ## Verification and evidence
 
+### Browser photo session acceptance (31 October 2026)
+
+[Issue #233](https://github.com/rplalala/Dayloom/issues/233) was checked against the
+normal local Product at `d019890`, serving the built frontend, real API/database and
+configured photo providers. No implementation changes were present. An isolated
+Chromium context used an existing administrator-owned saved itinerary; no planning,
+Save, Delete or other itinerary mutation was performed.
+
+The initial whole-page attempt forwarded 36 photo slots before its next batch exceeded
+the prepared 40-slot limit. It stopped before the three acceptance checks, so that
+attempt is not a pass. The follow-up retained the same cumulative limit and sampled
+two existing activity slots. Browser routing narrowed the supported `slot` query to
+those two and blocked seven non-sample batches before API access. Responses and
+providers remained real; the result does not establish whole-page photo acceptance.
+
+| Check | Observed result |
+| --- | --- |
+| Reload reuse | Both cached slots were reused; zero attempted or forwarded requests for either cached slot, and no extended timestamps. |
+| Selected-photo refresh | One media request for one selected slot; neighboring timestamps unchanged and Google Maps credit visible. |
+| Logout isolation | Logout in a second tab cleared the original tab's private cache and photos. Reload made zero private media requests, and the owned-detail read returned 401. |
+
+The successful sample took 8.23 seconds and forwarded three photo slots plus four
+curated-metadata requests. Across both attempts the totals were **39/40 photo slots**,
+**7/10 curated-metadata requests** and **zero generation requests**. These are browser
+request observations, not confirmed provider HTTP counts or billing. No full regression
+was run. The existing account-wide token revocation applies to logout, including other
+sessions using the same account.
+
+Historical local evidence identifiers are `.scratch/photo-browser-acceptance/result.json`
+for the stopped attempt and `.scratch/photo-browser-acceptance/sample/result.json` with
+three screenshots for the successful sample. The frozen sample harness SHA256 was
+`08c0a0f4cc689ce13b6f7d03485ef839c16cf6215afd34beb064c007bcda729e`.
+The separate sandbox launch failure made no business requests. Current cache behavior
+is defined in the [media contract](../../0007-application-operations.md#browser-tab-photo-session).
+
 ### Product diagnostics (31 October 2026)
 
 The Product diagnostic follow-up uses fixed base `fb55367`, implementation commits
