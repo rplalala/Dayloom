@@ -31,6 +31,27 @@ def route_path(path):
     )
 
 
+def resource_identifiers(source):
+    values = {}
+    for key in (
+        "id",
+        "preview_id",
+        "saved_trip_id",
+        "source_task_id",
+        "task_id",
+        "trip_id",
+        "draft_id",
+        "resource_id",
+    ):
+        if source.get(key) is None:
+            continue
+        try:
+            values[key] = str(UUID(str(source[key])))
+        except ValueError:
+            pass
+    return values
+
+
 class ProductHTTPLogging:
     def __init__(self, app):
         self.app = app
@@ -89,6 +110,9 @@ class ProductHTTPLogging:
                     "response_bytes": body_size,
                     "owner_id": str(account["id"]) if account.get("id") else None,
                 }
+                data.update(resource_identifiers(scope.get("path_params", {})))
+                if scope.get("path_params", {}).get("kind") in {"trips", "previews"}:
+                    data["resource_kind"] = scope["path_params"]["kind"]
                 # Extract IDs/status codes only. Never persist response/request bodies.
                 try:
                     value = json.loads(body)
@@ -105,12 +129,9 @@ class ProductHTTPLogging:
                             ]
                             data["media_available"] = statuses.count("available")
                             data["media_unavailable"] = statuses.count("unavailable")
-                        for key in ("id", "preview_id", "saved_trip_id", "source_task_id"):
-                            if value.get(key):
-                                try:
-                                    data[key] = str(UUID(str(value[key])))
-                                except ValueError:
-                                    pass
+                        data.update(resource_identifiers(value))
+                        if route.startswith("/api/planning") and data.get("id"):
+                            data["task_id"] = data["id"]
                         detail = value.get("detail", value.get("error", {}))
                         if isinstance(detail, dict) and re.fullmatch(
                             r"[a-z_]{1,80}", str(detail.get("code", ""))

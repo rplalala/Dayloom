@@ -1,7 +1,7 @@
 """Application scope policy and finalization over the Step 1/2 contracts."""
 
 import json
-from collections import defaultdict
+from collections import Counter, defaultdict
 from copy import deepcopy
 from time import monotonic
 
@@ -588,6 +588,22 @@ class V3PostPrimary:
             original_rag_discovery=initial_rag,
             reason=repair.reason if repair else "no_authorized_targets",
         )
+        self.tracer.event("v3_completion_summary", {
+            "reason": outcome.reason,
+            "repair_status": repair.status if repair else "not_executed",
+            "selected_round_index": repair.selected_round_index if repair else None,
+            "pace_completion": completion,
+            "validation_counts": dict(Counter(finding.status for finding in final_report.findings)),
+            "unresolved_findings": [
+                {"id": finding.finding_id, "check": finding.check, "status": finding.status,
+                 "reason": finding.reason, "dates": finding.dates}
+                for finding in final_report.findings if finding.status != "PASS"
+            ][:50],
+            "policy_completion": final_report.diagnostics.policy_completion,
+            "policy_reasons": list(dict.fromkeys(
+                row["reason"] for row in final_report.diagnostics.policy_issues
+            )),
+        })
         trace_outcome = redact_secrets(outcome.model_dump(mode="json"))
         trace_bytes = len(json.dumps(trace_outcome, ensure_ascii=True).encode("utf-8"))
         if trace_bytes > self.acq.runtime_config.trace.max_payload_bytes:

@@ -112,3 +112,47 @@ def test_usage_observation_records_real_callback_usage_and_restores_context(tmp_
     }
     assert current_usage.get() is None
     assert "private prompt" not in json.dumps(ProductLogs().read())
+
+
+def test_cancelled_real_v3_retains_consumed_primary_tool_budget(tmp_path, monkeypatch):
+    from contextlib import asynccontextmanager
+
+    from backend.app.services.planner_runtime import PlannerDependencies, RequestPlannerRuntime
+    from backend.tests.request_fixtures import make_request
+    from backend.tests.versions.v1.fakes import FakeRoutesProvider, FakeWeatherProvider
+    from backend.tests.versions.v2.test_v2_runner import Places
+    from backend.tests.versions.v3.test_wiring import Model, OwnedRetrieval
+
+    monkeypatch.setenv("PRODUCT_LOG_DIRECTORY", str(tmp_path))
+    monkeypatch.setenv("PRODUCT_LOG_ENABLED", "true")
+    monkeypatch.setattr(
+        "backend.app.versions.v3.runner.RuntimeRetrieval", lambda _: OwnedRetrieval()
+    )
+
+    entered = asyncio.Event()
+
+    class WaitingModel(Model):
+        async def generate_repair_structured(self, **kwargs):
+            entered.set()
+            await asyncio.Event().wait()
+
+    @asynccontextmanager
+    async def dependencies(*args):
+        yield PlannerDependencies(
+            WaitingModel(), Places(), FakeWeatherProvider(), FakeRoutesProvider()
+        )
+
+    service = PlanningService(
+        RequestPlannerRuntime(dependency_factory=dependencies), FixedDateProvider(date(2026, 9, 11))
+    )
+
+    async def stop_running():
+        task = asyncio.create_task(service.plan(make_request()))
+        await asyncio.wait_for(entered.wait(), timeout=5)
+        task.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await task
+
+    asyncio.run(stop_running())
+    budget = json.loads(next(tmp_path.glob("runs/*/budget.json")).read_text())
+    assert any(row["used"] > 0 for row in budget["primary_tools"].values())

@@ -62,3 +62,57 @@ def test_service_exceptions_keep_locations_without_credentials(tmp_path, monkeyp
     assert rows[0]["data"]["error"][0]["frames"]
     assert "private-password" not in str(rows)
     assert "private exception payload" not in str(rows)
+
+
+def test_uvicorn_access_formatter_keeps_its_structured_arguments():
+    from uvicorn.logging import AccessFormatter
+
+    from backend.app.observability.product_service_logs import ServiceRedaction
+
+    record = logging.LogRecord(
+        "uvicorn.access",
+        logging.INFO,
+        __file__,
+        1,
+        '%s - "%s %s HTTP/%s" %d',
+        ("127.0.0.1:1", "GET", "/health?password=private-value", "1.1", 200),
+        None,
+    )
+    ServiceRedaction().filter(record)
+    output = AccessFormatter(
+        '%(client_addr)s - "%(request_line)s" %(status_code)s', use_colors=False
+    ).format(record)
+    assert "200 OK" in output
+    assert "private-value" not in output
+
+
+def test_http_audit_retains_validated_resource_ids_for_empty_responses(tmp_path, monkeypatch):
+    from uuid import UUID
+
+    from fastapi import Response
+
+    monkeypatch.setenv("PRODUCT_LOG_DIRECTORY", str(tmp_path))
+    monkeypatch.setenv("PRODUCT_LOG_ENABLED", "true")
+    application = create_app()
+
+    @application.delete("/api/test-resource/{resource_id}")
+    def remove(resource_id: UUID):
+        return Response(status_code=204)
+
+    resource_id = "4bfac526-f5d1-40f2-844b-5c4808169968"
+    with TestClient(application) as client:
+        assert client.delete("/api/test-resource/" + resource_id).status_code == 204
+    row = next(row for row in ProductLogs().read() if row["event"] == "http_completed")
+    assert row["data"]["resource_id"] == resource_id
+
+
+def test_media_fallback_reason_is_recorded_without_credentials(tmp_path, monkeypatch):
+    import asyncio
+
+    from backend.app.product.media import MediaProviders
+
+    monkeypatch.setenv("PRODUCT_LOG_DIRECTORY", str(tmp_path))
+    monkeypatch.setenv("PRODUCT_LOG_ENABLED", "true")
+    assert asyncio.run(MediaProviders().google("place-one", 960, 640)) == {"status": "unavailable"}
+    event = next(row for row in ProductLogs().read() if row["event"] == "media_unavailable")
+    assert event["data"] == {"provider": "google", "reason": "credentials_missing"}

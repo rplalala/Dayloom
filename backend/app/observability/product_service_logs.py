@@ -14,6 +14,20 @@ class ServiceRedaction(logging.Filter):
     def filter(self, record):
         try:
             logs = ProductLogs()
+            if (
+                record.name == "uvicorn.access"
+                and isinstance(record.args, tuple)
+                and len(record.args) == 5
+            ):
+                address, method, path, version, status = record.args
+                record.args = (
+                    logs.sanitize(address),
+                    method,
+                    logs.sanitize(str(path).split("?", 1)[0].split("#", 1)[0]),
+                    version,
+                    status,
+                )
+                return True
             record.msg = logs.sanitize(record.getMessage())
             record.msg = re.sub(r"(https?://[^\s?\"]+)\?[^\s\"]+", r"\1?[REDACTED]", record.msg)
             record.msg = re.sub(r"(/[^\s?\"]+)\?[^\s\"]+", r"\1?[REDACTED]", record.msg)

@@ -3,6 +3,7 @@
 import asyncio
 import json
 import logging
+import math
 import os
 import re
 import shutil
@@ -134,6 +135,17 @@ class ProductLogs:
         encoded = re.sub(r"([a-z][a-z0-9+.-]*://)[^/\s\"@]+@", r"\1[REDACTED]@", encoded)
         return json.loads(encoded)
 
+    @property
+    def runs_root(self):
+        namespace = self.root / "runs"
+        if (
+            namespace.is_symlink()
+            or namespace.is_junction()
+            or namespace.resolve().parent != self.root
+        ):
+            raise OSError("Product run namespace is outside the configured root")
+        return namespace
+
     def warning(self):
         self.failed = True
         if time() - self._last_warning > 60:
@@ -212,8 +224,8 @@ class ProductLogs:
         if not self.root.is_dir():
             return rows
         paths = [] if summaries_only else list(self.root.glob("operations*.jsonl"))
-        for directory in (self.root / "runs").glob("*"):
-            if directory.is_dir() and not directory.is_symlink():
+        for directory in self.runs_root.glob("*"):
+            if directory.is_dir() and not directory.is_symlink() and not directory.is_junction():
                 summary = directory / "summary.json"
                 if summary.exists():
                     identity = json.loads(summary.read_text(encoding="utf-8"))
@@ -231,7 +243,8 @@ class ProductLogs:
                         row = json.loads(line)
                     except ValueError:
                         continue
-                    if task_id is not None and row.get("task_id") != task_id:
+                    data = row.get("data") if isinstance(row.get("data"), dict) else {}
+                    if task_id is not None and row.get("task_id", data.get("task_id")) != task_id:
                         continue
                     if run_id is not None and row.get("run_id") != run_id:
                         continue
@@ -244,10 +257,15 @@ class ProductLogs:
             return
         try:
             with self.storage():
-                runs = (self.root / "runs").resolve()
+                runs = self.runs_root
                 candidates = []
                 for path in runs.glob("*"):
-                    if path.is_symlink() or not path.is_dir() or path.resolve().parent != runs:
+                    if (
+                        path.is_symlink()
+                        or path.is_junction()
+                        or not path.is_dir()
+                        or path.resolve().parent != runs
+                    ):
                         continue
                     if not (path / "summary.json").is_file():
                         continue
@@ -290,7 +308,7 @@ class ProductRunTracer(FileRunTracer):
         logs.prune()
         super().__init__(
             context,
-            root=logs.root / "runs",
+            root=logs.runs_root,
             payload_mode=trace.payload_level,
             max_payload_bytes=min(trace.max_payload_bytes, logs.settings.max_event_bytes),
             capture_llm=trace.capture_llm,
@@ -326,7 +344,23 @@ class ProductRunTracer(FileRunTracer):
     def event(self, event_type, payload=None):
         try:
             self._budget_summary.observe(event_type, payload)
-            if event_type == "v3_finalized" and isinstance(payload, dict):
+            if event_type == "product_stage" and isinstance(payload, dict):
+                self._observe_stage(payload)
+            if event_type == "v3_completion_summary" and isinstance(payload, dict):
+                self.summary.update(
+                    {key: value for key, value in payload.items() if key != "reason"}
+                )
+                self.summary["stop_reason"] = payload.get("reason")
+            if (
+                event_type == "v3_finalized"
+                and isinstance(payload, dict)
+                and payload.get("truncated")
+            ):
+                self.incomplete = True
+                self.summary["upstream_details_truncated"] = True
+                self.summary.setdefault("stop_reason", payload.get("reason"))
+                self.summary.setdefault("repair_status", payload.get("repair_status"))
+            elif event_type == "v3_finalized" and isinstance(payload, dict):
                 from backend.app.observability.run_trace import TracePayloadMode
 
                 for key in ("draft", "original_report", "final_primary", "final_report"):
@@ -392,6 +426,26 @@ class ProductRunTracer(FileRunTracer):
             self.logs.warning()
             self.incomplete = True
 
+    def _observe_stage(self, payload):
+        stage, status = payload.get("stage"), payload.get("status")
+        if not isinstance(stage, str) or not re.fullmatch(r"[a-z_]{1,60}", stage):
+            return
+        if status not in {"started", "completed", "failed", "cancelled", "skipped"}:
+            return
+        stages = self.summary.setdefault("stages", {})
+        if stage not in stages and len(stages) >= 64:
+            self.incomplete = True
+            return
+        row = stages.setdefault(
+            stage, {"elapsed_ms": None, "timed_occurrences": 0, "scope": "inclusive_not_additive"}
+        )
+        row[status] = row.get(status, 0) + 1
+        row["last_status"] = status
+        duration = payload.get("duration_ms")
+        if type(duration) in (int, float) and math.isfinite(duration) and duration >= 0:
+            row["elapsed_ms"] = (row["elapsed_ms"] or 0) + duration
+            row["timed_occurrences"] += 1
+
     def payload(self, category, name, value, *, minimum_mode):
         try:
             cost = min(
@@ -413,10 +467,53 @@ class ProductRunTracer(FileRunTracer):
         super().finish(**kwargs)
 
     def _save_summary(self):
+        value = self.logs.sanitize(self.summary)
+        if len(json.dumps(value).encode()) > 65536:
+            retained = {
+                key: self.logs.bounded(value[key], 1024)
+                for key in (
+                    "schema_version",
+                    "task_id",
+                    "execution_id",
+                    "run_id",
+                    "request_id",
+                    "owner_id",
+                    "fence",
+                    "started_at",
+                    "finished_at",
+                    "status",
+                    "stop_reason",
+                    "repair_status",
+                    "selected_round_index",
+                    "primary_tool_usage_status",
+                    "policy_completion",
+                )
+                if key in value
+            }
+            retained.update(collection_status="incomplete", summary_details_truncated=True)
+            for key in (
+                "pace_completion",
+                "stages",
+                "usage",
+                "validation_counts",
+                "product_result",
+                "error",
+            ):
+                if key not in value:
+                    continue
+                item = value[key]
+                if key == "product_result" and isinstance(item, dict):
+                    item = {
+                        name: item[name]
+                        for name in ("pace_review", "policy_completion", "policy_reasons")
+                        if name in item
+                    }
+                candidate = self.logs.bounded(item, 16000)
+                if len(json.dumps({**retained, key: candidate}).encode()) <= 65536:
+                    retained[key] = candidate
+            value = retained
         pending = self.run_directory / "summary.json.tmp"
-        pending.write_text(
-            json.dumps(self.logs.sanitize(self.summary), separators=(",", ":")), encoding="utf-8"
-        )
+        pending.write_text(json.dumps(value, separators=(",", ":")), encoding="utf-8")
         pending.replace(self.run_directory / "summary.json")
 
     def close(self, status, *, result=None, error=None):
@@ -424,6 +521,12 @@ class ProductRunTracer(FileRunTracer):
             return
         self._closed = True
         try:
+            if not hasattr(self, "_final_tool_usage"):
+                self._budget_summary.incomplete = True
+                self.incomplete = True
+                self.summary["primary_tool_usage_status"] = "unavailable"
+            else:
+                self.summary["primary_tool_usage_status"] = "recorded"
             self.summary.update(
                 status=status,
                 finished_at=datetime.now(UTC).isoformat(),
@@ -473,6 +576,22 @@ class ProductRunTracer(FileRunTracer):
                 for key in ("input_tokens", "output_tokens", "total_tokens")
             },
         }
+        timings = {}
+        for row in data.get("stage_summaries", []):
+            stage, elapsed = row.get("stage"), row.get("elapsed_seconds")
+            if not isinstance(stage, str) or not re.fullmatch(r"[a-z_]{1,60}", stage):
+                continue
+            if stage not in timings and len(timings) >= 64:
+                self.incomplete = True
+                break
+            observed = timings.setdefault(
+                stage,
+                {"elapsed_seconds": None, "observations": 0, "scope": "inclusive_not_additive"},
+            )
+            if type(elapsed) in (int, float) and math.isfinite(elapsed) and elapsed >= 0:
+                observed["elapsed_seconds"] = (observed["elapsed_seconds"] or 0) + elapsed
+                observed["observations"] += 1
+        self.summary["usage"]["stage_timings"] = timings
         self.payload("llm", "usage", data, minimum_mode=TracePayloadMode.METADATA)
 
 

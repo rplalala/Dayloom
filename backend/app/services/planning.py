@@ -84,6 +84,9 @@ class PlanningService:
                 "pace_review": result.pace_review,
                 "policy_completion": result.policy_completion,
                 "policy_reasons": result.policy_reasons,
+                "required_experiences": result.required_experiences,
+                "preference_coverage": result.preference_coverage,
+                "minimum_daily_coverage": result.minimum_daily_coverage,
             })
             return result
 

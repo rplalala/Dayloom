@@ -25,7 +25,9 @@ def test_browser_error_reaches_server_without_message_or_query(browser_app):
         assert any(
             row["data"].get("kind") == "global_error"
             and row["data"].get("error_type") == "TypeError"
+            and row.get("request_id") == response.headers["x-request-id"]
             for row in reports
         )
+        assert "--- Logging error ---" not in (SCRATCH / "api.log").read_text(encoding="utf-8")
     finally:
         context.close()

@@ -80,6 +80,27 @@ def test_retention_only_removes_owned_finished_inactive_runs(tmp_path):
     assert (runs / "unrelated").exists()
 
 
+def test_retention_rejects_a_namespace_resolving_outside_the_owned_root(tmp_path, monkeypatch):
+    logs = ProductLogs(ProductLogSettings(directory=tmp_path / "owned", retention_days=1))
+    namespace = logs.root / "runs"
+    namespace.mkdir(parents=True)
+    outside = tmp_path / "other" / "finished"
+    outside.mkdir(parents=True)
+    (outside / "summary.json").write_text("{}")
+    stamp = (datetime.now(UTC) - timedelta(days=3)).timestamp()
+    os.utime(outside, (stamp, stamp))
+    from pathlib import Path
+
+    original = Path.resolve
+    monkeypatch.setattr(
+        Path,
+        "resolve",
+        lambda path, *a, **kw: outside.parent if path == namespace else original(path, *a, **kw),
+    )
+    logs.prune()
+    assert (outside / "summary.json").is_file()
+
+
 def test_final_summary_survives_event_limits(tmp_path):
     from backend.app.observability.product_logs import ProductRunTracer
     from backend.app.runtime.config_loader import load_runtime_config
@@ -104,3 +125,71 @@ def test_final_summary_survives_event_limits(tmp_path):
     assert summary["stop_reason"] == "phase_or_request_deadline"
     assert summary["collection_status"] == "incomplete"
     assert summary["pace"]["completion"]["status"] == "partial"
+
+
+def test_stage_timings_survive_detailed_event_truncation(tmp_path):
+    from backend.app.observability.product_logs import ProductRunTracer
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.tests.observability.test_run_trace import _context
+
+    logs = ProductLogs(ProductLogSettings(directory=tmp_path, max_event_bytes=512))
+    tracer = ProductRunTracer(_context(), logs=logs, trace=load_runtime_config().trace)
+    tracer.event("product_stage", {"type": "stage", "stage": "requirements", "status": "started"})
+    tracer.event(
+        "product_stage",
+        {"type": "stage", "stage": "requirements", "status": "completed", "duration_ms": 1250},
+    )
+    tracer.event("large_event", {"text": "x" * 2000})
+    tracer.close("completed")
+    assert logs.read(summaries_only=True)[0]["stages"]["requirements"]["elapsed_ms"] == 1250
+
+
+def test_upstream_truncated_final_event_preserves_compact_completion(tmp_path):
+    from backend.app.observability.product_logs import ProductRunTracer
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.tests.observability.test_run_trace import _context
+
+    logs = ProductLogs(ProductLogSettings(directory=tmp_path))
+    tracer = ProductRunTracer(_context(), logs=logs, trace=load_runtime_config().trace)
+    tracer.event(
+        "v3_completion_summary",
+        {
+            "reason": "model_call_limit",
+            "repair_status": "ACCEPTED_PARTIAL",
+            "pace_completion": {"status": "partial"},
+            "validation_counts": {"UNKNOWN": 2},
+        },
+    )
+    tracer.event(
+        "v3_finalized",
+        {"truncated": True, "reason": "model_call_limit", "repair_status": "ACCEPTED_PARTIAL"},
+    )
+    tracer.close("completed")
+    summary = logs.read(summaries_only=True)[0]
+    assert summary["repair_status"] == "ACCEPTED_PARTIAL"
+    assert summary["validation_counts"] == {"UNKNOWN": 2}
+    assert summary["pace_completion"]["status"] == "partial"
+    assert summary["upstream_details_truncated"]
+
+
+def test_oversized_summary_keeps_stop_reason_within_its_separate_limit(tmp_path):
+    from backend.app.observability.product_logs import ProductRunTracer
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.tests.observability.test_run_trace import _context
+
+    logs = ProductLogs(ProductLogSettings(directory=tmp_path))
+    tracer = ProductRunTracer(_context(), logs=logs, trace=load_runtime_config().trace)
+    tracer.event(
+        "v3_completion_summary", {"reason": "model_call_limit", "repair_status": "ACCEPTED_PARTIAL"}
+    )
+    tracer.event(
+        "product_presented",
+        {"policy_completion": "incomplete", "required_experiences": ["x" * 100000]},
+    )
+    tracer.close("completed")
+    path = next(tmp_path.glob("runs/*/summary.json"))
+    summary = json.loads(path.read_text())
+    assert path.stat().st_size <= 65536
+    assert summary["stop_reason"] == "model_call_limit"
+    assert summary["product_result"]["policy_completion"] == "incomplete"
+    assert summary["summary_details_truncated"]

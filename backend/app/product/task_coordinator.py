@@ -144,15 +144,13 @@ class TaskCoordinator:
         except asyncio.CancelledError:
             operation("task_execution_cancelled")
             if claim:
-                with suppress(Exception):
-                    await asyncio.to_thread(self.store.finish, claim, "failed", INTERRUPTED)
+                await self._persist_failure(claim, "failed", INTERRUPTED)
             raise
         except Exception as error:
             operation("task_execution_failed", {"error": safe_error(error)})
             if claim:
                 state, outcome = failure_outcome(error)
-                with suppress(Exception):
-                    await asyncio.to_thread(self.store.finish, claim, state, outcome)
+                await self._persist_failure(claim, state, outcome)
         finally:
             if heartbeat:
                 heartbeat.cancel()
@@ -166,6 +164,14 @@ class TaskCoordinator:
                     if acknowledged:
                         operation("task_stop_acknowledged")
             diagnostics.close()
+
+    async def _persist_failure(self, claim, state, outcome):
+        data = {"state": state, "code": outcome.get("code")}
+        try:
+            committed = await asyncio.to_thread(self.store.finish, claim, state, outcome)
+            operation("task_finished" if committed else "task_finish_not_committed", data)
+        except Exception as error:
+            operation("task_terminal_write_failed", {**data, "error": safe_error(error)})
 
     async def close(self):
         self.closed = True

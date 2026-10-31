@@ -5,6 +5,8 @@ import asyncio
 from contextlib import asynccontextmanager
 from datetime import date
 
+import pytest
+
 from backend.app.api.dependencies import get_planning_service
 from backend.app.observability.product_logs import ProductLogs
 from backend.app.product.task_coordinator import TaskCoordinator
@@ -55,7 +57,10 @@ def test_account_draft_and_saved_operations_have_audit_results(client, monkeypat
     assert "incorrect-private-password" not in str(rows)
 
 
-def test_real_v3_task_records_repair_and_preserves_public_projection(client, monkeypatch, tmp_path):
+@pytest.mark.parametrize("trace_limit", [512, 1_000_000])
+def test_real_v3_task_records_repair_and_preserves_public_projection(
+    client, monkeypatch, tmp_path, trace_limit
+):
     monkeypatch.setenv("PRODUCT_LOG_DIRECTORY", str(tmp_path))
     monkeypatch.setenv("PRODUCT_LOG_ENABLED", "true")
     monkeypatch.setattr(
@@ -72,8 +77,14 @@ def test_real_v3_task_records_repair_and_preserves_public_projection(client, mon
         async def generate(self, *args):
             return {}
 
+    from backend.app.runtime.config_loader import load_runtime_config
+
+    config = load_runtime_config()
+    config = config.model_copy(
+        update={"trace": config.trace.model_copy(update={"max_payload_bytes": trace_limit})}
+    )
     service = PlanningService(
-        RequestPlannerRuntime(dependency_factory=dependencies),
+        RequestPlannerRuntime(config=config, dependency_factory=dependencies),
         FixedDateProvider(date(2026, 9, 11)),
         introductions=Introductions(),
     )
@@ -107,8 +118,48 @@ def test_real_v3_task_records_repair_and_preserves_public_projection(client, mon
         assert summary["run_id"] == summary["execution_id"]
         assert summary["request_id"] == response.headers["x-request-id"]
         assert summary["stop_reason"]
+        assert summary["repair_status"]
+        assert summary["validation_counts"]
+        if trace_limit == 512:
+            assert summary["upstream_details_truncated"]
         assert any(row.get("event") == "v3_finalized" for row in rows)
         assert any(row.get("event") == "task_completed" for row in rows)
+    finally:
+        client.portal.call(coordinator.close)
+        client.app.dependency_overrides.clear()
+
+
+def test_failed_task_records_the_committed_public_outcome(client, monkeypatch, tmp_path):
+    from backend.tests.api.test_product_planning import make_planning_service, make_product_payload
+    from backend.tests.versions.v0.fakes import FakeStructuredLLMClient
+
+    monkeypatch.setenv("PRODUCT_LOG_DIRECTORY", str(tmp_path))
+    monkeypatch.setenv("PRODUCT_LOG_ENABLED", "true")
+    coordinator = TaskCoordinator(TaskStore())
+    model = FakeStructuredLLMClient([RuntimeError("private failure detail")])
+    client.app.dependency_overrides[get_coordinator] = lambda: coordinator
+    client.app.dependency_overrides[get_planning_service] = lambda: make_planning_service(model)
+    try:
+        account = register(client)
+        headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": account["csrf_token"]}
+        response = client.post(
+            "/api/planning/tasks",
+            headers=headers,
+            json={"operation_key": "logged-failure", "request": make_product_payload()},
+        )
+        assert response.status_code == 202
+
+        async def settle():
+            await asyncio.gather(*coordinator.workers)
+
+        client.portal.call(settle)
+        task_id = response.json()["id"]
+        task = client.get("/api/planning/tasks/" + task_id).json()
+        assert task["state"] == "failed"
+        rows = ProductLogs().read(task_id=task_id)
+        final = next(row for row in rows if row.get("event") == "task_finished")
+        assert final["data"] == {"state": "failed", "code": task["outcome"]["code"]}
+        assert "private failure detail" not in str(rows)
     finally:
         client.portal.call(coordinator.close)
         client.app.dependency_overrides.clear()
