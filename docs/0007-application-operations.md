@@ -159,8 +159,13 @@ Preview, Save, reopening and export retain this projection. Matching is a semant
 judgment grounded in supplied place information, not an operating-fact guarantee.
 Historical records without the field or without a captured failure reason are not
 backfilled with inferred diagnoses. The detail and text summary use each normalized
-experience label, separating Trip highlights from Still to arrange; raw matching counts,
-thresholds, shared source sentences and evidence-state prose are not displayed.
+experience label, separating Trip highlights, Needs confirmation and Still to arrange.
+Satisfied experiences appear as highlights; unverified experiences ask the traveler to
+confirm their exact place or route, while unmet experiences remain to arrange. A generic
+supporting activity can already be scheduled while its corresponding experience remains
+unverified; a matching title does not change fulfillment. Text summaries use the same
+distinction without rewriting native statuses or counts. Raw matching counts, thresholds,
+shared source sentences and evidence-state prose are not displayed.
 Optional `completion.attention_items` preserves named-place and dated hard-request gaps
 as traveler-facing titles/descriptions, with known associations where available. Existing
 legacy named-gap reason codes receive a conservative explanation without inventing a
@@ -965,8 +970,11 @@ be shared during the active page attempt but are not persisted. Valid pre-extens
 Google cache keys are upgraded on read without resetting timestamps or refetching.
 Google-specific URL rules remain separate and unchanged.
 
-Supporting cards request 360×240 metadata and display smaller thumbnails with a visible
-Atmosphere photo label and keyboard/pointer/touch credit disclosure. Missing credentials,
+Supporting cards request 360×240 metadata and display smaller thumbnails that open the
+existing Details dialog. The Atmosphere photo label, Unsplash provider, photographer and
+source links appear only in Details as static, readable content, with keyboard/touch access.
+The image container accommodates the full caption and label without clipping; Escape
+closes the dialog even when a source link has focus. Missing credentials,
 empty/unsafe first results, tracking failure, timeout, rate limits or image failure leave
 the compact white card without imagery. Its time, title, notes and navigation remain
 usable; detail Refresh photo targets only its slot. Fixed destination covers remain a
@@ -986,7 +994,8 @@ an unwrapped 12px normal-weight sans serif label and gray text on a light backgr
 Unavailable metadata, absent identity/keys and expired/failed image loads retain the
 labelled illustration. Unattempted slots show Photo pending and active batches show Loading photo;
 neither is labelled unavailable before an attempt finishes. Preview access and Save remain independent of media success.
-Unsplash atmosphere-credit disclosure is unchanged.
+Fixed destination and hero images retain their existing atmosphere-credit disclosure.
+Supporting images follow the [Details attribution rule](#supporting-atmosphere-photos).
 
 This list/detail split does not meet Google's documented requirement to include
 provided author attribution wherever the photograph is displayed. Keeping attribution

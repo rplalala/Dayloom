@@ -256,6 +256,26 @@ with transactional preview/apply/readback receipts and decoded desktop/mobile ca
 No new planning, automatic classification of other records, full regression or product-limit
 change ran; closing the isolated acceptance context did not log out the user's other sessions.
 
+The subsequent presentation correction uses fixed base `22dba65` and implementation
+`6fbb1e5`. Supporting credit links and the atmosphere label now live in Details, while
+unverified experiences request confirmation rather than appearing as missing arrangements.
+The saved Sydney walk remains a scheduled generic activity with unverified correspondence;
+no title-based fulfillment, native status/count rewrite or database change occurred.
+Initial component checks reproduced both misleading presentations. Screenshot inspection
+then exposed attribution clipped by the old fixed-height container, and a focused-link
+browser regression exposed the inherited hover-credit handler swallowing Escape.
+Both received behavioral corrections and targeted passing follow-ups.
+
+Thirty-one frontend cases passed, along with build/typecheck, ESLint and changed-file Ruff.
+Five controlled API/PostgreSQL/browser cases passed after the clipping correction; the
+two responsive cases passed again after the final focused-link Escape/readability fix.
+Full 47-slot reload/refresh/isolation coverage remains in the affected five-case set.
+Representative 1440px/390px captures verify the static caption and label within the visible
+container. Both independent implementation reviews reported zero findings. Evidence remains
+under the ignored `.scratch/activity-roles-details/` and `activity-media-details*` identifiers.
+This correction uses controlled image responses; it adds no real-provider acceptance,
+planning, product-limit change or full regression.
+
 ### Browser photo session acceptance (31 October 2026)
 
 [Issue #233](https://github.com/rplalala/Dayloom/issues/233) was checked against the
