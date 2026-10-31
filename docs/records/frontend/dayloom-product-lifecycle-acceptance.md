@@ -276,6 +276,27 @@ under the ignored `.scratch/activity-roles-details/` and `activity-media-details
 This correction uses controlled image responses; it adds no real-provider acceptance,
 planning, product-limit change or full regression.
 
+The later Google-photo fallback starts at `690f272` with implementation `40cb804`.
+Read-only inspection of the newly generated Melbourne preview found 30 bound photo slots:
+28 obtained Google photo metadata, while Federation Square and Nearby Chicamocha returned
+`no_photos`. Retained later requests repeated that outcome; diagnosis made no extra provider
+call. The authorized fallback now uses one first-result Unsplash search after confirmed
+Google photo absence, followed by an illustration if no usable result exists. Display
+provenance and per-slot session reuse preserve the existing identity and timing boundaries;
+the detailed current rule belongs in [application operations](../../0007-application-operations.md#place-photo-fallback).
+
+Targeted provider/API checks passed 47 cases, and frontend photo/cache/detail checks passed
+71 cases in 12 files. The initial four-case browser run passed desktop fallback and both
+existing complete 47-slot journeys; mobile stopped because expanded Nearby introduced a
+second Details button under the same card. After narrowing that locator, both new responsive
+fallback journeys passed in 31.03 seconds. They cover preview/Save, two distinct successful
+fallback slots, a third slot with no result from either provider, reload of only that genuine
+miss, unchanged cached timestamps, selected refresh, decoded imagery, unclipped static
+credits and cross-tab logout. Build/typecheck, ESLint, changed-file Ruff and diff checks
+passed with existing advisories. Both independent implementation reviews reported zero
+findings. Original/affected follow-up evidence remains under the ignored
+`.scratch/place-photo-fallback-*` identifiers. No full regression or new paid acceptance ran.
+
 ### Browser photo session acceptance (31 October 2026)
 
 [Issue #233](https://github.com/rplalala/Dayloom/issues/233) was checked against the

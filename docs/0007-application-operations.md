@@ -874,7 +874,8 @@ activity slots in itinerary order followed by Nearby, in sequential batches, rat
 using JSONB key order. Supporting slots use their separate authorized atmosphere path.
 Each Google slot performs at most
 one fresh `photos` Details request and one media metadata request, with an 8-second HTTP
-timeout, an 8-second complete-slot deadline and 256 KiB response limit. Completed photos
+timeout, an 8-second complete-slot deadline and 256 KiB response limit. The complete-slot
+deadline includes any provider fallback. Completed photos
 survive another slot's timeout or a later failed batch. Redirects and arbitrary fetch destinations are
 rejected. Responses retain `Cache-Control: no-store`; the backend has no photo metadata
 cache or automatic retry. The browser's explicit session cache below determines which
@@ -882,10 +883,33 @@ slots need fresh metadata. Activity and Nearby lists display authorized photogra
 when an owned itinerary or curated example opens. **Refresh photo** in a place dialog
 resolves only the selected slot, without replanning or refreshing itinerary facts.
 
+#### Place photo fallback
+
+For authorized activity and Nearby slots, Google remains the first provider. A successful
+Google Details response with absent or empty `photos` triggers one Unsplash search. The
+bounded query uses only the owned detail's structured place name and destination, falling
+back to destination or the fixed general search when labels are absent. Activity titles,
+private notes, preferences and complete itinerary bodies are not sent. Client query text,
+unbound slots and imported place-ID claims cannot authorize a search.
+
+The adapter applies the same [first-result validation and adoption rules](#supporting-atmosphere-photos)
+as supporting imagery. A missing key, empty/unsafe first result, tracking failure or timeout
+leaves an illustration; there is no second result or extra query. Google authentication,
+quota, timeout, malformed-metadata and invalid-image-reference failures do not masquerade
+as confirmed photo absence. Both stages share the existing slot/batch bounds, without
+additional retries or a server cache. Preview, Save/read, independent Copy and curated
+examples retain the chain; the fixed London cover uses its existing Tower Bridge binding.
+
+The display result carries `kind: atmosphere`, `theme: general` and
+`fallback: google_no_photos`. Details shows Atmosphere photo, Unsplash and the supplied
+photographer/source links as static text; the list keeps its original main-visit or
+Nearby layout. This imagery establishes neither a verified photograph of that place nor
+new identity, role or fulfillment authority. No native itinerary or saved binding is rewritten.
+
 #### Browser tab photo session
 
-The local/private Product uses `sessionStorage` to retain successful verified-place
-and supporting-atmosphere photo URLs with their supplied attribution and safe author/source
+The local/private Product uses `sessionStorage` to retain successful verified-place,
+place-fallback and supporting-atmosphere photo URLs with their supplied attribution and safe author/source
 links. An omitted
 optional source link does not prevent caching a valid photograph. The cache does not
 store image bytes, credentials, tokens, full itineraries or private media bindings.
@@ -937,6 +961,14 @@ The separate fixed destination/atmosphere catalog continues resolving metadata o
 display; this cache covers itinerary activity and Nearby slots. Provider-license review
 and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
 
+Successful place fallbacks use distinct Unsplash/atmosphere/place-fallback keys within the
+original owner, resource, snapshot, dimensions and slot boundaries. They never borrow
+supporting-theme aliases or another place's slot. A hit bypasses both provider stages and
+preserves acquisition time; unavailable results remain uncached. Selected refresh evicts
+only that slot's Google/fallback alternatives before resolving the chain again. Existing
+resource/account fences also reject delayed fallback writes. Valid legacy Google entries
+retain their original acquisition timestamps during compatibility handling.
+
 #### Supporting atmosphere photos
 
 `GET /api/{previews|trips}/{id}/supporting-media` reads the owner's actual detail and
@@ -959,7 +991,7 @@ Only `results[0]` may be adopted. The adapter validates the image, photographer/
 links and exact returned photo download-tracking path, preserving hotlink parameters.
 Automatic selection records one adoption through the returned `download_location`;
 ordinary display/reload of valid cached metadata records none. There is no second-result
-choice, fallback query, LLM picker, arbitrary query/URL proxy or retry. Private notes,
+choice, second Unsplash query, LLM picker, arbitrary query/URL proxy or retry. Private notes,
 preferences and itinerary bodies are not sent to this search.
 
 The existing slot, parallelism, HTTP/slot and batch bounds apply. Same-theme work is
