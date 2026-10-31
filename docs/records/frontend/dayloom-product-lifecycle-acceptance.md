@@ -143,61 +143,52 @@ at this event is local commits, not a published deployment.
 
 ## Verification and evidence
 
-### Activity roles and grounded experiences (31 October 2026)
+### Activity roles, experience guidance and atmosphere media (31 October 2026)
 
-[Issue #236](https://github.com/rplalala/Dayloom/issues/236), under
-[#235](https://github.com/rplalala/Dayloom/issues/235), addresses the loss of final
-planner roles at the Product projection/persistence boundary. Implementation `6f305f7`
-and separate review correction `6fd26ce` use fixed review base
-`f5f9a5bbec68705689c76c52544fa4d51421bf13`. The current contract is
-[activity roles and timeline presentation](../../0007-application-operations.md#activity-roles-and-timeline-presentation).
+[Parent #235](https://github.com/rplalala/Dayloom/issues/235) combines durable roles,
+grounded principal visits, readable experience guidance and supporting atmosphere media.
+Current contracts belong in [application operations](../../0007-application-operations.md#activity-roles-and-timeline-presentation)
+and [itinerary source acceptance](../../0003-itinerary-transport.md).
 
-The initial public-projection check reproduced the missing role, and the real isolated
-database save check reproduced the absent storage columns. Migration 009 and the
-projection/reader changes preserve explicit roles and themes throughout the lifecycle.
-Extended checks exposed a compatibility defect: serializing neutral defaults changed
-legacy canonical import hashes and returned 409 on old same-key receipt recovery.
-Omitting unknown/null role metadata restores that existing contract without rewriting
-stored trips or weakening import trust.
+| Slice | Fixed review base | Implementation and separate corrections | Targeted checks |
+| --- | --- | --- | --- |
+| [#236](https://github.com/rplalala/Dayloom/issues/236) roles/lifecycle/cards | `f5f9a5b` | `6f305f7`, `6fd26ce` | 129 backend/API/browser; 56 frontend |
+| [#237](https://github.com/rplalala/Dayloom/issues/237) grounding/guidance | `371a7bb` | `347ff0d`, `3a48956` | 239 backend/API/browser; 58 frontend |
+| [#238](https://github.com/rplalala/Dayloom/issues/238) supporting media/session | `833151e` | `caa0f7b`, `e307d0a`, `a9482ea` | 427 backend/adapter/API/browser; 67 frontend |
 
-Independent Standards and Spec reviews both identified the same transport/Nearby
-regression: the new transport branch lacked the scheduled anchor's stop target and mobile
-disclosure. Correction `6fd26ce` shares the existing disclosure component and restores
-the target, selection and desktop entry without an activity dot/photo. Both axes rechecked
-the complete committed range and returned zero remaining findings.
+Counts cover overlapping targeted sets, rather than a combined full-suite run.
+The media slice includes 128 feature/schema/browser checks and 299 controlled Foundry
+adapter cases. Four stale SDK preflight mock responses lacked the new nullable field;
+their 19-case affected file passed after aligning that fixture. No real SDK smoke ran.
+All listed checks passed without skips; TypeScript/Vite, ESLint and changed-file Ruff
+checks passed. Existing chunk-size, Fast Refresh and test-framework warnings remain.
 
-[Issue #237](https://github.com/rplalala/Dayloom/issues/237) adds the shared acquired-place/
-semantic eligibility check and traveler-facing experience guidance in `347ff0d`, with
-review base `371a7bb`. V0's pure-model identity path and historical formats remain
-independent. No extra semantic-selection calls, Repair stages or limits were introduced.
-Spec review found that category-only guidance omitted failed named count/date obligations;
-separate correction `3a48956` preserves these as named/dated attention items, without
-rewriting native counts or inventing missing associations. Standards and Spec rechecked
-the corrected range and each returned zero remaining findings.
+The original failure was loss of planner role data at Product projection/persistence.
+Migration 009 and the role projection/read path preserve explicit roles/themes while
+historical omissions remain unknown. A red compatibility check caught neutral defaults
+changing canonical import hashes and old same-key receipt recovery; omitting neutral
+metadata preserves the original contract.
 
-The grounding/guidance targeted set passed **239 backend/API/browser checks** without
-skips (142 source/version/semantic checks, 43 V3 wiring/time-use checks and 54 isolated
-Product lifecycle/import/browser checks), plus **58 frontend checks across eight files**.
-Affected native and browser cases were rerun after the separate review correction.
-The browser checks use the real
-Product API and a disposable isolated PostgreSQL database, controlled provider adapters
-and Chromium at 1440px and 390px. They cover Save/reload, distinct photo-free supporting
-cards and dashed transport, supplied times, historical unknowns, keyboard dialogs/focus,
-Nearby anchors (including desktop Locate focus and mobile disclosure for transport)
-and JSON export/reimport. Generated preview/save/reload also retains separate museum
-highlights and waterfront/named-place attention, with exact activity navigation.
-The reimport harness explicitly starts a new
-import before editing the completed form; the final two-width rerun passed. TypeScript
-and Vite build, ESLint and changed-file Ruff checks passed; existing chunk-size and two
-session-module Fast Refresh warnings remain.
+Independent Standards and Spec reviews identified and verified separate corrections:
+transport retained exact Nearby targets/mobile disclosure; named count/date obligations
+received attention outside category coverage; supporting and Google resources now share
+deletion/preview-decision fences; and actual strict Foundry Primary/Civil responses carry
+the bounded nullable theme through the mapper. Both axes returned zero remaining
+findings for each corrected implementation range. Valid older Google cache keys keep
+their original acquisition time during key upgrade.
 
-The local Product database subsequently applied migration 009 once. Existing records
-receive the unknown role default; no role classification or content backfill runs.
+Controlled Chromium at 1440px and 390px uses the real Product API and disposable isolated
+PostgreSQL, with external adapters replaced. Checks cover preview/Save/reload, independent
+copy, roles and source claims, separate experience labels/navigation, transport/Nearby,
+JSON export/reimport, smaller supporting imagery, keyboard/touch credits and positive
+natural image dimensions after decode. Session checks cover theme sharing, fixed expiry,
+selected refresh, account/resource invalidation and rejected late writes.
 
-There was no live generation/provider acceptance, full regression, limit change or
-historical role backfill. Historical missing roles remain unknown; intermediate Sydney
-repair/proposal material does not establish an authoritative final backfill. Supporting
-Unsplash searches and complete-page integration remain tasks #238 and #239.
+The local Product database applied migration 009 once. No historical classification or
+content backfill ran. Intermediate Sydney repair/proposal material does not establish
+authoritative final-role proof; historical missing roles remain unknown. No live
+generation/provider acceptance, full regression or product-limit change ran. Complete-page
+integration and the final historical-evidence audit remain [#239](https://github.com/rplalala/Dayloom/issues/239).
 
 ### Browser photo session acceptance (31 October 2026)
 

@@ -306,6 +306,13 @@ claim a completed booking, confirmed admission or a required visit's fulfillment
 An original hard required visit is still checked independently; changing its
 output label does not remove that obligation or prove fulfillment.
 
+Optional `atmosphere_theme` is a display hint independent of role, time use and identity.
+The domain field remains optional and absent/null values preserve legacy serialization.
+The strict Foundry Activity, Primary and Civil transport DTOs carry a required nullable
+controlled value, and their shared mapper retains it without an extra model invocation.
+The [Product atmosphere contract](0007-application-operations.md#supporting-atmosphere-photos)
+defines its allowed themes, search mapping and media behavior.
+
 A primary park visit must be declared as such and carry its actual proposed
 place name; V0 may use a name without an external ID. V1-V3 retain authorized
 supplied-identity ownership. An unspecified green space is not turned into a

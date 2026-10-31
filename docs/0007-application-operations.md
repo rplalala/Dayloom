@@ -479,10 +479,11 @@ new transfer or imply new endpoint identities. Nearby remains optional and unsch
 with the existing anchor/date rules.
 
 Migration `009_activity_roles.sql` adds role and nullable `atmosphere_theme` columns
-without modifying prior migration checksums. Themes are bounded to `meal`, `rest`,
-`explore`, `walk` and `general`. Fresh generic activities receive `general` without
-another model call or title classification. This foundation does not search for new
-atmosphere photos. Transport is excluded from fresh activity-photo bindings.
+without modifying prior migration checksums. Optional themes pass through the existing
+strict model DTO/mapper and Product lifecycle; missing supporting themes use the general
+fallback without another model call or title classification. The
+[supporting atmosphere adapter](#supporting-atmosphere-photos) owns their bounded mapping.
+Transport is excluded from fresh activity-photo bindings.
 
 Missing historical roles remain unknown, and missing themes remain absent. Neither
 titles, illustrations, photo bindings nor map links establish a role. Neutral unknown/null
@@ -863,8 +864,9 @@ maps, with identical response and work bounds. Each request admits 200–1280px 
 at most 12 ordered slots, three parallel resolutions and a 30-second batch deadline.
 There is no itinerary-wide slot cap. Repeated `slot` parameters select only server-authorized
 bindings; an unknown slot is unavailable without a provider call. Without explicit slots,
-`offset` and `next_offset` page through all bindings. The browser requests every activity
-in itinerary order followed by Nearby, in sequential batches, rather than using JSONB key order.
+`offset` and `next_offset` page through all bindings. The browser requests verified-place
+activity slots in itinerary order followed by Nearby, in sequential batches, rather than
+using JSONB key order. Supporting slots use their separate authorized atmosphere path.
 Each Google slot performs at most
 one fresh `photos` Details request and one media metadata request, with an 8-second HTTP
 timeout, an 8-second complete-slot deadline and 256 KiB response limit. Completed photos
@@ -878,7 +880,8 @@ resolves only the selected slot, without replanning or refreshing itinerary fact
 #### Browser tab photo session
 
 The local/private Product uses `sessionStorage` to retain successful verified-place
-photo URLs with Google Maps attribution and all supplied author/source links. An omitted
+and supporting-atmosphere photo URLs with their supplied attribution and safe author/source
+links. An omitted
 optional source link does not prevent caching a valid photograph. The cache does not
 store image bytes, credentials, tokens, full itineraries or private media bindings.
 This is an application-managed metadata cache, independent of HTTP image caching;
@@ -891,7 +894,8 @@ disallowed URLs, denied storage and quota failures fall back to ordinary media l
 Only successful photos are retained; loading, unavailable and error states are not cached.
 
 Keys separate account, login/invalidation generation, endpoint/resource identity,
-detail snapshot fingerprint, requested dimensions and slot. Saved trips, previews,
+detail snapshot fingerprint, provider, media kind, controlled theme, requested dimensions
+and slot. Saved trips, previews,
 independent copies and public examples cannot share private entries. Bundled examples
 use a guest scope. The snapshot fingerprint detects changes; it grants no authorization.
 Private photos remain hidden until authentication and the server's owned-detail read
@@ -905,13 +909,16 @@ and late responses cannot render or persist into an invalidated scope.
 Logout, session expiry/revocation, account switch and cross-tab session invalidation
 clear private entries and hide their active photos. Confirmed trip deletion and preview
 decisions invalidate the relevant resource. Changed snapshots or slot sets cannot reuse
-old entries. A media 401 clears the owner's photos; 403/404 invalidates the resource.
+old entries. Google and supporting endpoints share the same resource invalidation identity,
+including size-query variants, so these events fence both provider families. A media 401
+clears the owner's photos; 403/404 invalidates the resource.
 Normal authentication and ownership checks remain required after every page reload.
 
 A cached URL that fails image loading is evicted and receives **one automatic
 reacquisition per slot per display cycle**. A further failure shows an illustration
 with **Retry photo**. Manual refresh/retry affects only that slot and cannot extend
-neighboring entries' expiry. Photographs still load directly from Google's image host;
+neighboring entries' expiry. A failed supporting image instead removes the thumbnail,
+retaining the compact activity card. Photographs load directly from the provider image host;
 cache hits do not guarantee zero image network requests or zero billing.
 
 Reload retains the tab's storage session, and normal tab closure ends it. Browser
@@ -925,14 +932,54 @@ The separate fixed destination/atmosphere catalog continues resolving metadata o
 display; this cache covers itinerary activity and Nearby slots. Provider-license review
 and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
 
+#### Supporting atmosphere photos
+
+`GET /api/{previews|trips}/{id}/supporting-media` reads the owner's actual detail and
+admits only explicitly scheduled `generic_activity` slots. Unknown historical roles,
+principal visits, transport and free windows do not acquire atmosphere slots from a
+title, photo or map link. Imported declarations remain display hints; an atmosphere
+photo never creates a verified place binding or requirement fulfillment.
+
+| Structured theme | Fixed public search terms |
+| --- | --- |
+| `meal` | `relaxed meal` |
+| `rest` | `peaceful rest` |
+| `explore` | `neighborhood exploration` |
+| `walk` | `scenic walk` |
+| `general` | `travel moments` |
+
+The existing server-side Unsplash key and provider boundary search page 1 with
+`per_page=1`, `order_by=relevant`, `orientation=landscape` and `content_filter=high`.
+Only `results[0]` may be adopted. The adapter validates the image, photographer/source
+links and exact returned photo download-tracking path, preserving hotlink parameters.
+Automatic selection records one adoption through the returned `download_location`;
+ordinary display/reload of valid cached metadata records none. There is no second-result
+choice, fallback query, LLM picker, arbitrary query/URL proxy or retry. Private notes,
+preferences and itinerary bodies are not sent to this search.
+
+The existing slot, parallelism, HTTP/slot and batch bounds apply. Same-theme work is
+merged within a batch and across concurrent browser consumers. Session aliases stay
+within the same account/login/resource/snapshot/provider/kind/theme/dimension boundary,
+retain slot ownership and copy the original acquisition timestamp. Failure states may
+be shared during the active page attempt but are not persisted. Valid pre-extension
+Google cache keys are upgraded on read without resetting timestamps or refetching.
+Google-specific URL rules remain separate and unchanged.
+
+Supporting cards request 360×240 metadata and display smaller thumbnails with a visible
+Atmosphere photo label and keyboard/pointer/touch credit disclosure. Missing credentials,
+empty/unsafe first results, tracking failure, timeout, rate limits or image failure leave
+the compact white card without imagery. Its time, title, notes and navigation remain
+usable; detail Refresh photo targets only its slot. Fixed destination covers remain a
+separate catalog and do not use this search/cache selection path.
+
 #### Photo presentation
 
-Activity thumbnails use a 4:3 crop and align with the text's top edge on desktop and
-tablet, including long introductions. At widths up to 560px they use a full-width
+Principal and historical activity thumbnails use a 4:3 crop and align with the text's
+top edge on desktop and tablet, including long introductions. At widths up to 560px they use a full-width
 16:9 crop above the text. Nearby thumbnails remain square across sidebar and inline
 rows. Both use cover cropping, consistent rounded corners and restrained spacing.
 
-Activity and Nearby lists show photographs without provider or author captions. The
+Verified-place activity and Nearby lists show photographs without provider or author captions. The
 place detail dialog contains Google Maps attribution, all supplied author names and
 safe profile/source links beside the photograph. The label uses `translate="no"`,
 an unwrapped 12px normal-weight sans serif label and gray text on a light background.
