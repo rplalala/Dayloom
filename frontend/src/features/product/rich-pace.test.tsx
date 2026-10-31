@@ -50,6 +50,11 @@ it.each(["selection", "account default", "restored draft", "replan"])(
       await waitFor(() => expect(screen.getByRole("button", { name: /Relaxed/ })).toHaveAttribute("aria-pressed", "true"));
       fireEvent.click(screen.getByRole("button", { name: /Rich/ }));
     }
+    if (origin === "replan") {
+      expect(screen.getByLabelText("Additional preferences")).toHaveValue("");
+      expect(screen.getByRole("button", { name: "Rich" })).toHaveAttribute("aria-pressed", "false");
+      fireEvent.click(screen.getByRole("button", { name: "Rich" }));
+    }
     await waitFor(() => expect(screen.getByLabelText("Additional preferences")).toHaveValue(pacePrompts.rich));
     for (const [field, value] of [
       ["Destination", "Sydney"], ["Start date", "2026-09-12"], ["End date", "2026-09-13"],
