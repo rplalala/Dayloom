@@ -61,7 +61,7 @@ def test_search_preserves_task_domains_and_reserves_before_real_sdk_send(large_a
 
     result = asyncio.run(run())
     assert sent[0]["input"] == _request().task_instruction
-    assert sent[0]["max_tool_calls"] == 3
+    assert sent[0]["max_tool_calls"] == 2
     assert sent[0]["max_output_tokens"] == (32768 if large_auxiliary else 16384)
     assert sent[0]["tools"][0]["filters"]["allowed_domains"] == ["example.org"]
     assert [hit.allowed_domain for hit in result.hits] == [True, False]
