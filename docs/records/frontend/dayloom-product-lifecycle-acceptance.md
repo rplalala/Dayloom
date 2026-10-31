@@ -143,6 +143,49 @@ at this event is local commits, not a published deployment.
 
 ## Verification and evidence
 
+### Activity role lifecycle and timeline (31 October 2026)
+
+[Issue #236](https://github.com/rplalala/Dayloom/issues/236), under
+[#235](https://github.com/rplalala/Dayloom/issues/235), addresses the loss of final
+planner roles at the Product projection/persistence boundary. Implementation `6f305f7`
+and separate review correction `6fd26ce` use fixed review base
+`f5f9a5bbec68705689c76c52544fa4d51421bf13`. The current contract is
+[activity roles and timeline presentation](../../0007-application-operations.md#activity-roles-and-timeline-presentation).
+
+The initial public-projection check reproduced the missing role, and the real isolated
+database save check reproduced the absent storage columns. Migration 009 and the
+projection/reader changes preserve explicit roles and themes throughout the lifecycle.
+Extended checks exposed a compatibility defect: serializing neutral defaults changed
+legacy canonical import hashes and returned 409 on old same-key receipt recovery.
+Omitting unknown/null role metadata restores that existing contract without rewriting
+stored trips or weakening import trust.
+
+Independent Standards and Spec reviews both identified the same transport/Nearby
+regression: the new transport branch lacked the scheduled anchor's stop target and mobile
+disclosure. Correction `6fd26ce` shares the existing disclosure component and restores
+the target, selection and desktop entry without an activity dot/photo. Both axes rechecked
+the complete committed range and returned zero remaining findings.
+
+The final targeted set passed **129 backend/API/migration/browser checks** without
+skips and **56 frontend checks across eight files**. The browser checks use the real
+Product API and a disposable isolated PostgreSQL database, controlled provider adapters
+and Chromium at 1440px and 390px. They cover Save/reload, distinct photo-free supporting
+cards and dashed transport, supplied times, historical unknowns, keyboard dialogs/focus,
+Nearby anchors (including desktop Locate focus and mobile disclosure for transport)
+and JSON export/reimport. The reimport harness explicitly starts a new
+import before editing the completed form; the final two-width rerun passed. TypeScript
+and Vite build, ESLint and changed-file Ruff checks passed; existing chunk-size and two
+session-module Fast Refresh warnings remain.
+
+The local Product database subsequently applied migration 009 once. Existing records
+receive the unknown role default; no role classification or content backfill runs.
+
+There was no live generation/provider acceptance, full regression, limit change or
+historical role backfill. Historical missing roles remain unknown; intermediate Sydney
+repair/proposal material does not establish an authoritative final backfill. Principal
+grounding/completion guidance and supporting Unsplash searches remain separate dependent
+tasks #237 and #238.
+
 ### Browser photo session acceptance (31 October 2026)
 
 [Issue #233](https://github.com/rplalala/Dayloom/issues/233) was checked against the

@@ -447,6 +447,40 @@ controlled detail link. HTTP/SSE completed-task adapters read normalized saved d
 available and otherwise expose a safe `preview_decision`, including discarded/deleted
 receipts, so clearing a pending snapshot does not break completed observation.
 
+### Activity roles and timeline presentation
+
+The final planner's `activity_kind` survives Product projection, preview, normalized
+Save/read, application recreation and independent copy. Its values are `main_poi`,
+`generic_activity`, `transport`, `free_time` and `unknown`; role is independent of
+`time_use`. A scheduled meal, rest or exploration activity remains scheduled and
+does not become a free window or add a principal visit. Existing planning/counting
+policies and V0–V3 generation behavior are unchanged by this presentation boundary.
+
+Principal visits use prominent place cards. Supporting (`generic_activity`) activities
+use compact, solid-border white cards with their own timeline dot, start/end times,
+title, description and accessible Details action. They remain distinct without a photo,
+including on mobile. Directed transfers retain the existing dashed connector, duration,
+distance and uncertainty. An explicitly declared transport activity uses that connector
+structure with its supplied interval and no activity dot/photo; it does not create a
+new transfer or imply new endpoint identities. Nearby remains optional and unscheduled,
+with the existing anchor/date rules.
+
+Migration `009_activity_roles.sql` adds role and nullable `atmosphere_theme` columns
+without modifying prior migration checksums. Themes are bounded to `meal`, `rest`,
+`explore`, `walk` and `general`. Fresh generic activities receive `general` without
+another model call or title classification. This foundation does not search for new
+atmosphere photos. Transport is excluded from fresh activity-photo bindings.
+
+Missing historical roles remain unknown, and missing themes remain absent. Neither
+titles, illustrations, photo bindings nor map links establish a role. Neutral unknown/null
+fields are omitted from detail JSON to preserve legacy canonical import fingerprints
+and same-key receipt recovery. Non-neutral role/theme declarations survive JSON export
+and import as display claims; imported details retain `unverified_import` trust and
+never gain verified place/media identity or requirement fulfillment from these fields.
+No historical role backfill runs automatically. A future targeted backfill requires
+a dry-run and exact matching to trustworthy final-role material; intermediate/proposal
+traces alone cannot authorize it.
+
 ### Independent trip copies and kept examples
 
 Saved details and library cards offer explicit whole-trip Copy; public example details
