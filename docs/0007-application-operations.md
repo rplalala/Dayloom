@@ -915,7 +915,7 @@ new identity, role or fulfillment authority. No native itinerary or saved bindin
 #### Browser tab photo session
 
 The local/private Product uses `sessionStorage` to retain successful verified-place,
-place-fallback and supporting-atmosphere photo URLs with their supplied attribution and safe author/source
+place-fallback, supporting-atmosphere and cover photo URLs with supplied attribution and safe author/source
 links. An omitted
 optional source link does not prevent caching a valid photograph. The cache does not
 store image bytes, credentials, tokens, full itineraries or private media bindings.
@@ -963,8 +963,14 @@ isolation for browser-created duplicate tabs. External application links use `no
 There is no unconditional `beforeunload`/`pagehide` purge, durable browser storage,
 server/CDN image cache, service worker or cross-tab photo-sharing mechanism.
 
-Destination covers and the separate fixed atmosphere catalog continue resolving metadata on
-display; this cache covers itinerary activity and Nearby slots. Provider-license review
+Destination covers and the fixed atmosphere catalog share this cache's lifetime, count and
+byte budget with itinerary activity and Nearby slots. Cover keys use the canonical request
+endpoint (including destination and requested dimensions), account/login generation,
+provider/kind and a dedicated cover snapshot/slot identity. Same-destination cards, results,
+drafts and detail heroes reuse metadata within an account; guest examples and the login
+image use a separate public scope. A cover is destination-level display metadata, so deleting
+an individual itinerary does not remove a cover shared with another itinerary. Account
+invalidation still clears all private covers and rejects their delayed writes. Provider-license review
 and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
 
 Successful place fallbacks use distinct Unsplash/atmosphere/place-fallback keys within the
@@ -1025,7 +1031,7 @@ closes the dialog even when a source link has focus. Missing credentials,
 empty/unsafe first results, tracking failure, timeout, rate limits or image failure leave
 the compact white card without imagery. Its time, title, notes and navigation remain
 usable; detail Refresh photo targets only its slot. Destination covers use their
-[separate cover boundary](#destination-covers), outside this slot cache.
+[separate cover boundary](#destination-covers) and cache identity within the shared budget.
 
 #### Photo presentation
 
@@ -1070,9 +1076,16 @@ fallback query. Only the first result is eligible. Missing credentials, empty or
 metadata, failed adoption, provider errors/timeouts and failed image loads display the
 stable local illustration. They never substitute a fixed photo from another city.
 
-These covers remain outside the tab's itinerary-slot cache and resolve metadata when
-mounted or reloaded. Changing the destination cancels the previous request and fences its
-late response. The alt describes destination atmosphere, without granting verified place,
+Successful cover metadata uses the [browser tab photo session](#browser-tab-photo-session).
+Valid reload/navigation hits bypass both the metadata endpoint and its provider search/adoption.
+Reads do not renew acquisition time. Same-key concurrent mounts, including StrictMode,
+share request leases; abandoned work is canceled when its final consumer leaves. A failed
+cached image is evicted and receives one automatic reacquisition per display cycle; a
+further failure shows the illustration. Unavailable/error metadata is not cached. Denied
+storage and quota errors preserve ordinary display without reusable metadata. This stores
+URLs and credits, not image bytes, and does not guarantee zero image-host network traffic.
+Changing the destination cancels the previous request and fences its late response.
+The alt describes destination atmosphere, without granting verified place,
 role or experience fulfillment authority. Different queries may still yield the same
 provider-selected first photograph; no randomization or cross-city deduplication is added.
 

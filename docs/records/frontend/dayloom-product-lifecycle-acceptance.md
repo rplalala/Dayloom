@@ -315,37 +315,41 @@ content or V0–V3 behavior changed; no full regression or new itinerary generat
 ### Destination-aware atmosphere (1 November 2026)
 
 At base `6b25c1e`, an offline reproduction showed Melbourne and New York selecting the
-same fixed `nature` cover; supporting searches also omitted destination context. The
-authorized implementation `24849c9` replaces itinerary cover selection with first-result
-destination search and prefixes supporting themes with the owned detail's destination.
-The [cover contract](../../0007-application-operations.md#destination-covers) and
-[supporting contract](../../0007-application-operations.md#supporting-atmosphere-photos)
-own current behavior. Theme-only cache entries are fenced without changing the one-hour,
-1,000-entry, 5 MiB limits or Google/place-fallback cache identities.
+same fixed `nature` cover; supporting searches also omitted destination context.
+Implementation `24849c9` introduced destination-specific first-result covers and owned
+city/theme searches. Separate review correction `efcf715` fixed UTF-16 truncation that
+could split a valid non-BMP character before URL encoding; a component check first
+reproduced `URIError`, then passed. The later authorized cover-cache extension starts at
+`2570ef7`, with implementation `64b1ebe`. It uses the existing tab store and shared request
+leases, preserving one-hour acquisition-based expiry, 1,000 entries and 5 MiB across all
+photo families. The [cover contract](../../0007-application-operations.md#destination-covers)
+and [supporting contract](../../0007-application-operations.md#supporting-atmosphere-photos)
+own the current rules.
 
-Targeted checks passed 62 backend cases, 92 frontend cases across 16 files, and five
-browser journeys. New 1440px/390px journeys verify separate city queries, decoded
-controlled images, destination changes, supporting reload reuse, single-slot refresh,
-static Details attribution and unavailable-cover/card behavior. The affected existing
-47-slot journeys verify unchanged reload, refresh and cross-tab account isolation; the
-older photo/Save/Copy/import journey also passed. Initial London-example assertions still
-expected the fixed landmark cover, and the old provider counter counted destination
-searches against the itinerary budget. Updating those test expectations and separating
-controlled cover search/adoption pairs resolved both failures. The public cover API,
-city-aware supporting search and old-cache rejection each had a failing check before
-implementation.
+The destination-search stage passed 62 backend cases. The cache extension passed 101
+focused frontend cases across 16 files and four controlled browser journeys at 1440px
+and 390px. The cover journeys verify reload and return-navigation hits with unchanged
+acquisition times, independent destinations, supporting-only refresh, static Details
+credits, decoded controlled images, honest missing-image states and cross-tab logout.
+The existing Google-to-Unsplash fallback journeys also passed after their slot-only cache
+assertions were separated from cover entries in the shared store. Component checks cover
+one-hour expiry, StrictMode/concurrent request merging, guest/account separation, delayed
+response fencing, failed cached-image eviction with one recovery, fixed covers and denied
+storage. The initial remount check observed two metadata calls; it passed with one call
+after caching. Earlier 47-slot and photo/Save/Copy/import journeys passed for the preceding
+destination-search implementation; they are not a new full regression result.
 
-Both independent reviews found the same Unicode boundary defect: UTF-16 truncation could
-split a valid non-BMP character before URL encoding. A component regression reproduced
-`URIError`; separate correction `efcf715` truncates by Unicode code points. Ten affected
-cases, build/typecheck and changed-file ESLint passed afterward; both review rechecks found
-no remaining issues. Earlier whole-frontend ESLint and changed-backend Ruff passed with
-existing advisories. Local evidence identifiers include `.scratch/destination-media-browser/`
-and `.scratch/destination-existing-browser-retest.log`. All third-party responses and image
-bytes were controlled; no real-provider quality or billing acceptance is claimed. The local
-Product was restarted after confirming zero active planning tasks and serves the reviewed
-bundle with healthy API status. No full regression or new real itinerary generation ran.
-No database migration or V0–V3 planner changes were required.
+Initial search-stage London assertions expected the old fixed landmark cover, and the old
+provider counter charged destination searches to the itinerary budget. Correcting those
+test expectations and separating controlled cover search/adoption pairs resolved the
+failures. The public cover API, city-aware supporting search and old-theme-cache rejection
+also had failing checks before implementation. Search-stage review rechecks and both
+independent cache-extension reviews found no remaining issues. Build/typecheck, frontend
+ESLint and changed Python checks passed with existing advisories. Evidence identifiers
+include `.scratch/destination-media-browser/`, `.scratch/destination-existing-browser-retest.log`
+and `.scratch/cover-cache-browser.log`. All third-party responses and image bytes were
+controlled; no real-provider quality or billing acceptance is claimed. No full regression,
+new real itinerary generation, database migration or V0–V3 planner change was performed.
 
 ### Browser photo session acceptance (31 October 2026)
 
