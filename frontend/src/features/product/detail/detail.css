@@ -24,6 +24,13 @@
 .dayloom .supporting-activity .activity-intro { font-size:13px; margin-top:3px; line-height:1.5; }
 .dayloom .supporting-activity .activity-actions { margin-top:6px; }
 .dayloom .supporting-activity .activity-tag { font-size:11px; }
+.dayloom .supporting-photo { flex:none; width:76px; align-self:flex-start; }
+.dayloom .supporting-photo .media-photo { width:100%; height:58px; border-radius:7px; overflow:visible; }
+.dayloom .supporting-photo .media-photo > img, .dayloom .supporting-photo .media-open { width:100%; height:100%; border-radius:7px; }
+.dayloom .supporting-photo-label { display:block; font-size:9px; color:var(--muted); margin-top:5px; }
+.dayloom .photo-large:empty { display:none; }
+.dayloom .detail-dialog .supporting-photo { width:100%; }
+.dayloom .detail-dialog .supporting-photo .media-photo { height:240px; }
 .dayloom .scheduled-transport .transfer-copy { text-align:left; }
 .dayloom .scheduled-transport small { display:block; }
 .dayloom .scheduled-transport { scroll-margin-top:100px; }
@@ -72,5 +79,6 @@
   .dayloom .supporting-event .activity-time { display:flex; }
   .dayloom .supporting-event .activity-marker { display:block; }
   .dayloom .supporting-activity { padding:10px 12px; }
+  .dayloom .supporting-activity { display:flex; gap:10px; }
   .dayloom .principal-visit .activity-photo { width:100%; height:110px; }
 }

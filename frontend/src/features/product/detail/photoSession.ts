@@ -1,8 +1,10 @@
 import type { DisplayMedia } from './media';
 import { submissionGeneration } from '../taskClient';
 
-export type PhotoScope = { owner: string | null; generation: string; snapshot: string };
-type Entry = { key: string; owner: string | null; resource: string; fetchedAt: number; media: DisplayMedia };
+export type PhotoScope = { owner: string | null; generation: string; snapshot: string;
+  provider?: 'Google Maps' | 'Unsplash'; kind?: 'verified_place' | 'atmosphere';
+  themes?: Record<string, NonNullable<DisplayMedia['theme']>>; width?: number; height?: number };
+type Entry = { key: string; sharedKey?: string; owner: string | null; resource: string; fetchedAt: number; media: DisplayMedia };
 const storageKey = 'dayloom.photos.session.v1';
 const lifetime = 30 * 60 * 1000;
 const maxBytes = 1024 * 1024;
@@ -63,6 +65,14 @@ function safeUrl(value: unknown, hosts: string[], subdomains = false): value is 
 export function validPhoto(value: unknown): value is DisplayMedia {
   if (!value || typeof value !== 'object') return false;
   const media = value as DisplayMedia;
+  if (media.status === 'available' && media.kind === 'atmosphere' && media.provider === 'Unsplash') {
+    return ['meal', 'rest', 'explore', 'walk', 'general'].includes(media.theme || '') &&
+      safeUrl(media.image_url, ['images.unsplash.com']) && safeUrl(media.source_url, ['unsplash.com']) &&
+      Array.isArray(media.authors) && media.authors.length > 0 && media.authors.length <= 100 &&
+      media.authors.every(author => author && typeof author.name === 'string' && author.name.trim().length > 0
+        && author.name.length <= 2000 && safeUrl(author.url, ['unsplash.com'])) &&
+      (media.alt === undefined || typeof media.alt === 'string' && media.alt.length <= 2000);
+  }
   return media.status === 'available' && media.kind === 'verified_place' && media.provider === 'Google Maps' &&
     safeUrl(media.image_url, ['googleusercontent.com'], true) &&
     (media.source_url == null || safeUrl(media.source_url, ['www.google.com', 'maps.google.com'])) &&
@@ -105,23 +115,45 @@ function clearStorage() {
 }
 
 export function photoKey(resource: string, scope: PhotoScope, slot: string): string {
-  return JSON.stringify([scope.owner, scope.generation, resource, scope.snapshot, 960, 640, slot]);
+  return JSON.stringify([scope.owner, scope.generation, resource, scope.snapshot,
+    scope.width || 960, scope.height || 640, slot, scope.provider || 'Google Maps',
+    scope.kind || 'verified_place', scope.provider === 'Unsplash' ? scope.themes?.[slot] || 'general' : null]);
+}
+
+export function photoRequestKey(resource: string, scope: PhotoScope, slot: string): string {
+  const key = JSON.parse(photoKey(resource, scope, slot));
+  if (scope.provider === 'Unsplash') key[6] = '@theme';
+  return JSON.stringify(key);
+}
+
+function matchesScope(media: DisplayMedia, scope: PhotoScope, slot: string) {
+  return media.provider === (scope.provider || 'Google Maps') && media.kind === (scope.kind || 'verified_place')
+    && (scope.provider !== 'Unsplash' || media.theme === (scope.themes?.[slot] || 'general'));
 }
 
 export function readPhoto(resource: string, scope: PhotoScope, slot: string): DisplayMedia | undefined {
   if (scope.owner && scope.generation !== photoGeneration(scope.owner)) return undefined;
-  return entries().find(entry => entry.key === photoKey(resource, scope, slot) && entry.owner === scope.owner && entry.resource === resource)?.media;
+  const values = entries();
+  const key = photoKey(resource, scope, slot);
+  const sharedKey = scope.provider === 'Unsplash' ? photoRequestKey(resource, scope, slot) : undefined;
+  const allowed = values.filter(entry => entry.owner === scope.owner && entry.resource === resource && matchesScope(entry.media, scope, slot));
+  const entry = allowed.find(entry => entry.key === key) || (sharedKey && allowed.find(entry => entry.sharedKey === sharedKey));
+  if (!entry) return undefined;
+  if (entry.key !== key) save([...values.filter(value => value.key !== key), { ...entry, key }]);
+  return entry.media;
 }
 
-export function writePhoto(resource: string, scope: PhotoScope, slot: string, media: DisplayMedia) {
-  if (!validPhoto(media)) return;
+export function writePhoto(resource: string, scope: PhotoScope, slot: string, media: DisplayMedia, fetchedAt = Date.now()) {
+  if (!validPhoto(media) || !matchesScope(media, scope, slot)) return;
   const key = photoKey(resource, scope, slot);
   // Whitelist the display DTO; never persist extra provider or application fields.
   const photo: DisplayMedia = { status: 'available', kind: media.kind, provider: media.provider,
     image_url: media.image_url, source_url: media.source_url,
     authors: media.authors!.map(({ name, url }) => ({ name, ...(url && { url }) })),
+    ...(media.theme && { theme: media.theme }),
     ...(media.alt && { alt: media.alt }) };
-  save([...entries().filter(entry => entry.key !== key), { key, owner: scope.owner, resource, fetchedAt: Date.now(), media: photo }]);
+  const sharedKey = scope.provider === 'Unsplash' ? photoRequestKey(resource, scope, slot) : undefined;
+  save([...entries().filter(entry => entry.key !== key), { key, ...(sharedKey && { sharedKey }), owner: scope.owner, resource, fetchedAt, media: photo }]);
 }
 
 export function evictPhoto(resource: string, scope: PhotoScope, slot: string) {

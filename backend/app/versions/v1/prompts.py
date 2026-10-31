@@ -87,6 +87,8 @@ food options are supporting generic_activity items unless grounded in a specific
 place. To meet a requested experience, schedule its supported matching place and describe
 the actual experience there; an unrelated venue or an unbound supporting action cannot
 substitute for that obligation. Photos never establish place identity or eligibility.
+For a generic supporting activity, optionally set atmosphere_theme to meal, rest, explore,
+walk or general as appropriate. This display hint is not a place identity or a search query.
 Named scheduled visits must use source_place_id from the supplied canonical candidate IDs
 only. Do not use discarded candidates or invent places. A generic non-venue activity may
 have null place_name and source_place_id. Do not output source_ref, provenance objects,

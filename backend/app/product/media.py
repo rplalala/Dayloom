@@ -24,15 +24,25 @@ CURATED = {
     "sydney": ("7Zb7kUyQg1E", "Daylight view across Sydney Harbour toward the Opera House"),
     "nature": ("78A265wPiO4", "Sunlight crossing green mountain ridges"),
 }
+ATMOSPHERE_QUERIES = {
+    "meal": "relaxed meal",
+    "rest": "peaceful rest",
+    "explore": "neighborhood exploration",
+    "walk": "scenic walk",
+    "general": "travel moments",
+}
 
 
 class MediaSettings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_prefix="PRODUCT_", env_file=PROJECT_ROOT / ".env", extra="ignore",
+        env_prefix="PRODUCT_",
+        env_file=PROJECT_ROOT / ".env",
+        extra="ignore",
         hide_input_in_errors=True,
     )
     google_places_media_key: SecretStr = Field(
-        default=SecretStr(""), validation_alias="GOOGLE_MAPS_API_KEY",
+        default=SecretStr(""),
+        validation_alias="GOOGLE_MAPS_API_KEY",
     )
     unsplash_access_key: SecretStr = Field(
         default=SecretStr(""),
@@ -68,8 +78,37 @@ def unavailable(*, provider=None, reason=None):
     return {"status": "unavailable"}
 
 
+def unsplash_photo(data, width, height, alt):
+    image = safe_url(data["urls"]["raw"], "images.unsplash.com")
+    user = data["user"]
+    profile = safe_url(user["links"]["html"], "unsplash.com")
+    page = safe_url(data["links"]["html"], "unsplash.com")
+    author = user["name"]
+    if not image or not profile or not page or not isinstance(author, str) or not author.strip():
+        raise ValueError("Invalid Unsplash metadata")
+    parsed = urlsplit(image)
+    parameters = [
+        (key, value)
+        for key, value in parse_qsl(parsed.query, keep_blank_values=True)
+        if key not in {"w", "h", "dpr", "fit", "auto"}
+    ]
+    parameters.extend([("w", str(width)), ("h", str(height)), ("fit", "max"), ("auto", "format")])
+    referral = "utm_source=dayloom&utm_medium=referral"
+    return {
+        "status": "available",
+        "kind": "atmosphere",
+        "provider": "Unsplash",
+        "image_url": urlunsplit(parsed._replace(query=urlencode(parameters))),
+        "authors": [
+            {"name": author[:500], "url": profile + ("&" if "?" in profile else "?") + referral}
+        ],
+        "source_url": page + ("&" if "?" in page else "?") + referral,
+        "alt": alt,
+    }
+
+
 class MediaProviders:
-    """Two metadata requests per Google photo, one per fixed curated photo; no retries/cache.
+    """Google lookup, fixed covers and first-result search; no retries or server cache.
 
     HTTP transport is the external acceptance seam. Redirects are never followed and
     response bodies, dimensions, parallelism and the total display batch are bounded.
@@ -160,6 +199,51 @@ class MediaProviders:
             )
             return unavailable()
 
+    async def supporting(self, theme, width, height):
+        if theme not in ATMOSPHERE_QUERIES or not self.unsplash_key:
+            return unavailable(provider="unsplash", reason="supporting_search_unavailable")
+        headers = {"Authorization": f"Client-ID {self.unsplash_key}", "Accept-Version": "v1"}
+        try:
+            async with httpx.AsyncClient(
+                transport=self.transport, timeout=8, follow_redirects=False, trust_env=False
+            ) as client:
+                data = await self._json(
+                    client,
+                    "https://api.unsplash.com/search/photos",
+                    headers=headers,
+                    params={
+                        "query": ATMOSPHERE_QUERIES[theme],
+                        "page": 1,
+                        "per_page": 1,
+                        "order_by": "relevant",
+                        "orientation": "landscape",
+                        "content_filter": "high",
+                    },
+                )
+                results = data.get("results")
+                if not isinstance(results, list) or not results:
+                    return unavailable()
+                first = results[0]
+                identity = first["id"]
+                if not isinstance(identity, str) or not re.fullmatch(
+                    r"[A-Za-z0-9_-]{1,128}", identity
+                ):
+                    return unavailable()
+                media = unsplash_photo(first, width, height, "Travel atmosphere")
+                tracking = safe_url(first["links"]["download_location"], "api.unsplash.com")
+                if not tracking or urlsplit(tracking).path != f"/photos/{identity}/download":
+                    return unavailable()
+                # Automatic first-result selection is adoption, distinct from cached display.
+                await self._json(client, tracking, headers=headers)
+                operation("media_photo_adopted", {"provider": "unsplash", "theme": theme})
+            return {**media, "theme": theme}
+        except (httpx.HTTPError, ValueError, TypeError, KeyError, AttributeError) as error:
+            operation(
+                "media_provider_failed",
+                {"provider": "unsplash", "error_type": type(error).__name__},
+            )
+            return unavailable()
+
     async def curated(self, key, width):
         photo_id, alt = CURATED[key]
         if not self.unsplash_key:
@@ -178,45 +262,7 @@ class MediaProviders:
                 )
             if data.get("id") != photo_id:
                 return unavailable(provider="unsplash", reason="invalid_photo_reference")
-            image = safe_url(data["urls"]["raw"], "images.unsplash.com")
-            user = data["user"]
-            profile = safe_url(user["links"]["html"], "unsplash.com")
-            page = safe_url(data["links"]["html"], "unsplash.com")
-            author = user["name"]
-            if (
-                not image
-                or not profile
-                or not page
-                or not isinstance(author, str)
-                or not author.strip()
-            ):
-                return unavailable(provider="unsplash", reason="invalid_provider_metadata")
-            parsed = urlsplit(image)
-            parameters = [
-                (key, value)
-                for key, value in parse_qsl(parsed.query, keep_blank_values=True)
-                if key not in {"w", "h", "dpr", "fit", "auto"}
-            ]
-            parameters.extend(
-                [("w", str(width)), ("h", "1280"), ("fit", "max"), ("auto", "format")]
-            )
-            image = urlunsplit(parsed._replace(query=urlencode(parameters)))
-            referral = "utm_source=dayloom&utm_medium=referral"
-            # Retain returned hotlink tracking parameters; no selection/download action exists.
-            return {
-                "status": "available",
-                "image_url": image,
-                "provider": "Unsplash",
-                "authors": [
-                    {
-                        "name": author[:500],
-                        "url": profile + ("&" if "?" in profile else "?") + referral,
-                    }
-                ],
-                "source_url": page + ("&" if "?" in page else "?") + referral,
-                "alt": alt,
-                "kind": "atmosphere",
-            }
+            return unsplash_photo(data, width, 1280, alt)
         except (httpx.HTTPError, ValueError, TypeError, KeyError, AttributeError) as error:
             operation(
                 "media_provider_failed",
@@ -262,8 +308,19 @@ def owned_bindings(kind, resource_id, owner):
 
 
 async def resolve_photos(
-    bindings, providers, width, height, response, *, offset=0, slots=None,
-    batch_timeout_seconds=30, provider_timeout_seconds=8,
+    bindings,
+    providers,
+    width,
+    height,
+    response,
+    *,
+    offset=0,
+    slots=None,
+    batch_timeout_seconds=30,
+    provider_timeout_seconds=8,
+    lookup=None,
+    share_values=False,
+    source_provider="google",
 ):
     response.headers["Cache-Control"] = "no-store"
     all_bindings = list(bindings)
@@ -273,21 +330,33 @@ async def resolve_photos(
         authorized = dict(all_bindings)
         all_bindings = [(slot, authorized.get(slot)) for slot in dict.fromkeys(slots)]
         offset = 0
-    bindings = all_bindings[offset:offset + MAX_PLACE_PHOTOS]
+    bindings = all_bindings[offset : offset + MAX_PLACE_PHOTOS]
     semaphore = asyncio.Semaphore(3)
     items = {slot: unavailable() for slot, _ in bindings}
+    lookup = lookup or providers.google
+    pending = {}
+
+    async def fetch(value):
+        async with semaphore:
+            async with asyncio.timeout(provider_timeout_seconds):
+                return await lookup(value, width, height)
 
     async def resolve(slot, place):
         if place is None:
-            operation("media_unavailable", {"provider": "google", "reason": "binding_unavailable"})
+            operation(
+                "media_unavailable", {"provider": source_provider, "reason": "binding_unavailable"}
+            )
             return
-        async with semaphore:
-            try:
-                async with asyncio.timeout(provider_timeout_seconds):
-                    items[slot] = await providers.google(place, width, height)
-            except Exception as error:
-                # One display failure must not erase completed slots; cancellation propagates.
-                operation("media_slot_failed", {"error_type": type(error).__name__})
+        try:
+            if share_values:
+                if place not in pending:
+                    pending[place] = asyncio.create_task(fetch(place))
+                items[slot] = await pending[place]
+            else:
+                items[slot] = await fetch(place)
+        except Exception as error:
+            # One display failure must not erase completed slots; cancellation propagates.
+            operation("media_slot_failed", {"error_type": type(error).__name__})
 
     try:
         async with asyncio.timeout(batch_timeout_seconds):
@@ -296,7 +365,8 @@ async def resolve_photos(
         operation("media_batch_timeout")
     next_offset = offset + len(bindings)
     return {
-        "items": items, "limit": MAX_PLACE_PHOTOS,
+        "items": items,
+        "limit": MAX_PLACE_PHOTOS,
         "next_offset": next_offset if next_offset < len(all_bindings) else None,
     }
 
@@ -313,8 +383,60 @@ async def example_media(
 ):
     detail = example_detail(example_id)
     return await resolve_photos(
-        detail._media_bindings.items(), providers, width, height, response,
-        offset=offset, slots=slot,
+        detail._media_bindings.items(),
+        providers,
+        width,
+        height,
+        response,
+        offset=offset,
+        slots=slot,
+    )
+
+
+def owned_supporting_slots(kind, resource_id, owner):
+    from backend.app.product.saved_store import SavedStore
+    from backend.app.product.task_store import TaskStore
+
+    if kind == "trips":
+        detail = SavedStore().read(owner, resource_id)
+    else:
+        previews = TaskStore().previews(owner, resource_id)
+        detail = previews[0].get("snapshot") if previews else None
+    if detail is None:
+        raise HTTPException(404, {"code": "media_resource_not_found"})
+    return [
+        (f"activity:{activity['activity_id']}", activity.get("atmosphere_theme") or "general")
+        for day in detail["days"]
+        for activity in day["activities"]
+        if activity.get("activity_kind") == "generic_activity"
+        and activity.get("time_use") == "scheduled"
+    ]
+
+
+@router.get("/api/{kind}/{resource_id}/supporting-media")
+async def supporting_media(
+    kind: Literal["previews", "trips"],
+    resource_id: UUID,
+    user: CurrentUser,
+    providers: Providers,
+    response: Response,
+    width: Dimension = 960,
+    height: Dimension = 640,
+    offset: Annotated[int, Query(ge=0)] = 0,
+    slot: RequestedSlots = None,
+):
+    slots = await asyncio.to_thread(owned_supporting_slots, kind, resource_id, user["id"])
+    return await resolve_photos(
+        slots,
+        providers,
+        width,
+        height,
+        response,
+        offset=offset,
+        slots=slot,
+        lookup=providers.supporting,
+        share_values=True,
+        source_provider="unsplash",
     )
 
 

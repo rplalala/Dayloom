@@ -7,7 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field, PrivateAttr
 
 from backend.app.evidence.models import WeatherDayEvidence
 from backend.app.schemas.generation_diagnostics import MinimumDailyCoverage
-from backend.app.schemas.itinerary import ActivityKind
+from backend.app.schemas.itinerary import ActivityKind, AtmosphereTheme
 from backend.app.schemas.request import Money, TravelRequirements
 
 
@@ -30,9 +30,6 @@ class ProductNearby(ProductModel):
     area: str | None = None
     uncertainty: str | None = None
     attribution: str | None = None
-
-
-AtmosphereTheme = Literal["meal", "rest", "explore", "walk", "general"]
 
 
 class ProductActivity(ProductModel):

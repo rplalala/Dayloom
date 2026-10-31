@@ -5,6 +5,7 @@ import './media.css';
 import { illustrationFor } from './display';
 import { Icon } from '../Icon';
 import { Link } from 'react-router-dom';
+import { validPhoto } from './photoSession';
 
 export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, onImageError, onRetry, children, link, creditInDetails = false }: {
   onImageError?: () => void; onRetry?: () => void;
@@ -52,6 +53,19 @@ export function PlacePhoto({ slot, label, className, onOpen, children, fallback,
   return <MediaPhoto fallback={fallback || illustrationFor(label)} creditInDetails={!fullCredit} media={media[slot]} label={label} className={className} onOpen={onOpen}
     onImageError={media[slot] && actions ? () => actions.imageFailed(slot, media[slot]) : undefined}
     onRetry={actions ? () => actions.refresh(slot) : undefined}>{children}</MediaPhoto>;
+}
+
+export function SupportingPhoto({ slot, label, className = '', onOpen }: {
+  slot: string; label: string; className?: string; onOpen?: () => void;
+}) {
+  const media = useContext(PlaceMedia)[slot];
+  const actions = useContext(PlaceMediaActions);
+  if (media?.kind !== 'atmosphere' || !validPhoto(media)) return null;
+  return <div className={`supporting-photo ${className}`}>
+    <MediaPhoto atmosphere media={media} label={label} onOpen={onOpen}
+      onImageError={() => actions?.imageFailed(slot, media)} />
+    <span className="supporting-photo-label">Atmosphere photo</span>
+  </div>;
 }
 
 export function CuratedPhoto({ image = 'nature', label, className, fallback, link }: {

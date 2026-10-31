@@ -1,8 +1,8 @@
 import { HttpError, requestJson } from '../../../shared/api/http';
 import type { DisplayMedia } from './media';
-import { invalidatePhotos, photoFence, photoGeneration, photoKey, writePhoto, type PhotoScope } from './photoSession';
+import { invalidatePhotos, photoFence, photoGeneration, photoRequestKey, writePhoto, type PhotoScope } from './photoSession';
 
-type Pending = { promise: Promise<DisplayMedia>; users: number; group: Group };
+type Pending = { promise: Promise<DisplayMedia>; users: number; group: Group; fetchedAt: number };
 type Group = { controller: AbortController; entries: Pending[] };
 const pending = new Map<string, Pending>();
 
@@ -10,8 +10,10 @@ const pending = new Map<string, Pending>();
 export function acquirePhotos(endpoint: string, slots: string[], scope?: PhotoScope) {
   const fence = photoFence(endpoint, scope);
   const valid = () => photoFence(endpoint, scope) === fence && (!scope?.owner || scope.generation === photoGeneration(scope.owner));
-  const keyFor = (slot: string) => `${fence}:${scope ? photoKey(endpoint, scope, slot) : JSON.stringify([endpoint, slot])}`;
-  const missing = slots.filter(slot => !pending.has(keyFor(slot)));
+  const keyFor = (slot: string) => `${fence}:${scope ? photoRequestKey(endpoint, scope, slot) : JSON.stringify([endpoint, slot])}`;
+  const representatives = new Map<string, string>();
+  for (const slot of slots) if (!pending.has(keyFor(slot)) && !representatives.has(keyFor(slot))) representatives.set(keyFor(slot), slot);
+  const missing = [...representatives.values()];
   if (missing.length) {
     const group: Group = { controller: new AbortController(), entries: [] };
     const query = new URLSearchParams();
@@ -27,9 +29,9 @@ export function acquirePhotos(endpoint: string, slots: string[], scope?: PhotoSc
     });
     for (const slot of missing) {
       const key = keyFor(slot);
-      const entry: Pending = { group, users: 0, promise: response.then(value => {
+      const entry: Pending = { group, users: 0, fetchedAt: 0, promise: response.then(value => {
         const media = value?.items?.[slot] || { status: 'unavailable' as const };
-        if (entry.users > 0 && !group.controller.signal.aborted && valid() && scope) writePhoto(endpoint, scope, slot, media);
+        entry.fetchedAt = Date.now();
         return media;
       }).catch(() => ({ status: 'unavailable' as const })).finally(() => {
         if (pending.get(key) === entry) pending.delete(key);
@@ -45,7 +47,11 @@ export function acquirePhotos(endpoint: string, slots: string[], scope?: PhotoSc
   });
   let released = false;
   return {
-    promise: Promise.all(leases.map(async ({ slot, entry }) => [slot, await entry.promise] as const)).then(Object.fromEntries),
+    promise: Promise.all(leases.map(async ({ slot, entry }) => {
+      const media = await entry.promise;
+      if (entry.users > 0 && !entry.group.controller.signal.aborted && valid() && scope) writePhoto(endpoint, scope, slot, media, entry.fetchedAt);
+      return [slot, media] as const;
+    })).then(entries => Object.fromEntries(entries)),
     release: () => {
       if (released) return;
       released = true;

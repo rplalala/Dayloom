@@ -55,6 +55,21 @@ def test_final_roles_reach_public_preview_without_reclassifying_unknown_content(
     assert activities[1]["activity_id"] == "right"
 
 
+def test_structured_supporting_theme_survives_projection_without_title_classification():
+    result, evidence = example()
+    activity = result.itinerary.days[0].activities[0]
+    result.itinerary.days[0].activities[0] = activity.model_copy(
+        update={
+            "activity_kind": "generic_activity",
+            "time_use": "scheduled",
+            "title": "Private unrelated wording",
+            "atmosphere_theme": "walk",
+        }
+    )
+    public = present_product(result, evidence)
+    assert public.itinerary.days[0].activities[0].atmosphere_theme == "walk"
+
+
 def test_existing_saved_content_gains_unknown_role_without_inference_or_rewrite(client):  # noqa: F811
     import os
 

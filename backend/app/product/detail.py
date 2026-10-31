@@ -10,9 +10,8 @@ from typing import Annotated, Literal
 from pydantic import AfterValidator, BaseModel, ConfigDict, Field, PrivateAttr
 
 from backend.app.schemas.generation_diagnostics import MinimumDailyCoverage
-from backend.app.schemas.itinerary import ActivityKind
+from backend.app.schemas.itinerary import ActivityKind, AtmosphereTheme
 from backend.app.schemas.product import (
-    AtmosphereTheme,
     AttentionItem,
     PaceReview,
     PreferenceCoverage,

@@ -7,6 +7,32 @@ from backend.app.product.media import MediaProviders, get_media_providers
 
 def media_transport(request):
     if request.url.host == "api.unsplash.com":
+        if request.url.path == "/search/photos":
+            return httpx.Response(
+                200,
+                json={
+                    "results": [
+                        {
+                            "id": "supporting-first",
+                            "urls": {
+                                "raw": "https://images.unsplash.com/controlled-supporting?ixid=controlled"
+                            },
+                            "links": {
+                                "html": "https://unsplash.com/photos/supporting-first",
+                                "download_location": "https://api.unsplash.com/photos/supporting-first/download?ixid=controlled",
+                            },
+                            "user": {
+                                "name": "Supporting Photographer",
+                                "links": {"html": "https://unsplash.com/@supporting"},
+                            },
+                        }
+                    ]
+                },
+            )
+        if request.url.path.endswith("/download"):
+            return httpx.Response(
+                200, json={"url": "https://images.unsplash.com/controlled-supporting"}
+            )
         photo_id = request.url.path.rsplit("/", 1)[-1]
         sydney = photo_id == "7Zb7kUyQg1E"
         return httpx.Response(

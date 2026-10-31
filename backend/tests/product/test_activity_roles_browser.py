@@ -111,7 +111,9 @@ def test_generated_experiences_show_distinct_guidance_after_save_and_reload(
 
 @pytest.mark.parametrize("width", [1440, 390])
 def test_activity_structures_survive_save_reload_and_keyboard_details(browser_app, width):  # noqa: F811
-    context = browser_app.browser.new_context(viewport={"width": width, "height": 1000})
+    context = browser_app.browser.new_context(
+        viewport={"width": width, "height": 1000}, has_touch=width < 800
+    )
     artifact = source()
     activities = artifact["days"][0]["activities"]
     activities[0].update(title="Art museum", activity_kind="main_poi")
@@ -165,6 +167,27 @@ def test_activity_structures_survive_save_reload_and_keyboard_details(browser_ap
         expect(supporting.get_by_text("12:00–12:30", exact=True)).to_be_visible()
         expect(supporting.get_by_text("Enjoy a relaxed break.", exact=True)).to_be_visible()
         expect(supporting.locator(":scope > figure, .activity-photo")).to_have_count(0)
+        atmosphere = supporting.locator(".supporting-photo")
+        expect(atmosphere.get_by_text("Atmosphere photo", exact=True)).to_be_visible()
+        atmosphere.locator("img").evaluate(
+            "async image => { await image.decode(); "
+            "if (!(image.naturalWidth > 0 && image.naturalHeight > 0)) "
+            "throw new Error('Missing image'); }"
+        )
+        assert (
+            atmosphere.bounding_box()["width"]
+            < principal.locator(".activity-photo").bounding_box()["width"]
+        )
+        credit = atmosphere.get_by_role("button", name="Photo credits", exact=True)
+        if width < 800:
+            credit.tap()
+        else:
+            credit.focus()
+            page.keyboard.press("Enter")
+        expect(
+            atmosphere.get_by_role("link", name="Supporting Photographer", exact=True)
+        ).to_be_visible()
+        atmosphere.get_by_role("button", name="Hide photo credits", exact=True).click()
         marker = supporting.locator("..").locator(".activity-marker")
         expect(marker).to_be_visible()
         assert supporting.evaluate("e => getComputedStyle(e).borderTopStyle") == "solid"
@@ -199,7 +222,7 @@ def test_activity_structures_survive_save_reload_and_keyboard_details(browser_ap
         page.keyboard.press("Enter")
         dialog = page.get_by_role("dialog", name="Lunch by the water", exact=True)
         expect(dialog).to_be_visible()
-        expect(dialog.locator("img")).to_have_count(0)
+        expect(dialog.locator(".place-photo")).to_have_count(0)
         page.keyboard.press("Escape")
         expect(details).to_be_focused()
         transport.focus()

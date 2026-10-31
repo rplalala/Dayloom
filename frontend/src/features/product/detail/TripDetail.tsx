@@ -13,7 +13,7 @@ import { WeatherRow } from "./WeatherRow";
 import { monthDay, weekday, dottedDate, destinationCover, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice } from "./display";
 import { ExperienceGuidance } from './ExperienceGuidance';
 import { ExportControls } from './ExportControls';
-import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
+import { CuratedPhoto, PlacePhoto, SupportingPhoto } from './MediaPhoto';
 import { PlaceMedia, PlaceMediaActions, usePlaceMedia } from './media';
 import { photoFingerprint, photoGeneration } from './photoSession';
 
@@ -28,7 +28,7 @@ type Information = {
   title: string;
   icon: string;
   introduction?: string;
-  photo?: { slot: string; label: string; fallback: string };
+  photo?: { slot: string; label: string; fallback: string; atmosphere?: boolean };
   notes: { heading: ReactNode; body: ReactNode; className?: string }[];
   stats?: { duration: string; distance: string };
   body?: string[];
@@ -87,7 +87,9 @@ function InformationDialog({
       <button type="button" className="modal-close" aria-label="Close dialog" onClick={dismiss}><Icon name="close" size={21} /></button>
       <div className="modal-icon"><Icon name={information.icon} size={23} /></div>
       <h2 id="detail-dialog-title">{information.title}</h2>
-      {information.photo && <div className="photo-large"><PlacePhoto fullCredit className="dialog-place-photo" {...information.photo} /></div>}
+      {information.photo && <div className="photo-large">{information.photo.atmosphere
+        ? <SupportingPhoto className="dialog-place-photo" {...information.photo} />
+        : <PlacePhoto fullCredit className="dialog-place-photo" {...information.photo} />}</div>}
       {information.photo && refreshPhotos && <button type="button" className="inline-action media-refresh" onClick={() => refreshPhotos(information.photo!.slot)}>Refresh photo</button>}
       {information.introduction && <p>{information.introduction}</p>}
       {information.stats && <div className="route-big-stats"><div><strong>{information.stats.duration}</strong><span>Estimated duration</span></div><div><strong>{information.stats.distance}</strong><span>Route distance</span></div></div>}
@@ -198,6 +200,21 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
       .map(activity => `activity:${activity.activity_id}`)),
     ...detail.nearby.map((_, index) => `nearby:${index}`),
   ], mediaOwner === undefined ? undefined : { owner: mediaOwner, generation: photoGeneration(mediaOwner), snapshot: photoFingerprint(detail) });
+  const themes = Object.fromEntries(detail.days.flatMap(day => day.activities
+    .filter(activity => activity.activity_kind === 'generic_activity' && activity.time_use === 'scheduled')
+    .map(activity => [`activity:${activity.activity_id}`, activity.atmosphere_theme || 'general'])));
+  const supportingEndpoint = mediaEndpoint && Object.keys(themes).length
+    ? `${mediaEndpoint.replace(/\/media$/, '/supporting-media')}?width=360&height=240` : undefined;
+  const supportingMedia = usePlaceMedia(supportingEndpoint, Object.keys(themes), mediaOwner === undefined ? undefined : {
+    owner: mediaOwner, generation: photoGeneration(mediaOwner), snapshot: photoFingerprint(detail),
+    provider: 'Unsplash', kind: 'atmosphere', width: 360, height: 240, themes,
+  });
+  const combinedMedia = {
+    items: { ...media.items, ...supportingMedia.items },
+    refresh: (slot: string) => themes[slot] ? supportingMedia.refresh(slot) : media.refresh(slot),
+    imageFailed: (slot: string, value: Parameters<typeof media.imageFailed>[1]) =>
+      themes[slot] ? supportingMedia.imageFailed(slot, value) : media.imageFailed(slot, value),
+  };
   const { groups, other } = useMemo(() => {
     const candidates: Group[] = detail.days.flatMap((day, i) =>
       day.activities
@@ -301,7 +318,10 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
     setInformation({
       title: name(activity),
       icon: "pin",
-      photo: !hasPlacePhoto(activity) ? undefined : { slot: `activity:${activity.activity_id}`, label: name(activity), fallback: activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`) },
+      photo: activity.time_use === 'free_window' || activity.activity_kind === 'transport' ? undefined : {
+        slot: `activity:${activity.activity_id}`, label: name(activity), atmosphere: activity.activity_kind === 'generic_activity',
+        fallback: activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`),
+      },
       introduction: [activity.place_name, activity.location || "Location unavailable."].filter(Boolean).join("\n"),
       notes: [
         { heading: <><Icon name="clock" size={17} />{activity.time_use === "free_window" ? "Free time" : "Planned visit"}</>, body: `${dottedDate(activity.start_time)} · ${clock(activity.start_time)}–${clock(activity.end_time)}` },
@@ -338,7 +358,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
     0,
   );
   return (
-    <PlaceMediaActions.Provider value={media}><PlaceMedia.Provider value={media.items}><div className="detail-page">
+    <PlaceMediaActions.Provider value={combinedMedia}><PlaceMedia.Provider value={combinedMedia.items}><div className="detail-page">
       <section className="detail-hero">
         <div className="detail-cover"><CuratedPhoto image={destinationCover(detail.destination)} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
         <div className="container detail-hero-inner">
@@ -533,6 +553,8 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                                   {hasPlacePhoto(activity) && (
                                     <PlacePhoto fallback={activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`)} className="activity-photo" slot={`activity:${activity.activity_id}`} label={name(activity)} onOpen={() => activityInfo(activity)} />
                                   )}
+                                  {supporting && <SupportingPhoto slot={`activity:${activity.activity_id}`}
+                                    label={name(activity)} onOpen={() => activityInfo(activity)} />}
                                   <div className="activity-details">
                                     <span className="activity-tag">
                                       {free
@@ -815,7 +837,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
         <InformationDialog
           information={information}
           close={() => setInformation(null)}
-          refreshPhotos={mediaEndpoint ? media.refresh : undefined}
+          refreshPhotos={mediaEndpoint ? combinedMedia.refresh : undefined}
         />
       )}
     </div></PlaceMedia.Provider></PlaceMediaActions.Provider>

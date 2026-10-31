@@ -98,7 +98,8 @@ def present_product(result, evidence, introductions=None):
                         activity_id=a.activity_id,
                         activity_kind=a.activity_kind,
                         atmosphere_theme=(
-                            "general" if a.activity_kind == "generic_activity" else None
+                            (a.atmosphere_theme or "general")
+                            if a.activity_kind == "generic_activity" else None
                         ),
                         time_use=a.time_use,
                         title=a.title,
