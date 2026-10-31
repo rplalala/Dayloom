@@ -29,11 +29,21 @@ def test_city_covers_supporting_reuse_refresh_and_missing_images(browser_app, mo
             for city in ("Melbourne", "New York", "Photo-empty city")
         }
         acquisitions = []
+        covers = []
+
+        def cover_cache():
+            return page.evaluate(
+                "() => (JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1') || '{}')"
+                ".entries || []).filter(entry => entry.owner !== null && "
+                "entry.resource.startsWith('/api/media/destination?'))"
+            )
 
         def record(request):
             parsed = urlsplit(request.url)
             if parsed.path.endswith("/supporting-media"):
                 acquisitions.append((parsed.path, parse_qs(parsed.query).get("slot")))
+            if parsed.path == "/api/media/destination":
+                covers.append(parse_qs(parsed.query)["destination"][0])
 
         def open_city(city, cover_identity, activity_identity):
             page.goto(browser_app.base_url + f"/previews/{details[city].id}")
@@ -51,15 +61,20 @@ def test_city_covers_supporting_reuse_refresh_and_missing_images(browser_app, mo
         page.on("request", record)
         open_city("Melbourne", "city-fallback", "melbourne-walk")
         assert len(acquisitions) == 1
+        before = cover_cache()
+        assert covers == ["Melbourne"] and len(before) == 1
         page.reload()
         page.wait_for_function(
             "document.querySelector('[data-photo-slot=\"activity:walk\"] img')?.naturalWidth > 0"
         )
         assert len(acquisitions) == 1
+        assert covers == ["Melbourne"] and cover_cache() == before
         open_city("New York", "new-york-cover", "new-york-walk")
         assert len(acquisitions) == 2
+        assert covers == ["Melbourne", "New York"]
         open_city("Melbourne", "city-fallback", "melbourne-walk")
         assert len(acquisitions) == 2
+        assert covers == ["Melbourne", "New York"] and len(cover_cache()) == 2
         card = page.locator(".supporting-activity")
         card.get_by_role("button", name="Details", exact=False).click()
         dialog = page.get_by_role("dialog")
@@ -72,6 +87,7 @@ def test_city_covers_supporting_reuse_refresh_and_missing_images(browser_app, mo
             "document.querySelector('dialog [data-photo-state=available] img')?.naturalWidth > 0"
         )
         assert len(acquisitions) == 3 and acquisitions[-1][1] == ["activity:walk"]
+        assert covers == ["Melbourne", "New York"]
         page.keyboard.press("Escape")
         page.goto(browser_app.base_url + f"/previews/{details['Photo-empty city'].id}")
         expect(page.locator(".detail-cover img")).to_have_attribute("src", "/dayloom/nature.svg")
@@ -81,5 +97,19 @@ def test_city_covers_supporting_reuse_refresh_and_missing_images(browser_app, mo
         expect(page.locator('.supporting-activity [data-photo-slot] img')).to_have_count(0)
         expect(page.locator(".supporting-activity")).to_be_visible()
         page.screenshot(path=str(scratch / f"missing-{width}.png"), full_page=True)
+        assert covers == ["Melbourne", "New York", "Photo-empty city"]
+        open_city("New York", "new-york-cover", "new-york-walk")
+        assert len(covers) == 3
+        second = context.new_page()
+        second.goto(browser_app.base_url + "/account")
+        second.get_by_role("button", name="Log out", exact=True).last.click()
+        expect(second.get_by_role("link", name="Log in", exact=True).last).to_be_visible()
+        page.wait_for_function(
+            "() => !(JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1') || '{}')"
+            ".entries || []).some(entry => entry.owner !== null && "
+            "entry.resource.startsWith('/api/media/destination?'))"
+        )
+        assert cover_cache() == []
+        expect(page.locator('.detail-cover [data-photo-state="available"]')).to_have_count(0)
     finally:
         context.close()

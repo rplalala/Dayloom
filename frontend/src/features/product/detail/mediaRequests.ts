@@ -8,9 +8,18 @@ const pending = new Map<string, Pending>();
 
 /** Leases let StrictMode reattach before aborting an abandoned network request. */
 export function acquirePhotos(endpoint: string, slots: string[], scope?: PhotoScope) {
+  return acquireMedia(endpoint, slots, scope, 'slots');
+}
+
+export function acquireCover(endpoint: string, scope: PhotoScope) {
+  const request = acquireMedia(endpoint, ['cover'], scope, 'cover');
+  return { promise: request.promise.then(items => items.cover), release: request.release };
+}
+
+function acquireMedia(endpoint: string, slots: string[], scope: PhotoScope | undefined, mode: 'slots' | 'cover') {
   const fence = photoFence(endpoint, scope);
   const valid = () => photoFence(endpoint, scope) === fence && (!scope?.owner || scope.generation === photoGeneration(scope.owner));
-  const keyFor = (slot: string) => `${fence}:${scope ? photoRequestKey(endpoint, scope, slot) : JSON.stringify([endpoint, slot])}`;
+  const keyFor = (slot: string) => `${mode}:${fence}:${scope ? photoRequestKey(endpoint, scope, slot) : JSON.stringify([endpoint, slot])}`;
   const representatives = new Map<string, string>();
   for (const slot of slots) if (!pending.has(keyFor(slot)) && !representatives.has(keyFor(slot))) representatives.set(keyFor(slot), slot);
   const missing = [...representatives.values()];
@@ -18,8 +27,8 @@ export function acquirePhotos(endpoint: string, slots: string[], scope?: PhotoSc
     const group: Group = { controller: new AbortController(), entries: [] };
     const query = new URLSearchParams();
     missing.forEach(slot => query.append('slot', slot));
-    const response = requestJson<{ items: Record<string, DisplayMedia> }>(
-      `${endpoint}${endpoint.includes('?') ? '&' : '?'}${query}`, { signal: group.controller.signal },
+    const response = requestJson<DisplayMedia | { items: Record<string, DisplayMedia> }>(
+      mode === 'cover' ? endpoint : `${endpoint}${endpoint.includes('?') ? '&' : '?'}${query}`, { signal: group.controller.signal },
     ).catch(error => {
       if (!group.controller.signal.aborted && valid() && scope && error instanceof HttpError) {
         if (error.status === 401) invalidatePhotos({ owner: scope.owner });
@@ -30,7 +39,8 @@ export function acquirePhotos(endpoint: string, slots: string[], scope?: PhotoSc
     for (const slot of missing) {
       const key = keyFor(slot);
       const entry: Pending = { group, users: 0, fetchedAt: 0, promise: response.then(value => {
-        const media = value?.items?.[slot] || { status: 'unavailable' as const };
+        let media = (mode === 'cover' ? value as DisplayMedia : (value as { items?: Record<string, DisplayMedia> })?.items?.[slot]) || { status: 'unavailable' as const };
+        if (mode === 'cover' && media.provider === 'Unsplash' && media.kind === 'atmosphere' && !media.theme) media = { ...media, theme: 'general' };
         entry.fetchedAt = Date.now();
         return media;
       }).catch(() => ({ status: 'unavailable' as const })).finally(() => {

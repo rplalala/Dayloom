@@ -1,11 +1,11 @@
 import { useContext, useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { PlaceMedia, PlaceMediaActions, type DisplayMedia } from './media';
-import { requestJson } from '../../../shared/api/http';
 import './media.css';
 import { illustrationFor } from './display';
 import { Icon } from '../Icon';
 import { Link } from 'react-router-dom';
-import { isPlaceFallback, validPhoto } from './photoSession';
+import { evictPhoto, isPlaceFallback, photoFence, photoGeneration, readPhoto, subscribePhotos, validPhoto, type PhotoScope } from './photoSession';
+import { acquireCover } from './mediaRequests';
 
 export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, onImageError, onRetry, children, link, creditInDetails = false, staticCredits = false, creditLabel, slot }: {
   creditLabel?: string;
@@ -73,31 +73,58 @@ export function SupportingPhoto({ slot, label, className = '', onOpen, fullCredi
   </div>;
 }
 
-function useCoverMedia(endpoint?: string) {
+function useCoverMedia(endpoint: string | undefined, owner: string | null, provider: 'Google Maps' | 'Unsplash') {
   const [result, setResult] = useState<{ key: string; media: DisplayMedia } | null>(null);
+  const failed = useRef<(() => void) | null>(null);
+  const generation = photoGeneration(owner);
+  const context = JSON.stringify([endpoint, owner, generation, provider]);
   useEffect(() => {
     if (!endpoint) return;
-    const controller = new AbortController();
-    requestJson<DisplayMedia>(endpoint, { signal: controller.signal })
-      .then(media => { if (!controller.signal.aborted) setResult({ key: endpoint, media }); })
-      .catch(() => {});
-    return () => controller.abort();
-  }, [endpoint]);
-  return result?.key === endpoint ? result?.media : undefined;
+    const scope: PhotoScope = { owner, generation, provider, snapshot: 'cover-v1',
+      kind: provider === 'Google Maps' ? 'verified_place' : 'atmosphere' };
+    const fence = photoFence(endpoint, scope);
+    let active = true;
+    let recovered = false;
+    const releases = new Set<() => void>();
+    const valid = () => active && photoFence(endpoint, scope) === fence && (!owner || generation === photoGeneration(owner));
+    const show = (media: DisplayMedia) => { if (valid()) setResult({ key: context, media }); };
+    const load = () => {
+      const request = acquireCover(endpoint, scope);
+      releases.add(request.release);
+      void request.promise.then(media => { show(media); request.release(); releases.delete(request.release); });
+    };
+    const cached = readPhoto(endpoint, scope, 'cover');
+    const unsubscribe = subscribePhotos(() => {
+      if (valid()) return;
+      active = false;
+      releases.forEach(release => release());
+      setResult(null);
+    });
+    failed.current = () => {
+      if (!valid()) return;
+      evictPhoto(endpoint, scope, 'cover');
+      show({ status: 'unavailable' });
+      if (cached && !recovered) { recovered = true; load(); }
+    };
+    if (cached) show(cached); else load();
+    return () => { active = false; unsubscribe(); releases.forEach(release => release()); };
+  }, [endpoint, owner, generation, provider, context]);
+  return { media: result?.key === context ? result.media : undefined, imageFailed: () => failed.current?.() };
 }
 
 export function CuratedPhoto({ image = 'nature', label, className, fallback, link }: {
   link?: { to: string; label: string }; image?: 'sydney' | 'london' | 'nature'; label: string; className?: string; fallback?: string;
 }) {
-  const media = useCoverMedia(`/api/media/curated/${image}`);
-  return <MediaPhoto atmosphere link={link} media={media} label={label} fallback={fallback || `/dayloom/${image === 'london' ? 'city' : image}.svg`} className={className} />;
+  const cover = useCoverMedia(`/api/media/curated/${image}`, null, image === 'london' ? 'Google Maps' : 'Unsplash');
+  return <MediaPhoto atmosphere link={link} media={cover.media} onImageError={cover.imageFailed} label={label} fallback={fallback || `/dayloom/${image === 'london' ? 'city' : image}.svg`} className={className} />;
 }
 
-export function DestinationPhoto({ destination, label, className, fallback, link }: {
+export function DestinationPhoto({ destination, label, className, fallback, link, owner = null }: {
   destination: string; label: string; className?: string; fallback?: string;
+  owner?: string | null;
   link?: { to: string; label: string };
 }) {
   const query = Array.from(destination.trim().replace(/\s+/g, ' ')).slice(0, 120).join('');
-  const media = useCoverMedia(query ? `/api/media/destination?destination=${encodeURIComponent(query)}` : undefined);
-  return <MediaPhoto atmosphere link={link} media={media} label={label} fallback={fallback || '/dayloom/nature.svg'} className={className} />;
+  const cover = useCoverMedia(query ? `/api/media/destination?destination=${encodeURIComponent(query)}` : undefined, owner, 'Unsplash');
+  return <MediaPhoto atmosphere link={link} media={cover.media} onImageError={cover.imageFailed} label={label} fallback={fallback || '/dayloom/nature.svg'} className={className} />;
 }

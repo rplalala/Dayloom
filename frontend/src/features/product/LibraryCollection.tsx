@@ -120,7 +120,7 @@ export function LibraryCollection() {
       const detail = summaries?.owner === owner && summaries.key === cardKey ? summaries.values[card.id] : undefined;
       return <article className="trip-card" key={`${card.kind}:${card.id}`}>
         <div className="trip-card-photo">
-          <DestinationPhoto link={{ to: path, label: `View ${card.title}` }} destination={card.destination || ''} label={card.destination ? `${card.destination} destination atmosphere` : 'Landscape atmosphere'} fallback={summaries?.owner === owner && summaries.key === cardKey && summaries.values[card.id]?.illustration_key ? `/dayloom/${summaries.values[card.id].illustration_key}.svg` : undefined} />
+          <DestinationPhoto owner={owner} link={{ to: path, label: `View ${card.title}` }} destination={card.destination || ''} label={card.destination ? `${card.destination} destination atmosphere` : 'Landscape atmosphere'} fallback={summaries?.owner === owner && summaries.key === cardKey && summaries.values[card.id]?.illustration_key ? `/dayloom/${summaries.values[card.id].illustration_key}.svg` : undefined} />
           <span className={`trip-status ${card.kind === "draft" ? "status-draft" : ""}`}>{card.kind === "draft" ? "Planning draft" : card.source === "imported" ? "Imported" : "Saved"}</span>
           <button type="button" className="card-menu-trigger" aria-label={`Manage ${card.title}`} aria-haspopup="dialog" aria-controls="library-management-dialog" aria-expanded={Boolean(action && action.card.id === card.id && action.card.kind === card.kind)} disabled={busy} onClick={() => { setError(""); setAction({ kind: "menu", card }); }}><Icon name="dots" size={19} /></button>
         </div>

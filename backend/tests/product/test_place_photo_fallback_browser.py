@@ -19,7 +19,7 @@ CACHE = "dayloom.photos.session.v1"
 def cache(page):
     return page.evaluate(
         "key => (JSON.parse(sessionStorage.getItem(key)||'{}').entries||[])"
-        ".filter(e=>e.owner!==null)",
+        ".filter(e=>e.owner!==null && /^\\/api\\/(previews|trips)\\//.test(e.resource))",
         CACHE,
     )
 
