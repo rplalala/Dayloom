@@ -7,13 +7,20 @@ Commands below are references, not evidence of execution or approval for a live 
 
 ## Environment and local application
 
+For a new installation, follow the [deployment guide](deployment.md), including the
+database volume, release restore and both tokenizer caches. The commands and controls
+below cover development and maintenance of an existing checkout.
+
 Use Python 3.12 and the existing uv environment. From the repository root:
 
-```powershell
+The startup and independent-version commands use `uv run` and work in Bash and
+PowerShell. Advanced test examples use the shell indicated on each block.
+
+```bash
 uv sync
 uv sync --group retrieval
 npm --prefix frontend ci
-.\.venv\Scripts\python.exe scripts/run_api.py --host 127.0.0.1 --port 8000
+uv run python scripts/run_api.py --host 127.0.0.1 --port 8000
 ```
 
 `uv sync` also installs this repository editable, exposing `rtpeval` in `.venv`.
@@ -53,19 +60,17 @@ are distinct settings. Never commit real credentials. Default local DB host/port
 127.0.0.1:55432. See [configuration](../../config/README.md) for exact current keys.
 
 V2/V3 require the compatible TripWorld database and artifact/embedding sidecars.
-The pinned vocabulary under `.cache/tokenizer` must also exist; the planner does not
-download it. `python -m tools.data.prepare_tokenizer --help` describes explicit preparation.
-
-For V2/V3 retrieval, also prepare the pinned embedding vocabulary under
-`data/tripworld/tokenizer_cache`; follow the TripWorld readiness instructions before
-claiming retrieval acceptance. A degraded retrieval fallback is not that acceptance.
+The planner vocabulary under `.cache/tokenizer` and embedding vocabulary under
+`data/tripworld/tokenizer_cache` must be prepared explicitly; runtime loading does
+not download them. Follow the [tokenizer preparation steps](deployment.md#4-prepare-both-tokenizer-vocabularies)
+before checking retrieval readiness. A degraded retrieval fallback is not retrieval acceptance.
 
 ## Local PostgreSQL naming and storage
 
 The root `compose.yaml` uses the Docker Compose project `dayloom` and container
 `postgres`, exposed only on `127.0.0.1:55432` by default. Start it with:
 
-```powershell
+```bash
 uv run python scripts/run_database.py up -d --wait postgres
 ```
 
@@ -122,48 +127,30 @@ does not initialize Product authentication, a database connection or a provider 
 
 ## Complete local Product runtime
 
-The built Product runs the React frontend and normal FastAPI application on one
-origin. It uses the configured real model, Google Places/Routes, Open-Meteo,
-TripWorld retrieval and media adapters. It does not load a test application factory,
-provider substitutes or the offline walkthrough's external-link interception.
+The built Product serves React and the normal FastAPI application on one origin,
+using the configured real services. It does not load a test application factory or
+provider substitutes. The [deployment guide](deployment.md) owns the first-install
+sequence: environment setup, database volume/restore, both tokenizer caches,
+migrations, build, configuration and restart.
 
-Prepare the ignored environment file and shared deployment settings described below, then run:
+For an existing prepared installation:
 
-```powershell
-uv sync --locked --group retrieval
-npm --prefix frontend ci
+```bash
 npm --prefix frontend run build
-uv run python scripts/migrate_product.py
-uv run python scripts/run_product.py --check
 uv run python scripts/run_product.py
 ```
 
-The root `product.yaml` configures `http://localhost:5173` and explicitly allows
-local HTTP. `--port` must match the configured origin's port. The launcher loads
-`.env` from the repository root without overriding existing
-process values. It serves `frontend/dist`,
-including direct navigation/reload of Product routes; missing APIs and
-assets retain their HTTP errors. Rebuild the frontend after changing its source.
+`product.yaml` selects the origin and Product resource profile; `--port` must match
+the configured origin. `PRODUCT_RUNTIME_PROFILE=development` selects development
+resources after restart. Independent V0-V3 keep development defaults. The
+[profile reference](../../config/README.md#product-acceptance-profile) owns their
+coordinated values and configuration compatibility.
 
-Product uses `runtime_profile: acceptance` from `product.yaml`. To restore development
-resource limits, set `$env:PRODUCT_RUNTIME_PROFILE='development'` before starting the server;
-remove that override to use the YAML choice. Restart the backend after policy changes.
-Independent V0-V3 defaults remain development. See the
-[profile reference](../../config/README.md#product-acceptance-profile) for coordinated values,
-snapshot compatibility and unchanged correctness boundaries. Loading a larger profile does
-not authorize paid acceptance runs; establish a request-specific cost bound first.
-
-`--check` validates configuration, both local tokenizer vocabularies, Product database
-access and TripWorld manifest/embedding-space compatibility. It reads local databases
-without model, query-embedding, map, weather or image requests. Passing it establishes
-local readiness, not live credential validity, provider availability or generation quality.
-Generating, polishing, destination suggestions and media viewing use real services when
-invoked; execute provider acceptance only within its separately authorized limits.
-
-Use the existing daily database for this runtime. Disposable automated-test databases
-and the substituted human-walkthrough database remain separate; accounts and drafts do
-not move between them automatically. The normal API-only/Vite development commands
-above remain available, and independent V0–V3 entrypoints are unchanged.
+`--check` performs local readiness checks and exits without provider requests; its
+success does not establish account permissions or generation quality. Use the
+existing daily database for this runtime. Disposable automated-test databases and
+external-double walkthroughs remain separate; accounts and drafts do not move
+between them automatically. API-only/Vite development remains available above.
 
 ## Local configuration console
 
@@ -633,11 +620,11 @@ days, using Australia/Sydney reference time. Check `GET /api/planning/date-windo
 for a fresh request. An offline fixture can pin `--reference-date`; a historical
 override must not disguise stale dates in a live run.
 
-```powershell
-.\.venv\Scripts\python.exe scripts/run_v0.py --input-json request.json
-.\.venv\Scripts\python.exe scripts/run_v1.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
-.\.venv\Scripts\python.exe scripts/run_v2.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
-.\.venv\Scripts\python.exe scripts/run_v3.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
+```bash
+uv run python scripts/run_v0.py --input-json request.json
+uv run python scripts/run_v1.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
+uv run python scripts/run_v2.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
+uv run python scripts/run_v3.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
 ```
 
 V0 is tool-free and accepts neither runtime configuration nor development-timeout flags.

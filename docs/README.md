@@ -5,6 +5,11 @@
 These core files consolidate current behavior; development diaries do not
 belong in this directory. Task specifications and iteration state live in GitHub Issues.
 
+For installation, start with the [deployment guide](guides/deployment.md). For the
+source/data submission and offline verification of published results, start with
+the [reproduction guide](guides/reproduction.md). [README](../README.md#project-structure)
+maps the source tree.
+
 [Domain terminology](../GLOSSARY.md) defines Repair exploration and final selection.
 
 ## Core designs

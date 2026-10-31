@@ -49,8 +49,10 @@ see the [identity transport contract](docs/0001-system-architecture.md#model-ide
 Earlier milestone freezes retain their original scope; later changes are separately
 recorded and do not automatically re-freeze any version.
 
-The complete local Dayloom Product was accepted by the user on 23 October 2026 at
-`b40fcfa55f919a570fbfcec10bde110ac7029a89`, after the final photo-layout corrections.
+The current local Dayloom Product was accepted by the user on 1 November 2026 at
+`e2f38b0fb402b1b6e8eebccd07281dd7ffe7159b`, after the configuration-console and
+Product web cleanup delivery in [PR #242](https://github.com/rplalala/Dayloom/pull/242)
+and [Issue #241](https://github.com/rplalala/Dayloom/issues/241).
 The built frontend and normal API share `http://localhost:5173`; the `dayloom` Compose
 project runs `postgres` against the retained runtime volume. Git delivery is complete through
 merged [PR #210](https://github.com/rplalala/Dayloom/pull/210) and completed
@@ -449,7 +451,9 @@ access and distribution arrangement. Required thesis and clearance forms must be
 uploaded as clearly named PDFs to the supervisor's designated OneDrive folder;
 both submissions precede final project sign-off.
 
-School archival submission is pending. Current preparation covers local inventory
+School archival submission is pending. Current preparation covers the
+[deployment guide](docs/guides/deployment.md),
+[reproduction and materials guide](docs/guides/reproduction.md), local inventory
 and completeness verification; upload, repository creation, form submission and
 new paid execution remain outside that scope. The project Git repository excludes
 the separate `thesis/` working repository,
