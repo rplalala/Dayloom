@@ -1,4 +1,4 @@
-/* Legacy and Developer presentation stays outside the Dayloom Product shell. */
+/* Legacy presentation stays outside the Dayloom Product shell. */
 :root {
   color: #24342f;
   background: #f5f2e9;
@@ -14,9 +14,6 @@
   --accent: #cf5d3a;
   --accent-dark: #a94023;
   --forest: #1e5446;
-  --dev-bg: #101820;
-  --dev-panel: #17232d;
-  --dev-line: #334451;
 }
 
 * {
@@ -93,15 +90,13 @@ body {
   font-size: 20px;
 }
 
-:where(body:not(:has(.dayloom))) .primary-nav,
-:where(body:not(:has(.dayloom))) .developer-header nav {
+:where(body:not(:has(.dayloom))) .primary-nav {
   display: flex;
   align-items: center;
   gap: 24px;
 }
 
-:where(body:not(:has(.dayloom))) .primary-nav a,
-:where(body:not(:has(.dayloom))) .developer-header a {
+:where(body:not(:has(.dayloom))) .primary-nav a {
   color: var(--muted);
   font-size: 14px;
   font-weight: 650;
@@ -225,9 +220,7 @@ body {
   box-shadow: 0 18px 50px rgb(55 67 57 / 8%);
 }
 
-:where(body:not(:has(.dayloom))) .planning-form label,
-:where(body:not(:has(.dayloom))) .developer-form > label,
-:where(body:not(:has(.dayloom))) .developer-fields label {
+:where(body:not(:has(.dayloom))) .planning-form label {
   display: grid;
   gap: 8px;
   font-weight: 750;
@@ -481,156 +474,8 @@ body {
   font-weight: 750;
 }
 
-:where(body:not(:has(.dayloom))) .developer-shell {
-  min-height: 100vh;
-  color: #dbe5e9;
-  background: var(--dev-bg);
-}
-
-:where(body:not(:has(.dayloom))) .developer-header,
-:where(body:not(:has(.dayloom))) .developer-main,
-:where(body:not(:has(.dayloom))) .developer-warning {
-  width: min(1280px, calc(100% - 40px));
-  margin-inline: auto;
-}
-
-:where(body:not(:has(.dayloom))) .developer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding-block: 28px;
-}
-
-:where(body:not(:has(.dayloom))) .developer-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
-
-:where(body:not(:has(.dayloom))) .developer-header .eyebrow,
-:where(body:not(:has(.dayloom))) .developer-section-heading .eyebrow {
-  color: #76c9b2;
-}
-
-:where(body:not(:has(.dayloom))) .developer-header a {
-  color: #aab9bf;
-}
-
-:where(body:not(:has(.dayloom))) .developer-header a.active {
-  color: white;
-}
-
-:where(body:not(:has(.dayloom))) .developer-warning {
-  padding: 12px 16px;
-  border: 1px solid #6b592d;
-  border-radius: 6px;
-  color: #e2d3a6;
-  background: #2a271e;
-  font-size: 13px;
-}
-
-:where(body:not(:has(.dayloom))) .developer-main {
-  padding-block: 44px 80px;
-}
-
-:where(body:not(:has(.dayloom))) .developer-grid {
-  display: grid;
-  grid-template-columns: minmax(360px, 0.8fr) minmax(420px, 1.2fr);
-  gap: 28px;
-}
-
-:where(body:not(:has(.dayloom))) .developer-section-heading h2 {
-  margin: 0;
-  font-size: 28px;
-}
-
-:where(body:not(:has(.dayloom))) .developer-section-heading > p:last-child {
-  color: #9eb0b8;
-}
-
-:where(body:not(:has(.dayloom))) .developer-form,
-:where(body:not(:has(.dayloom))) .json-panel,
-:where(body:not(:has(.dayloom))) .json-placeholder {
-  padding: 24px;
-  border: 1px solid var(--dev-line);
-  border-radius: 10px;
-  background: var(--dev-panel);
-}
-
-:where(body:not(:has(.dayloom))) .developer-form {
-  display: grid;
-  gap: 18px;
-  margin-top: 24px;
-}
-
-:where(body:not(:has(.dayloom))) .developer-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-:where(body:not(:has(.dayloom))) .developer-form select,
-:where(body:not(:has(.dayloom))) .developer-form input,
-:where(body:not(:has(.dayloom))) .developer-form textarea {
-  padding: 12px;
-  border-color: var(--dev-line);
-  color: #e3eaed;
-  background: #0e171e;
-}
-
-:where(body:not(:has(.dayloom))) .button-developer {
-  justify-self: start;
-  color: #0d271f;
-  background: #76c9b2;
-}
-
-:where(body:not(:has(.dayloom))) .json-panel,
-:where(body:not(:has(.dayloom))) .json-placeholder {
-  min-width: 0;
-}
-
-:where(body:not(:has(.dayloom))) .json-placeholder {
-  display: grid;
-  min-height: 420px;
-  place-items: center;
-  color: #82959e;
-  border-style: dashed;
-}
-
-:where(body:not(:has(.dayloom))) .json-panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--dev-line);
-}
-
-:where(body:not(:has(.dayloom))) .json-panel-header h2 {
-  margin: 0;
-  font-size: 18px;
-}
-
-:where(body:not(:has(.dayloom))) .json-panel-header span {
-  color: #76c9b2;
-  font-family: Consolas, monospace;
-  font-size: 12px;
-}
-
-:where(body:not(:has(.dayloom))) .json-panel pre {
-  max-height: 650px;
-  overflow: auto;
-  margin: 18px 0 0;
-  color: #b9e0d5;
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 13px;
-  line-height: 1.55;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
 @media (max-width: 800px) {
-  :where(body:not(:has(.dayloom))) .hero,
-  :where(body:not(:has(.dayloom))) .developer-grid {
+  :where(body:not(:has(.dayloom))) .hero {
     grid-template-columns: 1fr;
   }
 
@@ -643,7 +488,6 @@ body {
     grid-template-columns: 1fr;
   }
 
-  :where(body:not(:has(.dayloom))) .developer-header,
   :where(body:not(:has(.dayloom))) .itinerary-header {
     align-items: flex-start;
     flex-direction: column;
@@ -653,17 +497,13 @@ body {
 @media (max-width: 560px) {
   :where(body:not(:has(.dayloom))) .page-width,
   :where(body:not(:has(.dayloom))) .site-header,
-  :where(body:not(:has(.dayloom))) .site-footer,
-  :where(body:not(:has(.dayloom))) .developer-header,
-  :where(body:not(:has(.dayloom))) .developer-main,
-  :where(body:not(:has(.dayloom))) .developer-warning {
+  :where(body:not(:has(.dayloom))) .site-footer {
     width: min(100% - 28px, 1120px);
   }
 
   :where(body:not(:has(.dayloom))) .site-header,
   :where(body:not(:has(.dayloom))) .primary-nav,
-  :where(body:not(:has(.dayloom))) .form-actions,
-  :where(body:not(:has(.dayloom))) .developer-header nav {
+  :where(body:not(:has(.dayloom))) .form-actions {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -672,13 +512,8 @@ body {
     padding-block: 20px;
   }
 
-  :where(body:not(:has(.dayloom))) .primary-nav,
-  :where(body:not(:has(.dayloom))) .developer-header nav {
+  :where(body:not(:has(.dayloom))) .primary-nav {
     gap: 10px;
-  }
-
-  :where(body:not(:has(.dayloom))) .developer-fields {
-    grid-template-columns: 1fr;
   }
 
   :where(body:not(:has(.dayloom))) .product-form-grid {
@@ -708,16 +543,12 @@ body {
 :where(body:not(:has(.dayloom))) .preference-compare section { min-width: 0; }
 :where(body:not(:has(.dayloom))) .preference-compare h3 { margin: 0 0 8px; font-size: 1rem; }
 @media (max-width: 560px) { :where(body:not(:has(.dayloom))) .preference-compare { grid-template-columns: 1fr; } }
-:where(body:not(:has(.dayloom))) .research-runs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr)); gap: 1rem; margin-top: 2rem; }
-:where(body:not(:has(.dayloom))) .research-run { min-width: 0; padding: 1rem; border: 1px solid #809b99; border-radius: 0.5rem; }
-:where(body:not(:has(.dayloom))) .research-run pre { overflow: auto; max-height: 28rem; white-space: pre-wrap; overflow-wrap: anywhere; }
 :where(body:not(:has(.dayloom))) .button { transition: background-color 160ms, box-shadow 160ms; }
 :where(body:not(:has(.dayloom))) .button:focus-visible { outline: 3px solid #359b88; outline-offset: 3px; }
 :where(body:not(:has(.dayloom))) .button-secondary, :where(body:not(:has(.dayloom))) .button-stop { border: 1px solid currentColor; background: transparent; box-shadow: none; }
 :where(body:not(:has(.dayloom))) .button-secondary { color: inherit; }
 :where(body:not(:has(.dayloom))) .button-stop { color: #a94023; }
 :where(body:not(:has(.dayloom))) .button-secondary:hover:not(:disabled), :where(body:not(:has(.dayloom))) .button-stop:hover:not(:disabled) { background: rgb(128 128 128 / 12%); }
-:where(body:not(:has(.dayloom))) .developer-shell .button-stop { color: #ffb49c; }
 :where(body:not(:has(.dayloom))) .planning-progress-panel { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
 :where(body:not(:has(.dayloom))) .planning-progress { margin: 1rem 0; }
 :where(body:not(:has(.dayloom))) .planning-progress small { display: block; margin-top: 0.5rem; opacity: 0.8; }

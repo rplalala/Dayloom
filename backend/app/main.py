@@ -9,7 +9,6 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict
 
-from backend.app.api.developer.planning import router as developer_planning_router
 from backend.app.api.input_assistance import router as input_assistance_router
 from backend.app.api.product.planning import router as product_planning_router
 from backend.app.observability.product_http import ProductHTTPLogging
@@ -64,7 +63,6 @@ def create_app() -> FastAPI:
     application.include_router(configuration_router)
     application.add_middleware(ProductHTTPLogging)
     application.include_router(diagnostics_router)
-    application.include_router(developer_planning_router)
     application.include_router(input_assistance_router)
     application.include_router(account_router)
     application.include_router(copies_router)

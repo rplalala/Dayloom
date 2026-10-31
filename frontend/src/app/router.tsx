@@ -1,8 +1,6 @@
 import { type RouteObject, createBrowserRouter } from "react-router-dom";
 
-import { DeveloperLayout } from "../layouts/DeveloperLayout";
 import { ProductLayout } from "../layouts/ProductLayout";
-import { DeveloperPlannerPage } from "../routes/developer/DeveloperPlannerPage";
 import { NotFoundPage } from "../routes/NotFoundPage";
 import { HomePage } from "../routes/product/HomePage";
 import { BriefPage } from "../features/product/BriefPage";
@@ -33,13 +31,6 @@ export const routes: RouteObject[] = [
       { path: "planning", element: <LegacyPlanningRedirect /> },
       { path: "planning/:taskId", element: <LegacyPlanningRedirect /> },
       { path: "previews/:previewId", element: <PreviewPage /> },
-    ],
-  },
-  {
-    path: "dev",
-    element: <DeveloperLayout />,
-    children: [
-      { index: true, element: <DeveloperPlannerPage /> },
     ],
   },
   { path: 'config', lazy: async () => {
