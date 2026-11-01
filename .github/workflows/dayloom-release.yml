@@ -184,7 +184,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          printf 'Linux amd64 deployment. App source: %s. Baseline: %s.\n\nVerify the archive checksum before extraction. Complete anonymous image/download acceptance before publishing this draft.\n' "$SOURCE_REVISION" "$BASELINE_IMAGE" > "$RUNNER_TEMP/release-notes.md"
+          printf 'Linux amd64 deployment. App source: %s. Baseline: %s.\n\nVerify the archive checksum before extraction. Before publishing this draft, verify anonymous pulls of the exact image digests and complete local cold-install acceptance. After authorized public Release publication, verify anonymous curl retrieval of the archive and checksum, verify the archive checksum, and complete a fresh install from those retrieved artifacts.\n' "$SOURCE_REVISION" "$BASELINE_IMAGE" > "$RUNNER_TEMP/release-notes.md"
           gh release create "dayloom-v$VERSION" --target "$SOURCE_REVISION" --title "Dayloom $VERSION" --draft --notes-file "$RUNNER_TEMP/release-notes.md" dist-release/*.tar.gz dist-release/*.sha256
       - name: Preserve local preparation metadata
         if: always()
