@@ -493,8 +493,8 @@
   "reader_documents": [
     {
       "path": "report.md",
-      "sha256": "e069389248d7e1f4cbd1dcc95b992af03ea213f6599fc7cc6764a505b87166a0",
-      "bytes": 15387,
+      "sha256": "8abb95d172bdc2b46720c78a8182b6bade088dec1d7758f896d0dd2721229adf",
+      "bytes": 15402,
       "original_source": {
         "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-01/report.md",
         "sha256": "94d200aaed786307c5aa7e573a5f90cc9980174848bf1e1797532a0b4588ba68",

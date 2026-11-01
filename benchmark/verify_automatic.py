@@ -102,17 +102,26 @@ def verify_score(case, material, input_source=None):
     assert scored["overall_total"] == material["overall_total"], (case, "overall")
 
 
-def verify_reader_sizes(value, base):
-    """Check published reader sizes where an index records them."""
+def verify_reader_documents(value, base):
+    """Check current public readers without reinterpreting historical source bindings."""
     if isinstance(value, dict):
-        if value.get("path") == "report.md" and "bytes" in value:
-            assert len((base / "report.md").read_bytes().replace(b"\r\n", b"\n")) == value["bytes"]
+        if value.get("path") == "report.md":
+            path = base / "report.md"
+            if "bytes" in value:
+                actual = len(path.read_bytes().replace(b"\r\n", b"\n"))
+                assert actual == value["bytes"], (
+                    f"{base.name}/report.md: public byte length mismatch"
+                )
+            if "sha256" in value:
+                assert published_sha256(path) == value["sha256"], (
+                    f"{base.name}/report.md: public sha256 mismatch"
+                )
         for key, child in value.items():
             if key not in ("source", "sources", "native_source", "original_source"):
-                verify_reader_sizes(child, base)
+                verify_reader_documents(child, base)
     elif isinstance(value, list):
         for child in value:
-            verify_reader_sizes(child, base)
+            verify_reader_documents(child, base)
 
 
 def main():
@@ -130,7 +139,7 @@ def main():
         final = load("benchmark/" + case["primary_source"])
         pair = load("benchmark/" + case["pair_source"])
         case_index = load(f"benchmark/{cid}/material-index.json")
-        verify_reader_sizes(case_index, ROOT / "benchmark" / cid)
+        verify_reader_documents(case_index, ROOT / "benchmark" / cid)
         for kind in ("final", "pair"):
             binding = case_index.get("density_policy_derivations", {}).get(kind)
             if binding:
