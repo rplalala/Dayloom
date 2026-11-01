@@ -351,18 +351,18 @@ export function ConfigurationPage() {
             </div>
           </form>
           <section className="config-card config-resources"><div className="config-resource-heading"><div><h2>Local resources</h2>
-            <p>Checks saved configuration and local resources. No external API calls are made, and key validity is not verified.</p></div>
+            <p>Checks required settings and the running application's local resources. No external API calls are made; keys are not verified.</p></div>
             <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => void perform(async (request) => {
               setReadiness(await request<Readiness>('/readiness', { headers: { 'X-CSRF-Token': csrf } }));
             })}>Check local readiness</button></div>
             {Object.keys(edits).length > 0 && <p>Save or reload your changes before checking readiness.</p>}
-            {readiness && <><p role="status">{readiness.ready ? 'Saved configuration and local resources are ready. Restart if changes are pending.' : 'Some configuration or local resources still need attention.'}</p>
+            {readiness && <><p role="status">{readiness.ready ? 'Required settings and current local resources are ready. Restart to check pending connection changes.' : 'Some configuration or local resources still need attention.'}</p>
               {readiness.missing.length > 0 && <p>Missing settings: {readiness.missing.join(', ')}</p>}
               <ul>{readiness.resources.map(resource => <li key={resource.id}>
                 <div><strong>{resourceHelp[resource.id]?.[0] || resource.id}</strong><span className={resource.ready ? 'config-ready' : 'config-missing'}>{resource.ready ? 'Ready' : 'Needs attention'}</span></div>
                 {!resource.ready && <p>{resourceHelp[resource.id]?.[1] || 'Follow the local deployment guide to prepare this resource.'}</p>}
               </li>)}</ul></>}
-            <p>Database preparation follows <code>docs/guides/development.md</code>.</p>
+            <p>To check saved database changes before restarting, run <code>uv run dayloom check</code> in a new terminal. Preparation follows <code>docs/guides/development.md</code>.</p>
           </section>
         </>}
     </main>

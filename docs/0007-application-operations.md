@@ -116,8 +116,12 @@ The
 running Product pins editable database, provider and signing settings at startup, so saves require a
 restart and cannot reconfigure in-flight work. Setup mode leaves configuration and
 static delivery available while business APIs return HTTP 503; a successful restart
-is required to enable business operations. Check local readiness returns local
-resource readiness without external provider requests or a claim of valid credentials.
+is required to enable business operations. Check local readiness combines saved
+required-field presence with resource probes using the running process's pinned
+configuration. It does not test a newly saved database connection until restart.
+`uv run dayloom check` starts an independent check of saved settings before applying
+them to the running server. Neither check contacts external providers or certifies
+API credentials.
 
 Check API on each provider card and Check all APIs explicitly invoke
 `POST /api/config/check` with a saved revision and a fixed service identifier.
@@ -242,7 +246,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 
 | Endpoint | Input and result | Source of truth |
 | --- | --- | --- |
-| `/api/config`, `/access`, `/session`, `/readiness` | Local configuration discovery, optional password protection, session/CSRF control, redacted provider edits and read-only resource checks | [Local configuration](#local-configuration-console) |
+| `/api/config`, `/access`, `/session`, `/signing-key`, `/readiness` | Local discovery, password/session/CSRF controls, redacted database/provider/signing edits and read-only resource checks | [Local configuration](#local-configuration-console) |
 | `POST /api/config/check` | Saved revision and fixed service identifier; bounded explicit API capability results, attempt count and stale flag | [Local configuration](#local-configuration-console) |
 | `POST /api/auth/register` | Normalized email, password and display name; atomic account/profile and browser session | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |
