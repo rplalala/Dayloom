@@ -78,7 +78,9 @@ See the [development guide](docs/guides/development.md#local-postgresql-naming-a
 for storage retention, overrides and isolated test settings.
 
 The local Product launcher also serves `/config` with independent loopback-only
-management access. It edits existing provider settings in `.env`, shows local
+management access. It opens directly by default and offers optional persisted
+password verification, with Configuration entries in Product navigation. It edits
+existing provider settings in `.env`, shows local
 resource readiness and offers explicit bounded API capability checks. Saved
 changes require restart. Incomplete local installs
 can open the console while business APIs remain paused. Database/data preparation,

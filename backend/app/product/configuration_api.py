@@ -121,7 +121,16 @@ Unlocked = Annotated[LocalConfiguration, Depends(unlocked)]
 
 class UnlockRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
-    token: SecretStr = Field(min_length=1, max_length=256)
+    password: SecretStr = Field(default=SecretStr(""), max_length=128)
+
+
+class AccessRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
+    revision: str = Field(min_length=64, max_length=64)
+    enabled: bool
+    current_password: SecretStr = Field(default=SecretStr(""), max_length=128)
+    new_password: SecretStr | None = Field(default=None, min_length=10, max_length=128)
+    confirmation: SecretStr | None = Field(default=None, max_length=128)
 
 
 class SaveRequest(BaseModel):
@@ -148,7 +157,7 @@ def configuration_operation(operation):
 @router.post("/session")
 def unlock(body: UnlockRequest, response: Response, manager: Management):
     try:
-        session, csrf = manager.unlock(body.token.get_secret_value())
+        session, csrf = manager.unlock(body.password.get_secret_value())
     except ConfigurationError as error:
         raise HTTPException(error.status, {"code": error.code}) from None
     response.set_cookie(
@@ -161,6 +170,23 @@ def unlock(body: UnlockRequest, response: Response, manager: Management):
         path="/api/config",
     )
     return {"csrf_token": csrf}
+
+
+@router.get("/access")
+def access(manager: Management):
+    return configuration_operation(manager.access_view)
+
+
+@router.put("/access")
+def change_access(body: AccessRequest, response: Response, manager: Unlocked):
+    result = configuration_operation(lambda: manager.set_access(
+        body.revision, enabled=body.enabled,
+        current_password=body.current_password.get_secret_value(),
+        new_password=body.new_password.get_secret_value() if body.new_password else "",
+        confirmation=body.confirmation.get_secret_value() if body.confirmation else "",
+    ))
+    response.delete_cookie(COOKIE, path="/api/config")
+    return result
 
 
 @router.get("/session")

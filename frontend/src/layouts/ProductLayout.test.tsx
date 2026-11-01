@@ -1,9 +1,29 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { afterEach, expect, it, vi } from "vitest";
 import { ProductLayout } from "./ProductLayout";
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
+
+it.each([true, false])('shows configuration navigation only when available (%s)', async available => {
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+    if (url === '/api/config/access') return available
+      ? Response.json({ password_required: false, revision: 'a'.repeat(64) })
+      : Response.json({}, { status: 404 });
+    return Response.json({ detail: { code: 'login_required' } }, { status: 401 });
+  }));
+  const router = createMemoryRouter([
+    { element: <ProductLayout />, children: [{ path: '*', element: <p>Page content</p> }] },
+  ]);
+  render(<RouterProvider router={router} />);
+  await act(async () => {});
+  fireEvent.click(screen.getByLabelText('Open navigation'));
+  for (const menu of ['Main navigation', 'Mobile navigation']) {
+    const link = within(screen.getByLabelText(menu)).queryByText('Configuration', { selector: 'a' });
+    if (available) expect(link).toHaveAttribute('href', '/config');
+    else expect(link).not.toBeInTheDocument();
+  }
+});
 
 it.each([
   ["/trips", true],

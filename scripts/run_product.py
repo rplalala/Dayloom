@@ -114,7 +114,10 @@ def main(argv=None):
     print("Dayloom: " + policy.origin)
     if manager is not None:
         print("Local configuration: " + manager.origin + "/config")
-        print("Management token (valid for this process): " + manager.token)
+        print("Configuration access: " + (
+            "password verification enabled." if manager.access_view()["password_required"]
+            else "opens directly; optional password verification is available on the page."
+        ))
     server = uvicorn.Server(uvicorn.Config(
         application, host=args.host, port=args.port, proxy_headers=False,
     ))

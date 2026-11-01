@@ -15,6 +15,7 @@ from time import monotonic
 import yaml
 from dotenv.parser import parse_stream
 from dotenv.variables import parse_variables
+from pwdlib import PasswordHash
 
 from backend.app.product.configuration_validation import supported_foundry_endpoint
 from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader
@@ -29,6 +30,7 @@ FIELDS = {
 }
 COOKIE = "dayloom_config_session"
 SESSION_SECONDS = 1800
+password_hasher = PasswordHash.recommended()
 
 
 @contextmanager
@@ -74,7 +76,6 @@ class LocalConfiguration:
         self.root, self.origin = root, origin.rstrip("/")
         self.environment = dict(environment)
         self._environment_settings = {key.upper(): value for key, value in environment.items()}
-        self.token = secrets.token_urlsafe(32)
         self.sessions = {}
         self.attempts = deque(maxlen=10)
         self.lock = threading.Lock()
@@ -256,25 +257,104 @@ class LocalConfiguration:
             "running_ready": self.running_ready,
         }
 
-    def unlock(self, token):
+    def _password_state(self):
+        path = self.root / ".config-access.json"
+        try:
+            if path.is_symlink():
+                raise ValueError("Configuration access file must not be a symlink")
+            try:
+                with path.open("rb") as stream:
+                    content = stream.read(8193)
+            except FileNotFoundError:
+                return {"schema_version": 1, "revision": "0" * 64, "password_hash": None}
+            state = json.loads(content)
+            if (
+                len(content) > 8192
+                or not isinstance(state, dict)
+                or set(state) != {"schema_version", "revision", "password_hash"}
+                or state["schema_version"] != 1
+                or not isinstance(state["revision"], str)
+                or len(state["revision"]) != 64
+                or any(c not in "0123456789abcdef" for c in state["revision"])
+                or (state["password_hash"] is not None and (
+                    not isinstance(state["password_hash"], str)
+                    or not state["password_hash"].startswith("$argon2id$")
+                    or len(state["password_hash"]) > 512
+                ))
+            ):
+                raise ValueError("Invalid configuration access file")
+            return state
+        except Exception:
+            raise ConfigurationError("configuration_access_unreadable", 503) from None
+
+    def access_view(self):
+        state = self._password_state()
+        return {"password_required": state["password_hash"] is not None,
+                "revision": state["revision"]}
+
+    def _check_password(self, state, password):
+        if state["password_hash"] is None:
+            return
+        now = monotonic()
+        if len(self.attempts) == 10 and now - self.attempts[0] < 60:
+            raise ConfigurationError("too_many_attempts", 429)
+        try:
+            valid = password_hasher.verify(password, state["password_hash"])
+        except Exception:
+            raise ConfigurationError("configuration_access_unreadable", 503) from None
+        if not valid:
+            self.attempts.append(now)
+            raise ConfigurationError("invalid_configuration_password", 401)
+        self.attempts.clear()
+
+    def set_access(self, revision, *, enabled, current_password, new_password, confirmation):
+        with self.lock, configuration_file_lock(self.root / ".env.config.lock"):
+            state = self._password_state()
+            if state["revision"] != revision:
+                raise ConfigurationError("configuration_changed", 409)
+            self._check_password(state, current_password)
+            if enabled:
+                if not 10 <= len(new_password) <= 128:
+                    raise ConfigurationError("configuration_password_required")
+                if not secrets.compare_digest(new_password.encode(), confirmation.encode()):
+                    raise ConfigurationError("password_confirmation_mismatch")
+            saved = {"schema_version": 1, "revision": secrets.token_hex(32),
+                     "password_hash": password_hasher.hash(new_password) if enabled else None}
+            temporary = None
+            try:
+                with tempfile.NamedTemporaryFile(
+                    mode="w", encoding="utf-8", newline="\n", dir=self.root,
+                    prefix=".config-access.", delete=False,
+                ) as stream:
+                    temporary = Path(stream.name)
+                    stream.write(json.dumps(saved) + "\n")
+                    stream.flush()
+                    os.fsync(stream.fileno())
+                os.replace(temporary, self.root / ".config-access.json")
+            finally:
+                if temporary is not None:
+                    temporary.unlink(missing_ok=True)
+            self.sessions.clear()
+            self.attempts.clear()
+            return self.access_view()
+
+    def unlock(self, password=""):
         now = monotonic()
         with self.lock:
-            if len(self.attempts) == 10 and now - self.attempts[0] < 60:
-                raise ConfigurationError("too_many_attempts", 429)
-            if not secrets.compare_digest(token.encode(), self.token.encode()):
-                self.attempts.append(now)
-                raise ConfigurationError("invalid_management_token", 401)
+            state = self._password_state()
+            self._check_password(state, password)
             self.sessions = {key: value for key, value in self.sessions.items() if value[0] > now}
             if len(self.sessions) >= 8:
                 raise ConfigurationError("too_many_sessions", 429)
             session, csrf = secrets.token_urlsafe(32), secrets.token_urlsafe(32)
-            self.sessions[session] = (now + SESSION_SECONDS, csrf)
+            self.sessions[session] = (now + SESSION_SECONDS, csrf, state["revision"])
             return session, csrf
 
     def authorize(self, session, csrf=None, *, write=False):
         with self.lock:
             value = self.sessions.get(session or "")
-            if value is None or value[0] <= monotonic():
+            if (value is None or value[0] <= monotonic()
+                    or value[2] != self._password_state()["revision"]):
                 raise ConfigurationError("configuration_locked", 401)
             if write and not secrets.compare_digest((csrf or "").encode(), value[1].encode()):
                 raise ConfigurationError("csrf_rejected", 403)

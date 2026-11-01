@@ -156,11 +156,38 @@ between them automatically. API-only/Vite development remains available above.
 
 Build the frontend and start `uv run python scripts/run_product.py` with its default
 loopback binding. Open the exact configured origin plus `/config`, normally
-`http://localhost:5173/config`. The terminal prints a random management token valid
-for that running process. Enter it to open a separate 30-minute management session;
-traveler registration and database access are not required. Lock the page when done.
-Restarting Dayloom invalidates management sessions and produces a new token. A lost
-token can be recovered from the running terminal or replaced by restarting.
+`http://localhost:5173/config`. Configuration in the desktop/mobile Product navigation
+opens the same page when local management is available. It opens directly by default;
+traveler registration and database access are not required. The browser establishes
+a separate 30-minute management session automatically, retaining CSRF protection.
+
+Require a password to open configuration enables optional password verification.
+Set and confirm a password of 10–128 characters. Once enabled, new sessions require
+that password, and changing it or disabling verification requires the current password.
+Access changes apply immediately and revoke previous management sessions, including
+sessions in other local processes. Lock configuration ends the current protected
+session. Restart invalidates sessions but preserves the access settings and password.
+The password is independent of traveler accounts and is stored only as an Argon2id
+hash in ignored `.config-access.json`; neither it nor its hash is returned by the API.
+
+If the configuration password is forgotten, stop Dayloom first. From the repository
+root, preserve the access file under an unused backup name, then restart Dayloom:
+
+**PowerShell**
+
+```powershell
+Move-Item -LiteralPath .config-access.json -Destination .config-access.backup
+```
+
+**Bash**
+
+```bash
+test ! -e .config-access.backup && mv .config-access.json .config-access.backup
+```
+
+This host-controlled recovery returns configuration to its default open state;
+set a new password on the page. Provider keys in `.env` are retained. Invalid or
+unreadable access files fail closed rather than disabling verification automatically.
 
 The console edits only the current provider settings defined in the
 [configuration contract](../0007-application-operations.md#local-configuration-console).
@@ -206,7 +233,7 @@ passing those tests does not establish that installation credentials work.
 Normal Product actions also use configured services and may incur charges.
 The console does not run planning, change its budgets or introduce a new model
 provider. Startup and local readiness remain offline with respect to provider APIs.
-Do not publish its terminal token, `.env` or local `.env.*` lock/temp files.
+Keep `.env`, `.env.*` lock/temp files and `.config-access.*` files private.
 
 ## Product diagnostics
 

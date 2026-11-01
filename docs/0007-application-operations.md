@@ -25,8 +25,9 @@ previous result. Product completion reasons are policy observations, not global 
 
 ## Local configuration console
 
-`/config` is a standalone React route outside traveler session/task providers. The
-normal Product launcher enables its management interface only for an HTTP loopback
+`/config` is a standalone React route outside traveler session/task providers. Desktop
+and mobile Product navigation offer Configuration when local management is available.
+The normal Product launcher enables its management interface only for an HTTP loopback
 origin and loopback listener. The API-only application leaves management disabled.
 No configuration database or account role is introduced. Operational steps belong
 to the [local configuration guide](guides/development.md#local-configuration-console).
@@ -38,8 +39,9 @@ to the [local configuration guide](guides/development.md#local-configuration-con
 | `GOOGLE_MAPS_API_KEY` | Planning and place photographs |
 | `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional atmosphere photographs; existing `UNSPLASH_API_KEY` remains an alias |
 
-The console validates existing Foundry v1 endpoint/deployment syntax and writes
-only these fields. It adds neither model selection nor provider adaptation.
+The provider editor validates existing Foundry v1 endpoint/deployment syntax and
+writes only these fields. Configuration access has its own local password settings.
+The console adds neither model selection nor provider adaptation.
 Database credentials, JWT signing secrets, planning policies and retrieval data
 remain outside its write surface. Managed setting names in environment and dotenv
 are case-insensitive, matching existing consumers; interpolation variable references
@@ -48,9 +50,18 @@ dotenv, including alias selection and interpolation; YAML supplies deployment
 defaults. A read captures dotenv once; its opaque revision covers that text and
 the resolved editable values, including YAML deployment defaults.
 
-Management requires an in-memory, randomly generated process token. Successful
-unlock creates a separate 30-minute HttpOnly, SameSite=Strict cookie scoped to
-`/api/config`, with a session-bound CSRF token for writes. Access checks require a
+Configuration opens directly by default, without a terminal token or password.
+The browser automatically establishes a separate 30-minute HttpOnly, SameSite=Strict
+cookie scoped to `/api/config`, with a session-bound CSRF token for writes.
+Users can enable password verification, setting and confirming a 10–128-character
+password. The enabled state, opaque access revision and Argon2id hash are persisted
+atomically in ignored `.config-access.json`, independently of Product accounts.
+Only password-required status and the opaque revision are public management metadata;
+passwords and hashes never enter API responses. New protected sessions require the
+password; changing it or disabling verification also requires the current password.
+Access changes revoke old sessions across processes and apply immediately. Corrupt,
+unreadable or symlinked access files fail closed. Host-controlled password recovery
+is defined in the operational guide. Access checks still require a
 loopback peer, the exact configured Host, and exact Origin on writes; forwarded
 client headers are disabled by the Product launcher. Failed unlock attempts are
 bounded, as are active management sessions and request-body size. API responses
@@ -189,7 +200,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 
 | Endpoint | Input and result | Source of truth |
 | --- | --- | --- |
-| `/api/config`, `/session`, `/readiness` | Local management unlock/lock, redacted reads, revision-checked provider writes and read-only resource checks | [Local configuration](#local-configuration-console) |
+| `/api/config`, `/access`, `/session`, `/readiness` | Local configuration discovery, optional password protection, session/CSRF control, redacted provider edits and read-only resource checks | [Local configuration](#local-configuration-console) |
 | `POST /api/config/check` | Saved revision and fixed service identifier; bounded explicit API capability results, attempt count and stale flag | [Local configuration](#local-configuration-console) |
 | `POST /api/auth/register` | Normalized email, password and display name; atomic account/profile and browser session | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |

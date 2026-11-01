@@ -22,7 +22,18 @@ function ProductShell() {
   const [mobile, setMobile] = useState(false);
   const [about, setAbout] = useState(false);
   const [navigationError, setNavigationError] = useState("");
+  const [configurationAvailable, setConfigurationAvailable] = useState(false);
   const aboutDialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    void fetch('/api/config/access', { credentials: 'same-origin', cache: 'no-store', signal: controller.signal })
+      .then(response => response.ok ? response.json() : null)
+      .then(access => {
+        if (!controller.signal.aborted) setConfigurationAvailable(typeof access?.password_required === 'boolean');
+      })
+      .catch(() => { if (!controller.signal.aborted) setConfigurationAvailable(false); });
+    return () => controller.abort();
+  }, []);
   useEffect(() => {
     const dialog = aboutDialog.current;
     if (!about || !dialog) return;
@@ -49,6 +60,7 @@ function ProductShell() {
             </NavLink>
             <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
             <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
+            {configurationAvailable && <Link to="/config" className="nav-link">Configuration</Link>}
           </nav>
           <div className="nav-actions">
             <TaskEntry />
@@ -89,6 +101,7 @@ function ProductShell() {
             <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Home</NavLink>
             <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
             <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
+            {configurationAvailable && <Link to="/config" className="nav-link">Configuration</Link>}
             <NavLink to={account ? "/account" : "/login"} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>
               {account ? "Account settings" : "Log in"}
             </NavLink>

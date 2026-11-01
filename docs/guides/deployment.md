@@ -211,8 +211,10 @@ uv run python scripts/run_product.py
 ```
 
 Product migrations prepare its `app` schema. They do not rebuild the retrieval corpus.
-Open [local configuration](http://localhost:5173/config). The startup terminal prints
-`Management token (valid for this process):`; copy the value after the colon to unlock.
+Open Configuration in the Product navigation, or visit
+[local configuration](http://localhost:5173/config). It opens directly by default.
+To restrict access, enable Require a password to open configuration and set/confirm
+a password. Existing password protection must be unlocked before editing settings.
 
 | Configuration card | Existing service use |
 | --- | --- |
@@ -222,8 +224,9 @@ Open [local configuration](http://localhost:5173/config). The startup terminal p
 | Unsplash | Optional atmosphere photographs |
 
 Save the settings, finish active tasks, stop the server with Ctrl+C, and start it
-again to apply the changes. Restart creates a new management token. Keys are stored
-locally and are not displayed after saving. See the
+again to apply the provider changes. Password verification persists across restarts
+and its changes take effect immediately. Keys are stored locally and are not
+displayed after saving. See the
 [configuration guide](development.md#local-configuration-console) for clearing keys,
 environment-locked fields and edit conflicts.
 
@@ -264,7 +267,7 @@ uv run python scripts/run_database.py stop postgres
 | Setup mode or `local_setup_required` | Use Check local readiness and resolve the listed settings/resources, then restart. |
 | Missing tokenizer vocabulary | Prepare both caches in step 4; a general tiktoken cache elsewhere does not satisfy the runtime paths. |
 | Retrieval compatibility failure | Use the matching dump and both sidecars from the same release. |
-| Token rejected | Use the current process's token and the exact configured hostname/origin. |
+| Configuration access rejected | Use the exact configured hostname/origin and the configuration password if enabled; use the documented local recovery procedure if it is forgotten. |
 | Saved provider change has no effect | Restart; saved values do not reconfigure in-flight work. |
 
 Separate API/Vite development, isolated test databases and advanced diagnostics are

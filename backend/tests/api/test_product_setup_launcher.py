@@ -60,7 +60,8 @@ def test_launcher_exposes_setup_and_pins_missing_credentials(local_launcher, mon
         run_product.main([])
     output = capsys.readouterr().out
     assert "http://localhost:5173/config" in output
-    assert "Management token" in output
+    assert "opens directly" in output
+    assert "Management token" not in output
     assert "synthetic-private-readiness-error" not in output
 
 

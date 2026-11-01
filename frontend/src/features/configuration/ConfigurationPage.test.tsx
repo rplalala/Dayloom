@@ -5,6 +5,64 @@ import { ConfigurationPage } from './ConfigurationPage';
 
 afterEach(() => vi.unstubAllGlobals());
 
+it('opens configuration automatically when password verification is off', async () => {
+  const writes: { url: string; body: unknown }[] = [];
+  vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
+    if (init?.method === 'POST') writes.push({ url, body: JSON.parse(init.body as string) });
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'f'.repeat(64) });
+    if (url.endsWith('/session')) return init?.method === 'POST'
+      ? Response.json({ csrf_token: 'csrf' }) : Response.json({}, { status: 401 });
+    return Response.json({ revision: 'a'.repeat(64), restart_required: false, running_ready: true,
+      fields: { OPENAI_API_KEY: { value: null, secret: true, configured: false, locked: false } } });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  expect(await screen.findByLabelText('OpenAI API key')).toBeInTheDocument();
+  expect(screen.queryByLabelText('Management token')).not.toBeInTheDocument();
+  expect(screen.queryByLabelText('Configuration password')).not.toBeInTheDocument();
+  expect(writes).toEqual([{ url: '/api/config/session', body: {} }]);
+  fireEvent.change(screen.getByLabelText('OpenAI API key'), { target: { value: 'unsaved-private-key' } });
+  expect(screen.getByLabelText('Require a password to open configuration')).toBeDisabled();
+  expect(screen.getByText('Save or reload provider edits before changing access settings.')).toBeInTheDocument();
+});
+
+it('enables password verification and requires the current password to turn it off', async () => {
+  let protectedAccess = false;
+  let locked = false;
+  const updates: Record<string, unknown>[] = [];
+  vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
+    if (url.endsWith('/access')) {
+      if (init?.method === 'PUT') {
+        const body = JSON.parse(init.body as string);
+        updates.push(body); protectedAccess = body.enabled; locked = true;
+      }
+      return Response.json({ password_required: protectedAccess, revision: (protectedAccess ? 'b' : 'a').repeat(64) });
+    }
+    if (url.endsWith('/session')) {
+      if (init?.method === 'POST') locked = false;
+      return locked ? Response.json({}, { status: 401 }) : Response.json({ csrf_token: 'csrf' });
+    }
+    return Response.json({ revision: 'a'.repeat(64), restart_required: false, running_ready: true,
+      fields: { OPENAI_API_KEY: { value: null, secret: true, configured: false, locked: false } } });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  fireEvent.click(await screen.findByLabelText('Require a password to open configuration'));
+  fireEvent.change(screen.getByLabelText('New password'), { target: { value: 'new-private-password' } });
+  fireEvent.change(screen.getByLabelText('Confirm password'), { target: { value: 'new-private-password' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Save access settings' }));
+  const password = await screen.findByLabelText('Configuration password');
+  expect(screen.queryByLabelText('OpenAI API key')).not.toBeInTheDocument();
+  fireEvent.change(password, { target: { value: 'new-private-password' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Unlock configuration' }));
+  fireEvent.click(await screen.findByLabelText('Require a password to open configuration'));
+  fireEvent.change(screen.getByLabelText('Current password'), { target: { value: 'new-private-password' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Save access settings' }));
+  await screen.findByText(/^Configuration opens without a password\./);
+  expect(screen.getByLabelText('OpenAI API key')).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: 'Lock configuration' })).not.toBeInTheDocument();
+  expect(updates[0]).toMatchObject({ enabled: true, new_password: 'new-private-password', confirmation: 'new-private-password' });
+  expect(updates[1]).toMatchObject({ enabled: false, current_password: 'new-private-password' });
+});
+
 it('unlocks independently, saves only edited fields and clears typed secrets', async () => {
   const config = { revision: 'a'.repeat(64), restart_required: false, running_ready: false,
     fields: {
@@ -18,6 +76,7 @@ it('unlocks independently, saves only edited fields and clears typed secrets', a
   const requests: { url: string; init?: RequestInit }[] = [];
   vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
     requests.push({ url, init });
+    if (url.endsWith('/access')) return Response.json({ password_required: true, revision: 'f'.repeat(64) });
     if (url.endsWith('/session')) {
       return new Response(JSON.stringify(init?.method === 'POST' ? { csrf_token: 'csrf' } : {}),
         { status: init?.method === 'POST' ? 200 : 401 });
@@ -26,7 +85,7 @@ it('unlocks independently, saves only edited fields and clears typed secrets', a
       ? { ...config, restart_required: true } : config));
   }));
   render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
-  fireEvent.change(await screen.findByLabelText('Management token'), { target: { value: 'local-token' } });
+  fireEvent.change(await screen.findByLabelText('Configuration password'), { target: { value: 'local-password' } });
   fireEvent.click(screen.getByRole('button', { name: 'Unlock configuration' }));
   const key = await screen.findByLabelText('OpenAI API key');
   expect(key).toHaveValue('');
@@ -45,6 +104,7 @@ it('locks fields controlled by the process environment and reports local resourc
   const calls: string[] = [];
   vi.stubGlobal('fetch', vi.fn(async (url: string) => {
     calls.push(url);
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'f'.repeat(64) });
     const value = url.endsWith('/session') ? { csrf_token: 'restored-csrf' }
       : url.endsWith('/readiness') ? { ready: false, credentials_verified: false,
         missing: ['GOOGLE_MAPS_API_KEY'], resources: [{ id: 'database', ready: false }] }
@@ -59,12 +119,13 @@ it('locks fields controlled by the process environment and reports local resourc
   fireEvent.click(screen.getByRole('button', { name: 'Check local readiness' }));
   await screen.findByText('Needs attention');
   expect(screen.getByText(/Missing settings: GOOGLE_MAPS_API_KEY/)).toBeInTheDocument();
-  expect(calls).toEqual(['/api/config/session', '/api/config', '/api/config/readiness']);
+  expect(calls).toEqual(['/api/config/access', '/api/config/session', '/api/config', '/api/config/readiness']);
 });
 
 it('clears typed secrets when the management session expires', async () => {
   vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
     if (init?.method === 'PUT') return new Response(JSON.stringify({ detail: { code: 'configuration_locked' } }), { status: 401 });
+    if (url.endsWith('/access')) return Response.json({ password_required: true, revision: 'f'.repeat(64) });
     return new Response(JSON.stringify(url.endsWith('/session') ? { csrf_token: 'csrf' } : {
       revision: 'c'.repeat(64), restart_required: false, running_ready: true,
       fields: { OPENAI_API_KEY: { value: null, secret: true, configured: false, locked: false } },
@@ -73,7 +134,7 @@ it('clears typed secrets when the management session expires', async () => {
   render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
   fireEvent.change(await screen.findByLabelText('OpenAI API key'), { target: { value: 'unsaved-private' } });
   fireEvent.click(screen.getByRole('button', { name: 'Save configuration' }));
-  await screen.findByLabelText('Management token');
+  await screen.findByLabelText('Configuration password');
   expect(screen.queryByDisplayValue('unsaved-private')).not.toBeInTheDocument();
   expect(screen.getByRole('alert')).toHaveTextContent(/session has expired/);
 });
@@ -83,6 +144,7 @@ it('checks APIs only on click and invalidates results when settings are edited',
   const revision = 'd'.repeat(64);
   vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
     calls.push({ url, init });
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'f'.repeat(64) });
     const value = url.endsWith('/session') ? { csrf_token: 'csrf' }
       : url.endsWith('/check') ? { revision, stale: false, request_count: 8,
         checked_at: '2026-11-01T00:00:00Z', service: 'all', results: [
@@ -117,7 +179,8 @@ it('checks APIs only on click and invalidates results when settings are edited',
 
 it('never displays a stale result as a passed check', async () => {
   const revision = 'e'.repeat(64);
-  vi.stubGlobal('fetch', vi.fn(async (url: string) => new Response(JSON.stringify(
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => url.endsWith('/access')
+    ? Response.json({ password_required: false, revision: 'f'.repeat(64) }) : new Response(JSON.stringify(
     url.endsWith('/session') ? { csrf_token: 'csrf' }
       : url.endsWith('/check') ? { revision, stale: true, service: 'foundry',
         checked_at: '2026-11-01T00:00:00Z', request_count: 1,

@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { ConfigurationAccessSettings, type AccessChange, type ConfigurationAccess } from './ConfigurationAccessSettings';
 import './configuration.css';
 
 type Field = { value: string | null; secret: boolean; configured: boolean; locked: boolean };
@@ -43,7 +44,10 @@ const resourceHelp: Record<string, [string, string]> = {
   tripworld: ['TripWorld retrieval', 'Prepare the compatible database and retrieval files following docs/guides/development.md.'],
 };
 const errors: Record<string, string> = {
-  invalid_management_token: 'The management token is incorrect. Copy it from the running Dayloom terminal.',
+  invalid_configuration_password: 'The configuration password is incorrect.',
+  configuration_access_unreadable: 'Configuration access settings could not be read. Check .config-access.json in the project folder before trying again.',
+  configuration_password_required: 'Enter a new configuration password containing 10–128 characters.',
+  password_confirmation_mismatch: 'Passwords do not match.',
   configuration_locked: 'Your management session has expired. Unlock configuration again.',
   configuration_changed: 'The configuration changed elsewhere. Reload it before saving again.',
   setting_managed_by_environment: 'A setting is controlled by the process environment. Reload to see its current status.',
@@ -53,7 +57,7 @@ const errors: Record<string, string> = {
   configuration_unreadable: 'The local configuration could not be read or saved. Check .env and product.yaml in the terminal.',
   invalid_dotenv: 'The .env file has invalid syntax. Correct it in a text editor, then try again.',
   too_many_attempts: 'Too many attempts. Wait a minute before trying again.',
-  too_many_sessions: 'Too many management sessions are open. Lock another session or restart Dayloom.',
+  too_many_sessions: 'Too many configuration sessions are open. Wait for a session to expire or restart Dayloom.',
   local_configuration_unavailable: 'Local configuration is available through scripts/run_product.py on a loopback address.',
   api_check_in_progress: 'Another API check is already running. Wait for it to finish.',
   api_check_failed: 'The API check could not complete. No automatic retry was made.',
@@ -80,7 +84,8 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
 export function ConfigurationPage() {
   const [config, setConfig] = useState<Configuration | null>(null);
   const [csrf, setCsrf] = useState('');
-  const [token, setToken] = useState('');
+  const [password, setPassword] = useState('');
+  const [access, setAccess] = useState<ConfigurationAccess | null>(null);
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [readiness, setReadiness] = useState<Readiness | null>(null);
   const [apiReports, setApiReports] = useState<Partial<Record<Service, ApiReport>>>({});
@@ -93,7 +98,17 @@ export function ConfigurationPage() {
     const controller = new AbortController();
     async function restore() {
       try {
-        const session = await request<{ csrf_token: string }>('/session', { signal: controller.signal });
+        const permissions = await request<ConfigurationAccess>('/access', { signal: controller.signal });
+        if (controller.signal.aborted) return;
+        setAccess(permissions);
+        let session: { csrf_token: string };
+        try {
+          session = await request('/session', { signal: controller.signal });
+        } catch (failure) {
+          if (!(failure instanceof ConfigurationFailure && failure.status === 401)
+            || permissions.password_required || controller.signal.aborted) throw failure;
+          session = await request('/session', { method: 'POST', body: '{}', signal: controller.signal });
+        }
         const saved = await request<Configuration>('', { signal: controller.signal });
         if (!controller.signal.aborted) { setCsrf(session.csrf_token); setConfig(saved); }
       } catch (failure) {
@@ -113,7 +128,8 @@ export function ConfigurationPage() {
     try { await action(); }
     catch (failure) {
       if (failure instanceof ConfigurationFailure && failure.status === 401) {
-        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setToken(''); setApiReports({});
+        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setPassword(''); setApiReports({});
+        try { setAccess(await request<ConfigurationAccess>('/access')); } catch { setAccess(null); }
       }
       if (failure instanceof ConfigurationFailure && ['configuration_changed', 'configuration_unreadable'].includes(failure.code)) setApiReports({});
       setError(failure instanceof ConfigurationFailure ? failure.message : 'Could not reach the local application. Try again.');
@@ -123,8 +139,10 @@ export function ConfigurationPage() {
   function unlock(event: FormEvent) {
     event.preventDefault();
     void perform(async () => {
-      const session = await request<{ csrf_token: string }>('/session', { method: 'POST', body: JSON.stringify({ token }) });
-      setToken('');
+      const session = await request<{ csrf_token: string }>('/session', {
+        method: 'POST', body: JSON.stringify(access?.password_required ? { password } : {}),
+      });
+      setPassword('');
       const saved = await request<Configuration>('');
       setCsrf(session.csrf_token); setConfig(saved);
     });
@@ -137,6 +155,24 @@ export function ConfigurationPage() {
         body: JSON.stringify({ revision: config!.revision, changes: edits }) });
       setConfig(saved); setEdits({}); setReadiness(null); setApiReports({});
       setNotice('Saved. Restart Dayloom from the terminal after active tasks finish to apply your changes.');
+    });
+  }
+
+  function saveAccess(change: AccessChange) {
+    if (Object.keys(edits).length) return;
+    void perform(async () => {
+      const updated = await request<ConfigurationAccess>('/access', { method: 'PUT',
+        headers: { 'X-CSRF-Token': csrf }, body: JSON.stringify(change) });
+      setAccess(updated); setConfig(null); setCsrf(''); setPassword('');
+      setEdits({}); setReadiness(null); setApiReports({});
+      if (updated.password_required) {
+        setNotice('Password verification is enabled. Enter your configuration password to continue.');
+      } else {
+        const session = await request<{ csrf_token: string }>('/session', { method: 'POST', body: '{}' });
+        const saved = await request<Configuration>('');
+        setCsrf(session.csrf_token); setConfig(saved);
+        setNotice('Password verification is disabled. Configuration opens directly.');
+      }
     });
   }
 
@@ -178,31 +214,31 @@ export function ConfigurationPage() {
 
   return <div className="config-page">
     <header className="config-header"><Link to="/" className="config-brand">Dayloom<span>Local configuration</span></Link>
-      {config && <button type="button" disabled={busy} onClick={() => void perform(async () => {
+      {config && access?.password_required && <button type="button" disabled={busy} onClick={() => void perform(async () => {
         await request('/session', { method: 'DELETE', headers: { 'X-CSRF-Token': csrf } });
         setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setApiReports({});
       })}>Lock configuration</button>}
     </header>
     <main className="config-content">
       <div className="config-intro"><p className="config-eyebrow">YOUR LOCAL INSTALLATION</p><h1>Make Dayloom ready.</h1>
-        <p>Connect the services used by this installation. Saved changes take effect after restarting Dayloom.</p></div>
+        <p>Connect the services used by this installation. Saved provider changes take effect after restarting Dayloom.</p></div>
       {error && <p className="config-message config-error" role="alert">{error}</p>}
       {notice && <p className="config-message" role="status">{notice}</p>}
       {initializing ? <p role="status">Checking local management session…</p> : !config ?
-        <section className="config-card config-unlock"><h2>Unlock configuration</h2>
-          <p id="management-token-location">Open the terminal window where you started Dayloom. Find <code>Management token (valid for this process):</code> and copy the value after the colon.</p>
-          <p id="management-token-help">The token is generated at startup and is not stored in .env. If you cannot find the terminal,
-            stop Dayloom and run <code>uv run python scripts/run_product.py</code> from the project folder to print a new token.
-            Restarting invalidates the previous token. This access is separate from traveler accounts.</p>
-          <form onSubmit={unlock}><label htmlFor="management-token">Management token</label>
-            <input id="management-token" type="password" autoComplete="off" value={token} required maxLength={256}
-              aria-describedby="management-token-location management-token-help" onChange={event => setToken(event.target.value)} />
-            <button className="config-primary" type="submit" disabled={busy}>{busy ? 'Unlocking…' : 'Unlock configuration'}</button>
-          </form></section> : <>
+        <section className="config-card config-unlock"><h2>{access?.password_required ? 'Unlock configuration' : 'Open configuration'}</h2>
+          {access ? <form onSubmit={unlock}>
+            {access.password_required && <><p id="configuration-password-help">Enter this installation's configuration password. This is separate from traveler accounts.</p>
+              <label htmlFor="configuration-password">Configuration password</label>
+              <input id="configuration-password" type="password" autoComplete="current-password" value={password} required maxLength={128}
+                aria-describedby="configuration-password-help" onChange={event => setPassword(event.target.value)} /></>}
+            <button className="config-primary" type="submit" disabled={busy}>{busy ? 'Opening…' : access.password_required ? 'Unlock configuration' : 'Open configuration'}</button>
+          </form> : <p>Local configuration is unavailable. Start Dayloom at its configured local address and reload this page.</p>}</section> : <>
           <aside className="config-message" aria-label="Application status">
             <strong>{config.running_ready ? 'Application started with ready local resources.' : 'Setup is incomplete. Planning is paused.'}</strong>
             <span>{config.restart_required ? 'Saved configuration differs from the running process. Restart required.' : 'No saved provider changes are waiting for a restart.'}</span>
           </aside>
+          {access && <ConfigurationAccessSettings key={access.revision} access={access} busy={busy}
+            pendingProviderEdits={!!Object.keys(edits).length} onSave={saveAccess} />}
           <section className="config-card config-api-intro" aria-label="API connectivity checks">
             <div><h2>Check service access</h2><p>API checks send small requests to your saved services and may incur charges.
               All checks use at most 8 HTTP attempts and 60 seconds, with no automatic retries.</p>
