@@ -63,7 +63,7 @@ def test_serve_rejects_unreleased_installation_identity_before_starting_applicat
     result = launch("serve", "--require-installation", "--baseline-id", "unreleased",
                     "--startup-timeout", "1")
     assert result.returncode == 2
-    assert "Instance command failed" in result.stderr
+    assert "released baseline identity" in result.stderr
     assert "Dayloom:" not in result.stdout
 
 

@@ -14,7 +14,9 @@ def connect(settings: ProductSettings | None = None):
     return psycopg.connect(settings.database_url.get_secret_value(), row_factory=dict_row)
 
 
-def migrate(database_url: str, directory: Path | None = None) -> list[str]:
+def migrate(
+    database_url: str, directory: Path | None = None, *, require_known_migrations: bool = False,
+) -> list[str]:
     directory = directory or Path(__file__).with_name("migrations")
     applied = []
     with psycopg.connect(database_url) as connection:
@@ -24,7 +26,14 @@ def migrate(database_url: str, directory: Path | None = None) -> list[str]:
             name text PRIMARY KEY, sha256 text NOT NULL,
             applied_at timestamptz NOT NULL DEFAULT now()
         )""")
-        for path in sorted(directory.glob("*.sql")):
+        paths = sorted(directory.glob("*.sql"))
+        if require_known_migrations:
+            recorded = {row[0] for row in connection.execute(
+                "SELECT name FROM app.schema_migrations"
+            )}
+            if recorded - {path.name for path in paths}:
+                raise ValueError("Database contains migrations from a newer application")
+        for path in paths:
             content = path.read_bytes()
             digest = hashlib.sha256(content).hexdigest()
             old = connection.execute(

@@ -99,6 +99,12 @@ def main(argv=None):
             print(json.dumps(bootstrap_instance(**values)))
         return 0
     except Exception as error:
+        if command in {"serve", "check-installation"}:
+            from deploy.docker.startup import InstallationError
+
+            if isinstance(error, InstallationError):
+                print(str(error), file=sys.stderr)
+                return 2
         message = "Instance command failed (" + type(error).__name__ + ")."
         print(message + " Check private configuration.", file=sys.stderr)
         return 2

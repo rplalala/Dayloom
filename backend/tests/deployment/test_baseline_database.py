@@ -3,7 +3,11 @@
 import json
 import os
 import shutil
+import subprocess
+import sys
+import time
 from dataclasses import dataclass
+from pathlib import Path
 from uuid import uuid4
 
 import psycopg
@@ -140,6 +144,18 @@ def test_unknown_nonempty_target_is_not_overwritten(databases, tmp_path):
         assert conn.execute("SELECT to_regclass('app.users')").fetchone()[0] is None
 
 
+def test_unknown_public_function_target_is_not_modified(databases, tmp_path):
+    release = tmp_path / "baseline"
+    assert export_to(release, tmp_path).returncode == 0
+    with psycopg.connect(databases.target, autocommit=True) as conn:
+        conn.execute("CREATE FUNCTION public.keep() RETURNS integer LANGUAGE sql AS 'SELECT 7'")
+    rejected = run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL")
+    assert rejected.returncode == 2
+    with psycopg.connect(databases.target) as conn:
+        assert conn.execute("SELECT public.keep()").fetchone() == (7,)
+        assert conn.execute("SELECT to_regclass('app.users')").fetchone()[0] is None
+
+
 def test_active_planning_work_prevents_capture(databases, tmp_path):
     with psycopg.connect(databases.source, autocommit=True) as conn:
         conn.execute("UPDATE app.planning_tasks SET state='running'")
@@ -158,3 +174,133 @@ def test_corrupt_dump_is_rejected_before_target_changes(databases, tmp_path):
     assert "checksum" in result.stderr.lower()
     with psycopg.connect(databases.target) as conn:
         assert conn.execute("SELECT to_regclass('app.users')").fetchone()[0] is None
+
+
+def start_restore(release):
+    return subprocess.Popen(
+        [sys.executable, "-m", "deploy.release.baseline", "restore", str(release),
+         "--dsn-env", "BASELINE_TARGET_TEST_URL"],
+        cwd=Path(__file__).resolve().parents[3], env=os.environ.copy(),
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+    )
+
+
+def wait_for_gate(connection, process, *, application="pg_restore"):
+    deadline = time.monotonic() + 15
+    while time.monotonic() < deadline:
+        row = connection.execute(
+            "SELECT pid FROM pg_stat_activity WHERE datname=current_database() "
+            "AND wait_event='advisory' AND application_name=%s", (application,),
+        ).fetchone()
+        if row:
+            return row[0]
+        assert process.poll() is None, process.communicate()
+        time.sleep(0.05)
+    pytest.fail("Controlled initializer did not reach the external database fault gate")
+
+
+def add_restore_gate(source):
+    with psycopg.connect(source, autocommit=True) as conn:
+        conn.execute("""CREATE FUNCTION app.restore_gate(integer) RETURNS boolean AS $$
+            BEGIN
+                IF current_setting('application_name') = 'pg_restore' THEN
+                    PERFORM pg_advisory_xact_lock(252005);
+                END IF;
+                RETURN true;
+            END $$ LANGUAGE plpgsql;
+            CREATE TABLE app.restore_gate_rows (
+                id integer PRIMARY KEY CHECK (app.restore_gate(id)));
+            INSERT INTO app.restore_gate_rows VALUES (1)""")
+
+
+def test_interrupted_restore_rolls_back_and_retry_installs_once(databases, tmp_path):
+    add_restore_gate(databases.source)
+    release = tmp_path / "baseline"
+    assert export_to(release, tmp_path).returncode == 0
+    with psycopg.connect(databases.target, autocommit=True) as observer:
+        observer.execute("SELECT pg_advisory_lock(252005)")
+        process = start_restore(release)
+        try:
+            backend = wait_for_gate(observer, process)
+            observer.execute("SELECT pg_terminate_backend(%s)", (backend,))
+            stdout, stderr = process.communicate(timeout=15)
+            assert process.returncode == 2, stdout + stderr
+            assert observer.execute("SELECT to_regclass('app.users')").fetchone()[0] is None
+            assert observer.execute(
+                "SELECT to_regclass('app.deployment_baseline')"
+            ).fetchone()[0] is None
+        finally:
+            observer.execute("SELECT pg_advisory_unlock(252005)")
+            if process.poll() is None:
+                process.kill()
+                process.communicate()
+    retry = run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL")
+    assert retry.returncode == 0, retry.stderr
+    assert json.loads(retry.stdout)["status"] == "installed"
+
+
+def test_concurrent_initializers_serialize_and_preserve_later_writes(databases, tmp_path):
+    add_restore_gate(databases.source)
+    release = tmp_path / "baseline"
+    assert export_to(release, tmp_path).returncode == 0
+    with psycopg.connect(databases.target, autocommit=True) as observer:
+        observer.execute("SELECT pg_advisory_lock(252005)")
+        first = start_restore(release)
+        second = None
+        try:
+            wait_for_gate(observer, first)
+            second = start_restore(release)
+            wait_for_gate(observer, second, application="")
+            observer.execute("SELECT pg_advisory_unlock(252005)")
+            outcomes = [process.communicate(timeout=15) for process in (first, second)]
+            assert all(process.returncode == 0 for process in (first, second)), outcomes
+            assert sorted(json.loads(out[0])["status"] for out in outcomes) == [
+                "installed", "reused",
+            ]
+            observer.execute("INSERT INTO app.users VALUES ('later','later@example.test','hash')")
+            receipt = observer.execute("SELECT * FROM app.deployment_baseline").fetchall()
+            retry = run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL")
+            assert retry.returncode == 0, retry.stderr
+            assert json.loads(retry.stdout)["status"] == "reused"
+            assert observer.execute("SELECT count(*) FROM app.users").fetchone() == (2,)
+            assert observer.execute("SELECT * FROM app.deployment_baseline").fetchall() == receipt
+        finally:
+            observer.execute("SELECT pg_advisory_unlock_all()")
+            for process in (first, second):
+                if process and process.poll() is None:
+                    process.kill()
+                    process.communicate()
+
+
+def test_registration_interruption_recovers_committed_restore(databases, tmp_path):
+    with psycopg.connect(databases.source, autocommit=True) as conn:
+        conn.execute("""CREATE FUNCTION app.registration_gate() RETURNS event_trigger AS $$
+            BEGIN
+                IF current_query() LIKE '%CREATE TABLE app.deployment_baseline%' THEN
+                    PERFORM pg_advisory_xact_lock(252006);
+                END IF;
+            END $$ LANGUAGE plpgsql;
+            CREATE EVENT TRIGGER registration_gate ON ddl_command_start
+                WHEN TAG IN ('CREATE TABLE') EXECUTE FUNCTION app.registration_gate()""")
+    release = tmp_path / "baseline"
+    assert export_to(release, tmp_path).returncode == 0
+    with psycopg.connect(databases.target, autocommit=True) as observer:
+        observer.execute("SELECT pg_advisory_lock(252006)")
+        process = start_restore(release)
+        try:
+            backend = wait_for_gate(observer, process, application="")
+            assert observer.execute("SELECT count(*) FROM app.users").fetchone() == (1,)
+            assert observer.execute(
+                "SELECT to_regclass('app.deployment_baseline')"
+            ).fetchone()[0] is None
+            observer.execute("SELECT pg_terminate_backend(%s)", (backend,))
+            process.communicate(timeout=15)
+            assert process.returncode == 2
+        finally:
+            observer.execute("SELECT pg_advisory_unlock(252006)")
+            if process.poll() is None:
+                process.kill()
+                process.communicate()
+    retry = run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL")
+    assert retry.returncode == 0, retry.stderr
+    assert json.loads(retry.stdout)["status"] == "recovered"
