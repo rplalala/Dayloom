@@ -37,7 +37,8 @@ class DatabaseSettings(BaseSettings):
     @field_validator("url", mode="before")
     @classmethod
     def blank_url_uses_connection_fields(cls, value):
-        return None if value == "" else value
+        plain = value.get_secret_value() if isinstance(value, SecretStr) else value
+        return None if plain == "" else value
 
     @model_validator(mode="after")
     def validate_connection(self):

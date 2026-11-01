@@ -185,3 +185,23 @@ def test_missing_product_settings_hide_unrecognized_dotenv_secrets(monkeypatch, 
     assert sentinel not in repr(failure.value)
     assert "input_value" not in str(failure.value)
     assert "input_value" not in repr(failure.value)
+
+
+@pytest.mark.parametrize("url_source", ["dotenv", "environment"])
+def test_blank_product_url_retains_the_selected_split_settings(monkeypatch, tmp_path, url_source):
+    import os
+    from unittest.mock import patch
+    dotenv = tmp_path / "selected.env"
+    dotenv.write_text(
+        "DAYLOOM_DB_URL=\nDAYLOOM_DB_NAME=selected_blank_test\n"
+        "DAYLOOM_DB_PORT=55622\nDAYLOOM_DB_PASSWORD=synthetic-selected-password\n"
+        "PRODUCT_JWT_SECRET=synthetic-signing-secret-at-least-32-characters\n",
+        encoding="utf-8",
+    )
+    environment = {"DAYLOOM_DB_URL": ""} if url_source == "environment" else {}
+    with patch.dict(os.environ, environment, clear=True):
+        settings = ProductSettings(_env_file=dotenv)
+        connection = conninfo_to_dict(settings.database_url.get_secret_value())
+    assert connection["dbname"] == "selected_blank_test"
+    assert connection["port"] == "55622"
+    assert connection["password"] == "synthetic-selected-password"

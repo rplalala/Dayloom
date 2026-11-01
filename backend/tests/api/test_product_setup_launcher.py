@@ -164,3 +164,35 @@ def test_local_startup_initializes_signing_key_once_and_preserves_existing(
     assert keys[0] == keys[1]
     if existing:
         assert keys[0] == existing
+
+
+def test_launcher_keeps_split_database_and_signing_settings_pinned(local_launcher, monkeypatch):
+    import uvicorn
+    from psycopg.conninfo import conninfo_to_dict
+
+    from backend.app.product.settings import ProductSettings
+
+    (local_launcher / ".env").write_text(
+        "DAYLOOM_DB_NAME=launcher_test\nDAYLOOM_DB_PASSWORD=synthetic-database-password\n",
+        encoding="utf-8",
+    )
+
+    class Server:
+        def __init__(self, config):
+            self.manager = config.app.state.local_configuration
+
+        async def serve(self):
+            before = ProductSettings(_env_file=None)
+            connection = conninfo_to_dict(before.database_url.get_secret_value())
+            assert connection["dbname"] == "launcher_test"
+            self.manager.save(self.manager.view()["revision"], {
+                "DAYLOOM_DB_URL": "postgresql://localhost/next_test",
+                "PRODUCT_JWT_SECRET": "synthetic-replacement-signing-key-at-least-32",
+            })
+            after = ProductSettings(_env_file=None)
+            assert after.database_url == before.database_url
+            assert after.jwt_secret == before.jwt_secret
+
+    monkeypatch.setattr(uvicorn, "Server", Server)
+    with patch.dict(os.environ, {}, clear=True):
+        run_product.main([])

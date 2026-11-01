@@ -28,22 +28,34 @@ class ProductSettings(ProductOptions, BaseSettings):
     def settings_customise_sources(
         cls, settings_cls, init_settings, env_settings, dotenv_settings, file_secret_settings
     ):
+        sources = (init_settings, env_settings, dotenv_settings, file_secret_settings)
+
         def shared_database():
-            if any(
-                {"DAYLOOM_DB_URL", "database_url"}.intersection(source())
-                for source in (init_settings, env_settings, dotenv_settings, file_secret_settings)
-            ):
-                return {}
+            # Resolve the highest-priority URL once. An explicit blank selects the
+            # split fields from this same environment/dotenv/YAML, not a lower URL.
+            explicit_blank = False
+            for source in sources:
+                values = source()
+                supplied = next((key for key in ("DAYLOOM_DB_URL", "database_url")
+                                 if key in values), None)
+                if supplied is not None:
+                    value = values[supplied]
+                    plain = value.get_secret_value() if isinstance(value, SecretStr) else value
+                    if plain:
+                        return {"DAYLOOM_DB_URL": value}
+                    explicit_blank = True
+                    break
+
             class ProductDatabaseSettings(DatabaseSettings):
                 model_config = SettingsConfigDict(yaml_file=settings_cls.model_config["yaml_file"])
 
             return {"DAYLOOM_DB_URL": ProductDatabaseSettings(
-                _env_file=dotenv_settings.env_file
+                _env_file=dotenv_settings.env_file,
+                **({"url": None} if explicit_blank else {}),
             ).connection_string}
 
         return (
-            init_settings, env_settings, dotenv_settings, file_secret_settings,
-            shared_database, DeploymentYamlSettingsSource(settings_cls),
+            shared_database, *sources, DeploymentYamlSettingsSource(settings_cls),
         )
 
     @field_validator("database_url")
