@@ -33,5 +33,14 @@ it('renders a read-only guest example with local photos and no media service req
   expect(within(screen.getByRole('dialog')).getByRole('link', { name: 'License' })).toHaveAttribute('href', expect.stringContaining('creativecommons.org'));
   expect(screen.queryByRole('button', { name: 'Refresh photo' })).not.toBeInTheDocument();
   expect(screen.queryByText(/unavailable/i)).not.toBeInTheDocument();
+  await userEvent.click(screen.getByRole('button', { name: 'Close dialog' }));
+  await userEvent.click(screen.getByRole('button', { name: "View Muriel's Espresso Bar" }));
+  const nearbyDialog = within(screen.getByRole('dialog'));
+  expect(nearbyDialog.getByRole('img', { name: "Muriel's Espresso Bar · place photograph" })).toHaveAttribute('src', expect.stringMatching(/^\/dayloom\/examples\/muriels-espresso-[a-f0-9]+\.jpg$/));
+  expect(nearbyDialog.getByText('Google Maps')).toBeVisible();
+  expect(nearbyDialog.getByRole('link', { name: 'Tuba Polat' })).toHaveAttribute('href', 'https://maps.google.com/maps/contrib/108697199764947603483');
+  expect(nearbyDialog.getByRole('link', { name: 'Photo source' })).toHaveAttribute('href', expect.stringContaining('https://www.google.com/maps/place/'));
+  expect(nearbyDialog.queryByRole('link', { name: 'License' })).not.toBeInTheDocument();
+  expect(mediaRequests).toEqual([]);
   showModal.mockRestore();
 });

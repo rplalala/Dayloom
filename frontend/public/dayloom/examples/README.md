@@ -1,8 +1,8 @@
 # Bundled example photographs
 
-These photographs are served locally from `/dayloom/examples/`. No image-service API is used to display examples. Each photograph is a Wikimedia Commons thumbnail; the source photograph is otherwise unmodified. Browser styling crops the displayed frame. Each Nearby reference has its own bundled photograph or clearly labeled illustration.
+These photographs are served locally from `/dayloom/examples/`. No image-service API is used to display examples. Each Nearby reference has its own venue photograph. Browser styling crops the displayed frame; the downloaded images are otherwise unmodified.
 
-The photographs retain the individual licenses below; the project source-code license does not replace them. Preserve this file and the per-photo credits when redistributing the assets.
+The Commons photographs retain the individual licenses below; the project source-code license does not replace them. Preserve this file and the per-photo credits when redistributing those assets.
 
 | Local file | Author | Source | License |
 | --- | --- | --- | --- |
@@ -21,11 +21,13 @@ The photographs retain the individual licenses below; the project source-code li
 | `royal-armouries-11ec87300832.jpg` | Michel wal | [Source](https://commons.wikimedia.org/wiki/File:Tower_of_london_812.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
 | `jubilee-gardens-6be91a19a5cd.jpg` | KTo288 | [Source](https://commons.wikimedia.org/wiki/File:Jubilee_Gardens.JPG) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
 
-## Illustrations
+## Google Maps photographs for local testing
 
-Four original SVG illustrations depict restaurant, cafe and chocolate-shop themes. They are labeled as illustrations and do not claim to show the actual venue. They are included under the [project MIT license](https://github.com/rplalala/Dayloom/blob/main/LICENSE).
+Four dining photographs were retrieved once through Google Places for the local test environment. Details displays Google Maps attribution, the supplied author's profile and the source photo link. These photographs retain their original rights; neither the project MIT license nor the Commons licenses above apply to them. No open-content license is asserted for these files.
 
-- `munich-brauhaus-bd4338fbc6af.svg`: Munich Brauhaus Sydney.
-- `gallery-cafe-e53cf866ea04.svg`: The Gallery Cafe.
-- `koko-black-4f1eddf918b1.svg`: Koko Black - Lower Ground QVB.
-- `muriels-espresso-3941ffd16ae5.svg`: Muriel's Espresso Bar.
+| Local file | Venue | Supplied author | Source |
+| --- | --- | --- | --- |
+| `munich-brauhaus-6a458de51087.jpg` | Munich Brauhaus Sydney | [Munich Brauhaus Sydney](https://maps.google.com/maps/contrib/117708106108174083293) | [Google Maps photo](https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICltojVOA!2e10!4m2!3m1!1s0x6b12ae42c4b89bd9:0xd653bef0fb4e8444) |
+| `gallery-cafe-14b9859277aa.jpg` | The Gallery Café | [The Gallery Café](https://maps.google.com/maps/contrib/114902300824976651265) | [Google Maps photo](https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhA1N6uEkyzGEBWnRRTan8wj!2e10!4m2!3m1!1s0x6b12af32a0c82301:0x32260d1aaf705197) |
+| `koko-black-ae9e7b9f0e93.jpg` | Koko Black - Lower Ground QVB | [Koko Black - Lower Ground QVB](https://maps.google.com/maps/contrib/111729722716366907384) | [Google Maps photo](https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDFk5jJnQE!2e10!4m2!3m1!1s0x6b12afdc32a65327:0xaa947640d2069304) |
+| `muriels-espresso-35ac68d4e0b2.jpg` | Muriel's Espresso Bar | [Tuba Polat](https://maps.google.com/maps/contrib/108697199764947603483) | [Google Maps photo](https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICN2IbC_AE!2e10!4m2!3m1!1s0x487605de203c0cf7:0xbded5a27c5139681) |

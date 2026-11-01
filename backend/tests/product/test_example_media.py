@@ -13,6 +13,24 @@ from backend.app.product.media import get_media_providers
 ROOT = Path(__file__).resolve().parents[3]
 
 
+def test_nearby_venue_photographs_are_local_with_google_source_credits():
+    with TestClient(create_app()) as client:
+        for example_id, slots in {
+            "sydney-example": ("nearby:0", "nearby:1", "nearby:2"),
+            "london-example": ("nearby:2",),
+        }.items():
+            items = client.get(f"/api/examples/{example_id}/media").json()["items"]
+            for slot in slots:
+                media = items[slot]
+                assert media["kind"] == "verified_place"
+                assert media["image_url"].startswith("/dayloom/examples/")
+                assert media["image_url"].endswith(".jpg")
+                assert media["provider"] == "Google Maps"
+                assert media["authors"]
+                assert media["source_url"].startswith("https://www.google.com/maps/")
+                assert media["license_url"] is None
+
+
 def test_example_media_never_constructs_a_live_provider():
     app = create_app()
 
@@ -29,7 +47,9 @@ def test_example_media_never_constructs_a_live_provider():
             for media in items.values():
                 assert media["status"] == "available"
                 assert media["image_url"].startswith("/dayloom/examples/")
-                assert media["authors"] and media["license_url"]
+                assert media["authors"] and media["source_url"]
+                if media["provider"] != "Google Maps":
+                    assert media["license_url"]
 
 
 def test_bundled_photographs_match_the_published_asset_manifest():

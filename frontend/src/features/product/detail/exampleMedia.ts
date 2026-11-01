@@ -3,7 +3,7 @@ import type { DisplayMedia } from './media';
 
 type Example = { cover: string; slots: Record<string, string | null> };
 const examples: Record<string, Example> = catalog.examples;
-const assets: Record<string, { kind?: string; image_url: string; provider: string; authors: { name: string; url: string }[]; source_url: string; license_url: string }> = catalog.assets;
+const assets: Record<string, { kind?: string; image_url: string; provider: string; authors: { name: string; url: string | null }[]; source_url: string; license_url: string | null }> = catalog.assets;
 
 function photo(asset?: string | null): DisplayMedia {
   const entry = asset ? assets[asset] : undefined;

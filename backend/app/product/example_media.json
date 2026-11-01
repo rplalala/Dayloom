@@ -211,67 +211,67 @@
       "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Jubilee_Gardens.JPG/960px-Jubilee_Gardens.JPG?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20070730191449"
     },
     "munich-brauhaus": {
-      "image_url": "/dayloom/examples/munich-brauhaus-bd4338fbc6af.svg",
-      "kind": "illustration",
-      "provider": "Dayloom",
+      "image_url": "/dayloom/examples/munich-brauhaus-6a458de51087.jpg",
+      "provider": "Google Maps",
       "authors": [
         {
-          "name": "Dayloom",
-          "url": "/dayloom/examples/README.md#illustrations"
+          "name": "Munich Brauhaus Sydney",
+          "url": "https://maps.google.com/maps/contrib/117708106108174083293"
         }
       ],
-      "source_url": "/dayloom/examples/README.md#illustrations",
-      "license_url": "https://github.com/rplalala/Dayloom/blob/main/LICENSE",
-      "sha256": "bd4338fbc6af194880084c81c35bdacadcce5442c5cc6a8eaf654f9a2edee55e",
-      "bytes": 1238,
+      "kind": "verified_place",
+      "source_url": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICltojVOA!2e10!4m2!3m1!1s0x6b12ae42c4b89bd9:0xd653bef0fb4e8444",
+      "sha256": "6a458de51087de3f049334d18893b6ef3104d073a2a3d6633b6b57c10769c2d8",
+      "bytes": 119088,
+      "license_url": null,
       "download_url": null
     },
     "gallery-cafe": {
-      "image_url": "/dayloom/examples/gallery-cafe-e53cf866ea04.svg",
-      "kind": "illustration",
-      "provider": "Dayloom",
+      "image_url": "/dayloom/examples/gallery-cafe-14b9859277aa.jpg",
+      "provider": "Google Maps",
       "authors": [
         {
-          "name": "Dayloom",
-          "url": "/dayloom/examples/README.md#illustrations"
+          "name": "The Gallery Café",
+          "url": "https://maps.google.com/maps/contrib/114902300824976651265"
         }
       ],
-      "source_url": "/dayloom/examples/README.md#illustrations",
-      "license_url": "https://github.com/rplalala/Dayloom/blob/main/LICENSE",
-      "sha256": "e53cf866ea049a6bcb808556d6d7cfd38c13e5a5e71ff52df366e78db8fdf386",
-      "bytes": 1212,
+      "kind": "verified_place",
+      "source_url": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhA1N6uEkyzGEBWnRRTan8wj!2e10!4m2!3m1!1s0x6b12af32a0c82301:0x32260d1aaf705197",
+      "sha256": "14b9859277aa467f825202987c7d9e57a79530c915cb9fecbd37ca5d9abf0ebd",
+      "bytes": 189449,
+      "license_url": null,
       "download_url": null
     },
     "koko-black": {
-      "image_url": "/dayloom/examples/koko-black-4f1eddf918b1.svg",
-      "kind": "illustration",
-      "provider": "Dayloom",
+      "image_url": "/dayloom/examples/koko-black-ae9e7b9f0e93.jpg",
+      "provider": "Google Maps",
       "authors": [
         {
-          "name": "Dayloom",
-          "url": "/dayloom/examples/README.md#illustrations"
+          "name": "Koko Black - Lower Ground QVB",
+          "url": "https://maps.google.com/maps/contrib/111729722716366907384"
         }
       ],
-      "source_url": "/dayloom/examples/README.md#illustrations",
-      "license_url": "https://github.com/rplalala/Dayloom/blob/main/LICENSE",
-      "sha256": "4f1eddf918b1b2fdee2d55c86ddb02b2ef87fb51364e03fd8e5aca074ac24562",
-      "bytes": 1184,
+      "kind": "verified_place",
+      "source_url": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDFk5jJnQE!2e10!4m2!3m1!1s0x6b12afdc32a65327:0xaa947640d2069304",
+      "sha256": "ae9e7b9f0e939a61a71e03d0a8a37d814698b6790dad1d3bfd8ee6711360e9ce",
+      "bytes": 133944,
+      "license_url": null,
       "download_url": null
     },
     "muriels-espresso": {
-      "image_url": "/dayloom/examples/muriels-espresso-3941ffd16ae5.svg",
-      "kind": "illustration",
-      "provider": "Dayloom",
+      "image_url": "/dayloom/examples/muriels-espresso-35ac68d4e0b2.jpg",
+      "provider": "Google Maps",
       "authors": [
         {
-          "name": "Dayloom",
-          "url": "/dayloom/examples/README.md#illustrations"
+          "name": "Tuba Polat",
+          "url": "https://maps.google.com/maps/contrib/108697199764947603483"
         }
       ],
-      "source_url": "/dayloom/examples/README.md#illustrations",
-      "license_url": "https://github.com/rplalala/Dayloom/blob/main/LICENSE",
-      "sha256": "3941ffd16ae5cb80f8cfa95e9ad45a7fcc13076bc8e4e0f7296189568acbb1f4",
-      "bytes": 1218,
+      "kind": "verified_place",
+      "source_url": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICN2IbC_AE!2e10!4m2!3m1!1s0x487605de203c0cf7:0xbded5a27c5139681",
+      "sha256": "35ac68d4e0b2a6a288116a8aab5df700628324f8eebc79dbcff78da7bc7a2d43",
+      "bytes": 213391,
+      "license_url": null,
       "download_url": null
     }
   },
