@@ -160,6 +160,7 @@
 .dayloom .configuration-shortcut:hover { background:var(--accent-faint); border-color:var(--accent); transform:translateY(-2px); }
 @media(max-width:800px) {
  .dayloom .configuration-shortcut { right:max(16px,env(safe-area-inset-right)); bottom:max(20px,env(safe-area-inset-bottom)); }
+ .dayloom:has(.auth-scene) .configuration-shortcut { position:static; margin:0 16px 20px auto; }
 }
 @media(prefers-reduced-motion:reduce) {
  .dayloom .configuration-shortcut { transition:none; }
