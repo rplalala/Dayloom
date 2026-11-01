@@ -120,9 +120,13 @@ it('keeps a newer account when an older deletion completes late', async () => {
   fireEvent.click(screen.getByRole('button', { name: 'Delete my account' }));
   fireEvent.click(screen.getByRole('button', { name: 'Switch account' }));
   await screen.findByDisplayValue('Bob');
+  const bobCopy = { owner: 'bob', generation: '', kind: 'example', source: 'kyoto', key: 'bob-copy', uncertain: true };
+  const copy = JSON.stringify([bobCopy]);
+  sessionStorage.setItem('dayloom.copy.intent.v1', JSON.stringify([bobCopy, { ...bobCopy, owner: 'alice', key: 'alice-copy' }]));
   await act(async () => complete(new Response(null, { status: 204 })));
   fireEvent(window, new Event('focus'));
   await waitFor(() => expect(screen.getByLabelText('Display name')).toHaveValue('Bob'));
   expect(screen.queryByText('Your account and its travel data have been deleted.')).not.toBeInTheDocument();
   expect(JSON.parse(sessionStorage.getItem('dayloom.editor.v1')!).owner).toBe('bob');
+  expect(sessionStorage.getItem('dayloom.copy.intent.v1')).toBe(copy);
 });

@@ -10,6 +10,7 @@ import {
 import { createBrief, restoreBrief, type Brief } from "./editor";
 import { briefFromProfile } from "./profile";
 import { invalidatePhotos } from './detail/photoSession';
+import { forgetOwnerCopyIntents } from './copyIntents';
 export type { Brief } from "./editor";
 
 export type Account = {
@@ -65,7 +66,7 @@ function invalidate(owner: string | null) {
   invalidatePhotos({ owner });
   try {
     localStorage.setItem(invalidationPrefix + owner, crypto.randomUUID());
-    sessionStorage.removeItem('dayloom.copy.intent.v1');
+    forgetOwnerCopyIntents(owner);
     const intent = JSON.parse(sessionStorage.getItem('dayloom.task.intent.v1') || 'null');
     if (intent?.owner === owner) sessionStorage.removeItem('dayloom.task.intent.v1');
     const importIntent = JSON.parse(sessionStorage.getItem('dayloom.import.intent.v1') || 'null');

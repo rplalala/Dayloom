@@ -184,9 +184,8 @@ def delete_account(body: AccountDeletion, response: Response, user: CurrentUser)
         ).fetchone():
             raise HTTPException(409, {"code": "account_tasks_active"})
         connection.execute("DELETE FROM app.users WHERE id=%s", (user["id"],))
-    response.delete_cookie(
-        COOKIE, path="/", httponly=True, samesite="lax", secure=ProductSettings().secure_cookie,
-    )
+    # The removed user invalidates its tokens. Do not expire a newer login's cookie
+    # if this response reaches the browser after an account switch.
     response.headers["Cache-Control"] = "no-store"
 
 

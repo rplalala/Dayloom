@@ -20,6 +20,8 @@ def test_confirmed_self_deletion_revokes_current_and_existing_sessions(client):
     )
     assert response.status_code == 204, response.text
     assert response.headers["cache-control"] == "no-store"
+    # A delayed response must not expire a cookie issued by a newer account login.
+    assert "set-cookie" not in response.headers
     assert client.get("/api/auth/current").status_code == 401
     client.cookies.clear()
     assert (
