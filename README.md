@@ -101,7 +101,8 @@ uv run python scripts/run_product.py
 Click the settings icon in the bottom-right corner of Product, or visit
 [local configuration](http://localhost:5173/config). It opens directly by default;
 optional password verification can be enabled on the page. Configure the existing Foundry,
-OpenAI and Google Maps services, save, and restart Dayloom. Missing local resources
+OpenAI and Google Maps services, save, and restart Dayloom. Foundry endpoint/deployment
+are saved in `product.yaml`; API credentials are saved in `.env`. Missing local resources
 are shown with preparation guidance; an incomplete installation starts in setup mode.
 Optional Check API buttons verify saved service access with small, potentially
 billed requests. Startup and Check local readiness do not call provider APIs.

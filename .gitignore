@@ -49,5 +49,6 @@ Thumbs.db
 
 # Local planning scratch; durable contracts and evidence summaries belong in docs/
 /.scratch/
+/.product.yaml.config-*
 
 .archify/

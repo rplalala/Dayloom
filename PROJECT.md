@@ -80,7 +80,8 @@ for storage retention, overrides and isolated test settings.
 The local Product launcher also serves `/config` with independent loopback-only
 management access. It opens directly by default and offers optional persisted
 password verification, with a bottom-right settings shortcut in Product. It edits
-existing provider settings in `.env`, shows local resource readiness and offers
+Foundry endpoint/deployment in `product.yaml` and provider credentials in `.env`,
+shows local resource readiness and offers
 explicit bounded API capability checks. Saved provider changes require restart;
 password-access changes apply immediately. Incomplete local installs
 can open the console while business APIs remain paused. Database/data preparation,

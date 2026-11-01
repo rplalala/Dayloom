@@ -97,3 +97,37 @@ def test_launcher_pins_case_variants_without_shadowing_external_settings(
     # A plain dict reproduces Unix casing semantics on Windows without changing real credentials.
     with patch.object(os, "environ", {"OPENAI_API_KEY": "synthetic-external"}):
         run_product.main([])
+
+
+def test_launcher_migrates_legacy_foundry_values_and_pins_yaml_until_restart(
+    local_launcher, monkeypatch,
+):
+    import uvicorn
+    import yaml
+
+    dotenv = local_launcher / ".env"
+    dotenv.write_text(
+        "AZURE_OPENAI_ENDPOINT=https://new.services.ai.azure.com/openai/v1\n"
+        "AZURE_OPENAI_DEPLOYMENT=saved-deployment\nAZURE_OPENAI_API_KEY=synthetic-private\n",
+        encoding="utf-8",
+    )
+
+    class Server:
+        def __init__(self, config):
+            self.manager = config.app.state.local_configuration
+
+        async def serve(self):
+            assert os.environ["AZURE_OPENAI_DEPLOYMENT"] == "saved-deployment"
+            assert self.manager.initial["AZURE_OPENAI_DEPLOYMENT"] == "saved-deployment"
+            assert "AZURE_OPENAI_DEPLOYMENT" not in dotenv.read_text("utf-8")
+            self.manager.save(self.manager.view()["revision"], {
+                "AZURE_OPENAI_DEPLOYMENT": "next-deployment",
+            })
+            assert yaml.safe_load((local_launcher / "product.yaml").read_text("utf-8"))[
+                "foundry"
+            ]["deployment"] == "next-deployment"
+            assert os.environ["AZURE_OPENAI_DEPLOYMENT"] == "saved-deployment"
+
+    monkeypatch.setattr(uvicorn, "Server", Server)
+    with patch.dict(os.environ, {}, clear=True):
+        run_product.main([])

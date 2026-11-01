@@ -11,8 +11,8 @@ type ApiResult = { id: string; service: Service; status: string; message: string
 type ApiReport = { revision: string; stale: boolean; service: Service; checked_at: string; request_count: number; results: ApiResult[] };
 const sections: { service: Exclude<Service, 'all'>; title: string; description: string; fields: string[][] }[] = [
   { service: 'foundry', title: 'Azure Foundry', description: 'Connect the model deployment used by this installation.', fields: [
-    ['AZURE_OPENAI_ENDPOINT', 'Foundry endpoint', 'HTTPS endpoint ending in /openai/v1.'],
-    ['AZURE_OPENAI_DEPLOYMENT', 'Deployment', 'Use the deployment supported by the current runtime profile.'],
+    ['AZURE_OPENAI_ENDPOINT', 'Foundry endpoint', 'Saved in product.yaml → foundry.endpoint. Use an HTTPS endpoint ending in /openai/v1.'],
+    ['AZURE_OPENAI_DEPLOYMENT', 'Deployment', 'Saved in product.yaml → foundry.deployment. Use the deployment supported by the current runtime profile.'],
     ['AZURE_OPENAI_API_KEY', 'Foundry API key', 'Used for itinerary planning, web search and supporting model calls.'],
   ] },
   { service: 'openai', title: 'OpenAI', description: 'Connect the existing retrieval embedding service.', fields: [
@@ -281,7 +281,7 @@ export function ConfigurationPage() {
               <button type="button" disabled={busy} onClick={() => void perform(async () => {
                 setConfig(await request<Configuration>('')); setEdits({}); setReadiness(null); setApiReports({});
               })}>Reload saved configuration</button>
-              <span>Keys are stored locally and are never displayed after saving.</span>
+              <span>Endpoint and deployment are saved in product.yaml. Keys are saved in .env and are never displayed after saving.</span>
             </div>
           </form>
           <section className="config-card config-resources"><div className="config-resource-heading"><div><h2>Local resources</h2>

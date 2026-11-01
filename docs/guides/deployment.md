@@ -215,6 +215,8 @@ Click the settings icon in the bottom-right corner of Product, or visit
 [local configuration](http://localhost:5173/config). It opens directly by default.
 To restrict access, enable Require a password to open configuration and set/confirm
 a password. Existing password protection must be unlocked before editing settings.
+The page saves Foundry endpoint/deployment in `product.yaml` and API credentials in
+`.env`. Saved provider changes take effect after restarting Dayloom.
 
 | Configuration card | Existing service use |
 | --- | --- |

@@ -17,6 +17,12 @@ from dotenv.parser import parse_stream
 from dotenv.variables import parse_variables
 from pwdlib import PasswordHash
 
+from backend.app.product.configuration_files import (
+    FOUNDRY_FIELDS,
+    replace_configuration_files,
+    retire_foundry_bindings,
+    update_foundry,
+)
 from backend.app.product.configuration_validation import supported_foundry_endpoint
 from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader
 
@@ -65,7 +71,7 @@ class ConfigurationError(Exception):
 
 
 def _revision(text, values):
-    """Cover dotenv edits and effective deployment defaults in one opaque version."""
+    """Cover both saved files and effective values in one opaque version."""
     return hashlib.sha256(json.dumps([text, values], sort_keys=True).encode()).hexdigest()
 
 
@@ -79,6 +85,7 @@ class LocalConfiguration:
         self.sessions = {}
         self.attempts = deque(maxlen=10)
         self.lock = threading.Lock()
+        self.migrate_foundry_overrides()
         self.initial = self.snapshot()[1]
         self.running_ready = True
         self.resource_probe = None
@@ -106,28 +113,53 @@ class LocalConfiguration:
             )
         return text, resolved
 
+    def read_deployment(self):
+        path = self.root / "product.yaml"
+        if path.is_symlink():
+            raise ConfigurationError("configuration_symlink_rejected")
+        text = path.read_text(encoding="utf-8") if path.exists() else ""
+        data = yaml.load(text, Loader=DeploymentYamlLoader)
+        options = DeploymentOptions.model_validate({} if data is None else data)
+        return text, options
+
+    def migrate_foundry_overrides(self):
+        """Preserve the last saved deployment before retiring dotenv overrides."""
+        text, _ = self.read()
+        if not any(item.key and item.key.upper() in FOUNDRY_FIELDS
+                   for item in parse_stream(StringIO(text))):
+            return
+        with self.lock, configuration_file_lock(self.root / ".env.config.lock"):
+            text, values = self.read()
+            changes = {key.upper(): value for key, value in values.items()
+                       if key.upper() in FOUNDRY_FIELDS and value is not None}
+            deployment_text, _ = self.read_deployment()
+            updated = update_foundry(deployment_text, changes)
+            DeploymentOptions.model_validate(yaml.load(updated, Loader=DeploymentYamlLoader) or {})
+            files = {}
+            if updated != deployment_text:
+                files[self.root / "product.yaml"] = updated
+            retained = retire_foundry_bindings(text, self.environment)
+            if retained != text:
+                files[self.root / ".env"] = retained
+            replace_configuration_files(files)
+
     def snapshot(self):
         text, local = self.read()
         # Settings names are case-insensitive; dotenv variable expansion above is not.
         local = {key.upper(): value for key, value in local.items()}
-        path = self.root / "product.yaml"
-        data = (
-            yaml.load(path.read_text(encoding="utf-8"), Loader=DeploymentYamlLoader)
-            if path.exists()
-            else {}
-        )
-        options = DeploymentOptions.model_validate({} if data is None else data)
+        deployment_text, options = self.read_deployment()
         defaults = {}
         if options.foundry:
             defaults = {
-                "AZURE_OPENAI_ENDPOINT": str(options.foundry.endpoint),
-                "AZURE_OPENAI_DEPLOYMENT": options.foundry.deployment,
+                "AZURE_OPENAI_ENDPOINT": str(options.foundry.endpoint or ""),
+                "AZURE_OPENAI_DEPLOYMENT": options.foundry.deployment or "",
             }
         values = {
             key: next(
                 (
                     source[key]
-                    for source in (self._environment_settings, local, defaults)
+                    for source in (self._environment_settings,
+                                   {} if key in FOUNDRY_FIELDS else local, defaults)
                     if source.get(key) is not None
                 ),
                 "",
@@ -138,8 +170,8 @@ class LocalConfiguration:
             for key in ("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"):
                 if source.get(key) is not None:
                     values["PRODUCT_UNSPLASH_ACCESS_KEY"] = source[key] or ""
-                    return text, values
-        return text, values
+                    return [text, deployment_text], values
+        return [text, deployment_text], values
 
     def view(self):
         text, values = self.snapshot()
@@ -169,11 +201,13 @@ class LocalConfiguration:
         return values
 
     def validate(self, changes):
-        fields = self.view()["fields"]
         for key, value in changes.items():
             if key not in FIELDS:
                 raise ConfigurationError("unsupported_setting")
-            if fields[key]["locked"]:
+            if self._environment_settings.get(key) is not None or (
+                key == "PRODUCT_UNSPLASH_ACCESS_KEY"
+                and self._environment_settings.get("UNSPLASH_API_KEY") is not None
+            ):
                 raise ConfigurationError("setting_managed_by_environment", 409)
             if (
                 len(value) > 4096
@@ -197,15 +231,20 @@ class LocalConfiguration:
     def save(self, revision, changes):
         with self.lock, configuration_file_lock(self.root / ".env.config.lock"):
             self.validate(changes)
-            if revision != self.view()["revision"]:
+            texts, values = self.snapshot()
+            if revision != _revision(texts, values):
                 raise ConfigurationError("configuration_changed", 409)
-            text, _ = self.read()
-            replacements = dict(changes)
+            text, deployment_text = texts
+            replacements = {
+                key: value for key, value in changes.items() if key not in FOUNDRY_FIELDS
+            }
             if "PRODUCT_UNSPLASH_ACCESS_KEY" in changes:
                 replacements["UNSPLASH_API_KEY"] = changes["PRODUCT_UNSPLASH_ACCESS_KEY"]
             pieces, seen = [], set()
-            for item in parse_stream(StringIO(text)):
+            for item in parse_stream(StringIO(retire_foundry_bindings(text, self.environment))):
                 key = item.key.upper() if item.key is not None else None
+                if key in FOUNDRY_FIELDS:
+                    continue
                 if key not in replacements:
                     pieces.append(item.original.string)
                     continue
@@ -221,24 +260,16 @@ class LocalConfiguration:
                     retained += "\n"
                 quoted = value.replace("\\", "\\\\").replace("'", "\\'")
                 retained += f"{key}='{quoted}'\n"
-            temporary = None
-            try:
-                with tempfile.NamedTemporaryFile(
-                    mode="w",
-                    encoding="utf-8",
-                    newline="\n",
-                    dir=self.root,
-                    prefix=".env.",
-                    delete=False,
-                ) as stream:
-                    temporary = Path(stream.name)
-                    stream.write(retained)
-                    stream.flush()
-                    os.fsync(stream.fileno())
-                os.replace(temporary, self.root / ".env")
-            finally:
-                if temporary is not None:
-                    temporary.unlink(missing_ok=True)
+            updated_yaml = update_foundry(deployment_text, changes)
+            DeploymentOptions.model_validate(
+                yaml.load(updated_yaml, Loader=DeploymentYamlLoader) or {}
+            )
+            files = {}
+            if updated_yaml != deployment_text:
+                files[self.root / "product.yaml"] = updated_yaml
+            if retained != text:
+                files[self.root / ".env"] = retained
+            replace_configuration_files(files)
             return self.view()
 
     def readiness(self):

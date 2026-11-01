@@ -32,8 +32,8 @@ class DatabaseOptions(BaseModel):
 class FoundryOptions(BaseModel):
     model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
 
-    endpoint: AnyHttpUrl
-    deployment: str = Field(min_length=1)
+    endpoint: AnyHttpUrl | None = None
+    deployment: str | None = Field(default=None, min_length=1)
 
 
 class DeploymentOptions(ProductOptions):
@@ -69,7 +69,7 @@ class DeploymentYamlSettingsSource(YamlConfigSettingsSource):
         options = DeploymentOptions.model_validate({} if data is None else data)
         if self.section:
             section = getattr(options, self.section)
-            values = {} if section is None else section.model_dump(mode="json")
+            values = {} if section is None else section.model_dump(mode="json", exclude_none=True)
         else:
             values = options.model_dump(exclude={"database", "foundry"}, exclude_unset=True)
         return {self.aliases.get(key, key): value for key, value in values.items()}

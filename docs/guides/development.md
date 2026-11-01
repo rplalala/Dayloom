@@ -196,8 +196,12 @@ not add model compatibility. Existing process environment overrides are shown as
 locked fields. Saved keys are not returned to the browser. A blank replacement
 input keeps the saved key; use its explicit Clear action to remove it.
 
-Save writes the repository's ignored `.env` atomically, preserves unrelated settings,
-and rejects stale revisions. Reload saved configuration after an edit conflict.
+Save writes Foundry endpoint/deployment to `product.yaml` and credentials to the
+repository's ignored `.env`, preserving unrelated settings. Local startup migrates
+existing `.env` endpoint/deployment overrides to YAML and removes the old bindings;
+see the [configuration contract](../0007-application-operations.md#local-configuration-console)
+for migration, file replacement and conflict handling. Reload saved configuration
+after an edit conflict.
 Provider settings, including initially missing values, remain pinned in the running
 Product process. Finish active tasks, stop the server and rerun the same command
 after saving. Starting another CLI process reads the saved configuration immediately.
