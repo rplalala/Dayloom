@@ -323,6 +323,10 @@ class LocalConfiguration:
         return {"password_required": state["password_hash"] is not None,
                 "revision": state["revision"]}
 
+    def verify_access_password(self, password):
+        with self.lock:
+            self._check_password(self._password_state(), password)
+
     def _check_password(self, state, password):
         if state["password_hash"] is None:
             return
@@ -369,11 +373,12 @@ class LocalConfiguration:
             self.attempts.clear()
             return self.access_view()
 
-    def unlock(self, password=""):
+    def unlock(self, password="", *, previous_session=None):
         now = monotonic()
         with self.lock:
             state = self._password_state()
             self._check_password(state, password)
+            self.sessions.pop(previous_session or "", None)
             self.sessions = {key: value for key, value in self.sessions.items() if value[0] > now}
             if len(self.sessions) >= 8:
                 raise ConfigurationError("too_many_sessions", 429)
@@ -384,9 +389,14 @@ class LocalConfiguration:
     def authorize(self, session, csrf=None, *, write=False):
         with self.lock:
             value = self.sessions.get(session or "")
+            state = self._password_state()
             if (value is None or value[0] <= monotonic()
-                    or value[2] != self._password_state()["revision"]):
+                    or value[2] != state["revision"]):
                 raise ConfigurationError("configuration_locked", 401)
-            if write and not secrets.compare_digest((csrf or "").encode(), value[1].encode()):
-                raise ConfigurationError("csrf_rejected", 403)
+            if (write or state["password_hash"] is not None) and not secrets.compare_digest(
+                (csrf or "").encode(), value[1].encode(),
+            ):
+                raise ConfigurationError(
+                    "csrf_rejected" if write else "configuration_locked", 403 if write else 401,
+                )
             return value[1]

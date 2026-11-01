@@ -139,6 +139,11 @@ class SaveRequest(BaseModel):
     changes: dict[str, str] = Field(max_length=6)
 
 
+class VerifyAccessRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
+    current_password: SecretStr = Field(max_length=128)
+
+
 class ApiCheckRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
     revision: str = Field(min_length=64, max_length=64)
@@ -155,9 +160,11 @@ def configuration_operation(operation):
 
 
 @router.post("/session")
-def unlock(body: UnlockRequest, response: Response, manager: Management):
+def unlock(body: UnlockRequest, request: Request, response: Response, manager: Management):
     try:
-        session, csrf = manager.unlock(body.password.get_secret_value())
+        session, csrf = manager.unlock(
+            body.password.get_secret_value(), previous_session=request.cookies.get(COOKIE),
+        )
     except ConfigurationError as error:
         raise HTTPException(error.status, {"code": error.code}) from None
     response.set_cookie(
@@ -192,6 +199,13 @@ def change_access(body: AccessRequest, response: Response, manager: Unlocked):
 @router.get("/session")
 def session(request: Request, manager: Unlocked):
     return {"csrf_token": request.state.configuration_csrf}
+
+
+@router.post("/access/verify", status_code=204)
+def verify_access_password(body: VerifyAccessRequest, manager: Unlocked):
+    configuration_operation(lambda: manager.verify_access_password(
+        body.current_password.get_secret_value(),
+    ))
 
 
 @router.delete("/session", status_code=204)

@@ -77,15 +77,11 @@ def test_password_protection_survives_restart_and_revokes_open_sessions(tmp_path
         assert (
             restarted.post("/api/config/session", json={"password": "incorrect"}).status_code == 401
         )
-        assert (
-            restarted.post(
-                "/api/config/session",
-                json={
-                    "password": "private-config-password",
-                },
-            ).status_code
-            == 200
+        response = restarted.post(
+            "/api/config/session", json={"password": "private-config-password"},
         )
+        assert response.status_code == 200
+        restarted.headers["X-CSRF-Token"] = response.json()["csrf_token"]
         assert restarted.get("/api/config").status_code == 200
     stored = (tmp_path / ".config-access.json").read_text("utf-8")
     assert "private-config-password" not in stored
@@ -95,6 +91,7 @@ def test_password_protection_survives_restart_and_revokes_open_sessions(tmp_path
 def protect(client, password="private-config-password"):
     session = client.post("/api/config/session", json={}).json()
     client.headers["X-CSRF-Token"] = session["csrf_token"]
+
     response = client.put(
         "/api/config/access",
         json={
@@ -107,6 +104,50 @@ def protect(client, password="private-config-password"):
     assert response.status_code == 200
     session = client.post("/api/config/session", json={"password": password}).json()
     client.headers["X-CSRF-Token"] = session["csrf_token"]
+
+
+def test_a_protected_page_cannot_recover_access_from_the_cookie_alone(tmp_path):
+    with local_client(tmp_path) as client:
+        protect(client)
+        assert client.get("/api/config").status_code == 200
+
+        client.headers.pop("X-CSRF-Token")
+        assert client.get("/api/config/session").status_code == 401
+        assert client.get("/api/config").status_code == 401
+        assert client.post("/api/config/session", json={}).status_code == 401
+        response = client.post(
+            "/api/config/session", json={"password": "private-config-password"},
+        )
+        assert response.status_code == 200
+        client.headers["X-CSRF-Token"] = response.json()["csrf_token"]
+        assert client.get("/api/config").status_code == 200
+
+
+def test_repeated_password_entries_replace_the_previous_page_session(tmp_path):
+    with local_client(tmp_path) as client:
+        protect(client)
+        for _ in range(10):
+            response = client.post(
+                "/api/config/session", json={"password": "private-config-password"},
+            )
+            assert response.status_code == 200
+
+
+def test_current_password_verification_does_not_replace_final_password_checks(tmp_path):
+    with local_client(tmp_path) as client:
+        protect(client)
+        assert client.post("/api/config/access/verify", json={
+            "current_password": "wrong-private-password",
+        }).status_code == 401
+        assert client.post("/api/config/access/verify", json={
+            "current_password": "private-config-password",
+        }).status_code == 204
+        response = client.put("/api/config/access", json={
+            "revision": client.get("/api/config/access").json()["revision"],
+            "enabled": True, "new_password": "replacement-password",
+            "confirmation": "replacement-password",
+        })
+        assert response.status_code == 401
 
 
 def test_changing_and_disabling_protection_require_the_current_password(tmp_path):

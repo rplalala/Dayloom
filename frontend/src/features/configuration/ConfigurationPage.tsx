@@ -101,15 +101,12 @@ export function ConfigurationPage() {
         const permissions = await request<ConfigurationAccess>('/access', { signal: controller.signal });
         if (controller.signal.aborted) return;
         setAccess(permissions);
-        let session: { csrf_token: string };
-        try {
-          session = await request('/session', { signal: controller.signal });
-        } catch (failure) {
-          if (!(failure instanceof ConfigurationFailure && failure.status === 401)
-            || permissions.password_required || controller.signal.aborted) throw failure;
-          session = await request('/session', { method: 'POST', body: '{}', signal: controller.signal });
-        }
-        const saved = await request<Configuration>('', { signal: controller.signal });
+        if (permissions.password_required) return;
+        const session = await request<{ csrf_token: string }>('/session', {
+          method: 'POST', body: '{}', signal: controller.signal,
+        });
+        const saved = await request<Configuration>('', { signal: controller.signal,
+          headers: { 'X-CSRF-Token': session.csrf_token } });
         if (!controller.signal.aborted) { setCsrf(session.csrf_token); setConfig(saved); }
       } catch (failure) {
         if (!controller.signal.aborted && !(failure instanceof ConfigurationFailure && failure.status === 401)) {
@@ -122,6 +119,20 @@ export function ConfigurationPage() {
     void restore();
     return () => controller.abort();
   }, []);
+
+  useEffect(() => {
+    if (!access?.password_required) return;
+    const relock = () => {
+      setConfig(null); setCsrf(''); setPassword(''); setEdits({});
+      setReadiness(null); setApiReports({}); setNotice('');
+    };
+    window.addEventListener('pagehide', relock);
+    window.addEventListener('pageshow', relock);
+    return () => {
+      window.removeEventListener('pagehide', relock);
+      window.removeEventListener('pageshow', relock);
+    };
+  }, [access?.password_required]);
 
   async function perform(action: () => Promise<void>) {
     setBusy(true); setError(''); setNotice('');
@@ -143,7 +154,7 @@ export function ConfigurationPage() {
         method: 'POST', body: JSON.stringify(access?.password_required ? { password } : {}),
       });
       setPassword('');
-      const saved = await request<Configuration>('');
+      const saved = await request<Configuration>('', { headers: { 'X-CSRF-Token': session.csrf_token } });
       setCsrf(session.csrf_token); setConfig(saved);
     });
   }
@@ -169,11 +180,21 @@ export function ConfigurationPage() {
         setNotice('Password verification is enabled. Enter your configuration password to continue.');
       } else {
         const session = await request<{ csrf_token: string }>('/session', { method: 'POST', body: '{}' });
-        const saved = await request<Configuration>('');
+        const saved = await request<Configuration>('', { headers: { 'X-CSRF-Token': session.csrf_token } });
         setCsrf(session.csrf_token); setConfig(saved);
         setNotice('Password verification is disabled. Configuration opens directly.');
       }
     });
+  }
+
+  async function verifyAccess(currentPassword: string) {
+    let verified = false;
+    await perform(async () => {
+      await request('/access/verify', { method: 'POST', headers: { 'X-CSRF-Token': csrf },
+        body: JSON.stringify({ current_password: currentPassword }) });
+      verified = true;
+    });
+    return verified;
   }
 
   function edit(key: string, value: string, secret: boolean) {
@@ -238,7 +259,7 @@ export function ConfigurationPage() {
             <span>{config.restart_required ? 'Saved configuration differs from the running process. Restart required.' : 'No saved provider changes are waiting for a restart.'}</span>
           </aside>
           {access && <ConfigurationAccessSettings key={access.revision} access={access} busy={busy}
-            pendingProviderEdits={!!Object.keys(edits).length} onSave={saveAccess} />}
+            pendingProviderEdits={!!Object.keys(edits).length} onSave={saveAccess} onVerify={verifyAccess} />}
           <section className="config-card config-api-intro" aria-label="API connectivity checks">
             <div><h2>Check service access</h2><p>API checks send small requests to your saved services and may incur charges.
               All checks use at most 8 HTTP attempts and 60 seconds, with no automatic retries.</p>
@@ -279,7 +300,7 @@ export function ConfigurationPage() {
             </section>)}</div>
             <div className="config-actions"><button className="config-primary" type="submit" disabled={busy || !Object.keys(edits).length}>Save configuration</button>
               <button type="button" disabled={busy} onClick={() => void perform(async () => {
-                setConfig(await request<Configuration>('')); setEdits({}); setReadiness(null); setApiReports({});
+                setConfig(await request<Configuration>('', { headers: { 'X-CSRF-Token': csrf } })); setEdits({}); setReadiness(null); setApiReports({});
               })}>Reload saved configuration</button>
               <span>Endpoint and deployment are saved in product.yaml. Keys are saved in .env and are never displayed after saving.</span>
             </div>
@@ -287,7 +308,7 @@ export function ConfigurationPage() {
           <section className="config-card config-resources"><div className="config-resource-heading"><div><h2>Local resources</h2>
             <p>Checks saved configuration and local resources. No external API calls are made, and key validity is not verified.</p></div>
             <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => void perform(async () => {
-              setReadiness(await request<Readiness>('/readiness'));
+              setReadiness(await request<Readiness>('/readiness', { headers: { 'X-CSRF-Token': csrf } }));
             })}>Check local readiness</button></div>
             {Object.keys(edits).length > 0 && <p>Save or reload your changes before checking readiness.</p>}
             {readiness && <><p role="status">{readiness.ready ? 'Saved configuration and local resources are ready. Restart if changes are pending.' : 'Some configuration or local resources still need attention.'}</p>

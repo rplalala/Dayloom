@@ -55,12 +55,39 @@ it('enables password verification and requires the current password to turn it o
   fireEvent.click(screen.getByRole('button', { name: 'Unlock configuration' }));
   fireEvent.click(await screen.findByLabelText('Require a password to open configuration'));
   fireEvent.change(screen.getByLabelText('Current password'), { target: { value: 'new-private-password' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Verify current password' }));
+  await screen.findByText('Current password verified.');
   fireEvent.click(screen.getByRole('button', { name: 'Save access settings' }));
   await screen.findByText(/^Configuration opens without a password\./);
   expect(screen.getByLabelText('OpenAI API key')).toBeInTheDocument();
   expect(screen.queryByRole('button', { name: 'Lock configuration' })).not.toBeInTheDocument();
   expect(updates[0]).toMatchObject({ enabled: true, new_password: 'new-private-password', confirmation: 'new-private-password' });
   expect(updates[1]).toMatchObject({ enabled: false, current_password: 'new-private-password' });
+});
+
+it('requires the password again on every entry even when a browser session already exists', async () => {
+  const calls: string[] = [];
+  vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
+    calls.push(`${init?.method || 'GET'} ${url}`);
+    if (url.endsWith('/access')) return Response.json({ password_required: true, revision: 'a'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'page-only-token' });
+    expect(init?.headers).toMatchObject({ 'X-CSRF-Token': 'page-only-token' });
+    return Response.json({ revision: 'a'.repeat(64), restart_required: false, running_ready: true,
+      fields: { OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false } } });
+  }));
+  const first = render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  const password = await screen.findByLabelText('Configuration password');
+  expect(calls).toEqual(['GET /api/config/access']);
+  fireEvent.change(password, { target: { value: 'current-private-password' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Unlock configuration' }));
+  await screen.findByLabelText('OpenAI API key');
+  expect(screen.queryByLabelText('New password')).not.toBeInTheDocument();
+  first.unmount();
+  calls.length = 0;
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  await screen.findByLabelText('Configuration password');
+  expect(calls).toEqual(['GET /api/config/access']);
+  expect(screen.queryByLabelText('OpenAI API key')).not.toBeInTheDocument();
 });
 
 it('unlocks independently, saves only edited fields and clears typed secrets', async () => {
@@ -132,6 +159,8 @@ it('clears typed secrets when the management session expires', async () => {
     }));
   }));
   render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  fireEvent.change(await screen.findByLabelText('Configuration password'), { target: { value: 'current-private-password' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Unlock configuration' }));
   fireEvent.change(await screen.findByLabelText('OpenAI API key'), { target: { value: 'unsaved-private' } });
   fireEvent.click(screen.getByRole('button', { name: 'Save configuration' }));
   await screen.findByLabelText('Configuration password');
