@@ -100,7 +100,7 @@ def restore_database(release):
             "--no-align",
             "--command",
             "SELECT EXISTS (SELECT 1 FROM pg_namespace "
-            "WHERE nspname NOT IN ('public', 'information_schema') AND nspname NOT LIKE 'pg_%') "
+            "WHERE nspname NOT IN ('public', 'information_schema') AND nspname !~ '^pg_') "
             "OR EXISTS (SELECT 1 FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace "
             "WHERE n.nspname = 'public' AND c.relkind IN ('r', 'p', 'v', 'm', 'S', 'f'))",
         ],
