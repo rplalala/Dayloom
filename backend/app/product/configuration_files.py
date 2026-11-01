@@ -77,9 +77,11 @@ def update_foundry(text, changes):
                 rendered = " " + rendered
             spans.append((value.start_mark.index, value.end_mark.index, rendered))
     if updates:
-        last = max(value.end_mark.index for _, value in foundry.value)
-        end = text.find("\n", last)
-        end = len(text) if end < 0 else end + 1
+        last = max((value.end_mark for _, value in foundry.value), key=lambda mark: mark.index)
+        end = last.index
+        if last.column != 0:
+            newline = text.find("\n", end)
+            end = len(text) if newline < 0 else newline + 1
         addition = ("\n" if end and text[end - 1] != "\n" else "") + "".join(
             " " * foundry.start_mark.column + f"{key}: "
             + ("null" if value is None else json.dumps(value)) + "\n"

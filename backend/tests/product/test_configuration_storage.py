@@ -186,3 +186,24 @@ def test_missing_yaml_deployment_still_fails_planner_validation(tmp_path):
     with patch.dict(os.environ, {}, clear=True), pytest.raises(ValidationError) as error:
         Settings(AZURE_OPENAI_API_KEY="synthetic-private")
     assert error.value.errors()[0]["loc"] == ("AZURE_OPENAI_DEPLOYMENT",)
+
+
+def test_adding_a_foundry_field_after_a_block_scalar_keeps_following_root_settings(tmp_path):
+    path = tmp_path / "product.yaml"
+    path.write_text(
+        "foundry:\n  endpoint: >-\n    https://example.services.ai.azure.com/openai/v1\n"
+        "origin: http://localhost:5173\n", encoding="utf-8",
+    )
+    manager, client = connect_manager(tmp_path)
+    with client:
+        response = client.put("/api/config", json={
+            "revision": manager.view()["revision"],
+            "changes": {"AZURE_OPENAI_DEPLOYMENT": "new-deployment"},
+        })
+    assert response.status_code == 200
+    saved = yaml.safe_load(path.read_text("utf-8"))
+    assert saved["origin"] == "http://localhost:5173"
+    assert saved["foundry"] == {
+        "endpoint": "https://example.services.ai.azure.com/openai/v1",
+        "deployment": "new-deployment",
+    }
