@@ -44,7 +44,7 @@ def test_explicit_connection_url_overrides_split_settings():
 
 
 @pytest.mark.parametrize(
-    "url", ["", "private-sentinel", "host=127.0.0.1 password=private-sentinel"]
+    "url", ["private-sentinel", "host=127.0.0.1 password=private-sentinel"]
 )
 def test_invalid_or_implicit_database_urls_fail_without_disclosing_credentials(url):
     with pytest.raises(ValidationError) as failure:
@@ -62,3 +62,31 @@ def test_shared_database_defaults_do_not_require_product_or_provider_settings(mo
     assert connection["user"] == "dayloom"
     assert connection["host"] == "127.0.0.1"
     assert connection["port"] == 55432
+
+
+def test_blank_connection_url_uses_split_fields(monkeypatch):
+    monkeypatch.delenv("DAYLOOM_DB_URL", raising=False)
+    settings = DatabaseSettings(_env_file=None, url="", password="synthetic-only")
+    assert settings.connection_parameters()["dbname"] == "dayloom"
+
+
+def test_clean_install_uses_deployment_template_until_local_settings_are_saved(
+    tmp_path, monkeypatch,
+):
+    for key in ("URL", "HOST", "PORT", "NAME", "USER", "PASSWORD"):
+        monkeypatch.delenv("DAYLOOM_DB_" + key, raising=False)
+    template = tmp_path / "product.example.yaml"
+    template.write_text(
+        "database:\n  host: localhost\n  port: 55621\n"
+        "  name: template_test\n  user: template_user\n", encoding="utf-8",
+    )
+
+    class Settings(DatabaseSettings):
+        model_config = SettingsConfigDict(yaml_file=tmp_path / "product.yaml")
+
+    assert Settings(_env_file=None, password="synthetic-only").name == "template_test"
+    (tmp_path / "product.yaml").write_text(
+        template.read_text("utf-8").replace("template_test", "local_test"), encoding="utf-8",
+    )
+    assert Settings(_env_file=None, password="synthetic-only").name == "local_test"
+    assert "template_test" in template.read_text("utf-8")

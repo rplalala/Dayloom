@@ -1,0 +1,13 @@
+# Copy to product.yaml to customize this installation, or use /config.
+origin: http://localhost:5173
+runtime_profile: acceptance
+allow_insecure_loopback: true
+session_seconds: 3600
+database:
+  host: 127.0.0.1
+  port: 55432
+  name: dayloom
+  user: dayloom
+foundry:
+  endpoint: null
+  deployment: gpt-6-luna

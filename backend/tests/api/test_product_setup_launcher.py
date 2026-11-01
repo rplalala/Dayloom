@@ -131,3 +131,36 @@ def test_launcher_migrates_legacy_foundry_values_and_pins_yaml_until_restart(
     monkeypatch.setattr(uvicorn, "Server", Server)
     with patch.dict(os.environ, {}, clear=True):
         run_product.main([])
+
+
+@pytest.mark.parametrize(
+    "existing", [None, "", "synthetic-existing-signing-key-at-least-32-characters"],
+)
+def test_local_startup_initializes_signing_key_once_and_preserves_existing(
+    local_launcher, monkeypatch, existing,
+):
+    import uvicorn
+    from dotenv import dotenv_values
+    dotenv = local_launcher / ".env"
+    if existing is not None:
+        dotenv.write_text("PRODUCT_JWT_SECRET=" + existing + "\n", encoding="utf-8")
+    keys = []
+
+    class Server:
+        def __init__(self, config):
+            self.manager = config.app.state.local_configuration
+
+        async def serve(self):
+            saved = dotenv_values(dotenv)["PRODUCT_JWT_SECRET"]
+            assert len(saved) >= 32
+            assert os.environ["PRODUCT_JWT_SECRET"] == saved
+            assert self.manager.view()["restart_required"] is False
+            keys.append(saved)
+
+    monkeypatch.setattr(uvicorn, "Server", Server)
+    for _ in range(2):
+        with patch.dict(os.environ, {}, clear=True):
+            run_product.main([])
+    assert keys[0] == keys[1]
+    if existing:
+        assert keys[0] == existing

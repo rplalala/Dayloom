@@ -3,7 +3,7 @@
 from pathlib import Path
 
 from psycopg.conninfo import conninfo_to_dict, make_conninfo
-from pydantic import Field, SecretStr, model_validator
+from pydantic import Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from backend.app.runtime.deployment import DEPLOYMENT_FILE, DeploymentYamlSettingsSource
@@ -33,6 +33,11 @@ class DatabaseSettings(BaseSettings):
             init_settings, env_settings, dotenv_settings, file_secret_settings,
             DeploymentYamlSettingsSource(settings_cls, section="database"),
         )
+
+    @field_validator("url", mode="before")
+    @classmethod
+    def blank_url_uses_connection_fields(cls, value):
+        return None if value == "" else value
 
     @model_validator(mode="after")
     def validate_connection(self):

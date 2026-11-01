@@ -8,6 +8,7 @@ __pycache__/
 htmlcov/
 
 # Local environment files
+/product.yaml
 .env
 .env.*
 !.env.example

@@ -266,3 +266,39 @@ it('never displays a stale result as a passed check', async () => {
   await screen.findByText(/Configuration changed while/);
   expect(screen.queryByText('Passed')).not.toBeInTheDocument();
 });
+
+
+it('saves database settings and a custom signing key, and generates a replacement without revealing it', async () => {
+  let revision = 'a'.repeat(64);
+  const writes: { url: string; body: Record<string, unknown> }[] = [];
+  const fields = Object.fromEntries(Object.entries({
+    DAYLOOM_DB_HOST: '127.0.0.1', DAYLOOM_DB_PORT: '55432', DAYLOOM_DB_NAME: 'dayloom',
+    DAYLOOM_DB_USER: 'dayloom', DAYLOOM_DB_PASSWORD: null, DAYLOOM_DB_URL: null, PRODUCT_JWT_SECRET: null,
+  }).map(([key, value]) => [key, { value, secret: value === null, configured: true, locked: false }]));
+  vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'f'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'csrf' });
+    if (init?.method === 'PUT' || init?.method === 'POST') {
+      writes.push({ url, body: JSON.parse(init.body as string) });
+      revision = (writes.length === 1 ? 'b' : 'c').repeat(64);
+    }
+    return Response.json({ revision, restart_required: writes.length > 0, running_ready: true, fields });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  fireEvent.change(await screen.findByLabelText('Database name'), { target: { value: 'custom_test' } });
+  fireEvent.change(screen.getByLabelText('Database password'), { target: { value: 'synthetic-password' } });
+  fireEvent.change(screen.getByLabelText('JWT signing key'), { target: { value: 'synthetic-custom-signing-key-at-least-32' } });
+  expect(screen.getByRole('button', { name: 'Generate signing key' })).toBeDisabled();
+  fireEvent.click(screen.getByRole('button', { name: 'Save configuration' }));
+  await screen.findByText(/Saved. Restart Dayloom/);
+  expect(writes[0].body).toEqual({ revision: 'a'.repeat(64), changes: {
+    DAYLOOM_DB_NAME: 'custom_test', DAYLOOM_DB_PASSWORD: 'synthetic-password',
+    PRODUCT_JWT_SECRET: 'synthetic-custom-signing-key-at-least-32',
+  } });
+  expect(screen.getByLabelText('Database password')).toHaveValue('');
+  expect(screen.getByLabelText('JWT signing key')).toHaveValue('');
+  fireEvent.click(screen.getByRole('button', { name: 'Generate signing key' }));
+  await screen.findByText(/New signing key saved/);
+  expect(writes[1]).toEqual({ url: '/api/config/signing-key', body: { revision: 'b'.repeat(64) } });
+  expect(screen.getByLabelText('JWT signing key')).toHaveValue('');
+});

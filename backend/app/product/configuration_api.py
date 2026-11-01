@@ -11,6 +11,7 @@ from starlette.responses import JSONResponse, RedirectResponse
 from backend.app.product.api_checks import CheckBusy
 from backend.app.product.configuration import (
     COOKIE,
+    FIELDS,
     SESSION_SECONDS,
     ConfigurationError,
     LocalConfiguration,
@@ -136,7 +137,12 @@ class AccessRequest(BaseModel):
 class SaveRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
     revision: str = Field(min_length=64, max_length=64)
-    changes: dict[str, str] = Field(max_length=6)
+    changes: dict[str, str] = Field(max_length=len(FIELDS))
+
+
+class SigningKeyRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", hide_input_in_errors=True)
+    revision: str = Field(min_length=64, max_length=64)
 
 
 class VerifyAccessRequest(BaseModel):
@@ -223,6 +229,11 @@ def configuration(manager: Unlocked):
 @router.put("")
 def save(body: SaveRequest, manager: Unlocked):
     return configuration_operation(lambda: manager.save(body.revision, body.changes))
+
+
+@router.post("/signing-key")
+def generate_signing_key(body: SigningKeyRequest, manager: Unlocked):
+    return configuration_operation(lambda: manager.generate_signing_key(body.revision))
 
 
 @router.get("/readiness")

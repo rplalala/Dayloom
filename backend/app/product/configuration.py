@@ -34,6 +34,13 @@ FIELDS = {
     "OPENAI_API_KEY": True,
     "GOOGLE_MAPS_API_KEY": True,
     "PRODUCT_UNSPLASH_ACCESS_KEY": True,
+    "DAYLOOM_DB_HOST": False,
+    "DAYLOOM_DB_PORT": False,
+    "DAYLOOM_DB_NAME": False,
+    "DAYLOOM_DB_USER": False,
+    "DAYLOOM_DB_PASSWORD": True,
+    "DAYLOOM_DB_URL": True,
+    "PRODUCT_JWT_SECRET": True,
 }
 COOKIE = "dayloom_config_session"
 SESSION_SECONDS = 1800
@@ -122,6 +129,8 @@ class LocalConfiguration:
 
     def read_deployment(self):
         path = self.root / "product.yaml"
+        if not path.exists() and not path.is_symlink():
+            path = self.root / "product.example.yaml"
         if path.is_symlink():
             raise ConfigurationError("configuration_symlink_rejected")
         text = path.read_text(encoding="utf-8") if path.exists() else ""
@@ -155,12 +164,18 @@ class LocalConfiguration:
         # Settings names are case-insensitive; dotenv variable expansion above is not.
         local = {key.upper(): value for key, value in local.items()}
         deployment_text, options = self.read_deployment()
-        defaults = {}
+        defaults = {
+            "DAYLOOM_DB_HOST": "127.0.0.1", "DAYLOOM_DB_PORT": "55432",
+            "DAYLOOM_DB_NAME": "dayloom", "DAYLOOM_DB_USER": "dayloom",
+        }
+        if options.database:
+            defaults.update({"DAYLOOM_DB_" + key.upper(): str(value)
+                             for key, value in options.database.model_dump().items()})
         if options.foundry:
-            defaults = {
+            defaults.update({
                 "AZURE_OPENAI_ENDPOINT": str(options.foundry.endpoint or ""),
                 "AZURE_OPENAI_DEPLOYMENT": options.foundry.deployment or "",
-            }
+            })
         values = {
             key: next(
                 (
@@ -222,6 +237,25 @@ class LocalConfiguration:
                 or any(ord(char) < 32 or ord(char) == 127 for char in value)
             ):
                 raise ConfigurationError("invalid_setting_value")
+            if key == "PRODUCT_JWT_SECRET" and len(value) < 32:
+                raise ConfigurationError("invalid_signing_key")
+            if (
+                key in {"DAYLOOM_DB_HOST", "DAYLOOM_DB_NAME", "DAYLOOM_DB_USER"}
+                and not value.strip()
+            ):
+                raise ConfigurationError("invalid_database_setting")
+            if key == "DAYLOOM_DB_PORT" and (
+                not value.isascii() or not value.isdigit() or not 1 <= int(value) <= 65535
+            ):
+                raise ConfigurationError("invalid_database_setting")
+            if key == "DAYLOOM_DB_URL" and value:
+                from psycopg.conninfo import conninfo_to_dict
+                try:
+                    parameters = conninfo_to_dict(value)
+                    if not parameters.get("dbname"):
+                        raise ValueError
+                except Exception:
+                    raise ConfigurationError("invalid_database_setting") from None
             if key == "AZURE_OPENAI_ENDPOINT" and value:
                 if not supported_foundry_endpoint(value):
                     raise ConfigurationError("invalid_foundry_endpoint")
@@ -237,53 +271,73 @@ class LocalConfiguration:
 
     def save(self, revision, changes):
         with self.lock, configuration_file_lock(self.root / ".env.config.lock"):
-            self.validate(changes)
+            return self._save_locked(revision, changes)
+
+    def _save_locked(self, revision, changes):
+        self.validate(changes)
+        texts, values = self.snapshot()
+        if revision != _revision(texts, values):
+            raise ConfigurationError("configuration_changed", 409)
+        text, deployment_text = texts
+        replacements = {
+            key: value for key, value in changes.items() if key not in FOUNDRY_FIELDS
+        }
+        if "PRODUCT_UNSPLASH_ACCESS_KEY" in changes:
+            replacements["UNSPLASH_API_KEY"] = changes["PRODUCT_UNSPLASH_ACCESS_KEY"]
+        pieces, seen = [], set()
+        for item in parse_stream(StringIO(retire_foundry_bindings(text, self.environment))):
+            key = item.key.upper() if item.key is not None else None
+            if key in FOUNDRY_FIELDS:
+                continue
+            if key not in replacements:
+                pieces.append(item.original.string)
+                continue
+            value = replacements[key].replace("\\", "\\\\").replace("'", "\\'")
+            # Keep spelling and order so dependent ${...} bindings still resolve.
+            pieces.append(f"{item.key}='{value}'\n")
+            seen.add(key)
+        retained = "".join(pieces)
+        for key, value in replacements.items():
+            if key in seen:
+                continue
+            if retained and not retained.endswith("\n"):
+                retained += "\n"
+            quoted = value.replace("\\", "\\\\").replace("'", "\\'")
+            retained += f"{key}='{quoted}'\n"
+        updated_yaml = update_foundry(deployment_text, changes)
+        DeploymentOptions.model_validate(
+            yaml.load(updated_yaml, Loader=DeploymentYamlLoader) or {}
+        )
+        files = {}
+        if updated_yaml != deployment_text:
+            files[self.root / "product.yaml"] = updated_yaml
+        if retained != text:
+            files[self.root / ".env"] = retained
+        replace_configuration_files(files)
+        return self.view()
+
+    def generate_signing_key(self, revision):
+        return self.save(revision, {"PRODUCT_JWT_SECRET": secrets.token_urlsafe(48)})
+
+    def ensure_signing_key(self):
+        """Initialize once at local startup; retain all existing effective keys."""
+        with self.lock, configuration_file_lock(self.root / ".env.config.lock"):
             texts, values = self.snapshot()
-            if revision != _revision(texts, values):
-                raise ConfigurationError("configuration_changed", 409)
-            text, deployment_text = texts
-            replacements = {
-                key: value for key, value in changes.items() if key not in FOUNDRY_FIELDS
-            }
-            if "PRODUCT_UNSPLASH_ACCESS_KEY" in changes:
-                replacements["UNSPLASH_API_KEY"] = changes["PRODUCT_UNSPLASH_ACCESS_KEY"]
-            pieces, seen = [], set()
-            for item in parse_stream(StringIO(retire_foundry_bindings(text, self.environment))):
-                key = item.key.upper() if item.key is not None else None
-                if key in FOUNDRY_FIELDS:
-                    continue
-                if key not in replacements:
-                    pieces.append(item.original.string)
-                    continue
-                value = replacements[key].replace("\\", "\\\\").replace("'", "\\'")
-                # Keep spelling and order so dependent ${...} bindings still resolve.
-                pieces.append(f"{item.key}='{value}'\n")
-                seen.add(key)
-            retained = "".join(pieces)
-            for key, value in replacements.items():
-                if key in seen:
-                    continue
-                if retained and not retained.endswith("\n"):
-                    retained += "\n"
-                quoted = value.replace("\\", "\\\\").replace("'", "\\'")
-                retained += f"{key}='{quoted}'\n"
-            updated_yaml = update_foundry(deployment_text, changes)
-            DeploymentOptions.model_validate(
-                yaml.load(updated_yaml, Loader=DeploymentYamlLoader) or {}
-            )
-            files = {}
-            if updated_yaml != deployment_text:
-                files[self.root / "product.yaml"] = updated_yaml
-            if retained != text:
-                files[self.root / ".env"] = retained
-            replace_configuration_files(files)
-            return self.view()
+            if not values["PRODUCT_JWT_SECRET"]:
+                self._save_locked(_revision(texts, values), {
+                    "PRODUCT_JWT_SECRET": secrets.token_urlsafe(48),
+                })
+            self.initial = self.snapshot()[1]
 
     def readiness(self):
         from backend.app.product.local_readiness import check_local_resources
 
         view = self.view()
-        required = [key for key in FIELDS if key != "PRODUCT_UNSPLASH_ACCESS_KEY"]
+        required = ["AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_DEPLOYMENT",
+                    "AZURE_OPENAI_API_KEY", "OPENAI_API_KEY", "GOOGLE_MAPS_API_KEY",
+                    "PRODUCT_JWT_SECRET"]
+        if not view["fields"]["DAYLOOM_DB_URL"]["configured"]:
+            required.append("DAYLOOM_DB_PASSWORD")
         resources = (self.resource_probe or check_local_resources)()
         missing = [key for key in required if not view["fields"][key]["configured"]]
         return {

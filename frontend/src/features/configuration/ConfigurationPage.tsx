@@ -9,7 +9,18 @@ type Readiness = { ready: boolean; missing: string[]; credentials_verified: bool
 type Service = 'all' | 'foundry' | 'openai' | 'google' | 'unsplash';
 type ApiResult = { id: string; service: Service; status: string; message: string; latency_ms: number; http_status?: number };
 type ApiReport = { revision: string; stale: boolean; service: Service; checked_at: string; request_count: number; results: ApiResult[] };
-const sections: { service: Exclude<Service, 'all'>; title: string; description: string; fields: string[][] }[] = [
+const sections: { service?: Exclude<Service, 'all'>; title: string; description: string; fields: string[][] }[] = [
+  { title: 'PostgreSQL', description: 'Use the same database for accounts and TripWorld retrieval. Connection changes do not move existing data.', fields: [
+    ['DAYLOOM_DB_HOST', 'Database host', 'Local Compose normally uses 127.0.0.1.'],
+    ['DAYLOOM_DB_PORT', 'Database port', 'Local Compose normally uses 55432.'],
+    ['DAYLOOM_DB_NAME', 'Database name', 'Select the database containing your prepared data.'],
+    ['DAYLOOM_DB_USER', 'Database user', 'The PostgreSQL login role.'],
+    ['DAYLOOM_DB_PASSWORD', 'Database password', 'Must match the existing database role password.'],
+    ['DAYLOOM_DB_URL', 'Connection URL (optional)', 'Overrides the host, port, name, user and password above. Clear it to use those fields.'],
+  ] },
+  { title: 'Account sessions', description: 'Existing signing keys are retained. New local installations generate and save a private key automatically.', fields: [
+    ['PRODUCT_JWT_SECRET', 'JWT signing key', 'Use at least 32 characters, or generate a key below. Changing it signs out existing accounts after restart.'],
+  ] },
   { service: 'foundry', title: 'Azure Foundry', description: 'Connect the model deployment used by this installation.', fields: [
     ['AZURE_OPENAI_ENDPOINT', 'Foundry endpoint', 'Saved in product.yaml → foundry.endpoint. Use an HTTPS endpoint ending in /openai/v1.'],
     ['AZURE_OPENAI_DEPLOYMENT', 'Deployment', 'Saved in product.yaml → foundry.deployment. Use the deployment supported by the current runtime profile.'],
@@ -37,9 +48,9 @@ const apiStatuses: Record<string, string> = {
   invalid_response: 'Response not verified', not_checked: 'Not checked', inconclusive: 'Not verified',
 };
 const resourceHelp: Record<string, [string, string]> = {
-  product_settings: ['Application settings', 'Prepare DAYLOOM_DB_PASSWORD and PRODUCT_JWT_SECRET (at least 32 characters) in .env.'],
-  database: ['PostgreSQL', 'Start the local database using scripts/run_database.py.'],
-  migrations: ['Product migrations', 'Apply Product migrations using scripts/migrate_product.py.'],
+  product_settings: ['Application settings', 'Complete the database and account session settings above.'],
+  database: ['PostgreSQL', 'Start the local database with uv run dayloom db up -d.'],
+  migrations: ['Product migrations', 'Apply Product migrations with uv run dayloom migrate.'],
   tokenizers: ['Tokenizer resources', 'Prepare both tokenizers following docs/guides/development.md.'],
   tripworld: ['TripWorld retrieval', 'Prepare the compatible database and retrieval files following docs/guides/development.md.'],
 };
@@ -53,12 +64,14 @@ const errors: Record<string, string> = {
   setting_managed_by_environment: 'A setting is controlled by the process environment. Reload to see its current status.',
   invalid_foundry_endpoint: 'Use a Microsoft Foundry HTTPS endpoint ending in /openai/v1.',
   invalid_foundry_deployment: 'Use a deployment name containing letters, numbers, dots, underscores or hyphens.',
+  invalid_database_setting: 'Enter a valid database connection and a port from 1 to 65535.',
+  invalid_signing_key: 'Use a signing key containing at least 32 characters.',
   invalid_setting_value: 'A value contains unsupported characters or exceeds the allowed length.',
   configuration_unreadable: 'The local configuration could not be read or saved. Check .env and product.yaml in the terminal.',
   invalid_dotenv: 'The .env file has invalid syntax. Correct it in a text editor, then try again.',
   too_many_attempts: 'Too many attempts. Wait a minute before trying again.',
   too_many_sessions: 'Too many configuration sessions are open. Wait for a session to expire or restart Dayloom.',
-  local_configuration_unavailable: 'Local configuration is available through scripts/run_product.py on a loopback address.',
+  local_configuration_unavailable: 'Local configuration is available through uv run dayloom start on a loopback address.',
   api_check_in_progress: 'Another API check is already running. Wait for it to finish.',
   api_check_failed: 'The API check could not complete. No automatic retry was made.',
 };
@@ -246,7 +259,7 @@ export function ConfigurationPage() {
       setApiReports(current => {
         const next = { ...current };
         for (const section of sections) {
-          if (service === 'all' || service === section.service) {
+          if (section.service && (service === 'all' || service === section.service)) {
             next[section.service] = { ...report, results: report.results.filter(item => item.service === section.service) };
           }
         }
@@ -261,7 +274,7 @@ export function ConfigurationPage() {
     </header>
     <main className="config-content">
       <div className="config-intro"><p className="config-eyebrow">YOUR LOCAL INSTALLATION</p><h1>Make Dayloom ready.</h1>
-        <p>Connect the services used by this installation. Saved provider changes take effect after restarting Dayloom.</p></div>
+        <p>Connect the services used by this installation. Saved changes take effect after restarting Dayloom.</p></div>
       {error && <p className="config-message config-error" role="alert">{error}</p>}
       {notice && <p className="config-message" role="status">{notice}</p>}
       {initializing ? <p role="status">Checking local management session…</p> : !config ?
@@ -304,28 +317,37 @@ export function ConfigurationPage() {
                     placeholder={field.secret && field.configured ? 'Leave empty to keep the saved key' : ''}
                     value={edited ? edits[key] : field.secret ? '' : field.value || ''}
                     onChange={event => edit(key, event.target.value, field.secret)} />
-                    {field.secret && field.configured && !field.locked && <button type="button" disabled={busy}
+                    {field.secret && key !== 'PRODUCT_JWT_SECRET' && field.configured && !field.locked && <button type="button" disabled={busy}
                       aria-label={`Clear ${label}`} onClick={() => {
                         setEdits(current => ({ ...current, [key]: '' })); setApiReports({}); setNotice('');
                       }}>Clear</button>}
                   </div><small id={`${key}-help`}>{help}</small>
                 </div>;
               })}
-              <div className="config-api-actions"><button type="button" aria-label={`Check ${section.title} API`}
-                disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis(section.service)}>Check API</button></div>
-              {apiReports[section.service] && <div className="config-api-results" aria-label={`${section.title} API results`} aria-live="polite">
+              {section.service && <div className="config-api-actions"><button type="button" aria-label={`Check ${section.title} API`}
+                disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis(section.service!)}>Check API</button></div>}
+              {section.service && apiReports[section.service] && <div className="config-api-results" aria-label={`${section.title} API results`} aria-live="polite">
                 <p className="config-api-time">Checked {new Date(apiReports[section.service]!.checked_at).toLocaleString()}</p>
                 <ul>{apiReports[section.service]!.results.map(result => <li key={result.id} data-status={result.status}>
                   <div><strong>{apiNames[result.id] || result.id}</strong><span className="config-api-status">{apiStatuses[result.status] || 'Not verified'}</span></div>
                   <p>{result.message}</p><small>{result.latency_ms} ms{result.http_status ? ` · HTTP ${result.http_status}` : ''}</small>
                 </li>)}</ul>
               </div>}
+              {section.title === 'Account sessions' && config.fields.PRODUCT_JWT_SECRET && <div className="config-api-actions">
+                <button type="button" disabled={busy || !!Object.keys(edits).length || config.fields.PRODUCT_JWT_SECRET.locked}
+                  onClick={() => void perform(async (request) => {
+                    const saved = await request<Configuration>('/signing-key', { method: 'POST', headers: { 'X-CSRF-Token': csrf },
+                      body: JSON.stringify({ revision: config.revision }) });
+                    setConfig(saved); setReadiness(null); setApiReports({});
+                    setNotice('New signing key saved. Restart Dayloom after active tasks finish. Existing accounts will need to sign in again.');
+                  })}>Generate signing key</button>
+              </div>}
             </section>)}</div>
             <div className="config-actions"><button className="config-primary" type="submit" disabled={busy || !Object.keys(edits).length}>Save configuration</button>
               <button type="button" disabled={busy} onClick={() => void perform(async (request) => {
                 setConfig(await request<Configuration>('', { headers: { 'X-CSRF-Token': csrf } })); setEdits({}); setReadiness(null); setApiReports({});
               })}>Reload saved configuration</button>
-              <span>Endpoint and deployment are saved in product.yaml. Keys are saved in .env and are never displayed after saving.</span>
+              <span>Saved settings belong to this installation. Secrets are never displayed after saving.</span>
             </div>
           </form>
           <section className="config-card config-resources"><div className="config-resource-heading"><div><h2>Local resources</h2>
@@ -340,7 +362,7 @@ export function ConfigurationPage() {
                 <div><strong>{resourceHelp[resource.id]?.[0] || resource.id}</strong><span className={resource.ready ? 'config-ready' : 'config-missing'}>{resource.ready ? 'Ready' : 'Needs attention'}</span></div>
                 {!resource.ready && <p>{resourceHelp[resource.id]?.[1] || 'Follow the local deployment guide to prepare this resource.'}</p>}
               </li>)}</ul></>}
-            <p>Database credentials, signing keys and data preparation follow <code>docs/guides/development.md</code>.</p>
+            <p>Database preparation follows <code>docs/guides/development.md</code>.</p>
           </section>
         </>}
     </main>

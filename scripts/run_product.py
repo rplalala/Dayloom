@@ -78,6 +78,7 @@ def main(argv=None):
             manager = LocalConfiguration(
                 PROJECT_ROOT, origin=policy.origin, environment=external_environment,
             )
+            manager.ensure_signing_key()
             # Pin editable fields, including missing values, until process restart.
             # Existing settings readers must not pick up partially applied edits.
             for key in list(os.environ):

@@ -58,7 +58,12 @@ class DeploymentYamlLoader(yaml.SafeLoader):
 class DeploymentYamlSettingsSource(YamlConfigSettingsSource):
     def __init__(self, settings_cls, *, section=None, aliases=None):
         self.section, self.aliases = section, aliases or {}
-        super().__init__(settings_cls)
+        selected = settings_cls.model_config.get("yaml_file")
+        if isinstance(selected, (str, Path)):
+            selected = Path(selected)
+            if selected.name == "product.yaml" and not selected.exists():
+                selected = selected.with_name("product.example.yaml")
+        super().__init__(settings_cls, yaml_file=selected)
 
     def _read_file(self, file_path):
         try:

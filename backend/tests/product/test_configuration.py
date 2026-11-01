@@ -84,7 +84,7 @@ def test_save_preserves_unrelated_settings_and_only_applies_after_restart(tmp_pa
 @pytest.mark.parametrize(
     "changes,code",
     [
-        ({"DAYLOOM_DB_PASSWORD": "out-of-scope"}, "unsupported_setting"),
+        ({"UNKNOWN_SETTING": "out-of-scope"}, "unsupported_setting"),
         ({"OPENAI_API_KEY": "bad\nPRODUCT_JWT_SECRET=injected"}, "invalid_setting_value"),
         (
             {"AZURE_OPENAI_ENDPOINT": "https://untrusted.example/openai/v1"},
@@ -400,3 +400,68 @@ def test_concurrent_file_replacement_cannot_tag_old_fields_with_new_revision(tmp
             ).status_code
             == 409
         )
+
+
+def test_database_and_custom_signing_key_can_be_saved_without_exposing_secrets(tmp_path):
+    from psycopg.conninfo import conninfo_to_dict
+
+    from backend.app.runtime.database import DatabaseSettings
+
+    manager, client = connect_manager(tmp_path)
+    fields = {
+        "DAYLOOM_DB_HOST": "localhost", "DAYLOOM_DB_PORT": "55620",
+        "DAYLOOM_DB_NAME": "configuration_test", "DAYLOOM_DB_USER": "reader",
+        "DAYLOOM_DB_PASSWORD": "synthetic-db-secret",
+        "PRODUCT_JWT_SECRET": "synthetic-custom-signing-key-at-least-32-characters",
+    }
+    response = client.put("/api/config", json={
+        "revision": manager.view()["revision"], "changes": fields,
+    })
+    assert response.status_code == 200
+    assert response.json()["restart_required"] is True
+    assert fields["DAYLOOM_DB_PASSWORD"] not in response.text
+    assert fields["PRODUCT_JWT_SECRET"] not in response.text
+    settings = DatabaseSettings(_env_file=tmp_path / ".env")
+    connection = conninfo_to_dict(settings.connection_string.get_secret_value())
+    assert connection["dbname"] == "configuration_test"
+    assert connection["port"] == "55620"
+    assert connection["password"] == "synthetic-db-secret"
+    assert LocalConfiguration(tmp_path, origin=manager.origin, environment={}).initial[
+        "PRODUCT_JWT_SECRET"
+    ] == fields["PRODUCT_JWT_SECRET"]
+
+
+@pytest.mark.parametrize("changes", [
+    {"DAYLOOM_DB_PORT": "65536"}, {"DAYLOOM_DB_PORT": "invalid"},
+    {"DAYLOOM_DB_NAME": ""}, {"DAYLOOM_DB_URL": "postgresql://[invalid"},
+    {"PRODUCT_JWT_SECRET": "short"}, {"PRODUCT_JWT_SECRET": ""},
+])
+def test_invalid_database_or_signing_configuration_does_not_write_files(tmp_path, changes):
+    manager, client = connect_manager(tmp_path)
+    response = client.put("/api/config", json={
+        "revision": manager.view()["revision"], "changes": changes,
+    })
+    assert response.status_code == 400
+    assert not (tmp_path / ".env").exists()
+
+
+def test_generate_signing_key_respects_revision_and_environment_lock(tmp_path):
+    from dotenv import dotenv_values
+    manager, client = connect_manager(tmp_path)
+    revision = manager.view()["revision"]
+    response = client.post("/api/config/signing-key", json={"revision": revision})
+    assert response.status_code == 200
+    saved = dotenv_values(tmp_path / ".env")["PRODUCT_JWT_SECRET"]
+    assert len(saved) >= 32
+    assert saved not in response.text
+    assert response.json()["fields"]["PRODUCT_JWT_SECRET"]["configured"] is True
+    assert response.json()["restart_required"] is True
+    assert client.post("/api/config/signing-key", json={"revision": revision}).status_code == 409
+    assert dotenv_values(tmp_path / ".env")["PRODUCT_JWT_SECRET"] == saved
+    locked_dir = tmp_path / "locked"
+    locked_dir.mkdir()
+    locked, locked_client = connect_manager(locked_dir, environment={"PRODUCT_JWT_SECRET": saved})
+    assert locked_client.post("/api/config/signing-key", json={
+        "revision": locked.view()["revision"],
+    }).status_code == 409
+    assert not (locked_dir / ".env").exists()
