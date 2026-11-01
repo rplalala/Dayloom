@@ -2,6 +2,7 @@
 
 import pytest
 from fastapi.testclient import TestClient
+from pydantic import SecretStr
 
 from backend.app.main import create_app
 from backend.app.product.configuration import DEFAULT_TEST_PASSWORD, FIELDS, LocalConfiguration
@@ -402,11 +403,15 @@ def test_concurrent_file_replacement_cannot_tag_old_fields_with_new_revision(tmp
         )
 
 
-def test_database_and_custom_signing_key_can_be_saved_without_exposing_secrets(tmp_path):
+def test_database_and_custom_signing_key_can_be_saved_without_exposing_secrets(
+    tmp_path, monkeypatch,
+):
     from psycopg.conninfo import conninfo_to_dict
 
     from backend.app.runtime.database import DatabaseSettings
 
+    for key in ("URL", "HOST", "PORT", "NAME", "USER", "PASSWORD"):
+        monkeypatch.delenv("DAYLOOM_DB_" + key, raising=False)
     manager, client = connect_manager(tmp_path)
     fields = {
         "DAYLOOM_DB_HOST": "localhost", "DAYLOOM_DB_PORT": "55620",
@@ -425,7 +430,7 @@ def test_database_and_custom_signing_key_can_be_saved_without_exposing_secrets(t
     connection = conninfo_to_dict(settings.connection_string.get_secret_value())
     assert connection["dbname"] == "configuration_test"
     assert connection["port"] == "55620"
-    assert connection["password"] == "synthetic-db-secret"
+    assert SecretStr(connection["password"]) == SecretStr("synthetic-db-secret")
     assert LocalConfiguration(tmp_path, origin=manager.origin, environment={}).initial[
         "PRODUCT_JWT_SECRET"
     ] == fields["PRODUCT_JWT_SECRET"]
