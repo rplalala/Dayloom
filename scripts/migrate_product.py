@@ -9,10 +9,11 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from dotenv import load_dotenv  # noqa: E402
 
 from backend.app.product.database import migrate  # noqa: E402
+from backend.app.runtime.configuration_paths import configuration_directory  # noqa: E402
 from backend.app.runtime.database import DatabaseSettings  # noqa: E402
 
 if __name__ == "__main__":
-    load_dotenv(PROJECT_ROOT / ".env", override=False)
+    load_dotenv(configuration_directory(PROJECT_ROOT) / ".env", override=False)
     try:
         applied = migrate(DatabaseSettings().connection_string.get_secret_value())
     except Exception as exc:

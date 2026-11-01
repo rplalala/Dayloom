@@ -65,6 +65,81 @@ def test_launcher_exposes_setup_and_pins_missing_credentials(local_launcher, mon
     assert "synthetic-private-readiness-error" not in output
 
 
+def test_selected_instance_configuration_round_trips_through_setup_and_restart(
+    tmp_path, monkeypatch,
+):
+    import uvicorn
+    from fastapi.testclient import TestClient
+
+    from backend.app.product import application
+    from backend.app.runtime.configuration_paths import configuration_directory
+
+    checkout = tmp_path / "checkout"
+    instance = tmp_path / "instance"
+    other = tmp_path / "other-instance"
+    for directory in (checkout, instance, other):
+        directory.mkdir()
+    (checkout / "index.html").write_text("Dayloom setup", encoding="utf-8")
+    (checkout / ".env").write_text("OPENAI_API_KEY=checkout-private\n", encoding="utf-8")
+    (instance / "product.yaml").write_text(
+        "origin: http://localhost:5198\nallow_insecure_loopback: true\n", encoding="utf-8",
+    )
+    (other / ".env").write_text("OPENAI_API_KEY=other-private\n", encoding="utf-8")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(run_product, "PROJECT_ROOT", checkout)
+    create_application = application.create_product_application
+    monkeypatch.setattr(
+        application, "create_product_application", lambda: create_application(checkout),
+    )
+    signing_keys = []
+
+    class Server:
+        def __init__(self, config):
+            self.app = config.app
+
+        async def serve(self):
+            manager = self.app.state.local_configuration
+            assert manager.root == configuration_directory()
+            signing_keys.append(manager.initial["PRODUCT_JWT_SECRET"])
+            with TestClient(
+                self.app, base_url=manager.origin, client=("127.0.0.1", 50000),
+                headers={"Origin": manager.origin},
+            ) as client:
+                session = client.post("/api/config/session", json={
+                    "password": "dayloom-config-2026",
+                })
+                assert session.status_code == 200
+                client.headers["X-CSRF-Token"] = session.json()["csrf_token"]
+                view = client.get("/api/config").json()
+                if len(signing_keys) == 1:
+                    assert not view["fields"]["OPENAI_API_KEY"]["configured"]
+                    assert not view["fields"]["OPENAI_API_KEY"]["locked"]
+                    response = client.put("/api/config", json={
+                        "revision": view["revision"], "changes": {
+                            "OPENAI_API_KEY": "instance-private",
+                            "AZURE_OPENAI_ENDPOINT": "https://instance.services.ai.azure.com/openai/v1",
+                            "AZURE_OPENAI_DEPLOYMENT": "instance-model",
+                        },
+                    })
+                    assert response.status_code == 200
+                    assert response.json()["restart_required"] is True
+                    assert manager.initial["OPENAI_API_KEY"] == ""
+                else:
+                    assert view["fields"]["OPENAI_API_KEY"]["configured"]
+                    assert manager.initial["OPENAI_API_KEY"] == "instance-private"
+                    assert manager.initial["AZURE_OPENAI_DEPLOYMENT"] == "instance-model"
+                    assert view["restart_required"] is False
+
+    monkeypatch.setattr(uvicorn, "Server", Server)
+    for _ in range(2):
+        with patch.dict(os.environ, {"DAYLOOM_CONFIG_DIR": str(instance)}, clear=True):
+            run_product.main(["--port", "5198"])
+    assert signing_keys[0] == signing_keys[1]
+    assert (checkout / ".env").read_text("utf-8") == "OPENAI_API_KEY=checkout-private\n"
+    assert (other / ".env").read_text("utf-8") == "OPENAI_API_KEY=other-private\n"
+    assert not (checkout / ".config-access.json").exists()
+
+
 @pytest.mark.parametrize("arguments", [["--check"], ["--host", "0.0.0.0"]])
 def test_check_and_nonlocal_launch_remain_strict(local_launcher, arguments):
     with patch.dict(os.environ, {}, clear=True), pytest.raises(SystemExit) as failure:

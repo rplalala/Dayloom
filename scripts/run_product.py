@@ -51,6 +51,7 @@ def main(argv=None):
     from backend.app.product.application import create_product_application
     from backend.app.product.configuration import FIELDS, LocalConfiguration
     from backend.app.product.configuration_api import enable_local_configuration
+    from backend.app.runtime.configuration_paths import configuration_directory
     from backend.app.runtime.deployment import ProductPolicySettings
     from backend.app.runtime.event_loop import create_api_loop
 
@@ -63,7 +64,8 @@ def main(argv=None):
     args = parser.parse_args(argv)
     os.chdir(PROJECT_ROOT)
     external_environment = dict(os.environ)
-    load_dotenv(PROJECT_ROOT / ".env", override=False)
+    configuration_root = configuration_directory(PROJECT_ROOT)
+    load_dotenv(configuration_root / ".env", override=False)
     manager = None
     try:
         application = create_product_application()
@@ -76,7 +78,7 @@ def main(argv=None):
                 and origin.scheme == "http"
                 and origin.hostname in {"localhost", "127.0.0.1", "::1"}):
             manager = LocalConfiguration(
-                PROJECT_ROOT, origin=policy.origin, environment=external_environment,
+                configuration_root, origin=policy.origin, environment=external_environment,
             )
             manager.ensure_signing_key()
             # Pin editable fields, including missing values, until process restart.

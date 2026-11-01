@@ -17,7 +17,7 @@ from time import time
 from uuid import uuid4
 
 from pydantic import Field
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import SettingsConfigDict
 
 from backend.app.observability.run_trace import (
     FileRunTracer,
@@ -25,6 +25,7 @@ from backend.app.observability.run_trace import (
     RunTraceContext,
     redact_secrets,
 )
+from backend.app.runtime.configuration_paths import InstanceSettings
 from backend.app.runtime.database import PROJECT_ROOT
 
 LOGGER = logging.getLogger(__name__)
@@ -64,7 +65,7 @@ def _restore_numeric_usage(original, redacted):
             _restore_numeric_usage(source, target)
 
 
-class ProductLogSettings(BaseSettings):
+class ProductLogSettings(InstanceSettings):
     model_config = SettingsConfigDict(
         env_prefix="PRODUCT_LOG_",
         env_file=PROJECT_ROOT / ".env",

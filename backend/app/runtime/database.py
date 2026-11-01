@@ -4,14 +4,15 @@ from pathlib import Path
 
 from psycopg.conninfo import conninfo_to_dict, make_conninfo
 from pydantic import Field, SecretStr, field_validator, model_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import SettingsConfigDict
 
+from backend.app.runtime.configuration_paths import InstanceSettings
 from backend.app.runtime.deployment import DEPLOYMENT_FILE, DeploymentYamlSettingsSource
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
-class DatabaseSettings(BaseSettings):
+class DatabaseSettings(InstanceSettings):
     model_config = SettingsConfigDict(
         env_prefix="DAYLOOM_DB_", env_file=PROJECT_ROOT / ".env",
         extra="ignore", hide_input_in_errors=True,

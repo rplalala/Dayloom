@@ -1,9 +1,11 @@
 """Shared environment-backed runtime settings."""
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import SettingsConfigDict
+
+from backend.app.runtime.configuration_paths import InstanceSettings
 
 
-class RuntimeSettings(BaseSettings):
+class RuntimeSettings(InstanceSettings):
     """Configuration shared by every independently runnable planner version."""
 
     model_config = SettingsConfigDict(

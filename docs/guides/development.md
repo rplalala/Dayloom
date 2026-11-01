@@ -82,6 +82,10 @@ This restores the default configuration password and retains provider keys.
 The console is available only through the Product launcher on an HTTP loopback
 origin; the API-only launcher does not expose local management.
 
+For multiple instances or mounted configuration, select an existing directory with
+`DAYLOOM_CONFIG_DIR` as described in the [configuration reference](../../config/README.md#deployment-settings).
+Run configuration-access recovery commands from that directory when one is selected.
+
 ## Local PostgreSQL naming and storage
 
 The shared PostgreSQL database contains `app` for accounts, drafts, tasks and trips,
