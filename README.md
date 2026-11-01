@@ -42,7 +42,8 @@ uv run dayloom start
 ```
 
 Open [localhost:5173](http://localhost:5173). The bottom-right settings button opens
-the local configuration page. `uv run dayloom check` checks local readiness.
+the local configuration page for providers, database connections and signing keys.
+Settings stay in ignored local files. `uv run dayloom check` checks local readiness.
 
 ## Verify the research results
 
@@ -87,7 +88,7 @@ for generation, evaluation and analysis. Follow the
 | `scripts/` | Direct launchers, migrations and V0–V3 entry points |
 | `tools/` | Data preparation, validation and diagnostics |
 | `benchmark/` | Twelve cases, selected outputs, reports and offline verifiers |
-| `config/`, `product.yaml` | Runtime policies and non-secret local settings |
+| `config/`, `product.example.yaml` | Runtime policies and portable deployment defaults |
 | `data/tripworld/` | Dataset identity and retrieval configuration |
 | `docs/` | Guides, architecture, contracts and engineering records |
 

@@ -64,9 +64,10 @@ The complete-media and acceptance-resource follow-up was accepted by the user on
 [Issue #231](https://github.com/rplalala/Dayloom/issues/231); the [acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#complete-media-and-acceptance-resources-24-october-2026)
 retains the bounded live result and unverified retrieval/search coverage.
 
-One ignored root `.env` supplies credentials and machine-specific overrides. Root
-`product.yaml` supplies Product options, shared database connection fields and Foundry
-endpoint/deployment settings. `scripts/run_database.py` passes the same resolved
+One ignored root `.env` supplies credentials and machine-specific overrides. Tracked `product.example.yaml` supplies portable defaults; optional ignored
+`product.yaml` supplies local Product options, shared database connection fields and
+Foundry endpoint/deployment settings. Every runtime falls back to the template when
+the local YAML is absent. `scripts/run_database.py` passes the same resolved
 connection settings to Compose. Planning policies
 use `config/runtime.yaml` for development and `config/runtime.acceptance.yaml` for Product
 acceptance, selected by `product.yaml: runtime_profile`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
@@ -81,9 +82,11 @@ The local Product launcher also serves `/config` with independent loopback-only
 management access. New installations use the displayed local test password,
 with persisted password verification on every page entry and a bottom-right settings shortcut.
 Existing custom passwords and explicit verification preferences are retained. It edits
-Foundry endpoint/deployment in `product.yaml` and provider credentials in `.env`,
+Foundry endpoint/deployment in ignored `product.yaml`, and database overrides,
+provider credentials and JWT signing keys in `.env`,
 shows local resource readiness and offers
-explicit bounded API capability checks. Saved provider changes require restart;
+explicit bounded API capability checks. Local startup retains an existing signing key or generates and saves one when absent;
+custom and generated replacements are supported. Saved configuration changes require restart;
 password-access changes apply immediately. Incomplete local installs
 can open the console while business APIs remain paused. Database/data preparation,
 model providers, spending policies and V0-V3 mechanisms retain their current scope.

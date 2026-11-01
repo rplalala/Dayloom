@@ -1,10 +1,9 @@
 # Historical engineering evidence
 
-This archive retains dated milestones, observed failures, scoped validation results and research
-design history. It is not a second current specification or a task tracker. PROJECT.md owns
-current scope; [core docs](../README.md) own current technical contracts; GitHub Issues
-own specifications, task discussion and live state. Historical Current/Next statements are
-bounded by their recorded date and never grant another execution or freeze.
+Dated milestones, failures, scoped checks and research design history live here.
+Use [core docs](../README.md) for current contracts and [PROJECT.md](../../PROJECT.md)
+for scope. Interpret historical status and limits at their recorded revision;
+GitHub Issues own live task state.
 
 | Topic | Retained evidence |
 | --- | --- |

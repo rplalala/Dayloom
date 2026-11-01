@@ -1,87 +1,64 @@
 # RTPEval
 
-Independent evaluation and research tools for Dayloom's V0–V3 planners. RTPEval
-keeps material qualification, factual evidence, scores, resource accounting and
-study interpretation separate.
+Independent evaluation and research tools for Dayloom's V0–V3 planners.
 
-- [Reproduce an experiment](../../docs/guides/experiments.md): generate, review,
-  evaluate and retain a new source-bound experiment.
+- [Reproduce an experiment](../../docs/guides/experiments.md): generate outputs,
+  obtain independent review, evaluate and retain a new experiment.
 - [Verify the findings](../../docs/guides/verification.md): check the saved twelve-case
-  results, trace conclusions and replay native evidence.
-- [Run Dayloom locally](../../docs/guides/deployment.md): install providers, data and
-  runtime resources.
+  scores, resources and blinded assessments, or replay retained native evidence.
+- [Deploy Dayloom](../../docs/guides/deployment.md): prepare providers, data and runtime resources.
 
-## Start here
+## Quick start
 
-Install from the repository root:
+From the repository root:
 
 ```bash
 uv sync --locked --group retrieval
-uv run rtpeval --help
-```
-
-Check the published study without provider keys or a database:
-
-```bash
 uv run rtpeval verify
 ```
 
-For an already qualified four-version manifest, prepare an evaluation offline:
+Verification needs no database or provider keys. To prepare an evaluation of an
+already qualified four-version manifest, without sending provider requests:
 
 ```bash
 uv run rtpeval evaluate prepare manifest.json -o evaluation -c options.json -p prices.json
 ```
 
-The [experiment guide](../../docs/guides/experiments.md#evaluate-the-selected-outputs)
-explains reviewed inputs, limits, execution and replay. Every group and leaf accepts
-`--help`; use the installed commands below rather than invoking Python modules.
+Continue with the [evaluation workflow](../../docs/guides/experiments.md#evaluate-the-selected-outputs)
+for reviewed inputs, execution limits and replay.
 
-## Commands
+## Command map
 
-| Command | Use |
+| Task | Command group |
 | --- | --- |
-| `verify` | Check all twelve published cases offline |
-| `generate VERSION REQUEST` | Prepare one planner; add `--execute` to generate online |
-| `batch collect / attach-requirements / finalize / preflight` | Collect exact selected material, attach independent review and qualify it |
-| `validate` | Validate a native manifest and its source bindings offline |
-| `evaluate prepare / execute / replay` | Prepare, acquire independent evidence and replay automatic evaluation |
-| `evaluate prepare-opening / execute-opening / replay-opening` | Separate parent-bound missing-hours assessment |
-| `evaluate prepare-pair-opening` | Prepare the V3-only paired access packet |
-| `suite prepare / execute / report / replay` | Operate an explicitly declared multi-case suite |
-| `quality`, `usage`, `cost` | Inspect saved scores and descriptive resource/cost evidence |
-| `pair` | Prepare, acquire and report independent V3 draft/final evidence |
-| `review` | Package blinded questionnaires and import/report actual answers |
-| `mechanism` | Report retained mechanism captures |
-| `controlled` | Execute and evaluate frozen post-primary V3 cases offline |
-| `research` | Validate/export declared populations and build saved-material reports |
-| `advanced` | Individual identity, snapshot, schedule, opening and route tools |
-| `dev` | Engineering smoke and diagnostics with explicit execution boundaries |
+| Prepare or run a planner | `generate v0`, `generate v1`, `generate v2`, `generate v3` |
+| Collect and qualify selected material | `batch`, `validate` |
+| Prepare, execute or replay automatic evaluation | `evaluate` |
+| Missing-hours assessment | `evaluate prepare-opening`, `execute-opening`, `replay-opening` |
+| Multi-case execution | `suite` |
+| Resources and saved study reports | `usage`, `cost`, `quality`, `research` |
+| Additional studies | `pair`, `review`, `mechanism`, `controlled` |
+| Individual evidence tools and engineering diagnostics | `advanced`, `dev` |
 
-Common short flags are `-o` for fresh output, `-c` for evaluation/runtime options,
-`-p` for prices, `-e` for a credentials file and `-a` for a prepared digest, where
-shown in the command's help. Original long flags and advanced opening-run aliases
-remain compatible.
+Every group and operation accepts `--help`. Common short flags are `-o` for output,
+`-c` for options, `-p` for prices, `-e` for credentials and `-a` for a prepared digest,
+where shown in help. Existing long flags remain supported.
 
 ## Evidence and execution
 
-Preparation and saved-evidence replay are offline. Online `execute` commands use
-explicit credentials and limits; generation additionally requires `--execute`.
-Execution directories are one-use, including stopped attempts. No command retries
-or replaces a selected research output automatically.
+Preparation and replay are offline. Online execution uses explicit credentials
+and limits; generation requires `--execute`. Each execution directory is one-use,
+including a stopped attempt. Selected research outputs are never replaced automatically.
 
-An exit code of 0 means that command's processing completed. It can coexist with
-FAIL, UNKNOWN or unavailable evidence. Material correction and stopped execution
-normally return 2; Planner failures retain their native status. Model-supported
-access and participant judgments remain distinct from verified provider facts.
+Exit 0 means processing completed; reports can still contain FAIL, UNKNOWN or
+unavailable evidence. Material corrections and stopped execution normally return 2;
+planner failures retain their native status. Model-supported access judgments and
+participant assessments remain distinct from verified provider facts.
 
-## Contracts and code
+## Code and contracts
 
-[Evaluation design](../../docs/0006-independent-evaluation.md) locates the five
-current contracts for artifacts, intake/usage, requirements/schedule,
-opening/routes and quality/human/paired review. They own detailed schemas and
-scoring policy; the guides own runnable workflows.
-
-`backend/cli/` contains installed adapters outside preparation-bound evaluator
-files. This package contains the native implementations and replay readers;
-`backend/evaluation/research/` owns source-bound research reports, and
-`backend/evaluation/tools/` holds development captures.
+`backend/cli/` exposes installed commands; this package implements native evaluation
+and replay. `research/` contains source-bound study reports and `tools/` contains
+development captures. The [evaluation design](../../docs/0006-independent-evaluation.md)
+locates the five detailed artifact, intake, schedule, opening/route and quality/review
+contracts. Guides own runnable workflows; contracts own schemas and scoring policy.

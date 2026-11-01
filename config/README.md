@@ -1,14 +1,59 @@
-# Runtime configuration reference
+# Configuration reference
 
-`config/runtime.yaml` is the development policy; `config/runtime.acceptance.yaml` is the
-standalone Product acceptance policy. Both are complete, immutable non-secret configurations.
-The detailed tables below enumerate the development YAML; the profile table records acceptance differences.
-English names identify application policies, not measured optimal settings or user demands.
+Dayloom separates installation settings from planner policies:
 
-Product options, shared database connections and Foundry endpoint/deployment settings
-live separately in root `product.yaml`, beside `compose.yaml`. Credentials remain in
-`.env`; `scripts/run_database.py` supplies resolved database settings to Compose. See [Product setup](../docs/guides/development.md#product-account-setup-and-acceptance)
-for their keys, environment overrides and credential boundary.
+| File | Purpose |
+| --- | --- |
+| `product.example.yaml` | Portable Product, database and Foundry defaults |
+| `product.yaml` | Optional local deployment settings; ignored by Git |
+| `.env` | Private credentials and local overrides; ignored by Git |
+| `config/runtime.yaml` | Independent V0–V3 development policy |
+| `config/runtime.acceptance.yaml` | Product acceptance policy |
+
+Use [deployment](../docs/guides/deployment.md) to install the application and
+[development](../docs/guides/development.md#local-configuration-console) to edit local
+settings. This reference owns field names, precedence and policy limits.
+
+## Deployment settings
+
+Without `product.yaml`, every runtime reads `product.example.yaml`. To customize
+Product options, copy the template to `product.yaml`; `/config` creates or updates
+the local file when saving a Foundry deployment. No personal endpoint ships in the
+template. Database fields edited through `/config` are saved as `.env` overrides.
+
+| Setting | Environment key | Default / use |
+| --- | --- | --- |
+| `origin` | `PRODUCT_ORIGIN` | `http://localhost:5173`; exact application origin |
+| `allow_insecure_loopback` | `PRODUCT_ALLOW_INSECURE_LOOPBACK` | `true` for the supplied HTTP loopback setup; disable for HTTPS hosting |
+| `session_seconds` | `PRODUCT_SESSION_SECONDS` | `3600`; accepted range 1–86400 |
+| `runtime_profile` | `PRODUCT_RUNTIME_PROFILE` | `acceptance` for Product; independent planners default to development |
+| `database.host` | `DAYLOOM_DB_HOST` | `127.0.0.1` |
+| `database.port` | `DAYLOOM_DB_PORT` | `55432`; accepted range 1–65535 |
+| `database.name` | `DAYLOOM_DB_NAME` | `dayloom` |
+| `database.user` | `DAYLOOM_DB_USER` | `dayloom` |
+| — | `DAYLOOM_DB_PASSWORD` | Private PostgreSQL role password |
+| — | `DAYLOOM_DB_URL` | Optional complete connection; overrides split fields, and must name the database. Blank uses split fields. |
+| — | `DAYLOOM_DB_VOLUME` | `dayloom_pgdata` for new Compose storage; retain the actual volume on existing installations |
+| `foundry.endpoint` | `AZURE_OPENAI_ENDPOINT` | Configure your supported HTTPS endpoint ending in `/openai/v1` |
+| `foundry.deployment` | `AZURE_OPENAI_DEPLOYMENT` | `gpt-6-luna`; use a deployment compatible with the selected policy |
+| — | `AZURE_OPENAI_API_KEY` | Foundry model and web-search credential |
+| — | `OPENAI_API_KEY` | TripWorld query embeddings |
+| — | `GOOGLE_MAPS_API_KEY` | Planning and place photographs |
+| — | `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional atmosphere photos; `UNSPLASH_API_KEY` remains an alias |
+| — | `PRODUCT_JWT_SECRET` | Private signing key, at least 32 characters; local startup generates one only when absent |
+
+Explicit settings arguments take precedence over process environment, dotenv,
+secret-file settings, deployment YAML and code defaults. Product resolves default
+paths from the repository root. Unknown/duplicate YAML keys and credentials in YAML
+are rejected without echoing values. The console shows process-managed fields as
+locked, masks secrets and requires a restart for saved connection/provider/JWT changes.
+It retains existing signing keys; **Generate signing key** replaces one explicitly.
+
+The database launcher uses these same resolved fields when invoking Compose;
+Compose does not parse YAML itself. A URL used for local Compose must explicitly
+supply an IPv4 loopback host, port, database, user and password. Application clients
+can use separately hosted databases. Connection settings do not migrate existing
+data, rename roles or update their passwords.
 
 ## Loading, versions and overrides
 
@@ -79,46 +124,6 @@ are omitted from legacy development serialization, preserving old snapshot hashe
 | Destination assistance | 100 attempts/process/UTC day | No daily cutoff; 1.1-second user cooldown, 1 concurrent provider call |
 | Preference polishing | 20 operations/process/UTC day, 1 concurrent | No daily cutoff; 2-second user cooldown, 4 concurrent provider calls |
 
-The acceptance policy retains large input and supply capacity while bounding actual work.
-Its floor is the original acceptance policy at `413fe7f`: no numerical allowance is
-lower than that revision. Repair count and time limits return to that original policy;
-the request budget is 20 minutes, with at most 12 minutes for Repair and ten shared
-proposal rounds. Remaining phase/request time can end Repair before every round is used.
-Nested deadlines are not additive, and timeout cleanup may finish after the budget expires.
-The development column is a separate policy, not the original acceptance floor.
-Details acquisition has 180 seconds; Maps requests retain a 20-second timeout, official
-search has 30 seconds, and Repair reason compression has 30 seconds. RAG embedding and
-Google timeouts are 10 and 8 seconds. Other RAG transport limits retain the original policy.
-These are engineering allowances, not measured latency or quality guarantees.
-
-Acceptance supply estimates daily demand from sourced pace and hard dated totals, skips
-fixed full-day protections, and reserves for named identities plus category obligations and alternatives. Their overlap is not assumed before evidence.
-The supply target is a resource allocation, never a new visit quota. Resolved required
-identities use the selected supply ceiling instead of the development-only 16-identity gate.
-Acceptance review capacity follows the configured review budgets and half the supply
-target, rounded up, rather than a fixed eight-place ceiling. A nine-day Rich request
-normally reserves 36 supply identities and permits 12 review-enriched places under this policy.
-Acquisition, Details and semantic budgets can still limit available evidence; requirements
-are retained and final validation remains authoritative. The baseline budget must accommodate
-the square of the configured supply ceiling, and every provider request retains its own cap.
-
-Nearby uses at most one search and two references per trip day, within the configured
-ceilings. Cached anchor groups remain usable when the external-send allowance is zero.
-Assistance uses verified account IDs or the direct guest client address; untrusted forwarded
-headers cannot choose a rate-limit identity. Cooldowns and concurrency are process-local,
-with no queue or cross-worker quota coordination. GeoDB's global send interval remains binding.
-The optional `admission` group configures `per_user_interval_seconds` and `max_concurrent`;
-a null legacy daily allowance requires this group. Cancellation and failure release permits.
-
-Acceptance also enables `auxiliary_model_limits` for requirement interpretation, review
-profiles, official search, evidence extraction and Product introductions. Caller-supplied
-input includes schema and a 2,048-token framing reserve within the acceptance token
-allowance in the table. Lower extraction/introduction output caps remain applicable.
-Oversized input fails before dispatch without truncating requirements or evidence.
-The optional group is absent from legacy snapshots and default development behavior.
-It applies through the Product/programmatic dependency factory and explicit tools-CLI policy
-selection; injected external clients retain responsibility for their own limits.
-
 The typed ceilings distinguish provider capacity from the profile's operating allowance.
 For the current Foundry GPT-6 Luna deployment, the published limits are 922,000 input
 tokens, 128,000 output tokens and a shared 1,050,000-token context. Acceptance leaves
@@ -140,7 +145,7 @@ to explicitly configured runtimes, but is not selected by either standard profil
 `generation_spend_usd: 25` enables one request-local allowance across Product generation
 and introductions, the programmatic runtime, and the tools CLI with explicit acceptance
 configuration. Protected requests reserve their maximum recognized charge before HTTP dispatch.
-Concurrent requests share that allowance. Failed, cancelled and incomplete responses keep
+Concurrent provider calls within that planning run share the allowance. Failed, cancelled and incomplete responses keep
 the full reservation; only complete reported model usage can release a conservative
 unused difference. Missing usage never means zero cost. A blocked allowance prevents
 subsequent protected sends and cannot produce a successful Product result.
@@ -474,96 +479,19 @@ classifier deletes risk warnings or rewrites user requirements. Notes-only chang
 as arrangement improvement. These provenance/safety boundaries are not configurable bypasses.
 
 
-## API evidence policy checkpoint (2026-09-24)
+## Evidence and candidate invariants
 
-No numeric runtime values or CLI precedence changed. All acquisition, time, token and identity
-limits above remain authoritative. The two discovery radii now apply only when no compatible
-route is available, consistently in candidate preparation and proposal layout. The 45-minute leg,
-insertion detour and 90-minute stage-cumulative daily burden remain enforced. Replacement edges
-with the same activity IDs are compared using their actual canonical endpoints; missing original
-routes receive no credit. Estimated provider minutes are itinerary burden, not runtime seconds.
+Discovery radii apply when no compatible route exists. Applicable routes still
+undergo leg, detour and cumulative daily-burden checks. Missing original routes earn
+no invented improvement credit. Provider travel minutes describe itinerary burden;
+runtime seconds describe execution limits.
 
-Repair input remains `repair_input_2`, with projection revision `canonical_catalog_api_evidence_1`.
-A canonical candidate object occurs once; operation groups carry identity references and scoped
-authorizations. Catalog presence is not add permission. Selected opening/route evidence is retained
-in finding audit, including unknown/invalid reasons, without raw provider tracing. This is offline
-validated only; API availability and real model behavior need separately authorized live evidence.
-
-## Historical capacity calibration (2026-09-25; superseded)
-
-This dated record is not the current configuration; use the reference table and mixed-transport section.
-
-Repair limits are stage-wide, shared across all rounds. Google total is 5 actual
-sends; ordinary discovery is derived as `google - fallback` (4), reserving up to
-1 fallback send within the total. No second configurable discovery value exists.
-Zero google requires zero fallback; zero fallback removes that reservation.
-Neither unused capacity nor an empty patch requires a send. Cache hits consume no
-send allowance; sent failures do. Same-key failed attempts remain non-retryable.
-Canonical attempts (30) remain distinct from Details sends (30), successful
-identities and duplicate observations. Routes allows 6 requests but still only
-32 actual matrix elements. Input union 32 and engineering ceiling 120000 are
-preventive headroom; output 16384 and all time/spatial policies are unchanged.
-These are engineering freeze-candidate limits, not empirically optimal settings.
-Further expansion requires separate authorization. Budget denials are recorded
-before adapter dispatch, separately from provider pre-send failures.
-
-### Explicit Details allowance update (2026-09-25)
-
-The user subsequently authorized primary Details 60, initial RAG Details 30,
-and stage-wide Repair Details 30. Honolulu used historical lower allowances. quality_first_1 now reads the primary send allowance directly
-from budget.places.detail_calls instead of replacing it with r_pool + 8. The
-new-success target is unchanged. RAG resolution entities remain 16; Repair
-canonical attempts remain 12. These independent limits may stop acquisition
-before the larger Details allowance is spent. No timeout, retries, Reviews,
-input capacity or acceptance policy changed. This is offline-only configuration
-validation; the Honolulu live used the previous 40/20/10 values.
-
-
-### Active-target locality and four-round headroom (2026-09-25)
-
-Current limits are five stage-wide rounds/calls and 252000 engineering input tokens
-per call. Output remains 16384; identity union remains 32. These values are loaded
-from the same YAML snapshot, with no provider default or separate V3 config.
-Five calls are an upper bound, not a promise that the shared 360-second stage
-can fit five maximum-duration calls. Dynamic affordable-round allocation still
-reserves 20 seconds for rechecking and requires at least 30 seconds to start a
-model; model time is at most 70 seconds. Request deadline and Nearby reservation
-remain authoritative. Cache/failure records and acquisition counters never reset.
-
-Ordinary Details is owned by ToolBudget (60); initial RAG Details is owned by
-TripWorldDiscovery (30); Repair Details is owned by RepairBudget (30). They share
-request cache/attempt state, not an overlapping send counter. Failed sends count;
-cache reuse does not. Following the explicit follow-up authorization, initial RAG
-resolution entities and Repair canonical attempts are both 30. Their separate
-30-send Details limits remain authoritative: fallback-assisted second Details
-requests also consume that allowance. Cache reuse, failed resolution and early
-supply completion mean 30 attempts do not guarantee 30 successful candidates.
-Primary successful-supply targets still stop work before 60 when satisfied.
-
-The Repair stage now allows at most 360 seconds, still bounded by the remaining
-whole-request deadline minus Nearby reservation. Preparation remains at most 30
-seconds per round, model at most 70, and five calls share all acquisition limits.
-With 360 seconds available, the first five-round allocation is 72 seconds before
-preparation; the 20-second recheck reserve leaves at most 52 for the model.
-Preparation elapsed time reduces that allowance. No whole-request extension,
-extra Google/Routes quota, larger input union or relaxed acceptance is implied.
-
-CandidatePreparation.target_opportunities counts per target/date/operation;
-association_edges and unique_candidate_identities are distinct concepts. The
-identity_capacity_summary holds global matching capacity once, including a
-separate input-only capacity. identity_free_operations records RETIME, MOVE and
-DELETE without new-candidate allowances. UNKNOWN is still eligible; preparation
-references and matching capacity never mean itinerary completion. Deferred review
-targets cannot authorize current-round candidate acquisition or input slots.
-
-### Authorized shared Repair allowance update (2026-09-25)
-
-The current stage permits five rounds/calls, six Google sends (five ordinary
-discovery sends plus one reserved fallback), and eight Routes requests. Routes
-elements remain 32. Earlier capacity paragraphs describe historical checkpoints.
-All rounds share the same 360-second stage and original request deadline; more
-rounds do not guarantee more model time. Output, identity, spatial and other
-acquisition policies are unchanged. These new limits have no new live evidence.
+Repair candidate catalog membership is separate from scoped operation permission.
+Target/date/operation opportunities, association edges and unique candidate counts
+are distinct. Global matching capacity is reported once; identity-free operations
+retain their own authorization. Deferred targets cannot acquire candidates for the
+current round. Ordinary, initial-RAG and Repair Details share cache/failure history
+but retain separate send budgets. Failed sends count; cached reuse does not.
 
 ## Mixed transport and joint Repair configuration
 
@@ -588,10 +516,10 @@ shortened to retain model/recheck/finalization time. The DRIVE reserve instead m
 itinerary occupancy and contributes to the stage-cumulative 90-minute daily burden.
 Explicit supported transport restrictions take precedence over the default soft
 WALK, TRANSIT, DRIVE preference. Missing evidence never creates a driving estimate.
-These settings affect V3 Repair only; the optional transfers output is shared compatibility.
+Common transport settings apply to V1–V3 primary planning and V3 Repair; detour and added-burden limits apply only to Repair.
 
 
-## Shared first-generation mixed transport checkpoint
+## Shared primary transport
 
 The YAML `transport` group is the single authority for common WALK/TRANSIT/DRIVE
 windows. Runtime parsing projects these values into the compatible V3 spatial object;
@@ -616,11 +544,11 @@ remaining capacity. Pair admission occurs only on selection for supplementary pr
 not enumeration. Cache reuse bypasses new-send quotas. Initial acquisition and Repair
 share request evidence/cache/failure history but retain separate send budgets. Baseline
 uses the selected profile's call/element ceilings and the unchanged per-request bound. The historical single-matrix
-compatibility setting is not an extra allowance. Application envelopes for supplementary
-pairs/requests/elements are now 32/32/64; these are not provider absolute limits.
+compatibility setting is not an extra allowance. Supplementary pair/request/element allowances come from the selected profile; they are not provider absolute limits.
 
-`main_generation.input_tokens` is 252000 (positive; maximum 252000), independent from the
-same-valued Repair ceiling. Output remains 16384 and framing 2048. Actual prompt/schema
+`main_generation.input_tokens` is 252000 in development and 900000 in acceptance,
+within the typed maximum of 922000. Repair has its own input ceiling; the profile
+table above records output allowances. Framing is 2048. Actual prompt/schema
 counts fail closed on overflow. Provider context compatibility and actual completion remain
 runtime concerns; offline sizing is not model usage. No new CLI overrides were added;
 `--runtime-config` selects the immutable snapshot, and explicit development timeout retains
@@ -629,8 +557,7 @@ or Repair phases. The V3 initial-route guard uses the existing minimum model and
 reserves as downstream headroom, in addition to the authoritative Nearby reserve.
 
 All new transport/window values apply to V1/V2/V3 shared primary planning and V3 Repair;
-V0 does not acquire routes. This checkpoint supersedes earlier V3-only ownership statements
-for the migrated common transport fields. No new live evidence is claimed.
+V0 does not acquire routes.
 
 
 Minimum Daily Coverage is an invariant product rule, not another review toggle. The existing
@@ -638,12 +565,6 @@ quantity switch controls only optional 1->2 improvement. Blank-day coverage uses
 existing configured hours and full-day/source protections. Stage-wide Routes allowances
 and the post-proposal reservation follow the selected resource profile and remain shared
 across all rounds and modes.
-
-## Engineering closeout (2026-09-25)
-
-Current values were loaded and hashed during [V3 closeout](../docs/records/v0-v3/v3-closeout.md).
-No runtime limits changed in that task. The final combined-tree offline regression passed;
-historical live limits retain their original run configurations.
 
 ## POI semantics (request-wide)
 
@@ -687,24 +608,16 @@ Missing usage remains missing. A model timeout remains terminal and cannot quali
 unassessed candidate or trigger an automatic retry.
 
 
-POI semantic reference correction (2026-09-27): at most one correction per invalid-reference
-batch shares the above request-owned limits; it does not add a separate allowance or change
-runtime defaults. Feedback counts toward input sizing. Calls, timeouts, absolute deadlines
-and capture caps apply to both attempts. Unavailable or unsuccessful correction is terminal.
+At most one correction per invalid semantic batch shares the existing call,
+input and deadline limits. Supported correction classes include invalid references,
+identity-set mismatch and exception authorization/ownership errors. A different
+error class does not renew the allowance; unsuccessful correction is terminal.
 
-The subsequent approved contract-correction expansion also covers identity-set mismatch
-and exception authorization/ownership errors. All supported classes share the same single
-correction per batch; switching error class does not reset it. Prompt 4 clarifies exact
-exception permissions, and bounded feedback remains included in input sizing. No runtime
-default, capture setting or quantity Repair configuration changes accompany this expansion.
-
-The subsequent prompt-5 short-reference wire contract also keeps every default unchanged.
-Canonical IDs and sources are application-owned; pNN/eNN references are batch-local model
-identifiers, not configurable external IDs. Input accounting uses the actual projected
-payload and wire schema. The one-correction allowance is unchanged. Normalized opt-in
-capture now includes a reference mapping/hash/version and retains canonical accepted
-outcomes; existing size caps and redaction still apply. Old capture payloads are historical
-and must not be assumed to use the current wire format.
+Canonical identities and sources remain application-owned. Batch-local short
+references are restored before domain checks, and input accounting uses the actual
+projected payload and wire schema. Opt-in captures retain the reference mapping,
+hash/version and canonical accepted outcome within the existing size/redaction caps.
+Historical captures retain their original formats.
 
 When file tracing is enabled, finalization also writes budget.json independently of
 trace.max_payload_bytes and optional payload capture flags. The summary uses existing
@@ -741,3 +654,53 @@ Ticket 03 (2026-09-28) adds no configuration keys or budget increase. Candidate 
 uses the sourced final soft target plus one replacement opportunity; this is a selection
 heuristic, not a final category quota. Existing exploration settings also admit resolved
 landmarks that match preferences. See [supply policy](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/a6aff13a00af35467b9c88ec2906d10a96095f04/docs/shared_poi_supply.md).
+
+The acceptance policy retains large input and supply capacity while bounding actual work.
+Its floor is the original acceptance policy at `413fe7f`: no numerical allowance is
+lower than that revision. Repair count and time limits return to that original policy;
+the request budget is 20 minutes, with at most 12 minutes for Repair and ten shared
+proposal rounds. Remaining phase/request time can end Repair before every round is used.
+Nested deadlines are not additive, and timeout cleanup may finish after the budget expires.
+The development column is a separate policy, not the original acceptance floor.
+Details acquisition has 180 seconds; Maps requests retain a 20-second timeout, official
+search has 30 seconds, and Repair reason compression has 30 seconds. RAG embedding and
+Google timeouts are 10 and 8 seconds. Other RAG transport limits retain the original policy.
+These are engineering allowances, not measured latency or quality guarantees.
+
+Acceptance supply estimates daily demand from sourced pace and hard dated totals, skips
+fixed full-day protections, and reserves for named identities plus category obligations and alternatives. Their overlap is not assumed before evidence.
+The supply target is a resource allocation, never a new visit quota. Resolved required
+identities use the selected supply ceiling instead of the development-only 16-identity gate.
+Acceptance review capacity follows the configured review budgets and half the supply
+target, rounded up, rather than a fixed eight-place ceiling. A nine-day Rich request
+normally reserves 36 supply identities and permits 12 review-enriched places under this policy.
+Acquisition, Details and semantic budgets can still limit available evidence; requirements
+are retained and final validation remains authoritative. The baseline budget must accommodate
+the square of the configured supply ceiling, and every provider request retains its own cap.
+
+Nearby uses at most one search and two references per trip day, within the configured
+ceilings. Cached anchor groups remain usable when the external-send allowance is zero.
+Assistance uses verified account IDs or the direct guest client address; untrusted forwarded
+headers cannot choose a rate-limit identity. Cooldowns and concurrency are process-local,
+with no queue or cross-worker quota coordination. GeoDB's global send interval remains binding.
+The optional `admission` group configures `per_user_interval_seconds` and `max_concurrent`;
+a null legacy daily allowance requires this group. Cancellation and failure release permits.
+
+Acceptance also enables `auxiliary_model_limits` for requirement interpretation, review
+profiles, official search, evidence extraction and Product introductions. Caller-supplied
+input includes schema and a 2,048-token framing reserve within the acceptance token
+allowance in the table. Lower extraction/introduction output caps remain applicable.
+Oversized input fails before dispatch without truncating requirements or evidence.
+The optional group is absent from legacy snapshots and default development behavior.
+It applies through the Product/programmatic dependency factory and explicit tools-CLI policy
+selection; injected external clients retain responsibility for their own limits.
+
+
+## Historical changes
+
+September capacity calibration and transport integration changed operating limits
+and moved common transport policy into the shared V1–V3 path. Their original values,
+rationale and checks remain in [V3 development](../docs/records/v0-v3/v3-development.md)
+and [closeout](../docs/records/v0-v3/v3-closeout.md). The current profile tables above
+supersede those historical operating values. Later semantic corrections and short
+references retained the same request-owned limits and source-ownership rules.

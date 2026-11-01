@@ -1,7 +1,7 @@
 # Run Dayloom locally
 
 This guide installs the full web application. To check the saved research results
-without running it, use [verification and reproduction](verification.md).
+without running it, use [findings verification](verification.md).
 
 Run commands from the repository root. Except for copying `.env`, the commands
 below work in both PowerShell and Bash.
@@ -33,18 +33,18 @@ Bash:
 cp .env.example .env
 ```
 
-Keep an existing `.env`. Set `DAYLOOM_DB_PASSWORD` to your own database password
-and `PRODUCT_JWT_SECRET` to a private signing secret of at least 32 characters.
-You can generate the latter with:
-
-```bash
-uv run python -c "import secrets; print(secrets.token_urlsafe(48))"
-```
-
-`product.yaml` controls non-secret settings. Its defaults are database/role
+Keep an existing `.env`. Set `DAYLOOM_DB_PASSWORD` to the password of your
+PostgreSQL role before starting the database. The supplied defaults are database/role
 `dayloom`, port `55432`, and application address `http://localhost:5173`.
-Provider keys and your Foundry endpoint can be configured in the browser after
-startup. Environment overrides take precedence over saved settings.
+
+[product.example.yaml](../../product.example.yaml) is the portable template.
+If you need different Product options, copy it to ignored `product.yaml` and edit
+that local copy. Provider credentials and database connections can also be entered
+at `/config` after startup. Process environment overrides take precedence.
+
+Leave `PRODUCT_JWT_SECRET` blank on a new local installation: `dayloom start`
+generates and saves it automatically. Existing keys are retained. The configuration
+page supports a custom key or explicit replacement generation.
 
 ## 3. Prepare retrieval data and vocabularies
 
@@ -108,17 +108,21 @@ uv run dayloom start
 
 Open [localhost:5173/config](http://localhost:5173/config), or use the bottom-right
 settings button. New installations display the local configuration test password;
-change it after entering. Configure the services you use:
+change it after entering. Configure the database connection and services you use:
 
 | Service | Purpose |
 | --- | --- |
+| PostgreSQL | Host, port, database, role and password; optional complete connection URL |
+| Account sessions | Retained or automatically generated JWT key; custom key and generation controls |
 | Azure Foundry | Planner model and web search; use the supported `gpt-6-luna` deployment profile |
 | OpenAI | TripWorld query embeddings |
 | Google Maps | Places, routes and place photographs |
 | Unsplash | Optional atmosphere photographs |
 
 Save your settings, stop with Ctrl+C, and run `uv run dayloom start` again.
-Foundry endpoint/deployment are stored in `product.yaml`; keys are stored in `.env`.
+Foundry endpoint/deployment are stored in ignored `product.yaml`; database overrides
+and secrets are stored in ignored `.env`. Changing a connection does not migrate data
+or update an existing PostgreSQL role password.
 Incomplete installations open in setup mode so configuration remains available.
 
 Once ready, open [Dayloom](http://localhost:5173), create an account and plan a trip.

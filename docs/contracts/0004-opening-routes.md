@@ -1,10 +1,11 @@
 # Independent opening and route compliance
 
-Current implemented Tickets 06-07 contract, reconciled 2026-10-09. These are offline
-preparation/parsing/scoring rules, not a live collection client or formal experiment.
-Shared [artifact/time](0001-evaluation-artifacts.md), [identity/snapshot](0002-intake-identity-usage.md)
-and [occupancy](0003-requirement-schedule.md#occupancy) contracts retain their ownership.
-The evaluator applies its emitted frozen rules rather than reading moving planner thresholds.
+This reference defines independent opening and route preparation, evidence
+applicability and scoring. Follow [evaluation commands](../guides/experiments.md#evaluate-the-selected-outputs)
+for execution and replay. Shared [artifact/time](0001-evaluation-artifacts.md),
+[identity/snapshot](0002-intake-identity-usage.md) and
+[occupancy](0003-requirement-schedule.md#occupancy) contracts own their respective inputs.
+Scoring uses emitted frozen rules, preserving historical policy on replay.
 
 <a id="opening"></a>
 
@@ -345,7 +346,7 @@ This development smoke utility lives in
 [`backend.evaluation.tools.route_requests`](../../backend/evaluation/tools/route_requests.py).
 It is not an actual product planning stage or a prerequisite for final evaluator scoring.
 The core `routes.py` preparation/scorer remains separate and is consumed by quality reports.
-The CLI entry is `python -m backend.evaluation.tools.route_requests_cli`; the former
+The CLI entry is `uv run rtpeval dev route-requests`; the former
 root-level tool paths are historical identifiers, not current entry points.
 
 `prepare_v0_route_requests(bundle_path, identity_report, *, prepared_at,

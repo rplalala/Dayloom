@@ -1,13 +1,9 @@
 # Benchmark automatic results
 
-The automatic mean-score order is **V3 > V2 > V1 > V0**. The complete
-case-04 replacement was **accepted on 24 October 2026** under
-[#218](https://github.com/rplalala/Dayloom/issues/218).
-
-[Exact results and resource rows](automatic-results.json) bind every final and Pair
-to its selected source. [Case-04](case-04/report.md) contains four new generations
-and independent evaluations for **25–26 October 2026**. The other eleven cases
-retain their selected outputs, factual rules and saved evidence.
+Across the twelve selected cases, the automatic mean-score order is
+**V3 > V2 > V1 > V0**. [Exact results and resource rows](automatic-results.json)
+bind every final and same-run V3 pair to its selected source. The
+[case index](README.md#accepted-selections) links the accepted selections and limitations.
 
 ## Automatic ranking
 
@@ -63,10 +59,6 @@ the draft and final of its own V3 invocation; a V3 draft is not a separate V2 ru
 | [case-11](case-11/evaluation/density-pair.json) | 90.000 | 100.000 | +10.000 | 0 / 1 |
 | [case-12](case-12/evaluation/density-pair.json) | 54.286 | 100.000 | +45.714 | 0 / 6 |
 
-Case-04 has 6/3 → 3/3 visits and native Rich completion `complete`. Its
-[Repair report](case-04/report.md#process-and-repair) distinguishes actual edits,
-supported return checks and diagnostic UNKNOWN observations.
-
 ## Selected-generation resources
 
 | Version | Median USD | Median seconds | Total tokens | HTTP sends |
@@ -77,11 +69,8 @@ supported return checks and diagnostic UNKNOWN observations.
 | V3 | 2.2714044685 | 129.726 | 1099562 | 1028 |
 
 The 48 selected-generation rows exclude evaluation and replaced/failed generations.
-Case-04's six new stages cost USD 8.168798870 against a USD 40
-reference envelope. Its cumulative ledger retains 22 invocation identities and
-1291 distinct events, with USD 26.471764770 priced subtotal;
-15 historical unpriced/conflicting events prevent a complete total.
-Actual account billing and external Codex costs are not established.
+Per-case resource reports retain all-attempt ledgers and missing or conflicting
+observations. Actual account billing and external AI-assistance costs are not established.
 
 ## Blinded results and interpretation
 
@@ -92,12 +81,12 @@ Blinded ranks remain separate from automatic scores.
 
 ## Reproducibility and acceptance
 
-`python benchmark/verify_automatic.py` verifies 48 final and 24 paired stages,
-exact ranks, resource rows and the material index. `python benchmark/review_case04.py`
-verifies the current input/output bindings and native 3/3 Rich completion. Primary,
-Pair and all five applicable research tracks also replay from private saved evidence
-without network calls. Original captures, receipts and prior acceptance are preserved.
+```bash
+uv run rtpeval verify
+```
 
-The [selection index](README.md#accepted-selections) locates each accepted case.
-Case-04 acceptance is recorded under #218; the blinded report links its questionnaire
-and confirmed answer exports. Thesis synchronization continues under #220.
+The command checks all 48 finals, 24 paired stages, exact ranks, resource rows,
+material bindings and confirmed blinded results offline. The
+[verification guide](../docs/guides/verification.md) distinguishes public checks from
+native saved-evidence replay. Original captures and receipts remain preserved;
+the [selection index](README.md#accepted-selections) records case acceptance.

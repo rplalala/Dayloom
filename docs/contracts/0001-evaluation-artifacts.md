@@ -1,9 +1,9 @@
 # Evaluation artifacts, scope and time
 
-Current shared contract for native evaluation and source-bound suite orchestration.
-[PROJECT.md](../../PROJECT.md) owns scope; [evaluation architecture](../0006-independent-evaluation.md)
-owns implemented/deferred boundaries. GitHub owns task state. This reference states current
-rules together; dated proposals, approvals and validation remain in linked history.
+This reference defines artifact integrity, source-bound suites and research
+populations. Use the [experiment guide](../guides/experiments.md) for commands and
+[evaluation architecture](../0006-independent-evaluation.md) for module boundaries.
+The sections below own wire formats and invariants; records retain dated decisions.
 
 <a id="rtpeval-spec"></a>
 ## Batch ownership and reader separation
@@ -448,7 +448,7 @@ unstarted record precedes it. Further dispatches are explicit retries.
 
 ### Installed census export and dispatch observations
 
-`rtpeval research export-census INVENTORY --directory FRESH_DIRECTORY` produces
+`uv run rtpeval research export-census INVENTORY -o FRESH_DIRECTORY` produces
 the existing census and declaration wires from one `rtpeval_research_census_export_1`
 inventory. The inventory's parent is its source root. It supplies exact
 `population_ref`, `profile_ref`, and an explicit ordered `attempt_sources` array;
@@ -714,7 +714,7 @@ statistical-inference or causal-attribution claim.
 
 ### Pinned corpus measurement producer
 
-`rtpeval research corpus prepare REQUEST --directory FRESH` accepts
+`uv run rtpeval research corpus prepare REQUEST --directory FRESH` accepts
 `rtpeval_corpus_request_1`. Required fields are `declaration_ref`, `case_id`,
 `case_revision`, `input_sha256`, `scope`, `scope_sha256`, `snapshot_identity`,
 `declared_at`, `timing_basis`, `measurement_configuration` and `source`.

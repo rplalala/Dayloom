@@ -41,16 +41,31 @@ to the [local configuration guide](guides/development.md#local-configuration-con
 | `OPENAI_API_KEY` | `.env` | TripWorld query embeddings |
 | `GOOGLE_MAPS_API_KEY` | `.env` | Planning and place photographs |
 | `PRODUCT_UNSPLASH_ACCESS_KEY` | `.env` | Optional atmosphere photographs; existing `UNSPLASH_API_KEY` remains an alias |
+| `DAYLOOM_DB_HOST`, `DAYLOOM_DB_PORT`, `DAYLOOM_DB_NAME`, `DAYLOOM_DB_USER`, `DAYLOOM_DB_PASSWORD` | `.env` | Shared Product, retrieval and database launcher connection |
+| `DAYLOOM_DB_URL` | `.env` | Optional complete connection override; blank selects split fields |
+| `PRODUCT_JWT_SECRET` | `.env` | Traveler account session signing; existing keys retained, custom/generated replacements supported |
 
-The provider editor validates existing Foundry v1 endpoint/deployment syntax and
-writes only these fields. Configuration access has its own local password settings.
-The console adds neither model selection nor provider adaptation.
-Database credentials, JWT signing secrets, planning policies and retrieval data
-remain outside its write surface. Managed setting names in environment and dotenv
-are case-insensitive, matching existing consumers; interpolation variable references
-retain their case-sensitive dotenv semantics. Process environment overrides remain
-read-only in the console. Credentials resolve from the process environment, then
-dotenv; endpoint and deployment resolve from the process environment, then YAML.
+The editor validates supported Foundry endpoint/deployment syntax, database port
+and connection syntax, and signing-key length. It writes only the fields above;
+planning policies and retrieval data retain their existing preparation workflows.
+Database edits do not migrate data or change an existing PostgreSQL role password.
+
+Installation defaults come from tracked `product.example.yaml`; ignored
+`product.yaml` overrides that template when present. Managed environment/dotenv
+names are case-insensitive; dotenv interpolation references remain case-sensitive.
+Precedence is defined in the [settings reference](../config/README.md#deployment-settings).
+Process-managed fields are read-only in the console. A complete connection URL
+overrides split fields; an explicit blank uses split fields from the same selected
+configuration source, including a caller-supplied dotenv file.
+
+Local Product startup retains an existing signing key. If absent, it generates
+48 random bytes using the system secret generator and saves the encoded key under
+the configuration file lock. Restart retains that key. Custom keys require at least
+32 characters; `POST /api/config/signing-key` explicitly generates a replacement
+under the same revision, access and environment-lock checks as saves. The response
+contains presence only. Changing a key invalidates old traveler sessions after
+restart. API-only/nonlocal launches require an explicitly configured signing key.
+
 At local manager startup, legacy endpoint/deployment bindings in `.env` are moved
 to YAML before removal, preserving their last saved values and dependent dotenv
 interpolation. Repeating startup does not change already migrated files. This
@@ -89,7 +104,7 @@ bounded, as are active management sessions and request-body size. API responses
 use `Cache-Control: no-store`; validation/errors exclude submitted values.
 
 Secret fields return presence only. An omitted field is retained; an explicit
-empty change clears it. Credential writes replace existing dotenv bindings in place,
+empty change clears it, except a signing key cannot be blank. Credential writes replace existing dotenv bindings in place,
 preserving spelling and order; only absent keys are appended. YAML writes edit Foundry
 scalar values while retaining unrelated settings; flow-style or anchored documents
 may be normalized. Missing Foundry fields remain editable in setup mode, while planner
@@ -98,7 +113,7 @@ cross-process lock, replace each file atomically, and roll back completed replac
 on an I/O failure. They reject stale revisions with HTTP 409. A host/process crash
 between file replacements is not a transaction; reload the saved files before restarting.
 The
-running Product pins editable provider settings at startup, so saves require a
+running Product pins editable database, provider and signing settings at startup, so saves require a
 restart and cannot reconfigure in-flight work. Setup mode leaves configuration and
 static delivery available while business APIs return HTTP 503; a successful restart
 is required to enable business operations. Check local readiness returns local

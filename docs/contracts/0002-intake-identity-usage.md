@@ -1,18 +1,30 @@
 # Intake, identity, snapshots and usage
 
-Current implemented contract for Tickets 01-04, including the 2026-10-03 ordinary-output
-and 2026-10-05 structured V0 transport revisions. Source records are immutable; offline
-replay and independent review are separate
-from live acquisition. [Evaluation architecture](../0006-independent-evaluation.md) owns
-implemented/deferred scope. This file owns preparation wire and provenance; scorer rules
-live in the related topic contracts.
+This reference defines intake, independent identity, immutable snapshots,
+usage/cost accounting and material handoff. Use the
+[experiment guide](../guides/experiments.md) for runnable collection/review/evaluation
+steps. [Evaluation architecture](../0006-independent-evaluation.md) locates related
+scoring contracts. Source records retain their original bytes and provenance.
 
 <a id="rtpeval-intake-projection-contract"></a>
 ## Intake and stable projection
 
-Accept one explicitly selected batch. Emit material_diagnostics, inventory, projection_diagnostics and track_availability. A material error returns needs_material_correction for the submitted batch; do not silently evaluate a smaller cohort. Projection uncertainty does not revoke benchmark qualification. No producer runner, validator, requirement interpreter or workflow-completion check is invoked.
+Intake accepts one explicitly selected batch and emits `material_diagnostics`,
+`inventory`, `projection_diagnostics` and `track_availability`. Material errors return
+`needs_material_correction` for the whole batch. Projection uncertainty remains a
+quality diagnostic; intake does not run producer validation or infer workflow completion.
 
-Fatal material errors: unreadable/ambiguous JSON (including duplicate object keys), missing mandatory input/result/RequirementSpec or required usage envelope, incorrect hashes or group/run/version linkage, unsupported artifact major version, path escaping the resolved batch root (including links/junctions), non-object itinerary, absent/non-array days or activities, non-object activity, missing/non-string required activity identifier/title, nonunique activity IDs or nonunique/unreadable declared day dates. These prevent stable interpretation; do not reconstruct them. A confirmed multi-POI visit block is an existing delivery-contract diagnostic, not a request to split it.
+Fatal errors prevent stable interpretation:
+
+- Unreadable/ambiguous JSON, including duplicate keys; missing mandatory artifacts;
+  incorrect hashes or group/run/version linkage; unsupported major versions.
+- Paths escaping the resolved root, including links/junctions.
+- A non-object itinerary; missing/non-array days or activities; non-object activities;
+  missing/non-string required IDs/titles; duplicate activity IDs or day dates;
+  unreadable declared dates.
+
+Do not reconstruct fatal material. A confirmed multi-POI visit block remains a
+contract diagnostic; it is not automatically split.
 
 A declared unavailable usage envelope is valid and disables only resource measurements. Missing optional V3 draft/final-primary projections disable paired analysis; never reconstruct them from the selected final. A malformed optional projection records its own unavailable reason without replacing the selected final.
 

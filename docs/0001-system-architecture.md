@@ -1,10 +1,9 @@
 # System architecture and version boundaries
 
-Status: Implemented architecture, reviewed 2026-10-23 against code and PROJECT.md.
-The unified Product experience and persistence lifecycle are implemented and accepted
-locally; their current boundary is described below.
-This document defines the shared shape; [PROJECT.md](../PROJECT.md) owns current work
-status and authorization. Historical checkpoints are not current configuration.
+Dayloom is a modular monolith with four independently runnable planners and a
+V3-based web application. This document maps responsibilities, shared services and
+version boundaries. Use [development](guides/development.md) for commands and
+[PROJECT.md](../PROJECT.md) for current project status.
 
 ## Responsibility boundaries
 
@@ -20,12 +19,12 @@ vendor HTTP calls throughout graph nodes.
 
 ## Version mechanisms
 
-| Version | Mechanism | Independent command |
+| Version | Mechanism | Offline preparation command |
 | --- | --- | --- |
-| V0 | Shared input interpretation, plain LLM itinerary; estimated transport and optional model-knowledge references | scripts/run_v0.py |
-| V1 | External place/weather/route/official evidence, shared supply and final Nearby | scripts/run_v1.py |
-| V2 | V1 plus TripWorld retrieval, Google identity resolution and canonical merge | scripts/run_v2.py |
-| V3 | V2 plus structured validation, authorized targeted repair and re-validation | scripts/run_v3.py |
+| V0 | Shared input interpretation, plain LLM itinerary; estimated transport and optional model-knowledge references | `uv run rtpeval generate v0 input.json` |
+| V1 | External place/weather/route/official evidence, shared supply and final Nearby | `uv run rtpeval generate v1 input.json` |
+| V2 | V1 plus TripWorld retrieval, Google identity resolution and canonical merge | `uv run rtpeval generate v2 input.json` |
+| V3 | V2 plus structured validation, authorized targeted repair and re-validation | `uv run rtpeval generate v3 input.json` |
 
 Product uses **V3**, verified in [PlanningService](../backend/app/services/planning.py).
 Independent command-line and programmatic entry points expose all four. V0 remains free of external travel acquisition;

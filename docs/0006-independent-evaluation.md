@@ -1,15 +1,11 @@
 # Independent evaluation architecture
 
-Status: Tickets 01-12 have offline implementations within their approved scopes.
-Source-bound suite orchestration is implemented and its synthetic engineering
-acceptance is complete. Original-input research reports #113-#118 include explicit
-optional suite attachments, fresh report revisions and deterministic offline replay.
-Synthetic/offline engineering acceptance, combined backend regression and final
-independent Standards/Spec review are complete. The [post-integration acceptance](records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12)
-binds the combined main-worktree revision, fresh all-track refresh/replay checks
-and valid reuse of the earlier research regression and review evidence.
-This is a technical boundary, not a formal benchmark or results report.
-[PROJECT.md](../PROJECT.md) and live Issues own current authorization and task state.
+RTPEval consumes selected planner outputs, acquires independent evidence and
+produces source-bound quality, resource and research reports. This document maps
+its modules and interpretation rules. Use [experiments](guides/experiments.md) for
+new runs and [verification](guides/verification.md) for saved results. Detailed
+wire formats belong to the five contracts linked below; dated implementation and
+regression evidence remains in [evaluation records](records/evaluation/intake-identity-usage.md).
 
 ## Separation from planning and benchmark construction
 
@@ -251,17 +247,9 @@ not require new Planner runs or change primary scores. The
 owns stage boundaries, retained evidence and later report attachment. This workflow
 does not authorize formal execution or establish that either stage is complete.
 
-The current working drafts and storage convention are in the
-[benchmark index](../benchmark/README.md).
-[#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns final
-benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-records common workflow adoption. [Parallel batch #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
-owns remaining-case coordination under the
-[parallel session rules](../benchmark/README.md#parallel-sessions-and-integration).
-Cases may progress in independent worker queues; generation remains sequential
-within each case and source-bound acceptance remains individual. Each scenario
-child records its live plan, attempts and decision, applying shared rules by
-reference rather than maintaining another general specification.
+The [benchmark index](../benchmark/README.md) locates the twelve selected cases,
+source material and acceptance decisions. Case Issues retain attempts and decisions;
+historical parallel queues do not assign future work.
 
 ### Preparation and decision responsibilities
 

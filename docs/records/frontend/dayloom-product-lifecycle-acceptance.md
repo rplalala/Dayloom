@@ -834,6 +834,28 @@ under `.scratch/dayloom-db-unification/` by `before-migration.json`,
 review reports. They are evidence identifiers, not published dependencies. The normal
 built frontend and FastAPI runtime were restored together at `http://localhost:5173`.
 
+A portability follow-up on 1 November 2026 started at `6582693`. Implementation
+`855d300` introduced a tracked deployment template with ignored local settings,
+database editing and retained/automatically initialized JWT keys. Review correction
+`c3a6c1a` fixed blank connection URLs: the Product source reader had treated an empty
+`SecretStr` as a complete URL, bypassing the selected dotenv split fields. Three
+new Settings/launcher regressions reproduced that failure before correction; the
+API/Product/runtime gate then passed 365 tests with 303 conditional skips. The
+frontend passed 387 tests at two workers, plus build and lint; a first unrestricted
+run had one unrelated five-second timeout. Real Chromium checks exercised database
+and custom-key save/reload, explicit key generation, secret hiding and desktop/mobile
+layout against an isolated local instance. Current-installation readiness passed
+without changing `.env` or `product.yaml` bytes. No provider requests were made.
+
+The related baseline correction `1373dae` updated thirteen stale field, prompt-version
+and operating-limit expectations without changing runtime policy. Three diagnostic
+failures were reproduced under Windows GBK parent decoding of UTF-8 children; explicit
+UTF-8 decoding retains non-ASCII diagnostics. A fourth test omitted clearing the
+alternative database-password credential, so a seeded parent environment reproduced
+its full-suite-only error. Both isolated regressions passed after correction. Local
+evidence identifiers are `.scratch/runtime-config-20261101/encoding-red.txt`,
+`baseline-red.txt` and the configuration screenshots; these are not shared dependencies.
+
 ### Final local Product acceptance
 
 On 23 October 2026 (Australia/Sydney), the user explicitly accepted the complete local

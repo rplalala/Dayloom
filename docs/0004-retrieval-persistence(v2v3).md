@@ -1,6 +1,8 @@
 # Retrieval corpus and persistence
 
-Status: Implemented V2/V3 retrieval architecture, consolidated 2026-10-03.
+V2/V3 retrieve from a prepared TripWorld corpus in PostgreSQL/pgvector. This
+reference defines corpus identity, ranking and compatibility. For installation,
+follow [release preparation](guides/deployment.md#3-prepare-retrieval-data-and-vocabularies).
 
 ## Offline corpus versus runtime discovery
 
@@ -8,18 +10,15 @@ TripWorld metadata is prepared offline into deterministic entity/text artifacts.
 [entity and text rules](#retrieval-entities-and-text) define grouping and representation;
 retrieval relevance does not establish current factual availability.
 
-Only the established metadata input is required; reviews, travel-behavior and place-attribute
-datasets are not implicitly part of the corpus. Exact revision, checksums, field selection
-and schema are owned by versioned manifests and preparation code. Large source/generated
-artifacts remain ignored; small fixtures and build logic are versioned.
-
-The pinned [source manifest](../data/tripworld/manifest.json) owns revision, bytes, rows,
-checksum and logical input schema. Projection retains FSQ identity/name/coordinates/locality/
-region/country/categories and Google name/categories/identity; reviews, behaviors and attributes
-are excluded. Download validation checks size/hash/schema/count before deterministic processing.
-Profiles inspect identity/coordinate coverage, category distribution, duplicate identities and
-geographic anomalies. Source-row counts and historical anomalies remain dated observations;
-they are not silently recomputed or assumed to describe a new artifact.
+The pinned [source manifest](../data/tripworld/manifest.json) identifies revision,
+bytes, rows, checksum and schema. Projection retains FSQ identity, name,
+coordinates, locality, region, country and categories, plus Google identity, name
+and categories. Reviews, travel behavior and place attributes are excluded.
+Download validation checks size, hash, schema and count before deterministic
+processing. Profiles inspect identity/coordinate coverage, categories, duplicates
+and geographic anomalies; historical counts retain their recorded artifact scope.
+Large source/generated artifacts are distributed separately; fixtures and build
+logic are versioned.
 
 Runtime V2/V3 embeds bounded queries and retrieves candidate entities. It does not rebuild
 the corpus or regenerate document vectors. Google resolution and canonical merging then
