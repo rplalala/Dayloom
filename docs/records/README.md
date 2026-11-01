@@ -41,3 +41,8 @@ earlier document versions remain in Git history.
 [Dayloom lifecycle evidence](frontend/dayloom-product-lifecycle-acceptance.md) covers
 the frontend/transport foundation, durable persistence, configuration, media and
 latest regression limitations. Operational instructions remain in the guides.
+
+[Complete-baseline Docker local acceptance](v0-v3/2026-11-02-docker-local-acceptance.md)
+records the actual four-file archive, complete restore, controlled Product/media
+journey, recovery evidence and measured platform limits. Public-distribution
+acceptance remains subject to separate publication and anonymous retrieval.

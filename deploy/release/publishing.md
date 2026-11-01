@@ -114,11 +114,14 @@ GitHub Release containing only the archive and checksum sidecar. Build arguments
 are public source/version identifiers; Docker provenance may expose them.
 
 Package visibility needs maintainer configuration: first publication can remain
-private even for a public repository. Before making the draft Release public,
-check image visibility, exact-version anonymous pulls/downloads and cold-install
-acceptance. A preparation build or a draft asset is not evidence of anonymous
-availability. The workflow never rebuilds or exports the baseline, calls paid
-providers, or loads an author's runtime configuration.
+private even for a public repository. Before publishing the draft Release, verify
+anonymous pulls of its exact GHCR image digests and complete local cold-install
+acceptance. After separate authorization to publish the Release, verify anonymous
+curl retrieval of the exact-version archive and checksum, then install freshly
+from those retrieved artifacts. Public-distribution acceptance remains pending
+until that entire path passes; a preparation build or draft asset does not prove
+anonymous availability. The workflow never rebuilds or exports the baseline,
+calls paid providers, or loads an author's runtime configuration.
 
 ## Local package verification
 
@@ -144,9 +147,10 @@ references as a public release.
 
 The rendered README includes curl commands targeting its exact Release tag and
 asset names, checksum checks before/after extraction and maintenance instructions.
-Use the target version's bundle for upgrades and retain its release metadata with
-the private backup. Baseline replacement requires a separate explicit recovery or
-migration decision; ordinary application updates retain the installed identity.
+Use the target release's immutable application reference with the installed
+bundle's upgrade command, and retain the target release metadata with the private
+backup. Baseline replacement requires a separate explicit recovery or migration
+decision; ordinary application updates retain the installed identity.
 
 Primary references: [GitHub image publication](https://docs.github.com/en/actions/tutorials/publish-packages/publish-docker-images),
 [Release asset limits](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases),

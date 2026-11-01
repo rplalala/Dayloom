@@ -4,6 +4,16 @@ For the Bash-first, complete Docker deployment bundle, use the
 [Docker deployment guide](../../deploy/README.md). This guide covers installation
 from a source checkout and retains the existing host-based workflow.
 
+The [complete-baseline local acceptance](../records/v0-v3/2026-11-02-docker-local-acceptance.md)
+records the tested unpublished archive and its platform limits. On a Windows host
+with a Linux amd64 Docker Desktop 28.3.2 engine, fresh storage reached the deferred
+setup listener in 318.55 seconds using cached images and a 4,434,195,118-byte factory
+dump. The engine had 8 CPUs and approximately 16 GiB of memory; sampled PostgreSQL
+and initializer cgroup maxima were approximately 7.99 GiB and 3.13 GiB, including
+page cache. These observations do not establish minimum resources or network
+download time. Allow separate disk space for images, restored data and a private
+operational backup; image metadata size alone does not measure that footprint.
+
 This guide installs the full web application. To check the saved research results
 without running it, use [findings verification](verification.md).
 
