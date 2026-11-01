@@ -80,9 +80,9 @@ for storage retention, overrides and isolated test settings.
 The local Product launcher also serves `/config` with independent loopback-only
 management access. It opens directly by default and offers optional persisted
 password verification, with Configuration entries in Product navigation. It edits
-existing provider settings in `.env`, shows local
-resource readiness and offers explicit bounded API capability checks. Saved
-changes require restart. Incomplete local installs
+existing provider settings in `.env`, shows local resource readiness and offers
+explicit bounded API capability checks. Saved provider changes require restart;
+password-access changes apply immediately. Incomplete local installs
 can open the console while business APIs remain paused. Database/data preparation,
 model providers, spending policies and V0-V3 mechanisms retain their current scope.
 See the [configuration guide](docs/guides/development.md#local-configuration-console).
