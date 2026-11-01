@@ -1,9 +1,40 @@
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, expect, it, vi } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import { ConfigurationPage } from './ConfigurationPage';
 
 afterEach(() => vi.unstubAllGlobals());
+
+it.each(['unlock', 'reload'])('ignores a delayed %s response after the protected page is hidden and restored', async operation => {
+  const config = { revision: 'a'.repeat(64), restart_required: false, running_ready: true,
+    fields: { OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false } } };
+  let resolveConfig!: (response: Response) => void;
+  let waiting = false;
+  let reads = 0;
+  const deferred = new Promise<Response>(resolve => { resolveConfig = resolve; });
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: true, revision: 'f'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'page-token' });
+    if (operation === 'reload' && reads++ === 0) return Response.json(config);
+    waiting = true;
+    return deferred;
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  fireEvent.change(await screen.findByLabelText('Configuration password'), { target: { value: 'private-password' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Unlock configuration' }));
+  if (operation === 'reload') {
+    await screen.findByLabelText('OpenAI API key');
+    fireEvent.click(screen.getByRole('button', { name: 'Reload saved configuration' }));
+  }
+  await waitFor(() => expect(waiting).toBe(true));
+  act(() => {
+    window.dispatchEvent(new Event('pagehide'));
+    window.dispatchEvent(new Event('pageshow'));
+  });
+  await act(async () => { resolveConfig(Response.json(config)); });
+  expect(screen.getByLabelText('Configuration password')).toBeInTheDocument();
+  expect(screen.queryByLabelText('OpenAI API key')).not.toBeInTheDocument();
+});
 
 it('opens configuration automatically when password verification is off', async () => {
   const writes: { url: string; body: unknown }[] = [];

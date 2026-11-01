@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { ConfigurationAccessSettings, type AccessChange, type ConfigurationAccess } from './ConfigurationAccessSettings';
 import './configuration.css';
@@ -82,6 +82,8 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
 }
 
 export function ConfigurationPage() {
+  const pageGeneration = useRef(0);
+  const pendingRequests = useRef(new Set<AbortController>());
   const [config, setConfig] = useState<Configuration | null>(null);
   const [csrf, setCsrf] = useState('');
   const [password, setPassword] = useState('');
@@ -93,6 +95,12 @@ export function ConfigurationPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
+  const invalidateRequests = useCallback(() => {
+    pageGeneration.current += 1;
+    pendingRequests.current.forEach(controller => controller.abort());
+    pendingRequests.current.clear();
+  }, []);
+  useEffect(() => invalidateRequests, [invalidateRequests]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -123,6 +131,7 @@ export function ConfigurationPage() {
   useEffect(() => {
     if (!access?.password_required) return;
     const relock = () => {
+      invalidateRequests(); setBusy(false);
       setConfig(null); setCsrf(''); setPassword(''); setEdits({});
       setReadiness(null); setApiReports({}); setNotice('');
     };
@@ -132,24 +141,38 @@ export function ConfigurationPage() {
       window.removeEventListener('pagehide', relock);
       window.removeEventListener('pageshow', relock);
     };
-  }, [access?.password_required]);
+  }, [access?.password_required, invalidateRequests]);
 
-  async function perform(action: () => Promise<void>) {
+  async function perform(action: (pageRequest: typeof request) => Promise<void>) {
+    const generation = pageGeneration.current;
+    const controller = new AbortController();
+    pendingRequests.current.add(controller);
+    async function pageRequest<T>(path: string, init: RequestInit = {}) {
+      const result = await request<T>(path, { ...init, signal: controller.signal });
+      if (generation !== pageGeneration.current) throw new Error('Page access ended.');
+      return result;
+    }
     setBusy(true); setError(''); setNotice('');
-    try { await action(); }
+    try { await action(pageRequest); }
     catch (failure) {
+      if (generation !== pageGeneration.current) return;
       if (failure instanceof ConfigurationFailure && failure.status === 401) {
         setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setPassword(''); setApiReports({});
-        try { setAccess(await request<ConfigurationAccess>('/access')); } catch { setAccess(null); }
+        try { setAccess(await pageRequest<ConfigurationAccess>('/access')); }
+        catch { if (generation === pageGeneration.current) setAccess(null); }
       }
+      if (generation !== pageGeneration.current) return;
       if (failure instanceof ConfigurationFailure && ['configuration_changed', 'configuration_unreadable'].includes(failure.code)) setApiReports({});
       setError(failure instanceof ConfigurationFailure ? failure.message : 'Could not reach the local application. Try again.');
-    } finally { setBusy(false); }
+    } finally {
+      pendingRequests.current.delete(controller);
+      if (generation === pageGeneration.current) setBusy(false);
+    }
   }
 
   function unlock(event: FormEvent) {
     event.preventDefault();
-    void perform(async () => {
+    void perform(async (request) => {
       const session = await request<{ csrf_token: string }>('/session', {
         method: 'POST', body: JSON.stringify(access?.password_required ? { password } : {}),
       });
@@ -161,7 +184,7 @@ export function ConfigurationPage() {
 
   function save(event: FormEvent) {
     event.preventDefault();
-    void perform(async () => {
+    void perform(async (request) => {
       const saved = await request<Configuration>('', { method: 'PUT', headers: { 'X-CSRF-Token': csrf },
         body: JSON.stringify({ revision: config!.revision, changes: edits }) });
       setConfig(saved); setEdits({}); setReadiness(null); setApiReports({});
@@ -171,7 +194,7 @@ export function ConfigurationPage() {
 
   function saveAccess(change: AccessChange) {
     if (Object.keys(edits).length) return;
-    void perform(async () => {
+    void perform(async (request) => {
       const updated = await request<ConfigurationAccess>('/access', { method: 'PUT',
         headers: { 'X-CSRF-Token': csrf }, body: JSON.stringify(change) });
       setAccess(updated); setConfig(null); setCsrf(''); setPassword('');
@@ -189,7 +212,7 @@ export function ConfigurationPage() {
 
   async function verifyAccess(currentPassword: string) {
     let verified = false;
-    await perform(async () => {
+    await perform(async (request) => {
       await request('/access/verify', { method: 'POST', headers: { 'X-CSRF-Token': csrf },
         body: JSON.stringify({ current_password: currentPassword }) });
       verified = true;
@@ -211,7 +234,7 @@ export function ConfigurationPage() {
   function checkApis(service: Service) {
     if (!config || Object.keys(edits).length) return;
     const revision = config.revision;
-    void perform(async () => {
+    void perform(async (request) => {
       setApiReports(current => service === 'all' ? {} : { ...current, [service]: undefined });
       const report = await request<ApiReport>('/check', { method: 'POST',
         headers: { 'X-CSRF-Token': csrf }, body: JSON.stringify({ revision, service }) });
@@ -235,7 +258,7 @@ export function ConfigurationPage() {
 
   return <div className="config-page">
     <header className="config-header"><Link to="/" className="config-brand">Dayloom<span>Local configuration</span></Link>
-      {config && access?.password_required && <button type="button" disabled={busy} onClick={() => void perform(async () => {
+      {config && access?.password_required && <button type="button" disabled={busy} onClick={() => void perform(async (request) => {
         await request('/session', { method: 'DELETE', headers: { 'X-CSRF-Token': csrf } });
         setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setApiReports({});
       })}>Lock configuration</button>}
@@ -299,7 +322,7 @@ export function ConfigurationPage() {
               </div>}
             </section>)}</div>
             <div className="config-actions"><button className="config-primary" type="submit" disabled={busy || !Object.keys(edits).length}>Save configuration</button>
-              <button type="button" disabled={busy} onClick={() => void perform(async () => {
+              <button type="button" disabled={busy} onClick={() => void perform(async (request) => {
                 setConfig(await request<Configuration>('', { headers: { 'X-CSRF-Token': csrf } })); setEdits({}); setReadiness(null); setApiReports({});
               })}>Reload saved configuration</button>
               <span>Endpoint and deployment are saved in product.yaml. Keys are saved in .env and are never displayed after saving.</span>
@@ -307,7 +330,7 @@ export function ConfigurationPage() {
           </form>
           <section className="config-card config-resources"><div className="config-resource-heading"><div><h2>Local resources</h2>
             <p>Checks saved configuration and local resources. No external API calls are made, and key validity is not verified.</p></div>
-            <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => void perform(async () => {
+            <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => void perform(async (request) => {
               setReadiness(await request<Readiness>('/readiness', { headers: { 'X-CSRF-Token': csrf } }));
             })}>Check local readiness</button></div>
             {Object.keys(edits).length > 0 && <p>Save or reload your changes before checking readiness.</p>}
