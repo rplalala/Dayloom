@@ -9,7 +9,18 @@ Docker Desktop is optional. Install Bash, Docker Engine 28+
 and a Compose plugin supporting `up --wait --wait-timeout`; the first release
 supports Linux amd64 container engines.
 
-Extract the archive and run `bash start.sh`. The launcher resolves its own location,
+Install the latest published version into a new `./dayloom` directory:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | bash
+```
+
+The installer needs `curl`, `tar` and `sha256sum`. It verifies the archive and
+extracted files and refuses an existing `dayloom` directory. For an exact version,
+download its archive and checksum from GitHub Releases, verify the archive before
+extraction and all files afterward, then run `bash start.sh`.
+
+The launcher resolves its own location,
 so the caller's working directory can differ. It creates private configuration
 automatically, downloads the selected images, initializes the complete database
 baseline and starts Dayloom on `http://localhost:5173`. No source checkout,

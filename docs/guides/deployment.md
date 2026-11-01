@@ -17,22 +17,18 @@ No source checkout, host Python/Node installation or separate dataset preparatio
 
 ### Download and start
 
-Run this in a directory where a new `dayloom` directory can be created:
+Run this in a directory where a new `dayloom` directory can be created.
+You also need `curl`, `tar` and `sha256sum` on the host.
 
 ```bash
-version=0.1.0
-archive="dayloom-${version}-linux-amd64.tar.gz"
-release="https://github.com/rplalala/Dayloom/releases/download/dayloom-v${version}"
-
-mkdir dayloom &&
-cd dayloom &&
-curl --fail --location "$release/$archive" --output "$archive" &&
-curl --fail --location "$release/$archive.sha256" --output "$archive.sha256" &&
-sha256sum --ignore-missing --check "$archive.sha256" &&
-tar -xzf "$archive" &&
-sha256sum --ignore-missing --check "$archive.sha256" &&
-bash start.sh
+curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | bash
 ```
+
+The installer selects the latest published release, downloads its deployment
+archive and checksum, verifies the archive and every extracted file, then runs
+`start.sh`. It creates `./dayloom` and refuses to overwrite an existing directory.
+Use that directory for subsequent configuration and maintenance commands.
+Without an interactive terminal, provider entry is postponed automatically.
 
 The deployment archive is small; first launch downloads the app and baseline images.
 The baseline contains a 4.43 GB database dump. The launcher creates private `config/`

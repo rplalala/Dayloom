@@ -22,6 +22,10 @@ tasks, saved trips, place photographs and itinerary import/export.
 > [!TIP]
 > **Quick deployment → [Run the full application with Docker](docs/guides/deployment.md#option-1-docker-recommended)**
 >
+> ```bash
+> curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | bash
+> ```
+>
 > Start with Bash, Docker Engine and Compose. The images include the database baseline
 > and stored vectors; instance configuration is created automatically. Enter provider
 > settings during setup or finish them later at `/config`.
