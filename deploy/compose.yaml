@@ -1,0 +1,50 @@
+name: ${COMPOSE_PROJECT_NAME:-dayloom-deploy}
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.2-pg17@sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966
+    environment:
+      POSTGRES_USER: ${DAYLOOM_DB_USER:?Run the Bash launcher first}
+      POSTGRES_PASSWORD: ${DAYLOOM_DB_PASSWORD:?Run the Bash launcher first}
+      POSTGRES_DB: ${DAYLOOM_DB_NAME:?Run the Bash launcher first}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      retries: 60
+    shm_size: 256mb
+    restart: unless-stopped
+  init:
+    image: ${DAYLOOM_BASELINE_IMAGE:?Use a versioned deployment bundle}
+    environment:
+      DAYLOOM_DB_HOST: postgres
+      DAYLOOM_DB_PORT: "5432"
+      DAYLOOM_DB_NAME: ${DAYLOOM_DB_NAME}
+      DAYLOOM_DB_USER: ${DAYLOOM_DB_USER}
+      DAYLOOM_DB_PASSWORD: ${DAYLOOM_DB_PASSWORD}
+    command: [restore, /baseline, --expect-id, '${DAYLOOM_BASELINE_ID:?Use a released baseline identity}']
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+  app:
+    image: ${DAYLOOM_APP_IMAGE:?Use a versioned deployment bundle}
+    user: '${DAYLOOM_RUN_UID:?Run the Bash launcher first}:${DAYLOOM_RUN_GID:?Run the Bash launcher first}'
+    environment:
+      DAYLOOM_CONFIG_DIR: /instance
+      DAYLOOM_BASELINE_ID: ${DAYLOOM_BASELINE_ID}
+      DAYLOOM_MANAGEMENT_PEERS: ${DAYLOOM_MANAGEMENT_PEERS:?Run the Bash launcher first}
+    command: [serve, --require-installation]
+    ports:
+      - '127.0.0.1:${DAYLOOM_HOST_PORT:-5173}:5173'
+    volumes:
+      - ./config:/instance
+      - logs:/opt/dayloom/logs
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+volumes:
+  pgdata:
+  logs:

@@ -4,15 +4,16 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from pydantic import Field, SecretStr, field_validator, model_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import SettingsConfigDict
 
+from backend.app.runtime.configuration_paths import InstanceSettings
 from backend.app.runtime.database import DatabaseSettings
 from backend.app.runtime.deployment import DeploymentYamlSettingsSource, ProductOptions
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
-class ProductSettings(ProductOptions, BaseSettings):
+class ProductSettings(ProductOptions, InstanceSettings):
     model_config = SettingsConfigDict(
         env_prefix="PRODUCT_", env_file=PROJECT_ROOT / ".env", extra="ignore",
         hide_input_in_errors=True, yaml_file=PROJECT_ROOT / "product.yaml",

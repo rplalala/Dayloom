@@ -10,8 +10,10 @@ from collections import deque
 from contextlib import contextmanager
 from functools import lru_cache
 from io import StringIO
+from ipaddress import ip_address
 from pathlib import Path
 from time import monotonic
+from urllib.parse import urlsplit
 
 import yaml
 from dotenv.parser import parse_stream
@@ -90,10 +92,20 @@ def _revision(text, values):
 
 
 class LocalConfiguration:
-    def __init__(self, root: Path, *, origin: str, environment: dict):
+    def __init__(
+        self, root: Path, *, origin: str, environment: dict,
+        management_peers: tuple[str, ...] = (), default_password_hint: bool = True,
+    ):
         from backend.app.product.api_checks import ApiChecker
 
         self.root, self.origin = root, origin.rstrip("/")
+        parsed = urlsplit(self.origin)
+        if management_peers and (
+            parsed.scheme != "http" or parsed.hostname not in {"localhost", "127.0.0.1", "::1"}
+        ):
+            raise ValueError("Container management requires a loopback HTTP origin")
+        self.management_peers = frozenset(ip_address(peer) for peer in management_peers)
+        self.default_password_hint = default_password_hint
         self.environment = dict(environment)
         self._environment_settings = {key.upper(): value for key, value in environment.items()}
         self.sessions = {}
@@ -385,8 +397,11 @@ class LocalConfiguration:
 
     def access_view(self):
         state = self._password_state()
-        return {"password_required": state["password_hash"] is not None,
-                "revision": state["revision"], "default_test_password": DEFAULT_TEST_PASSWORD}
+        view = {"password_required": state["password_hash"] is not None,
+                "revision": state["revision"]}
+        if self.default_password_hint:
+            view["default_test_password"] = DEFAULT_TEST_PASSWORD
+        return view
 
     def verify_access_password(self, password):
         with self.lock:

@@ -46,7 +46,7 @@ policy unless explicitly overridden. See the
 ## Local configuration console
 
 Open `/config` at the exact configured hostname, or use the Product settings button.
-It works without a traveler account or a database connection. New installations
+It works without a traveler account or a database connection. New host installations
 show the configuration password `dayloom-config-2026`; change it after entering.
 Existing passwords and disabled verification preferences are retained.
 
@@ -81,6 +81,48 @@ In Bash, use `test ! -e .config-access.backup && mv .config-access.json .config-
 This restores the default configuration password and retains provider keys.
 The console is available only through the Product launcher on an HTTP loopback
 origin; the API-only launcher does not expose local management.
+
+For multiple instances or mounted configuration, select an existing directory with
+`DAYLOOM_CONFIG_DIR` as described in the [configuration reference](../../config/README.md#deployment-settings).
+Run configuration-access recovery commands from that directory when one is selected.
+
+### Container configuration
+
+The production application image uses a mounted instance directory selected by
+`DAYLOOM_CONFIG_DIR`. Build it with the four verified tokenizer/sidecar files supplied
+as the `runtime-resources` named build context; no full database dump enters the
+application build. The frontend build also includes its tracked backend example JSON
+dependencies. From the source root:
+
+```bash
+docker build --build-context runtime-resources=/path/to/verified-runtime-resources \
+  -f deploy/docker/app.Dockerfile -t dayloom-app:local .
+```
+
+The packaged bootstrap command creates private instance settings and reports its
+random configuration password only on first creation. Existing files and access
+preferences are retained. For a mounted directory, run bootstrap and the application
+with a UID/GID compatible with the host owner; do not relax host directory permissions
+to make an incompatible runtime user work. The bootstrap CLI is:
+
+```bash
+python -m deploy.docker.app_entrypoint bootstrap --directory /instance \
+  --origin http://localhost:5173
+```
+
+The image entry accepts `serve --management-peer ADDRESS`, or the comma-separated
+`DAYLOOM_MANAGEMENT_PEERS` environment setting, for literal host-forwarding peer IPs.
+Publish its port only on host loopback. Explicit container mode separates the internal
+listener port from the configured public origin and retains Host/Origin, CSRF and
+password checks. It does not trust arbitrary private peers or forwarded headers.
+Keep provider fields in the mounted configuration rather than injecting all of them
+as process environment, which would make them read-only in the page.
+
+If the configuration password is lost, invoke the image's host-controlled
+`reset-management-password --directory /instance` command against that same mounted
+directory. It prints a replacement once and invalidates prior management sessions;
+normal container startup never prints or rotates it. The default Product test account
+is independent. Configuration saves still require restarting the application.
 
 ## Local PostgreSQL naming and storage
 

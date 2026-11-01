@@ -10,13 +10,14 @@ from uuid import UUID
 import httpx
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
 from pydantic import AliasChoices, Field, SecretStr, StringConstraints
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import SettingsConfigDict
 
 from backend.app.observability.product_logs import operation
 from backend.app.observability.usage import install_http_hooks
 from backend.app.product.auth import CurrentUser
 from backend.app.product.examples import example_detail, local_example_media
 from backend.app.product.media_cache import MediaCache, get_media_cache, owned_context
+from backend.app.runtime.configuration_paths import InstanceSettings
 from backend.app.runtime.database import PROJECT_ROOT
 
 router = APIRouter(tags=["Product media"])
@@ -34,7 +35,7 @@ ATMOSPHERE_QUERIES = {
 }
 
 
-class MediaSettings(BaseSettings):
+class MediaSettings(InstanceSettings):
     model_config = SettingsConfigDict(
         env_prefix="PRODUCT_",
         env_file=PROJECT_ROOT / ".env",

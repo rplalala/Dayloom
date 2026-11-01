@@ -20,9 +20,11 @@ responses. Completion is a policy observation, not global feasibility.
 
 ## Local configuration console
 
-`/config` runs outside traveler session/task providers. The local Product launcher
-enables management only for HTTP loopback origin/listener; API-only management is
-disabled. Product pages expose a settings link when available.
+`/config` runs outside traveler session/task providers. The host Product launcher
+requires an HTTP loopback origin/listener. Explicit container-local mode permits
+a container listener with a loopback public origin and a finite operator-configured
+list of host-forwarding peer IPs. API-only/nonlocal management remains disabled.
+Product pages expose a settings link when available.
 
 | Settings | Saved location |
 | --- | --- |
@@ -51,10 +53,15 @@ Legacy local Foundry dotenv fields migrate to YAML with dependent values preserv
 
 ### Access and writes
 
-New local installations display the test password `dayloom-config-2026` and change
-instructions. Existing custom/disabled settings remain. Custom passwords are 10–128
-characters, Argon2id-hashed in ignored `.config-access.json`. Without password protection,
-the browser establishes a separate 30-minute HttpOnly, SameSite=Strict management cookie.
+New host installations display the test password `dayloom-config-2026` and change
+instructions. Container bootstrap generates an independent random management password
+and returns it once to the explicit host setup caller; normal application logs and
+HTTP responses do not expose it or advertise the host test-password hint. Only its
+Argon2id hash is persisted. A host-only reset command rotates management access without
+changing provider credentials, the signing key or Product accounts. Existing
+custom/disabled settings remain. Custom passwords are 10–128 characters, hashed in
+ignored `.config-access.json`. Without password protection, the browser establishes
+a separate 30-minute HttpOnly, SameSite=Strict management cookie.
 
 Protected entry/reload requires unlocking again. An in-memory session-bound token
 accompanies protected requests; an old cookie alone cannot recover access. Navigation
@@ -62,8 +69,9 @@ clears the token. Password changes/disabling require current-password verificati
 recheck at commit and immediate cross-process revocation. Corrupt/unreadable/symlinked
 access files fail closed. Host recovery is documented in the development guide.
 
-All management operations require loopback peer and exact Host; writes require exact
-Origin. Forwarded headers are disabled. Unlock attempts, sessions and bodies are bounded.
+All management operations require a loopback peer or an explicitly admitted container
+forwarding IP, and exact Host; writes require exact Origin. A private subnet and
+forwarded headers do not grant access. Unlock attempts, sessions and bodies are bounded.
 Responses are `no-store`, secrets are presence-only, and errors exclude submitted values.
 Omission retains a value; explicit empty clears it except the signing key.
 

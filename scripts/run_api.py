@@ -20,12 +20,14 @@ def create_api_loop():
 def main(argv=None):
     import uvicorn
 
+    from backend.app.runtime.configuration_paths import configuration_directory
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument(
-        "--env-file", default=str(PROJECT_ROOT / ".env"),
-        help="Local environment file; defaults to the repository .env; never committed",
+        "--env-file", default=str(configuration_directory(PROJECT_ROOT) / ".env"),
+        help="Local environment file; defaults to the selected instance or repository .env",
     )
     args = parser.parse_args(argv)
     server = uvicorn.Server(uvicorn.Config(

@@ -5,7 +5,9 @@ from typing import Literal
 
 import yaml
 from pydantic import AnyHttpUrl, BaseModel, ConfigDict, Field
-from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource
+from pydantic_settings import SettingsConfigDict, YamlConfigSettingsSource
+
+from backend.app.runtime.configuration_paths import InstanceSettings, configuration_directory
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEPLOYMENT_FILE = PROJECT_ROOT / "product.yaml"
@@ -61,6 +63,8 @@ class DeploymentYamlSettingsSource(YamlConfigSettingsSource):
         selected = settings_cls.model_config.get("yaml_file")
         if isinstance(selected, (str, Path)):
             selected = Path(selected)
+            if selected == DEPLOYMENT_FILE:
+                selected = configuration_directory() / "product.yaml"
             if selected.name == "product.yaml" and not selected.exists():
                 selected = selected.with_name("product.example.yaml")
         super().__init__(settings_cls, yaml_file=selected)
@@ -80,7 +84,7 @@ class DeploymentYamlSettingsSource(YamlConfigSettingsSource):
         return {self.aliases.get(key, key): value for key, value in values.items()}
 
 
-class ProductPolicySettings(ProductOptions, BaseSettings):
+class ProductPolicySettings(ProductOptions, InstanceSettings):
     """Non-secret policy selection also works for guest input assistance."""
 
     model_config = SettingsConfigDict(

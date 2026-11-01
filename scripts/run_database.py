@@ -13,6 +13,7 @@ if str(PROJECT_ROOT) not in sys.path:
 def main(argv=None):
     from dotenv import load_dotenv
 
+    from backend.app.runtime.configuration_paths import configuration_directory
     from backend.app.runtime.database import DatabaseSettings
 
     args = list(sys.argv[1:] if argv is None else argv)
@@ -20,7 +21,7 @@ def main(argv=None):
         print("Usage: python scripts/run_database.py <compose arguments>")
         print("Example: python scripts/run_database.py up -d --wait postgres")
         return 0
-    load_dotenv(PROJECT_ROOT / ".env", override=False)
+    load_dotenv(configuration_directory(PROJECT_ROOT) / ".env", override=False)
     try:
         parameters = DatabaseSettings().connection_parameters()
         if parameters.get("host") not in {"localhost", "127.0.0.1"}:

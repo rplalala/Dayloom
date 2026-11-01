@@ -59,9 +59,9 @@ def main(argv=None, **kwargs):
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument("--rag-env-file", help="Optional local V2 DB/embedding environment file")
     args, remaining = parser.parse_known_args(argv)
-    from backend.app.runtime.database import PROJECT_ROOT
+    from backend.app.runtime.configuration_paths import configuration_directory
 
-    load_dotenv(args.rag_env_file or PROJECT_ROOT / ".env", override=False)
+    load_dotenv(args.rag_env_file or configuration_directory() / ".env", override=False)
     return tools_main(
         remaining,
         planner_runner=run_v2,
