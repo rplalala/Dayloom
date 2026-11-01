@@ -188,7 +188,10 @@ export function BriefPage() {
     <div className="page-heading"><span className="eyebrow">YOUR JOURNEY, YOUR WAY</span><h1>Where will you go next?</h1><p>Start with the essentials. Make room for what you love.</p></div>
     {session.status === 'expired' && <SessionReminder returnTo="/plan" />}
     {session.hasPreviousBrief && <p className="subtle-help">Your previous private brief is also available. <button type="button" className="inline-action" onClick={() => {
-      if (window.confirm('Restore your previous brief? This replaces the brief currently shown.')) session.restorePreviousBrief?.();
+      if (window.confirm('Restore your previous brief? This replaces the brief currently shown.')) {
+        navigate('/plan', { replace: true, state: null, flushSync: true });
+        session.restorePreviousBrief?.();
+      }
     }}>Restore previous brief</button></p>}
     <section className="flow-card form-card" id="travel-brief">
       <div className="flow-title"><span className="step-number">01</span><div><h2>Your travel brief</h2></div><span className="count-badge">About 1 minute</span></div>

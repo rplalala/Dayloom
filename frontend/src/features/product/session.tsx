@@ -178,6 +178,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const recovery = useRef<Recovery>(readRecovery());
   const guest = useExpiredGuestBrief(JSON.stringify([recovery.current.owner, recovery.current.owner ? generation(recovery.current.owner) : '']));
   const clearGuest = guest.clear;
+  const liveGuest = useRef(guest);
+  liveGuest.current = guest;
   const previousRecovery = useRef<Recovery | null>(readRecovery(previousKey));
   const [previousAvailable, setPreviousAvailable] = useState(Boolean(previousRecovery.current?.owner));
   const rememberPrevious = useCallback((value: Recovery | null) => {
@@ -237,6 +239,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       if (loggingOut.current || sessionBlocked()) return;
       const previousOwner = accountRef.current?.id || recovery.current.owner || activeLogin()?.id;
       if (previousRecovery.current?.owner !== next.id) rememberPrevious(null);
+      const publicBrief = !accountRef.current && recovery.current.owner ? liveGuest.current.snapshot() : null;
+      if (publicBrief?.edited) {
+        if (recovery.current.owner === next.id && (recovery.current.generation || '') === generation(next.id)) rememberPrevious({ ...recovery.current });
+        else rememberPrevious(null);
+        recovery.current = { owner: next.id, generation: generation(next.id),
+          brief: publicBrief.brief, origin: publicBrief.origin, started: true,
+          defaultsAttempted: true, actionId: null, draftRef: null, draftTitle: publicBrief.draftTitle };
+        liveGuest.current.clear();
+      }
       if (previousOwner && previousOwner !== next.id) invalidatePhotos({ owner: previousOwner });
       if (
         recovery.current.owner &&
@@ -406,8 +417,6 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   ) {
     if (loggingOut.current)
       throw new Error("Wait for logout to finish before logging in.");
-    const guestAtStart = status === 'expired' ? guest.snapshot : null;
-    const privateAtStart = { ...recovery.current };
     const response = await fetch(`/api/auth/${mode}`, {
       method: "POST",
       credentials: "same-origin",
@@ -422,15 +431,6 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           : "We could not sign you in. Check your details and try again.",
       );
     epoch.current++;
-    const publicBrief = guestAtStart?.();
-    if (publicBrief?.edited) {
-      if (privateAtStart.owner === body.id) rememberPrevious(privateAtStart);
-      else rememberPrevious(null);
-      recovery.current = { owner: body.id, generation: generation(body.id),
-        brief: publicBrief.brief, origin: publicBrief.origin, started: true,
-        defaultsAttempted: true, actionId: null, draftRef: null, draftTitle: publicBrief.draftTitle };
-      clearGuest();
-    }
     beginLogin(body);
     adopt(body);
     notify({ type: "account", id: body.id });

@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, expect, it, vi } from 'vitest';
 import { routes } from '../../app/router';
@@ -24,11 +24,13 @@ function expiredPage(path: string, loginDelay?: Promise<void>) {
     if (url === '/api/auth/current') return Response.json({ detail: { code: 'session_expired' } }, { status: 401 });
     if (url === '/api/examples') return Response.json([{ id: 'sydney-example', title: 'Sydney harbour', destination: 'Sydney', start_date: '2026-10-24', end_date: '2026-10-25', day_count: 2, stop_count: 3, transfer_count: 2 }]);
     if (url === '/api/planning/date-window') return Response.json({ allowedStart: '2026-10-21', allowedEnd: '2026-11-03', maxTripDays: 10 });
+    if (url === '/api/drafts' && options?.method === 'POST') return Response.json({ id: 'guest-draft', title: 'Guest draft', revision: 1 });
+    if (url === '/api/drafts/guest-draft') return Response.json({ id: 'guest-draft', title: 'Guest draft', revision: 1, editor: { ...createBrief(), destination: 'Guest city' } });
     return Response.json([]);
   }));
   const router = createMemoryRouter(routes, { initialEntries: [path] });
   const view = render(<RouterProvider router={router} />);
-  return { requests, router, unmount: view.unmount };
+  return { requests, router, unmount: view.unmount, loginInAnotherTab: () => { signedIn = true; } };
 }
 
 async function signIn(email = 'alice@example.com') {
@@ -112,6 +114,35 @@ it('keeps guest edits when a focus refresh sees login before its response finish
   await act(async () => finish());
   expect(await screen.findByLabelText('Destination')).toHaveValue('Guest city');
   expect(screen.getByRole('button', { name: 'Restore previous brief' })).toBeVisible();
+});
+
+it('continues edited guest input when the same account logs in through another tab', async () => {
+  const { loginInAnotherTab } = expiredPage('/plan');
+  fireEvent.change(await screen.findByLabelText('Destination'), { target: { value: 'Guest city' } });
+  await act(async () => {
+    loginInAnotherTab();
+    const value = JSON.stringify({ id: 'alice', nonce: 'other-tab-login' });
+    localStorage.setItem('dayloom.account.active', value);
+    window.dispatchEvent(new StorageEvent('storage', { key: 'dayloom.account.active', newValue: value }));
+  });
+  expect(await screen.findByLabelText('Destination')).toHaveValue('Guest city');
+  expect(screen.getByRole('button', { name: 'Restore previous brief' })).toBeVisible();
+});
+
+it('clears a newly saved draft route before restoring the previous private brief', async () => {
+  const { requests, router } = expiredPage('/plan');
+  fireEvent.change(await screen.findByLabelText('Destination'), { target: { value: 'Guest city' } });
+  fireEvent.click(screen.getByRole('link', { name: 'Log in again' }));
+  await signIn();
+  await screen.findByLabelText('Destination');
+  fireEvent.click(screen.getByRole('button', { name: 'Save draft' }));
+  await waitFor(() => expect(router.state.location.search).toBe('?draft=guest-draft'));
+  const confirmation = vi.spyOn(window, 'confirm').mockReturnValue(true);
+  await act(async () => fireEvent.click(screen.getByRole('button', { name: 'Restore previous brief' })));
+  expect(router.state.location.search).toBe('');
+  expect(screen.getByLabelText('Destination')).toHaveValue('Private city');
+  expect(requests).not.toContain('/api/drafts/guest-draft');
+  confirmation.mockRestore();
 });
 
 it('lets an expired visitor edit and clear a separate guest brief while preserving private recovery', async () => {
