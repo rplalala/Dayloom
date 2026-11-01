@@ -324,8 +324,8 @@ def main(argv=None, *, runtime=None, date_provider=None, clock=None):
 
     argv = generation_arguments(sys.argv[1:] if argv is None else argv)
     options = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
-    options.add_argument("--register-batch", type=Path)
-    options.add_argument("--registration-directory", type=Path)
+    options.add_argument("--register-batch", "-b", type=Path)
+    options.add_argument("--registration-directory", "-s", type=Path)
     args, forwarded = options.parse_known_args(argv)
     if (args.register_batch is None) != (args.registration_directory is None):
         options.error("--register-batch and --registration-directory must be supplied together")

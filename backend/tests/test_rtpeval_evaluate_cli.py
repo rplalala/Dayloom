@@ -114,7 +114,18 @@ def test_one_step_emits_native_report_and_replays_without_scoring_again(
     assert canonical_digest(preparation) == receipt["preparation_sha256"]
 
 
-@pytest.mark.parametrize("command", ["prepare", "execute", "replay"])
+@pytest.mark.parametrize(
+    "command",
+    [
+        "prepare",
+        "execute",
+        "replay",
+        "prepare-opening",
+        "execute-opening",
+        "replay-opening",
+        "prepare-pair-opening",
+    ],
+)
 def test_leaf_help_stays_offline(installed_cli, command):
     result = installed_cli("evaluate", command, "--help", evaluation_offline=True)
     assert result.returncode == 0, result.stdout + result.stderr
@@ -147,7 +158,9 @@ def test_execution_modes_are_explicit_before_evaluator_import(installed_cli, arg
 
 def test_installed_preparation_is_offline_and_matches_native(evaluation_material, installed_cli):
     args, directory, root = evaluation_material
-    prepared = installed_cli("evaluate", "prepare", *args[2:], evaluation_offline=True)
+    aliases = {"--directory": "-o", "--options": "-c", "--prices": "-p"}
+    short = [aliases.get(arg, arg) for arg in args[2:]]
+    prepared = installed_cli("evaluate", "prepare", *short, evaluation_offline=True)
     assert prepared.returncode == 0, prepared.stdout + prepared.stderr
     summary = json.loads(prepared.stdout)
     preparation_bytes = (directory / "preparation.json").read_bytes()

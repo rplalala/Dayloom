@@ -13,6 +13,7 @@ def main(argv=None, *, root=None):
         "check": "run_product.py",
         "db": "run_database.py",
         "migrate": "migrate_product.py",
+        "logs": "product_logs.py",
     }
     parser = argparse.ArgumentParser(
         prog="dayloom",
@@ -22,6 +23,7 @@ def main(argv=None, *, root=None):
         "restore RELEASE: import into an empty local Compose database\n"
         "migrate: apply Product migrations\n"
         "start / check: launch Product or check local readiness\n"
+        "logs ARGS: inspect or prune local Product diagnostics\n"
         "db ARGS: forward Docker Compose lifecycle arguments",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

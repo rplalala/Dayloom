@@ -28,14 +28,16 @@ def main(argv=None):
         "Historical runs require traceable dispatch metadata; no Planner/evaluator calls.",
     )
     export.add_argument("inventory", type=Path)
-    export.add_argument("--directory", type=Path, required=True, help="Fresh export directory")
+    export.add_argument(
+        "--directory", "-o", type=Path, required=True, help="Fresh export directory"
+    )
     for operation in ("validate", "report"):
         command = commands.add_parser(operation)
         command.add_argument("declaration", type=Path)
-        command.add_argument("--track", choices=tuple(TRACKS), required=True)
+        command.add_argument("--track", "-t", choices=tuple(TRACKS), required=True)
         if operation == "report":
             command.add_argument(
-                "--directory", type=Path, required=True, help="Fresh report directory"
+                "--directory", "-o", type=Path, required=True, help="Fresh report directory"
             )
     args = parser.parse_args(argv)
     from backend.cli.collection import CollectionError

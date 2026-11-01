@@ -14,6 +14,58 @@ PREPARATION_FILES = (
     "route-reviews",
     "density-reviews",
 )
+FILE_ALIASES = {"directory": "-o", "options": "-c", "prices": "-p"}
+
+
+def _prepare(command, argv):
+    parser = argparse.ArgumentParser(
+        prog="rtpeval evaluate " + command,
+        description="Offline source-bound evaluation preparation; no provider requests.",
+    )
+    positional = {
+        "prepare": ("manifest",),
+        "prepare-opening": ("parent_directory",),
+        "prepare-pair-opening": ("manifest", "identity_report", "snapshot_directory"),
+    }[command]
+    for name in positional:
+        parser.add_argument(name)
+    for name, alias in FILE_ALIASES.items():
+        parser.add_argument("--" + name, alias, required=True)
+    optional = (
+        ("quality-profile", "context", "occupancy-reviews", "route-reviews", "density-reviews")
+        if command == "prepare"
+        else ("context", "expected-plan")
+        if command == "prepare-pair-opening"
+        else ()
+    )
+    for name in optional:
+        parser.add_argument("--" + name)
+    args = parser.parse_args(argv)
+    forwarded = [command, *(getattr(args, name) for name in positional)]
+    for name in (*FILE_ALIASES, *optional):
+        value = getattr(args, name.replace("-", "_"))
+        if value is not None:
+            forwarded.extend(("--" + name, value))
+    from backend.evaluation.evaluation_run_cli import main as native
+
+    return native(forwarded)
+
+
+def _execute_opening(argv, *, http_client=None):
+    parser = argparse.ArgumentParser(
+        prog="rtpeval evaluate execute-opening",
+        description="One explicit online opening assessment; no Google acquisition or retries.",
+    )
+    parser.add_argument("directory")
+    parser.add_argument("--approved-sha256", "-a", required=True)
+    parser.add_argument("--env-file", "-e")
+    args = parser.parse_args(argv)
+    forwarded = ["execute-opening", args.directory, "--approved-sha256", args.approved_sha256]
+    if args.env_file is not None:
+        forwarded.extend(("--env-file", args.env_file))
+    from backend.evaluation.evaluation_run_cli import main as native
+
+    return native(forwarded, http_client=http_client)
 
 
 def _execute(argv: Sequence[str], *, http_client=None) -> int:
@@ -32,7 +84,7 @@ def _execute(argv: Sequence[str], *, http_client=None) -> int:
         "--directory", "-o", help="Fresh output directory for one-step preparation/execution"
     )
     mode.add_argument(
-        "--approved-sha256", help="Exact prepared digest for the legacy execute route"
+        "--approved-sha256", "-a", help="Exact prepared digest for the legacy execute route"
     )
     aliases = {"options": "-c", "prices": "-p"}
     for option in PREPARATION_FILES:
@@ -82,11 +134,26 @@ def main(argv: Sequence[str] | None = None, *, http_client=None) -> int:
         description="Automatic evaluation: prepare/replay are offline; execute is online.",
         epilog="execute accepts a qualified manifest or an explicitly approved prepared directory.",
     )
-    parser.add_argument("command", choices=("prepare", "execute", "replay"))
+    parser.add_argument(
+        "command",
+        choices=(
+            "prepare",
+            "execute",
+            "replay",
+            "prepare-opening",
+            "execute-opening",
+            "replay-opening",
+            "prepare-pair-opening",
+        ),
+    )
     parser.add_argument("arguments", nargs=argparse.REMAINDER, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     if args.command == "execute":
         return _execute(args.arguments, http_client=http_client)
+    if args.command in ("prepare", "prepare-opening", "prepare-pair-opening"):
+        return _prepare(args.command, args.arguments)
+    if args.command == "execute-opening":
+        return _execute_opening(args.arguments, http_client=http_client)
 
     from backend.evaluation.evaluation_run_cli import main as native
 

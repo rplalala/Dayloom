@@ -277,9 +277,11 @@ def test_completed_generation_registers_exact_originals_without_requirements(
     if short_form:
         args = [
             "v0", str(tmp_path / "input.json"), "-o", str(tmp_path / "capture"),
-            "--group-id", "g", "--run-id", "r", "--execute",
+            "-g", "g", "-r", "r", "--execute",
         ]
     selection = registration(tmp_path)
+    if short_form:
+        selection[0], selection[2] = "-b", "-s"
     original_selection = (tmp_path / "selection.json").read_bytes()
     assert main(["generate", *args, *selection], runtime=Runtime(), date_provider=REFERENCE) == 0
     staging = json.loads((tmp_path / "staging/staging.json").read_bytes())

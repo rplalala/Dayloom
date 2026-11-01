@@ -19,10 +19,12 @@ def generation_arguments(argv):
     parser.add_argument("version", choices=("v0", "v1", "v2", "v3"))
     parser.add_argument("request", type=Path)
     parser.add_argument("-o", "--output-directory", type=Path)
-    parser.add_argument("--group-id")
-    parser.add_argument("--run-id")
+    parser.add_argument("--group-id", "-g")
+    parser.add_argument("--run-id", "-r")
     parser.add_argument("-c", "--runtime-config")
     parser.add_argument("-e", "--env-file")
+    parser.add_argument("-b", "--register-batch")
+    parser.add_argument("-s", "--registration-directory")
     parser.add_argument("--execute", action="store_true")
     args, extra = parser.parse_known_args(argv)
     if any(arg.split("=", 1)[0] in {"--version", "--input-json"} for arg in extra):
@@ -42,7 +44,12 @@ def generation_arguments(argv):
         "--run-id",
         run_id,
     ]
-    for flag, value in (("--runtime-config", args.runtime_config), ("--env-file", args.env_file)):
+    for flag, value in (
+        ("--runtime-config", args.runtime_config),
+        ("--env-file", args.env_file),
+        ("--register-batch", args.register_batch),
+        ("--registration-directory", args.registration_directory),
+    ):
         if value is not None:
             expanded.extend((flag, value))
     if args.execute:

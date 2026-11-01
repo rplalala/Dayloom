@@ -271,7 +271,7 @@ def test_partial_collection_preserves_exact_bytes_and_pending_review(installed_c
     path = save()
     originals = {p: p.read_bytes() for p in root.glob("*.json")}
     output = root / "staging"
-    result = installed_cli("batch", "collect", path, "--directory", output)
+    result = installed_cli("batch", "collect", path, "-o", output)
     assert result.returncode == 0, result.stdout + result.stderr
     report = json.loads(result.stdout)
     assert report["status"] == "incomplete"

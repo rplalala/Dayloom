@@ -17,7 +17,7 @@ def main(argv=None):
     )
     collect_parser.add_argument("config", type=Path)
     collect_parser.add_argument(
-        "--directory", required=True, type=Path, help="Fresh staging directory"
+        "--directory", "-o", required=True, type=Path, help="Fresh staging directory"
     )
     attach_parser = commands.add_parser(
         "attach-requirements",
@@ -30,7 +30,7 @@ def main(argv=None):
     attach_parser.add_argument("staging", type=Path)
     attach_parser.add_argument("handoff", type=Path)
     attach_parser.add_argument(
-        "--directory", required=True, type=Path, help="Fresh attachment directory"
+        "--directory", "-o", required=True, type=Path, help="Fresh attachment directory"
     )
     finalize_parser = commands.add_parser(
         "finalize",
@@ -44,7 +44,7 @@ def main(argv=None):
     for option in ("projection-reviews", "occupancy-reviews"):
         finalize_parser.add_argument("--" + option, type=Path)
     finalize_parser.add_argument(
-        "--directory", required=True, type=Path, help="Fresh finalized directory"
+        "--directory", "-o", required=True, type=Path, help="Fresh finalized directory"
     )
     preflight_parser = commands.add_parser(
         "preflight", help="Offline activity-review coverage queue"

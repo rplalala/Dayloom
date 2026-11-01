@@ -75,7 +75,7 @@ def test_complete_offline_preflight_preserves_order_and_native_limits(
 ):
     source, directory, _ = suite_material
     result = installed_cli(
-        "suite", "prepare", source, "--directory", directory, evaluation_offline=True
+        "suite", "prepare", source, "-o", directory, evaluation_offline=True
     )
     assert result.returncode == 0, result.stdout + result.stderr
     summary = json.loads(result.stdout)

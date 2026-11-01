@@ -100,7 +100,7 @@ def test_original_inputs_without_census_retain_80_planned_unknown_slots(
     valid = installed_cli("research", "validate", declaration, "--track", "population")
     assert valid.returncode == 0, valid.stdout + valid.stderr
     result = installed_cli(
-        "research", "report", declaration, "--track", "population", "--directory", tmp_path / "out"
+        "research", "report", declaration, "-t", "population", "-o", tmp_path / "out"
     )
     assert result.returncode == 0, result.stdout + result.stderr
     report = json.loads((tmp_path / "out" / "population.json").read_text(encoding="utf-8"))

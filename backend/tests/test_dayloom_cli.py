@@ -102,15 +102,22 @@ def test_restore_checks_and_imports_the_same_container_database(tmp_path, monkey
         assert command[command.index("--username") + 1] == "review"
 
 
-def test_launcher_forwards_database_arguments_and_exit_status(tmp_path, capfd):
+@pytest.mark.parametrize(
+    "command, script",
+    [
+        ("db", "run_database.py"),
+        ("logs", "product_logs.py"),
+    ],
+)
+def test_launcher_forwards_arguments_and_exit_status(tmp_path, capfd, command, script):
     from backend.cli.dayloom import main
 
     scripts = tmp_path / "scripts"
     scripts.mkdir()
-    (scripts / "run_database.py").write_text(
+    (scripts / script).write_text(
         "import sys\nprint('|'.join(sys.argv[1:]))\nraise SystemExit(17)\n"
     )
-    assert main(["db", "up", "-d", "--wait", "postgres"], root=tmp_path) == 17
+    assert main([command, "up", "-d", "--wait", "postgres"], root=tmp_path) == 17
     assert capfd.readouterr().out.strip() == "up|-d|--wait|postgres"
 
 

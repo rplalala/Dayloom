@@ -301,15 +301,46 @@ def test_tools_guard_records_caught_external_attempts(installed_cli, operation, 
         installed_cli(probe, probe=True, tools_offline=True)
 
 
+@pytest.mark.parametrize("evaluation_entry", [False, True])
 def test_explicit_incremental_opening_execute_and_offline_replay_use_native_receipts(
     batch,
     capsys,
     monkeypatch,
     installed_cli,
+    evaluation_entry,
 ):
     monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "synthetic-google")
     monkeypatch.setenv("AZURE_OPENAI_API_KEY", "synthetic-model")
-    _, _, directory, approved = prepare_base(batch, capsys)
+    root, parent, directory, approved = prepare_base(batch, capsys)
+    if evaluation_entry:
+        directory = root / "public-opening"
+        prepared = installed_cli(
+            "evaluate",
+            "prepare-opening",
+            parent,
+            "-o",
+            directory,
+            "-c",
+            root / "options.json",
+            "-p",
+            root / "prices.json",
+            tools_offline=True,
+        )
+        assert prepared.returncode == 0, prepared.stderr
+        preparation = json.loads(prepared.stdout)
+        assert preparation["eligible_count"] == 8
+        approved = preparation["preparation_sha256"]
+    execute_command = (
+        ["evaluate", "execute-opening"]
+        if evaluation_entry
+        else ["advanced", "opening-run", "execute"]
+    )
+    replay_command = (
+        ["evaluate", "replay-opening"]
+        if evaluation_entry
+        else ["advanced", "opening-run", "replay"]
+    )
+    digest_flag = "-a" if evaluation_entry else "--approved-sha256"
     calls = []
 
     def respond(request):
@@ -320,7 +351,7 @@ def test_explicit_incremental_opening_execute_and_offline_replay_use_native_rece
     client = httpx.AsyncClient(transport=httpx.MockTransport(respond))
     assert (
         public_main(
-            ["advanced", "opening-run", "execute", str(directory), "--approved-sha256", approved],
+            [*execute_command, str(directory), digest_flag, approved],
             http_client=client,
         )
         == 0
@@ -334,7 +365,7 @@ def test_explicit_incremental_opening_execute_and_offline_replay_use_native_rece
         sum(row["opening"]["counts"]["UNKNOWN"] for row in report["reports"]["opening"]["results"])
         == 8
     )
-    current = installed_cli("advanced", "opening-run", "replay", directory, tools_offline=True)
+    current = installed_cli(*replay_command, directory, tools_offline=True)
     legacy = installed_cli(
         "replay-opening",
         directory,
@@ -347,7 +378,7 @@ def test_explicit_incremental_opening_execute_and_offline_replay_use_native_rece
     assert json.loads(current.stdout) == report
     assert (
         public_main(
-            ["advanced", "opening-run", "execute", str(directory), "--approved-sha256", approved],
+            [*execute_command, str(directory), digest_flag, approved],
             http_client=client,
         )
         == 2

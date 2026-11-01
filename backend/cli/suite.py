@@ -15,13 +15,13 @@ def main(argv: Sequence[str] | None = None, *, http_client=None) -> int:
         "prepare", description="Offline complete source and budget preflight"
     )
     prepare.add_argument("declaration")
-    prepare.add_argument("--directory", required=True, help="Fresh suite output directory")
+    prepare.add_argument("--directory", "-o", required=True, help="Fresh suite output directory")
     execute = commands.add_parser(
         "execute", description="Online one-use sequential native execution"
     )
     execute.add_argument("directory")
-    execute.add_argument("--approved-sha256", required=True)
-    execute.add_argument("--env-file")
+    execute.add_argument("--approved-sha256", "-a", required=True)
+    execute.add_argument("--env-file", "-e")
     for name in ("replay", "report"):
         command = commands.add_parser(
             name, description="Offline saved-source and evidence validation"
