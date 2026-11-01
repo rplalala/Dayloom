@@ -26,6 +26,7 @@ def test_profile_defaults_persist_after_application_recreation(client):
         "pace": None,
         "transport": [],
         "notes": "",
+        "can_delete_account": True,
     }
     desired = {
         "display_name": "  Ada Lovelace  ",
@@ -50,6 +51,7 @@ def test_profile_defaults_persist_after_application_recreation(client):
         "initials": "AL",
         "interests": ["Nature", "Art & museums"],
         "transport": ["walk", "transit"],
+        "can_delete_account": True,
     }
     assert result.json() == expected
     token = client.cookies.get("dayloom_session")

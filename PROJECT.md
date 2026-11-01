@@ -49,8 +49,10 @@ see the [identity transport contract](docs/0001-system-architecture.md#model-ide
 Earlier milestone freezes retain their original scope; later changes are separately
 recorded and do not automatically re-freeze any version.
 
-The complete local Dayloom Product was accepted by the user on 23 October 2026 at
-`b40fcfa55f919a570fbfcec10bde110ac7029a89`, after the final photo-layout corrections.
+The current local Dayloom Product was accepted by the user on 1 November 2026 at
+`e2f38b0fb402b1b6e8eebccd07281dd7ffe7159b`, after the configuration-console and
+Product web cleanup delivery in [PR #242](https://github.com/rplalala/Dayloom/pull/242)
+and [Issue #241](https://github.com/rplalala/Dayloom/issues/241).
 The built frontend and normal API share `http://localhost:5173`; the `dayloom` Compose
 project runs `postgres` against the retained runtime volume. Git delivery is complete through
 merged [PR #210](https://github.com/rplalala/Dayloom/pull/210) and completed
@@ -76,20 +78,36 @@ See the [development guide](docs/guides/development.md#local-postgresql-naming-a
 for storage retention, overrides and isolated test settings.
 
 The local Product launcher also serves `/config` with independent loopback-only
-management access. It edits existing provider settings in `.env`, shows local
-resource readiness and offers explicit bounded API capability checks. Saved
-changes require restart. Incomplete local installs
+management access. New installations use the displayed local test password,
+with persisted password verification on every page entry and a bottom-right settings shortcut.
+Existing custom passwords and explicit verification preferences are retained. It edits
+Foundry endpoint/deployment in `product.yaml` and provider credentials in `.env`,
+shows local resource readiness and offers
+explicit bounded API capability checks. Saved provider changes require restart;
+password-access changes apply immediately. Incomplete local installs
 can open the console while business APIs remain paused. Database/data preparation,
 model providers, spending policies and V0-V3 mechanisms retain their current scope.
 See the [configuration guide](docs/guides/development.md#local-configuration-console).
+
+Guest example itineraries are read-only showcases with bundled local photographs
+and illustration fallbacks, without media provider requests. Source and license
+credits ship with the assets; authenticated travelers can keep an independent copy.
+Expired sessions retain a login reminder while allowing public examples and a separate
+guest Plan editor. Private briefs stay isolated; saving and generation require login.
 
 Product UI/API uses V3 and an allowlisted presentation contract. V0-V3 remain
 independently accessible through command-line and programmatic entry points. The Developer
 web page and its dedicated APIs are removed. Current input assistance includes destination suggestions,
 currency/date controls and optional user-reviewed preference polishing.
-Itinerary activity/Nearby photographs now reuse validated links within the browser tab
-session; the [media contract](docs/0007-application-operations.md#browser-tab-photo-session)
-defines expiry, isolation, bounded recovery and browser lifecycle limits.
+Owned itinerary cover, activity and Nearby photographs persist validated display URLs
+in the existing preview/trip rows, with a browser-tab metadata cache and ordinary HTTP
+image caching. The [media contract](docs/0007-application-operations.md#persistent-itinerary-image-urls)
+defines storage, isolation and revision-checked replacement after image failure or
+explicit refresh. Guest examples continue to use bundled local images.
+The Profile page supports password-confirmed permanent account deletion, with server
+protection for the default test admin and an active-task guard; the
+[account deletion contract](docs/0007-application-operations.md#account-deletion)
+defines cascading cleanup and browser session invalidation.
 Product diagnostics now correlate HTTP operations, durable tasks and planner runs,
 preserving native Repair decisions, bounded payloads and independent completion/usage
 summaries alongside public progress. Local lookup and retention are described in the
@@ -449,7 +467,9 @@ access and distribution arrangement. Required thesis and clearance forms must be
 uploaded as clearly named PDFs to the supervisor's designated OneDrive folder;
 both submissions precede final project sign-off.
 
-School archival submission is pending. Current preparation covers local inventory
+School archival submission is pending. Current preparation covers the
+[deployment guide](docs/guides/deployment.md),
+[reproduction and materials guide](docs/guides/reproduction.md), local inventory
 and completeness verification; upload, repository creation, form submission and
 new paid execution remain outside that scope. The project Git repository excludes
 the separate `thesis/` working repository,

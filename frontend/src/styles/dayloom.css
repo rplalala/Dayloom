@@ -152,5 +152,19 @@
 /* Runtime-only boundaries; the fixed r7 presentation above is unchanged. */
 .dayloom { min-height: 100vh; font-synthesis:initial; text-rendering:auto; }
 .dayloom .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); clip-path:inset(50%); white-space:nowrap; border:0; }
+.dayloom .configuration-shortcut {
+ position:fixed; right:max(28px,env(safe-area-inset-right)); bottom:max(28px,env(safe-area-inset-bottom)); z-index:70;
+ display:grid; place-items:center; width:48px; height:48px; border:1px solid var(--line-2); border-radius:50%;
+ background:var(--bg); color:var(--accent); box-shadow:0 4px 18px rgba(35,72,57,.12);
+}
+.dayloom .configuration-shortcut:hover { background:var(--accent-faint); border-color:var(--accent); transform:translateY(-2px); }
+@media(max-width:800px) {
+ .dayloom .configuration-shortcut { right:max(16px,env(safe-area-inset-right)); bottom:max(20px,env(safe-area-inset-bottom)); }
+ .dayloom:has(.auth-scene) .configuration-shortcut { position:static; margin:0 16px 20px auto; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .dayloom .configuration-shortcut { transition:none; }
+ .dayloom .configuration-shortcut:hover { transform:none; }
+}
 .dayloom .about-dialog { border:0; max-width:calc(100% - 48px); color:var(--ink); }
 .dayloom .about-dialog::backdrop { background:rgba(9,23,26,.53); backdrop-filter:blur(8px); }

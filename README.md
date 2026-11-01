@@ -9,6 +9,7 @@ independently runnable planners for exploring how external evidence, retrieval
 and targeted repair affect itinerary quality.
 
 [Explore the prototype](https://dingzh.cc/Dayloom/prototype/) ·
+[Deployment](docs/guides/deployment.md) · [Reproduction](docs/guides/reproduction.md) ·
 [Command line](#command-line) · [Documentation](docs/README.md) ·
 [Benchmark results](benchmark/report.md)
 
@@ -47,6 +48,27 @@ The application is a modular monolith: **React + TypeScript** for the frontend,
 **PostgreSQL + pgvector** for application data and retrieval.
 See the [architecture guide](docs/0001-system-architecture.md) for details.
 
+## Project structure
+
+| Path | Contents |
+| --- | --- |
+| `frontend/` | React/TypeScript Product and local configuration interface; npm lockfile |
+| `backend/app/` | FastAPI, Product services, V0-V3 planners, evidence/retrieval and validation/Repair |
+| `backend/cli/` | Installed `rtpeval` command dispatcher |
+| `backend/evaluation/` | Independent scoring, saved-evidence replay and experiment tools |
+| `backend/tests/` | Backend unit, integration and isolated application tests |
+| `scripts/` | Product/API/database launchers, migrations and independent V0-V3 entry points |
+| `tools/` | Explicit data preparation, validation and engineering diagnostics |
+| `benchmark/` | Twelve accepted requests, selected outputs, reports, confirmed blinded answers and offline verifiers |
+| `config/` and `product.yaml` | Versioned runtime policies and non-secret deployment settings |
+| `data/tripworld/manifest.json` | Pinned retrieval source identity; large runtime data is distributed separately |
+| `docs/` | Current architecture/contracts, deployment/reproduction guides and engineering records |
+| `pyproject.toml`, `uv.lock`, `compose.yaml`, `.env.example` | Python environment, pinned dependencies, local database service and configuration template |
+
+The [reproduction guide](docs/guides/reproduction.md#3-data-and-supporting-materials-for-submission)
+identifies the additional datasets, native evidence and historical code needed for a
+complete research hand-in. A source-only download does not contain all of those materials.
+
 ## Local development
 
 Prerequisites: **Python 3.12**, **uv**, **Node.js/npm**, and a
@@ -54,7 +76,9 @@ Prerequisites: **Python 3.12**, **uv**, **Node.js/npm**, and a
 database. Full V3 planning also needs the TripWorld release below and configured
 model and travel-provider credentials.
 
-From the repository root:
+Commands in this README work unchanged in Bash (Linux/macOS) and PowerShell
+(Windows). The deployment guide provides both versions of shell-specific steps.
+Run commands from the repository root:
 
 1. Copy [`.env.example`](.env.example) to `.env` and set the database password
    and a signing secret of at least 32 characters. Provider credentials can be
@@ -62,20 +86,25 @@ From the repository root:
    [`product.yaml`](product.yaml) for database and model deployment settings.
 2. Install dependencies with `uv sync --locked --group retrieval` and
    `npm --prefix frontend ci`.
-3. Prepare the database, restore TripWorld, and set up both tokenizer caches using
-   the [environment setup guide](docs/guides/development.md#environment-and-local-application).
+3. Follow the [deployment guide](docs/guides/deployment.md) to create the database
+   volume, restore TripWorld and prepare both tokenizer caches. It includes the
+   complete first-install sequence and common setup failures.
 
 Once those resources are ready, build and start the full application:
 
-```powershell
+```bash
 npm --prefix frontend run build
 uv run python scripts/migrate_product.py
 uv run python scripts/run_product.py
 ```
 
-Open [local configuration](http://localhost:5173/config) and unlock it with the
-management token printed in the running terminal. Configure the existing Foundry,
-OpenAI and Google Maps services, save, and restart Dayloom. Missing local resources
+Click the settings icon in the bottom-right corner of Product, or visit
+[local configuration](http://localhost:5173/config). New installations use the test
+password `dayloom-config-2026`, displayed on the entry page; change it after opening
+configuration. Existing custom passwords and explicitly disabled verification are retained.
+Configure the existing Foundry,
+OpenAI and Google Maps services, save, and restart Dayloom. Foundry endpoint/deployment
+are saved in `product.yaml`; API credentials are saved in `.env`. Missing local resources
 are shown with preparation guidance; an incomplete installation starts in setup mode.
 Optional Check API buttons verify saved service access with small, potentially
 billed requests. Startup and Check local readiness do not call provider APIs.
@@ -118,6 +147,17 @@ The [benchmark report](benchmark/report.md) includes per-case scores, repair
 outcomes, cost and latency. [Blinded review results](benchmark/README.md#final-blinded-results) provide
 additional perspectives on itinerary quality.
 
+To verify the saved published materials without provider credentials or a running
+database, install the Python dependencies above and run:
+
+```bash
+uv run python benchmark/verify_automatic.py
+uv run python benchmark/verify_blinded.py
+```
+
+The [reproduction guide](docs/guides/reproduction.md) explains the checks, expected
+outputs, submission materials, native replay requirements and fresh-experiment boundary.
+
 ## Command line
 
 **RTPEval** is the installed CLI for running planners and working with evaluation
@@ -125,7 +165,7 @@ material without the frontend. Install it with `uv sync --locked --group retriev
 use the same provider and retrieval setup as the application. Node.js, Product
 accounts and Product migrations are not required for these commands.
 
-```powershell
+```bash
 uv run rtpeval --help
 uv run rtpeval generate --help
 ```
@@ -137,7 +177,7 @@ preferences in `request.json`, following the
 [request example](docs/guides/development.md#independent-version-execution).
 Choose dates within the current supported planning window. To run V3:
 
-```powershell
+```bash
 uv run rtpeval generate --version v3 --input-json request.json --runtime-config config/runtime.yaml --output-directory artifacts/my-trip-v3 --group-id my-trip --run-id my-trip-v3 --execute
 ```
 
@@ -165,7 +205,7 @@ describes their runtime and timeout options.
 
 For an already accepted four-version `manifest.json`:
 
-```powershell
+```bash
 uv run rtpeval validate manifest.json
 uv run rtpeval evaluate execute manifest.json --directory artifacts/my-evaluation --options options.json --prices prices.json --env-file .env
 uv run rtpeval evaluate replay artifacts/my-evaluation
@@ -180,6 +220,8 @@ blinded review and mechanism reports. Use command-group and leaf `--help` for pa
 
 ## Documentation
 
+- [Deployment guide](docs/guides/deployment.md) — complete local installation and Product startup.
+- [Reproduction guide](docs/guides/reproduction.md) — offline verification, research materials and replay/new-run instructions.
 - [Documentation index](docs/README.md) — architecture, planning, retrieval and validation.
 - [Development guide](docs/guides/development.md) — environment, application setup and checks.
 - [Configuration reference](config/README.md) — provider settings and planning policies.

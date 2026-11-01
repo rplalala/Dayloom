@@ -8,6 +8,7 @@ import tempfile
 import threading
 from collections import deque
 from contextlib import contextmanager
+from functools import lru_cache
 from io import StringIO
 from pathlib import Path
 from time import monotonic
@@ -15,7 +16,14 @@ from time import monotonic
 import yaml
 from dotenv.parser import parse_stream
 from dotenv.variables import parse_variables
+from pwdlib import PasswordHash
 
+from backend.app.product.configuration_files import (
+    FOUNDRY_FIELDS,
+    replace_configuration_files,
+    retire_foundry_bindings,
+    update_foundry,
+)
 from backend.app.product.configuration_validation import supported_foundry_endpoint
 from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader
 
@@ -29,6 +37,13 @@ FIELDS = {
 }
 COOKIE = "dayloom_config_session"
 SESSION_SECONDS = 1800
+password_hasher = PasswordHash.recommended()
+DEFAULT_TEST_PASSWORD = "dayloom-config-2026"
+
+
+@lru_cache(maxsize=1)
+def default_password_hash():
+    return password_hasher.hash(DEFAULT_TEST_PASSWORD)
 
 
 @contextmanager
@@ -63,7 +78,7 @@ class ConfigurationError(Exception):
 
 
 def _revision(text, values):
-    """Cover dotenv edits and effective deployment defaults in one opaque version."""
+    """Cover both saved files and effective values in one opaque version."""
     return hashlib.sha256(json.dumps([text, values], sort_keys=True).encode()).hexdigest()
 
 
@@ -74,10 +89,10 @@ class LocalConfiguration:
         self.root, self.origin = root, origin.rstrip("/")
         self.environment = dict(environment)
         self._environment_settings = {key.upper(): value for key, value in environment.items()}
-        self.token = secrets.token_urlsafe(32)
         self.sessions = {}
         self.attempts = deque(maxlen=10)
         self.lock = threading.Lock()
+        self.migrate_foundry_overrides()
         self.initial = self.snapshot()[1]
         self.running_ready = True
         self.resource_probe = None
@@ -105,28 +120,53 @@ class LocalConfiguration:
             )
         return text, resolved
 
+    def read_deployment(self):
+        path = self.root / "product.yaml"
+        if path.is_symlink():
+            raise ConfigurationError("configuration_symlink_rejected")
+        text = path.read_text(encoding="utf-8") if path.exists() else ""
+        data = yaml.load(text, Loader=DeploymentYamlLoader)
+        options = DeploymentOptions.model_validate({} if data is None else data)
+        return text, options
+
+    def migrate_foundry_overrides(self):
+        """Preserve the last saved deployment before retiring dotenv overrides."""
+        text, _ = self.read()
+        if not any(item.key and item.key.upper() in FOUNDRY_FIELDS
+                   for item in parse_stream(StringIO(text))):
+            return
+        with self.lock, configuration_file_lock(self.root / ".env.config.lock"):
+            text, values = self.read()
+            changes = {key.upper(): value for key, value in values.items()
+                       if key.upper() in FOUNDRY_FIELDS and value is not None}
+            deployment_text, _ = self.read_deployment()
+            updated = update_foundry(deployment_text, changes)
+            DeploymentOptions.model_validate(yaml.load(updated, Loader=DeploymentYamlLoader) or {})
+            files = {}
+            if updated != deployment_text:
+                files[self.root / "product.yaml"] = updated
+            retained = retire_foundry_bindings(text, self.environment)
+            if retained != text:
+                files[self.root / ".env"] = retained
+            replace_configuration_files(files)
+
     def snapshot(self):
         text, local = self.read()
         # Settings names are case-insensitive; dotenv variable expansion above is not.
         local = {key.upper(): value for key, value in local.items()}
-        path = self.root / "product.yaml"
-        data = (
-            yaml.load(path.read_text(encoding="utf-8"), Loader=DeploymentYamlLoader)
-            if path.exists()
-            else {}
-        )
-        options = DeploymentOptions.model_validate({} if data is None else data)
+        deployment_text, options = self.read_deployment()
         defaults = {}
         if options.foundry:
             defaults = {
-                "AZURE_OPENAI_ENDPOINT": str(options.foundry.endpoint),
-                "AZURE_OPENAI_DEPLOYMENT": options.foundry.deployment,
+                "AZURE_OPENAI_ENDPOINT": str(options.foundry.endpoint or ""),
+                "AZURE_OPENAI_DEPLOYMENT": options.foundry.deployment or "",
             }
         values = {
             key: next(
                 (
                     source[key]
-                    for source in (self._environment_settings, local, defaults)
+                    for source in (self._environment_settings,
+                                   {} if key in FOUNDRY_FIELDS else local, defaults)
                     if source.get(key) is not None
                 ),
                 "",
@@ -137,8 +177,8 @@ class LocalConfiguration:
             for key in ("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"):
                 if source.get(key) is not None:
                     values["PRODUCT_UNSPLASH_ACCESS_KEY"] = source[key] or ""
-                    return text, values
-        return text, values
+                    return [text, deployment_text], values
+        return [text, deployment_text], values
 
     def view(self):
         text, values = self.snapshot()
@@ -168,11 +208,13 @@ class LocalConfiguration:
         return values
 
     def validate(self, changes):
-        fields = self.view()["fields"]
         for key, value in changes.items():
             if key not in FIELDS:
                 raise ConfigurationError("unsupported_setting")
-            if fields[key]["locked"]:
+            if self._environment_settings.get(key) is not None or (
+                key == "PRODUCT_UNSPLASH_ACCESS_KEY"
+                and self._environment_settings.get("UNSPLASH_API_KEY") is not None
+            ):
                 raise ConfigurationError("setting_managed_by_environment", 409)
             if (
                 len(value) > 4096
@@ -196,15 +238,20 @@ class LocalConfiguration:
     def save(self, revision, changes):
         with self.lock, configuration_file_lock(self.root / ".env.config.lock"):
             self.validate(changes)
-            if revision != self.view()["revision"]:
+            texts, values = self.snapshot()
+            if revision != _revision(texts, values):
                 raise ConfigurationError("configuration_changed", 409)
-            text, _ = self.read()
-            replacements = dict(changes)
+            text, deployment_text = texts
+            replacements = {
+                key: value for key, value in changes.items() if key not in FOUNDRY_FIELDS
+            }
             if "PRODUCT_UNSPLASH_ACCESS_KEY" in changes:
                 replacements["UNSPLASH_API_KEY"] = changes["PRODUCT_UNSPLASH_ACCESS_KEY"]
             pieces, seen = [], set()
-            for item in parse_stream(StringIO(text)):
+            for item in parse_stream(StringIO(retire_foundry_bindings(text, self.environment))):
                 key = item.key.upper() if item.key is not None else None
+                if key in FOUNDRY_FIELDS:
+                    continue
                 if key not in replacements:
                     pieces.append(item.original.string)
                     continue
@@ -220,24 +267,16 @@ class LocalConfiguration:
                     retained += "\n"
                 quoted = value.replace("\\", "\\\\").replace("'", "\\'")
                 retained += f"{key}='{quoted}'\n"
-            temporary = None
-            try:
-                with tempfile.NamedTemporaryFile(
-                    mode="w",
-                    encoding="utf-8",
-                    newline="\n",
-                    dir=self.root,
-                    prefix=".env.",
-                    delete=False,
-                ) as stream:
-                    temporary = Path(stream.name)
-                    stream.write(retained)
-                    stream.flush()
-                    os.fsync(stream.fileno())
-                os.replace(temporary, self.root / ".env")
-            finally:
-                if temporary is not None:
-                    temporary.unlink(missing_ok=True)
+            updated_yaml = update_foundry(deployment_text, changes)
+            DeploymentOptions.model_validate(
+                yaml.load(updated_yaml, Loader=DeploymentYamlLoader) or {}
+            )
+            files = {}
+            if updated_yaml != deployment_text:
+                files[self.root / "product.yaml"] = updated_yaml
+            if retained != text:
+                files[self.root / ".env"] = retained
+            replace_configuration_files(files)
             return self.view()
 
     def readiness(self):
@@ -256,26 +295,116 @@ class LocalConfiguration:
             "running_ready": self.running_ready,
         }
 
-    def unlock(self, token):
+    def _password_state(self):
+        path = self.root / ".config-access.json"
+        try:
+            if path.is_symlink():
+                raise ValueError("Configuration access file must not be a symlink")
+            try:
+                with path.open("rb") as stream:
+                    content = stream.read(8193)
+            except FileNotFoundError:
+                return {"schema_version": 1, "revision": "0" * 64,
+                        "password_hash": default_password_hash()}
+            state = json.loads(content)
+            if (
+                len(content) > 8192
+                or not isinstance(state, dict)
+                or set(state) != {"schema_version", "revision", "password_hash"}
+                or state["schema_version"] != 1
+                or not isinstance(state["revision"], str)
+                or len(state["revision"]) != 64
+                or any(c not in "0123456789abcdef" for c in state["revision"])
+                or (state["password_hash"] is not None and (
+                    not isinstance(state["password_hash"], str)
+                    or not state["password_hash"].startswith("$argon2id$")
+                    or len(state["password_hash"]) > 512
+                ))
+            ):
+                raise ValueError("Invalid configuration access file")
+            return state
+        except Exception:
+            raise ConfigurationError("configuration_access_unreadable", 503) from None
+
+    def access_view(self):
+        state = self._password_state()
+        return {"password_required": state["password_hash"] is not None,
+                "revision": state["revision"], "default_test_password": DEFAULT_TEST_PASSWORD}
+
+    def verify_access_password(self, password):
+        with self.lock:
+            self._check_password(self._password_state(), password)
+
+    def _check_password(self, state, password):
+        if state["password_hash"] is None:
+            return
+        now = monotonic()
+        if len(self.attempts) == 10 and now - self.attempts[0] < 60:
+            raise ConfigurationError("too_many_attempts", 429)
+        try:
+            valid = password_hasher.verify(password, state["password_hash"])
+        except Exception:
+            raise ConfigurationError("configuration_access_unreadable", 503) from None
+        if not valid:
+            self.attempts.append(now)
+            raise ConfigurationError("invalid_configuration_password", 401)
+        self.attempts.clear()
+
+    def set_access(self, revision, *, enabled, current_password, new_password, confirmation):
+        with self.lock, configuration_file_lock(self.root / ".env.config.lock"):
+            state = self._password_state()
+            if state["revision"] != revision:
+                raise ConfigurationError("configuration_changed", 409)
+            self._check_password(state, current_password)
+            if enabled:
+                if not 10 <= len(new_password) <= 128:
+                    raise ConfigurationError("configuration_password_required")
+                if not secrets.compare_digest(new_password.encode(), confirmation.encode()):
+                    raise ConfigurationError("password_confirmation_mismatch")
+            saved = {"schema_version": 1, "revision": secrets.token_hex(32),
+                     "password_hash": password_hasher.hash(new_password) if enabled else None}
+            temporary = None
+            try:
+                with tempfile.NamedTemporaryFile(
+                    mode="w", encoding="utf-8", newline="\n", dir=self.root,
+                    prefix=".config-access.", delete=False,
+                ) as stream:
+                    temporary = Path(stream.name)
+                    stream.write(json.dumps(saved) + "\n")
+                    stream.flush()
+                    os.fsync(stream.fileno())
+                os.replace(temporary, self.root / ".config-access.json")
+            finally:
+                if temporary is not None:
+                    temporary.unlink(missing_ok=True)
+            self.sessions.clear()
+            self.attempts.clear()
+            return self.access_view()
+
+    def unlock(self, password="", *, previous_session=None):
         now = monotonic()
         with self.lock:
-            if len(self.attempts) == 10 and now - self.attempts[0] < 60:
-                raise ConfigurationError("too_many_attempts", 429)
-            if not secrets.compare_digest(token.encode(), self.token.encode()):
-                self.attempts.append(now)
-                raise ConfigurationError("invalid_management_token", 401)
+            state = self._password_state()
+            self._check_password(state, password)
+            self.sessions.pop(previous_session or "", None)
             self.sessions = {key: value for key, value in self.sessions.items() if value[0] > now}
             if len(self.sessions) >= 8:
                 raise ConfigurationError("too_many_sessions", 429)
             session, csrf = secrets.token_urlsafe(32), secrets.token_urlsafe(32)
-            self.sessions[session] = (now + SESSION_SECONDS, csrf)
+            self.sessions[session] = (now + SESSION_SECONDS, csrf, state["revision"])
             return session, csrf
 
     def authorize(self, session, csrf=None, *, write=False):
         with self.lock:
             value = self.sessions.get(session or "")
-            if value is None or value[0] <= monotonic():
+            state = self._password_state()
+            if (value is None or value[0] <= monotonic()
+                    or value[2] != state["revision"]):
                 raise ConfigurationError("configuration_locked", 401)
-            if write and not secrets.compare_digest((csrf or "").encode(), value[1].encode()):
-                raise ConfigurationError("csrf_rejected", 403)
+            if (write or state["password_hash"] is not None) and not secrets.compare_digest(
+                (csrf or "").encode(), value[1].encode(),
+            ):
+                raise ConfigurationError(
+                    "csrf_rejected" if write else "configuration_locked", 403 if write else 401,
+                )
             return value[1]

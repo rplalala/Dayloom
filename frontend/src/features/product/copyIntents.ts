@@ -36,6 +36,15 @@ export function ownerCopyIntents(owner: string): CopyIntent[] {
   return stored().filter(saved => saved.owner === owner && saved.generation === submissionGeneration(owner));
 }
 
+export function forgetOwnerCopyIntents(owner: string) {
+  try {
+    const remaining = stored().filter(saved => saved.owner !== owner);
+    if (remaining.length) sessionStorage.setItem(storageKey, JSON.stringify(remaining));
+    else sessionStorage.removeItem(storageKey);
+    window.dispatchEvent(new Event(copyIntentEvent));
+  } catch { /* Owner generation still fences unavailable recovery storage. */ }
+}
+
 export function restoreCopyIntent(owner: string | null, kind: CopyKind, source: string, title?: string): CopyIntent {
   const saved = stored().find(item => item.kind === kind && item.source === source &&
     (item.owner === null || item.owner === owner) &&

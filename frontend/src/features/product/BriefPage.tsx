@@ -6,7 +6,7 @@ import { PreferencePolisher } from "../planning/components/PreferencePolisher";
 import { TripDateInput } from "../planning/components/TripDateInput";
 import { isValidISODate, latestEndDate, type TripDateWindow } from "../planning/datePolicy";
 import { currencies, isListedCurrency } from "../planning/currencies";
-import { briefErrors, editPreferences, interestPrompts, pacePrompts, toggleInterest, togglePace, toggleTransport, transportLabels, type Brief, type Interest, type Pace, type Transport, type TextReplacement } from "./editor";
+import { briefErrors, createBrief, editPreferences, interestPrompts, pacePrompts, toggleInterest, togglePace, toggleTransport, transportLabels, type Brief, type Interest, type Pace, type Transport, type TextReplacement } from "./editor";
 import { useSession } from "./session";
 import { DraftControls, type DraftActionsHandle } from "./DraftControls";
 import "./editor.css";
@@ -16,6 +16,7 @@ import { usePlanTask } from "./usePlanTask";
 import { planTaskLink, taskRequest, TaskFailure, sameConfirmedRequest, submissionGeneration, readSubmissionIntent, rememberSubmissionIntent, taskActive, type PlanningTask } from './taskClient';
 import { useTasks } from './taskContext';
 import { planningInput } from './editor';
+import { SessionReminder } from './SessionReminder';
 
 const moodChoices: Record<string, Interest[]> = { art: ["Art & museums", "History & culture"], nature: ["Nature", "Free exploration"], city: ["City walks", "History & culture"] };
 
@@ -32,17 +33,17 @@ export function BriefPage() {
   const liveEditor = useRef({ session, location: location.key });
   liveEditor.current = { session, location: location.key };
   useEffect(() => {
-    if (!hasMood && !draftId && (status === "authenticated" || status === "guest") && briefOrigin === "new") void initializeNewBrief();
+    if (!hasMood && !draftId && status !== 'loading' && briefOrigin === "new") void initializeNewBrief();
   }, [draftId, status, briefOrigin, initializeNewBrief, hasMood]);
   const appliedMood = useRef<string | null>(null);
   useEffect(() => {
-    if (!mood || !hasMood || appliedMood.current === location.key || draftId || (status !== "guest" && status !== "authenticated")) return;
+    if (!mood || !hasMood || appliedMood.current === location.key || draftId || status === 'loading') return;
     appliedMood.current = location.key;
     const key = location.key;
     const owner = session.account?.id;
     void initializeNewBrief().then(() => {
       const current = liveEditor.current;
-      if (current.location !== key || current.session.account?.id !== owner || !["guest", "authenticated"].includes(current.session.status)) return;
+      if (current.location !== key || current.session.account?.id !== owner || current.session.status === 'loading') return;
       let next = current.session.brief;
       for (const interest of moodChoices[mood]) if (!next.interests.includes(interest)) next = toggleInterest(next, interest);
       if (next.pace !== "relaxed") next = togglePace(next, "relaxed");
@@ -66,6 +67,7 @@ export function BriefPage() {
   const [checked, setChecked] = useState(false);
   const [draftLoading, setDraftLoading] = useState(false);
   const [preferencesOpen, setPreferencesOpen] = useState<boolean | null>(null);
+  const [clearRevision, setClearRevision] = useState(0);
   const notesInput = useRef<HTMLTextAreaElement>(null);
   const textEdit = useRef<(TextReplacement & { before: string }) | null>(null);
   const brief = session.brief;
@@ -94,6 +96,18 @@ export function BriefPage() {
     };
   }, [session.status]);
   function update(next: Brief) { session.editBrief(next); }
+  function clearBrief() {
+    if (draftLoading || submission.busy) return;
+    attempt.current++;
+    // An intentionally blank brief must not reapply account defaults.
+    session.replaceBrief(createBrief(), "restored");
+    setSubmitState({});
+    setChecked(false);
+    setPreferencesOpen(false);
+    textEdit.current = null;
+    setClearRevision(value => value + 1);
+    navigate("/plan", { replace: true, state: null });
+  }
   function change(field: "destination" | "start_date" | "end_date" | "travelers" | "budget" | "currency" | "required" | "exclusions", value: string) { update({ ...brief, [field]: value }); }
   const errors = briefErrors(brief, dateWindow);
   const matchingTask = dateWindow && !errors.length ? tasks.find(task => task.request?.budget && sameConfirmedRequest(task.request, planningInput(brief, dateWindow))) : undefined;
@@ -168,11 +182,17 @@ export function BriefPage() {
     }
   }
   if (session.status === "loading") return <div className="page container" role="status">Checking your session…</div>;
-  if (session.status === "expired") return <div className="page container"><h1>Log in to continue your brief.</h1><p>Your unsaved input is kept private until you return to the same account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
   if (draftId && !session.account) return <div className="page container"><h1>Log in to open this draft.</h1><p>Planning drafts are private to their account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
 
   return <div className="page container plan-page brief-editor">
     <div className="page-heading"><span className="eyebrow">YOUR JOURNEY, YOUR WAY</span><h1>Where will you go next?</h1><p>Start with the essentials. Make room for what you love.</p></div>
+    {session.status === 'expired' && <SessionReminder returnTo="/plan" />}
+    {session.hasPreviousBrief && <p className="subtle-help">Your previous private brief is also available. <button type="button" className="inline-action" onClick={() => {
+      if (window.confirm('Restore your previous brief? This replaces the brief currently shown.')) {
+        navigate('/plan', { replace: true, state: null, flushSync: true });
+        session.restorePreviousBrief?.();
+      }
+    }}>Restore previous brief</button></p>}
     <section className="flow-card form-card" id="travel-brief">
       <div className="flow-title"><span className="step-number">01</span><div><h2>Your travel brief</h2></div><span className="count-badge">About 1 minute</span></div>
       <form noValidate onSubmit={event => {
@@ -181,7 +201,7 @@ export function BriefPage() {
       }}>
 
         <fieldset className="form-fields" disabled={draftLoading}><legend className="visually-hidden">Travel brief</legend>
-          <div className="form-grid form-grid-essentials">
+          <div className="form-grid form-grid-essentials" key={clearRevision}>
             <DestinationCombobox label={<span><Icon name="pin" size={16} /> Destination <b aria-hidden="true">*</b></span>} placeholder="Choose or enter a city" value={brief.destination} onChange={value => change("destination", value)} disabled={false} />
             <TripDateInput labelContent={<span><Icon name="calendar" size={16} /> Start date <b aria-hidden="true">*</b></span>} label="Start date" value={brief.start_date} onChange={value => change("start_date", value)} min={dateWindow?.allowedStart} max={dateWindow?.allowedEnd} />
             <TripDateInput labelContent={<span><Icon name="calendar" size={16} /> End date <b aria-hidden="true">*</b></span>} label="End date" value={brief.end_date} onChange={value => change("end_date", value)} min={isValidISODate(brief.start_date) ? brief.start_date : dateWindow?.allowedStart} max={dateWindow ? latestEndDate(brief.start_date, dateWindow) : undefined} />
@@ -202,7 +222,7 @@ export function BriefPage() {
             textEdit.current = null;
             update(editPreferences(brief, event.currentTarget.value, replacement));
           }} onBlur={() => { textEdit.current = null; }} placeholder="Tell us about slow mornings, accessibility needs, or anything else that matters…" /></label>
-          <PreferencePolisher product buttonIcon={<Icon name="spark" size={15} />} text={brief.preferences} context={{
+          <PreferencePolisher key={clearRevision} product buttonIcon={<Icon name="spark" size={15} />} text={brief.preferences} context={{
             ...(brief.destination.trim() && { destination: brief.destination.trim() }),
             ...(isValidISODate(brief.start_date) && { start_date: brief.start_date }),
             ...(isValidISODate(brief.end_date) && { end_date: brief.end_date }),
@@ -213,7 +233,7 @@ export function BriefPage() {
         </fieldset>
         {checked && errors.length > 0 && <div className="form-error" role="alert"><ul>{errors.map(error => <li key={error}>{error}</li>)}</ul></div>}
         <div className="form-bottom"><p><Icon name="shield" size={16} /> City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading || submission.busy} className="btn btn-primary btn-large"><Icon name="spark" size={18} /> {submission.busy ? 'Submitting…' : 'Generate itinerary'} <Icon name="arrow" size={17} /></button></div>
-        <DraftControls actionsRef={draftActions} onLoading={setDraftLoading} />
+        <DraftControls key={clearRevision} actionsRef={draftActions} onLoading={setDraftLoading} onClear={clearBrief} clearDisabled={draftLoading || !!submission.busy} />
         {submission.message && <p className="subtle-help" role="status">{submission.message} {submission.taskId && <Link to={planTaskLink(submission.taskId)}>Open task progress →</Link>}</p>}
       </form>
     </section>

@@ -5,6 +5,7 @@ import { ExampleCards } from "./detail/ExampleCards";
 import { LibraryCollection } from "./LibraryCollection";
 import { Icon } from "./Icon";
 import { CopyRecoveryLink } from './CopyRecoveryPage';
+import { SessionReminder } from './SessionReminder';
 
 export function LibraryPage() {
   const { account, status } = useSession();
@@ -24,16 +25,6 @@ export function LibraryPage() {
         Checking your session…
       </div>
     );
-  if (status === "expired")
-    return (
-      <div className="page container">
-        <h1>Your trips are private.</h1>
-        <p>Log in again to continue.</p>
-        <Link to="/login?return=/trips" className="btn btn-primary">
-          Log in
-        </Link>
-      </div>
-    );
   return (
     <div className="page container trips-page">
       <div className="page-heading">
@@ -45,6 +36,7 @@ export function LibraryPage() {
             : "A few journeys to explore before you write your own."}
         </p>
       </div>
+      {status === 'expired' && <SessionReminder returnTo="/trips" />}
       {account ? (
         <><CopyRecoveryLink /><LibraryCollection key={account.id} /></>
       ) : (

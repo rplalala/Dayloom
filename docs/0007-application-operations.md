@@ -25,42 +25,79 @@ previous result. Product completion reasons are policy observations, not global 
 
 ## Local configuration console
 
-`/config` is a standalone React route outside traveler session/task providers. The
-normal Product launcher enables its management interface only for an HTTP loopback
+`/config` is a standalone React route outside traveler session/task providers. Desktop
+and mobile Product pages offer a bottom-right settings icon linking to `/config`
+when local management is available. It stays fixed while scrolling, except on mobile
+account-access forms, where it follows the footer to avoid covering password controls.
+The normal Product launcher enables its management interface only for an HTTP loopback
 origin and loopback listener. The API-only application leaves management disabled.
 No configuration database or account role is introduced. Operational steps belong
 to the [local configuration guide](guides/development.md#local-configuration-console).
 
-| Editable setting | Existing consumer |
-| --- | --- |
-| `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_DEPLOYMENT`, `AZURE_OPENAI_API_KEY` | Current Foundry model calls and web search |
-| `OPENAI_API_KEY` | TripWorld query embeddings |
-| `GOOGLE_MAPS_API_KEY` | Planning and place photographs |
-| `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional atmosphere photographs; existing `UNSPLASH_API_KEY` remains an alias |
+| Editable setting | Saved location | Existing consumer |
+| --- | --- | --- |
+| Foundry endpoint and deployment | `product.yaml: foundry.endpoint`, `foundry.deployment` | Current Foundry model calls and web search |
+| `AZURE_OPENAI_API_KEY` | `.env` | Current Foundry model calls and web search |
+| `OPENAI_API_KEY` | `.env` | TripWorld query embeddings |
+| `GOOGLE_MAPS_API_KEY` | `.env` | Planning and place photographs |
+| `PRODUCT_UNSPLASH_ACCESS_KEY` | `.env` | Optional atmosphere photographs; existing `UNSPLASH_API_KEY` remains an alias |
 
-The console validates existing Foundry v1 endpoint/deployment syntax and writes
-only these fields. It adds neither model selection nor provider adaptation.
+The provider editor validates existing Foundry v1 endpoint/deployment syntax and
+writes only these fields. Configuration access has its own local password settings.
+The console adds neither model selection nor provider adaptation.
 Database credentials, JWT signing secrets, planning policies and retrieval data
 remain outside its write surface. Managed setting names in environment and dotenv
 are case-insensitive, matching existing consumers; interpolation variable references
-retain their case-sensitive dotenv semantics. Process environment values take precedence over
-dotenv, including alias selection and interpolation; YAML supplies deployment
-defaults. A read captures dotenv once; its opaque revision covers that text and
-the resolved editable values, including YAML deployment defaults.
+retain their case-sensitive dotenv semantics. Process environment overrides remain
+read-only in the console. Credentials resolve from the process environment, then
+dotenv; endpoint and deployment resolve from the process environment, then YAML.
+At local manager startup, legacy endpoint/deployment bindings in `.env` are moved
+to YAML before removal, preserving their last saved values and dependent dotenv
+interpolation. Repeating startup does not change already migrated files. This
+migration does not change the independent CLI's environment precedence.
+A snapshot's opaque revision covers both saved file texts and resolved values,
+so edits to any YAML option invalidate a stale save or API check.
 
-Management requires an in-memory, randomly generated process token. Successful
-unlock creates a separate 30-minute HttpOnly, SameSite=Strict cookie scoped to
-`/api/config`, with a session-bound CSRF token for writes. Access checks require a
+New installations require the public local-test password `dayloom-config-2026`,
+displayed on the centered entry screen with instructions to change it. Existing
+custom passwords and explicitly disabled verification remain unchanged; the test
+password is not an alternative credential after a custom password is saved.
+Without password protection, the browser automatically establishes a separate
+30-minute HttpOnly, SameSite=Strict cookie scoped to `/api/config`.
+Users can enable password verification, setting and confirming a 10–128-character
+password. The enabled state, opaque access revision and Argon2id hash are persisted
+atomically in ignored `.config-access.json`, independently of Product accounts.
+Public management metadata includes password-required status, the opaque revision
+and the fixed default test password. Configured custom passwords and hashes never
+enter API responses. Enabling or changing the password
+immediately returns to the password screen. Every protected route entry and reload
+requires the password again; the browser never restores access from an existing
+cookie. The page keeps its session-bound token only in memory, sends it on every
+protected read/write, and clears it on document navigation/history restoration.
+An old cookie alone cannot read configuration or recover that token. A successful
+unlock replaces the previous cookie's session, avoiding accumulation on repeat visits.
+Leaving configuration locks access automatically; no manual Lock button is offered.
+Before changing a password or disabling verification, the user verifies the current
+password through `POST /api/config/access/verify`; only then are new-password fields
+offered. The final access update independently checks the current password again.
+Access changes revoke old sessions across processes and apply immediately. Corrupt,
+unreadable or symlinked access files fail closed. Host-controlled password recovery
+is defined in the operational guide. Access checks still require a
 loopback peer, the exact configured Host, and exact Origin on writes; forwarded
 client headers are disabled by the Product launcher. Failed unlock attempts are
 bounded, as are active management sessions and request-body size. API responses
 use `Cache-Control: no-store`; validation/errors exclude submitted values.
 
 Secret fields return presence only. An omitted field is retained; an explicit
-empty change clears it. Writes replace existing managed bindings in place, preserving
-their spelling and order so dependent interpolation still resolves; only absent settings
-are appended. Unrelated bindings are retained. Saves use a cross-process file lock and
-atomic replacement, and reject stale revisions with HTTP 409. The
+empty change clears it. Credential writes replace existing dotenv bindings in place,
+preserving spelling and order; only absent keys are appended. YAML writes edit Foundry
+scalar values while retaining unrelated settings; flow-style or anchored documents
+may be normalized. Missing Foundry fields remain editable in setup mode, while planner
+settings still require a complete deployment. Saves stage both files under one
+cross-process lock, replace each file atomically, and roll back completed replacements
+on an I/O failure. They reject stale revisions with HTTP 409. A host/process crash
+between file replacements is not a transaction; reload the saved files before restarting.
+The
 running Product pins editable provider settings at startup, so saves require a
 restart and cannot reconfigure in-flight work. Setup mode leaves configuration and
 static delivery available while business APIs return HTTP 503; a successful restart
@@ -189,12 +226,13 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 
 | Endpoint | Input and result | Source of truth |
 | --- | --- | --- |
-| `/api/config`, `/session`, `/readiness` | Local management unlock/lock, redacted reads, revision-checked provider writes and read-only resource checks | [Local configuration](#local-configuration-console) |
+| `/api/config`, `/access`, `/session`, `/readiness` | Local configuration discovery, optional password protection, session/CSRF control, redacted provider edits and read-only resource checks | [Local configuration](#local-configuration-console) |
 | `POST /api/config/check` | Saved revision and fixed service identifier; bounded explicit API capability results, attempt count and stale flag | [Local configuration](#local-configuration-console) |
 | `POST /api/auth/register` | Normalized email, password and display name; atomic account/profile and browser session | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/auth/current` | Validated account, initials and session-bound CSRF token | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/logout` | Revoke every account token and clear the browser cookie | [Account boundary](../backend/app/product/auth.py) |
+| `DELETE /api/auth/account` | Confirmed owner deletion with the current password; protects the default test admin and rejects active planning tasks | [Account deletion](#account-deletion) |
 | `GET /api/profile`, `PUT /api/profile` | Read or replace the authenticated owner's display name and travel defaults | [Profile boundary](../backend/app/product/profiles.py) |
 | `/api/drafts` and item/copy operations | Versioned incomplete editor snapshots and revision-checked owner mutations | [Draft collection](#incomplete-drafts-and-the-collection-boundary) |
 | `GET /api/examples`, `/{example_id}`, `/{example_id}/media` | Two public historical itineraries and server-authorized photo metadata | [Examples](#public-examples-and-reusable-detail) |
@@ -305,6 +343,42 @@ The unified specification
 confirmed acceptance seams; its native children own task state. #119 retains the
 historical design/mapping role. The sections below define current behavior.
 
+### Product tables and transaction boundaries
+
+Product uses the `app` schema in the shared PostgreSQL database; TripWorld retrieval
+has its own tables and migrations. Relational keys represent ownership and itinerary
+relationships, while JSONB retains versioned requests, editor snapshots and display
+metadata whose structure is validated by the application.
+
+| Tables | Responsibility |
+| --- | --- |
+| `users`, `user_profiles` | Account identity, credentials, revocation version and travel defaults |
+| `planning_drafts` | Incomplete editor snapshots with revision checks |
+| `planning_tasks`, `itinerary_previews` | Durable execution state and explicit Save/Discard receipts |
+| `trips` | Saved itinerary headers and owner-scoped metadata |
+| `trip_weather`, `trip_activities`, `trip_nearby`, `trip_transfers` | Ordered days/weather, activities, nearby suggestions and transfers |
+| `schema_migrations` | Applied migration names and checksums |
+
+The [Product database helper](../backend/app/product/database.py) opens Psycopg
+connections with automatic transactions: normal exit from `with connect()` commits,
+and an escaping exception rolls back. Registration writes the user and profile
+together; task completion writes the preview and completed task together; Save
+writes the trip and its children together with the preview decision. Owner deletion
+uses the existing cascading foreign keys in the same transaction. The following
+lifecycle sections define each operation's detailed rules.
+
+Row locks, revision checks and unique operation keys coordinate concurrent writes.
+A partial unique index permits at most one active planning task per owner, and
+composite foreign keys prevent task/preview/trip ownership mismatches. Operations
+that assemble media context or saved detail from several reads use a repeatable-read
+snapshot. External planning/provider work is kept outside database transactions;
+image URL publication uses an explicit short transaction after acquisition.
+
+Connections are currently opened per operation without an application connection
+pool. Each resource's image-cache update rewrites its JSONB field under a row lock.
+These are capacity tradeoffs to measure before scaling; they do not replace the
+transaction and consistency checks above.
+
 ### Implemented account and browser session boundary
 
 `app.users` stores UUID identity, a unique trimmed/lowercase email, an Argon2 password
@@ -345,8 +419,26 @@ a new brief through the existing initialization policy.
 Authentication restores a guest brief and return intent without generating. Editor
 recovery and a pending action identity stay in tab-local session storage, never in the
 JWT or shared local storage. Expiry hides account/editor content and quarantines it
-under its previous account. Successful same-account login restores it without a write;
-different-account login, explicit logout and confirmed revocation erase it. Shared
+under its previous account. An expired session does not block public browsing:
+`/trips` shows the read-only examples with a **Log in again** reminder, and `/plan`
+offers a separate editable guest brief. Private draft/detail routes still require
+authentication; guest Save and Generate actions lead to login without writing data
+or starting a planner run.
+
+Expired guest input uses `dayloom.expired-guest.brief.v1` in session storage,
+separate from the private `dayloom.editor.v1` recovery, scoped to the previous owner
+and invalidation generation. Navigation, reloads, guest Clear and periodic session
+checks cannot overwrite the private brief. Successful same-account login restores
+the private brief if the visitor has not edited the guest form. Otherwise it carries
+the guest input into a new account-owned brief, without the old draft ID or operation
+key, and retains the previous private recovery in `dayloom.editor.previous.v1`.
+The handoff applies to explicit login and same-account login observed through another
+tab or a session refresh.
+**Restore previous brief** in Plan requires confirmation before replacing the current
+editor and clears draft/task/preview URL intents before restoring the old snapshot.
+Login and restoration do not save or generate automatically. Different-account
+login carries only guest input and discards the old private recovery; explicit logout
+and confirmed revocation clear the separate recovery records. Shared
 storage contains only account IDs, opaque invalidation/login generations and notices.
 Recovery records retain their account's generation, so an invalidation remains effective
 while Product is unmounted and after later login notices. Logout fences refresh until
@@ -356,13 +448,42 @@ Focus and periodic session checks detect remote revocation; network failure hide
 account content while preserving quarantined recovery. Durable generation has a
 separate task lifecycle.
 
+### Account deletion
+
+The `/account` page offers **Delete account**, followed by a confirmation dialog and
+the current password. `DELETE /api/auth/account` accepts only `password` and
+`confirmed: true`; the authenticated session determines the owner. Cookie requests
+require the existing origin and CSRF checks. The profile response supplies the
+read-only `can_delete_account` capability; the normalized `admin@admin.com` test
+account has a disabled button and is also protected by the server (`403
+protected_test_account`). An incorrect password returns `403 invalid_password`.
+
+Deletion locks the user row and checks for pending, running or stopping planning
+tasks, sharing the owner lock used by task admission. Active tasks return `409
+account_tasks_active`; the traveler must stop them before retrying. Successful
+deletion atomically removes the owner and existing cascading profile, drafts,
+planning tasks, previews and saved trips, including their stored image URLs. Other
+accounts and static examples remain available. Existing tokens fail the account
+existence check; the response returns `204` with `Cache-Control: no-store` without
+expiring the cookie, so a delayed response cannot erase a newer login's cookie.
+The revoked cookie expires normally or is replaced by the next explicit login.
+
+The browser clears the deleted account's session and private recovery and publishes
+its owner-scoped invalidation to other tabs. A delayed success cannot clear a newer
+account's session. An ambiguous network result triggers a session check and displays
+an error without automatically retrying the deletion. This is permanent application
+data deletion; it does not purge database backups or existing operational logs.
+
 ### Profile defaults and new-brief initialization
 
-The owner-only profile API and `/account` form maintain display name, supported currency,
-deduplicated interests, nullable pace, deduplicated soft transport priorities and literal
-additional preference text. Initials derive from the display name; email is read-only.
+The `/account` form maintains display name, supported currency, deduplicated interests,
+nullable pace and deduplicated soft transport priorities through the owner-only profile API.
+Free-text **Additional preferences** belongs to the individual Plan, not Profile.
+The existing API/database `notes` field remains for compatibility and is preserved on
+profile updates, but it is neither shown in Profile nor inherited by new briefs.
+Initials derive from the display name; email is read-only.
 The profile migration adds database domain and uniqueness checks. Account deletion
-cascades to the profile at the database boundary, without exposing an account-deletion UI.
+follows the [owner deletion contract](#account-deletion).
 
 Defaults are read once when a genuinely new brief is opened and appear as editable
 currency, choices and preference sentences. Explicit origin and initialization metadata
@@ -370,6 +491,15 @@ distinguish unopened session state from edited, restored, draft and replan conte
 including an intentionally cleared or restored blank brief. A stale defaults response
 cannot overwrite an intervening edit, accepted draft or account change. Explicitly
 starting another brief resets that initialization and reads the latest defaults once.
+For an authenticated traveler, the header/mobile **Plan a trip** links and the shell/home
+**Start planning** and **Plan my trip** actions read the latest defaults when the editor
+is either completely empty or still contains untouched automatic defaults. The latter
+retains its `new` origin across reloads, allowing saved interest changes to replace
+earlier defaults even when pace or transport was already filled. There must be no draft
+identity, draft title or operation recovery key. Manual edits, restored user input,
+custom currency and manually selected preferences remain unchanged. Clear leaves the
+editor empty until a subsequent explicit planning entry; ordinary route restoration
+does not reapply defaults.
 Profile updates never mutate an open editor, and planning services do not read profiles
 to overlay confirmed requests. Draft identity and revision share the account-scoped
 recovery boundary so expiry can quarantine them alongside their editor content.
@@ -423,6 +553,10 @@ initially, and preference validation opens it to expose the error. Collapsing it
 does not clear its values. Progress mounts when a task, recovery/error state or an
 explicit progress anchor needs it. With no selected task/result, the preview area
 shows only available unsaved previews for an account or a compact guest example link.
+**Clear**, beside Save travel brief and Review travel brief, empties the editable brief and preference choices,
+restores the default AUD currency, clears validation and draft/submission associations,
+and closes optional preferences. The blank brief is retained for recovery without
+reapplying profile defaults. Saved drafts and submitted tasks remain unchanged.
 The global desktop/mobile task entry returns to section 02 while
 running or needing attention, or section 03 when ready. It shows the submitted
 destination independently of the editable brief. `?task=<id>` selects an owner-only durable task; `?preview=<id>`
@@ -586,7 +720,7 @@ traces alone cannot authorize it.
 
 ### Independent trip copies and kept examples
 
-Saved details and library cards offer explicit whole-trip Copy; public example details
+Saved details and library cards offer explicit whole-trip Copy; authenticated example details
 offer Keep a copy. `POST /api/copies` accepts only `source_kind` (`copied` or `example`),
 `source_id` (canonical saved UUID or bundled example slug) and `operation_key`. The
 authenticated cookie, exact Origin and CSRF token are required. The operation creates
@@ -622,9 +756,9 @@ action identities are kept separately per owner, source kind and source identity
 working with another source cannot overwrite an unconfirmed operation. They are quarantined
 on expiry, restored only for the same account and cleared
 on logout/account invalidation. Mounted component, account, CSRF and invalidation fences
-exclude late replies after navigation or account changes. Guest Keep preserves the brief
-and returns after login to the allowlisted example review surface; another explicit click
-is required. Authenticated My trips retains its real saved/draft collection and empty state.
+exclude late replies after navigation or account changes. Guest example pages offer
+viewing only; Keep/Copy and replanning controls are shown after authentication.
+Authenticated My trips retains its real saved/draft collection and empty state.
 Its pending-copy link opens `/copy-recovery`, an owner-fenced status-only review of retained
 actions. An unavailable saved-source page also offers its retained action's status check.
 These entry points require neither source detail nor a new write; deleted results keep
@@ -735,7 +869,7 @@ task submission validates the separate confirmed planning request.
 ### Replanning itineraries
 
 The **Plan again** and **Plan another journey** actions in saved details, previews and
-examples open the editable brief and clear its prior draft and submission identity.
+authenticated example views open the editable brief and clear its prior draft and submission identity.
 Only the snapshot's original `request` seeds destination, dates, travelers and
 budget/currency. Imported `known_fields` limits that mapping; absent or explicit null
 values remain blank, including a visibly unselected currency. Missing basics are not
@@ -844,8 +978,24 @@ London selects Jubilee Gardens instead of the photo-less Metaverse optional refe
 from the same run's acquired Nearby ledger, retaining the London Eye anchor and
 canonical identity. No generation or provider evidence refresh is part of curation.
 
-Public detail needs no account, provider key or database and creates no example table;
-photographs use the configured media providers. The guest library links to
+Public detail needs no account, provider key or database and creates no example table.
+Its covers and twelve visit photographs are bundled locally with their source,
+author and individual licenses in the [asset credits](../frontend/public/dayloom/examples/README.md).
+All six Nearby references have dedicated local photographs: Royal Armouries and Jubilee
+Gardens use Commons photographs; the four dining references use Google Places photos
+retrieved once for local testing. Their Details dialogs retain Google Maps attribution,
+the supplied author and the source photo link, without asserting an open-content license.
+The shared [asset manifest](../backend/app/product/example_media.json) maps slots to
+content-hashed files served from `/dayloom/examples/`; the frontend build includes
+these files, and the normal Product static mount serves them with immutable browser
+caching. Example cards, details and photo dialogs never call media provider APIs,
+including refresh or failure recovery. The compatibility example media endpoint
+returns only local metadata, with unknown slots unavailable. These resources are
+included for both guest and authenticated example viewing; owned copies retain
+their separate media policy. Guest examples hide copy, export and replanning
+actions; filtering, collapse, weather and read-only detail dialogs remain usable.
+The public API exposes no example mutation methods, and copying requires an account.
+The guest library links to
 `/examples/{example_id}`; signed-in users can also read those routes. The former
 prototype cities and `nearby-linking` return 404; ambiguous-anchor scenarios remain
 test fixtures rather than public itineraries.
@@ -948,8 +1098,8 @@ not persist expiring photo resource names, image URLs, author metadata or image 
 `GET /api/previews/{id}/media` and `/api/trips/{id}/media` return display metadata only
 after the same owner check as detail; missing/other-owner IDs return 404. Saved-preview
 receipts delegate to the surviving owned trip, while discarded/deleted outcomes return
-no images. Public `GET /api/examples/{example_id}/media` resolves only the two bundled
-maps, with identical response and work bounds. Each request admits 200–1280px dimensions,
+no images. Public example images follow the [local bundle contract](#public-examples-and-reusable-detail).
+Each owned-media request admits 200–1280px dimensions,
 at most 12 ordered slots, three parallel resolutions and a 30-second batch deadline.
 There is no itinerary-wide slot cap. Repeated `slot` parameters select only server-authorized
 bindings; an unknown slot is unavailable without a provider call. Without explicit slots,
@@ -961,10 +1111,10 @@ one fresh `photos` Details request and one media metadata request, with an 8-sec
 timeout, an 8-second complete-slot deadline and 256 KiB response limit. The complete-slot
 deadline includes any provider fallback. Completed photos
 survive another slot's timeout or a later failed batch. Redirects and arbitrary fetch destinations are
-rejected. Responses retain `Cache-Control: no-store`; the backend has no photo metadata
-cache or automatic retry. The browser's explicit session cache below determines which
-slots need fresh metadata. Activity and Nearby lists display authorized photographs
-when an owned itinerary or curated example opens. **Refresh photo** in a place dialog
+rejected. Responses retain `Cache-Control: no-store`. Browser session misses first read
+the owning resource's persistent metadata; only a database miss or versioned refresh
+enters provider resolution. Activity and Nearby lists display authorized photographs
+when an owned itinerary opens. **Refresh photo** in an owned place dialog
 resolves only the selected slot, without replanning or refreshing itinerary facts.
 
 #### Place photo fallback
@@ -996,17 +1146,55 @@ photographer/source links as static text; the list keeps its original main-visit
 Nearby layout. This imagery establishes neither a verified photograph of that place nor
 new identity, role or fulfillment authority. No native itinerary or saved binding is rewritten.
 
+#### Persistent itinerary image URLs
+
+Migration 010 adds a `media_cache` JSONB field to `app.itinerary_previews` and
+`app.trips`; it creates no cache table. Entries retain validated final display URLs,
+provider, author/source attribution, display kind/theme, acquisition time and a random
+`cache_revision`. Provider photo resource names, credentials, arbitrary raw responses
+and image bytes are excluded. Keys distinguish slot, binding or controlled search,
+provider role and requested dimensions within the owner-authorized resource. Each
+resource retains at most 1,000 entries and approximately 5 MiB, evicting older entries.
+
+For a pending preview the URL is in `app.itinerary_previews.media_cache`; after Save
+it is in `app.trips.media_cache`. Within either field, each hashed image identity
+maps to an entry whose `media.image_url` is the final display URL. The entry also
+contains `revision` and `acquired_at`; API responses expose the revision as
+`cache_revision`. The separate `media_bindings` field stores stable place identities,
+not image URLs. Existing or unviewed resources may have an empty cache because
+images are acquired on demand.
+
+Database URLs have no fixed-age expiry or scheduled refresh. Reloads, a new browser
+session and expiration of the browser's one-hour metadata cache reuse the stored URL.
+The media endpoints still authenticate and authorize each private read. Preview Save
+transfers the acquired metadata to its saved trip; independent copies start with their
+own cache. Decisions clear the preview field, binding/destination or preview-snapshot
+changes invalidate it, and deletion removes it with the resource. Renaming a trip
+preserves its image URLs. Authorization, bindings and detail are read in one consistent
+snapshot before the publication version is captured.
+
+An image error or explicit refresh submits the revision actually displayed, for one
+authorized slot. A matching revision permits replacement; a stale report returns the
+current version without another provider acquisition. No browser-supplied URL is fetched.
+Per-image PostgreSQL advisory locks coordinate concurrent misses and refreshes across
+workers. Same-theme supporting slots can reuse one provider photograph across batches,
+but each slot retains its own refresh revision in the database and browser. Provider
+I/O runs outside a transaction; a short publication transaction
+rechecks the resource version, preventing a late result from resurrecting a deleted,
+decided or changed resource. Failed acquisitions retain only a coordination revision
+with no photo payload; an ordinary later read or explicit retry can acquire again.
+
 #### Browser tab photo session
 
 The local/private Product uses `sessionStorage` to retain successful verified-place,
 place-fallback, supporting-atmosphere and cover photo URLs with supplied attribution and safe author/source
 links. An omitted
 optional source link does not prevent caching a valid photograph. The cache does not
-store image bytes, credentials, tokens, full itineraries or private media bindings.
+store image bytes, credentials, authentication tokens, full itineraries or private media bindings.
 This is an application-managed metadata cache, independent of HTTP image caching;
 it does not change the media endpoint's `no-store` response directive.
 
-Each entry expires **one hour after successful acquisition**. Reads and reloads never
+Each entry expires **one hour after a successful metadata response**. Reads and reloads never
 extend expiry. Storage is bounded to **1,000 entries and approximately 5 MiB of serialized
 data**, evicting the oldest entries first. Corrupt/unsupported records, future timestamps,
 disallowed URLs, denied storage and quota failures fall back to ordinary media loading.
@@ -1015,12 +1203,14 @@ Only successful photos are retained; loading, unavailable and error states are n
 Keys separate account, login/invalidation generation, endpoint/resource identity,
 detail snapshot fingerprint, provider, media kind, controlled theme, requested dimensions
 and slot. Saved trips, previews,
-independent copies and public examples cannot share private entries. Bundled examples
-use a guest scope. The snapshot fingerprint detects changes; it grants no authorization.
+independent copies cannot share private entries. Bundled examples use static local
+resources and do not participate in this provider metadata cache. The snapshot
+fingerprint detects changes; it grants no authorization.
 Private photos remain hidden until authentication and the server's owned-detail read
 succeed. Reads validate the current scope, entry shape, expiry and provider URL rules.
 Valid hits bypass the media endpoint for those slots; only misses/expired entries enter
-the existing ordered batches of at most 12. Successful batches remain reusable if a
+the existing ordered batches of at most 12. Database hits do not renew the provider
+acquisition timestamp or contact the provider. Successful batches remain reusable if a
 later batch fails. Concurrent same-slot consumers share requests, including development
 StrictMode effects. Abandoned requests are canceled when their last consumer leaves,
 and late responses cannot render or persist into an invalidated scope.
@@ -1028,17 +1218,18 @@ and late responses cannot render or persist into an invalidated scope.
 Logout, session expiry/revocation, account switch and cross-tab session invalidation
 clear private entries and hide their active photos. Confirmed trip deletion and preview
 decisions invalidate the relevant resource. Changed snapshots or slot sets cannot reuse
-old entries. Google and supporting endpoints share the same resource invalidation identity,
+old entries. Google, supporting and owned-cover endpoints share the resource invalidation identity,
 including size-query variants, so these events fence both provider families. A media 401
 clears the owner's photos; 403/404 invalidates the resource.
 Normal authentication and ownership checks remain required after every page reload.
 
-A cached URL that fails image loading is evicted and receives **one automatic
+A URL that fails image loading is evicted from browser metadata and receives **one automatic
 reacquisition per slot per display cycle**. A further failure shows an illustration
 with **Retry photo**. Manual refresh/retry affects only that slot and cannot extend
 neighboring entries' expiry. A failed supporting image instead removes the thumbnail,
 retaining the compact activity card. Photographs load directly from the provider image host;
-cache hits do not guarantee zero image network requests or zero billing.
+the browser's HTTP cache governs image-byte reuse. Reusing a URL does not itself
+invoke the photo acquisition API; missing or refreshed metadata can invoke it.
 
 Reload retains the tab's storage session, and normal tab closure ends it. Browser
 closed-tab, crash and session restoration may restore `sessionStorage`; restored entries
@@ -1047,14 +1238,13 @@ isolation for browser-created duplicate tabs. External application links use `no
 There is no unconditional `beforeunload`/`pagehide` purge, durable browser storage,
 server/CDN image cache, service worker or cross-tab photo-sharing mechanism.
 
-Destination covers and the fixed atmosphere catalog share this cache's lifetime, count and
-byte budget with itinerary activity and Nearby slots. Cover keys use the canonical request
-endpoint (including destination and requested dimensions), account/login generation,
-provider/kind and a dedicated cover snapshot/slot identity. Same-destination cards, results,
-drafts and detail heroes reuse metadata within an account; guest examples and the login
-image use a separate public scope. A cover is destination-level display metadata, so deleting
-an individual itinerary does not remove a cover shared with another itinerary. Account
-invalidation still clears all private covers and rejects their delayed writes. Provider-license review
+Destination covers and the fixed atmosphere catalog share this browser cache's lifetime,
+count and byte budget with itinerary slots. Owned itinerary covers use their resource's
+`cover-media` endpoint, so a saved card and its detail hero reuse both browser and database
+metadata while independent itineraries remain separate. Public destination/draft covers
+and fixed atmosphere images retain their destination-level public endpoint and browser-only
+metadata behavior. Bundled example images remain local. Account invalidation clears all
+private browser covers and rejects their delayed writes. Provider-license review
 and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
 
 Successful place fallbacks use distinct Unsplash/atmosphere/place-fallback keys within the
@@ -1149,8 +1339,11 @@ unchanged.
 
 #### Destination covers
 
-Itinerary detail, My trips and example cards, planning results and draft covers use public
-`GET /api/media/destination?destination=...`. The only search text is the structured
+Owned itinerary detail, saved My trips cards and planning results use authenticated
+`GET /api/{previews|trips}/{id}/cover-media`, with persistent URLs in the owning row.
+The destination comes from the server's authorized detail, not a browser query parameter.
+Draft covers retain public `GET /api/media/destination?destination=...`; bundled example
+cards use local assets. The only search text is the structured
 destination label: whitespace is normalized and the query is bounded to 120 Unicode code
 points. Empty labels do not initiate provider work. The endpoint admits 200–1280px dimensions,
 uses `Cache-Control: no-store`, and shares the existing server-side Unsplash adapter and
@@ -1164,7 +1357,7 @@ Successful cover metadata uses the [browser tab photo session](#browser-tab-phot
 Valid reload/navigation hits bypass both the metadata endpoint and its provider search/adoption.
 Reads do not renew acquisition time. Same-key concurrent mounts, including StrictMode,
 share request leases; abandoned work is canceled when its final consumer leaves. A failed
-cached image is evicted and receives one automatic reacquisition per display cycle; a
+image is evicted and receives one automatic reacquisition per display cycle; a
 further failure shows the illustration. Unavailable/error metadata is not cached. Denied
 storage and quota errors preserve ordinary display without reusable metadata. This stores
 URLs and credits, not image bytes, and does not guarantee zero image-host network traffic.

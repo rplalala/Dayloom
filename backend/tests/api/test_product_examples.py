@@ -60,7 +60,7 @@ def test_guest_can_read_two_complete_source_backed_examples():
     asyncio.run(journey())
 
 
-def test_example_photos_use_only_curated_identities_and_real_provider_contract():
+def test_example_photos_use_local_assets_with_illustration_fallbacks():
     import httpx
 
     from backend.app.product.media import MediaProviders, get_media_providers
@@ -77,12 +77,17 @@ def test_example_photos_use_only_curated_identities_and_real_provider_contract()
             for example in ("sydney-example", "london-example"):
                 response = await client.get(f"/api/examples/{example}/media")
                 assert response.status_code == 200
-                assert response.headers["cache-control"] == "no-store"
+                assert response.headers["cache-control"] == "public, max-age=86400"
                 photos = response.json()["items"]
                 assert len(photos) == 9
                 assert sum(slot.startswith("activity:") for slot in photos) == 6
-                assert all(photo["status"] == "available" for photo in photos.values())
-                assert all(photo["authors"] for photo in photos.values())
+                assert all(photo["status"] == "available" and photo["authors"]
+                           and photo["image_url"].startswith("/dayloom/examples/")
+                           for slot, photo in photos.items() if slot.startswith("activity:"))
+                assert all(photo["status"] == "available"
+                           and photo["kind"] in {"verified_place", "illustration"}
+                           and photo["image_url"].startswith("/dayloom/examples/")
+                           for slot, photo in photos.items() if slot.startswith("nearby:"))
                 assert "test-only" not in response.text
                 oversized = await client.get(f"/api/examples/{example}/media?width=1281")
                 assert oversized.status_code == 422

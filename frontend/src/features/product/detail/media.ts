@@ -1,10 +1,10 @@
 import { createContext, useEffect, useRef, useState } from 'react';
-import { evictPhoto, photoFence, photoGeneration, readPhoto, subscribePhotos, type PhotoScope } from './photoSession';
+import { evictPhoto, hasSlotRevisions, photoFence, photoGeneration, readPhoto, subscribePhotos, type PhotoScope } from './photoSession';
 import { acquirePhotos } from './mediaRequests';
 
 export type DisplayMedia = {
   status: 'loading' | 'available' | 'unavailable';
-  kind?: 'verified_place' | 'atmosphere';
+  kind?: 'verified_place' | 'atmosphere' | 'illustration';
   theme?: 'meal' | 'rest' | 'explore' | 'walk' | 'general';
   fallback?: 'google_no_photos';
   image_url?: string;
@@ -12,6 +12,8 @@ export type DisplayMedia = {
   authors?: { name: string; url?: string | null }[];
   alt?: string;
   source_url?: string | null;
+  license_url?: string | null;
+  cache_revision?: string;
 };
 export const PlaceMedia = createContext<Record<string, DisplayMedia>>({});
 export const PlaceMediaActions = createContext<{
@@ -35,12 +37,13 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
     const valid = () => active && photoFence(endpoint, cacheScope) === fence &&
       (!cacheScope?.owner || cacheScope.generation === photoGeneration(cacheScope.owner));
     let displayed: Record<string, DisplayMedia> = {};
-    const cachedSlots = new Set<string>();
+    const revisions = new Map<string, string>();
     const attempted = new Set<string>();
     const themeResults = new Map<string, DisplayMedia>();
     const merge = (incoming: Record<string, DisplayMedia>) => {
       if (!valid()) return;
       displayed = { ...displayed, ...incoming };
+      for (const [slot, media] of Object.entries(incoming)) if (media.cache_revision) revisions.set(slot, media.cache_revision);
       setResult({ context, fence, items: displayed });
     };
     const unsubscribe = subscribePhotos(() => {
@@ -49,9 +52,9 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
       releases.forEach(release => release());
       setResult({ context: '', fence, items: {} });
     });
-    const fetchSlots = async (batch: string[], force = false) => {
+    const fetchSlots = async (batch: string[], force = false, revision?: string) => {
       if (!valid()) return;
-      if (!force && cacheScope?.provider === 'Unsplash') {
+      if (!force && cacheScope?.provider === 'Unsplash' && !hasSlotRevisions(endpoint, cacheScope)) {
         const shared = Object.fromEntries(batch.flatMap(slot => {
           const photo = readPhoto(endpoint, cacheScope, slot) || themeResults.get(cacheScope.themes?.[slot] || 'general');
           return photo ? [[slot, photo]] : [];
@@ -61,7 +64,7 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
         if (!batch.length) return;
       }
       merge(Object.fromEntries(batch.map(slot => [slot, { status: 'loading' }])));
-      const request = acquirePhotos(endpoint, batch, cacheScope);
+      const request = acquirePhotos(endpoint, batch, cacheScope, revision);
       releases.add(request.release);
       const incoming = await request.promise;
       if (cacheScope?.provider === 'Unsplash') for (const [slot, value] of Object.entries(incoming)) {
@@ -74,14 +77,14 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
     const refresh = (slot: string) => {
       if (!ordered.includes(slot) || !valid()) return;
       if (cacheScope) evictPhoto(endpoint, cacheScope, slot);
-      cachedSlots.delete(slot);
-      void fetchSlots([slot], true);
+      attempted.add(slot);
+      void fetchSlots([slot], true, revisions.get(slot));
     };
     controls.current = { refresh, imageFailed: (slot, media) => {
       if (!valid() || displayed[slot] !== media || media.status !== 'available') return;
       if (cacheScope) evictPhoto(endpoint, cacheScope, slot);
       merge({ [slot]: { status: 'unavailable' } });
-      if (cachedSlots.has(slot) && !attempted.has(slot)) {
+      if (!attempted.has(slot)) {
         attempted.add(slot);
         refresh(slot);
       }
@@ -89,7 +92,6 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
     const load = async () => {
       const cached = Object.fromEntries(ordered.flatMap(slot => {
         const photo = cacheScope && readPhoto(endpoint, cacheScope, slot);
-        if (photo) cachedSlots.add(slot);
         return photo ? [[slot, photo]] : [];
       }));
       merge(cached);

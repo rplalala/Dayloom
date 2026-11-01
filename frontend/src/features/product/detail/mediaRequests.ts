@@ -7,19 +7,19 @@ type Group = { controller: AbortController; entries: Pending[] };
 const pending = new Map<string, Pending>();
 
 /** Leases let StrictMode reattach before aborting an abandoned network request. */
-export function acquirePhotos(endpoint: string, slots: string[], scope?: PhotoScope) {
-  return acquireMedia(endpoint, slots, scope, 'slots');
+export function acquirePhotos(endpoint: string, slots: string[], scope?: PhotoScope, revision?: string) {
+  return acquireMedia(endpoint, slots, scope, 'slots', revision);
 }
 
-export function acquireCover(endpoint: string, scope: PhotoScope) {
-  const request = acquireMedia(endpoint, ['cover'], scope, 'cover');
+export function acquireCover(endpoint: string, scope: PhotoScope, revision?: string) {
+  const request = acquireMedia(endpoint, ['cover'], scope, 'cover', revision);
   return { promise: request.promise.then(items => items.cover), release: request.release };
 }
 
-function acquireMedia(endpoint: string, slots: string[], scope: PhotoScope | undefined, mode: 'slots' | 'cover') {
+function acquireMedia(endpoint: string, slots: string[], scope: PhotoScope | undefined, mode: 'slots' | 'cover', revision?: string) {
   const fence = photoFence(endpoint, scope);
   const valid = () => photoFence(endpoint, scope) === fence && (!scope?.owner || scope.generation === photoGeneration(scope.owner));
-  const keyFor = (slot: string) => `${mode}:${fence}:${scope ? photoRequestKey(endpoint, scope, slot) : JSON.stringify([endpoint, slot])}`;
+  const keyFor = (slot: string) => `${mode}:${fence}:${scope ? photoRequestKey(endpoint, scope, slot) : JSON.stringify([endpoint, slot])}:${revision || ''}`;
   const representatives = new Map<string, string>();
   for (const slot of slots) if (!pending.has(keyFor(slot)) && !representatives.has(keyFor(slot))) representatives.set(keyFor(slot), slot);
   const missing = [...representatives.values()];
@@ -27,8 +27,10 @@ function acquireMedia(endpoint: string, slots: string[], scope: PhotoScope | und
     const group: Group = { controller: new AbortController(), entries: [] };
     const query = new URLSearchParams();
     missing.forEach(slot => query.append('slot', slot));
+    if (revision) query.set('refresh', revision);
+    const url = mode === 'cover' && !revision ? endpoint : `${endpoint}${endpoint.includes('?') ? '&' : '?'}${query}`;
     const response = requestJson<DisplayMedia | { items: Record<string, DisplayMedia> }>(
-      mode === 'cover' ? endpoint : `${endpoint}${endpoint.includes('?') ? '&' : '?'}${query}`, { signal: group.controller.signal },
+      url, { signal: group.controller.signal },
     ).catch(error => {
       if (!group.controller.signal.aborted && valid() && scope && error instanceof HttpError) {
         if (error.status === 401) invalidatePhotos({ owner: scope.owner });

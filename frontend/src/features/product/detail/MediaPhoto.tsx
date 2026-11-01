@@ -24,15 +24,17 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   };
   useEffect(() => setFailed(false), [media]);
   const available = media?.status === 'available' && media.image_url && !failed;
+  const illustration = available && media.kind === 'illustration';
   const pendingLabel = !atmosphere && !failed && (!media || media.status === 'loading')
     ? media ? 'Loading photo…' : 'Photo pending' : 'Illustration';
   const placeCredit = Boolean(available && (!atmosphere || staticCredits) && !creditInDetails);
-  const visual = available ? <img src={media.image_url} alt={atmosphere ? media.alt || label : `${label} · place photograph`} onError={() => { setFailed(true); onImageError?.(); }} referrerPolicy="no-referrer" /> : atmosphere ? <img src={fallback} alt={`${label} · illustration`} /> : <div className="media-placeholder" aria-label="Illustration, not a place photograph"><img src={fallback} alt="" aria-hidden="true" /></div>;
+  const visual = available ? <img src={media.image_url} alt={illustration ? `${label} · illustration` : atmosphere ? media.alt || label : `${label} · place photograph`} onError={() => { setFailed(true); onImageError?.(); }} referrerPolicy="no-referrer" /> : atmosphere ? <img src={fallback} alt={`${label} · illustration`} /> : <div className="media-placeholder" aria-label="Illustration, not a place photograph"><img src={fallback} alt="" aria-hidden="true" /></div>;
   const credit = available ? <>
     {creditLabel && <><span>{creditLabel}</span> · </>}
     <span className="media-provider" translate="no">{media.provider}</span>
     {media.authors?.map((author, i) => <span key={i}> · {author.url ? <a href={author.url} target="_blank" rel="noopener noreferrer">{author.name}</a> : author.name}</span>)}
     {media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
+    {media.license_url && <> · <a href={media.license_url} target="_blank" rel="noopener noreferrer">License</a></>}
   </> : pendingLabel;
   const picture = onOpen ? <button type="button" className="media-open" aria-label={`View ${label}`} onClick={onOpen}>{visual}</button> : link ? <Link className="media-image-link" to={link.to} aria-label={link.label}>{visual}</Link> : visual;
   return <figure data-photo-slot={slot} data-photo-state={failed ? 'unavailable' : media?.status || 'unattempted'} aria-busy={media?.status === 'loading'} className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}
@@ -42,7 +44,7 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
     onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setCreditsOpen(false); }}
     onKeyDown={event => { if (atmosphere && !staticCredits && !creditInDetails && event.key === "Escape") { event.preventDefault(); event.stopPropagation(); closeCredits(); } }}>
     {children ? <div className="media-detail-row"><div className="nearby-photo">{picture}{!available && <span className="media-credit" aria-hidden="true">{pendingLabel}</span>}</div>{children}</div> : picture}
-    {available && atmosphere && !staticCredits && !creditInDetails ? <figcaption className="atmosphere-credit">
+    {illustration ? <figcaption aria-label="Illustration">Illustration</figcaption> : available && atmosphere && !staticCredits && !creditInDetails ? <figcaption className="atmosphere-credit">
       <button type="button" className="photo-credit-toggle" ref={creditToggle} aria-label="Photo credits" aria-expanded={creditsOpen} aria-controls={creditsId} onClick={() => setCreditsOpen(true)}><Icon name="info" size={15} /></button>
       <span id={creditsId} className="photo-credit-content" hidden={!creditsOpen}>{credit}<button type="button" className="photo-credit-close" aria-label="Hide photo credits" onClick={closeCredits}><Icon name="close" size={12} /></button></span>
     </figcaption> : available && creditInDetails ? null : <figcaption className={children && !available ? "visually-hidden" : undefined} aria-label={!available && !atmosphere ? "Illustration" : undefined}>{credit}</figcaption>}
@@ -85,11 +87,12 @@ function useCoverMedia(endpoint: string | undefined, owner: string | null, provi
     const fence = photoFence(endpoint, scope);
     let active = true;
     let recovered = false;
+    let shown: DisplayMedia | undefined;
     const releases = new Set<() => void>();
     const valid = () => active && photoFence(endpoint, scope) === fence && (!owner || generation === photoGeneration(owner));
-    const show = (media: DisplayMedia) => { if (valid()) setResult({ key: context, media }); };
-    const load = () => {
-      const request = acquireCover(endpoint, scope);
+    const show = (media: DisplayMedia) => { if (valid()) { shown = media; setResult({ key: context, media }); } };
+    const load = (revision?: string) => {
+      const request = acquireCover(endpoint, scope, revision);
       releases.add(request.release);
       void request.promise.then(media => { show(media); request.release(); releases.delete(request.release); });
     };
@@ -103,8 +106,9 @@ function useCoverMedia(endpoint: string | undefined, owner: string | null, provi
     failed.current = () => {
       if (!valid()) return;
       evictPhoto(endpoint, scope, 'cover');
+      const revision = shown?.cache_revision;
       show({ status: 'unavailable' });
-      if (cached && !recovered) { recovered = true; load(); }
+      if (!recovered) { recovered = true; load(revision); }
     };
     if (cached) show(cached); else load();
     return () => { active = false; unsubscribe(); releases.forEach(release => release()); };
@@ -119,12 +123,13 @@ export function CuratedPhoto({ image = 'nature', label, className, fallback, lin
   return <MediaPhoto atmosphere link={link} media={cover.media} onImageError={cover.imageFailed} label={label} fallback={fallback || `/dayloom/${image === 'london' ? 'city' : image}.svg`} className={className} />;
 }
 
-export function DestinationPhoto({ destination, label, className, fallback, link, owner = null }: {
+export function DestinationPhoto({ destination, label, className, fallback, link, owner = null, endpoint }: {
   destination: string; label: string; className?: string; fallback?: string;
   owner?: string | null;
+  endpoint?: string;
   link?: { to: string; label: string };
 }) {
   const query = Array.from(destination.trim().replace(/\s+/g, ' ')).slice(0, 120).join('');
-  const cover = useCoverMedia(query ? `/api/media/destination?destination=${encodeURIComponent(query)}` : undefined, owner, 'Unsplash');
+  const cover = useCoverMedia(query ? `${endpoint || '/api/media/destination'}?destination=${encodeURIComponent(query)}` : undefined, owner, 'Unsplash');
   return <MediaPhoto atmosphere link={link} media={cover.media} onImageError={cover.imageFailed} label={label} fallback={fallback || '/dayloom/nature.svg'} className={className} />;
 }

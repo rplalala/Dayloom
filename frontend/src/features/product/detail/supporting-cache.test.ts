@@ -15,18 +15,19 @@ it('does not reuse theme-only photos acquired before destination-aware search', 
   const saved = JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!);
   for (const entry of saved.entries) {
     entry.key = JSON.stringify(JSON.parse(entry.key).slice(0, 10));
-    entry.sharedKey = JSON.stringify(JSON.parse(entry.sharedKey).slice(0, 10));
+    if (entry.sharedKey) entry.sharedKey = JSON.stringify(JSON.parse(entry.sharedKey).slice(0, 10));
   }
   sessionStorage.setItem('dayloom.photos.session.v1', JSON.stringify(saved));
   expect(readPhoto(resource, scope(), 'a')).toBeUndefined();
   expect(readPhoto(resource, scope(), 'b')).toBeUndefined();
 });
 
-it('shares theme metadata at its original acquisition time and refreshes one slot independently', () => {
+it('keeps per-slot theme metadata at its original acquisition time and refreshes independently', () => {
   const clock = vi.spyOn(Date, 'now').mockReturnValue(1800000000000);
   writePhoto(resource, scope(), 'a', photo);
   clock.mockReturnValue(1800000060000);
-  expect(readPhoto(resource, scope(), 'b')).toEqual(photo);
+  expect(readPhoto(resource, scope(), 'b')).toBeUndefined();
+  writePhoto(resource, scope(), 'b', photo, 1800000000000);
   const entries = JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!).entries;
   expect(entries.map((entry: { fetchedAt: number }) => entry.fetchedAt)).toEqual([1800000000000, 1800000000000]);
   evictPhoto(resource, scope(), 'a');

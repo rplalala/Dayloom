@@ -14,8 +14,8 @@ const listeners = new Set<() => void>();
 
 function resourceIdentity(resource: string): string {
   const path = resource.split('?')[0];
-  return /^\/api\/(trips|previews|examples)\/[^/]+\/(supporting-)?media$/.test(path)
-    ? path.replace(/\/supporting-media$/, '/media') : resource;
+  return /^\/api\/(trips|previews|examples)\/[^/]+\/((supporting|cover)-)?media$/.test(path)
+    ? path.replace(/\/(supporting|cover)-media$/, '/media') : resource;
 }
 
 export function photoFence(resource: string, scope?: PhotoScope): number {
@@ -72,6 +72,7 @@ function safeUrl(value: unknown, hosts: string[], subdomains = false): value is 
 export function validPhoto(value: unknown): value is DisplayMedia {
   if (!value || typeof value !== 'object') return false;
   const media = value as DisplayMedia;
+  if (media.cache_revision !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(media.cache_revision)) return false;
   if (media.status === 'available' && media.kind === 'atmosphere' && media.provider === 'Unsplash') {
     return (media.fallback === undefined || (media.fallback === 'google_no_photos' && media.theme === 'general')) &&
       ['meal', 'rest', 'explore', 'walk', 'general'].includes(media.theme || '') &&
@@ -126,12 +127,17 @@ export function photoKey(resource: string, scope: PhotoScope, slot: string): str
   return JSON.stringify([scope.owner, scope.generation, resource, scope.snapshot,
     scope.width || 960, scope.height || 640, slot, scope.provider || 'Google Maps',
     scope.kind || 'verified_place', scope.provider === 'Unsplash' ? scope.themes?.[slot] || 'general' : null,
-    ...(scope.provider === 'Unsplash' ? ['destination-v1'] : [])]);
+    ...(scope.provider === 'Unsplash' ? ['destination-v1'] : []),
+    ...(hasSlotRevisions(resource, scope) ? ['slot-revisions-v1'] : [])]);
+}
+
+export function hasSlotRevisions(resource: string, scope?: PhotoScope): boolean {
+  return Boolean(scope?.owner && /^\/api\/(trips|previews)\/[^/]+\/supporting-media(?:\?|$)/.test(resource));
 }
 
 export function photoRequestKey(resource: string, scope: PhotoScope, slot: string): string {
   const key = JSON.parse(photoKey(resource, scope, slot));
-  if (scope.provider === 'Unsplash') key[6] = '@theme';
+  if (scope.provider === 'Unsplash' && !hasSlotRevisions(resource, scope)) key[6] = '@theme';
   return JSON.stringify(key);
 }
 
@@ -155,7 +161,7 @@ export function readPhoto(resource: string, scope: PhotoScope, slot: string): Di
   if (scope.owner && scope.generation !== photoGeneration(scope.owner)) return undefined;
   const values = entries();
   const key = photoKey(resource, scope, slot);
-  const sharedKey = scope.provider === 'Unsplash' ? photoRequestKey(resource, scope, slot) : undefined;
+  const sharedKey = scope.provider === 'Unsplash' && !hasSlotRevisions(resource, scope) ? photoRequestKey(resource, scope, slot) : undefined;
   const alternate = scope.provider !== 'Unsplash' ? fallbackKey(resource, scope, slot) : undefined;
   const allowed = values.filter(entry => entry.owner === scope.owner && entry.resource === resource && matchesScope(entry.media, scope, slot));
   const legacyKey = !sharedKey && JSON.stringify(JSON.parse(key).slice(0, 7));
@@ -175,11 +181,12 @@ export function writePhoto(resource: string, scope: PhotoScope, slot: string, me
   // Whitelist the display DTO; never persist extra provider or application fields.
   const photo: DisplayMedia = { status: 'available', kind: media.kind, provider: media.provider,
     image_url: media.image_url, source_url: media.source_url,
+    ...(media.cache_revision && { cache_revision: media.cache_revision }),
     authors: media.authors!.map(({ name, url }) => ({ name, ...(url && { url }) })),
     ...(media.theme && { theme: media.theme }),
     ...(media.fallback && { fallback: media.fallback }),
     ...(media.alt && { alt: media.alt }) };
-  const sharedKey = scope.provider === 'Unsplash' ? photoRequestKey(resource, scope, slot) : undefined;
+  const sharedKey = scope.provider === 'Unsplash' && !hasSlotRevisions(resource, scope) ? photoRequestKey(resource, scope, slot) : undefined;
   save([...entries().filter(entry => entry.key !== primary && (scope.provider === 'Unsplash' || entry.key !== alternate)), { key, ...(sharedKey && { sharedKey }), owner: scope.owner, resource, fetchedAt, media: photo }]);
 }
 

@@ -10,6 +10,8 @@ import {
 import { createBrief, restoreBrief, type Brief } from "./editor";
 import { briefFromProfile } from "./profile";
 import { invalidatePhotos } from './detail/photoSession';
+import { forgetOwnerCopyIntents } from './copyIntents';
+import { useExpiredGuestBrief } from './useExpiredGuestBrief';
 export type { Brief } from "./editor";
 
 export type Account = {
@@ -34,6 +36,7 @@ type Recovery = {
 export type BriefOrigin = "new" | "edited" | "restored" | "draft" | "replan";
 export type DraftRef = { id: string; title: string; revision: number };
 const key = "dayloom.editor.v1";
+const previousKey = 'dayloom.editor.previous.v1';
 const noticeKey = "dayloom.account.notice";
 const activeKey = "dayloom.account.active";
 const logoutKey = "dayloom.account.logged-out";
@@ -65,7 +68,7 @@ function invalidate(owner: string | null) {
   invalidatePhotos({ owner });
   try {
     localStorage.setItem(invalidationPrefix + owner, crypto.randomUUID());
-    sessionStorage.removeItem('dayloom.copy.intent.v1');
+    forgetOwnerCopyIntents(owner);
     const intent = JSON.parse(sessionStorage.getItem('dayloom.task.intent.v1') || 'null');
     if (intent?.owner === owner) sessionStorage.removeItem('dayloom.task.intent.v1');
     const importIntent = JSON.parse(sessionStorage.getItem('dayloom.import.intent.v1') || 'null');
@@ -137,13 +140,16 @@ type Session = {
     data: Record<string, string>,
   ) => Promise<void>;
   logout: () => Promise<void>;
+  deleteAccount: (password: string) => Promise<void>;
   refresh: () => Promise<void>;
+  hasPreviousBrief?: boolean;
+  restorePreviousBrief?: () => void;
 };
 const SessionContext = createContext<Session | null>(null);
 
-function readRecovery(): Recovery {
+function readRecovery(storageKey = key): Recovery {
   try {
-    const saved = JSON.parse(sessionStorage.getItem(key) || "null");
+    const saved = JSON.parse(sessionStorage.getItem(storageKey) || "null");
     if (
       saved &&
       typeof saved === "object" &&
@@ -160,7 +166,7 @@ function readRecovery(): Recovery {
       const unopened = saved.origin === "new" && saved.started === false && !saved.defaultsAttempted;
       const draftRef = saved.draftRef && typeof saved.draftRef.id === "string" && typeof saved.draftRef.title === "string" && Number.isSafeInteger(saved.draftRef.revision) && saved.draftRef.revision > 0 ? saved.draftRef as DraftRef : null;
       const draftTitle = typeof saved.draftTitle === "string" && saved.draftTitle.length <= 120 ? saved.draftTitle : draftRef?.title || "";
-      return { ...saved, brief: restoreBrief(saved.brief), origin: unopened ? "new" : "restored", defaultsAttempted: unopened ? false : true, draftRef, draftTitle };
+      return { ...saved, brief: restoreBrief(saved.brief), origin: saved.origin === 'new' ? "new" : "restored", defaultsAttempted: unopened ? false : true, draftRef, draftTitle };
     }
   } catch {
     /* An unavailable storage area must not prevent planning. */
@@ -170,6 +176,19 @@ function readRecovery(): Recovery {
 
 export function SessionProvider({ children }: { children: ReactNode }) {
   const recovery = useRef<Recovery>(readRecovery());
+  const guest = useExpiredGuestBrief(JSON.stringify([recovery.current.owner, recovery.current.owner ? generation(recovery.current.owner) : '']));
+  const clearGuest = guest.clear;
+  const liveGuest = useRef(guest);
+  liveGuest.current = guest;
+  const previousRecovery = useRef<Recovery | null>(readRecovery(previousKey));
+  const [previousAvailable, setPreviousAvailable] = useState(Boolean(previousRecovery.current?.owner));
+  const rememberPrevious = useCallback((value: Recovery | null) => {
+    previousRecovery.current = value; setPreviousAvailable(Boolean(value?.owner));
+    try {
+      if (value?.owner) sessionStorage.setItem(previousKey, JSON.stringify(value));
+      else sessionStorage.removeItem(previousKey);
+    } catch { /* Recovery stays in memory when storage is unavailable. */ }
+  }, []);
   const accountRef = useRef<Account | null>(null);
   const [account, setAccount] = useState<Account | null>(null);
   const [status, setStatus] = useState<Session["status"]>("loading");
@@ -191,6 +210,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     }
   }, []);
   const clear = useCallback(() => {
+    clearGuest();
+    rememberPrevious(null);
     invalidatePhotos({ privateOnly: true });
     try { sessionStorage.removeItem('dayloom.task.intent.v1'); } catch { /* Account content stays hidden in memory. */ }
     try { sessionStorage.removeItem('dayloom.copy.intent.v1'); } catch { /* Invalidation also fences recovery. */ }
@@ -212,11 +233,21 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setTitle("");
     setStatus("guest");
     persist();
-  }, [persist]);
+  }, [persist, clearGuest, rememberPrevious]);
   const adopt = useCallback(
     (next: Account) => {
       if (loggingOut.current || sessionBlocked()) return;
       const previousOwner = accountRef.current?.id || recovery.current.owner || activeLogin()?.id;
+      if (previousRecovery.current?.owner !== next.id) rememberPrevious(null);
+      const publicBrief = !accountRef.current && recovery.current.owner ? liveGuest.current.snapshot() : null;
+      if (publicBrief?.edited) {
+        if (recovery.current.owner === next.id && (recovery.current.generation || '') === generation(next.id)) rememberPrevious({ ...recovery.current });
+        else rememberPrevious(null);
+        recovery.current = { owner: next.id, generation: generation(next.id),
+          brief: publicBrief.brief, origin: publicBrief.origin, started: true,
+          defaultsAttempted: true, actionId: null, draftRef: null, draftTitle: publicBrief.draftTitle };
+        liveGuest.current.clear();
+      }
       if (previousOwner && previousOwner !== next.id) invalidatePhotos({ owner: previousOwner });
       if (
         recovery.current.owner &&
@@ -248,7 +279,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setTitle(recovery.current.draftTitle || "");
       persist();
     },
-    [persist],
+    [persist, rememberPrevious],
   );
 
   const refresh = useCallback(async () => {
@@ -437,6 +468,39 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  async function deleteAccount(password: string) {
+    const owner = accountRef.current;
+    if (!owner || loggingOut.current) throw new Error("Log in again before deleting your account.");
+    const stillCurrent = () => accountRef.current?.id === owner.id && accountRef.current?.csrf_token === owner.csrf_token;
+    let response: Response;
+    try {
+      response = await fetch("/api/auth/account", {
+        method: "DELETE", credentials: "same-origin",
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": owner.csrf_token },
+        body: JSON.stringify({ password, confirmed: true }),
+      });
+    } catch {
+      if (stillCurrent()) await refresh();
+      throw new Error("Could not confirm account deletion. Check your connection and try again.");
+    }
+    if (response.status !== 204) {
+      const body = await response.json().catch(() => null);
+      if (response.status === 401 && stillCurrent()) await refresh();
+      const messages: Record<string, string> = {
+        protected_test_account: "The default test account cannot be deleted.",
+        invalid_password: "Your current password is incorrect.",
+        account_tasks_active: "Stop active planning tasks before deleting your account.",
+      };
+      throw new Error(messages[body?.detail?.code] || "Your account could not be deleted. Check your session and try again.");
+    }
+    invalidate(owner.id);
+    if (stillCurrent()) {
+      epoch.current++;
+      blockCurrentSession();
+      clear();
+    }
+  }
+
   function editBrief(next: Brief) {
     if (status === "loading" || status === "expired") return;
     recovery.current.brief = next;
@@ -526,6 +590,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setAction(next);
     persist();
   }
+  const hasPreviousBrief = Boolean(account && previousAvailable && previousRecovery.current?.owner === account.id &&
+    (previousRecovery.current.generation || '') === generation(account.id));
+  function restorePreviousBrief() {
+    const current = accountRef.current;
+    const saved = previousRecovery.current;
+    if (!current || !saved || saved.owner !== current.id || (saved.generation || '') !== generation(current.id)) return;
+    recovery.current = saved;
+    rememberPrevious(null);
+    adopt(current);
+  }
   return (
     <SessionContext.Provider
       value={{
@@ -546,7 +620,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setActionId,
         authenticate,
         logout,
+        deleteAccount,
         refresh,
+        hasPreviousBrief,
+        restorePreviousBrief,
+        ...(status === 'expired' ? guest.editor : {}),
       }}
     >
       {children}

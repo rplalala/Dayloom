@@ -5,6 +5,7 @@ import { SessionProvider, useSession } from "../features/product/session";
 import "../styles/dayloom.css";
 import { TaskProvider, TaskEntry } from "../features/product/tasks";
 import { Icon } from "../features/product/Icon";
+import { usePlanningEntry } from '../features/product/usePlanningEntry';
 
 export function ProductLayout() {
   return (
@@ -16,13 +17,25 @@ export function ProductLayout() {
 
 function ProductShell() {
   const { account, logout } = useSession();
+  const enterPlanning = usePlanningEntry();
   const { pathname } = useLocation();
   const librarySelected = pathname === "/trips" || pathname === "/import" ||
     ["/trips/", "/drafts/", "/examples/", "/previews/"].some(prefix => pathname.startsWith(prefix));
   const [mobile, setMobile] = useState(false);
   const [about, setAbout] = useState(false);
   const [navigationError, setNavigationError] = useState("");
+  const [configurationAvailable, setConfigurationAvailable] = useState(false);
   const aboutDialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    void fetch('/api/config/access', { credentials: 'same-origin', cache: 'no-store', signal: controller.signal })
+      .then(response => response.ok ? response.json() : null)
+      .then(access => {
+        if (!controller.signal.aborted) setConfigurationAvailable(typeof access?.password_required === 'boolean');
+      })
+      .catch(() => { if (!controller.signal.aborted) setConfigurationAvailable(false); });
+    return () => controller.abort();
+  }, []);
   useEffect(() => {
     const dialog = aboutDialog.current;
     if (!about || !dialog) return;
@@ -47,7 +60,7 @@ function ProductShell() {
             <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>
               Home
             </NavLink>
-            <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
+            <NavLink to="/plan" onClick={enterPlanning} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
             <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
           </nav>
           <div className="nav-actions">
@@ -66,7 +79,7 @@ function ProductShell() {
                 Log in
               </NavLink>
             )}
-            <NavLink to="/plan" className="btn btn-primary btn-small nav-cta">
+            <NavLink to="/plan" onClick={enterPlanning} className="btn btn-primary btn-small nav-cta">
               Start planning <Icon name="arrow" size={16} />
             </NavLink>
             <button
@@ -87,7 +100,7 @@ function ProductShell() {
             onClick={() => setMobile(false)}
           >
             <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Home</NavLink>
-            <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
+            <NavLink to="/plan" onClick={enterPlanning} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
             <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
             <NavLink to={account ? "/account" : "/login"} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>
               {account ? "Account settings" : "Log in"}
@@ -108,7 +121,7 @@ function ProductShell() {
           </div>
           <div className="footer-links">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/plan">Start planning</NavLink>
+            <NavLink to="/plan" onClick={enterPlanning}>Start planning</NavLink>
             <NavLink to="/trips">My trips</NavLink>
             <NavLink to={account ? "/account" : "/login"}>My account</NavLink>
           </div>
@@ -118,6 +131,11 @@ function ProductShell() {
           <button type="button" className="inline-action" onClick={() => setAbout(true)}>About Dayloom</button>
         </div>
       </footer>
+      {configurationAvailable && (
+        <Link to="/config" className="configuration-shortcut" aria-label="Configuration" title="Configuration">
+          <Icon name="settings" size={22} />
+        </Link>
+      )}
       {about && <dialog ref={aboutDialog} className="modal-card wide-modal about-dialog" aria-labelledby="about-dayloom-title" onCancel={() => setAbout(false)} onClick={event => {
         if (isDialogBackdropClick(event)) setAbout(false);
       }}>

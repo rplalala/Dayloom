@@ -1,5 +1,6 @@
 """Same-origin delivery of the built React application and unmodified real APIs."""
 
+import re
 from pathlib import Path
 
 from starlette.exceptions import HTTPException
@@ -29,6 +30,8 @@ class ProductFrontend(StaticFiles):
             response = await super().get_response("index.html", scope)
         if response.media_type == "text/html":
             response.headers["Cache-Control"] = "no-cache"
+        elif re.fullmatch(r"dayloom/examples/[a-z-]+-[0-9a-f]{12}\.(?:jpg|svg)", path):
+            response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
         return response
 
 

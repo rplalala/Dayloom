@@ -108,7 +108,13 @@ def test_verified_private_bindings_copy_atomically_without_provider_work_or_reso
             first = recovered.get(f"/api/trips/{copied}/media")
             assert first.status_code == 200 and list(first.json()["items"]) == list(bindings)
             assert len(calls) == 2
-            assert recovered.get(f"/api/trips/{descendant}/media").json() == first.json()
+            descendant_items = recovered.get(f"/api/trips/{descendant}/media").json()["items"]
+            for slot, media in first.json()["items"].items():
+                assert descendant_items[slot]["cache_revision"] != media["cache_revision"]
+                descendant_media = descendant_items[slot]
+                assert {k: v for k, v in descendant_media.items() if k != "cache_revision"} == {
+                    k: v for k, v in media.items() if k != "cache_revision"
+                }
             assert len(calls) == 4
         with connect() as connection:
             assert (

@@ -1,8 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, expect, it, vi } from 'vitest';
-import { ExampleCards } from './ExampleCards';
-import { SessionProvider } from '../session';
+import { routes } from '../../../app/router';
 import { CuratedPhoto, DestinationPhoto } from './MediaPhoto';
 import { StrictMode } from 'react';
 import { invalidatePhotos } from './photoSession';
@@ -124,22 +123,27 @@ it('evicts a failed cached cover and attempts image recovery only once per displ
 });
 
 it('loads distinct destination queries for Melbourne and New York collection covers', async () => {
+  let failedMelbourne = false;
   const fetcher = vi.fn(async (address: string) => {
-    if (address === '/api/auth/current') return Response.json({}, { status: 401 });
-    if (address === '/api/examples') return Response.json(['Melbourne', 'New York'].map(city => ({
-      id: city, title: `${city} journey`, destination: city, day_count: 2,
-    })));
-    const destination = new URL(address, 'http://localhost').searchParams.get('destination');
-    return Response.json(destination ? cover(destination) : { status: 'unavailable' });
+    if (address === '/api/auth/current') return Response.json({ id: 'alice', display_name: 'Alice', csrf_token: 'token' });
+    if (address.startsWith('/api/library?')) return Response.json({ total: 2, items: ['Melbourne', 'New York'].map(city => ({
+      id: city === 'Melbourne' ? 'melbourne' : 'new-york', kind: 'saved', title: `${city} journey`, destination: city, revision: 1,
+    })) });
+    if (address.includes('/cover-media?')) {
+      const destination = new URL(address, 'http://localhost').searchParams.get('destination')!;
+      return Response.json(failedMelbourne && destination === 'Melbourne' ? { status: 'unavailable' } : cover(destination));
+    }
+    return Response.json([]);
   });
   vi.stubGlobal('fetch', fetcher);
-  render(<MemoryRouter><SessionProvider><ExampleCards /></SessionProvider></MemoryRouter>);
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ['/trips'] })} />);
   expect(await screen.findByRole('img', { name: 'Melbourne atmosphere' })).toHaveAttribute('src', 'https://images.unsplash.com/Melbourne');
   expect(await screen.findByRole('img', { name: 'New York atmosphere' })).toHaveAttribute('src', 'https://images.unsplash.com/New York');
   expect(fetcher.mock.calls.map(([address]) => address)).toEqual(expect.arrayContaining([
-    '/api/media/destination?destination=Melbourne', '/api/media/destination?destination=New%20York',
+    '/api/trips/melbourne/cover-media?destination=Melbourne', '/api/trips/new-york/cover-media?destination=New%20York',
   ]));
   expect(fetcher.mock.calls.some(([address]) => address.includes('/curated/'))).toBe(false);
+  failedMelbourne = true;
   fireEvent.error(screen.getByRole('img', { name: 'Melbourne atmosphere' }));
   await waitFor(() => expect(screen.getByRole('img', { name: 'Melbourne destination atmosphere · illustration' })).toHaveAttribute('src', '/dayloom/nature.svg'));
   expect(screen.getByRole('img', { name: 'New York atmosphere' })).toHaveAttribute('src', 'https://images.unsplash.com/New York');

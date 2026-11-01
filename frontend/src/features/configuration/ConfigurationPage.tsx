@@ -1,5 +1,6 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { ConfigurationAccessSettings, type AccessChange, type ConfigurationAccess } from './ConfigurationAccessSettings';
 import './configuration.css';
 
 type Field = { value: string | null; secret: boolean; configured: boolean; locked: boolean };
@@ -10,8 +11,8 @@ type ApiResult = { id: string; service: Service; status: string; message: string
 type ApiReport = { revision: string; stale: boolean; service: Service; checked_at: string; request_count: number; results: ApiResult[] };
 const sections: { service: Exclude<Service, 'all'>; title: string; description: string; fields: string[][] }[] = [
   { service: 'foundry', title: 'Azure Foundry', description: 'Connect the model deployment used by this installation.', fields: [
-    ['AZURE_OPENAI_ENDPOINT', 'Foundry endpoint', 'HTTPS endpoint ending in /openai/v1.'],
-    ['AZURE_OPENAI_DEPLOYMENT', 'Deployment', 'Use the deployment supported by the current runtime profile.'],
+    ['AZURE_OPENAI_ENDPOINT', 'Foundry endpoint', 'Saved in product.yaml → foundry.endpoint. Use an HTTPS endpoint ending in /openai/v1.'],
+    ['AZURE_OPENAI_DEPLOYMENT', 'Deployment', 'Saved in product.yaml → foundry.deployment. Use the deployment supported by the current runtime profile.'],
     ['AZURE_OPENAI_API_KEY', 'Foundry API key', 'Used for itinerary planning, web search and supporting model calls.'],
   ] },
   { service: 'openai', title: 'OpenAI', description: 'Connect the existing retrieval embedding service.', fields: [
@@ -43,7 +44,10 @@ const resourceHelp: Record<string, [string, string]> = {
   tripworld: ['TripWorld retrieval', 'Prepare the compatible database and retrieval files following docs/guides/development.md.'],
 };
 const errors: Record<string, string> = {
-  invalid_management_token: 'The management token is incorrect. Copy it from the running Dayloom terminal.',
+  invalid_configuration_password: 'The configuration password is incorrect.',
+  configuration_access_unreadable: 'Configuration access settings could not be read. Check .config-access.json in the project folder before trying again.',
+  configuration_password_required: 'Enter a new configuration password containing 10–128 characters.',
+  password_confirmation_mismatch: 'Passwords do not match.',
   configuration_locked: 'Your management session has expired. Unlock configuration again.',
   configuration_changed: 'The configuration changed elsewhere. Reload it before saving again.',
   setting_managed_by_environment: 'A setting is controlled by the process environment. Reload to see its current status.',
@@ -53,7 +57,7 @@ const errors: Record<string, string> = {
   configuration_unreadable: 'The local configuration could not be read or saved. Check .env and product.yaml in the terminal.',
   invalid_dotenv: 'The .env file has invalid syntax. Correct it in a text editor, then try again.',
   too_many_attempts: 'Too many attempts. Wait a minute before trying again.',
-  too_many_sessions: 'Too many management sessions are open. Lock another session or restart Dayloom.',
+  too_many_sessions: 'Too many configuration sessions are open. Wait for a session to expire or restart Dayloom.',
   local_configuration_unavailable: 'Local configuration is available through scripts/run_product.py on a loopback address.',
   api_check_in_progress: 'Another API check is already running. Wait for it to finish.',
   api_check_failed: 'The API check could not complete. No automatic retry was made.',
@@ -78,9 +82,12 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
 }
 
 export function ConfigurationPage() {
+  const pageGeneration = useRef(0);
+  const pendingRequests = useRef(new Set<AbortController>());
   const [config, setConfig] = useState<Configuration | null>(null);
   const [csrf, setCsrf] = useState('');
-  const [token, setToken] = useState('');
+  const [password, setPassword] = useState('');
+  const [access, setAccess] = useState<ConfigurationAccess | null>(null);
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [readiness, setReadiness] = useState<Readiness | null>(null);
   const [apiReports, setApiReports] = useState<Partial<Record<Service, ApiReport>>>({});
@@ -88,13 +95,26 @@ export function ConfigurationPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
+  const invalidateRequests = useCallback(() => {
+    pageGeneration.current += 1;
+    pendingRequests.current.forEach(controller => controller.abort());
+    pendingRequests.current.clear();
+  }, []);
+  useEffect(() => invalidateRequests, [invalidateRequests]);
 
   useEffect(() => {
     const controller = new AbortController();
     async function restore() {
       try {
-        const session = await request<{ csrf_token: string }>('/session', { signal: controller.signal });
-        const saved = await request<Configuration>('', { signal: controller.signal });
+        const permissions = await request<ConfigurationAccess>('/access', { signal: controller.signal });
+        if (controller.signal.aborted) return;
+        setAccess(permissions);
+        if (permissions.password_required) return;
+        const session = await request<{ csrf_token: string }>('/session', {
+          method: 'POST', body: '{}', signal: controller.signal,
+        });
+        const saved = await request<Configuration>('', { signal: controller.signal,
+          headers: { 'X-CSRF-Token': session.csrf_token } });
         if (!controller.signal.aborted) { setCsrf(session.csrf_token); setConfig(saved); }
       } catch (failure) {
         if (!controller.signal.aborted && !(failure instanceof ConfigurationFailure && failure.status === 401)) {
@@ -108,36 +128,96 @@ export function ConfigurationPage() {
     return () => controller.abort();
   }, []);
 
-  async function perform(action: () => Promise<void>) {
+  useEffect(() => {
+    if (!access?.password_required) return;
+    const relock = () => {
+      invalidateRequests(); setBusy(false);
+      setConfig(null); setCsrf(''); setPassword(''); setEdits({});
+      setReadiness(null); setApiReports({}); setNotice('');
+    };
+    window.addEventListener('pagehide', relock);
+    window.addEventListener('pageshow', relock);
+    return () => {
+      window.removeEventListener('pagehide', relock);
+      window.removeEventListener('pageshow', relock);
+    };
+  }, [access?.password_required, invalidateRequests]);
+
+  async function perform(action: (pageRequest: typeof request) => Promise<void>) {
+    const generation = pageGeneration.current;
+    const controller = new AbortController();
+    pendingRequests.current.add(controller);
+    async function pageRequest<T>(path: string, init: RequestInit = {}) {
+      const result = await request<T>(path, { ...init, signal: controller.signal });
+      if (generation !== pageGeneration.current) throw new Error('Page access ended.');
+      return result;
+    }
     setBusy(true); setError(''); setNotice('');
-    try { await action(); }
+    try { await action(pageRequest); }
     catch (failure) {
+      if (generation !== pageGeneration.current) return;
       if (failure instanceof ConfigurationFailure && failure.status === 401) {
-        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setToken(''); setApiReports({});
+        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setPassword(''); setApiReports({});
+        try { setAccess(await pageRequest<ConfigurationAccess>('/access')); }
+        catch { if (generation === pageGeneration.current) setAccess(null); }
       }
+      if (generation !== pageGeneration.current) return;
       if (failure instanceof ConfigurationFailure && ['configuration_changed', 'configuration_unreadable'].includes(failure.code)) setApiReports({});
       setError(failure instanceof ConfigurationFailure ? failure.message : 'Could not reach the local application. Try again.');
-    } finally { setBusy(false); }
+    } finally {
+      pendingRequests.current.delete(controller);
+      if (generation === pageGeneration.current) setBusy(false);
+    }
   }
 
   function unlock(event: FormEvent) {
     event.preventDefault();
-    void perform(async () => {
-      const session = await request<{ csrf_token: string }>('/session', { method: 'POST', body: JSON.stringify({ token }) });
-      setToken('');
-      const saved = await request<Configuration>('');
+    void perform(async (request) => {
+      const session = await request<{ csrf_token: string }>('/session', {
+        method: 'POST', body: JSON.stringify(access?.password_required ? { password } : {}),
+      });
+      setPassword('');
+      const saved = await request<Configuration>('', { headers: { 'X-CSRF-Token': session.csrf_token } });
       setCsrf(session.csrf_token); setConfig(saved);
     });
   }
 
   function save(event: FormEvent) {
     event.preventDefault();
-    void perform(async () => {
+    void perform(async (request) => {
       const saved = await request<Configuration>('', { method: 'PUT', headers: { 'X-CSRF-Token': csrf },
         body: JSON.stringify({ revision: config!.revision, changes: edits }) });
       setConfig(saved); setEdits({}); setReadiness(null); setApiReports({});
       setNotice('Saved. Restart Dayloom from the terminal after active tasks finish to apply your changes.');
     });
+  }
+
+  function saveAccess(change: AccessChange) {
+    if (Object.keys(edits).length) return;
+    void perform(async (request) => {
+      const updated = await request<ConfigurationAccess>('/access', { method: 'PUT',
+        headers: { 'X-CSRF-Token': csrf }, body: JSON.stringify(change) });
+      setAccess(updated); setConfig(null); setCsrf(''); setPassword('');
+      setEdits({}); setReadiness(null); setApiReports({});
+      if (updated.password_required) {
+        setNotice('Password verification is enabled. Enter your configuration password to continue.');
+      } else {
+        const session = await request<{ csrf_token: string }>('/session', { method: 'POST', body: '{}' });
+        const saved = await request<Configuration>('', { headers: { 'X-CSRF-Token': session.csrf_token } });
+        setCsrf(session.csrf_token); setConfig(saved);
+        setNotice('Password verification is disabled. Configuration opens directly.');
+      }
+    });
+  }
+
+  async function verifyAccess(currentPassword: string) {
+    let verified = false;
+    await perform(async (request) => {
+      await request('/access/verify', { method: 'POST', headers: { 'X-CSRF-Token': csrf },
+        body: JSON.stringify({ current_password: currentPassword }) });
+      verified = true;
+    });
+    return verified;
   }
 
   function edit(key: string, value: string, secret: boolean) {
@@ -154,7 +234,7 @@ export function ConfigurationPage() {
   function checkApis(service: Service) {
     if (!config || Object.keys(edits).length) return;
     const revision = config.revision;
-    void perform(async () => {
+    void perform(async (request) => {
       setApiReports(current => service === 'all' ? {} : { ...current, [service]: undefined });
       const report = await request<ApiReport>('/check', { method: 'POST',
         headers: { 'X-CSRF-Token': csrf }, body: JSON.stringify({ revision, service }) });
@@ -176,33 +256,33 @@ export function ConfigurationPage() {
     });
   }
 
-  return <div className="config-page">
+  return <div className={`config-page${!config ? ' config-locked' : ''}`}>
     <header className="config-header"><Link to="/" className="config-brand">Dayloom<span>Local configuration</span></Link>
-      {config && <button type="button" disabled={busy} onClick={() => void perform(async () => {
-        await request('/session', { method: 'DELETE', headers: { 'X-CSRF-Token': csrf } });
-        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setApiReports({});
-      })}>Lock configuration</button>}
     </header>
     <main className="config-content">
       <div className="config-intro"><p className="config-eyebrow">YOUR LOCAL INSTALLATION</p><h1>Make Dayloom ready.</h1>
-        <p>Connect the services used by this installation. Saved changes take effect after restarting Dayloom.</p></div>
+        <p>Connect the services used by this installation. Saved provider changes take effect after restarting Dayloom.</p></div>
       {error && <p className="config-message config-error" role="alert">{error}</p>}
       {notice && <p className="config-message" role="status">{notice}</p>}
       {initializing ? <p role="status">Checking local management session…</p> : !config ?
-        <section className="config-card config-unlock"><h2>Unlock configuration</h2>
-          <p id="management-token-location">Open the terminal window where you started Dayloom. Find <code>Management token (valid for this process):</code> and copy the value after the colon.</p>
-          <p id="management-token-help">The token is generated at startup and is not stored in .env. If you cannot find the terminal,
-            stop Dayloom and run <code>uv run python scripts/run_product.py</code> from the project folder to print a new token.
-            Restarting invalidates the previous token. This access is separate from traveler accounts.</p>
-          <form onSubmit={unlock}><label htmlFor="management-token">Management token</label>
-            <input id="management-token" type="password" autoComplete="off" value={token} required maxLength={256}
-              aria-describedby="management-token-location management-token-help" onChange={event => setToken(event.target.value)} />
-            <button className="config-primary" type="submit" disabled={busy}>{busy ? 'Unlocking…' : 'Unlock configuration'}</button>
-          </form></section> : <>
+        <section className="config-card config-unlock"><h2>{access?.password_required ? 'Unlock configuration' : 'Open configuration'}</h2>
+          {access ? <form onSubmit={unlock}>
+            {access.password_required && <><p id="configuration-password-help">Enter this installation's configuration password. This is separate from traveler accounts.</p>
+              {access.default_test_password && <aside className="config-test-password" aria-label="Test password">
+                <span>Default test password</span><code>{access.default_test_password}</code>
+                <p>Use this password for local testing, then change it in configuration. If you have already changed it, enter your own password.</p>
+              </aside>}
+              <label htmlFor="configuration-password">Configuration password</label>
+              <input id="configuration-password" type="password" autoComplete="current-password" value={password} required maxLength={128}
+                aria-describedby="configuration-password-help" onChange={event => setPassword(event.target.value)} /></>}
+            <button className="config-primary" type="submit" disabled={busy}>{busy ? 'Opening…' : access.password_required ? 'Unlock configuration' : 'Open configuration'}</button>
+          </form> : <p>Local configuration is unavailable. Start Dayloom at its configured local address and reload this page.</p>}</section> : <>
           <aside className="config-message" aria-label="Application status">
             <strong>{config.running_ready ? 'Application started with ready local resources.' : 'Setup is incomplete. Planning is paused.'}</strong>
             <span>{config.restart_required ? 'Saved configuration differs from the running process. Restart required.' : 'No saved provider changes are waiting for a restart.'}</span>
           </aside>
+          {access && <ConfigurationAccessSettings key={access.revision} access={access} busy={busy}
+            pendingProviderEdits={!!Object.keys(edits).length} onSave={saveAccess} onVerify={verifyAccess} />}
           <section className="config-card config-api-intro" aria-label="API connectivity checks">
             <div><h2>Check service access</h2><p>API checks send small requests to your saved services and may incur charges.
               All checks use at most 8 HTTP attempts and 60 seconds, with no automatic retries.</p>
@@ -242,16 +322,16 @@ export function ConfigurationPage() {
               </div>}
             </section>)}</div>
             <div className="config-actions"><button className="config-primary" type="submit" disabled={busy || !Object.keys(edits).length}>Save configuration</button>
-              <button type="button" disabled={busy} onClick={() => void perform(async () => {
-                setConfig(await request<Configuration>('')); setEdits({}); setReadiness(null); setApiReports({});
+              <button type="button" disabled={busy} onClick={() => void perform(async (request) => {
+                setConfig(await request<Configuration>('', { headers: { 'X-CSRF-Token': csrf } })); setEdits({}); setReadiness(null); setApiReports({});
               })}>Reload saved configuration</button>
-              <span>Keys are stored locally and are never displayed after saving.</span>
+              <span>Endpoint and deployment are saved in product.yaml. Keys are saved in .env and are never displayed after saving.</span>
             </div>
           </form>
           <section className="config-card config-resources"><div className="config-resource-heading"><div><h2>Local resources</h2>
             <p>Checks saved configuration and local resources. No external API calls are made, and key validity is not verified.</p></div>
-            <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => void perform(async () => {
-              setReadiness(await request<Readiness>('/readiness'));
+            <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => void perform(async (request) => {
+              setReadiness(await request<Readiness>('/readiness', { headers: { 'X-CSRF-Token': csrf } }));
             })}>Check local readiness</button></div>
             {Object.keys(edits).length > 0 && <p>Save or reload your changes before checking readiness.</p>}
             {readiness && <><p role="status">{readiness.ready ? 'Saved configuration and local resources are ready. Restart if changes are pending.' : 'Some configuration or local resources still need attention.'}</p>

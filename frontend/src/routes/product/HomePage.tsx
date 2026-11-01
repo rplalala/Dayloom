@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { useSession } from "../../features/product/session";
 import { CuratedPhoto } from '../../features/product/detail/MediaPhoto';
 import { Icon } from '../../features/product/Icon';
+import { usePlanningEntry } from '../../features/product/usePlanningEntry';
 
 export function HomePage() {
   const { account } = useSession();
+  const enterPlanning = usePlanningEntry();
   return (
     <>
       <section className="home-hero minimal-hero">
@@ -21,7 +23,7 @@ export function HomePage() {
               your days together in one clear itinerary.
             </p>
             <div className="hero-actions">
-              <Link className="btn btn-primary btn-large" to="/plan">
+              <Link className="btn btn-primary btn-large" to="/plan" onClick={enterPlanning}>
                 Start planning <Icon name="arrow" size={19} />
               </Link>
               <Link className="btn btn-light btn-large" to={account ? "/trips" : "/examples/sydney-example"}>
@@ -132,7 +134,7 @@ export function HomePage() {
             <span className="eyebrow">MAKE ROOM FOR DISCOVERY</span>
             <h2>Your next journey starts with an idea.</h2>
           </div>
-          <Link to="/plan" className="btn btn-primary btn-large">
+          <Link to="/plan" onClick={enterPlanning} className="btn btn-primary btn-large">
             Plan my trip <Icon name="arrow" size={16} />
           </Link>
         </section>

@@ -7,13 +7,20 @@ Commands below are references, not evidence of execution or approval for a live 
 
 ## Environment and local application
 
+For a new installation, follow the [deployment guide](deployment.md), including the
+database volume, release restore and both tokenizer caches. The commands and controls
+below cover development and maintenance of an existing checkout.
+
 Use Python 3.12 and the existing uv environment. From the repository root:
 
-```powershell
+The startup and independent-version commands use `uv run` and work in Bash and
+PowerShell. Advanced test examples use the shell indicated on each block.
+
+```bash
 uv sync
 uv sync --group retrieval
 npm --prefix frontend ci
-.\.venv\Scripts\python.exe scripts/run_api.py --host 127.0.0.1 --port 8000
+uv run python scripts/run_api.py --host 127.0.0.1 --port 8000
 ```
 
 `uv sync` also installs this repository editable, exposing `rtpeval` in `.venv`.
@@ -53,19 +60,17 @@ are distinct settings. Never commit real credentials. Default local DB host/port
 127.0.0.1:55432. See [configuration](../../config/README.md) for exact current keys.
 
 V2/V3 require the compatible TripWorld database and artifact/embedding sidecars.
-The pinned vocabulary under `.cache/tokenizer` must also exist; the planner does not
-download it. `python -m tools.data.prepare_tokenizer --help` describes explicit preparation.
-
-For V2/V3 retrieval, also prepare the pinned embedding vocabulary under
-`data/tripworld/tokenizer_cache`; follow the TripWorld readiness instructions before
-claiming retrieval acceptance. A degraded retrieval fallback is not that acceptance.
+The planner vocabulary under `.cache/tokenizer` and embedding vocabulary under
+`data/tripworld/tokenizer_cache` must be prepared explicitly; runtime loading does
+not download them. Follow the [tokenizer preparation steps](deployment.md#4-prepare-both-tokenizer-vocabularies)
+before checking retrieval readiness. A degraded retrieval fallback is not retrieval acceptance.
 
 ## Local PostgreSQL naming and storage
 
 The root `compose.yaml` uses the Docker Compose project `dayloom` and container
 `postgres`, exposed only on `127.0.0.1:55432` by default. Start it with:
 
-```powershell
+```bash
 uv run python scripts/run_database.py up -d --wait postgres
 ```
 
@@ -122,58 +127,71 @@ does not initialize Product authentication, a database connection or a provider 
 
 ## Complete local Product runtime
 
-The built Product runs the React frontend and normal FastAPI application on one
-origin. It uses the configured real model, Google Places/Routes, Open-Meteo,
-TripWorld retrieval and media adapters. It does not load a test application factory,
-provider substitutes or the offline walkthrough's external-link interception.
+The built Product serves React and the normal FastAPI application on one origin,
+using the configured real services. It does not load a test application factory or
+provider substitutes. The [deployment guide](deployment.md) owns the first-install
+sequence: environment setup, database volume/restore, both tokenizer caches,
+migrations, build, configuration and restart.
 
-Prepare the ignored environment file and shared deployment settings described below, then run:
+For an existing prepared installation:
 
-```powershell
-uv sync --locked --group retrieval
-npm --prefix frontend ci
+```bash
 npm --prefix frontend run build
-uv run python scripts/migrate_product.py
-uv run python scripts/run_product.py --check
 uv run python scripts/run_product.py
 ```
 
-The root `product.yaml` configures `http://localhost:5173` and explicitly allows
-local HTTP. `--port` must match the configured origin's port. The launcher loads
-`.env` from the repository root without overriding existing
-process values. It serves `frontend/dist`,
-including direct navigation/reload of Product routes; missing APIs and
-assets retain their HTTP errors. Rebuild the frontend after changing its source.
+`product.yaml` selects the origin and Product resource profile; `--port` must match
+the configured origin. `PRODUCT_RUNTIME_PROFILE=development` selects development
+resources after restart. Independent V0-V3 keep development defaults. The
+[profile reference](../../config/README.md#product-acceptance-profile) owns their
+coordinated values and configuration compatibility.
 
-Product uses `runtime_profile: acceptance` from `product.yaml`. To restore development
-resource limits, set `$env:PRODUCT_RUNTIME_PROFILE='development'` before starting the server;
-remove that override to use the YAML choice. Restart the backend after policy changes.
-Independent V0-V3 defaults remain development. See the
-[profile reference](../../config/README.md#product-acceptance-profile) for coordinated values,
-snapshot compatibility and unchanged correctness boundaries. Loading a larger profile does
-not authorize paid acceptance runs; establish a request-specific cost bound first.
-
-`--check` validates configuration, both local tokenizer vocabularies, Product database
-access and TripWorld manifest/embedding-space compatibility. It reads local databases
-without model, query-embedding, map, weather or image requests. Passing it establishes
-local readiness, not live credential validity, provider availability or generation quality.
-Generating, polishing, destination suggestions and media viewing use real services when
-invoked; execute provider acceptance only within its separately authorized limits.
-
-Use the existing daily database for this runtime. Disposable automated-test databases
-and the substituted human-walkthrough database remain separate; accounts and drafts do
-not move between them automatically. The normal API-only/Vite development commands
-above remain available, and independent V0–V3 entrypoints are unchanged.
+`--check` performs local readiness checks and exits without provider requests; its
+success does not establish account permissions or generation quality. Use the
+existing daily database for this runtime. Disposable automated-test databases and
+external-double walkthroughs remain separate; accounts and drafts do not move
+between them automatically. API-only/Vite development remains available above.
 
 ## Local configuration console
 
 Build the frontend and start `uv run python scripts/run_product.py` with its default
 loopback binding. Open the exact configured origin plus `/config`, normally
-`http://localhost:5173/config`. The terminal prints a random management token valid
-for that running process. Enter it to open a separate 30-minute management session;
-traveler registration and database access are not required. Lock the page when done.
-Restarting Dayloom invalidates management sessions and produces a new token. A lost
-token can be recovered from the running terminal or replaced by restarting.
+`http://localhost:5173/config`. The bottom-right settings icon on desktop and mobile Product pages
+opens the same page when local management is available. New installations use the
+test password `dayloom-config-2026`, shown on the entry page; change it after entering.
+Existing custom passwords and explicitly disabled verification remain unchanged;
+traveler registration and database access are not required. Without password protection,
+the browser establishes a separate management session automatically.
+
+Require a password to open configuration enables optional password verification.
+Set and confirm a password of 10–128 characters. Saving immediately returns to the
+password screen. Every subsequent entry or reload requires the password, even if
+the browser retains a cookie. To change it or disable verification, first use
+Verify current password, then enter and confirm the new password when applicable.
+Access changes apply immediately and revoke previous management sessions, including
+sessions in other local processes. Leaving configuration automatically locks access.
+Restart invalidates sessions but preserves the access settings and password.
+The password is independent of traveler accounts and is stored only as an Argon2id
+hash in ignored `.config-access.json`; neither it nor its hash is returned by the API.
+
+If the configuration password is forgotten, stop Dayloom first. From the repository
+root, preserve the access file under an unused backup name, then restart Dayloom:
+
+**PowerShell**
+
+```powershell
+Move-Item -LiteralPath .config-access.json -Destination .config-access.backup
+```
+
+**Bash**
+
+```bash
+test ! -e .config-access.backup && mv .config-access.json .config-access.backup
+```
+
+This host-controlled recovery restores the default test password; use it to open
+configuration and set a new password. Provider keys in `.env` are retained. Invalid or
+unreadable access files fail closed rather than disabling verification automatically.
 
 The console edits only the current provider settings defined in the
 [configuration contract](../0007-application-operations.md#local-configuration-console).
@@ -182,8 +200,12 @@ not add model compatibility. Existing process environment overrides are shown as
 locked fields. Saved keys are not returned to the browser. A blank replacement
 input keeps the saved key; use its explicit Clear action to remove it.
 
-Save writes the repository's ignored `.env` atomically, preserves unrelated settings,
-and rejects stale revisions. Reload saved configuration after an edit conflict.
+Save writes Foundry endpoint/deployment to `product.yaml` and credentials to the
+repository's ignored `.env`, preserving unrelated settings. Local startup migrates
+existing `.env` endpoint/deployment overrides to YAML and removes the old bindings;
+see the [configuration contract](../0007-application-operations.md#local-configuration-console)
+for migration, file replacement and conflict handling. Reload saved configuration
+after an edit conflict.
 Provider settings, including initially missing values, remain pinned in the running
 Product process. Finish active tasks, stop the server and rerun the same command
 after saving. Starting another CLI process reads the saved configuration immediately.
@@ -219,7 +241,7 @@ passing those tests does not establish that installation credentials work.
 Normal Product actions also use configured services and may incur charges.
 The console does not run planning, change its budgets or introduce a new model
 provider. Startup and local readiness remain offline with respect to provider APIs.
-Do not publish its terminal token, `.env` or local `.env.*` lock/temp files.
+Keep `.env`, `.env.*` lock/temp files and `.config-access.*` files private.
 
 ## Product diagnostics
 
@@ -412,15 +434,25 @@ references, real day order and safe text rendering. Sydney and London are the on
 public examples, curated from existing accepted V3 projections with original weather,
 routes and request values. The private fixture metadata retains their source digests.
 The ambiguous-anchor fixture lives under `backend/tests/product/fixtures/`; it is not
-a public route. Public example media uses the existing configured adapters and shared
-request bounds. Example Copy tests verify private bindings and weather source credit
+a public route. Example covers and visit photographs ship in `frontend/public/dayloom/examples/`
+and are included by `npm --prefix frontend run build`; the Product static mount serves
+them directly. The asset credits distinguish licensed Commons photos from the four
+Google Places dining photos retained for local testing. Details preserves each image's
+provider, author and source. No media service keys or provider
+requests are needed for example viewing. Guest examples are read-only; authenticated
+users can create their own independent copies. Example Copy tests verify private bindings and weather source credit
 through normalized storage, reload and a descendant copy.
 
 ### Product media setup and acceptance
 
 Apply migrations before starting an updated API; migration 006 adds stable private
-place bindings to previews/trips, and 008 preserves weather attribution/source URLs
-when a generated preview or curated example becomes a saved trip. Media keys are
+place bindings to previews/trips, 008 preserves weather attribution/source URLs,
+and 010 adds `media_cache` JSONB fields to those same tables without creating a new table.
+Owned image endpoints reuse persisted URLs after browser-cache expiry or application
+restart. Single-image failure/refresh uses a revision check; no fixed-age provider
+refresh is scheduled. Preview Save carries acquired metadata into the saved trip.
+The browser continues to load image bytes directly under the provider's HTTP cache rules.
+Media keys are
 optional and separate from research configuration. Keep them server-side. Without either key, the corresponding image
 remains an explicitly labelled illustration and all planning, import, preview and Save
 flows remain usable. See the [media contract](../0007-application-operations.md#verified-place-media-and-curated-atmosphere)
@@ -431,6 +463,8 @@ not establish a deployment or live-provider acceptance.
 
 The local/private itinerary photo session cache is specified in the
 [media contract](../0007-application-operations.md#browser-tab-photo-session).
+The related database/API cache tests are `backend/tests/product/test_media_cache.py`;
+they require the isolated `DAYLOOM_DB_TEST_URL` described above and mocked providers.
 Its controlled browser checks need no database, API server, provider credentials or
 live photo calls. They start an isolated Vite process and intercept HTTP boundaries:
 
@@ -633,11 +667,11 @@ days, using Australia/Sydney reference time. Check `GET /api/planning/date-windo
 for a fresh request. An offline fixture can pin `--reference-date`; a historical
 override must not disguise stale dates in a live run.
 
-```powershell
-.\.venv\Scripts\python.exe scripts/run_v0.py --input-json request.json
-.\.venv\Scripts\python.exe scripts/run_v1.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
-.\.venv\Scripts\python.exe scripts/run_v2.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
-.\.venv\Scripts\python.exe scripts/run_v3.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
+```bash
+uv run python scripts/run_v0.py --input-json request.json
+uv run python scripts/run_v1.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
+uv run python scripts/run_v2.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
+uv run python scripts/run_v3.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
 ```
 
 V0 is tool-free and accepts neither runtime configuration nor development-timeout flags.

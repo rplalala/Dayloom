@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { afterEach, expect, it, vi } from "vitest";
 import { routes } from "../../app/router";
@@ -44,6 +44,74 @@ it("previews the edited profile name and initials in the sidebar before an expli
   expect(writes).toEqual([]);
 });
 
+it('keeps free-text preferences on Plan rather than in the Profile form', async () => {
+  savedProfileEntry();
+  await screen.findByLabelText('Display name');
+  expect(screen.queryByLabelText('Additional preferences')).not.toBeInTheDocument();
+});
+
+it('carries saved Profile interests into an untouched Plan that already has pace and transport defaults', async () => {
+  let stored = { ...profile, interests: [] as string[], pace: 'rich', transport: ['walk'] };
+  vi.stubGlobal('fetch', vi.fn(async (url: string, options?: RequestInit) => {
+    if (url === '/api/profile' && options?.method === 'PUT') stored = { ...stored, ...JSON.parse(options.body as string) };
+    return Response.json(url === '/api/auth/current' ? account : url === '/api/profile' ? stored
+      : url === '/api/planning/date-window' ? { allowedStart: '2026-10-21', allowedEnd: '2026-11-03', maxTripDays: 10 } : []);
+  }));
+  const router = createMemoryRouter(routes, { initialEntries: ['/plan'] });
+  render(<RouterProvider router={router} />);
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true'));
+  await act(() => router.navigate('/account'));
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('button', { name: 'Nature' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Save changes' }));
+  await screen.findByText('Your travel defaults have been saved.');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Nature' })).toHaveAttribute('aria-pressed', 'true'));
+  expect((screen.getByLabelText('Additional preferences') as HTMLTextAreaElement).value).toContain('Enjoy parks');
+  expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true');
+  expect(screen.getByRole('button', { name: 'Walking' })).toHaveAttribute('aria-pressed', 'true');
+});
+
+it('does not import legacy Profile notes into the Plan free-text field', async () => {
+  setup(Promise.resolve(Response.json(profile)));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Nature' })).toHaveAttribute('aria-pressed', 'true'));
+  const notes = screen.getByLabelText('Additional preferences') as HTMLTextAreaElement;
+  expect(notes.value).not.toContain('Quiet mornings');
+  expect(notes.value).toContain('Enjoy parks');
+});
+
+it('refreshes untouched defaults after a reload when saved interests have changed', async () => {
+  setup(Promise.resolve(Response.json({ ...profile, interests: [], pace: 'rich', transport: ['walk'] })));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true'));
+  cleanup();
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => Response.json(
+    url === '/api/auth/current' ? account : url === '/api/profile' ? profile
+      : url === '/api/planning/date-window' ? { allowedStart: '2026-10-21', allowedEnd: '2026-11-03', maxTripDays: 10 } : [],
+  )));
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ['/account'] })} />);
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Nature' })).toHaveAttribute('aria-pressed', 'true'));
+});
+
+it('does not replace manually edited Plan content with later Profile interests', async () => {
+  let stored = { ...profile, interests: [] as string[] };
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => Response.json(
+    url === '/api/auth/current' ? account : url === '/api/profile' ? stored
+      : url === '/api/planning/date-window' ? { allowedStart: '2026-10-21', allowedEnd: '2026-11-03', maxTripDays: 10 } : [],
+  )));
+  const router = createMemoryRouter(routes, { initialEntries: ['/plan'] });
+  render(<RouterProvider router={router} />);
+  await waitFor(() => expect(screen.getByLabelText('Currency')).toHaveValue('JPY'));
+  fireEvent.change(screen.getByLabelText('Destination'), { target: { value: 'My own city' } });
+  stored = { ...stored, interests: ['Nature'] };
+  await act(() => router.navigate('/account'));
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  expect(await screen.findByLabelText('Destination')).toHaveValue('My own city');
+  expect(screen.getByRole('button', { name: 'Nature' })).toHaveAttribute('aria-pressed', 'false');
+});
+
 function setup(profileResponse: Promise<Response>) {
   vi.stubGlobal("fetch", vi.fn(async (url: string) => {
     if (url === "/api/auth/current") return new Response(JSON.stringify(account));
@@ -58,7 +126,7 @@ function setup(profileResponse: Promise<Response>) {
 it("visibly prefills only a new brief and retains edited-cleared work across navigation", async () => {
   const router = setup(Promise.resolve(new Response(JSON.stringify(profile))));
   await waitFor(() => expect(screen.getByLabelText("Currency")).toHaveValue("JPY"));
-  expect((screen.getByLabelText("Additional preferences") as HTMLTextAreaElement).value).toContain("Quiet mornings");
+  expect((screen.getByLabelText("Additional preferences") as HTMLTextAreaElement).value).toContain("Enjoy parks");
   expect(screen.getByRole("button", { name: "Nature" })).toHaveAttribute("aria-pressed", "true");
   fireEvent.change(screen.getByLabelText("Destination"), { target: { value: "Kyoto" } });
   fireEvent.change(screen.getByLabelText("Destination"), { target: { value: "" } });
@@ -93,12 +161,12 @@ it("explicitly creates another new brief from latest defaults even before any ed
   const router = createMemoryRouter(routeCopy, { initialEntries: ["/plan"] });
   render(<RouterProvider router={router} />);
   await waitFor(() => expect(screen.getByLabelText("Currency")).toHaveValue("JPY"));
-  current = { ...profile, currency: "USD", notes: "Latest defaults" };
+  current = { ...profile, currency: "USD", interests: ["Art & museums"] };
   await act(() => router.navigate("/new-action"));
   fireEvent.click(screen.getByRole("button", { name: "Start a genuinely new brief" }));
   await act(() => router.navigate("/plan"));
   await waitFor(() => expect(screen.getByLabelText("Currency")).toHaveValue("USD"));
-  expect((screen.getByLabelText("Additional preferences") as HTMLTextAreaElement).value).toContain("Latest defaults");
+  expect(screen.getByRole('button', { name: 'Art & museums' })).toHaveAttribute('aria-pressed', 'true');
 });
 
 it("treats a restored blank brief as existing work rather than new", async () => {
@@ -107,6 +175,74 @@ it("treats a restored blank brief as existing work rather than new", async () =>
   await screen.findByLabelText("Destination");
   expect(screen.getByLabelText("Currency")).toHaveValue("AUD");
   expect(screen.getByLabelText("Additional preferences")).toHaveValue("");
+});
+
+function savedProfileEntry(brief = createBrief(), metadata: Record<string, unknown> = {}) {
+  sessionStorage.setItem('dayloom.editor.v1', JSON.stringify({ owner: 'alice', brief, actionId: null, origin: 'restored', ...metadata }));
+  const saved = { ...profile, pace: 'rich', transport: ['walk'] };
+  let reads = 0;
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => Response.json(
+    url === '/api/auth/current' ? account : url === '/api/profile' ? (reads++, saved)
+      : url === '/api/planning/date-window' ? { allowedStart: '2026-10-21', allowedEnd: '2026-11-03', maxTripDays: 10 } : [],
+  )));
+  const router = createMemoryRouter(routes, { initialEntries: ['/account'] });
+  render(<RouterProvider router={router} />);
+  return { router, profileReads: () => reads };
+}
+
+it('loads saved preferences when Plan a trip is explicitly opened from a restored empty editor', async () => {
+  savedProfileEntry();
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true'));
+  expect(screen.getByRole('button', { name: 'Walking' })).toHaveAttribute('aria-pressed', 'true');
+  expect(screen.getByLabelText('Currency')).toHaveValue('JPY');
+  expect((screen.getByLabelText('Additional preferences') as HTMLTextAreaElement).value).toContain('Enjoy parks');
+});
+
+it.each([
+  ['destination', { destination: 'Kyoto' }, {}],
+  ['currency', { currency: 'USD' }, {}],
+  ['preferences', { preferences: 'My own preferences' }, {}],
+  ['saved draft', {}, { draftRef: { id: 'existing', title: 'My draft', revision: 1 } }],
+  ['draft title', {}, { draftTitle: 'My title' }],
+  ['operation recovery', {}, { actionId: 'existing-operation' }],
+] as const)('preserves existing %s when entering Plan from navigation', async (_label, values, metadata) => {
+  const brief = { ...createBrief(), ...values };
+  const { profileReads } = savedProfileEntry(brief, metadata);
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  expect(await screen.findByLabelText('Destination')).toHaveValue(brief.destination);
+  expect(screen.getByLabelText('Currency')).toHaveValue(brief.currency);
+  expect(screen.getByLabelText('Additional preferences')).toHaveValue(brief.preferences);
+  expect(profileReads()).toBe(1);
+});
+
+it.each(['mobile', 'footer', 'home'] as const)('also applies saved defaults from the %s planning entry', async entry => {
+  const { router } = savedProfileEntry();
+  await screen.findByLabelText('Display name');
+  if (entry === 'mobile') {
+    fireEvent.click(screen.getByLabelText('Open navigation'));
+    fireEvent.click(within(screen.getByLabelText('Mobile navigation')).getByText('Plan a trip', { exact: true }));
+  } else if (entry === 'footer') {
+    fireEvent.click(within(screen.getByRole('contentinfo')).getByRole('link', { name: 'Start planning' }));
+  } else {
+    await act(() => router.navigate('/'));
+    fireEvent.click(within(screen.getByRole('main')).getAllByRole('link', { name: /Start planning/ })[0]);
+  }
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true'));
+});
+
+it('keeps Clear empty until another explicit planning entry', async () => {
+  savedProfileEntry();
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  await waitFor(() => expect(screen.getByLabelText('Currency')).toHaveValue('JPY'));
+  fireEvent.click(screen.getByRole('button', { name: 'Clear' }));
+  expect(screen.getByLabelText('Additional preferences')).toHaveValue('');
+  expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'false');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true'));
 });
 
 it.each([
@@ -124,6 +260,7 @@ it.each([
         ? new Response(JSON.stringify({ detail: { code } }), { status: 401 })
         : new Response(JSON.stringify(account));
     }
+    if (url !== "/api/profile") return Response.json([]);
     if (options?.method === "PUT") writes++;
     if (operation === "load" || options?.method === "PUT") {
       lostSession = true;
@@ -133,13 +270,13 @@ it.each([
   }));
   render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/account"] })} />);
   if (operation === "save") {
-    await screen.findByDisplayValue("Quiet mornings");
+    await screen.findByLabelText('Display name');
     fireEvent.click(screen.getByRole("button", { name: "Save changes" }));
   }
   await waitFor(() => expect(authReads).toBeGreaterThanOrEqual(2));
   await screen.findAllByRole("link", { name: "Log in" });
   expect(screen.queryByText("alice@example.com")).not.toBeInTheDocument();
-  expect(screen.queryByDisplayValue("Quiet mornings")).not.toBeInTheDocument();
+  expect(screen.queryByLabelText('Display name')).not.toBeInTheDocument();
   expect(screen.getAllByRole("link", { name: "Log in" }).length).toBeGreaterThan(0);
   const recovery = JSON.parse(sessionStorage.getItem("dayloom.editor.v1")!);
   expect(recovery.brief.preferences).toBe(code === "session_expired" ? "Private unsaved brief" : "");

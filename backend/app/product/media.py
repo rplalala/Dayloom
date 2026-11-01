@@ -1,4 +1,4 @@
-"""Fresh fixed-provider display metadata; no photo archive or URL fetch proxy."""
+"""Live fixed-provider metadata and bundled local example images; no URL fetch proxy."""
 
 import asyncio
 import re
@@ -15,8 +15,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from backend.app.observability.product_logs import operation
 from backend.app.observability.usage import install_http_hooks
 from backend.app.product.auth import CurrentUser
-from backend.app.product.database import connect
-from backend.app.product.examples import example_detail
+from backend.app.product.examples import example_detail, local_example_media
+from backend.app.product.media_cache import MediaCache, get_media_cache, owned_context
 from backend.app.runtime.database import PROJECT_ROOT
 
 router = APIRouter(tags=["Product media"])
@@ -343,6 +343,7 @@ Providers = Annotated[MediaProviders, Depends(get_media_providers)]
 Dimension = Annotated[int, Query(ge=200, le=1280)]
 Slot = Annotated[str, StringConstraints(min_length=1, max_length=300)]
 RequestedSlots = Annotated[list[Slot] | None, Query(max_length=MAX_PLACE_PHOTOS)]
+CachedMedia = Annotated[MediaCache, Depends(get_media_cache)]
 
 
 @router.get("/api/media/destination")
@@ -355,28 +356,6 @@ async def destination_media(
 ):
     response.headers["Cache-Control"] = "no-store"
     return await providers.destination(destination, width, height)
-
-
-def owned_bindings(kind, resource_id, owner):
-    table = "itinerary_previews" if kind == "previews" else "trips"
-    with connect() as connection:
-        row = connection.execute(
-            f"SELECT media_bindings FROM app.{table} WHERE owner_id=%s AND id=%s",
-            (owner, resource_id),
-        ).fetchone()
-        if row is None:
-            raise HTTPException(404, {"code": "media_resource_not_found"})
-        # A decided preview delegates to the owner's saved trip; discarded/deleted stays empty.
-        if kind == "previews":
-            decision = connection.execute(
-                "SELECT state,saved_trip_id FROM app.itinerary_previews WHERE id=%s", (resource_id,)
-            ).fetchone()
-            if decision["state"] != "pending":
-                row = connection.execute(
-                    "SELECT media_bindings FROM app.trips WHERE owner_id=%s AND id=%s",
-                    (owner, decision["saved_trip_id"]),
-                ).fetchone()
-    return sorted((row["media_bindings"] if row else {}).items())
 
 
 async def resolve_photos(
@@ -395,6 +374,7 @@ async def resolve_photos(
     source_provider="google",
     fallback_queries=None,
     city_query=None,
+    cache_lookup=None,
 ):
     response.headers["Cache-Control"] = "no-store"
     all_bindings = list(bindings)
@@ -425,12 +405,17 @@ async def resolve_photos(
             )
             return
         try:
-            if share_values:
-                if place not in pending:
-                    pending[place] = asyncio.create_task(fetch(place))
-                items[slot] = await pending[place]
-            else:
-                items[slot] = await fetch(place, (fallback_queries or {}).get(slot))
+            async def acquire():
+                if share_values:
+                    if place not in pending:
+                        pending[place] = asyncio.create_task(fetch(place))
+                    return await pending[place]
+                return await fetch(place, (fallback_queries or {}).get(slot))
+
+            items[slot] = (await cache_lookup(slot, place, acquire)
+                           if cache_lookup else await acquire())
+        except HTTPException:
+            raise
         except Exception as error:
             # One display failure must not erase completed slots; cancellation propagates.
             operation("media_slot_failed", {"error_type": type(error).__name__})
@@ -484,44 +469,22 @@ def place_fallback_queries(detail):
 @router.get("/api/examples/{example_id}/media")
 async def example_media(
     example_id: str,
-    providers: Providers,
     response: Response,
     width: Dimension = 960,
     height: Dimension = 640,
     offset: Annotated[int, Query(ge=0)] = 0,
     slot: RequestedSlots = None,
 ):
-    detail = example_detail(example_id)
-    context = detail.model_dump(mode="json")
-    return await resolve_photos(
-        detail._media_bindings.items(),
-        providers,
-        width,
-        height,
-        response,
-        offset=offset,
-        slots=slot,
-        fallback_queries=place_fallback_queries(context),
-        city_query=destination_photo_query(context),
-    )
+    items = local_example_media(example_id)
+    selected = slot if slot is not None else list(items)[offset:offset + MAX_PLACE_PHOTOS]
+    end = offset + len(selected)
+    response.headers["Cache-Control"] = "public, max-age=86400"
+    return {"items": {key: items.get(key, {"status": "unavailable"}) for key in selected},
+            "limit": MAX_PLACE_PHOTOS,
+            "next_offset": None if slot is not None or end >= len(items) else end}
 
 
-def owned_detail(kind, resource_id, owner):
-    from backend.app.product.saved_store import SavedStore
-    from backend.app.product.task_store import TaskStore
-
-    if kind == "trips":
-        detail = SavedStore().read(owner, resource_id)
-    else:
-        previews = TaskStore().previews(owner, resource_id)
-        detail = previews[0].get("snapshot") if previews else None
-    if detail is None:
-        raise HTTPException(404, {"code": "media_resource_not_found"})
-    return detail
-
-
-def owned_supporting_context(kind, resource_id, owner):
-    detail = owned_detail(kind, resource_id, owner)
+def supporting_context(detail):
     slots = [
         (f"activity:{activity['activity_id']}", activity.get("atmosphere_theme") or "general")
         for day in detail["days"]
@@ -532,21 +495,49 @@ def owned_supporting_context(kind, resource_id, owner):
     return slots, destination_photo_query(detail)
 
 
+@router.get("/api/{kind}/{resource_id}/cover-media")
+async def owned_cover_media(
+    kind: Literal["previews", "trips"],
+    resource_id: UUID,
+    user: CurrentUser,
+    providers: Providers,
+    cache: CachedMedia,
+    response: Response,
+    width: Dimension = 960,
+    height: Dimension = 640,
+    refresh: UUID | None = None,
+):
+    response.headers["Cache-Control"] = "no-store"
+    scope, detail, _ = await asyncio.to_thread(owned_context, kind, resource_id, user["id"])
+    if detail is None:
+        raise HTTPException(404, {"code": "media_resource_not_found"})
+    destination = destination_photo_query(detail)
+    return await cache.resolve(
+        scope, ["cover", destination, width, height],
+        lambda: providers.destination(destination, width, height), refresh,
+    )
+
+
 @router.get("/api/{kind}/{resource_id}/supporting-media")
 async def supporting_media(
     kind: Literal["previews", "trips"],
     resource_id: UUID,
     user: CurrentUser,
     providers: Providers,
+    cache: CachedMedia,
     response: Response,
     width: Dimension = 960,
     height: Dimension = 640,
     offset: Annotated[int, Query(ge=0)] = 0,
     slot: RequestedSlots = None,
+    refresh: UUID | None = None,
 ):
-    slots, destination = await asyncio.to_thread(
-        owned_supporting_context, kind, resource_id, user["id"]
-    )
+    if refresh and (slot is None or len(slot) != 1):
+        raise HTTPException(422, {"code": "media_refresh_requires_one_slot"})
+    scope, detail, _ = await asyncio.to_thread(owned_context, kind, resource_id, user["id"])
+    if detail is None:
+        raise HTTPException(404, {"code": "media_resource_not_found"})
+    slots, destination = supporting_context(detail)
     return await resolve_photos(
         slots,
         providers,
@@ -558,6 +549,9 @@ async def supporting_media(
         lookup=partial(providers.supporting, destination=destination),
         share_values=True,
         source_provider="unsplash",
+        cache_lookup=lambda slot_id, theme, acquire: cache.resolve(
+            scope, ["supporting", slot_id, theme, destination, width, height], acquire, refresh,
+        ),
     )
 
 
@@ -567,18 +561,22 @@ async def owned_media(
     resource_id: UUID,
     user: CurrentUser,
     providers: Providers,
+    cache: CachedMedia,
     response: Response,
     width: Dimension = 960,
     height: Dimension = 640,
     offset: Annotated[int, Query(ge=0)] = 0,
     slot: RequestedSlots = None,
+    refresh: UUID | None = None,
 ):
+    if refresh and (slot is None or len(slot) != 1):
+        raise HTTPException(422, {"code": "media_refresh_requires_one_slot"})
     # Storage is synchronous; slow reads must not block the task/lease event loop.
-    bindings = await asyncio.to_thread(owned_bindings, kind, resource_id, user["id"])
+    scope, detail, bindings = await asyncio.to_thread(owned_context, kind, resource_id, user["id"])
+    bindings = sorted(bindings.items())
     queries = {}
     city = None
     if bindings:
-        detail = await asyncio.to_thread(owned_detail, kind, resource_id, user["id"])
         queries = place_fallback_queries(detail)
         city = destination_photo_query(detail)
     return await resolve_photos(
@@ -591,6 +589,10 @@ async def owned_media(
         slots=slot,
         fallback_queries=queries,
         city_query=city,
+        cache_lookup=(lambda slot_id, place, acquire: cache.resolve(
+            scope, ["place", slot_id, place, queries.get(slot_id), city, width, height],
+            acquire, refresh,
+        )) if scope else None,
     )
 
 
