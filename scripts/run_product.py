@@ -59,9 +59,19 @@ def main(argv=None):
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=5173)
     parser.add_argument(
+        "--container-local", action="store_true",
+        help="Enable explicit container-local management for a loopback public origin",
+    )
+    parser.add_argument(
+        "--management-peer", action="append", default=[],
+        help="Literal host-forwarding peer IP allowed in container-local mode (repeatable)",
+    )
+    parser.add_argument(
         "--check", action="store_true", help="Check local readiness without live calls"
     )
     args = parser.parse_args(argv)
+    if args.management_peer and not args.container_local:
+        parser.error("Management peers require explicit container-local mode")
     os.chdir(PROJECT_ROOT)
     external_environment = dict(os.environ)
     configuration_root = configuration_directory(PROJECT_ROOT)
@@ -72,13 +82,21 @@ def main(argv=None):
         policy = ProductPolicySettings()
         origin = urlsplit(policy.origin)
         expected_port = origin.port or (443 if origin.scheme == "https" else 80)
-        if origin.scheme == "http" and expected_port != args.port:
+        loopback_origin = origin.scheme == "http" and origin.hostname in {
+            "localhost", "127.0.0.1", "::1",
+        }
+        if args.container_local and not loopback_origin:
+            parser.error("Container-local management requires a loopback HTTP public origin")
+        if not args.container_local and origin.scheme == "http" and expected_port != args.port:
             parser.error("The listening port must match product.yaml origin or PRODUCT_ORIGIN")
-        if (args.host in {"127.0.0.1", "localhost", "::1"}
-                and origin.scheme == "http"
-                and origin.hostname in {"localhost", "127.0.0.1", "::1"}):
+        local_listener = args.host in {"127.0.0.1", "localhost", "::1"}
+        if loopback_origin and (args.container_local or local_listener):
+            if args.container_local and not (configuration_root / ".config-access.json").is_file():
+                raise ValueError("Bootstrap instance management access before container startup")
             manager = LocalConfiguration(
                 configuration_root, origin=policy.origin, environment=external_environment,
+                management_peers=tuple(args.management_peer) if args.container_local else (),
+                default_password_hint=not args.container_local,
             )
             manager.ensure_signing_key()
             # Pin editable fields, including missing values, until process restart.

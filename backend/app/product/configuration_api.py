@@ -92,7 +92,8 @@ def management(request: Request, response: Response):
     if manager is None:
         raise HTTPException(404, {"code": "local_configuration_unavailable"})
     try:
-        local = request.client is not None and ip_address(request.client.host).is_loopback
+        peer = ip_address(request.client.host) if request.client else None
+        local = peer is not None and (peer.is_loopback or peer in manager.management_peers)
     except ValueError:
         local = False
     if not local or request.headers.get("host") != urlsplit(manager.origin).netloc:
