@@ -1,0 +1,308 @@
+{
+  "assets": {
+    "art-gallery": {
+      "image_url": "/dayloom/examples/art-gallery-8c6b861daeb5.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Bidgee",
+          "url": "https://commons.wikimedia.org/wiki/File:Art_Gallery_of_New_South_Wales_viewed_from_Art_Gallery_Road.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Art_Gallery_of_New_South_Wales_viewed_from_Art_Gallery_Road.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5/au/",
+      "sha256": "8c6b861daeb5471b30cb6db4937274e358cfbb90bd7f3bacecf442edfce25db6",
+      "bytes": 192305,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Art_Gallery_of_New_South_Wales_viewed_from_Art_Gallery_Road.jpg/960px-Art_Gallery_of_New_South_Wales_viewed_from_Art_Gallery_Road.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20110319102401"
+    },
+    "buckingham-palace": {
+      "image_url": "/dayloom/examples/buckingham-palace-824bf7f1523a.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Edoardo Cavaleri",
+          "url": "https://commons.wikimedia.org/wiki/File:Buckingham_Palace_facciata.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Buckingham_Palace_facciata.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sha256": "824bf7f1523a5d5628b08bd033b582dbde656be12256359b617b9d6365fd3151",
+      "bytes": 197852,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Buckingham_Palace_facciata.jpg/960px-Buckingham_Palace_facciata.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20120715110851"
+    },
+    "harbour-bridge": {
+      "image_url": "/dayloom/examples/harbour-bridge-75f021edc636.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+          "url": "https://commons.wikimedia.org/wiki/File:Sydney_Harbour_Bridge_from_Circular_Quay.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sydney_Harbour_Bridge_from_Circular_Quay.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sha256": "75f021edc636e186f92b903698700f3b4f1fb939c9466e08fc2b7990e34a1130",
+      "bytes": 84550,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Sydney_Harbour_Bridge_from_Circular_Quay.jpg/960px-Sydney_Harbour_Bridge_from_Circular_Quay.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20161128200137"
+    },
+    "hyde-park": {
+      "image_url": "/dayloom/examples/hyde-park-f422e49b707e.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Daderot",
+          "url": "https://commons.wikimedia.org/wiki/File:Hyde_Park_-_London%2C_UK_-_DSC06501.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hyde_Park_-_London%2C_UK_-_DSC06501.jpg",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sha256": "f422e49b707e2f2f2630acb8de3db4c354bcdb2af6ec56d30dc7331198c7e208",
+      "bytes": 282365,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Hyde_Park_-_London%2C_UK_-_DSC06501.jpg/960px-Hyde_Park_-_London%2C_UK_-_DSC06501.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20241124145117"
+    },
+    "london-eye": {
+      "image_url": "/dayloom/examples/london-eye-ff46c0ed0594.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Tristan Surtel",
+          "url": "https://commons.wikimedia.org/wiki/File:Thames_and_London_Eye.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Thames_and_London_Eye.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "ff46c0ed0594cbcda347f93de5e9376910b50f4a7cf02c7e12f2d2d566e8a93b",
+      "bytes": 147755,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Thames_and_London_Eye.jpg/960px-Thames_and_London_Eye.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20190928153619"
+    },
+    "national-gallery": {
+      "image_url": "/dayloom/examples/national-gallery-b5fdcd0142cd.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "MrsEllacott",
+          "url": "https://commons.wikimedia.org/wiki/File:The_National_Gallery_in_London.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:The_National_Gallery_in_London.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sha256": "b5fdcd0142cd49d041b1659c6020ae17e963ad06dd5f5245d0d62adfc7fab0a2",
+      "bytes": 157884,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/The_National_Gallery_in_London.jpg/960px-The_National_Gallery_in_London.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20140929165323"
+    },
+    "qvb": {
+      "image_url": "/dayloom/examples/qvb-fbc7e8ccc3f0.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Windmemories",
+          "url": "https://commons.wikimedia.org/wiki/File:20230805_Queen_Victoria_Building.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:20230805_Queen_Victoria_Building.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "fbc7e8ccc3f0ef4b21f42cde07f5273e6d5e18e45102bb0f333649806edb0d4e",
+      "bytes": 258091,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/20230805_Queen_Victoria_Building.jpg/960px-20230805_Queen_Victoria_Building.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20230806133452"
+    },
+    "rocks": {
+      "image_url": "/dayloom/examples/rocks-dc03b613b654.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Returned dude12345",
+          "url": "https://commons.wikimedia.org/wiki/File:Street_scene_in_the_rocks_district_of_Sydney.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Street_scene_in_the_rocks_district_of_Sydney.jpg",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sha256": "dc03b613b65409b8c26e29006ca23448ab399bc250f8fbb74cd3d204217c6672",
+      "bytes": 147768,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Street_scene_in_the_rocks_district_of_Sydney.jpg/960px-Street_scene_in_the_rocks_district_of_Sydney.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20250108080014"
+    },
+    "susannah-place": {
+      "image_url": "/dayloom/examples/susannah-place-4c0eb8198946.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Ymblanter",
+          "url": "https://commons.wikimedia.org/wiki/File:Sydney_The_Rocks_Susannah_Place_Museum_seen_from_the_northwest.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sydney_The_Rocks_Susannah_Place_Museum_seen_from_the_northwest.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "4c0eb81989468525a9685d976b48550bb2baaa2af646d8c2832a82904c1a911c",
+      "bytes": 202646,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Sydney_The_Rocks_Susannah_Place_Museum_seen_from_the_northwest.jpg/960px-Sydney_The_Rocks_Susannah_Place_Museum_seen_from_the_northwest.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20250710205209"
+    },
+    "sydney-tower": {
+      "image_url": "/dayloom/examples/sydney-tower-f947a5eba014.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Sardaka",
+          "url": "https://commons.wikimedia.org/wiki/File:%281%29Sydney_Tower-8.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:%281%29Sydney_Tower-8.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "f947a5eba014e7e3727c065f1ec304f91dfa34edccaa623acaf888aaf3815632",
+      "bytes": 122888,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/%281%29Sydney_Tower-8.jpg/960px-%281%29Sydney_Tower-8.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20190506104705"
+    },
+    "tower-bridge": {
+      "image_url": "/dayloom/examples/tower-bridge-fea885d537d4.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "MrsEllacott",
+          "url": "https://commons.wikimedia.org/wiki/File:Tower_Bridge%2C_London_c.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tower_Bridge%2C_London_c.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "fea885d537d425ea7f25f66290138246346f900b6a075cbf4f5bfca5d2322835",
+      "bytes": 156625,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Tower_Bridge%2C_London_c.jpg/960px-Tower_Bridge%2C_London_c.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20180905114437"
+    },
+    "tower-london": {
+      "image_url": "/dayloom/examples/tower-london-94f35cf1f555.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Elena Marie Meyer",
+          "url": "https://commons.wikimedia.org/wiki/File:Tower_of_London%2C_White_Tower.JPG"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tower_of_London%2C_White_Tower.JPG",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "94f35cf1f55577a0726442fcdabd050e15e599e3f128e7224ef55a0f14b45ef8",
+      "bytes": 227486,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Tower_of_London%2C_White_Tower.JPG/960px-Tower_of_London%2C_White_Tower.JPG?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20150916170718"
+    },
+    "royal-armouries": {
+      "image_url": "/dayloom/examples/royal-armouries-11ec87300832.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Michel wal",
+          "url": "https://commons.wikimedia.org/wiki/File:Tower_of_london_812.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tower_of_london_812.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sha256": "11ec87300832d2f3048c4cb0be32f4c82e8ba12a9a5291877c5169c7a6ac2bac",
+      "bytes": 97378,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Tower_of_london_812.jpg/500px-Tower_of_london_812.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20080809165522"
+    },
+    "jubilee-gardens": {
+      "image_url": "/dayloom/examples/jubilee-gardens-6be91a19a5cd.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "KTo288",
+          "url": "https://commons.wikimedia.org/wiki/File:Jubilee_Gardens.JPG"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jubilee_Gardens.JPG",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sha256": "6be91a19a5cdf6d5825f678ef81fe92f86cbd25ccaa12a0406da93037e7d1e03",
+      "bytes": 220021,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Jubilee_Gardens.JPG/960px-Jubilee_Gardens.JPG?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20070730191449"
+    },
+    "munich-brauhaus": {
+      "image_url": "/dayloom/examples/munich-brauhaus-6a458de51087.jpg",
+      "provider": "Google Maps",
+      "authors": [
+        {
+          "name": "Munich Brauhaus Sydney",
+          "url": "https://maps.google.com/maps/contrib/117708106108174083293"
+        }
+      ],
+      "kind": "verified_place",
+      "source_url": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICltojVOA!2e10!4m2!3m1!1s0x6b12ae42c4b89bd9:0xd653bef0fb4e8444",
+      "sha256": "6a458de51087de3f049334d18893b6ef3104d073a2a3d6633b6b57c10769c2d8",
+      "bytes": 119088,
+      "license_url": null,
+      "download_url": null
+    },
+    "gallery-cafe": {
+      "image_url": "/dayloom/examples/gallery-cafe-14b9859277aa.jpg",
+      "provider": "Google Maps",
+      "authors": [
+        {
+          "name": "The Gallery Café",
+          "url": "https://maps.google.com/maps/contrib/114902300824976651265"
+        }
+      ],
+      "kind": "verified_place",
+      "source_url": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhA1N6uEkyzGEBWnRRTan8wj!2e10!4m2!3m1!1s0x6b12af32a0c82301:0x32260d1aaf705197",
+      "sha256": "14b9859277aa467f825202987c7d9e57a79530c915cb9fecbd37ca5d9abf0ebd",
+      "bytes": 189449,
+      "license_url": null,
+      "download_url": null
+    },
+    "koko-black": {
+      "image_url": "/dayloom/examples/koko-black-ae9e7b9f0e93.jpg",
+      "provider": "Google Maps",
+      "authors": [
+        {
+          "name": "Koko Black - Lower Ground QVB",
+          "url": "https://maps.google.com/maps/contrib/111729722716366907384"
+        }
+      ],
+      "kind": "verified_place",
+      "source_url": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDFk5jJnQE!2e10!4m2!3m1!1s0x6b12afdc32a65327:0xaa947640d2069304",
+      "sha256": "ae9e7b9f0e939a61a71e03d0a8a37d814698b6790dad1d3bfd8ee6711360e9ce",
+      "bytes": 133944,
+      "license_url": null,
+      "download_url": null
+    },
+    "muriels-espresso": {
+      "image_url": "/dayloom/examples/muriels-espresso-35ac68d4e0b2.jpg",
+      "provider": "Google Maps",
+      "authors": [
+        {
+          "name": "Tuba Polat",
+          "url": "https://maps.google.com/maps/contrib/108697199764947603483"
+        }
+      ],
+      "kind": "verified_place",
+      "source_url": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICN2IbC_AE!2e10!4m2!3m1!1s0x487605de203c0cf7:0xbded5a27c5139681",
+      "sha256": "35ac68d4e0b2a6a288116a8aab5df700628324f8eebc79dbcff78da7bc7a2d43",
+      "bytes": 213391,
+      "license_url": null,
+      "download_url": null
+    }
+  },
+  "examples": {
+    "sydney-example": {
+      "cover": "harbour-bridge",
+      "slots": {
+        "activity:day1-the-rocks": "rocks",
+        "activity:day1-art-gallery": "art-gallery",
+        "activity:day2-qvb": "qvb",
+        "activity:day2-tower-eye": "sydney-tower",
+        "activity:day3-harbour-bridge": "harbour-bridge",
+        "activity:day3-susannah-place": "susannah-place",
+        "nearby:0": "munich-brauhaus",
+        "nearby:1": "gallery-cafe",
+        "nearby:2": "koko-black"
+      }
+    },
+    "london-example": {
+      "cover": "tower-bridge",
+      "slots": {
+        "activity:london-20261015-tower-of-london": "tower-london",
+        "activity:london-20261015-tower-bridge": "tower-bridge",
+        "activity:london-20261016-london-eye": "london-eye",
+        "activity:london-20261016-national-gallery": "national-gallery",
+        "activity:london-20261017-buckingham-palace": "buckingham-palace",
+        "activity:london-20261017-hyde-park": "hyde-park",
+        "nearby:0": "royal-armouries",
+        "nearby:1": "jubilee-gardens",
+        "nearby:2": "muriels-espresso"
+      }
+    }
+  }
+}

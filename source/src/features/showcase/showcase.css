@@ -1,0 +1,11 @@
+.showcase-banner {
+  background: #edf2eb;
+  color: #355546;
+  padding: 11px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.showcase-banner a { display: inline-flex; align-items: center; gap: 5px; text-decoration: underline; margin-left: 8px; }
+.showcase-about { max-width: 1120px; }
+.showcase-about .section > p { max-width: 760px; line-height: 1.8; margin-bottom: 18px; }
+.showcase-about .hero-actions { margin-top: 28px; flex-wrap: wrap; }

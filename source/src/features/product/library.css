@@ -1,0 +1,50 @@
+.dayloom .draft-controls { margin-top:15px; }
+.dayloom .library-welcome { display:grid; grid-template-columns:minmax(220px,.9fr) minmax(0,1.1fr); gap:48px; align-items:center; padding:44px 60px; margin-top:24px; border:1px solid var(--line); border-radius:24px; background:linear-gradient(115deg,#edf5f0 0%,#f9fbf8 55%,#fff 100%); }
+.dayloom .library-welcome-art { max-width:340px; width:100%; margin:auto; }
+.dayloom .library-welcome-art img { width:100%; height:auto; }
+.dayloom .library-welcome-copy { max-width:420px; }
+.dayloom .library-welcome-copy .eyebrow { font-size:10px; letter-spacing:.13em; }
+.dayloom .library-welcome h2 { margin:13px 0 15px; font-size:clamp(27px,3vw,38px); line-height:1.2; }
+.dayloom .library-welcome p { margin-bottom:24px; color:var(--muted); font-size:14px; line-height:1.9; }
+.dayloom .library-welcome-note { display:block; margin-top:16px; color:var(--muted); font-size:11px; line-height:1.7; }
+@media(max-width:800px) { .dayloom .library-welcome { padding:32px; gap:28px; grid-template-columns:minmax(160px,.8fr) minmax(0,1.2fr); } }
+@media(max-width:560px) {
+  .dayloom .library-welcome { grid-template-columns:minmax(0,1fr); padding:26px 24px 32px; gap:10px; text-align:center; }
+  .dayloom .library-welcome-art { max-width:220px; }
+  .dayloom .library-welcome-copy { margin:auto; }
+  .dayloom .library-welcome-copy .eyebrow { font-size:9px; }
+  .dayloom .library-welcome .btn { max-width:100%; white-space:normal; }
+}
+.dayloom .draft-actions { display:flex; flex-wrap:wrap; align-items:center; gap:15px; }
+.dayloom .draft-review summary { cursor:pointer; list-style:none; }
+.dayloom .draft-review summary::-webkit-details-marker { display:none; }
+.dayloom .draft-review-body { padding:18px 0 0; min-width:min(350px,100%); }
+.dayloom .draft-review-body .field { max-width:460px; }
+.dayloom .library-managed-title { overflow-wrap:anywhere; }
+.dayloom .library-dialog { position:fixed; inset:0; margin:auto; border:0; background:var(--paper); color:var(--ink); border-radius:24px; padding:35px; width:min(510px,calc(100% - 48px)); max-height:90dvh; overflow:auto; box-shadow:0 30px 100px rgba(0,0,0,.16); }
+.dayloom .library-dialog::backdrop { background:rgba(9,23,26,.53); backdrop-filter:blur(8px); }
+.dayloom .library-dialog h2 { font-size:24px; margin:7px 0 8px; }
+.dayloom .library-dialog > p { font-size:13px; color:var(--muted); line-height:1.8; }
+.dayloom .library-dialog .draft-actions { justify-content:flex-end; margin-top:25px; gap:10px; }
+.dayloom .library-dialog .field { margin-top:21px; }
+.dayloom .library-card-link { position:absolute; inset:0; }
+.dayloom .trip-card h3 { overflow-wrap:anywhere; }
+.copy-controls { display:flex; flex-wrap:wrap; align-items:center; gap:.7rem; max-width:100%; }
+.copy-controls p { overflow-wrap:anywhere; }
+.copy-controls + .btn { margin-top:.7rem; }
+.copy-controls [role="status"] { display:flex; flex-wrap:wrap; align-items:center; gap:.7rem; }
+@media(max-width:560px) { .dayloom .library-dialog { padding:26px 22px; } }
+
+.dayloom .library-import { margin-top:25px; }
+.dayloom .import-dialog { width:min(730px,calc(100% - 48px)); }
+.dayloom .import-dialog .input-file { max-width:100%; }
+
+.dayloom .menu-stack .copy-controls { display:block; }
+.dayloom .menu-stack .copy-controls > button { width:100%; }
+.dayloom .library-copy-notice { pointer-events:auto; display:flex; align-items:center; gap:12px; }
+.dayloom .library-copy-notice a { color:inherit; text-decoration:underline; }
+.dayloom .library-copy-notice button { display:grid; place-items:center; background:transparent; border:0; color:inherit; padding:0; }
+
+.dayloom .library-import .inline-action { display:inline-flex; align-items:center; gap:5px; }
+.dayloom .recovery-actions .preview-decision-actions { width:auto; gap:8px; }
+.dayloom .recovery-actions .preview-decision-actions .btn { padding:10px 15px; font-size:12px; }
