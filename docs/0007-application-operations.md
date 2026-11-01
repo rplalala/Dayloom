@@ -419,8 +419,26 @@ a new brief through the existing initialization policy.
 Authentication restores a guest brief and return intent without generating. Editor
 recovery and a pending action identity stay in tab-local session storage, never in the
 JWT or shared local storage. Expiry hides account/editor content and quarantines it
-under its previous account. Successful same-account login restores it without a write;
-different-account login, explicit logout and confirmed revocation erase it. Shared
+under its previous account. An expired session does not block public browsing:
+`/trips` shows the read-only examples with a **Log in again** reminder, and `/plan`
+offers a separate editable guest brief. Private draft/detail routes still require
+authentication; guest Save and Generate actions lead to login without writing data
+or starting a planner run.
+
+Expired guest input uses `dayloom.expired-guest.brief.v1` in session storage,
+separate from the private `dayloom.editor.v1` recovery, scoped to the previous owner
+and invalidation generation. Navigation, reloads, guest Clear and periodic session
+checks cannot overwrite the private brief. Successful same-account login restores
+the private brief if the visitor has not edited the guest form. Otherwise it carries
+the guest input into a new account-owned brief, without the old draft ID or operation
+key, and retains the previous private recovery in `dayloom.editor.previous.v1`.
+The handoff applies to explicit login and same-account login observed through another
+tab or a session refresh.
+**Restore previous brief** in Plan requires confirmation before replacing the current
+editor and clears draft/task/preview URL intents before restoring the old snapshot.
+Login and restoration do not save or generate automatically. Different-account
+login carries only guest input and discards the old private recovery; explicit logout
+and confirmed revocation clear the separate recovery records. Shared
 storage contains only account IDs, opaque invalidation/login generations and notices.
 Recovery records retain their account's generation, so an invalidation remains effective
 while Product is unmounted and after later login notices. Logout fences refresh until

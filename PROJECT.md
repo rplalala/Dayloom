@@ -92,6 +92,8 @@ See the [configuration guide](docs/guides/development.md#local-configuration-con
 Guest example itineraries are read-only showcases with bundled local photographs
 and illustration fallbacks, without media provider requests. Source and license
 credits ship with the assets; authenticated travelers can keep an independent copy.
+Expired sessions retain a login reminder while allowing public examples and a separate
+guest Plan editor. Private briefs stay isolated; saving and generation require login.
 
 Product UI/API uses V3 and an allowlisted presentation contract. V0-V3 remain
 independently accessible through command-line and programmatic entry points. The Developer
