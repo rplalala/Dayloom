@@ -97,9 +97,15 @@ Product UI/API uses V3 and an allowlisted presentation contract. V0-V3 remain
 independently accessible through command-line and programmatic entry points. The Developer
 web page and its dedicated APIs are removed. Current input assistance includes destination suggestions,
 currency/date controls and optional user-reviewed preference polishing.
-Itinerary activity/Nearby photographs now reuse validated links within the browser tab
-session; the [media contract](docs/0007-application-operations.md#browser-tab-photo-session)
-defines expiry, isolation, bounded recovery and browser lifecycle limits.
+Owned itinerary cover, activity and Nearby photographs persist validated display URLs
+in the existing preview/trip rows, with a browser-tab metadata cache and ordinary HTTP
+image caching. The [media contract](docs/0007-application-operations.md#persistent-itinerary-image-urls)
+defines storage, isolation and revision-checked replacement after image failure or
+explicit refresh. Guest examples continue to use bundled local images.
+The Profile page supports password-confirmed permanent account deletion, with server
+protection for the default test admin and an active-task guard; the
+[account deletion contract](docs/0007-application-operations.md#account-deletion)
+defines cascading cleanup and browser session invalidation.
 Product diagnostics now correlate HTTP operations, durable tasks and planner runs,
 preserving native Repair decisions, bounded payloads and independent completion/usage
 summaries alongside public progress. Local lookup and retention are described in the

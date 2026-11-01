@@ -343,6 +343,42 @@ The unified specification
 confirmed acceptance seams; its native children own task state. #119 retains the
 historical design/mapping role. The sections below define current behavior.
 
+### Product tables and transaction boundaries
+
+Product uses the `app` schema in the shared PostgreSQL database; TripWorld retrieval
+has its own tables and migrations. Relational keys represent ownership and itinerary
+relationships, while JSONB retains versioned requests, editor snapshots and display
+metadata whose structure is validated by the application.
+
+| Tables | Responsibility |
+| --- | --- |
+| `users`, `user_profiles` | Account identity, credentials, revocation version and travel defaults |
+| `planning_drafts` | Incomplete editor snapshots with revision checks |
+| `planning_tasks`, `itinerary_previews` | Durable execution state and explicit Save/Discard receipts |
+| `trips` | Saved itinerary headers and owner-scoped metadata |
+| `trip_weather`, `trip_activities`, `trip_nearby`, `trip_transfers` | Ordered days/weather, activities, nearby suggestions and transfers |
+| `schema_migrations` | Applied migration names and checksums |
+
+The [Product database helper](../backend/app/product/database.py) opens Psycopg
+connections with automatic transactions: normal exit from `with connect()` commits,
+and an escaping exception rolls back. Registration writes the user and profile
+together; task completion writes the preview and completed task together; Save
+writes the trip and its children together with the preview decision. Owner deletion
+uses the existing cascading foreign keys in the same transaction. The following
+lifecycle sections define each operation's detailed rules.
+
+Row locks, revision checks and unique operation keys coordinate concurrent writes.
+A partial unique index permits at most one active planning task per owner, and
+composite foreign keys prevent task/preview/trip ownership mismatches. Operations
+that assemble media context or saved detail from several reads use a repeatable-read
+snapshot. External planning/provider work is kept outside database transactions;
+image URL publication uses an explicit short transaction after acquisition.
+
+Connections are currently opened per operation without an application connection
+pool. Each resource's image-cache update rewrites its JSONB field under a row lock.
+These are capacity tradeoffs to measure before scaling; they do not replace the
+transaction and consistency checks above.
+
 ### Implemented account and browser session boundary
 
 `app.users` stores UUID identity, a unique trimmed/lowercase email, an Argon2 password
@@ -1089,6 +1125,14 @@ provider, author/source attribution, display kind/theme, acquisition time and a 
 and image bytes are excluded. Keys distinguish slot, binding or controlled search,
 provider role and requested dimensions within the owner-authorized resource. Each
 resource retains at most 1,000 entries and approximately 5 MiB, evicting older entries.
+
+For a pending preview the URL is in `app.itinerary_previews.media_cache`; after Save
+it is in `app.trips.media_cache`. Within either field, each hashed image identity
+maps to an entry whose `media.image_url` is the final display URL. The entry also
+contains `revision` and `acquired_at`; API responses expose the revision as
+`cache_revision`. The separate `media_bindings` field stores stable place identities,
+not image URLs. Existing or unviewed resources may have an empty cache because
+images are acquired on demand.
 
 Database URLs have no fixed-age expiry or scheduled refresh. Reloads, a new browser
 session and expiration of the browser's one-hour metadata cache reuse the stored URL.
