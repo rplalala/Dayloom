@@ -84,7 +84,9 @@ def test_example_photos_use_local_assets_with_illustration_fallbacks():
                 assert all(photo["status"] == "available" and photo["authors"]
                            and photo["image_url"].startswith("/dayloom/examples/")
                            for slot, photo in photos.items() if slot.startswith("activity:"))
-                assert all(photo == {"status": "unavailable"}
+                assert all(photo["status"] == "available"
+                           and photo["kind"] in {"verified_place", "illustration"}
+                           and photo["image_url"].startswith("/dayloom/examples/")
                            for slot, photo in photos.items() if slot.startswith("nearby:"))
                 assert "test-only" not in response.text
                 oversized = await client.get(f"/api/examples/{example}/media?width=1281")

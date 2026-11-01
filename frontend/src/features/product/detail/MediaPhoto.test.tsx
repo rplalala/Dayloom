@@ -37,3 +37,11 @@ describe('credited media display', () => {
     expect(open).toHaveBeenCalledOnce();
   });
 });
+
+
+it('labels bundled illustrations without presenting them as venue photographs', () => {
+  render(<MediaPhoto label="Gallery cafe" creditInDetails media={{ status: 'available', kind: 'illustration', image_url: '/dayloom/examples/gallery-cafe-local.svg', provider: 'Dayloom' }} />);
+  expect(screen.getByRole('img', { name: 'Gallery cafe · illustration' })).toBeVisible();
+  expect(screen.getByLabelText('Illustration')).toBeVisible();
+  expect(screen.queryByRole('img', { name: /place photograph/ })).not.toBeInTheDocument();
+});

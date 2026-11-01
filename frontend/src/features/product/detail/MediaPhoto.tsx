@@ -24,10 +24,11 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   };
   useEffect(() => setFailed(false), [media]);
   const available = media?.status === 'available' && media.image_url && !failed;
+  const illustration = available && media.kind === 'illustration';
   const pendingLabel = !atmosphere && !failed && (!media || media.status === 'loading')
     ? media ? 'Loading photo…' : 'Photo pending' : 'Illustration';
   const placeCredit = Boolean(available && (!atmosphere || staticCredits) && !creditInDetails);
-  const visual = available ? <img src={media.image_url} alt={atmosphere ? media.alt || label : `${label} · place photograph`} onError={() => { setFailed(true); onImageError?.(); }} referrerPolicy="no-referrer" /> : atmosphere ? <img src={fallback} alt={`${label} · illustration`} /> : <div className="media-placeholder" aria-label="Illustration, not a place photograph"><img src={fallback} alt="" aria-hidden="true" /></div>;
+  const visual = available ? <img src={media.image_url} alt={illustration ? `${label} · illustration` : atmosphere ? media.alt || label : `${label} · place photograph`} onError={() => { setFailed(true); onImageError?.(); }} referrerPolicy="no-referrer" /> : atmosphere ? <img src={fallback} alt={`${label} · illustration`} /> : <div className="media-placeholder" aria-label="Illustration, not a place photograph"><img src={fallback} alt="" aria-hidden="true" /></div>;
   const credit = available ? <>
     {creditLabel && <><span>{creditLabel}</span> · </>}
     <span className="media-provider" translate="no">{media.provider}</span>
@@ -43,7 +44,7 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
     onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setCreditsOpen(false); }}
     onKeyDown={event => { if (atmosphere && !staticCredits && !creditInDetails && event.key === "Escape") { event.preventDefault(); event.stopPropagation(); closeCredits(); } }}>
     {children ? <div className="media-detail-row"><div className="nearby-photo">{picture}{!available && <span className="media-credit" aria-hidden="true">{pendingLabel}</span>}</div>{children}</div> : picture}
-    {available && atmosphere && !staticCredits && !creditInDetails ? <figcaption className="atmosphere-credit">
+    {illustration ? <figcaption aria-label="Illustration">Illustration</figcaption> : available && atmosphere && !staticCredits && !creditInDetails ? <figcaption className="atmosphere-credit">
       <button type="button" className="photo-credit-toggle" ref={creditToggle} aria-label="Photo credits" aria-expanded={creditsOpen} aria-controls={creditsId} onClick={() => setCreditsOpen(true)}><Icon name="info" size={15} /></button>
       <span id={creditsId} className="photo-credit-content" hidden={!creditsOpen}>{credit}<button type="button" className="photo-credit-close" aria-label="Hide photo credits" onClick={closeCredits}><Icon name="close" size={12} /></button></span>
     </figcaption> : available && creditInDetails ? null : <figcaption className={children && !available ? "visually-hidden" : undefined} aria-label={!available && !atmosphere ? "Illustration" : undefined}>{credit}</figcaption>}

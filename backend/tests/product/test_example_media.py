@@ -27,9 +27,9 @@ def test_example_media_never_constructs_a_live_provider():
             items = result.json()["items"]
             assert set(items) == set(example_detail(example_id)._media_bindings)
             for media in items.values():
-                if media["status"] == "available":
-                    assert media["image_url"].startswith("/dayloom/examples/")
-                    assert media["authors"] and media["license_url"]
+                assert media["status"] == "available"
+                assert media["image_url"].startswith("/dayloom/examples/")
+                assert media["authors"] and media["license_url"]
 
 
 def test_bundled_photographs_match_the_published_asset_manifest():

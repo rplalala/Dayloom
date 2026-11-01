@@ -179,6 +179,100 @@
       "sha256": "94f35cf1f55577a0726442fcdabd050e15e599e3f128e7224ef55a0f14b45ef8",
       "bytes": 227486,
       "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Tower_of_London%2C_White_Tower.JPG/960px-Tower_of_London%2C_White_Tower.JPG?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20150916170718"
+    },
+    "royal-armouries": {
+      "image_url": "/dayloom/examples/royal-armouries-11ec87300832.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "Michel wal",
+          "url": "https://commons.wikimedia.org/wiki/File:Tower_of_london_812.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tower_of_london_812.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sha256": "11ec87300832d2f3048c4cb0be32f4c82e8ba12a9a5291877c5169c7a6ac2bac",
+      "bytes": 97378,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Tower_of_london_812.jpg/500px-Tower_of_london_812.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20080809165522"
+    },
+    "jubilee-gardens": {
+      "image_url": "/dayloom/examples/jubilee-gardens-6be91a19a5cd.jpg",
+      "provider": "Wikimedia Commons",
+      "authors": [
+        {
+          "name": "KTo288",
+          "url": "https://commons.wikimedia.org/wiki/File:Jubilee_Gardens.JPG"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jubilee_Gardens.JPG",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sha256": "6be91a19a5cdf6d5825f678ef81fe92f86cbd25ccaa12a0406da93037e7d1e03",
+      "bytes": 220021,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Jubilee_Gardens.JPG/960px-Jubilee_Gardens.JPG?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20070730191449"
+    },
+    "munich-brauhaus": {
+      "image_url": "/dayloom/examples/munich-brauhaus-bd4338fbc6af.svg",
+      "kind": "illustration",
+      "provider": "Dayloom",
+      "authors": [
+        {
+          "name": "Dayloom",
+          "url": "/dayloom/examples/README.md#illustrations"
+        }
+      ],
+      "source_url": "/dayloom/examples/README.md#illustrations",
+      "license_url": "https://github.com/rplalala/Dayloom/blob/main/LICENSE",
+      "sha256": "bd4338fbc6af194880084c81c35bdacadcce5442c5cc6a8eaf654f9a2edee55e",
+      "bytes": 1238,
+      "download_url": null
+    },
+    "gallery-cafe": {
+      "image_url": "/dayloom/examples/gallery-cafe-e53cf866ea04.svg",
+      "kind": "illustration",
+      "provider": "Dayloom",
+      "authors": [
+        {
+          "name": "Dayloom",
+          "url": "/dayloom/examples/README.md#illustrations"
+        }
+      ],
+      "source_url": "/dayloom/examples/README.md#illustrations",
+      "license_url": "https://github.com/rplalala/Dayloom/blob/main/LICENSE",
+      "sha256": "e53cf866ea049a6bcb808556d6d7cfd38c13e5a5e71ff52df366e78db8fdf386",
+      "bytes": 1212,
+      "download_url": null
+    },
+    "koko-black": {
+      "image_url": "/dayloom/examples/koko-black-4f1eddf918b1.svg",
+      "kind": "illustration",
+      "provider": "Dayloom",
+      "authors": [
+        {
+          "name": "Dayloom",
+          "url": "/dayloom/examples/README.md#illustrations"
+        }
+      ],
+      "source_url": "/dayloom/examples/README.md#illustrations",
+      "license_url": "https://github.com/rplalala/Dayloom/blob/main/LICENSE",
+      "sha256": "4f1eddf918b1b2fdee2d55c86ddb02b2ef87fb51364e03fd8e5aca074ac24562",
+      "bytes": 1184,
+      "download_url": null
+    },
+    "muriels-espresso": {
+      "image_url": "/dayloom/examples/muriels-espresso-3941ffd16ae5.svg",
+      "kind": "illustration",
+      "provider": "Dayloom",
+      "authors": [
+        {
+          "name": "Dayloom",
+          "url": "/dayloom/examples/README.md#illustrations"
+        }
+      ],
+      "source_url": "/dayloom/examples/README.md#illustrations",
+      "license_url": "https://github.com/rplalala/Dayloom/blob/main/LICENSE",
+      "sha256": "3941ffd16ae5cb80f8cfa95e9ad45a7fcc13076bc8e4e0f7296189568acbb1f4",
+      "bytes": 1218,
+      "download_url": null
     }
   },
   "examples": {
@@ -191,9 +285,9 @@
         "activity:day2-tower-eye": "sydney-tower",
         "activity:day3-harbour-bridge": "harbour-bridge",
         "activity:day3-susannah-place": "susannah-place",
-        "nearby:0": null,
-        "nearby:1": null,
-        "nearby:2": null
+        "nearby:0": "munich-brauhaus",
+        "nearby:1": "gallery-cafe",
+        "nearby:2": "koko-black"
       }
     },
     "london-example": {
@@ -205,9 +299,9 @@
         "activity:london-20261016-national-gallery": "national-gallery",
         "activity:london-20261017-buckingham-palace": "buckingham-palace",
         "activity:london-20261017-hyde-park": "hyde-park",
-        "nearby:0": null,
-        "nearby:1": null,
-        "nearby:2": null
+        "nearby:0": "royal-armouries",
+        "nearby:1": "jubilee-gardens",
+        "nearby:2": "muriels-espresso"
       }
     }
   }

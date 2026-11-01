@@ -30,7 +30,8 @@ def local_example_media(example_id: str):
     example_source(example_id)
     catalog = json.loads(FIXTURES.with_name("example_media.json").read_text(encoding="utf-8"))
     return {
-        slot: ({"status": "available", "kind": "verified_place", **{
+        slot: ({"status": "available",
+                "kind": catalog["assets"][asset].get("kind", "verified_place"), **{
             key: catalog["assets"][asset][key]
             for key in ("image_url", "provider", "authors", "source_url", "license_url")
         }} if asset else {"status": "unavailable"})

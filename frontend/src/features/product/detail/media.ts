@@ -4,7 +4,7 @@ import { acquirePhotos } from './mediaRequests';
 
 export type DisplayMedia = {
   status: 'loading' | 'available' | 'unavailable';
-  kind?: 'verified_place' | 'atmosphere';
+  kind?: 'verified_place' | 'atmosphere' | 'illustration';
   theme?: 'meal' | 'rest' | 'explore' | 'walk' | 'general';
   fallback?: 'google_no_photos';
   image_url?: string;

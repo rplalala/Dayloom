@@ -1,6 +1,6 @@
 # Bundled example photographs
 
-These photographs are served locally from `/dayloom/examples/`. No image-service API is used to display examples. Each file is a Wikimedia Commons thumbnail; the source photograph is otherwise unmodified. Browser styling crops the displayed frame. Nearby places without a bundled matching photograph retain local illustrations.
+These photographs are served locally from `/dayloom/examples/`. No image-service API is used to display examples. Each photograph is a Wikimedia Commons thumbnail; the source photograph is otherwise unmodified. Browser styling crops the displayed frame. Each Nearby reference has its own bundled photograph or clearly labeled illustration.
 
 The photographs retain the individual licenses below; the project source-code license does not replace them. Preserve this file and the per-photo credits when redistributing the assets.
 
@@ -18,3 +18,14 @@ The photographs retain the individual licenses below; the project source-code li
 | `sydney-tower-f947a5eba014.jpg` | Sardaka | [Source](https://commons.wikimedia.org/wiki/File:%281%29Sydney_Tower-8.jpg) | [licenses/by-sa/4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | `tower-bridge-fea885d537d4.jpg` | MrsEllacott | [Source](https://commons.wikimedia.org/wiki/File:Tower_Bridge%2C_London_c.jpg) | [licenses/by-sa/4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | `tower-london-94f35cf1f555.jpg` | Elena Marie Meyer | [Source](https://commons.wikimedia.org/wiki/File:Tower_of_London%2C_White_Tower.JPG) | [licenses/by-sa/4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `royal-armouries-11ec87300832.jpg` | Michel wal | [Source](https://commons.wikimedia.org/wiki/File:Tower_of_london_812.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+| `jubilee-gardens-6be91a19a5cd.jpg` | KTo288 | [Source](https://commons.wikimedia.org/wiki/File:Jubilee_Gardens.JPG) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+
+## Illustrations
+
+Four original SVG illustrations depict restaurant, cafe and chocolate-shop themes. They are labeled as illustrations and do not claim to show the actual venue. They are included under the [project MIT license](https://github.com/rplalala/Dayloom/blob/main/LICENSE).
+
+- `munich-brauhaus-bd4338fbc6af.svg`: Munich Brauhaus Sydney.
+- `gallery-cafe-e53cf866ea04.svg`: The Gallery Cafe.
+- `koko-black-4f1eddf918b1.svg`: Koko Black - Lower Ground QVB.
+- `muriels-espresso-3941ffd16ae5.svg`: Muriel's Espresso Bar.
