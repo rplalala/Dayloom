@@ -9,9 +9,13 @@ from backend.app.product.database import migrate
 from backend.app.runtime.database import DatabaseSettings
 
 
+class InstallationError(ValueError):
+    """Credential-free, actionable startup diagnostic safe for operator logs."""
+
+
 def prepare_database(baseline_id, timeout=1800):
     if not re.fullmatch(r"[a-f0-9]{64}", baseline_id or ""):
-        raise ValueError("A released baseline identity is required")
+        raise InstallationError("A released baseline identity is required")
     if timeout <= 0:
         raise ValueError("Startup timeout must be positive")
     settings = DatabaseSettings()
@@ -33,13 +37,26 @@ def prepare_database(baseline_id, timeout=1800):
                         "WHERE singleton"
                     ).fetchall()
                     if rows != [(1, baseline_id)]:
-                        raise ValueError("Database installation identity does not match release")
+                        raise InstallationError(
+                            "Database installation identity does not match release; "
+                            "use the installed baseline identity. Existing data was preserved."
+                        )
                     installed = True
         except psycopg.OperationalError:
             pass
         if installed:
-            migrate(settings.connection_string.get_secret_value())
+            try:
+                migrate(settings.connection_string.get_secret_value(),
+                        require_known_migrations=True)
+            except ValueError:
+                raise InstallationError(
+                    "Database migration checksum or newer application history is incompatible; "
+                    "use a matching application or restore a pre-upgrade backup."
+                ) from None
             return
         if time.monotonic() >= deadline:
-            raise TimeoutError("Database installation did not become ready")
+            raise InstallationError(
+                "Database installation did not become ready; inspect postgres/init logs and "
+                "retry after resolving the failure. Existing data was preserved."
+            )
         time.sleep(min(1, max(0, deadline - time.monotonic())))

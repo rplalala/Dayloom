@@ -135,8 +135,9 @@ def _empty(connection):
     return not connection.execute(
         "SELECT 1 FROM pg_namespace WHERE nspname !~ '^pg_' "
         "AND nspname NOT IN ('information_schema','public') "
-        "UNION ALL SELECT 1 FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace "
-        "WHERE n.nspname='public' AND c.relkind IN ('r','p','v','m','S','f') LIMIT 1"
+        "UNION ALL SELECT 1 FROM pg_depend d JOIN pg_namespace n ON n.oid=d.refobjid "
+        "WHERE d.refclassid='pg_namespace'::regclass AND n.nspname='public' "
+        "UNION ALL SELECT 1 FROM pg_extension WHERE extname <> 'plpgsql' LIMIT 1"
     ).fetchone()
 
 
