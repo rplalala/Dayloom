@@ -11,6 +11,7 @@ import { createBrief, restoreBrief, type Brief } from "./editor";
 import { briefFromProfile } from "./profile";
 import { invalidatePhotos } from './detail/photoSession';
 import { forgetOwnerCopyIntents } from './copyIntents';
+import { useExpiredGuestBrief } from './useExpiredGuestBrief';
 export type { Brief } from "./editor";
 
 export type Account = {
@@ -35,6 +36,7 @@ type Recovery = {
 export type BriefOrigin = "new" | "edited" | "restored" | "draft" | "replan";
 export type DraftRef = { id: string; title: string; revision: number };
 const key = "dayloom.editor.v1";
+const previousKey = 'dayloom.editor.previous.v1';
 const noticeKey = "dayloom.account.notice";
 const activeKey = "dayloom.account.active";
 const logoutKey = "dayloom.account.logged-out";
@@ -140,12 +142,14 @@ type Session = {
   logout: () => Promise<void>;
   deleteAccount: (password: string) => Promise<void>;
   refresh: () => Promise<void>;
+  hasPreviousBrief?: boolean;
+  restorePreviousBrief?: () => void;
 };
 const SessionContext = createContext<Session | null>(null);
 
-function readRecovery(): Recovery {
+function readRecovery(storageKey = key): Recovery {
   try {
-    const saved = JSON.parse(sessionStorage.getItem(key) || "null");
+    const saved = JSON.parse(sessionStorage.getItem(storageKey) || "null");
     if (
       saved &&
       typeof saved === "object" &&
@@ -172,6 +176,17 @@ function readRecovery(): Recovery {
 
 export function SessionProvider({ children }: { children: ReactNode }) {
   const recovery = useRef<Recovery>(readRecovery());
+  const guest = useExpiredGuestBrief(JSON.stringify([recovery.current.owner, recovery.current.owner ? generation(recovery.current.owner) : '']));
+  const clearGuest = guest.clear;
+  const previousRecovery = useRef<Recovery | null>(readRecovery(previousKey));
+  const [previousAvailable, setPreviousAvailable] = useState(Boolean(previousRecovery.current?.owner));
+  const rememberPrevious = useCallback((value: Recovery | null) => {
+    previousRecovery.current = value; setPreviousAvailable(Boolean(value?.owner));
+    try {
+      if (value?.owner) sessionStorage.setItem(previousKey, JSON.stringify(value));
+      else sessionStorage.removeItem(previousKey);
+    } catch { /* Recovery stays in memory when storage is unavailable. */ }
+  }, []);
   const accountRef = useRef<Account | null>(null);
   const [account, setAccount] = useState<Account | null>(null);
   const [status, setStatus] = useState<Session["status"]>("loading");
@@ -193,6 +208,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     }
   }, []);
   const clear = useCallback(() => {
+    clearGuest();
+    rememberPrevious(null);
     invalidatePhotos({ privateOnly: true });
     try { sessionStorage.removeItem('dayloom.task.intent.v1'); } catch { /* Account content stays hidden in memory. */ }
     try { sessionStorage.removeItem('dayloom.copy.intent.v1'); } catch { /* Invalidation also fences recovery. */ }
@@ -214,11 +231,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setTitle("");
     setStatus("guest");
     persist();
-  }, [persist]);
+  }, [persist, clearGuest, rememberPrevious]);
   const adopt = useCallback(
     (next: Account) => {
       if (loggingOut.current || sessionBlocked()) return;
       const previousOwner = accountRef.current?.id || recovery.current.owner || activeLogin()?.id;
+      if (previousRecovery.current?.owner !== next.id) rememberPrevious(null);
       if (previousOwner && previousOwner !== next.id) invalidatePhotos({ owner: previousOwner });
       if (
         recovery.current.owner &&
@@ -250,7 +268,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setTitle(recovery.current.draftTitle || "");
       persist();
     },
-    [persist],
+    [persist, rememberPrevious],
   );
 
   const refresh = useCallback(async () => {
@@ -388,6 +406,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   ) {
     if (loggingOut.current)
       throw new Error("Wait for logout to finish before logging in.");
+    const guestAtStart = status === 'expired' ? guest.snapshot : null;
+    const privateAtStart = { ...recovery.current };
     const response = await fetch(`/api/auth/${mode}`, {
       method: "POST",
       credentials: "same-origin",
@@ -402,6 +422,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           : "We could not sign you in. Check your details and try again.",
       );
     epoch.current++;
+    const publicBrief = guestAtStart?.();
+    if (publicBrief?.edited) {
+      if (privateAtStart.owner === body.id) rememberPrevious(privateAtStart);
+      else rememberPrevious(null);
+      recovery.current = { owner: body.id, generation: generation(body.id),
+        brief: publicBrief.brief, origin: publicBrief.origin, started: true,
+        defaultsAttempted: true, actionId: null, draftRef: null, draftTitle: publicBrief.draftTitle };
+      clearGuest();
+    }
     beginLogin(body);
     adopt(body);
     notify({ type: "account", id: body.id });
@@ -561,6 +590,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setAction(next);
     persist();
   }
+  const hasPreviousBrief = Boolean(account && previousAvailable && previousRecovery.current?.owner === account.id &&
+    (previousRecovery.current.generation || '') === generation(account.id));
+  function restorePreviousBrief() {
+    const current = accountRef.current;
+    const saved = previousRecovery.current;
+    if (!current || !saved || saved.owner !== current.id || (saved.generation || '') !== generation(current.id)) return;
+    recovery.current = saved;
+    rememberPrevious(null);
+    adopt(current);
+  }
   return (
     <SessionContext.Provider
       value={{
@@ -583,6 +622,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         logout,
         deleteAccount,
         refresh,
+        hasPreviousBrief,
+        restorePreviousBrief,
+        ...(status === 'expired' ? guest.editor : {}),
       }}
     >
       {children}

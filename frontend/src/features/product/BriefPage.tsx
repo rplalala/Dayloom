@@ -16,6 +16,7 @@ import { usePlanTask } from "./usePlanTask";
 import { planTaskLink, taskRequest, TaskFailure, sameConfirmedRequest, submissionGeneration, readSubmissionIntent, rememberSubmissionIntent, taskActive, type PlanningTask } from './taskClient';
 import { useTasks } from './taskContext';
 import { planningInput } from './editor';
+import { SessionReminder } from './SessionReminder';
 
 const moodChoices: Record<string, Interest[]> = { art: ["Art & museums", "History & culture"], nature: ["Nature", "Free exploration"], city: ["City walks", "History & culture"] };
 
@@ -32,17 +33,17 @@ export function BriefPage() {
   const liveEditor = useRef({ session, location: location.key });
   liveEditor.current = { session, location: location.key };
   useEffect(() => {
-    if (!hasMood && !draftId && (status === "authenticated" || status === "guest") && briefOrigin === "new") void initializeNewBrief();
+    if (!hasMood && !draftId && status !== 'loading' && briefOrigin === "new") void initializeNewBrief();
   }, [draftId, status, briefOrigin, initializeNewBrief, hasMood]);
   const appliedMood = useRef<string | null>(null);
   useEffect(() => {
-    if (!mood || !hasMood || appliedMood.current === location.key || draftId || (status !== "guest" && status !== "authenticated")) return;
+    if (!mood || !hasMood || appliedMood.current === location.key || draftId || status === 'loading') return;
     appliedMood.current = location.key;
     const key = location.key;
     const owner = session.account?.id;
     void initializeNewBrief().then(() => {
       const current = liveEditor.current;
-      if (current.location !== key || current.session.account?.id !== owner || !["guest", "authenticated"].includes(current.session.status)) return;
+      if (current.location !== key || current.session.account?.id !== owner || current.session.status === 'loading') return;
       let next = current.session.brief;
       for (const interest of moodChoices[mood]) if (!next.interests.includes(interest)) next = toggleInterest(next, interest);
       if (next.pace !== "relaxed") next = togglePace(next, "relaxed");
@@ -181,11 +182,14 @@ export function BriefPage() {
     }
   }
   if (session.status === "loading") return <div className="page container" role="status">Checking your session…</div>;
-  if (session.status === "expired") return <div className="page container"><h1>Log in to continue your brief.</h1><p>Your unsaved input is kept private until you return to the same account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
   if (draftId && !session.account) return <div className="page container"><h1>Log in to open this draft.</h1><p>Planning drafts are private to their account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
 
   return <div className="page container plan-page brief-editor">
     <div className="page-heading"><span className="eyebrow">YOUR JOURNEY, YOUR WAY</span><h1>Where will you go next?</h1><p>Start with the essentials. Make room for what you love.</p></div>
+    {session.status === 'expired' && <SessionReminder returnTo="/plan" />}
+    {session.hasPreviousBrief && <p className="subtle-help">Your previous private brief is also available. <button type="button" className="inline-action" onClick={() => {
+      if (window.confirm('Restore your previous brief? This replaces the brief currently shown.')) session.restorePreviousBrief?.();
+    }}>Restore previous brief</button></p>}
     <section className="flow-card form-card" id="travel-brief">
       <div className="flow-title"><span className="step-number">01</span><div><h2>Your travel brief</h2></div><span className="count-badge">About 1 minute</span></div>
       <form noValidate onSubmit={event => {
