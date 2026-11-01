@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 
-export type ConfigurationAccess = { password_required: boolean; revision: string };
+export type ConfigurationAccess = { password_required: boolean; revision: string; default_test_password?: string };
 export type AccessChange = {
   revision: string; enabled: boolean; current_password?: string;
   new_password?: string; confirmation?: string;

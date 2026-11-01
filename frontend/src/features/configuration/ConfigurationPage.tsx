@@ -256,12 +256,8 @@ export function ConfigurationPage() {
     });
   }
 
-  return <div className="config-page">
+  return <div className={`config-page${!config ? ' config-locked' : ''}`}>
     <header className="config-header"><Link to="/" className="config-brand">Dayloom<span>Local configuration</span></Link>
-      {config && access?.password_required && <button type="button" disabled={busy} onClick={() => void perform(async (request) => {
-        await request('/session', { method: 'DELETE', headers: { 'X-CSRF-Token': csrf } });
-        setConfig(null); setCsrf(''); setEdits({}); setReadiness(null); setApiReports({});
-      })}>Lock configuration</button>}
     </header>
     <main className="config-content">
       <div className="config-intro"><p className="config-eyebrow">YOUR LOCAL INSTALLATION</p><h1>Make Dayloom ready.</h1>
@@ -272,6 +268,10 @@ export function ConfigurationPage() {
         <section className="config-card config-unlock"><h2>{access?.password_required ? 'Unlock configuration' : 'Open configuration'}</h2>
           {access ? <form onSubmit={unlock}>
             {access.password_required && <><p id="configuration-password-help">Enter this installation's configuration password. This is separate from traveler accounts.</p>
+              {access.default_test_password && <aside className="config-test-password" aria-label="Test password">
+                <span>Default test password</span><code>{access.default_test_password}</code>
+                <p>Use this password for local testing, then change it in configuration. If you have already changed it, enter your own password.</p>
+              </aside>}
               <label htmlFor="configuration-password">Configuration password</label>
               <input id="configuration-password" type="password" autoComplete="current-password" value={password} required maxLength={128}
                 aria-describedby="configuration-password-help" onChange={event => setPassword(event.target.value)} /></>}

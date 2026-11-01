@@ -36,6 +36,20 @@ it.each(['unlock', 'reload'])('ignores a delayed %s response after the protected
   expect(screen.queryByLabelText('OpenAI API key')).not.toBeInTheDocument();
 });
 
+it('shows the public test password on the entry screen and offers no manual lock button', async () => {
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: true, revision: 'a'.repeat(64), default_test_password: 'dayloom-config-2026' });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'csrf' });
+    return Response.json({ revision: 'a'.repeat(64), restart_required: false, running_ready: true, fields: {} });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  expect(await screen.findByText('dayloom-config-2026')).toBeVisible();
+  fireEvent.change(screen.getByLabelText('Configuration password'), { target: { value: 'dayloom-config-2026' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Unlock configuration' }));
+  await screen.findByText('Configuration access');
+  expect(screen.queryByRole('button', { name: 'Lock configuration' })).not.toBeInTheDocument();
+});
+
 it('opens configuration automatically when password verification is off', async () => {
   const writes: { url: string; body: unknown }[] = [];
   vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {

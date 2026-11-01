@@ -4,7 +4,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from backend.app.main import create_app
-from backend.app.product.configuration import FIELDS, LocalConfiguration
+from backend.app.product.configuration import DEFAULT_TEST_PASSWORD, FIELDS, LocalConfiguration
 from backend.app.product.configuration_api import enable_local_configuration
 
 
@@ -12,6 +12,8 @@ def connect_manager(tmp_path, *, environment=None):
     manager = LocalConfiguration(
         tmp_path, origin="http://localhost:5173", environment=environment or {}
     )
+    manager.set_access(manager.access_view()["revision"], enabled=False,
+                       current_password=DEFAULT_TEST_PASSWORD, new_password="", confirmation="")
     app = create_app()
     enable_local_configuration(app, manager, ready=True)
     client = TestClient(app, base_url=manager.origin, client=("127.0.0.1", 50000))
@@ -30,10 +32,12 @@ def test_local_manager_unlocks_without_database_and_redacts_credentials(tmp_path
     with TestClient(app, base_url=manager.origin, client=("127.0.0.1", 50000)) as client:
         assert client.get("/api/config").status_code == 401
         response = client.post(
-            "/api/config/session", headers={"Origin": manager.origin}, json={}
+            "/api/config/session", headers={"Origin": manager.origin},
+            json={"password": DEFAULT_TEST_PASSWORD},
         )
         assert response.status_code == 200
         assert "HttpOnly" in response.headers["set-cookie"]
+        client.headers["X-CSRF-Token"] = response.json()["csrf_token"]
         response = client.get("/api/config")
         assert response.status_code == 200
         assert response.json()["fields"]["OPENAI_API_KEY"]["configured"] is True

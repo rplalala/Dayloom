@@ -8,6 +8,7 @@ import tempfile
 import threading
 from collections import deque
 from contextlib import contextmanager
+from functools import lru_cache
 from io import StringIO
 from pathlib import Path
 from time import monotonic
@@ -37,6 +38,12 @@ FIELDS = {
 COOKIE = "dayloom_config_session"
 SESSION_SECONDS = 1800
 password_hasher = PasswordHash.recommended()
+DEFAULT_TEST_PASSWORD = "dayloom-config-2026"
+
+
+@lru_cache(maxsize=1)
+def default_password_hash():
+    return password_hasher.hash(DEFAULT_TEST_PASSWORD)
 
 
 @contextmanager
@@ -297,7 +304,8 @@ class LocalConfiguration:
                 with path.open("rb") as stream:
                     content = stream.read(8193)
             except FileNotFoundError:
-                return {"schema_version": 1, "revision": "0" * 64, "password_hash": None}
+                return {"schema_version": 1, "revision": "0" * 64,
+                        "password_hash": default_password_hash()}
             state = json.loads(content)
             if (
                 len(content) > 8192
@@ -321,7 +329,7 @@ class LocalConfiguration:
     def access_view(self):
         state = self._password_state()
         return {"password_required": state["password_hash"] is not None,
-                "revision": state["revision"]}
+                "revision": state["revision"], "default_test_password": DEFAULT_TEST_PASSWORD}
 
     def verify_access_password(self, password):
         with self.lock:

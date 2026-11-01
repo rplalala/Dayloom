@@ -4,12 +4,43 @@ import pytest
 from fastapi.testclient import TestClient
 
 from backend.app.main import create_app
-from backend.app.product.configuration import LocalConfiguration
+from backend.app.product.configuration import (
+    DEFAULT_TEST_PASSWORD,
+    ConfigurationError,
+    LocalConfiguration,
+)
 from backend.app.product.configuration_api import enable_local_configuration
+
+
+def test_new_install_uses_the_documented_test_password_and_preserves_custom_passwords(tmp_path):
+    manager = LocalConfiguration(tmp_path, origin="http://localhost:5173", environment={})
+    app = create_app()
+    enable_local_configuration(app, manager, ready=True)
+    with TestClient(app, base_url=manager.origin, client=("127.0.0.1", 50000),
+                    headers={"Origin": manager.origin}) as client:
+        access = client.get("/api/config/access").json()
+        assert access["password_required"] is True
+        assert access["default_test_password"] == "dayloom-config-2026"
+        assert client.post("/api/config/session", json={}).status_code == 401
+        response = client.post("/api/config/session", json={"password": "dayloom-config-2026"})
+        assert response.status_code == 200
+        client.headers["X-CSRF-Token"] = response.json()["csrf_token"]
+        assert client.put("/api/config/access", json={
+            "revision": access["revision"], "enabled": True,
+            "current_password": "dayloom-config-2026", "new_password": "custom-private-password",
+            "confirmation": "custom-private-password",
+        }).status_code == 200
+    restarted = LocalConfiguration(tmp_path, origin=manager.origin, environment={})
+    assert restarted.unlock("custom-private-password")
+    with pytest.raises(ConfigurationError, match="invalid_configuration_password"):
+        restarted.unlock("dayloom-config-2026")
 
 
 def local_client(root):
     manager = LocalConfiguration(root, origin="http://localhost:5173", environment={})
+    if not (root / ".config-access.json").exists():
+        manager.set_access(manager.access_view()["revision"], enabled=False,
+                           current_password=DEFAULT_TEST_PASSWORD, new_password="", confirmation="")
     app = create_app()
     enable_local_configuration(app, manager, ready=True)
     return TestClient(
