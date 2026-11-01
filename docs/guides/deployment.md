@@ -1,5 +1,9 @@
 # Run Dayloom locally
 
+For the Bash-first, complete Docker deployment bundle, use the
+[Docker deployment guide](../../deploy/README.md). This guide covers installation
+from a source checkout and retains the existing host-based workflow.
+
 This guide installs the full web application. To check the saved research results
 without running it, use [findings verification](verification.md).
 

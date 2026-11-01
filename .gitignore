@@ -56,3 +56,6 @@ Thumbs.db
 /.product.yaml.config-*
 
 .archify/
+
+# Generated local container instance configuration
+/deploy/config/
