@@ -5,7 +5,7 @@ import { ProductLayout } from "./ProductLayout";
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
-it.each([true, false])('shows configuration navigation only when available (%s)', async available => {
+it.each([true, false])('offers a configuration shortcut outside navigation only when available (%s)', async available => {
   vi.stubGlobal('fetch', vi.fn(async (url: string) => {
     if (url === '/api/config/access') return available
       ? Response.json({ password_required: false, revision: 'a'.repeat(64) })
@@ -19,9 +19,16 @@ it.each([true, false])('shows configuration navigation only when available (%s)'
   await act(async () => {});
   fireEvent.click(screen.getByLabelText('Open navigation'));
   for (const menu of ['Main navigation', 'Mobile navigation']) {
-    const link = within(screen.getByLabelText(menu)).queryByText('Configuration', { selector: 'a' });
-    if (available) expect(link).toHaveAttribute('href', '/config');
-    else expect(link).not.toBeInTheDocument();
+    expect(within(screen.getByLabelText(menu)).queryByRole('link', { name: 'Configuration' })).not.toBeInTheDocument();
+  }
+  const shortcut = screen.queryByRole('link', { name: 'Configuration' });
+  if (available) {
+    expect(shortcut).toHaveAttribute('href', '/config');
+    expect(shortcut).toHaveAttribute('title', 'Configuration');
+    fireEvent.click(shortcut!);
+    expect(router.state.location.pathname).toBe('/config');
+  } else {
+    expect(shortcut).not.toBeInTheDocument();
   }
 });
 

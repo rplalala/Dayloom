@@ -211,7 +211,7 @@ uv run python scripts/run_product.py
 ```
 
 Product migrations prepare its `app` schema. They do not rebuild the retrieval corpus.
-Open Configuration in the Product navigation, or visit
+Click the settings icon in the bottom-right corner of Product, or visit
 [local configuration](http://localhost:5173/config). It opens directly by default.
 To restrict access, enable Require a password to open configuration and set/confirm
 a password. Existing password protection must be unlocked before editing settings.

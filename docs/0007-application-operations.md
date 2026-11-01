@@ -26,7 +26,8 @@ previous result. Product completion reasons are policy observations, not global 
 ## Local configuration console
 
 `/config` is a standalone React route outside traveler session/task providers. Desktop
-and mobile Product navigation offer Configuration when local management is available.
+and mobile Product pages offer a fixed bottom-right settings icon linking to `/config`
+when local management is available.
 The normal Product launcher enables its management interface only for an HTTP loopback
 origin and loopback listener. The API-only application leaves management disabled.
 No configuration database or account role is introduced. Operational steps belong

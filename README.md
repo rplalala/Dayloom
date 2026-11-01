@@ -98,7 +98,7 @@ uv run python scripts/migrate_product.py
 uv run python scripts/run_product.py
 ```
 
-Open Configuration in the Product navigation, or visit
+Click the settings icon in the bottom-right corner of Product, or visit
 [local configuration](http://localhost:5173/config). It opens directly by default;
 optional password verification can be enabled on the page. Configure the existing Foundry,
 OpenAI and Google Maps services, save, and restart Dayloom. Missing local resources

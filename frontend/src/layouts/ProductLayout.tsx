@@ -60,7 +60,6 @@ function ProductShell() {
             </NavLink>
             <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
             <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
-            {configurationAvailable && <Link to="/config" className="nav-link">Configuration</Link>}
           </nav>
           <div className="nav-actions">
             <TaskEntry />
@@ -101,7 +100,6 @@ function ProductShell() {
             <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Home</NavLink>
             <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
             <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
-            {configurationAvailable && <Link to="/config" className="nav-link">Configuration</Link>}
             <NavLink to={account ? "/account" : "/login"} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>
               {account ? "Account settings" : "Log in"}
             </NavLink>
@@ -131,6 +129,11 @@ function ProductShell() {
           <button type="button" className="inline-action" onClick={() => setAbout(true)}>About Dayloom</button>
         </div>
       </footer>
+      {configurationAvailable && (
+        <Link to="/config" className="configuration-shortcut" aria-label="Configuration" title="Configuration">
+          <Icon name="settings" size={22} />
+        </Link>
+      )}
       {about && <dialog ref={aboutDialog} className="modal-card wide-modal about-dialog" aria-labelledby="about-dayloom-title" onCancel={() => setAbout(false)} onClick={event => {
         if (isDialogBackdropClick(event)) setAbout(false);
       }}>

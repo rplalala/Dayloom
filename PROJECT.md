@@ -79,7 +79,7 @@ for storage retention, overrides and isolated test settings.
 
 The local Product launcher also serves `/config` with independent loopback-only
 management access. It opens directly by default and offers optional persisted
-password verification, with Configuration entries in Product navigation. It edits
+password verification, with a bottom-right settings shortcut in Product. It edits
 existing provider settings in `.env`, shows local resource readiness and offers
 explicit bounded API capability checks. Saved provider changes require restart;
 password-access changes apply immediately. Incomplete local installs

@@ -156,7 +156,7 @@ between them automatically. API-only/Vite development remains available above.
 
 Build the frontend and start `uv run python scripts/run_product.py` with its default
 loopback binding. Open the exact configured origin plus `/config`, normally
-`http://localhost:5173/config`. Configuration in the desktop/mobile Product navigation
+`http://localhost:5173/config`. The bottom-right settings icon on desktop and mobile Product pages
 opens the same page when local management is available. It opens directly by default;
 traveler registration and database access are not required. The browser establishes
 a separate 30-minute management session automatically, retaining CSRF protection.

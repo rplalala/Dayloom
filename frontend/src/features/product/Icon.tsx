@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 // Product line icons. Unknown names use the general information glyph.
 const icons: Record<string, ReactNode> = {
+  "settings": <><path d="M9.5 3h5l.5 2.4 1.5.9 2.3-.8 2.5 4.3-1.8 1.6v1.2l1.8 1.6-2.5 4.3-2.3-.8-1.5.9-.5 2.4h-5L9 18.6l-1.5-.9-2.3.8-2.5-4.3 1.8-1.6v-1.2L2.7 9.8l2.5-4.3 2.3.8L9 5.4 9.5 3Z"/><circle cx="12" cy="12" r="3"/></>,
   "arrow": <><path d="M5 12h14m-6-6 6 6-6 6"/></>,
   "back": <><path d="M19 12H5m6 6-6-6 6-6"/></>,
   "pin": <><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></>,
