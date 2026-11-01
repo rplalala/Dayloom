@@ -38,3 +38,4 @@ frontend/coverage/
 **/*.parquet
 **/*.zip
 deploy/config/
+**/*.dayloom-backup/
