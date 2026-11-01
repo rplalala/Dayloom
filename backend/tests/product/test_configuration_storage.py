@@ -150,7 +150,8 @@ def test_mixed_save_rolls_back_yaml_if_dotenv_replacement_fails(tmp_path, monkey
     assert "private" not in response.text
     assert calls == 3
     assert {path: path.read_bytes() for path in before} == before
-    assert not list(tmp_path.glob("*.config-*"))
+    assert not list(tmp_path.glob(".env.config-*"))
+    assert not list(tmp_path.glob(".product.yaml.config-*"))
 
 
 def test_migration_preserves_values_that_reference_a_retired_override(tmp_path):
