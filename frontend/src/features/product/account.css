@@ -7,3 +7,6 @@
 .dayloom .account-main .field-group { border: 0; padding: 0; min-width: 0; }
 .dayloom .profile-currency { max-width: 240px; }
 .dayloom .account-logout { margin-top: 20px; }
+.dayloom .account-delete { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.dayloom .account-delete h2 { font-size: 20px; }
+.dayloom .account-delete-dialog .btn-danger { color: white; background: #963e37; border-color: #963e37; }

@@ -6,11 +6,13 @@ import { interestPrompts, pacePrompts, transportLabels, type Interest, type Pace
 import type { Profile } from "./profile";
 import { Icon } from "./Icon";
 import "./account.css";
+import { AccountDeletion } from "./AccountDeletion";
 
 type AccountPreview = Pick<Profile, "display_name" | "initials">;
 
 export function AccountPage() {
-  const { account, logout, status, refresh } = useSession();
+  const { account, logout, status, refresh, deleteAccount } = useSession();
+  const [deleted, setDeleted] = useState(false);
   const [logoutError, setLogoutError] = useState<{ owner: string; session: string; message: string } | null>(null);
   const error = logoutError && (!account || (account.id === logoutError.owner && account.csrf_token === logoutError.session)) ? logoutError.message : "";
   const [preview, setPreview] = useState<{ owner: string; profile: AccountPreview } | null>(null);
@@ -37,12 +39,19 @@ export function AccountPage() {
       }
     }
   }
+  async function handleDelete(password: string) {
+    const owner = accountNow.current;
+    await deleteAccount(password);
+    const current = accountNow.current;
+    if (mounted.current && (!current || (current.id === owner?.id && current.csrf_token === owner.csrf_token))) setDeleted(true);
+  }
   if (!account)
     return (
       <div className="page container">
         <h1>
           {status === "loading" ? "Checking your session…" : "Your account"}
         </h1>
+        {deleted && <p role="status">Your account and its travel data have been deleted.</p>}
         <Link to="/login?return=/account">Log in</Link>
         {error && <p role="alert">{error}</p>}
       </div>
@@ -67,12 +76,12 @@ export function AccountPage() {
           Log out
         </button>
         {error && <p role="alert">{error}</p>}
-      </aside><ProfileForm key={account.id} account={account} refresh={refresh} logout={handleLogout} onPreview={previewProfile} /></div>
+      </aside><ProfileForm key={`${account.id}:${account.csrf_token}`} account={account} refresh={refresh} logout={handleLogout} onDelete={handleDelete} onPreview={previewProfile} /></div>
     </div>
   );
 }
 
-function ProfileForm({ account, refresh, logout, onPreview }: { account: Account; refresh: () => Promise<void>; logout: () => Promise<void>; onPreview: (profile: AccountPreview) => void }) {
+function ProfileForm({ account, refresh, logout, onPreview, onDelete }: { account: Account; refresh: () => Promise<void>; logout: () => Promise<void>; onPreview: (profile: AccountPreview) => void; onDelete: (password: string) => Promise<void> }) {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [error, setError] = useState("");
   const [saved, setSaved] = useState(false);
@@ -128,5 +137,5 @@ function ProfileForm({ account, refresh, logout, onPreview }: { account: Account
     </fieldset>
     {saved && <p role="status">Your travel defaults have been saved.</p>}{error && <p role="alert">{error}</p>}
     <div className="quiet-links account-logout"><button type="button" className="inline-action text-danger" onClick={() => void logout()}>Log out</button></div>
-  </form></section>;
+  </form><AccountDeletion allowed={profile.can_delete_account === true} onDelete={onDelete} /></section>;
 }

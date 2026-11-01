@@ -1,6 +1,6 @@
 import { createBrief, toggleInterest, togglePace, toggleTransport, type Brief, type Interest, type Pace, type Transport } from "./editor";
 
-export type Profile = { display_name: string; initials: string; currency: string; interests: Interest[]; pace: Pace | null; transport: Transport[]; notes: string };
+export type Profile = { display_name: string; initials: string; currency: string; interests: Interest[]; pace: Pace | null; transport: Transport[]; notes: string; can_delete_account?: boolean };
 
 /** Only the explicit new-brief initializer calls this; confirmed requests stay independent. */
 export function briefFromProfile(profile: Profile): Brief {

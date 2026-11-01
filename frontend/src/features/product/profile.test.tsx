@@ -124,6 +124,7 @@ it.each([
         ? new Response(JSON.stringify({ detail: { code } }), { status: 401 })
         : new Response(JSON.stringify(account));
     }
+    if (url !== "/api/profile") return Response.json([]);
     if (options?.method === "PUT") writes++;
     if (operation === "load" || options?.method === "PUT") {
       lostSession = true;

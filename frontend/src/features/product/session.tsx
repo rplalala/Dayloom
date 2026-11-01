@@ -137,6 +137,7 @@ type Session = {
     data: Record<string, string>,
   ) => Promise<void>;
   logout: () => Promise<void>;
+  deleteAccount: (password: string) => Promise<void>;
   refresh: () => Promise<void>;
 };
 const SessionContext = createContext<Session | null>(null);
@@ -437,6 +438,39 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  async function deleteAccount(password: string) {
+    const owner = accountRef.current;
+    if (!owner || loggingOut.current) throw new Error("Log in again before deleting your account.");
+    const stillCurrent = () => accountRef.current?.id === owner.id && accountRef.current?.csrf_token === owner.csrf_token;
+    let response: Response;
+    try {
+      response = await fetch("/api/auth/account", {
+        method: "DELETE", credentials: "same-origin",
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": owner.csrf_token },
+        body: JSON.stringify({ password, confirmed: true }),
+      });
+    } catch {
+      if (stillCurrent()) await refresh();
+      throw new Error("Could not confirm account deletion. Check your connection and try again.");
+    }
+    if (response.status !== 204) {
+      const body = await response.json().catch(() => null);
+      if (response.status === 401 && stillCurrent()) await refresh();
+      const messages: Record<string, string> = {
+        protected_test_account: "The default test account cannot be deleted.",
+        invalid_password: "Your current password is incorrect.",
+        account_tasks_active: "Stop active planning tasks before deleting your account.",
+      };
+      throw new Error(messages[body?.detail?.code] || "Your account could not be deleted. Check your session and try again.");
+    }
+    invalidate(owner.id);
+    if (stillCurrent()) {
+      epoch.current++;
+      blockCurrentSession();
+      clear();
+    }
+  }
+
   function editBrief(next: Brief) {
     if (status === "loading" || status === "expired") return;
     recovery.current.brief = next;
@@ -546,6 +580,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setActionId,
         authenticate,
         logout,
+        deleteAccount,
         refresh,
       }}
     >
