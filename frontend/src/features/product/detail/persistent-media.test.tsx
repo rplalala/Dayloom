@@ -51,3 +51,24 @@ it('recovers an owned cover using its database version with no unbounded image r
   expect(addresses).toHaveLength(2);
   expect(screen.getByRole('img')).toHaveAttribute('src', '/dayloom/nature.svg');
 });
+
+it('keeps separate database versions for same-theme supporting slots', async () => {
+  const addresses: URL[] = [];
+  const supporting = (i: number) => ({ status: 'available', kind: 'atmosphere', provider: 'Unsplash',
+    theme: 'meal', image_url: `https://images.unsplash.com/${i}`, source_url: 'https://unsplash.com/photos/source',
+    authors: [{ name: 'Author', url: 'https://unsplash.com/@author' }], cache_revision: version(i) });
+  vi.stubGlobal('fetch', vi.fn(async (address: string) => {
+    addresses.push(new URL(address, 'http://localhost'));
+    return Response.json({ items: { left: supporting(1), right: supporting(2) } });
+  }));
+  const { result } = renderHook(() => usePlaceMedia('/api/trips/one/supporting-media', ['left', 'right'], {
+    owner: 'alice', generation: photoGeneration('alice'), snapshot: 'one',
+    provider: 'Unsplash', kind: 'atmosphere', themes: { left: 'meal', right: 'meal' },
+  }));
+  await waitFor(() => expect(result.current.items.right?.status).toBe('available'));
+  expect(result.current.items.right.cache_revision).toBe(version(2));
+  act(() => result.current.imageFailed('right', result.current.items.right));
+  await waitFor(() => expect(addresses).toHaveLength(2));
+  expect(addresses[1].searchParams.get('refresh')).toBe(version(2));
+  expect(addresses[1].searchParams.getAll('slot')).toEqual(['right']);
+});

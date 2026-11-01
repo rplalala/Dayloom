@@ -102,7 +102,7 @@ def resource_version(row):
 
 def _resource(connection, kind, resource, owner, *, lock=False):
     if kind == "trips":
-        query = ("SELECT revision,media_bindings,destination,media_cache FROM app.trips "
+        query = ("SELECT media_bindings,destination,media_cache FROM app.trips "
                  "WHERE owner_id=%s AND id=%s")
     else:
         query = ("SELECT snapshot,media_bindings,media_cache FROM app.itinerary_previews "
@@ -110,21 +110,32 @@ def _resource(connection, kind, resource, owner, *, lock=False):
     return connection.execute(query + (" FOR UPDATE" if lock else ""), (owner, resource)).fetchone()
 
 
-def owned_scope(kind, resource, owner):
-    """Decided previews follow the existing saved-trip delegation before cache access."""
+def owned_context(kind, resource, owner):
+    """Read authorization, bindings and detail from one repeatable-read snapshot."""
+    from backend.app.product.saved_store import SavedStore
+
+    original_kind = kind
     with connect() as connection:
+        connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY")
         if kind == "previews":
             preview = connection.execute(
                 "SELECT state,saved_trip_id FROM app.itinerary_previews "
                 "WHERE owner_id=%s AND id=%s",
                 (owner, resource),
             ).fetchone()
+            if preview is None:
+                raise HTTPException(404, {"code": "media_resource_not_found"})
             if preview and preview["state"] == "saved" and preview["saved_trip_id"]:
                 kind, resource = "trips", preview["saved_trip_id"]
         row = _resource(connection, kind, resource, owner)
         if row is None:
+            if original_kind == "previews":
+                return None, None, {}
             raise HTTPException(404, {"code": "media_resource_not_found"})
-        return MediaScope(str(owner), kind, str(resource), resource_version(row))
+        scope = MediaScope(str(owner), kind, str(resource), resource_version(row))
+        detail = (row["snapshot"] if kind == "previews"
+                  else SavedStore().read_connection(connection, owner, resource))
+        return scope, detail, row["media_bindings"]
 
 
 class MediaCache:
@@ -140,7 +151,9 @@ class MediaCache:
         Empty metadata is a coordination revision, not a reusable negative result.
         """
         key = fingerprint(identity)
-        lock_key = fingerprint([scope.owner, scope.kind, scope.resource, key])
+        sharing_key = (fingerprint([identity[0], *identity[2:]])
+                       if identity[0] == "supporting" else None)
+        lock_key = fingerprint([scope.owner, scope.kind, scope.resource, sharing_key or key])
         loop = asyncio.get_running_loop()
         cancelled = threading.Event()
         futures = []
@@ -168,15 +181,28 @@ class MediaCache:
                     return {**media, "cache_revision": revision}
                 if row and not media and initial.get("revision") != revision:
                     return {"status": "unavailable", "cache_revision": revision}
-                future = asyncio.run_coroutine_threadsafe(acquire(), loop)
-                futures.append(future)
-                if cancelled.is_set():
-                    future.cancel()
-                try:
-                    media = display_metadata(future.result(timeout=32))
-                finally:
-                    if not future.done():
+                acquired_at = None
+                media = None
+                if sharing_key and not refresh:
+                    candidates = sorted((entry for entry in resource["media_cache"].values()
+                        if isinstance(entry, dict) and entry.get("sharing_key") == sharing_key
+                        and isinstance(entry.get("acquired_at"), str)),
+                        key=lambda entry: entry["acquired_at"])
+                    for entry in candidates:
+                        media = display_metadata(entry.get("media"))
+                        if media:
+                            acquired_at = entry["acquired_at"]
+                            break
+                if media is None:
+                    future = asyncio.run_coroutine_threadsafe(acquire(), loop)
+                    futures.append(future)
+                    if cancelled.is_set():
                         future.cancel()
+                    try:
+                        media = display_metadata(future.result(timeout=32))
+                    finally:
+                        if not future.done():
+                            future.cancel()
                 revision = str(uuid4())
                 with connection.transaction():
                     resource = _resource(
@@ -187,7 +213,9 @@ class MediaCache:
                     entries = {name: entry for name, entry in resource["media_cache"].items()
                                if isinstance(entry, dict)}
                     entries[key] = {"revision": revision, "media": media,
-                                    "acquired_at": datetime.now(UTC).isoformat() if media else None}
+                                    "sharing_key": sharing_key,
+                                    "acquired_at": (acquired_at or datetime.now(UTC).isoformat())
+                                    if media else None}
                     entries = dict(sorted(entries.items(), key=lambda item:
                         item[1].get("acquired_at") or "", reverse=True)[:1000])
                     while entries and len(json.dumps(entries).encode()) > 5 * 1024 * 1024:

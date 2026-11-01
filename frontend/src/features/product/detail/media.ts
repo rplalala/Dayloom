@@ -1,5 +1,5 @@
 import { createContext, useEffect, useRef, useState } from 'react';
-import { evictPhoto, photoFence, photoGeneration, readPhoto, subscribePhotos, type PhotoScope } from './photoSession';
+import { evictPhoto, hasSlotRevisions, photoFence, photoGeneration, readPhoto, subscribePhotos, type PhotoScope } from './photoSession';
 import { acquirePhotos } from './mediaRequests';
 
 export type DisplayMedia = {
@@ -54,7 +54,7 @@ export function usePlaceMedia(endpoint?: string, slots: readonly string[] = [], 
     });
     const fetchSlots = async (batch: string[], force = false, revision?: string) => {
       if (!valid()) return;
-      if (!force && cacheScope?.provider === 'Unsplash') {
+      if (!force && cacheScope?.provider === 'Unsplash' && !hasSlotRevisions(endpoint, cacheScope)) {
         const shared = Object.fromEntries(batch.flatMap(slot => {
           const photo = readPhoto(endpoint, cacheScope, slot) || themeResults.get(cacheScope.themes?.[slot] || 'general');
           return photo ? [[slot, photo]] : [];

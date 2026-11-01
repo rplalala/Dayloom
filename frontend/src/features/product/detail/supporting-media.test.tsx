@@ -19,7 +19,7 @@ function Photos({ chosen = slots }: { chosen?: string[] }) {
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 
-it('merges same-theme lookups across page batches and leaves neighbors unchanged on refresh', async () => {
+it('loads per-slot metadata across page batches and leaves neighbors unchanged on refresh', async () => {
   let calls = 0;
   vi.stubGlobal('fetch', vi.fn(async (url: string) => {
     const requested = new URL(String(url), 'http://localhost').searchParams.getAll('slot');
@@ -28,11 +28,11 @@ it('merges same-theme lookups across page batches and leaves neighbors unchanged
   }));
   render(<Photos />);
   await waitFor(() => expect(JSON.parse(screen.getByRole('status', { name: slots[0] }).textContent!)[slots[13]]?.status).toBe('available'));
-  expect(calls).toBe(1);
+  expect(calls).toBe(2);
   const before = JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!).entries;
   fireEvent.click(screen.getByRole('button', { name: `Refresh ${slots[0]}` }));
-  await waitFor(() => expect(calls).toBe(2));
-  await waitFor(() => expect(JSON.parse(screen.getByRole('status', { name: slots[0] }).textContent!)[slots[0]]?.image_url).toContain('/2?'));
+  await waitFor(() => expect(calls).toBe(3));
+  await waitFor(() => expect(JSON.parse(screen.getByRole('status', { name: slots[0] }).textContent!)[slots[0]]?.image_url).toContain('/3?'));
   const after = JSON.parse(sessionStorage.getItem('dayloom.photos.session.v1')!).entries;
   expect(after.filter((entry: { key: string }) => JSON.parse(entry.key)[6] !== slots[0])).toEqual(before.filter((entry: { key: string }) => JSON.parse(entry.key)[6] !== slots[0]));
 });
@@ -41,10 +41,10 @@ it.each(['owner', 'resource'])('merges concurrent subscribers and rejects late w
   let resolve!: (response: Response) => void;
   const fetch = vi.fn(() => new Promise<Response>(done => { resolve = done; }));
   vi.stubGlobal('fetch', fetch);
-  render(<><Photos chosen={[slots[0]]} /><Photos chosen={[slots[1]]} /></>);
+  render(<><Photos chosen={[slots[0]]} /><Photos chosen={[slots[0]]} /></>);
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
   invalidatePhotos({ owner: 'alice', ...(kind === 'resource' && { resource: '/api/trips/owned/media' }) });
   resolve(new Response(JSON.stringify({ items: { [slots[0]]: photo(1) } })));
-  await waitFor(() => expect(JSON.parse(screen.getByRole('status', { name: slots[1] }).textContent!)).toEqual({}));
+  await waitFor(() => expect(screen.getAllByRole('status', { name: slots[0] }).map(node => JSON.parse(node.textContent!))).toEqual([{}, {}]));
   expect(sessionStorage.getItem('dayloom.photos.session.v1')).not.toContain('images.unsplash.com');
 });

@@ -12,5 +12,5 @@ END;
 $$;
 CREATE TRIGGER preview_media_changed BEFORE UPDATE OF state,snapshot,media_bindings
     ON app.itinerary_previews FOR EACH ROW EXECUTE FUNCTION app.invalidate_resource_media();
-CREATE TRIGGER trip_media_changed BEFORE UPDATE OF destination,media_bindings,revision
+CREATE TRIGGER trip_media_changed BEFORE UPDATE OF destination,media_bindings
     ON app.trips FOR EACH ROW EXECUTE FUNCTION app.invalidate_resource_media();

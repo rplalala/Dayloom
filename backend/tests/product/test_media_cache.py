@@ -234,3 +234,81 @@ def test_discard_during_acquisition_cannot_publish_or_resurrect_images(client): 
     finally:
         release.set()
         client.app.dependency_overrides.pop(get_media_providers, None)
+
+
+def test_title_only_rename_reuses_existing_image_urls(client, images):  # noqa: F811
+    owner = register(client)
+    detail = bound_preview(owner["id"])
+    headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": owner["csrf_token"]}
+    saved = client.post(f"/api/previews/{detail.id}/save", json={}, headers=headers).json()[
+        "saved_trip_id"
+    ]
+    path = f"/api/trips/{saved}/media"
+    before = client.get(path).json()
+    assert client.patch(f"/api/trips/{saved}", headers=headers, json={
+        "title": "A new title", "revision": 1,
+    }).status_code == 200
+    assert client.get(path).json() == before
+    assert len(images) == 2
+
+
+def test_binding_change_between_context_reads_never_returns_old_place(client, images, monkeypatch):  # noqa: F811
+    from psycopg.types.json import Jsonb
+
+    from backend.app.product import media_cache
+    from backend.app.product.database import connect
+
+    owner = register(client)
+    detail = bound_preview(owner["id"])
+    path = f"/api/previews/{detail.id}/media"
+    read = media_cache._resource
+    changed = False
+
+    def racing_read(*args, **kwargs):
+        nonlocal changed
+        if not changed:
+            changed = True
+            with connect() as connection:
+                connection.execute(
+                    "UPDATE app.itinerary_previews SET media_bindings=%s WHERE id=%s",
+                    (Jsonb({"activity:stop": "new-place"}), detail.id),
+                )
+        return read(*args, **kwargs)
+
+    monkeypatch.setattr(media_cache, "_resource", racing_read)
+    response = client.get(path)
+    assert changed
+    assert response.status_code == 404 or (
+        response.status_code == 200
+        and all("left-place" not in str(request.url) for request in images)
+    )
+    refreshed = client.get(path)
+    assert refreshed.status_code == 200
+    assert refreshed.json()["items"]["activity:stop"]["status"] == "available"
+
+
+def test_supporting_slots_share_photographs_but_keep_independent_refresh_versions(client, images):  # noqa: F811
+    from backend.tests.product.test_saved import pending
+
+    owner = register(client)
+    detail = pending(owner["id"], days=[{"date": "2020-01-01", "activities": [
+        {"activity_id": name, "title": "Meal", "activity_kind": "generic_activity",
+         "time_use": "scheduled", "atmosphere_theme": "meal",
+         "start_time": "2020-01-01T10:00:00", "end_time": "2020-01-01T11:00:00"}
+        for name in ("first", "second")
+    ]}])
+    path = f"/api/previews/{detail.id}/supporting-media"
+    first = client.get(path, params={"slot": "activity:first"}).json()["items"]["activity:first"]
+    second = client.get(path, params={"slot": "activity:second"}).json()["items"]["activity:second"]
+    assert first["image_url"] == second["image_url"]
+    assert first["cache_revision"] != second["cache_revision"]
+    assert len(images) == 2
+    refreshed = client.get(path, params={
+        "slot": "activity:second", "refresh": second["cache_revision"],
+    }).json()["items"]["activity:second"]
+    assert refreshed["cache_revision"] != second["cache_revision"]
+    assert len(images) == 4
+    current = client.get(path).json()["items"]
+    assert current["activity:first"] == first
+    assert current["activity:second"] == refreshed
+    assert len(images) == 4
