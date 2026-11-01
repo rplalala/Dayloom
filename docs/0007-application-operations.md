@@ -476,9 +476,12 @@ data deletion; it does not purge database backups or existing operational logs.
 
 ### Profile defaults and new-brief initialization
 
-The owner-only profile API and `/account` form maintain display name, supported currency,
-deduplicated interests, nullable pace, deduplicated soft transport priorities and literal
-additional preference text. Initials derive from the display name; email is read-only.
+The `/account` form maintains display name, supported currency, deduplicated interests,
+nullable pace and deduplicated soft transport priorities through the owner-only profile API.
+Free-text **Additional preferences** belongs to the individual Plan, not Profile.
+The existing API/database `notes` field remains for compatibility and is preserved on
+profile updates, but it is neither shown in Profile nor inherited by new briefs.
+Initials derive from the display name; email is read-only.
 The profile migration adds database domain and uniqueness checks. Account deletion
 follows the [owner deletion contract](#account-deletion).
 
@@ -489,11 +492,14 @@ including an intentionally cleared or restored blank brief. A stale defaults res
 cannot overwrite an intervening edit, accepted draft or account change. Explicitly
 starting another brief resets that initialization and reads the latest defaults once.
 For an authenticated traveler, the header/mobile **Plan a trip** links and the shell/home
-**Start planning** and **Plan my trip** actions also treat a completely empty restored editor as a
-new brief. This applies only when all fields match the initial blank form and there
-is no draft identity, draft title or operation recovery key. Existing input, custom
-currency and preferences remain unchanged. Clear leaves the editor empty until a
-subsequent explicit planning entry; ordinary route restoration does not reapply defaults.
+**Start planning** and **Plan my trip** actions read the latest defaults when the editor
+is either completely empty or still contains untouched automatic defaults. The latter
+retains its `new` origin across reloads, allowing saved interest changes to replace
+earlier defaults even when pace or transport was already filled. There must be no draft
+identity, draft title or operation recovery key. Manual edits, restored user input,
+custom currency and manually selected preferences remain unchanged. Clear leaves the
+editor empty until a subsequent explicit planning entry; ordinary route restoration
+does not reapply defaults.
 Profile updates never mutate an open editor, and planning services do not read profiles
 to overlay confirmed requests. Draft identity and revision share the account-scoped
 recovery boundary so expiry can quarantine them alongside their editor content.
