@@ -183,7 +183,7 @@ Saved provider observations are not charged again.
 
 Separate synthetic Repair engineering diagnostics consumed USD 0.003531110;
 they are excluded from selected-result cost and case scores. Their observations
-belong to the [Repair engineering record](../../docs/records/v0-v3/v3-development.md#post-refactor-model-smoke).
+belong to the [Repair engineering record](../../docs/records/v0-v3/v3-development.md#exploration-and-retained-result-redesign).
 Ordinary cases execute only the Repair strategies needed by their actual targets.
 
 The [accounting view](analysis/resources/accounting.json) distinguishes these scopes

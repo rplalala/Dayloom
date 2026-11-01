@@ -8,6 +8,7 @@ and preferences, then preview, save and revisit your trip.
 [Run locally](docs/guides/deployment.md) ·
 [Verify the results](docs/guides/verification.md) ·
 [Reproduce experiments](docs/guides/experiments.md) ·
+[Datasets](data/tripworld/README.md) ·
 [Benchmark report](benchmark/report.md)
 
 The online prototype uses browser-local data. The full application runs locally
@@ -100,9 +101,9 @@ Python and frontend dependencies are pinned in `uv.lock` and
 
 Download the [TripWorld release](https://drive.google.com/drive/folders/14VjxQU7jR8PGuiMWes5uaPLIOdrMNaQ0?usp=sharing)
 to use V2/V3 without rebuilding embeddings. It contains processed data, saved
-vectors, provenance and checksums. The [deployment guide](docs/guides/deployment.md)
-covers verification and restoration; large runtime data is distributed separately
-from the source tree.
+vectors, provenance and checksums. The [data guide](data/tripworld/README.md) explains
+its source, processing and contents; the [deployment guide](docs/guides/deployment.md)
+covers setup and restoration. Large runtime data is distributed separately from source.
 
 ## Documentation
 

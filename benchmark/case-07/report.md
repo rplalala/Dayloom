@@ -193,7 +193,7 @@ establish a full-suite pass. Runtime fingerprints were identical before and afte
 that interrupted run. Frontend validation passed 101 tests, production build
 and lint; backend/tool Ruff and 45 changed Python format checks passed. Independent
 Standards and Spec reviews finished with zero unresolved findings after the two
-prompt/Repair corrections. The [engineering record](../../docs/records/evaluation/intake-identity-usage.md#activity-semantics-implementation-and-offline-validation-2026-10-16)
+prompt/Repair corrections. The [engineering record](../../docs/records/evaluation/intake-identity-usage.md#review-readiness-and-activity-semantics)
 owns the initial failures, corrections and retest sequence.
 
 At the original 16 October delivery checkpoint, saved-material readers accepted

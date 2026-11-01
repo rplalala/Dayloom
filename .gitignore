@@ -29,6 +29,9 @@ coverage/
 Thumbs.db
 
 # Local project instructions and context
+/AGENTS.md
+/benchmark/AGENTS.md
+/docs/agents/
 /logs/
 
 /thesis_notes/

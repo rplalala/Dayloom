@@ -39,7 +39,7 @@ template. Database fields edited through `/config` are saved as `.env` overrides
 | — | `AZURE_OPENAI_API_KEY` | Foundry model and web-search credential |
 | — | `OPENAI_API_KEY` | TripWorld query embeddings |
 | — | `GOOGLE_MAPS_API_KEY` | Planning and place photographs |
-| — | `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional atmosphere photos; `UNSPLASH_API_KEY` remains an alias |
+| — | `UNSPLASH_API_KEY` | Optional atmosphere photos |
 | — | `PRODUCT_JWT_SECRET` | Private signing key, at least 32 characters; local startup generates one only when absent |
 
 Explicit settings arguments take precedence over process environment, dotenv,
@@ -725,9 +725,9 @@ selection; injected external clients retain responsibility for their own limits.
 
 ## Historical changes
 
-September capacity calibration and transport integration changed operating limits
-and moved common transport policy into the shared V1–V3 path. Their original values,
-rationale and checks remain in [V3 development](../docs/records/v0-v3/v3-development.md)
-and [closeout](../docs/records/v0-v3/v3-closeout.md). The current profile tables above
-supersede those historical operating values. Later semantic corrections and short
-references retained the same request-owned limits and source-ownership rules.
+September capacity calibration moved common transport policy into the shared
+V1–V3 path. [V3 development](../docs/records/v0-v3/v3-development.md) and the
+[engineering milestone](../docs/records/v0-v3/v3-milestone.md#configuration-and-verification)
+summarize that rationale and its scoped checks. The profile tables above define
+current operating values. Later semantic corrections and short references retained
+request-owned limits and source ownership.

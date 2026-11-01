@@ -197,7 +197,7 @@ The functional traceability table above connects user needs to those detailed ow
 
 ## 9. Development and validation approach
 
-[AGENTS.md](../AGENTS.md) owns scoped development, proportionate checks and review rules.
+Development uses scoped changes, proportionate checks and review.
 [Dated records](records/README.md) distinguish implementation from observed validation and
 approved freezes. Routine external-boundary tests use fixtures or mocks; live pilots need
 an approved attempt and budget.

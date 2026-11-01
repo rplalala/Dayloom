@@ -49,7 +49,8 @@ page supports a custom key or explicit replacement generation.
 ## 3. Prepare retrieval data and vocabularies
 
 Download and extract the [TripWorld release](../../README.md#tripworld-database-release)
-beside the source directory:
+beside the source directory. The [data guide](../../data/tripworld/README.md) explains
+the upstream source, processing and release contents.
 
 ```text
 workspace/
@@ -117,7 +118,7 @@ change it after entering. Configure the database connection and services you use
 | Azure Foundry | Planner model and web search; use the supported `gpt-6-luna` deployment profile |
 | OpenAI | TripWorld query embeddings |
 | Google Maps | Places, routes and place photographs |
-| Unsplash | Optional atmosphere photographs |
+| Unsplash | Optional atmosphere photographs (`UNSPLASH_API_KEY`) |
 
 Save your settings, stop with Ctrl+C, and run `uv run dayloom start` again.
 Foundry endpoint/deployment are stored in ignored `product.yaml`; database overrides

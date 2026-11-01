@@ -42,7 +42,7 @@ does not prohibit other modes; an empty selection expresses no preference.
 unbooked. **Free window** describes discretionary availability with no adopted
 activity commitment. These are planning declarations, separate from primary-visit
 role, fixed-time requirements and verified facts. The detailed legal combinations
-belong to the [activity contract](docs/0003-itinerary-transport.md#activity-semantics-contract-phase-2).
+belong to the [activity contract](docs/0003-itinerary-transport.md#activity-semantics).
 
 ## Repair
 

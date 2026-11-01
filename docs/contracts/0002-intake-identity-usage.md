@@ -32,7 +32,7 @@ Use a versioned evaluation wire reader rather than running every product validat
 `itinerary_1` (including historically absent output_version), `itinerary_2` and
 `itinerary_3` are recognized; original absence remains recorded. Historical missing
 roles become unknown in the derived view; optional transfer/reference arrays retain
-absent-field markers. The [current activity contract](../0003-itinerary-transport.md#activity-semantics-contract-phase-2)
+absent-field markers. The [current activity contract](../0003-itinerary-transport.md#activity-semantics)
 requires explicit legal role/time-use declarations and attributable intervals in new
 output. New structured journeys select a unique consecutive primary pair. Preserve
 additional result fields without exposing them to quality readers. Unknown major
@@ -444,7 +444,7 @@ and the current-session child required by smoke policy are mandatory. Historical
 failure evidence, raw response and consumed directory remain untouched; FAIL/UNKNOWN are
 valid outcomes without an all-match acceptance target. See the
 [operational guide](../guides/experiments.md#development-checks)
-and [preparation record](../records/evaluation/intake-identity-usage.md#fresh-v0-smoke-preparation-2026-10-06).
+and [preparation record](../records/evaluation/intake-identity-usage.md#identity-evolution-and-physical-association).
 
 The complete `identity_versioned_replay` stores independent evidence and the optional
 V0 result. Consumers reconstruct the exact report from the original intake before using
@@ -665,7 +665,7 @@ files must remain available locally; an isolated report is insufficient. Supplie
 reviews retain the native review trust boundary; replay does not certify the reviewer.
 Score/mask formulas are unchanged. Identity eligibility proves neither coordinates nor
 route feasibility. See the [CLI guide](../guides/experiments.md#independent-requirements-and-activity-review)
-and [dated acceptance](../records/evaluation/routes.md#v0-identity-adoption-acceptance-2026-10-05).
+and [dated acceptance](../records/evaluation/routes.md#seoul-acquisition-and-identity-diagnosis).
 
 ### Historical uniform LLM identity judgment
 
@@ -915,7 +915,7 @@ GPT-6 Luna pricing for this task's Foundry estimates; that proxy is a documented
 not a claim about Azure charges. Current-source prices used retrospectively and missing
 cache/service-tier details must be stated. The [package guide](../guides/verification.md#verify-resource-and-cost-claims)
 contains runnable import examples; dated acceptance belongs to the existing
-[usage record](../records/evaluation/intake-identity-usage.md#offline-cost-acceptance-2026-10-05).
+[usage record](../records/evaluation/intake-identity-usage.md#usage-and-cost-accounting).
 
 ### Selected-version usage preparation and capture
 
@@ -1049,8 +1049,8 @@ successful planner completion; readable malformed files retain their exact hashe
 
 Available local evidence is distinct from producer completion, independent source review,
 qualified four-version intake, quality PASS and actual billing. Storage limits are capture
-capacity, not a spending guard. Live dispatch still requires the prepared, explicitly
-approved [smoke handoff](../agents/smoke-tests.md), and performs no independent evaluation.
+capacity, not a spending guard. Live dispatch requires a prepared, explicitly approved
+handoff with source bindings and request/time/cost limits. It performs no independent evaluation.
 
 ### Selected-generation opportunity capture
 

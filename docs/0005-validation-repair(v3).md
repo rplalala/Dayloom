@@ -1,535 +1,293 @@
-# Structured validation and targeted repair
+# Structured validation and targeted Repair
 
-Status: Validation, bounded Repair search and final Rich completion are implemented.
-[The development record](records/v0-v3/v3-development.md#rich-completion-and-density-policy-revision-2026-10-24)
-preserves offline validation, review findings and corrections.
-The [search contract](#accepted-bounded-search-redesign) defines exploration,
-retained results and proposal strategies.
+V3 validates the shared V2 primary result, proposes bounded authorized edits and
+revalidates the selected itinerary. Internal findings guide Repair; independent
+quality remains the evaluator's responsibility. [Development evidence](records/v0-v3/v3-development.md)
+records consequential design changes and observed limitations.
 
 ## Validation is a separate stage
 
-V3 consumes the shared V2 primary result, normalized evidence and source-linked requirements.
-The validator produces structured findings with evidence/applicability boundaries. Confirmed
-contradictions, missing facts and optional quality observations are not interchangeable.
-UNKNOWN never becomes PASS simply because a model offers a plausible explanation.
-
-Validation includes supported requirement, schedule, coverage, repetition and factual
-consistency policies. Applicability depends on available evidence and declared scope.
-This is planner-internal validation, not the independent evaluator's ground truth.
+The read-only validator consumes normalized evidence and source-linked requirements.
+It emits PASS, CONFIRMED, NEEDS_REVIEW or UNKNOWN; only CONFIRMED is a violation.
+A finding is not operation permission, and plausible model reasoning cannot promote
+an unknown fact to PASS.
 
 ### Supported findings and factual limits
 
-[Validation](../backend/app/versions/v3/validation.py) emits `PASS`, `CONFIRMED`,
-`NEEDS_REVIEW` or `UNKNOWN`; only `CONFIRMED` is a violation. A finding or improvement
-target is distinct from the later operation permission. Its supported boundaries are:
-
-| Finding family | Current scope |
+| Family | Supported boundary |
 | --- | --- |
-| Named/semantic and primary policy | Source-bound named inclusion/count/date obligations, supported semantic count/date goals and primary-role/exception policy; arbitrary open text remains unassessed. See [shared semantics](0002-requirements-evidence.md#semantic-qualification-and-multiplicity). |
-| Dated total visits | Source-linked all-primary occurrence bounds; a hard proven mismatch is CONFIRMED, an uncertain role/date is UNKNOWN. See [dated-count protection](#dated-count-protection). |
-| Overlap, repetition and coverage | Supported schedule conflicts, unauthorized canonical repeats and minimum coverage; optional quantity/overfull review remains separate. See [counting](0003-itinerary-transport.md#generation-diagnostics-and-counting-contract). |
-| Opening | Complete visit containment in adopted structured intervals, with selected-hours provenance and outside-hours magnitude; this is not admission or ticket verification. |
-| Route | Actual directed transition bindings and applicable evidence; missing mode/departure/binding remains UNKNOWN. |
-| Visitor suitability and budget | Admission eligibility, reservation/ticket possession, special-area access and verified whole-trip affordability remain UNKNOWN. Reported conditions are context, not certified fulfillment. |
+| Named/semantic requirements | Source-linked inclusion/count/date and supported category goals; arbitrary prose remains unassessed |
+| Dated total visits | All-primary occurrence bounds; proven hard mismatch is CONFIRMED, uncertain role/date is UNKNOWN |
+| Schedule/policy | Overlap, unauthorized canonical repetition and minimum coverage; optional quantity remains review |
+| Opening | Complete visit containment in adopted applicable intervals, not admission/ticket certification |
+| Routes | Actual directed transition and mode/departure-applicable evidence |
+| Access and budget | Reservation possession, special-area access, suitability and whole-trip affordability are not verified capabilities |
 
-[Opening selection](../backend/app/evidence/opening_hours.py) prefers applicable adopted
-official date/range facts, then request-window current Places periods and eligible regular
-weekly periods. Conflicting, invalid or missing applicable material retains UNKNOWN.
-Without an explicit visit binding, the application uses the recorded `obey_place_hours`
-scheduling policy. An explicit exterior/non-entry binding cannot acquire an entry-hours
-PASS. A missing venue timezone may use the single recognized timezone of related scheduled
-places; this is planner context, not the evaluator's independent timezone evidence.
-The selected intervals may cover overnight visits; older whole-venue/date-only limitations
-in records describe their earlier checkpoints. Even an hours PASS establishes only that
-adopted-hours condition, not real-world access or independent factual completeness.
+Opening selection prefers applicable adopted official date/range facts, then
+request-window current Places periods and eligible regular weekly periods. Missing,
+invalid or conflicting material remains UNKNOWN. Explicit exterior/non-entry binding
+cannot receive an entry-hours PASS; otherwise the recorded `obey_place_hours` policy
+applies. Overnight intervals are supported. A missing venue zone may use one recognized
+consistent planning context, independently of evaluator timezone evidence.
 
 ## Authority precedes editing
 
-Target selection and operation permissions are application-owned. Hard protections,
-required/excluded identity obligations, fixed time and existing accepted state constrain
-each proposed patch. Optional quantity review is recorded separately from minimum daily
-coverage. A sparse or overfull day alone does not grant unrestricted rescheduling.
+Application-owned targets and permissions protect fixed time, required/excluded
+identities, count/date obligations and accepted state. Opening/route conflicts may
+permit duration-preserving retiming and bounded moves. Delete/replace requires a
+dispensable visit and all relevant protections; shortening a visit to fit is not an
+implicit operation. Removed-obligation progress is distinct from verified resolution.
 
-Confirmed opening/route conflicts can authorize duration-preserving retiming of affected
-main visits and policy-bounded moves. Delete/replace requires the existing dispensable-visit
-and sourced count/date/access protections; the application does not shorten a visit merely
-to fit hours. Removed-obligation progress stays distinct from verified resolution, and
-retained route endpoints require applicable checks of the actual changed chain.
+Repair receives current activities with computed `duration_seconds`, canonical
+candidates, target worksheets, allowed operations, routes and bounded feedback.
+The model proposes edits/dispositions, never provider facts or its own authority.
+`scope.permissions` controls existing-activity edits; dated `addition_candidates`
+can independently authorize additions even with no existing-edit permissions.
+Malformed structured output fails before adoption without partial JSON salvage.
 
-[Required category visits](0002-requirements-evidence.md#required-category-visits)
-use the same bounded count-repair path, including hard one-off obligations. All patch
-and day-replan acceptance preserves attained hard category coverage and distinct-date
-progress; quantity optimization cannot remove the sole supported required visit.
-Required category coverage that remains unverified emits an UNKNOWN finding and
-incomplete policy status rather than a confirmed, automatically repairable deficit.
-
-Repair receives compact current context, canonical candidates, target worksheets, allowed
-operations, route options and bounded feedback. Each editable activity includes
-application-computed `duration_seconds` for its current
-interval, so preservation instructions do not require timestamp subtraction by the model.
-The model proposes edits and target dispositions; it cannot author provider evidence or
-expand its own operation scope. Invalid structured
-output fails before adoption; partial malformed JSON is not salvaged as an itinerary.
-`scope.permissions` governs existing-activity edits. Dated `addition_candidates` provide
-independent add authority even when that permission list is empty. `operation_guidance`
-links this distinction to the current objective, candidate authorizations and transport.
+Required category repair shares the bounded count path and protects attained hard
+count/distinct-date coverage. Unverified category coverage is UNKNOWN, not an
+invented automatically repairable deficit.
 
 ### Dated-count protection
 
-The [daily visit contract](0002-requirements-evidence.md#dated-total-primary-visit-counts)
-owns numeric meaning and counting. `daily_visit_count` findings identify each obligation,
-date, target and observed bounds. A proven shortfall can authorize dated additions; a
-proven surplus can authorize deletions subject to existing named/count protections.
-Candidate selection and operation permissions remain application-owned. Hard dated counts
-and their feasible pace projection replace default quantity targets on that date; an
-ordinary overfull target cannot require fewer visits than a hard minimum. Zero totals
-exempt minimum sightseeing coverage without clearing full-day protections.
+[Daily count semantics](0002-requirements-evidence.md#dated-total-primary-visit-counts)
+govern findings, bounds and target dates. Proven shortage/surplus can authorize
+additions/deletions within other protections. Hard counts replace default quantity
+on that date; zero exempts minimum coverage without clearing full-day protection.
 
-For a hard minimum, the pace objective considers only counts at or above that sourced
-floor. It retains the existing curve's differences within this legal domain and subtracts
-its best attainable penalty as the baseline. For example, ordinary minimum three targets
-three rather than two; four remains legal with a larger soft penalty. This does not invent
-an exact or maximum count. `hard_daily_count_feasible_pace_1` records the projection and
-baseline. It changes Planner optimization only; independent density scoring retains its
-separately reviewed policy. Counting and role/date uncertainty use the same dated-count
-assessment as the hard finding.
+For a hard minimum, `hard_daily_count_feasible_pace_1` restricts soft optimization to
+counts at/above the floor and subtracts the best feasible baseline. Ordinary minimum
+three therefore targets three, not two; four remains legal with greater soft penalty.
+This is a planner projection, not a change to independent density scoring.
 
-Every complete local patch, affected-day replan and adoption comparison checks each hard
-daily obligation. PASS cannot become violated or uncertain; UNKNOWN cannot become a
-proven failure; an existing failure cannot worsen or become uncertain. Both source and
-destination dates of moves are protected. Conditional edit preparation may offer an
-atomic replacement, but cannot waive the final check. Lower aggregate soft-pace deductions
-never compensate a hard regression. Final selection repeats ordinary source/time and
-requirement validation; original findings and rejected proposals remain evidence.
+Every complete patch, affected-day replan and adoption comparison protects both
+source and destination dates: PASS cannot become failed/uncertain; UNKNOWN cannot
+become proven failure; existing failure cannot worsen or become uncertain. Aggregate
+soft gains never offset hard regression. Final selection repeats these checks.
 
 ## Components, adoption and fallback
 
-The [joint component contract](#joint-repair-and-component-atomicity) defines dependencies,
-ordering, adoption and safe fallback. Independent rejected components preserve earlier
-accepted improvements; missing facts never become a successful repair claim.
+Dependency components determine atomic acceptance. A rejected independent component
+preserves earlier checked improvements; uncertain facts cannot establish successful
+repair. The selected itinerary always retains matching evidence and validation.
 
 ## Transport and resource boundaries
 
-Repair scope inherits the shared hard transport-mode set. The Repair entry intersects
-its scoped modes with the authoritative requirement set before candidate work or model
-proposals. Cached DRIVE evidence and unchanged saved transfers cannot bypass a
-WALK/TRANSIT restriction; final validation checks adopted modes again.
+Repair intersects scoped modes with authoritative hard allowed modes before candidate
+work. Cached/unchanged disallowed transfers cannot bypass that set. Both sides of
+changed adjacency need applicable checks at their actual departure. Representative
+options are preparation, not insertion feasibility.
 
-Changed real adjacencies require both neighboring legs to be considered at applicable
-departure times. Representative route preparation is not insertion feasibility. Fixed
-occupancy, required visits, daily burden and separately represented application reserves
-remain binding. Missing evidence permits only the explicitly coded conservative fallback,
-not fabricated driving or transit estimates.
+One whole-request deadline begins before lazy retrieval setup. Stage work shares
+request caches, counters and failures; a later round resets none. Product uses the
+[acceptance profile](../config/README.md#product-acceptance-profile), with development
+defaults separately selectable. [Configuration](../config/README.md#counting-timing-and-invariants)
+owns current ceilings and reserves. Cancellation, exhaustion, rejection, no authorized
+target and accepted Repair remain distinct outcomes.
 
-Rounds, per-stage work and total request deadlines are bounded by runtime configuration.
-Product acceptance selects the larger [resource profile](../config/README.md#product-acceptance-profile),
-including the union of scheduled and candidate identities in each model input. Independent
-development defaults remain selectable. Increasing those allowances does not change hard
-requirements, evidence checks or the rule that later failure retains the best accepted result.
-The V3 runner establishes the whole-request deadline before owned retrieval setup; later
-stages cannot reset it. Exhaustion, cancellation, no authorized target, rejected proposal
-and accepted repair are separate recorded outcomes. Final Nearby runs after final primary
-selection and cannot modify the accepted primary plan.
-
-Retrieval initialization is lazy. If the request expires before its factory runs, no
-runtime exists to release. A factory-created runtime is released once on timeout or
-cancellation; a caller-owned runtime remains caller-owned. Offline deadline regressions
-must establish which phase was reached before asserting its resource lifecycle, rather
-than relying on a short wall-clock delay to select that phase.
-
-Accepted draft and final selection use the shared
-[source-fact ownership boundary](0003-itinerary-transport.md#scheduled-activities-and-references).
-Final selection includes original supply and the verified Repair whitelist, so retaining
-or retiming a visit preserves its provider name and complete address just as add/replace
-does. This application normalization requires no extra model/Google call and does not
-make the read-only validator mutate its input or certify independent ground truth.
+A factory-created runtime is released once; no runtime exists if timeout precedes
+factory entry. Caller-owned runtimes remain caller-owned. Final normalization uses
+original supply plus verified Repair identities, preserving provider names/addresses
+on retained and retimed visits. Nearby runs once after normal final selection and
+cannot continue after terminal failure, cancellation or request expiry.
 
 ## Soft pace objective
 
-V3 Repair aims for zero soft pace deductions under
-[`rtpeval_daily_density_3`](contracts/0005-quality-human-review.md#daily-density).
-Zero is an optimization objective; retaining a residual does not invalidate output. The
-`quantity_review_enabled` flag enables this optional quantity optimization; opting out
-preserves hard Repair. A resolved pace policy supersedes the generic 2-5 quantity
-target on that date. Minimum daily coverage and hard visit protections remain separate.
+Optional `quantity_review_enabled` optimization targets zero deductions under
+`rtpeval_daily_density_3`; residual deductions do not invalidate generation.
+Hard Repair and minimum coverage remain active when optional quantity is disabled.
+A resolved pace supersedes generic two-to-five quantity targets.
 
-Read-only validation counts primary visit occurrences, including assessed visits that
-the model labels as generic; Nearby, transport and unlinked filler do not count.
-`soft_pace` findings retain source-linked policy, count, penalty and zero-penalty counts.
-Positive known penalties are review targets, never CONFIRMED violations; unavailable
-policy/roles/counts remain diagnostic uncertainty without guessed edit authority.
-The numeric curves live in `backend/pace_policy.py`; independent evaluation retains
-its own reviewed input policies and evidence rather than consuming planner interpretation.
+`soft_pace` findings retain source policy, count, penalty and zero-penalty counts.
+Known positive deductions are review targets, not CONFIRMED violations. Unknown
+roles/policy provide no guessed edit authority. Counting uses assessed main visits,
+including applicable legacy generic declarations; new-wire roles retain the
+[activity contract](0003-itinerary-transport.md#activity-semantics).
+Numeric curves live in `backend/pace_policy.py`; evaluator inputs remain independent.
 
-For a date covered by a fixed full-day `time_protections` entry, the internal pace
-objective projects the feasible primary-visit count to zero. An empty protection date
-list applies to every trip date. A known zero count has zero penalty; a known positive
-count has penalty 100, while unresolved activity roles retain UNKNOWN. The finding's
-`time_protection_projection` records `full_day_protection_pace_1`, the zero target and
-the applicable protections with their source references. This read-only projection
-leaves `daily_pace` and `daily_visit_constraints` unchanged. Existing fixed-time validation
-and patch authorization still protect the whole day, including against scheduled
-non-visit activities. Partial-day or unresolved protections do not receive this
-projection. Other dates retain their sourced daily counts and ordinary pace/coverage
-rules, including repair targets for unprotected blank days.
+Fixed full-day protection projects feasible count to zero through
+`full_day_protection_pace_1`: known zero has zero penalty, known positive has 100,
+and unresolved roles remain UNKNOWN. Empty protection dates apply to every trip date.
+The projection leaves original pace/count requirements unchanged. Partial or unresolved
+protections receive no projection; scheduled non-visit activities remain protected too.
 
-The application permits bounded additions or removal/movement of dispensable visits,
-then reuses existing mandatory count/date/time, role, coverage, route/occupancy and
-budget checks. [Search and retention](#exploration-and-retained-result) use aggregate
-deductions over the original comparable dates. Individual dates and intermediate states
-may worsen without becoming the delivered result. No role relabeling is an edit operation,
-and retained penalties do not fail V3 generation.
-`soft_pace` summaries in V3 outcome and stage result expose before/after days and mean,
-`reached`/`residual`/`unavailable` objective state, `rules_profile_id` and
-`is_failure_constraint=false`. Round patches, stop reasons and actual usage remain
-evidence of their own operations. V0-V2 and V3 draft
-acceptance gain no zero-penalty condition; independent evaluation still scores all normally.
+Bounded add/remove/move operations reuse ordinary requirement, coverage, role, route,
+occupancy and cost checks. Aggregate search may explore worse soft states; relabeling
+is not an operation. Outcome summaries retain before/after days and means,
+`reached`/`residual`/`unavailable`, policy ID and `is_failure_constraint=false`.
 
 ### Final Rich completion
 
-`soft_pace.completion` records a separate final result for Rich; it is null for other
-pace profiles. After revalidating the best retained itinerary, examine every requested
-date governed by default Rich. Each must have exactly three known primary visit
-occurrences. A mean count of three, progress on another date or accepted hard-only
-edits cannot satisfy this condition. Missing dates retain an explicit unmet or
-unavailable target; unresolved counts remain unavailable. An unresolved dated policy
-under a Rich default remains in this check.
+After revalidating the best retained result, inspect every date governed by default
+Rich. Each needs exactly three known primary occurrences; a mean of three cannot
+substitute. Missing dates and unresolved counts remain residual/unavailable, including
+unresolved overrides under a Rich default. Sourced counts, hard-count projections
+and full-day protection take precedence without becoming default-three satisfaction.
 
-Each day records its actual count, applicable target count, override kind and state
-(`satisfied`, `residual`, `unavailable`, `source_overridden`). Explicit sourced counts,
-fixed full-day protection and hard-count projections retain precedence; reaching their
-feasible baseline is recorded as source-overridden rather than default-three satisfaction.
-An unmet override remains residual. Short windows, unavailable candidates, opening/route
-restrictions and execution limits do not create user exceptions.
-
-| Completion status | Meaning |
+| Status | Meaning |
 | --- | --- |
-| `complete` | A retained repair meets every applicable Rich date and supported return check. |
-| `already_satisfied` | The verified initial itinerary meets those conditions without a retained repair. |
-| `partial` | A daily target remains unmet or a supported return check fails. |
-| `unavailable` | No known failure/residual takes priority, but required evidence is unresolved. |
-| `not_attempted` | Quantity review is disabled; hard Repair may still run. |
-| `source_overridden` | Every Rich date is covered by a satisfied sourced exception. |
+| `complete` | Retained Repair meets applicable Rich dates and supported return checks |
+| `already_satisfied` | Verified initial itinerary already meets them |
+| `partial` | A date remains unmet or a supported return check fails |
+| `unavailable` | Required evidence is unresolved, with no known failure taking priority |
+| `not_attempted` | Optional quantity review disabled |
+| `source_overridden` | All Rich dates have satisfied sourced exceptions |
 
-Completion requires no confirmed validation conflicts and no unresolved executable
-return checks, including applicable opening and route checks. A generic missing-binding
-route limitation does not block completion when the retained itinerary has neither
-adjacent route activities nor recorded transfers. Route adjacency uses the shared
-schedule, excluding free windows and elastic placeholders. Actual unresolved transitions
-still block completion; the original validation report retains its limitations. Budget,
-visitor suitability and open semantic requirements remain explicitly unsupported validation
-capabilities; they do not become verified facts when completion is reported. Existing
-patch admission, cost protections and execution budgets remain binding.
+Each day retains count, target, override kind and state. Short windows, missing
+candidates, routes or limits do not invent user exceptions. Completion requires no
+confirmed conflict or unresolved executable return check. A generic missing-binding
+limitation is nonblocking only when no actual adjacent route/transfer requires it.
+The same-day generic quantity UNKNOWN is nonblocking only with satisfied Rich target,
+minimum coverage and classified roles. Findings remain visible; neither exception
+certifies remaining-hour planning, budget, access or unsupported semantics.
 
-The generic same-day quantity observation stays `UNKNOWN` because remaining-hour
-planning is unsupported. It does not block Rich completion when that date's Rich
-target is satisfied, minimum coverage is satisfied, and no activity identity/role
-is unclassified. This exception applies only to the same-day default-target
-observation, not other coverage uncertainty. The original finding remains visible;
-completion does not certify remaining-time planning or promote UNKNOWN to PASS.
+For Rich, stage/final `ACCEPTED_COMPLETE` requires completion `complete`; otherwise
+accepted edits remain `ACCEPTED_PARTIAL`. Recompute from final validation rather than
+trusting a round or generic objective. An already-satisfied plan needs no fabricated
+Repair call. Product exposes a compatible [public projection](0007-application-operations.md#http-contract-map).
 
-For Rich, the stage and final runner cannot report `ACCEPTED_COMPLETE` unless final
-completion is `complete`; accepted edits otherwise retain `ACCEPTED_PARTIAL`. Round
-acceptance continues to describe its scoped patch. The runner recomputes completion
-from final validation, preserving the best itinerary even when optimization stops.
-The generic objective's `reached` state alone is insufficient to assert Rich Repair
-success, particularly under sourced exceptions. An already-satisfied plan does not
-require a fabricated Repair call. Product exposes the compatible public projection
-described in its [HTTP contract](0007-application-operations.md#http-contract-map).
+## Request flow and ownership
 
-Offline tests exercise authorization, regressions, component interactions, rejection and
-fallback with controlled evidence. Bounded historical live repairs demonstrate only their
-observed paths. They do not establish universal improvement or factual completeness, and
-do not retroactively validate later code. V0/V1/V2 retain independent paths without this
-repair stage.
+V3's post-primary hook runs after identity/date binding and before final Nearby.
+The immutable draft, original report, fairly reassessed draft, proposals, exploration
+and best retained result are distinct. Shared request counters and the entry deadline
+survive every strategy. Final schedule, semantics, transfers and validation bind the
+selected result; Nearby contributes no primary coverage.
 
-Implementation owners: [runner](../backend/app/versions/v3/runner.py),
+## Per-leg mixed transport
+
+Use allowed WALK, TRANSIT, DRIVE options in soft priority order, reusing applicable
+evidence first. A failed query retains its key; a distinct allowed mode may follow.
+
+| Mode | Configurable automatic window | Occupancy |
+| --- | --- | --- |
+| WALK | Provider distance ≤3 km and duration ≤45 min | Provider duration |
+| TRANSIT | Applicable total duration ≤45 min | Provider total, without duplicate access walking |
+| DRIVE | Provider duration ≤30 min | Provider duration + 10 min reserve |
+
+Geographic discovery filters (2 km WALK / 5 km motor) are not permanent venue labels.
+Missing-route fallback is limited to conservative WALK ≤1 km with 45-minute reservation;
+coordinates create no DRIVE estimate. Each leg must fit one continuous interval and
+preserve stage-original added daily traffic ≤90 minutes, including reserves. No
+comparable original route means no invented baseline credit.
+
+Prepare rotating authorized candidate/date opportunities near real anchors, not the
+whole pool in three modes. Options bind directed endpoints, mode, timing basis, target,
+provider duration and reserve. Conditional compensation routes follow parent dependency.
+Final changed chains check both actual neighboring legs; TRANSIT remains exact-time-sensitive.
+
+## Joint repair and component atomicity
+
+`repair_input_2`, projection `qualified_opportunities_feedback_1`, separates catalog,
+operation authority, protected/current context, targets, routes and feedback.
+Disposition reasons are limited to 240 Unicode characters. If excess reason length
+is the only structural error, one batch compression may replace those explanations
+only, after reference/length checks. It cannot change edits, targets or shorter text.
+Original/compressed material is audited; semantic equivalence is not mechanically
+proved. Failure stops proposals while retaining the best result; no truncation or retry.
+
+At most 50 parsed edits are partitioned by activity, identity obligation, affected
+dates/adjacency, elastic roots, burden, cost, parent compensation and shared target.
+Same-date edits are conservatively atomic; a common validator kind alone does not
+link unrelated dates. New-identity competition is resolved sequentially.
+
+Components run once in deterministic confirmed/compensation/review order with stable
+edit-index ties, using the latest exploration state. Each checks permissions, schedule,
+routes, occupancy, spatial policy, validation and business progress. Dependent removal
+and compensation stay together except narrowly authorized excluded/unexecutable removals.
+Final global checks reject illegal combinations; safe fallback is the round input.
+There is no exponential subset search, and consumed calls/evidence never roll back.
+
+## Target priority and stage accounting
+
+Hard/confirmed goals precede activated compensation, minimum coverage and optional
+review. Deferred targets cannot acquire candidates or edit. Historical unknown
+multiplicity cannot authorize deletion. Model proposals, day replans, deterministic
+deletions, explanation compression and semantic assessment have separate accounting
+under shared deadlines and acquisition budgets. No hidden retry or new Review/Profile/
+official-web acquisition is part of Repair. Expired recheck allowance blocks adoption
+even after a useful provider response; preparation reserves time for finalization.
+Current numeric ceilings belong to the configuration reference, not historical run plans.
+
+## Pending compensation and publishable state
+
+Deduplication cannot evade counts by moving or relabeling a visit. Source obligations,
+windows and routes determine the retained occurrence; explicit repeated/date-bound
+visits stay protected. A checked group awaiting coverage compensation may remain
+unpublished with its base fingerprint and descendants. Only a matching current base
+can reactivate it. Independent accepted edits remain publishable; exhaustion discards
+pending dependencies without waiving coverage. Failed system alternatives do not
+accumulate pending edits.
+
+Previously assessed candidates may be reused after assessment limits. New identities
+require qualification before add/replace authority. Settle bounded pending assessments
+before declaring sufficient/novel opportunities; rejected or unassessed candidates
+cannot consume that reference. Continue the same bounded queues when qualification
+removes apparent supply. Terminal semantic contract failures remain failures.
+
+## Bounded search
+
+Repair separates checked exploration from final retention. See the
+[glossary](../GLOSSARY.md) for these terms.
+
+### Exploration and retained result
+
+Compare aggregate pace over the fixed original dates with known deductions. Never
+drop a comparable date or treat unavailable data as zero; newly known dates cannot
+silently change the denominator. Intermediate equal/worse soft states are legal only
+within hard protections and required checks. Promote a publishable priority-respecting
+improvement and retain it through later rejection or exhaustion. Return it with its
+matching context, or the draft if none improved. Internal gain is not independent gain.
+
+### Proposal strategy and affected-day replanning
+
+First enumerate bounded authorized dispensable deletions without a proposal-model
+call; ordinary rechecks may still consume provider resources. Prefer viable local
+edits, switching on nonprogress to a distinct affected-day arrangement while allowance
+remains. Linked moves/compensation may involve several dates; unrelated dates stay
+unchanged. All proposals traverse the same permission/adoption path. Original move
+bounds are not rebased after moving. Reuse evidence first; replenish only for an
+authorized next step within shared limits.
+
+### Feedback, deduplication and applicability
+
+Feedback identifies attributable rejection causes without disqualifying unrelated
+candidates. Equivalent proposals are keyed by base, edits and effective permissions,
+time and directed evidence, not explanations or observational metadata. Detect repeated
+exploration states. Unchanged evidence alone does not exhaust different operations.
+
+An empty local proposal permits the first transition to replanning. A second send from
+the same strategy after empty output needs a real effective-material change. Try bounded
+replenishment first; otherwise stop with `no_new_material_after_empty_proposal` before
+sending. `empty_proposal_guard` retains fingerprint, strategy and discovery outcome.
+Quantity applicability, deletion authority, minimum coverage and routes are separate:
+unassessable quantity neither prohibits independently authorized deletion nor supplies
+its missing checks.
+
+### Outcomes and compatibility
+
+Stop on completed applicable goals, exhausted limits, missing required evidence or
+exhausted bounded strategies. Preserve terminal failure/cancellation and best-result
+semantics. Record proposal bases, strategies, checks, exploration transitions, best
+promotions, actual calls and stop reasons.
+
+`search_version=1` distinguishes exploration records from historical adopted-state
+chains. Null selected round returns the original draft; selected lineage includes
+necessary ancestors and excludes later discarded states. Historical records do not
+acquire invented strategy/usage observations. Missing measurements remain unavailable.
+
+## Limits and implementation
+
+No global route optimizer, parking/vehicle state, rideshare pricing, detailed transit
+navigation or arbitrary access inference is implemented. Nearest-anchor preparation
+is not exhaustive; conservative components can reject otherwise feasible edits.
+Offline checks establish behavior, not universal live quality or availability.
+
+Owners: [runner](../backend/app/versions/v3/runner.py),
 [validation](../backend/app/versions/v3/validation.py),
 [acceptance](../backend/app/versions/v3/repair_acceptance.py),
 [components](../backend/app/versions/v3/repair_components.py),
 [search](../backend/app/versions/v3/repair_search.py),
-[deletion](../backend/app/versions/v3/repair_deletion.py),
 [replanning](../backend/app/versions/v3/repair_replan.py) and
-[service](../backend/app/versions/v3/repair_service.py).
-
-## Request flow and ownership
-
-The default-disabled post-primary hook in the shared graph runs after primary identity/date
-checks and before one final Nearby stage. V3 does not rerun interpretation, initial discovery
-or primary generation. Request resources, caches, send/failure records and the request
-entry deadline are shared. Repair counters and its deadline start once per stage.
-The immutable draft, original report, fairly reassessed draft, component proposals,
-exploration itinerary and best retained itinerary remain distinct. Final source normalization,
-schedule, semantic assessments, transfers, validation and Nearby bind the selected result.
-Nearby references never supplement primary counts.
-
-## Per-leg mixed transport
-
-`repair_transport.py` uses the soft WALK, TRANSIT, DRIVE preference. Supported explicit
-requirements restrict allowed modes. No raw preference or note keywords are interpreted.
-Existing applicable evidence for any allowed mode is examined before sending another query;
-existing DRIVE can be used without a ceremonial TRANSIT call. Sent failures retain their
-request key; a failed TRANSIT query can be followed by a distinct allowed DRIVE query.
-
-| Mode | Automatic selection window | Occupancy |
-| --- | --- | --- |
-| WALK | Provider distance <=3 km and duration <=45 min | Provider duration |
-| TRANSIT | Applicable provider total duration <=45 min | Provider total, without duplicate access walking |
-| DRIVE | Provider driving duration <=30 min | Provider duration plus 10 min application reserve |
-
-These values come from runtime.yaml, not user statements. The 2 km WALK / 5 km motor
-geographic prefilters support discovery and missing-route screening; applicable provider
-options proceed to temporal, burden and detour checks. They are not permanent place labels.
-Missing routes permit only the existing conservative WALK <=1 km / 45-minute reservation;
-no driving estimate is inferred from coordinates. All chosen legs must fit one continuous
-available interval, respect fixed occupancy and both adjacent visits, and preserve the
-stage-original daily added traffic limit of 90 itinerary minutes. DRIVE reserves count.
-No comparable original route means no invented baseline credit.
-
-Preparation rotates active authorized addition opportunities, including soft-pace and
-dated-count shortfalls, using a nearest real anchor and directed options rather than
-fetching the whole pool in three modes. Options link target/date, candidate and anchor
-identities, directed endpoints, mode, provider duration, reserve, combined occupancy,
-source and temporal applicability. Basic DRIVE/WALK estimates are distinguished from
-reference-departure-only evidence; neither establishes final insertion feasibility.
-Conditional compensation receives routes only when its parent edit creates the dependency.
-Retime/delete and other actual changed chains obtain necessary routes after legal patch
-construction. Final binding checks every
-changed real adjacency, including both sides, with its actual departure. TRANSIT remains
-exact-time-sensitive; basic DRIVE and WALK retain their provider-estimate evidence basis.
-
-## Joint repair and component atomicity
-
-`repair_input_2` uses projection revision `qualified_opportunities_feedback_1`: canonical catalog,
-separate operation authorizations, protected/current context, compact target worksheet,
-transport options, adopted transfers, constraints and bounded feedback. A strict model result
-contains edits and target dispositions. Model explanations are not evidence. The application
-selects allowed per-leg modes and reserves; the model cannot write provider facts.
-
-Target-disposition reasons are limited to 240 Unicode characters. When reason length is the
-only structural error, the service may request one batch compression of all overlong reasons
-in that response. The application replaces only those explanations after checking their
-references and lengths; edits, target identities, dispositions and shorter reasons remain
-unchanged. The original patch and compression response are retained in the bounded audit.
-Compression aims to preserve meaning and uncertainty; structural checks do not prove semantic
-equivalence. No hard truncation, partial patch salvage or repeated compression is permitted.
-Compression failure stops further proposals while retaining the best publishable result.
-The [configuration reference](../config/README.md#counting-timing-and-invariants) owns the
-separate call/token allowance, shared deadlines and usage accounting.
-
-`repair_components.py` partitions a maximum of 50 parsed edits using concrete dependencies:
-activity, source identity obligation, affected dates/adjacency/elastic roots/daily burden,
-protected cost association, parent compensation and shared target. Same-date edits are
-conservatively atomic. Common validator kind alone does not link unrelated dates.
-New-identity competition across independent dates is resolved sequentially, not by accepting
-a duplicate. Malformed structured output fails before partition; no partial JSON salvage.
-
-Components run once in deterministic confirmed/compensation/review order with a stable edit
-index tie-break. Each uses the latest working itinerary and runs authorization, schedule,
-route acquisition/binding, occupancy adjustment, spatial policy, validator and business
-comparison. Dependent deletion and compensation stay together, except existing narrowly
-authorized EXCLUDED/unexecutable-visit partial-removal policies. A checked component may
-advance soft-pace exploration without promoting the best result. Other goals retain their
-verifiable progress checks. A rejected independent component leaves earlier checked
-components intact. Final global checks reject an illegal combination; the minimal
-safe fallback is the round input if the final combination cannot be justified. There is no
-exponential subset search. Actual sends, obtained evidence and failure history never roll back.
-
-Remaining goals continue from the exploration state. Compact component decisions and
-localized failures enter existing material feedback. Presentation is not qualification;
-a rejected component does not taint unedited candidates. Fingerprints include actual
-transport options/bindings and permissions, not just a round number.
-
-## Limits
-
-No global transport optimizer, vehicle-location/parking state, rideshare pricing, detailed
-transit navigation, semantic evaluator or arbitrary public-access inference is introduced.
-The nearest-anchor preparation is provisional, not exhaustive; exact final TRANSIT departure
-may need a fresh bounded query. Conservative same-date components can reject more edits than
-a finer proven dependency partition. Budget exhaustion can leave legitimate goals unresolved.
-Offline evidence does not prove real provider availability, model throughput or quality gains.
-
-## Target priority and stage accounting
-
-Confirmed/hard obligations precede activated compensation and optional review. Minimum
-coverage gaps precede optional quantity review but do not override hard protections.
-Unauthorized repeats are automatic policy targets; historical unassessed multiplicity is
-not proof that deletion is safe. Deferred targets cannot drive current acquisition or edits.
-Dependent deduplication/compensation can remain unpublished until its whole group is accepted.
-Only the narrowly authorized removal exceptions permit partial deletion without compensation.
-
-Local proposals and affected-day replanning share at most six actual proposal model sends,
-including failed sends, under one 420-second stage deadline shortened by the remaining
-request deadline. The default model-round ceiling permits six sends; a lower configured
-ceiling can stop earlier. The separate single explanation-compression allowance does not
-create another proposal round or extend the stage deadline. System deletion
-has a separate default ceiling of 12 attempts; zero disables that strategy. It does not
-consume model rounds or sends, and remains available when model sending is disabled.
-All strategies share acquisition counters, evidence cache, actual-send/failure history and time.
-Preparation leaves configured reserves for model/recheck/finalization and final Nearby;
-the average per-round allocation limits optional preparation, while model and recheck work
-may use the remaining hard round allowance without restarting preparation or a failed call.
-Local input work counts toward that allowance, and late results cannot consume the recheck
-reserve or authorize adoption beyond the hard deadline. Timing details belong to the
-[configuration reference](../config/README.md#counting-timing-and-invariants).
-Reviews/Profile and official web are not
-new Repair acquisitions. Semantic assessment retains separate counters. Expired check allowance
-blocks adoption even when a provider returns a usable value. Input overflow and terminal model
-failure stop at their declared boundary. The final stage summary compares original and selected
-plans. Transport thresholds above are configurable policy, not user facts.
-
-## Pending compensation and publishable state
-
-Deduplication cannot evade counting by moving a visit to another date or changing its role.
-Checked proposals choose the retained occurrence using sourced obligations, actual windows
-and route context; the application does not always keep the first. Explicit count/date-bound
-copies remain protected. The minimum-one rule does not replace the existing conditional
-coverage floor merely to permit a deletion.
-
-An otherwise valid deduplication group awaiting coverage compensation may be retained as a
-bounded unpublished proposal. The pending group carries affected dates, base-state fingerprint,
-edits and proposal days; only a matching current base can reactivate it. Descendant edits stay
-in the same atomic group, while independent accepted edits remain publishable. Completion
-rechecks the combined group against the current exploration base. System deletion candidates
-are checked independently: failed alternatives do not create or accumulate pending edits,
-and existing model compensation remains subject to its original atomic checks.
-Exhaustion discards pending
-dependent windows/transfers without reverting independent improvements or waiving coverage.
-Residual repetition/coverage remains explicit incomplete output. Confirmed excluded or
-unexecutable-visit removal retains its separately authorized partial-removal policy.
-
-Already assessed candidates may be reused after the semantic preparation budget is exhausted;
-new ADD/REPLACE candidates require shared qualification before authorization. Before provisional
-sufficiency or novelty can stop acquisition, pending assessments are settled in bounded batches.
-Final selected, eligible identities determine opportunity sufficiency and exploration progress;
-semantically rejected or unassessed identities cannot consume the exploration reference.
-When filtering removes an apparent opportunity, preparation continues within the same processed
-identity sets, capacity, acquisition/semantic counters and deadlines. `qualification_audit`
-records rejected roles, counts and remaining acquisition reasons. Missing ordinary operating,
-access or cost facts retain their existing UNKNOWN/selectability rules. Budgets are
-request-wide, not reset per round. Terminal semantic model/contract failures remain failures,
-not a successful generic Repair fallback. Final Nearby occurs once only after normal finalization,
-with no continuation after terminal failure, cancellation or an exhausted request deadline.
-Implementation: [pending groups](../backend/app/versions/v3/repair_pending.py).
-
-## Accepted bounded search redesign
-
-Repair uses bounded exploration and separate final retention rather than per-date
-pace non-regression or a blanket prohibition on reusing unchanged materials.
-The [glossary](../GLOSSARY.md) distinguishes exploration from final selection.
-[Specification #139](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/139)
-owns implementation scope and live progress.
-
-### Exploration and retained result
-
-Maintain an exploration itinerary separately from the best retained itinerary.
-Prioritize confirmed/hard goals and applicable minimum coverage before optional pace.
-For pace evidence, optimize aggregate deductions over the fixed set of dates whose
-original deductions are known. Never drop a formerly comparable date or treat missing
-evidence as zero. An improvement on known dates may coexist with an unavailable overall
-objective; newly available dates do not silently change the comparison denominator.
-
-An authorized, checked intermediate state may have equal or greater pace deductions
-than the best retained itinerary. For example, daily counts `3,2,3 -> 2,3,3 -> 2,2,3
--> 2,2,2` may remain a search path even though its first move has no aggregate gain.
-Such a state is exploration, not a claimed improvement. Temporary soft regression
-does not authorize new hard/protection violations, bypass required checks or erase
-unresolved original findings. Existing dependent compensation remains unpublished
-until its applicable conditions are met.
-
-Promote a publishable improvement under those priorities to the best retained result.
-Preserve it when later proposals are rejected, exploration worsens or limits stop work.
-At finalization, return that result with its matching schedule, candidate/source bindings,
-semantic assessments and arrangement evidence, or the original draft when no improvement
-was found. Report residual and unavailable goals explicitly. Neither intermediate acceptance nor
-internal pace progress establishes an independent quality-score improvement.
-
-### Proposal strategy and affected-day replanning
-
-The application enumerates a bounded set of already authorized deletions of dispensable
-visits and validates them without a Repair proposal model call. Deletion still uses the
-same requirement, coverage and changed-adjacency checks as model-proposed operations.
-Validation can require service calls and consumes the shared deadline and acquisition
-limits. The system does not blindly trim counts or choose protected visits for removal.
-
-Use local edits before affected-day replanning when they offer a viable next step.
-Local nonprogress switches the next model proposal to a distinct affected-day arrangement
-prompt and structured context, leaving time and model
-capacity for replanning rather than consuming the entire allowance first. Replanning
-may jointly edit affected dates when a move or other dependency links them. Unaffected
-dates remain unchanged; this is not a fresh whole-trip primary-generation run.
-Replanning produces structured edits through the existing permission and validation
-path. Linked dates include original move and compensation dependencies. Only existing
-authorized peer operations can enter that closure; unrelated dates remain outside it.
-Mandatory visits, fixed commitments, source identities, visit durations and application-owned
-transport remain protected. Original source-date and destination permissions are not rebased
-after a move, so successive steps cannot bypass the original move limit.
-
-Reuse existing candidates and applicable evidence first. If they cannot support an
-authorized next step, bounded discovery and qualification may introduce new POIs;
-necessary place, opening and route acquisitions share the existing stage limits.
-Missing required evidence blocks adoption instead of becoming a plausible model fact.
-
-### Feedback, deduplication and applicability
-
-Unchanged evidence alone does not stop exploration. Rejection feedback identifies
-attributable conflicts and supports a different authorized proposal using the same
-materials. Model-input proposals are deduplicated using their base itinerary, edits and
-effective decision material, including permissions, time context and directed evidence;
-unpresented POIs and observational metadata do not invalidate that key. System-proposed
-operations retain their application-side evidence dependencies. Explanation text is not progress.
-Skip a previously failed equivalent proposal without declaring other operations exhausted.
-Detect repeated exploration states so equal/worse transitions cannot create a cycle.
-
-An empty proposal permits the first local-to-replan strategy transition. After a strategy
-returns empty edits, another send from the same effective material requires a real material
-change. Preparation first tries bounded candidate/evidence replenishment. If the material
-still matches that strategy's prior empty input, stop before charging/sending another model
-call with `no_new_material_after_empty_proposal`, retaining the best publishable itinerary.
-`empty_proposal_guard` records the material fingerprint, strategy, discovery outcomes and
-whether an empty reply was recorded or an unchanged send was stopped. Model explanations
-cannot create verified restrictions. Different nonempty proposals remain eligible within
-the shared limits. [Issue #184](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/184)
-owns this correction's scope and delivery state.
-
-Assess quantity applicability, minimum coverage, deletion authority and route feasibility
-separately. A `not_assessable` quantity diagnostic is not an unconditional ban on reducing
-counts if deletion has an independent authorization and the necessary checks can be
-confirmed. It supplies neither guessed edit authority nor a coverage PASS. An actually
-unresolved condition required for that operation still blocks adoption.
-
-### Outcomes and compatibility
-
-The [shared limits](#target-priority-and-stage-accounting) apply across every state and strategy.
-
-Stop when applicable authorized goals are complete, shared limits prevent further work,
-required evidence is unavailable or the bounded authorized strategies are exhausted.
-Preserve existing terminal failure/cancellation semantics; there are no hidden retries.
-Do not equate one rejected proposal, unchanged materials alone or a skipped duplicate with
-all strategies exhausted; repeated empty inputs have the bounded guard above. Record each
-proposal's base state, strategy, check outcomes, exploration transition, best-result promotion,
-actual calls and final stop reason.
-Residual soft deductions mean partial/no improvement, not a successful zero target.
-
-`search_version=1` distinguishes new search records from the historical adopted-state chain.
-Records identify strategy, base state, exploration transition, best promotion and the selected
-round. A null selected round in the new version returns the original draft. Selected provenance
-includes necessary intermediate ancestors and excludes discarded exploration after that result.
-Historical records retain their original interpretation without invented strategy observations.
-Model usage, semantic calls, deterministic attempts and provider acquisitions remain separate;
-missing usage is unavailable rather than a measured zero.
-
-Offline verification uses `run_repair_stage`, actual V3 initialization/finalization and native
-saved-result readers with controlled external dependencies. These checks establish implemented
-behavior and compatible records, not live model effectiveness.
-
-Paid case execution is separate from implementation checks. Preserve original case-01
-results; controlled original-draft comparisons require sufficient retained context and
-must disclose scripted dependencies. Any later fresh V3 result requires its own provenance
-and independent scoring. Follow the [primary-score handoff](../benchmark/README.md#workflow-and-responsibilities)
-before supplements or process diagnostics.
-Case acceptance follows the
-[staged automatic acceptance contract](contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review).
-The [initial case-01 record](../benchmark/case-01/report.md#acceptance) identifies
-its accepted outputs and limitations. Separate engineering diagnostics do not
-replace case evidence or add mandatory strategies to ordinary Repair execution.
+[pending groups](../backend/app/versions/v3/repair_pending.py).

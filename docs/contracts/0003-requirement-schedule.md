@@ -480,7 +480,7 @@ The immutable public report and CLI are described in [package commands](../guide
 ## Decision and acceptance history
 
 [Ticket 05](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/17) and
-[acceptance](../records/evaluation/requirements.md#rtpeval-ticket-05-acceptance) retain the
+[acceptance](../records/evaluation/intake-identity-usage.md#requirement-schedule-and-quality-decisions) retain the
 exact-one/single-visit correction, protection-as-boundary decision, implementation, review
 and regression evidence. The earlier minimum-one authoring/default at-least-one proposals
 are superseded.

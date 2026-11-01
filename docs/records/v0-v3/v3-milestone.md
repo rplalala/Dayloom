@@ -1,47 +1,59 @@
-# V3 engineering milestone scope
+# V3 engineering milestone
 
-The 2026-09-25 [final engineering checkpoint](v3-closeout.md) closed the approved V3
-engineering scope. Benchmark Frozen: NO; Formal Evaluation: NOT STARTED at that date.
-The current [repair contract](../../0005-validation-repair(v3).md) owns behavior; this
-summary distinguishes historical implementation from bounded live coverage.
+The original engineering scope closed on 25 September 2026. Formal evaluation had
+not started and the benchmark was not frozen at that checkpoint. Later behavior is
+maintained in [Repair design](../../0005-validation-repair%28v3%29.md), with subsequent
+corrections in [V3 development](v3-development.md).
 
-## Delivered mechanism and evidence progression
+## Delivered mechanism and historical boundary
 
-Independent V3 reused tools/RAG primary planning before Nearby, adding explicit validation,
-scoped targeted Repair, revalidation and business comparison. Application-owned identity,
-evidence, permissions and component dependencies controlled adoption. A/B/C and material
-feedback developed into five-round Repair with minimum coverage and same-round partial
-adoption. Shared mixed transport remained baseline V1–V3 work, not a V3-only contribution.
+V3 reused tools/RAG primary planning, then validated, proposed authorized edits and
+revalidated before final Nearby. Identity, evidence, permissions and dependencies were
+application-owned. Elastic scheduling, targeted additions, mixed transport, bounded feedback
+and atomic components supported partial adoption without losing earlier improvements.
+Shared first-generation transport belonged to V1–V3, not a V3-only contribution.
 
-Earlier three-day runs exercised no Repair; seven-day runs included model rejection/
-fallback. Later Tokyo runs showed bounded adopted quantity/deduplication and evidence;
-the original Honolulu overflow remains a failure. These checkpoints do not validate
-later mixed-mode configuration. The [development record](v3-development.md) retains
-those distinct results and known limits by mechanism.
+At the closeout Product still defaulted to V0, V0 remained tool-free, and V1/V2 ran no
+Repair. Provider-recovery UI was offline-validated only. These are historical states;
+[current application operations](../../0007-application-operations.md) defines Product today.
 
-## Mixed/component offline checkpoint
+## Consequential corrections and live coverage
 
-Before subsequent live acceptance, affected version/shared tests passed **560**; later
-V3 **357** and mixed/material/B **59** selections overlapped. Frontend transfer tests
-passed **8**, with TypeScript/Vite, changed-file ESLint and Ruff passing.
-Dense mixed projection measured **80154–80301** engineering tokens; **251459** was
-accepted and **254459/274459** rejected at a **252000** input limit. Strict synthetic
-output measured **4162/16384**. These are serializer/capacity observations, not model
-latency, token billing or demonstrated live component adoption.
+Checks corrected continuous transfer windows, route-evidence normalization, injected-policy
+ownership and adoption summaries. Moving an unchanged identity was not a lost visit;
+count reductions could be lawful quantity changes rather than hard coverage regressions.
 
-The [mixed checkpoint](v3-development.md#mixed-transport-and-joint-components-2026-09-25)
-locates that evidence. Subsequent artifact-verified five-round, minimum-coverage,
-partial-component and adopted TRANSIT results are consolidated in
-[closeout](v3-closeout.md#artifact-verified-development-evidence). In Honolulu run
-`f9bd621d-0eb5-47d7-8af8-03825d57524b`, round 1 repaired three zero-visit dates and
-five actual calls retained eight additions (**10→18** visits); all nine dates met
-minimum one while an ordinary quantity review remained. Minimum coverage and the
-optional two-visit review target were distinct.
+Early three-day runs exercised no Repair; seven-day samples showed rejection/fallback.
+Later Tokyo cases demonstrated bounded adopted quantity/deduplication. The original Honolulu
+input overflow remained a failure. A separate nine-day minimum-coverage run changed visits
+10→18 and missing dates 3→0, with one accepted/one rejected component in the same round.
+Later rejection retained prior adoption. These observations are detailed in the
+[development record](v3-development.md#honolulu-capacity-and-minimum-coverage).
+
+## Configuration and verification
+
+The historical runtime schema 6 snapshot was SHA-256
+`a4a9c9d7f388dbf78f172651d4c8b46b609bf044490b0cffe96f01beeea50ba2`.
+It used five Repair calls/rounds, a 360s stage and 252000/16384 input/output bounds.
+Quantity/repetition/overfull review were then disabled; later policies differ.
+These identify the old run, not recommended current settings.
+
+| Checkpoint | Recorded result |
+| --- | --- |
+| Initial combined backend | 1,442 passed, 21 failed, nine skipped |
+| Correction selection | 273 passed |
+| Final combined backend | 1,463 passed, nine skipped; 1,472 collected |
+| Fresh startup | All V0–V3 help processes and six service exports succeeded |
+
+Failures comprised stale limits/input/full-day fixtures and one real absent normalized
+route-evidence artifact. Corrections preceded the final pass. Later eight focused checks
+covered post-closeout ownership/summary fixes, without another full run or live execution.
+Ruff/diff passed; database opt-ins remained skipped. Evidence includes the closeout
+configuration/content manifests and original Honolulu logs identified in V3 development.
 
 ## Limits
 
-Exemptions/review-off and many failure/dependency combinations remained offline-only or
-not naturally observed live. Prompt 13 budget scope and latest content-filter UI mapping
-were offline-only. Nearby could not fill primary coverage. No guarantee of every-date
-fulfillment, lower cost, complete feasibility or superiority over V2 follows from this
-milestone; later correctness work retains separate approved checkpoints.
+Review-off, exemptions and many failure/component combinations remained offline-only or
+unobserved live. Serializer stress results were capacity checks rather than model-quality
+measurements. Nearby could not fill primary coverage; internal adoption established neither
+independent improvement nor global feasibility. Later milestones do not rewrite this checkpoint.

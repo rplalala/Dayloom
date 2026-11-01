@@ -546,7 +546,7 @@ completed within its 45-second allowance; no r03 failure or uncertain fee was er
 
 The subsequent explanation correction `e4985d0` and audit correction `471f194`
 passed 1,169 selected offline tests and Standards/Spec review before r05. The
-[development record](../../docs/records/v0-v3/v3-development.md#repair-reason-length-recovery-2026-10-17)
+[development record](../../docs/records/v0-v3/v3-development.md#reason-length-recovery-and-full-day-rest)
 owns that failure/correction evidence.
 
 r05 used `5be3d028e1cf30889667309b09025d7872e66f8b` and retained Primary scores
@@ -556,7 +556,7 @@ target, ending `ACCEPTED_PARTIAL / no_executable_candidate_operation`. Its compl
 native result and truncated trace remain unchanged. Correction `b292a10` passed
 646 selected offline tests and independent Standards/Spec review before r06;
 `5aabd1c` documents that checkpoint. The
-[development record](../../docs/records/v0-v3/v3-development.md#full-day-rest-pace-applicability-correction-2026-10-17)
+[development record](../../docs/records/v0-v3/v3-development.md#reason-length-recovery-and-full-day-rest)
 owns that diagnosis and correction. These independent fresh generations are distinct
 selections; their score differences do not establish the correction's causal effect.
 
@@ -569,6 +569,6 @@ unchanged. The subsequent correction in #184 added structured soft-pace transpor
 post-filter replenishment and empty-input handling. Implementation `7d1fe3c`, review
 correction `421a83d` and documentation `3a72762` passed 713 selected offline tests
 and final Standards/Spec review. The
-[development record](../../docs/records/v0-v3/v3-development.md#repair-opportunity-preparation-and-empty-proposal-correction-2026-10-17)
+[development record](../../docs/records/v0-v3/v3-development.md#opportunity-preparation-and-empty-proposals)
 owns those diagnoses and corrections. r07 is a separately authorized fresh generation;
 its scores do not establish a causal gain from independent version/run differences.

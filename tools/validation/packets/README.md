@@ -2,8 +2,8 @@
 
 These tracked launchers, fixed request inputs and offline tests were relocated from
 the former scratch tracker. Existing per-run dates and budgets are historical.
-Execution requires a separately authorized plan and the smoke-test coordination
-workflow in AGENTS.md. Relocation does not authorize reruns or refresh frozen hashes.
+Execution requires a separately authorized plan with source bindings, execution roles
+and numeric limits. Relocation does not authorize reruns or refresh frozen hashes.
 
 Landmark and focus tools use the fixed inputs under preference-landmark-balance/pilot.
 Run the packet tests offline with pytest `--import-mode=importlib` because historical

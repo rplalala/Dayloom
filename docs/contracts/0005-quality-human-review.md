@@ -111,7 +111,7 @@ V3 internal findings add no additional penalties.
 Findings-only source changes preserve numeric scores after correct relinking/replay;
 source/report hashes may change, and stale evidence remains invalid.
 
-[Acceptance](../records/evaluation/quality-report.md#rtpeval-ticket-08-acceptance) records consequential
+[Acceptance](../records/evaluation/intake-identity-usage.md#requirement-schedule-and-quality-decisions) records consequential
 defects, bounded regressions and limitations. The [preflight](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/20#issuecomment-5955702362)
 preserves the original no-implementation checkpoint and subsequent scope approval.
 
@@ -270,7 +270,7 @@ The renderer hides dedicated uncertainty fields, item notices, conversion warnin
 original-timestamp controls. It retains the Inferred arrival label, ordinary notes/
 preferences and duration basis. Frozen material still retains exact strings, unknowns,
 notices and hashes; suppression does not verify a claim. The
-[display history](../records/evaluation/blinded-ranking-record.md#integrated-display-revisions)
+[display history](../records/evaluation/blinded-ranking-record.md#blinding-and-travel-representation)
 records the separately approved changes.
 
 Preparation is researcher-only. Its `fields` list records `field_ref`, exact source-file
@@ -301,7 +301,7 @@ missing/unjudgeable/N/A/draft-only counts. Hidden duplicates contribute version-
 consistency only; no comparable pairs yields null agreement. Pairs from one request
 are correlated. No overall human score, inferential analysis or automatic-quality
 integration is supplied. Frozen mapping hashes verify integrity, not cryptographic
-authorship. [Acceptance](../records/evaluation/blinded-ranking-record.md#rtpeval-ticket-09-acceptance) records actual
+authorship. [Acceptance](../records/evaluation/blinded-ranking-record.md#blinding-and-travel-representation) records actual
 test/review/browser evidence and remaining limitations.
 
 Suite attachment retains each native human package/rater as a separate report.
@@ -559,7 +559,7 @@ material/replay correction exits 2. Commands are in the [package guide](../../ba
 
 The [#116 specification](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/116)
 adds `rtpeval research report --track repair` over the
-[declared research population](../0006-independent-evaluation.md#planned-batch-and-research-extensions). Its
+[declared research population](../0006-independent-evaluation.md#batch-and-research-extensions). Its
 `rtpeval_research_repair_1` material binds the population/profile identifiers and
 revisions, with optional `quality_reports`, `pair_reports`, `mechanism_reports`
 arrays and a separately declared `controlled` study.
@@ -606,9 +606,9 @@ Code: [quality report](../../backend/evaluation/quality_report.py),
 [renderer](../../frontend/src/features/blind-review/BlindReview.tsx).
 Commands are in the [package guide](../../backend/evaluation/README.md).
 The [score preflight](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/20#issuecomment-5955702362),
-[score acceptance](../records/evaluation/quality-report.md#rtpeval-ticket-08-acceptance),
+[score acceptance](../records/evaluation/intake-identity-usage.md#requirement-schedule-and-quality-decisions),
 [human preflight](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/21#issuecomment-5955704071)
-and [human acceptance](../records/evaluation/blinded-ranking-record.md#rtpeval-ticket-09-acceptance)
+and [human acceptance](../records/evaluation/blinded-ranking-record.md#blinding-and-travel-representation)
 preserve approval/validation and the superseded UI controls. Current rendering uses IANA
 zones and HH:mm, keeps Inferred arrival, and hides dedicated uncertainty/item-warning hints;
 source artifacts retain their original uncertainty. This view choice is not factual verification.

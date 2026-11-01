@@ -235,7 +235,7 @@ prevents floating subtraction from hiding a fractional conflict. Duration summar
 are labelled observed per-visit subtotals with observed/missing counts; they do not
 claim complete full-batch magnitudes or a global-time union.
 
-[Acceptance](../records/evaluation/opening.md#rtpeval-ticket-06-acceptance) records the actual development
+[Acceptance](../records/evaluation/opening.md#initial-scorer-and-time-corrections) records the actual development
 failures, corrections, retests and review. [Preflight](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/18#issuecomment-5955697757)
 retains the approved decisions and original inspection checkpoint. Opening fixtures are
 offline/synthetic; separately authorized local database/native checks are recorded in
@@ -325,7 +325,7 @@ source material rejects the whole preparation. Extraction and replay perform no 
 LLM, planner-cache, database, field-mask or automatic-backfill work. Quality-report callers
 may forward the same optional snapshot source without changing existing score/mask rules.
 
-The [dated route acceptance record](../records/evaluation/routes.md#snapshot-coordinate-bridge-2026-10-03)
+The [dated route acceptance record](../records/evaluation/routes.md#offline-scorer-and-coordinate-boundary)
 preserves approval, reproduction, implementation and validation. The pre-existing reviewed
 wire remains supported alongside the explicit snapshot-source option.
 
@@ -408,7 +408,7 @@ historical structure without an added replay field, so saved KR packages remain 
 Budget and send counters count unique directed matrix requests, retaining every leg
 occurrence. Duplicate links cannot promote a blocked/conditional query to ready. Neither
 AU selection nor preflight creates live authority or actual route evidence. See the
-[Sydney offline acceptance](../records/evaluation/routes.md#sydney-offline-route-preparation-2026-10-07).
+[Sydney offline acceptance](../records/evaluation/routes.md#australian-preparation).
 
 ### Coordinates, directed requests and replay
 
@@ -460,8 +460,8 @@ and nonnegative integer `retry_sends`, `search_sends`, `model_sends`. Counts ref
 attempted sends (one element per matrix); cost must cover their undiscounted estimate.
 Supplied snapshot sends are historical observations, separate from zero preparation sends.
 Changed readiness needs a regenerated inventory and separate budget approval. Later
-authorized execution uses the current session's execution child under the
-[smoke policy](../agents/smoke-tests.md), `gpt-6.1-sol` / `medium`.
+authorized execution uses a current-session child with `gpt-6.1-sol` / `medium`,
+following a prepared, explicitly approved handoff and its numeric limits.
 
 The [package guide](../guides/experiments.md#development-checks) owns CLI
 invocation and exit codes. The [route history](../records/evaluation/routes.md) records
@@ -559,8 +559,8 @@ Code owners: [opening](../../backend/evaluation/opening.py),
 [route preparation](../../backend/evaluation/_route_preparation.py).
 [Package commands](../../backend/evaluation/README.md) own invocation/exit codes.
 Opening [preflight](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/18#issuecomment-5955697757)
-and [acceptance](../records/evaluation/opening.md#rtpeval-ticket-06-acceptance), route
+and [acceptance](../records/evaluation/opening.md#initial-scorer-and-time-corrections), route
 [preflight](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/19#issuecomment-5955699412)
-and [acceptance](../records/evaluation/routes.md#rtpeval-ticket-07-acceptance) preserve decisions,
+and [acceptance](../records/evaluation/routes.md#offline-scorer-and-coordinate-boundary) preserve decisions,
 failed checks, corrections and executed validation. Historical immediate-departure, universal
 schedule grace and partial-verdict proposals are superseded by the current rules above.

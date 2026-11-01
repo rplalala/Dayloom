@@ -53,7 +53,7 @@ corrections. Sixteen failures have fixes and passing affected retests; one origi
 mock-provider anomaly did not reproduce and its cause remains unknown. The final full
 suite was not rerun, and skipped coverage remains unverified. The malformed legacy pace
 quote control still lacks a diagnostic field path despite rejection. The
-[shared compatibility record](../../docs/records/v0-v3/semantic-reference-correction.md#post-fix-real-material-compatibility)
+[shared compatibility record](../../docs/records/v0-v3/semantic-reference-correction.md#shared-requirement-boundary-correction)
 owns the detailed execution; this update adds no live calls or new case dispatch.
 
 ## Material map

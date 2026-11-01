@@ -35,7 +35,7 @@ corrections. Sixteen failures have fixes and passing affected retests; one origi
 mock-provider anomaly did not reproduce and its cause remains unknown. No final full-suite
 rerun is claimed; skipped coverage remains unverified. A controlled malformed legacy pace
 quotation is rejected but still lacks a diagnostic field path. Detailed execution and
-limitations belong to the [shared compatibility record](../../docs/records/v0-v3/semantic-reference-correction.md#post-fix-real-material-compatibility).
+limitations belong to the [shared compatibility record](../../docs/records/v0-v3/semantic-reference-correction.md#shared-requirement-boundary-correction).
 
 ## Materials and source identity
 

@@ -27,12 +27,12 @@ network isolation and cp 936 Unicode round-trip.
 | 2026-09-25 | Optional transfer-output compatibility and shared startup correction. | Fresh V0 CLI failed before `--help` from eager service exports reentering its graph. Lazy exports fixed the cycle; fresh-process checks covered V0–V3. Shared prompt 13 budget scope was offline-only. |
 | 2026-09-28 | Authorized prompt request for estimated transport Activities and nearby references by date/area. | Plain LLM plus prompt retained; no new call/tool/validator/Repair. Berlin revalidation returned six days, **17 main visits, 11 estimated transport activities, 1 Nearby reference**; combined **176-pass** regression and clear reviews. |
 
-The [transfer compatibility record](v1-development.md#compatible-transfer-output-update-2026-09-25)
-and [shared closeout](v3-closeout.md) locate startup/output boundaries. The
-[transport/Nearby acceptance](development-pilots.md#v0-transport-nearby-assessment)
+The [transfer compatibility record](v1-development.md#shared-mixed-transport)
+and [shared closeout](v3-milestone.md#delivered-mechanism-and-historical-boundary) locate startup/output boundaries. The
+[transport/Nearby acceptance](development-pilots.md#v0-estimated-transport-and-nearby)
 locates the Berlin result; the original [shared output design](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/a6aff13a00af35467b9c88ec2906d10a96095f04/docs/shared_itinerary_output.md)
 records its initial **80-pass** offline check. The
-[shared milestone notice](v3-closeout.md#shared-milestone-notice-2026-09-25)
+[shared milestone notice](v3-milestone.md#delivered-mechanism-and-historical-boundary)
 locates Product/default and recovery limits at that checkpoint.
 
 ## Known Limitations
