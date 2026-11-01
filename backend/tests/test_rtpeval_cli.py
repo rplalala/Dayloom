@@ -160,7 +160,9 @@ def installed_cli(tmp_path):
     ):
         env = {
             **{key: os.environ[key] for key in CLI_ENVIRONMENT_KEYS if key in os.environ},
-            "PYTHONPATH": str(guard),
+            # The guard imports backend before -m adds cwd to sys.path. Select the
+            # tested checkout explicitly when reusing another checkout's venv.
+            "PYTHONPATH": os.pathsep.join((str(guard), str(ROOT))),
             "PYTHONUTF8": "1",
             "RTPEVAL_TEST_EVENTS": str(events),
             "RTPEVAL_TEST_BLOCK_INTAKE": "1" if block_intake else "0",
@@ -186,6 +188,31 @@ def installed_cli(tmp_path):
         return result
 
     return run
+
+
+@pytest.mark.parametrize("legacy", [False, True])
+def test_subprocess_uses_selected_checkout_with_shared_environment(
+    installed_cli, tmp_path, monkeypatch, legacy
+):
+    checkout = tmp_path / "checkout"
+    package = checkout / "backend"
+    package.mkdir(parents=True)
+    # Share dependencies/modules, but give this checkout its own package identity.
+    (package / "__init__.py").write_text(
+        f"__path__.append({str(ROOT / 'backend')!r})\n", encoding="utf-8"
+    )
+    monkeypatch.setattr(sys.modules[__name__], "ROOT", checkout)
+    result = installed_cli(
+        "--help",
+        legacy=legacy,
+        evaluation_offline=True,
+        bootstrap=(
+            "import backend\n"
+            "print('CHECKOUT=' + str(Path(backend.__file__).resolve()), file=sys.stderr)"
+        ),
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert f"CHECKOUT={(package / '__init__.py').resolve()}" in result.stderr
 
 
 @pytest.mark.parametrize("flag", ["--help", "-h"])

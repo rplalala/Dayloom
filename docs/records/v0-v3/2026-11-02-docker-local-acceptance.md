@@ -237,9 +237,23 @@ launcher check passed after restoring that path. Three representative V3 checks
 also passed. A complete backend rerun was stopped and not repeated at the user's
 request. The targeted native evaluator case
 `test_public_execution_preserves_native_outcomes_and_one_use[none-one_step]`
-still fails with `Opening eligibility/evidence replay differs` on both the release
-and original `79301aa` main revision. Its root cause and fix remain unresolved;
-this acceptance does not claim full backend or historical evaluator replay success.
+failed with `Opening eligibility/evidence replay differs` in both the release
+checkout and a checkout of original revision `79301aa` sharing the main virtual
+environment. The cause was unresolved at publication.
+
+Subsequent focused diagnosis on 2 November, starting from `989a1e9`, found that the
+same case passed in the main worktree. The subprocess guard imported `backend`
+before module execution added the working directory to Python's import path; its
+guard-only `PYTHONPATH` therefore selected the editable installation's main checkout.
+The parent used the test checkout. Fifteen evaluator files differed only in LF/CRLF
+bytes, causing the implementation hashes and derived packet digest to disagree.
+The test launcher now includes the selected checkout after the guard in `PYTHONPATH`.
+Both entry-point origin regressions failed before the fix. Afterward, all 69 tests
+in the CLI launcher and evaluation execution/replay files passed in an independent
+source copy using the same main virtual environment, including the original case.
+Evaluator hash checks and production code were unchanged. This resolves the test
+environment mismatch; it does not establish broad historical replay compatibility
+or complete backend regression success. No full regression or paid call was run.
 
 The reusable opt-in entry is
 `python -m backend.tests.deployment.archive_acceptance --help`; ordinary pytest
