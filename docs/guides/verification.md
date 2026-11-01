@@ -20,6 +20,8 @@ verifiers passed; a failed check returns 2.
 The command checks the study as one set:
 
 - Twelve original requests and 48 selected V0–V3 final outputs.
+- Current case-report hashes and recorded lengths after LF normalization, separate
+  from historical source bindings.
 - Automatic score decomposition, exact rankings and 24 V3 paired stages.
 - Forty-eight selected-generation resource rows and their source bindings.
 - Bilingual blinded questionnaires, 24 confirmed answers and reported mean ranks.

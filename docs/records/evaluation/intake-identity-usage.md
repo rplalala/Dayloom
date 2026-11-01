@@ -1,6 +1,6 @@
 # Evaluation intake, identity and workflow evidence
 
-Engineering history, 29 September–17 October 2026. Current formats and rules belong
+Engineering history, 29 September–2 November 2026. Current formats and rules belong
 to [intake/identity/usage](../../contracts/0002-intake-identity-usage.md),
 [artifacts](../../contracts/0001-evaluation-artifacts.md),
 [requirements/schedule](../../contracts/0003-requirement-schedule.md) and
@@ -167,3 +167,21 @@ Native hashes establish provenance, not truth. Later current cases and scores be
 [benchmark index](../../../benchmark/README.md); this history is not a uniform latest-policy
 experiment. Missing access, billing, historical stage capture and compatible producer code
 remain genuine reproduction limits.
+
+## Published benchmark verification
+
+On 2 November 2026, the clean baseline `053737f` failed automatic offline verification
+at the public case-report length check; blinded verification passed. Case-01/03/06/12
+retained stale report lengths and hashes, while case-07 retained a stale hash with
+unchanged length. LF-normalized working reports matched their Git blobs, ruling out
+checkout newline conversion as the cause. Commit `6678062` refreshed only current
+public reader metadata and added report hash checks with case-specific diagnostics;
+historical source bindings, submitted outputs, scores and native receipts were unchanged.
+
+The original verifier accepted a same-length report edit in an isolated copy, establishing
+the regression before the added hash check. The corrected command passed both retained
+verifiers. Seven network-denied or mocked CLI/workflow tests passed, including altered
+length, same-length drift and CRLF equivalence; Ruff passed. Sandbox-denied default
+temporary/cache locations were replaced with workspace-owned locations without changing
+credentials or project configuration. These checks establish public-material consistency,
+not native-archive replay or fresh provider evidence.
