@@ -33,6 +33,7 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
     <span className="media-provider" translate="no">{media.provider}</span>
     {media.authors?.map((author, i) => <span key={i}> · {author.url ? <a href={author.url} target="_blank" rel="noopener noreferrer">{author.name}</a> : author.name}</span>)}
     {media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
+    {media.license_url && <> · <a href={media.license_url} target="_blank" rel="noopener noreferrer">License</a></>}
   </> : pendingLabel;
   const picture = onOpen ? <button type="button" className="media-open" aria-label={`View ${label}`} onClick={onOpen}>{visual}</button> : link ? <Link className="media-image-link" to={link.to} aria-label={link.label}>{visual}</Link> : visual;
   return <figure data-photo-slot={slot} data-photo-state={failed ? 'unavailable' : media?.status || 'unattempted'} aria-busy={media?.status === 'loading'} className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}

@@ -16,6 +16,8 @@ it("orders guest examples by creation time and supports source sort and live sea
   await screen.findByRole("heading", { name: "London landmarks" });
   expect(titles()).toEqual(["London landmarks", "Sydney harbour"]);
   expect(screen.getAllByRole("link", { name: "View details" })).toHaveLength(2);
+  expect(screen.queryByRole("button", { name: "Copy" })).not.toBeInTheDocument();
+  for (const image of screen.getAllByRole('img')) expect(image.getAttribute('src')).toMatch(/^\/dayloom\//);
   fireEvent.change(screen.getByLabelText("Sort trips"), { target: { value: "oldest" } });
   expect(titles()).toEqual(["Sydney harbour", "London landmarks"]);
   fireEvent.change(screen.getByLabelText("Sort trips"), { target: { value: "name" } });

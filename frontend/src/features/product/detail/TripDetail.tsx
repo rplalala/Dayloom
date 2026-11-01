@@ -13,8 +13,8 @@ import { WeatherRow } from "./WeatherRow";
 import { monthDay, weekday, dottedDate, routeDuration, routeDistance, illustrationFor, transferFeasibility, paceNotice } from "./display";
 import { ExperienceGuidance } from './ExperienceGuidance';
 import { ExportControls } from './ExportControls';
-import { DestinationPhoto, PlacePhoto, SupportingPhoto } from './MediaPhoto';
-import { PlaceMedia, PlaceMediaActions, usePlaceMedia } from './media';
+import { DestinationPhoto, MediaPhoto, PlacePhoto, SupportingPhoto } from './MediaPhoto';
+import { PlaceMedia, PlaceMediaActions, usePlaceMedia, type DisplayMedia } from './media';
 import { photoFingerprint, photoGeneration } from './photoSession';
 
 type Group = {
@@ -181,7 +181,7 @@ function NearbyInline({ group, open, onToggle, show, positionOf }: {
   </section>;
 }
 
-export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, actions, mode }: { detail: ProductDetail; mediaEndpoint?: string; mediaOwner?: string | null; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved" }) {
+export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, actions, mode, staticMedia, coverMedia, readOnly = false }: { detail: ProductDetail; mediaEndpoint?: string; mediaOwner?: string | null; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved"; staticMedia?: Record<string, DisplayMedia>; coverMedia?: DisplayMedia; readOnly?: boolean }) {
   const paceMessage = paceNotice(detail.completion?.pace_review);
   const positionOf = (item: DetailNearby) => detail.nearby.indexOf(item);
   const [filter, setFilter] = useState<string | null>(null);
@@ -210,7 +210,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
     provider: 'Unsplash', kind: 'atmosphere', width: 360, height: 240, themes,
   });
   const combinedMedia = {
-    items: { ...media.items, ...supportingMedia.items },
+    items: staticMedia ?? { ...media.items, ...supportingMedia.items },
     refresh: (slot: string) => themes[slot] ? supportingMedia.refresh(slot) : media.refresh(slot),
     imageFailed: (slot: string, value: Parameters<typeof media.imageFailed>[1]) =>
       themes[slot] ? supportingMedia.imageFailed(slot, value) : media.imageFailed(slot, value),
@@ -358,15 +358,17 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
     0,
   );
   return (
-    <PlaceMediaActions.Provider value={combinedMedia}><PlaceMedia.Provider value={combinedMedia.items}><div className="detail-page">
+    <PlaceMediaActions.Provider value={staticMedia ? null : combinedMedia}><PlaceMedia.Provider value={combinedMedia.items}><div className="detail-page">
       <section className="detail-hero">
-        <div className="detail-cover"><DestinationPhoto owner={mediaOwner ?? null} destination={detail.destination} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
+        <div className="detail-cover">{coverMedia
+          ? <MediaPhoto atmosphere media={coverMedia} label={`${detail.destination} destination atmosphere`} className="detail-hero-image" />
+          : <DestinationPhoto owner={mediaOwner ?? null} destination={detail.destination} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" />}<div className="detail-cover-shade" /></div>
         <div className="container detail-hero-inner">
           <Link to={mode === "preview" ? "/plan?recover=1" : "/trips"} className="detail-back"><Icon name="back" size={17} />{mode === "preview" ? "Back to previews" : "Back to My trips"}</Link>
           <span className="detail-eyebrow">YOUR JOURNEY, DAY BY DAY</span>
           <h1>{detail.title}</h1>
           <div className="detail-meta"><span><Icon name="pin" size={17} />{detail.destination}</span><span><Icon name="calendar" size={17} />{dottedDate(detail.start_date)}{detail.end_date ? ` — ${dottedDate(detail.end_date)}` : ""}</span><span><Icon name="layers" size={17} />{detail.days.length} days / {activityCount} stops</span>{detail.request?.traveler_count && <span><Icon name="users" size={17} />{detail.request.traveler_count} travelers</span>}</div>
-          <div className="detail-hero-buttons">{onReplan && <button type="button" className="btn btn-primary" onClick={onReplan}><Icon name="spark" size={17} />Plan again</button>}<ExportControls detail={detail} />{actions}</div>
+          {!readOnly && <div className="detail-hero-buttons">{onReplan && <button type="button" className="btn btn-primary" onClick={onReplan}><Icon name="spark" size={17} />Plan again</button>}<ExportControls detail={detail} />{actions}</div>}
         </div>
       </section>
       <div className="container detail-below">
@@ -828,7 +830,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
                 Less time for the planning.
               </h3>
               <p>Keep your own rhythm. Make room for the next discovery.</p>
-              {onReplan ? <button type="button" className="text-link inline-action" onClick={onReplan}>Plan another journey →</button> : <Link to="/plan" className="text-link">Plan another journey →</Link>}
+              {!readOnly && (onReplan ? <button type="button" className="text-link inline-action" onClick={onReplan}>Plan another journey →</button> : <Link to="/plan" className="text-link">Plan another journey →</Link>)}
             </section>
           </aside>
         </div>

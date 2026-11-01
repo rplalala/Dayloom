@@ -5,9 +5,12 @@ import type { ExampleCard } from "./types";
 import { Icon } from "../Icon";
 import { CopyControls } from "../CopyControls";
 import { dottedDate } from "./display";
-import { DestinationPhoto } from './MediaPhoto';
+import { MediaPhoto } from './MediaPhoto';
+import { exampleCover } from './exampleMedia';
+import { useSession } from '../session';
 
 export function ExampleCards() {
+  const { account } = useSession();
   const [cards, setCards] = useState<ExampleCard[] | null>(null);
   const [error, setError] = useState(false);
   const [query, setQuery] = useState("");
@@ -40,7 +43,7 @@ export function ExampleCards() {
           <div
             className={`trip-card-photo dayloom-example example-${i}`}
           >
-            <DestinationPhoto link={{ to: `/examples/${card.id}`, label: `Read ${card.title}` }} destination={card.destination} label={`${card.destination} destination atmosphere`} fallback={card.illustration_key ? `/dayloom/${card.illustration_key}.svg` : undefined} />
+            <MediaPhoto atmosphere media={exampleCover(card.id)} link={{ to: `/examples/${card.id}`, label: `Read ${card.title}` }} label={`${card.destination} destination atmosphere`} fallback={card.illustration_key ? `/dayloom/${card.illustration_key}.svg` : undefined} />
             <span className="trip-status">Example itinerary</span>
           </div>
           <div className="trip-card-body">
@@ -48,7 +51,7 @@ export function ExampleCards() {
             <div className="trip-date"><Icon name="calendar" size={16} />{dottedDate(card.start_date)}{card.end_date ? ` — ${dottedDate(card.end_date)}` : ""}</div>
             <p>{card.description || "A journey worth looking forward to."}</p>
             <div className="trip-card-stats"><span><Icon name="calendar" size={15} />{card.day_count} days</span><span><Icon name="pin" size={15} />{card.stop_count == null ? "Stops to confirm" : `${card.stop_count} stops`}</span><span><Icon name="walk" size={15} />{card.transfer_count == null ? "Connections to confirm" : `${card.transfer_count} connections`}</span></div>
-            <div className="trip-card-foot"><Link className="text-link" to={`/examples/${card.id}`}>View details <Icon name="arrow" size={17} /></Link><CopyControls buttonClassName="btn btn-quiet btn-tiny" kind="example" source={card.id} title={card.title} label="Copy" buttonIcon={<Icon name="copy" size={15} />} /></div>
+            <div className="trip-card-foot"><Link className="text-link" to={`/examples/${card.id}`}>View details <Icon name="arrow" size={17} /></Link>{account && <CopyControls buttonClassName="btn btn-quiet btn-tiny" kind="example" source={card.id} title={card.title} label="Copy" buttonIcon={<Icon name="copy" size={15} />} />}</div>
           </div>
         </article>
       ))}

@@ -1,4 +1,4 @@
-"""Fresh fixed-provider display metadata; no photo archive or URL fetch proxy."""
+"""Live fixed-provider metadata and bundled local example images; no URL fetch proxy."""
 
 import asyncio
 import re
@@ -16,7 +16,7 @@ from backend.app.observability.product_logs import operation
 from backend.app.observability.usage import install_http_hooks
 from backend.app.product.auth import CurrentUser
 from backend.app.product.database import connect
-from backend.app.product.examples import example_detail
+from backend.app.product.examples import example_detail, local_example_media
 from backend.app.runtime.database import PROJECT_ROOT
 
 router = APIRouter(tags=["Product media"])
@@ -484,26 +484,19 @@ def place_fallback_queries(detail):
 @router.get("/api/examples/{example_id}/media")
 async def example_media(
     example_id: str,
-    providers: Providers,
     response: Response,
     width: Dimension = 960,
     height: Dimension = 640,
     offset: Annotated[int, Query(ge=0)] = 0,
     slot: RequestedSlots = None,
 ):
-    detail = example_detail(example_id)
-    context = detail.model_dump(mode="json")
-    return await resolve_photos(
-        detail._media_bindings.items(),
-        providers,
-        width,
-        height,
-        response,
-        offset=offset,
-        slots=slot,
-        fallback_queries=place_fallback_queries(context),
-        city_query=destination_photo_query(context),
-    )
+    items = local_example_media(example_id)
+    selected = slot if slot is not None else list(items)[offset:offset + MAX_PLACE_PHOTOS]
+    end = offset + len(selected)
+    response.headers["Cache-Control"] = "public, max-age=86400"
+    return {"items": {key: items.get(key, {"status": "unavailable"}) for key in selected},
+            "limit": MAX_PLACE_PHOTOS,
+            "next_offset": None if slot is not None or end >= len(items) else end}
 
 
 def owned_detail(kind, resource_id, owner):

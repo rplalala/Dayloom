@@ -7,23 +7,21 @@ import london from '../../../../../backend/app/product/examples/london-example.j
 
 afterEach(() => { sessionStorage.clear(); vi.unstubAllGlobals(); });
 
-it('renders a complete public example with the same photos, weather and routes as a trip', async () => {
-  const photo = { status: 'available', provider: 'Google Maps', image_url: 'https://lh3.googleusercontent.com/london', authors: [{ name: 'Photographer' }] };
+it('renders a read-only guest example with local photos and no media service requests', async () => {
+  const mediaRequests: string[] = [];
   vi.stubGlobal('fetch', vi.fn(async (input: string) => {
     if (input === '/api/auth/current') return Response.json({}, { status: 401 });
     if (input === '/api/examples/london-example') return Response.json(london.detail);
-    if (input.startsWith('/api/examples/london-example/media?')) return Response.json({ items: Object.fromEntries(Object.keys(london.media_bindings).map(slot => [slot, photo])) });
-    if (input.startsWith('/api/media/destination?')) {
-      expect(new URL(input, 'http://localhost').searchParams.get('destination')).toBe(london.detail.destination);
-      return Response.json({ ...photo, provider: 'Unsplash', kind: 'atmosphere',
-        image_url: 'https://images.unsplash.com/london', alt: 'London atmosphere' });
-    }
+    if (input.includes('/media') || input.includes('/supporting-media')) mediaRequests.push(input);
     return Response.json({}, { status: 404 });
   }));
   render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ['/examples/london-example'] })} />);
   await screen.findByRole('heading', { name: london.detail.title });
   expect(await screen.findByRole('img', { name: 'Tower of London · place photograph' })).toBeVisible();
-  expect(await screen.findByRole('img', { name: 'London atmosphere' })).toBeVisible();
+  expect(await screen.findByRole('img', { name: 'London, United Kingdom destination atmosphere' })).toBeVisible();
+  for (const image of screen.getAllByRole('img')) expect(image.getAttribute('src')).toMatch(/^\/dayloom\//);
+  expect(mediaRequests).toEqual([]);
+  expect(screen.queryByRole('button', { name: /Plan again|Save a copy|Export/i })).not.toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'WALK · 8 min · Fits your schedule →' })).toBeVisible();
   expect(screen.queryByText(/unavailable|Avg —/i)).not.toBeInTheDocument();
   await userEvent.click(screen.getByLabelText('Weather details for Oct 15'));
@@ -32,6 +30,8 @@ it('renders a complete public example with the same photos, weather and routes a
   const showModal = vi.spyOn(HTMLDialogElement.prototype, 'showModal').mockImplementation(function (this: HTMLDialogElement) { this.open = true; });
   await userEvent.click(screen.getByRole('button', { name: 'View Tower of London' }));
   expect(within(screen.getByRole('dialog')).getByText('Check admission and booking prices before you go.')).toBeVisible();
+  expect(within(screen.getByRole('dialog')).getByRole('link', { name: 'License' })).toHaveAttribute('href', expect.stringContaining('creativecommons.org'));
+  expect(screen.queryByRole('button', { name: 'Refresh photo' })).not.toBeInTheDocument();
   expect(screen.queryByText(/unavailable/i)).not.toBeInTheDocument();
   showModal.mockRestore();
 });
