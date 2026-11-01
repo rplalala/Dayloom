@@ -10,7 +10,7 @@ import "./library.css";
 
 export type DraftActionsHandle = { save: () => Promise<void> };
 
-export function DraftControls({ onLoading, actionsRef }: { onLoading: (loading: boolean) => void; actionsRef?: Ref<DraftActionsHandle> }) {
+export function DraftControls({ onLoading, actionsRef, onClear, clearDisabled }: { onLoading: (loading: boolean) => void; actionsRef?: Ref<DraftActionsHandle>; onClear: () => void; clearDisabled: boolean }) {
   const session = useSession();
   const navigate = useNavigate();
   const location = useLocation();
@@ -113,6 +113,7 @@ export function DraftControls({ onLoading, actionsRef }: { onLoading: (loading: 
         }
       }}>Reload saved draft</button>}
       <button type="button" className="inline-action" onClick={() => setReview(true)}>Review travel brief</button>
+      <button type="button" className="inline-action" disabled={clearDisabled} onClick={onClear}>Clear</button>
     </div>
     {error && <p role="alert" className="form-error">{error}</p>}
     {saved && <p className="subtle-help" role="status">{saved.editor === JSON.stringify(session.brief) && saved.title === title ? "Draft saved." : "You have unsaved changes."}</p>}

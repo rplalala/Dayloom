@@ -460,7 +460,7 @@ initially, and preference validation opens it to expose the error. Collapsing it
 does not clear its values. Progress mounts when a task, recovery/error state or an
 explicit progress anchor needs it. With no selected task/result, the preview area
 shows only available unsaved previews for an account or a compact guest example link.
-**Clear**, beside Generate itinerary, empties the editable brief and preference choices,
+**Clear**, beside Save travel brief and Review travel brief, empties the editable brief and preference choices,
 restores the default AUD currency, clears validation and draft/submission associations,
 and closes optional preferences. The blank brief is retained for recovery without
 reapplying profile defaults. Saved drafts and submitted tasks remain unchanged.

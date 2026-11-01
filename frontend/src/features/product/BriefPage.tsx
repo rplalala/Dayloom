@@ -225,8 +225,8 @@ export function BriefPage() {
           </details>
         </fieldset>
         {checked && errors.length > 0 && <div className="form-error" role="alert"><ul>{errors.map(error => <li key={error}>{error}</li>)}</ul></div>}
-        <div className="form-bottom"><p><Icon name="shield" size={16} /> City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><div className="brief-form-actions"><button type="button" disabled={draftLoading || submission.busy} className="btn btn-light" onClick={clearBrief}>Clear</button><button type="submit" disabled={draftLoading || submission.busy} className="btn btn-primary btn-large"><Icon name="spark" size={18} /> {submission.busy ? 'Submitting…' : 'Generate itinerary'} <Icon name="arrow" size={17} /></button></div></div>
-        <DraftControls key={clearRevision} actionsRef={draftActions} onLoading={setDraftLoading} />
+        <div className="form-bottom"><p><Icon name="shield" size={16} /> City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading || submission.busy} className="btn btn-primary btn-large"><Icon name="spark" size={18} /> {submission.busy ? 'Submitting…' : 'Generate itinerary'} <Icon name="arrow" size={17} /></button></div>
+        <DraftControls key={clearRevision} actionsRef={draftActions} onLoading={setDraftLoading} onClear={clearBrief} clearDisabled={draftLoading || !!submission.busy} />
         {submission.message && <p className="subtle-help" role="status">{submission.message} {submission.taskId && <Link to={planTaskLink(submission.taskId)}>Open task progress →</Link>}</p>}
       </form>
     </section>

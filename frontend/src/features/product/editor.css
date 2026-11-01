@@ -30,7 +30,6 @@
 .dayloom .plan-page .page-heading { margin-bottom:24px; }
 .dayloom .plan-page .page-heading h1 { font-size:clamp(30px,3.4vw,44px); margin:10px 0; }
 .dayloom .plan-page .flow-title { margin-bottom:22px; }
-.dayloom .brief-form-actions { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:10px; }
 .dayloom .optional-preferences { margin-top:22px; border-top:1px solid var(--line); padding-top:18px; }
 .dayloom .optional-preferences>summary { display:flex; align-items:center; gap:10px; cursor:pointer; list-style:none; border-radius:6px; color:var(--accent); }
 .dayloom .optional-preferences>summary::-webkit-details-marker { display:none; }
@@ -54,7 +53,6 @@
   .dayloom .brief-editor .form-grid-essentials>.field { grid-column:span 2; }
   .dayloom .brief-editor .form-grid-essentials>.field:last-child { grid-column:span 4; }
   .dayloom .plan-page .form-bottom { margin-top:20px; padding-top:20px; gap:14px; }
-  .dayloom .plan-page .form-bottom>.brief-form-actions { order:-1; width:100%; }
-  .dayloom .brief-form-actions>.btn-primary { flex:1; }
+  .dayloom .plan-page .form-bottom>button { order:-1; width:100%; }
   .dayloom .plan-page .planning-inspiration { justify-content:flex-start; }
 }
