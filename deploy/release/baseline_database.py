@@ -113,6 +113,133 @@ def tables(connection):
     ))
 
 
+
+def is_empty_database(connection):
+    """Shared first-restore admission for factory and private backups."""
+    return not connection.execute(
+        "SELECT 1 FROM pg_namespace WHERE nspname !~ '^pg_' "
+        "AND nspname NOT IN ('information_schema','public') "
+        "UNION ALL SELECT 1 FROM pg_depend d JOIN pg_namespace n ON n.oid=d.refobjid "
+        "WHERE d.refclassid='pg_namespace'::regclass AND n.nspname='public' "
+        "UNION ALL SELECT 1 FROM pg_extension WHERE extname <> 'plpgsql' LIMIT 1"
+    ).fetchone() and _unsupported_catalog_object(connection) is None
+
+
+def _unsupported_catalog_object(connection):
+    # v1 predates complete catalog fingerprints. Keep its manifest identity stable:
+    # reject unrepresented objects/state, rather than silently calling them an exact match.
+    # Extension members and their internal objects (not arbitrary dependents) are
+    # identified by the separately pinned extension version and namespace.
+    return connection.execute("""
+        WITH RECURSIVE extension_owned(classid,objid) AS (
+            SELECT classid,objid FROM pg_depend WHERE deptype='e'
+            UNION
+            SELECT d.classid,d.objid FROM pg_depend d JOIN extension_owned e
+                ON d.refclassid=e.classid AND d.refobjid=e.objid WHERE d.deptype='i'
+        ), user_namespaces AS (
+            SELECT oid FROM pg_namespace
+            WHERE nspname !~ '^pg_' AND nspname <> 'information_schema'
+        ), supported_types(oid) AS (
+            SELECT t.oid FROM pg_type t JOIN pg_class c ON c.oid=t.typrelid
+                WHERE t.typtype='c' AND c.relkind IN ('r','v')
+            UNION SELECT objid FROM extension_owned WHERE classid='pg_type'::regclass
+            UNION SELECT t.oid FROM pg_type t JOIN supported_types s ON s.oid=t.typelem
+                WHERE t.typtype='b' AND t.typcategory='A' AND EXISTS (
+                    SELECT 1 FROM pg_depend d WHERE d.classid='pg_type'::regclass
+                    AND d.objid=t.oid AND d.refclassid='pg_type'::regclass
+                    AND d.refobjid=s.oid AND d.deptype='i')
+        ), unsupported(classid,objid,category) AS (
+            SELECT 'pg_type'::regclass,t.oid,'custom type'
+                FROM pg_type t JOIN user_namespaces n ON n.oid=t.typnamespace
+                WHERE NOT EXISTS (SELECT 1 FROM supported_types s WHERE s.oid=t.oid)
+            UNION ALL
+            SELECT 'pg_class'::regclass,c.oid,'relation kind or table settings'
+                FROM pg_class c JOIN user_namespaces n ON n.oid=c.relnamespace
+                WHERE c.relkind NOT IN ('r','i','v') OR c.relpersistence <> 'p'
+                    OR c.relrowsecurity OR c.relforcerowsecurity OR c.relispartition
+                    OR (c.relkind IN ('r','v') AND c.reloptions IS NOT NULL)
+                    OR (c.relkind='r' AND (c.relreplident <> 'd'
+                        OR c.relam <> (SELECT oid FROM pg_am WHERE amname='heap')))
+            UNION ALL
+            SELECT 'pg_class'::regclass,a.attrelid,'column settings'
+                FROM pg_attribute a JOIN pg_class c ON c.oid=a.attrelid
+                JOIN user_namespaces n ON n.oid=c.relnamespace
+                JOIN pg_type t ON t.oid=a.atttypid
+                WHERE a.attnum>0 AND NOT a.attisdropped
+                    AND (a.attoptions IS NOT NULL OR a.attfdwoptions IS NOT NULL
+                        OR a.attstorage <> t.typstorage OR a.attcompression <> ''
+                        OR a.attcollation <> t.typcollation)
+            UNION ALL
+            SELECT 'pg_proc'::regclass,p.oid,'aggregate or window function'
+                FROM pg_proc p JOIN user_namespaces n ON n.oid=p.pronamespace
+                WHERE p.prokind NOT IN ('f','p')
+            UNION ALL
+            SELECT d.classid,d.objid,'schema object'
+                FROM pg_depend d JOIN user_namespaces n ON n.oid=d.refobjid
+                WHERE d.refclassid='pg_namespace'::regclass AND d.classid NOT IN (
+                    'pg_class'::regclass,'pg_proc'::regclass,'pg_type'::regclass,
+                    'pg_constraint'::regclass,'pg_extension'::regclass)
+            UNION ALL
+            SELECT 'pg_policy'::regclass,p.oid,'row policy' FROM pg_policy p
+                JOIN pg_class c ON c.oid=p.polrelid
+                JOIN user_namespaces n ON n.oid=c.relnamespace
+            UNION ALL
+            SELECT 'pg_rewrite'::regclass,r.oid,'rule or rule settings' FROM pg_rewrite r
+                JOIN pg_class c ON c.oid=r.ev_class
+                JOIN user_namespaces n ON n.oid=c.relnamespace
+                WHERE NOT (c.relkind='v' AND r.rulename='_RETURN' AND r.ev_enabled='O')
+            UNION ALL
+            SELECT 'pg_trigger'::regclass,t.oid,'trigger settings' FROM pg_trigger t
+                JOIN pg_class c ON c.oid=t.tgrelid
+                JOIN user_namespaces n ON n.oid=c.relnamespace WHERE t.tgenabled <> 'O'
+            UNION ALL
+            SELECT 'pg_class'::regclass,i.inhrelid,'table inheritance' FROM pg_inherits i
+                JOIN pg_class c ON c.oid=i.inhrelid
+                JOIN user_namespaces n ON n.oid=c.relnamespace
+            UNION ALL
+            SELECT 'pg_class'::regclass,i.indexrelid,'index settings' FROM pg_index i
+                JOIN pg_class c ON c.oid=i.indexrelid
+                JOIN user_namespaces n ON n.oid=c.relnamespace
+                WHERE NOT i.indisvalid OR NOT i.indisready OR NOT i.indislive
+            UNION ALL
+            SELECT 'pg_event_trigger'::regclass,oid,'event trigger' FROM pg_event_trigger
+            UNION ALL
+            SELECT 'pg_cast'::regclass,oid,'cast' FROM pg_cast WHERE oid>=16384
+            UNION ALL
+            SELECT 'pg_transform'::regclass,oid,'transform' FROM pg_transform WHERE oid>=16384
+            UNION ALL
+            SELECT 'pg_language'::regclass,oid,'language' FROM pg_language
+                WHERE lanname NOT IN ('internal','c','sql','plpgsql')
+            UNION ALL
+            SELECT 'pg_am'::regclass,oid,'access method' FROM pg_am WHERE oid>=16384
+            UNION ALL
+            SELECT 'pg_foreign_data_wrapper'::regclass,oid,'foreign data wrapper'
+                FROM pg_foreign_data_wrapper
+            UNION ALL
+            SELECT 'pg_foreign_server'::regclass,oid,'foreign server' FROM pg_foreign_server
+            UNION ALL
+            SELECT 'pg_publication'::regclass,oid,'publication' FROM pg_publication
+            UNION ALL
+            SELECT 'pg_subscription'::regclass,oid,'subscription' FROM pg_subscription
+            UNION ALL
+            SELECT 'pg_largeobject'::regclass,oid,'large object' FROM pg_largeobject_metadata
+        )
+        SELECT category FROM unsupported u WHERE NOT EXISTS (
+            SELECT 1 FROM extension_owned e WHERE e.classid=u.classid AND e.objid=u.objid)
+        LIMIT 1
+    """).fetchone()
+
+
+def require_supported_catalog(connection):
+    """Fail closed before v1 fingerprints can be used as installation identity."""
+    unsupported = _unsupported_catalog_object(connection)
+    if unsupported:
+        raise BaselineError(
+            "Baseline v1 cannot verify " + unsupported[0]
+            + "; use a supported snapshot/destination; existing data was preserved"
+        )
+
+
 def require_quiescent(connection):
     if connection.execute("SELECT to_regclass('app.planning_tasks')").fetchone()[0]:
         active = connection.execute(
@@ -199,6 +326,7 @@ def _table_fingerprint(connection, schema, name):
 
 
 def inventory(connection):
+    require_supported_catalog(connection)
     result = server_identity(connection)
     result["schemas"] = [row[0] for row in connection.execute(
         "SELECT nspname FROM pg_namespace WHERE nspname !~ '^pg_' "

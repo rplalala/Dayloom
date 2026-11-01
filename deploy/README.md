@@ -53,6 +53,9 @@ The initializer verifies the release checksums and serializes concurrent imports
 It restores only an empty destination, including the absence of user-defined public
 functions, types and extensions. Restoration is transactional; installation identity
 is registered only after the restored schema and content match the baseline.
+Catalog state outside the [v1 snapshot support boundary](release/README.md#export-and-verify)
+is rejected before registration; preserve the target and use a supported snapshot
+rather than deleting the additional objects as an automatic repair.
 
 | Observed state | Safe next action |
 | --- | --- |

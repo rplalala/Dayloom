@@ -193,6 +193,7 @@ def restore(directory, parameters):
         LOCK_ID,
         connect,
         inventory,
+        is_empty_database,
         require_compatibility,
         run_tool,
     )
@@ -201,14 +202,7 @@ def restore(directory, parameters):
     manifest = verify(root)
     with connect(parameters) as connection:
         connection.execute("SELECT pg_advisory_lock(%s)", (LOCK_ID,))
-        nonempty = connection.execute(
-            "SELECT 1 FROM pg_namespace WHERE nspname !~ '^pg_' "
-            "AND nspname NOT IN ('information_schema','public') UNION ALL "
-            "SELECT 1 FROM pg_depend d JOIN pg_namespace n ON n.oid=d.refobjid "
-            "WHERE d.refclassid='pg_namespace'::regclass AND n.nspname='public' UNION ALL "
-            "SELECT 1 FROM pg_extension WHERE extname <> 'plpgsql' LIMIT 1"
-        ).fetchone()
-        if nonempty:
+        if not is_empty_database(connection):
             raise BaselineError(
                 "Restore requires an empty database; destination data was preserved"
             )

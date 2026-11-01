@@ -16,6 +16,7 @@ from psycopg import sql
 from psycopg.conninfo import conninfo_to_dict, make_conninfo
 
 from backend.tests.deployment.test_baseline_cli import run_cli
+from backend.tests.deployment.test_maintenance_cli import maintenance
 
 
 @dataclass(repr=False)
@@ -104,11 +105,70 @@ def test_complete_round_trip_retains_admin_cache_and_later_destination_writes(da
         cache = conn.execute("SELECT media_cache FROM app.trips").fetchone()[0]
         assert cache["photo"]["revision"] == "retained"
         conn.execute("INSERT INTO app.users VALUES ('later','later@example.test','later-hash')")
+        conn.execute("CREATE TYPE public.later_enum AS ENUM ('user-owned')")
     reused = run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL")
     assert reused.returncode == 0, reused.stderr
     assert json.loads(reused.stdout)["status"] == "reused"
     with psycopg.connect(target) as conn:
         assert conn.execute("SELECT count(*) FROM app.users").fetchone()[0] == 2
+
+
+def test_export_rejects_unrepresented_source_objects_without_writing_an_artifact(
+    databases, tmp_path,
+):
+    with psycopg.connect(databases.source, autocommit=True) as conn:
+        conn.execute("CREATE TYPE public.unrelated AS ENUM ('x')")
+    release = tmp_path / "baseline"
+    rejected = export_to(release, tmp_path)
+    assert rejected.returncode == 2
+    assert "custom type" in rejected.stderr
+    assert not release.exists()
+    with psycopg.connect(databases.source) as conn:
+        assert conn.execute("SELECT 'x'::public.unrelated::text").fetchone() == ("x",)
+        assert conn.execute("SELECT count(*) FROM app.users").fetchone() == (1,)
+
+
+def test_private_backup_round_trip_retains_later_data_and_refuses_unknown_target(
+    databases, tmp_path,
+):
+    release = tmp_path / "baseline"
+    exported = export_to(release, tmp_path)
+    assert exported.returncode == 0, exported.stderr
+    baseline_id = json.loads(exported.stdout)["baseline_id"]
+    assert run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL").returncode == 0
+    with psycopg.connect(databases.target, autocommit=True) as conn:
+        conn.execute("INSERT INTO app.users VALUES ('later','later@example.test','later-hash')")
+    config = tmp_path / "config"
+    config.mkdir()
+    for name in (".env", "product.yaml", ".config-access.json"):
+        (config / name).write_text("controlled-test-configuration", encoding="utf-8")
+    archive = tmp_path / "private-backup"
+    backed_up = maintenance(
+        "backup", archive, "--config", config, "--expect-id", baseline_id,
+        "--dsn-env", "BASELINE_TARGET_TEST_URL",
+    )
+    assert backed_up.returncode == 0, backed_up.stderr
+    # Only this fixture's own disposable source database is cleared for recovery.
+    with psycopg.connect(databases.source, autocommit=True) as conn:
+        conn.execute("DROP SCHEMA app CASCADE; DROP SCHEMA tripworld CASCADE")
+        conn.execute("CREATE TYPE public.keep AS ENUM ('retained')")
+    rejected = maintenance("restore", archive, "--dsn-env", "BASELINE_SOURCE_TEST_URL")
+    assert rejected.returncode == 2
+    assert "empty database" in rejected.stderr
+    with psycopg.connect(databases.source, autocommit=True) as conn:
+        assert conn.execute("SELECT 'retained'::public.keep::text").fetchone() == ("retained",)
+        assert conn.execute("SELECT to_regclass('app.users')").fetchone()[0] is None
+        conn.execute("DROP TYPE public.keep")
+    restored = maintenance("restore", archive, "--dsn-env", "BASELINE_SOURCE_TEST_URL")
+    assert restored.returncode == 0, restored.stderr
+    assert json.loads(restored.stdout)["status"] == "restored"
+    reused = run_cli("restore", release, "--dsn-env", "BASELINE_SOURCE_TEST_URL")
+    assert reused.returncode == 0, reused.stderr
+    assert json.loads(reused.stdout)["status"] == "reused"
+    with psycopg.connect(databases.source) as conn:
+        assert conn.execute("SELECT email FROM app.users ORDER BY id").fetchall() == [
+            ("admin@admin.com",), ("later@example.test",),
+        ]
 
 
 def test_export_rejects_a_mismatched_runtime_manifest(databases, tmp_path):
@@ -128,6 +188,75 @@ def test_committed_restore_without_registration_is_recognized_exactly(databases,
     recovered = run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL")
     assert recovered.returncode == 0, recovered.stderr
     assert json.loads(recovered.stdout)["status"] == "recovered"
+
+
+@pytest.mark.parametrize(("change", "observation", "expected"), [
+    ("CREATE TYPE public.unrelated AS ENUM ('x')", "SELECT 'x'::public.unrelated::text", "x"),
+    ("CREATE DOMAIN public.unrelated AS text CHECK (VALUE <> '')",
+     "SELECT 'x'::public.unrelated", "x"),
+    ("CREATE TYPE public.unrelated AS RANGE (subtype=integer)",
+     "SELECT '[1,3)'::public.unrelated::text", "[1,3)"),
+    ("CREATE TYPE public.unrelated AS (value integer)",
+     "SELECT ROW(7)::public.unrelated::text", "(7)"),
+    ("CREATE SEQUENCE public.unrelated START 41",
+     "SELECT last_value FROM public.unrelated", 41),
+    ("CREATE AGGREGATE public.unrelated(integer) "
+     "(sfunc=int4pl,stype=integer,initcond='0')",
+     "SELECT public.unrelated(x) FROM (VALUES (7)) t(x)", 7),
+    ("CREATE EVENT TRIGGER unrelated ON ddl_command_start "
+     "EXECUTE FUNCTION app.event_observer()",
+     "SELECT count(*) FROM pg_event_trigger WHERE evtname='unrelated'", 1),
+    ("CREATE POLICY unrelated ON app.users USING (true)",
+     "SELECT count(*) FROM pg_policy WHERE polname='unrelated'", 1),
+    ("ALTER TABLE app.users ENABLE ROW LEVEL SECURITY",
+     "SELECT relrowsecurity FROM pg_class WHERE oid='app.users'::regclass", True),
+    ("ALTER TABLE app.users SET (fillfactor=80)",
+     "SELECT reloptions[1] FROM pg_class WHERE oid='app.users'::regclass", "fillfactor=80"),
+    ("ALTER TABLE app.users ALTER email TYPE text COLLATE \"C\"",
+     "SELECT attcollation='\"C\"'::regcollation FROM pg_attribute "
+     "WHERE attrelid='app.users'::regclass AND attname='email'", True),
+    ("ALTER TABLE app.users DISABLE TRIGGER keep_enabled",
+     "SELECT tgenabled::text FROM pg_trigger WHERE tgname='keep_enabled'", "D"),
+    ("CREATE COLLATION public.unrelated FROM \"C\"",
+     "SELECT count(*) FROM pg_collation WHERE collname='unrelated'", 1),
+    ("CREATE RULE unrelated AS ON DELETE TO app.users DO INSTEAD NOTHING",
+     "SELECT count(*) FROM pg_rewrite WHERE rulename='unrelated'", 1),
+    ("ALTER VIEW app.user_view SET (security_barrier=true)",
+     "SELECT reloptions[1] FROM pg_class WHERE oid='app.user_view'::regclass",
+     "security_barrier=true"),
+    ("CREATE CAST (integer AS uuid) WITH INOUT",
+     "SELECT count(*) FROM pg_cast WHERE castsource='integer'::regtype "
+     "AND casttarget='uuid'::regtype", 1),
+    ("SELECT lo_create(0)", "SELECT count(*) FROM pg_largeobject_metadata", 1),
+], ids=["enum", "domain", "range", "composite", "sequence", "aggregate", "event-trigger",
+        "policy", "row-security", "table-settings", "column-collation", "disabled-trigger",
+        "collation", "rule", "view-settings", "cast", "large-object"])
+def test_registration_gap_rejects_unrepresented_state_without_relabeling(
+    databases, tmp_path, change, observation, expected,
+):
+    with psycopg.connect(databases.source, autocommit=True) as conn:
+        conn.execute("""CREATE VIEW app.user_view AS SELECT id FROM app.users;
+            CREATE FUNCTION app.event_observer() RETURNS event_trigger
+            LANGUAGE plpgsql AS 'BEGIN END';
+            CREATE FUNCTION app.row_observer() RETURNS trigger
+            LANGUAGE plpgsql AS 'BEGIN RETURN NEW; END';
+            CREATE TRIGGER keep_enabled BEFORE INSERT ON app.users
+                FOR EACH ROW EXECUTE FUNCTION app.row_observer()""")
+    release = tmp_path / "baseline"
+    assert export_to(release, tmp_path).returncode == 0
+    assert run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL").returncode == 0
+    with psycopg.connect(databases.target, autocommit=True) as conn:
+        conn.execute("DROP TABLE app.deployment_baseline")
+        conn.execute(change)
+    rejected = run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL")
+    assert rejected.returncode == 2, rejected.stdout + rejected.stderr
+    assert "preserved" in rejected.stderr
+    with psycopg.connect(databases.target) as conn:
+        assert conn.execute("SELECT to_regclass('app.deployment_baseline')").fetchone()[0] is None
+        assert conn.execute(observation).fetchone() == (expected,)
+        assert conn.execute("SELECT email,password_hash FROM app.users").fetchall() == [
+            ("admin@admin.com", "retained-test-hash"),
+        ]
 
 
 def test_unknown_nonempty_target_is_not_overwritten(databases, tmp_path):
@@ -272,35 +401,48 @@ def test_concurrent_initializers_serialize_and_preserve_later_writes(databases, 
                     process.communicate()
 
 
-def test_registration_interruption_recovers_committed_restore(databases, tmp_path):
-    with psycopg.connect(databases.source, autocommit=True) as conn:
-        conn.execute("""CREATE FUNCTION app.registration_gate() RETURNS event_trigger AS $$
-            BEGIN
-                IF current_query() LIKE '%CREATE TABLE app.deployment_baseline%' THEN
-                    PERFORM pg_advisory_xact_lock(252006);
-                END IF;
-            END $$ LANGUAGE plpgsql;
-            CREATE EVENT TRIGGER registration_gate ON ddl_command_start
-                WHEN TAG IN ('CREATE TABLE') EXECUTE FUNCTION app.registration_gate()""")
+def test_registration_interruption_recovers_committed_restore(databases, tmp_path, monkeypatch):
     release = tmp_path / "baseline"
     assert export_to(release, tmp_path).returncode == 0
-    with psycopg.connect(databases.target, autocommit=True) as observer:
-        observer.execute("SELECT pg_advisory_lock(252006)")
-        process = start_restore(release)
-        try:
-            backend = wait_for_gate(observer, process, application="")
+    # Delay the external client exit after its real restore transaction commits.
+    # Killing the initializer here leaves the genuine registration gap, without
+    # installing an unsupported event trigger in the snapshot under test.
+    real_restore = shutil.which("pg_restore")
+    wrapper_bin = tmp_path / "bin"
+    wrapper_bin.mkdir()
+    committed = tmp_path / "restore-committed"
+    wrapper = wrapper_bin / "pg_restore"
+    wrapper.write_text(
+        f"#!{sys.executable}\n"
+        "import os, subprocess, sys, time\n"
+        "from pathlib import Path\n"
+        f"result = subprocess.run([{real_restore!r}, *sys.argv[1:]])\n"
+        "if result.returncode: sys.exit(result.returncode)\n"
+        "parent = os.getppid()\n"
+        f"Path({str(committed)!r}).touch()\n"
+        "while os.getppid() == parent: time.sleep(0.05)\n",
+        encoding="utf-8",
+    )
+    wrapper.chmod(0o700)
+    monkeypatch.setenv("PATH", str(wrapper_bin) + os.pathsep + os.environ["PATH"])
+    process = start_restore(release)
+    try:
+        deadline = time.monotonic() + 15
+        while not committed.exists() and time.monotonic() < deadline:
+            assert process.poll() is None, process.communicate()
+            time.sleep(0.05)
+        assert committed.exists(), "Real pg_restore did not reach the committed transaction gate"
+        with psycopg.connect(databases.target) as observer:
             assert observer.execute("SELECT count(*) FROM app.users").fetchone() == (1,)
             assert observer.execute(
                 "SELECT to_regclass('app.deployment_baseline')"
             ).fetchone()[0] is None
-            observer.execute("SELECT pg_terminate_backend(%s)", (backend,))
+        process.kill()
+        process.communicate(timeout=15)
+    finally:
+        if process.poll() is None:
+            process.kill()
             process.communicate(timeout=15)
-            assert process.returncode == 2
-        finally:
-            observer.execute("SELECT pg_advisory_unlock(252006)")
-            if process.poll() is None:
-                process.kill()
-                process.communicate()
     retry = run_cli("restore", release, "--dsn-env", "BASELINE_TARGET_TEST_URL")
     assert retry.returncode == 0, retry.stderr
     assert json.loads(retry.stdout)["status"] == "recovered"

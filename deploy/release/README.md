@@ -50,6 +50,18 @@ fingerprints of primary-key-ordered binary table streams. Vector rows are not
 aggregated into an in-memory JSON document. The dump excludes database roles and
 ACLs, so source database-role credentials are not distributed.
 
+The v1 manifest supports permanent heap tables, ordinary views, their admitted
+catalog settings and the constraints, indexes, enabled triggers and ordinary
+functions represented in its schema fingerprint. Extension-owned objects and
+internal arrays are admitted by the pinned extension version and namespace.
+Before export or content comparison, catalog admission rejects objects or settings
+that v1 cannot identify: standalone custom types (including enums, domains, ranges
+and composites), sequences, aggregates/window functions, event triggers, policies,
+nondefault table/column/trigger state and other unrepresented schema/global
+objects. Such state requires a separately supported artifact format; it is never
+accepted merely because the existing v1 hashes match. This does not change v1
+manifest identities or compare factory rows when a valid installed receipt exists.
+
 The command reports the actual dump byte size and an identity derived from the
 manifest. The artifact contains the custom-format dump, checksums, matching small
 retrieval sidecars and notices. Keep it outside Git history. A failed export is an

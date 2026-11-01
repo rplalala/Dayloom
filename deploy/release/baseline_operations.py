@@ -21,6 +21,7 @@ from deploy.release.baseline_database import (
     RECEIPT_TABLE,
     connect,
     inventory,
+    is_empty_database,
     require_compatibility,
     require_quiescent,
     run_tool,
@@ -131,16 +132,6 @@ def _record_installation(connection, manifest):
     )
 
 
-def _empty(connection):
-    return not connection.execute(
-        "SELECT 1 FROM pg_namespace WHERE nspname !~ '^pg_' "
-        "AND nspname NOT IN ('information_schema','public') "
-        "UNION ALL SELECT 1 FROM pg_depend d JOIN pg_namespace n ON n.oid=d.refobjid "
-        "WHERE d.refclassid='pg_namespace'::regclass AND n.nspname='public' "
-        "UNION ALL SELECT 1 FROM pg_extension WHERE extname <> 'plpgsql' LIMIT 1"
-    ).fetchone()
-
-
 def restore_baseline(directory, parameters, expected_id=None):
     manifest = verify_release(directory, expected_id)
     with connect(parameters) as connection:
@@ -156,7 +147,7 @@ def restore_baseline(directory, parameters, expected_id=None):
                 raise BaselineError("Installed database extension compatibility mismatch")
             return {"status": "reused", "baseline_id": receipt[1]}
         restored = False
-        if _empty(connection):
+        if is_empty_database(connection):
             with (Path(directory) / "database.pgcustom").open("rb") as stream:
                 run_tool("pg_restore", [
                     "--single-transaction", "--exit-on-error", "--no-owner", "--no-privileges",
