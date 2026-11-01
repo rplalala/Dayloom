@@ -13,6 +13,6 @@ export function usePlanningEntry() {
       const current = session.brief[key as keyof Brief];
       return Array.isArray(value) ? Array.isArray(current) && current.length === 0 : current === value;
     });
-    if (isEmpty) session.newBrief();
+    if (isEmpty || session.briefOrigin === 'new') session.newBrief();
   };
 }

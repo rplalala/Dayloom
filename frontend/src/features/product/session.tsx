@@ -166,7 +166,7 @@ function readRecovery(storageKey = key): Recovery {
       const unopened = saved.origin === "new" && saved.started === false && !saved.defaultsAttempted;
       const draftRef = saved.draftRef && typeof saved.draftRef.id === "string" && typeof saved.draftRef.title === "string" && Number.isSafeInteger(saved.draftRef.revision) && saved.draftRef.revision > 0 ? saved.draftRef as DraftRef : null;
       const draftTitle = typeof saved.draftTitle === "string" && saved.draftTitle.length <= 120 ? saved.draftTitle : draftRef?.title || "";
-      return { ...saved, brief: restoreBrief(saved.brief), origin: unopened ? "new" : "restored", defaultsAttempted: unopened ? false : true, draftRef, draftTitle };
+      return { ...saved, brief: restoreBrief(saved.brief), origin: saved.origin === 'new' ? "new" : "restored", defaultsAttempted: unopened ? false : true, draftRef, draftTitle };
     }
   } catch {
     /* An unavailable storage area must not prevent planning. */

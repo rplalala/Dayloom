@@ -2,9 +2,9 @@ import { createBrief, toggleInterest, togglePace, toggleTransport, type Brief, t
 
 export type Profile = { display_name: string; initials: string; currency: string; interests: Interest[]; pace: Pace | null; transport: Transport[]; notes: string; can_delete_account?: boolean };
 
-/** Only the explicit new-brief initializer calls this; confirmed requests stay independent. */
+/** Initialize structured defaults only; legacy notes never become hidden Plan preferences. */
 export function briefFromProfile(profile: Profile): Brief {
-  let brief = { ...createBrief(), currency: profile.currency, preferences: profile.notes };
+  let brief = { ...createBrief(), currency: profile.currency };
   for (const interest of profile.interests) brief = toggleInterest(brief, interest);
   if (profile.pace) brief = togglePace(brief, profile.pace);
   for (const transport of profile.transport) brief = toggleTransport(brief, transport);
