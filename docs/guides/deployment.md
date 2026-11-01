@@ -211,6 +211,11 @@ uv run python scripts/run_product.py
 ```
 
 Product migrations prepare its `app` schema. They do not rebuild the retrieval corpus.
+Migration 010 adds image URL/attribution cache fields to the existing previews and trips
+tables. Apply it before starting the updated Product API. Existing rows start with empty
+caches and acquire images on demand; subsequent reads reuse the saved URLs until an
+image fails, a user refreshes it or its resource changes. No image files or additional
+cache service need to be deployed.
 Click the settings icon in the bottom-right corner of Product, or visit
 [local configuration](http://localhost:5173/config). New installations use the displayed
 test password; replace it through Configuration access after opening the page.

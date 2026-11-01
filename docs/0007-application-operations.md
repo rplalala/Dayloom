@@ -1018,9 +1018,9 @@ one fresh `photos` Details request and one media metadata request, with an 8-sec
 timeout, an 8-second complete-slot deadline and 256 KiB response limit. The complete-slot
 deadline includes any provider fallback. Completed photos
 survive another slot's timeout or a later failed batch. Redirects and arbitrary fetch destinations are
-rejected. Responses retain `Cache-Control: no-store`; the backend has no photo metadata
-cache or automatic retry. The browser's explicit session cache below determines which
-slots need fresh metadata. Activity and Nearby lists display authorized photographs
+rejected. Responses retain `Cache-Control: no-store`. Browser session misses first read
+the owning resource's persistent metadata; only a database miss or versioned refresh
+enters provider resolution. Activity and Nearby lists display authorized photographs
 when an owned itinerary opens. **Refresh photo** in an owned place dialog
 resolves only the selected slot, without replanning or refreshing itinerary facts.
 
@@ -1053,17 +1053,47 @@ photographer/source links as static text; the list keeps its original main-visit
 Nearby layout. This imagery establishes neither a verified photograph of that place nor
 new identity, role or fulfillment authority. No native itinerary or saved binding is rewritten.
 
+#### Persistent itinerary image URLs
+
+Migration 010 adds a `media_cache` JSONB field to `app.itinerary_previews` and
+`app.trips`; it creates no cache table. Entries retain validated final display URLs,
+provider, author/source attribution, display kind/theme, acquisition time and a random
+`cache_revision`. Provider photo resource names, credentials, arbitrary raw responses
+and image bytes are excluded. Keys distinguish slot, binding or controlled search,
+provider role and requested dimensions within the owner-authorized resource. Each
+resource retains at most 1,000 entries and approximately 5 MiB, evicting older entries.
+
+Database URLs have no fixed-age expiry or scheduled refresh. Reloads, a new browser
+session and expiration of the browser's one-hour metadata cache reuse the stored URL.
+The media endpoints still authenticate and authorize each private read. Preview Save
+transfers the acquired metadata to its saved trip; independent copies start with their
+own cache. Decisions clear the preview field, binding/destination or preview-snapshot
+changes invalidate it, and deletion removes it with the resource. Renaming a trip
+preserves its image URLs. Authorization, bindings and detail are read in one consistent
+snapshot before the publication version is captured.
+
+An image error or explicit refresh submits the revision actually displayed, for one
+authorized slot. A matching revision permits replacement; a stale report returns the
+current version without another provider acquisition. No browser-supplied URL is fetched.
+Per-image PostgreSQL advisory locks coordinate concurrent misses and refreshes across
+workers. Same-theme supporting slots can reuse one provider photograph across batches,
+but each slot retains its own refresh revision in the database and browser. Provider
+I/O runs outside a transaction; a short publication transaction
+rechecks the resource version, preventing a late result from resurrecting a deleted,
+decided or changed resource. Failed acquisitions retain only a coordination revision
+with no photo payload; an ordinary later read or explicit retry can acquire again.
+
 #### Browser tab photo session
 
 The local/private Product uses `sessionStorage` to retain successful verified-place,
 place-fallback, supporting-atmosphere and cover photo URLs with supplied attribution and safe author/source
 links. An omitted
 optional source link does not prevent caching a valid photograph. The cache does not
-store image bytes, credentials, tokens, full itineraries or private media bindings.
+store image bytes, credentials, authentication tokens, full itineraries or private media bindings.
 This is an application-managed metadata cache, independent of HTTP image caching;
 it does not change the media endpoint's `no-store` response directive.
 
-Each entry expires **one hour after successful acquisition**. Reads and reloads never
+Each entry expires **one hour after a successful metadata response**. Reads and reloads never
 extend expiry. Storage is bounded to **1,000 entries and approximately 5 MiB of serialized
 data**, evicting the oldest entries first. Corrupt/unsupported records, future timestamps,
 disallowed URLs, denied storage and quota failures fall back to ordinary media loading.
@@ -1078,7 +1108,8 @@ fingerprint detects changes; it grants no authorization.
 Private photos remain hidden until authentication and the server's owned-detail read
 succeed. Reads validate the current scope, entry shape, expiry and provider URL rules.
 Valid hits bypass the media endpoint for those slots; only misses/expired entries enter
-the existing ordered batches of at most 12. Successful batches remain reusable if a
+the existing ordered batches of at most 12. Database hits do not renew the provider
+acquisition timestamp or contact the provider. Successful batches remain reusable if a
 later batch fails. Concurrent same-slot consumers share requests, including development
 StrictMode effects. Abandoned requests are canceled when their last consumer leaves,
 and late responses cannot render or persist into an invalidated scope.
@@ -1086,17 +1117,18 @@ and late responses cannot render or persist into an invalidated scope.
 Logout, session expiry/revocation, account switch and cross-tab session invalidation
 clear private entries and hide their active photos. Confirmed trip deletion and preview
 decisions invalidate the relevant resource. Changed snapshots or slot sets cannot reuse
-old entries. Google and supporting endpoints share the same resource invalidation identity,
+old entries. Google, supporting and owned-cover endpoints share the resource invalidation identity,
 including size-query variants, so these events fence both provider families. A media 401
 clears the owner's photos; 403/404 invalidates the resource.
 Normal authentication and ownership checks remain required after every page reload.
 
-A cached URL that fails image loading is evicted and receives **one automatic
+A URL that fails image loading is evicted from browser metadata and receives **one automatic
 reacquisition per slot per display cycle**. A further failure shows an illustration
 with **Retry photo**. Manual refresh/retry affects only that slot and cannot extend
 neighboring entries' expiry. A failed supporting image instead removes the thumbnail,
 retaining the compact activity card. Photographs load directly from the provider image host;
-cache hits do not guarantee zero image network requests or zero billing.
+the browser's HTTP cache governs image-byte reuse. Reusing a URL does not itself
+invoke the photo acquisition API; missing or refreshed metadata can invoke it.
 
 Reload retains the tab's storage session, and normal tab closure ends it. Browser
 closed-tab, crash and session restoration may restore `sessionStorage`; restored entries
@@ -1105,14 +1137,13 @@ isolation for browser-created duplicate tabs. External application links use `no
 There is no unconditional `beforeunload`/`pagehide` purge, durable browser storage,
 server/CDN image cache, service worker or cross-tab photo-sharing mechanism.
 
-Destination covers and the fixed atmosphere catalog share this cache's lifetime, count and
-byte budget with itinerary activity and Nearby slots. Cover keys use the canonical request
-endpoint (including destination and requested dimensions), account/login generation,
-provider/kind and a dedicated cover snapshot/slot identity. Same-destination cards, results,
-drafts and detail heroes reuse metadata within an account; guest examples and the login
-image use a separate public scope. A cover is destination-level display metadata, so deleting
-an individual itinerary does not remove a cover shared with another itinerary. Account
-invalidation still clears all private covers and rejects their delayed writes. Provider-license review
+Destination covers and the fixed atmosphere catalog share this browser cache's lifetime,
+count and byte budget with itinerary slots. Owned itinerary covers use their resource's
+`cover-media` endpoint, so a saved card and its detail hero reuse both browser and database
+metadata while independent itineraries remain separate. Public destination/draft covers
+and fixed atmosphere images retain their destination-level public endpoint and browser-only
+metadata behavior. Bundled example images remain local. Account invalidation clears all
+private browser covers and rejects their delayed writes. Provider-license review
 and public deployment are outside [Issue #233](https://github.com/rplalala/Dayloom/issues/233).
 
 Successful place fallbacks use distinct Unsplash/atmosphere/place-fallback keys within the
@@ -1207,8 +1238,11 @@ unchanged.
 
 #### Destination covers
 
-Itinerary detail, My trips and example cards, planning results and draft covers use public
-`GET /api/media/destination?destination=...`. The only search text is the structured
+Owned itinerary detail, saved My trips cards and planning results use authenticated
+`GET /api/{previews|trips}/{id}/cover-media`, with persistent URLs in the owning row.
+The destination comes from the server's authorized detail, not a browser query parameter.
+Draft covers retain public `GET /api/media/destination?destination=...`; bundled example
+cards use local assets. The only search text is the structured
 destination label: whitespace is normalized and the query is bounded to 120 Unicode code
 points. Empty labels do not initiate provider work. The endpoint admits 200–1280px dimensions,
 uses `Cache-Control: no-store`, and shares the existing server-side Unsplash adapter and
@@ -1222,7 +1256,7 @@ Successful cover metadata uses the [browser tab photo session](#browser-tab-phot
 Valid reload/navigation hits bypass both the metadata endpoint and its provider search/adoption.
 Reads do not renew acquisition time. Same-key concurrent mounts, including StrictMode,
 share request leases; abandoned work is canceled when its final consumer leaves. A failed
-cached image is evicted and receives one automatic reacquisition per display cycle; a
+image is evicted and receives one automatic reacquisition per display cycle; a
 further failure shows the illustration. Unavailable/error metadata is not cached. Denied
 storage and quota errors preserve ordinary display without reusable metadata. This stores
 URLs and credits, not image bytes, and does not guarantee zero image-host network traffic.

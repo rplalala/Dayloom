@@ -446,8 +446,13 @@ through normalized storage, reload and a descendant copy.
 ### Product media setup and acceptance
 
 Apply migrations before starting an updated API; migration 006 adds stable private
-place bindings to previews/trips, and 008 preserves weather attribution/source URLs
-when a generated preview or curated example becomes a saved trip. Media keys are
+place bindings to previews/trips, 008 preserves weather attribution/source URLs,
+and 010 adds `media_cache` JSONB fields to those same tables without creating a new table.
+Owned image endpoints reuse persisted URLs after browser-cache expiry or application
+restart. Single-image failure/refresh uses a revision check; no fixed-age provider
+refresh is scheduled. Preview Save carries acquired metadata into the saved trip.
+The browser continues to load image bytes directly under the provider's HTTP cache rules.
+Media keys are
 optional and separate from research configuration. Keep them server-side. Without either key, the corresponding image
 remains an explicitly labelled illustration and all planning, import, preview and Save
 flows remain usable. See the [media contract](../0007-application-operations.md#verified-place-media-and-curated-atmosphere)
@@ -458,6 +463,8 @@ not establish a deployment or live-provider acceptance.
 
 The local/private itinerary photo session cache is specified in the
 [media contract](../0007-application-operations.md#browser-tab-photo-session).
+The related database/API cache tests are `backend/tests/product/test_media_cache.py`;
+they require the isolated `DAYLOOM_DB_TEST_URL` described above and mocked providers.
 Its controlled browser checks need no database, API server, provider credentials or
 live photo calls. They start an isolated Vite process and intercept HTTP boundaries:
 
