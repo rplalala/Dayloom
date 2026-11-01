@@ -40,7 +40,12 @@ def migrate(
                 "SELECT sha256 FROM app.schema_migrations WHERE name = %s", (path.name,)
             ).fetchone()
             if old:
-                if old[0] != digest:
+                # Git checkouts may have stored the same SQL with Windows line endings.
+                # Keep historical receipts; do not ignore any other byte differences.
+                lf_content = content.replace(b"\r\n", b"\n")
+                equivalent = {digest, hashlib.sha256(lf_content).hexdigest(),
+                              hashlib.sha256(lf_content.replace(b"\n", b"\r\n")).hexdigest()}
+                if old[0] not in equivalent:
                     raise ValueError(f"Migration checksum mismatch: {path.name}")
                 continue
             connection.execute(content.decode("utf-8"))

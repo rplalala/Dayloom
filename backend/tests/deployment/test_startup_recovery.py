@@ -1,5 +1,6 @@
 """Every-start installation checks use an isolated database through the public CLI."""
 
+import hashlib
 import json
 import os
 import subprocess
@@ -125,10 +126,35 @@ def test_migration_checksum_failure_is_nonready_and_does_not_rewrite_history(
     directory = instance_at(tmp_path, startup_database)
     installed_receipt(startup_database)
     assert check(directory).returncode == 0
+    content = (ROOT / "backend/app/product/migrations/001_accounts.sql").read_bytes()
+    changed = content.replace(b"DEFAULT 0", b"DEFAULT 1")
+    assert changed != content
+    changed_digest = hashlib.sha256(changed).hexdigest()
     with psycopg.connect(startup_database.dsn, autocommit=True) as connection:
-        connection.execute("UPDATE app.schema_migrations SET sha256='incompatible' "
-                           "WHERE name='001_accounts.sql'")
+        connection.execute("UPDATE app.schema_migrations SET sha256=%s "
+                           "WHERE name='001_accounts.sql'", (changed_digest,))
     result = check(directory)
     assert result.returncode == 2
     assert "migration checksum" in result.stderr.lower()
     assert "controlled-test-only" not in result.stdout + result.stderr
+    with psycopg.connect(startup_database.dsn) as connection:
+        assert connection.execute("SELECT sha256 FROM app.schema_migrations "
+                                  "WHERE name='001_accounts.sql'").fetchone() == (changed_digest,)
+
+
+def test_crlf_migration_history_remains_valid_and_is_not_rewritten(startup_database, tmp_path):
+    directory = instance_at(tmp_path, startup_database)
+    installed_receipt(startup_database)
+    assert check(directory).returncode == 0
+    # Observed historical Windows digest of the same immutable 007 SQL migration.
+    crlf_digest = "0500576b24c305dc2e383a8595617ad1775c999b669de21181b9f92ba0ff70bd"
+    with psycopg.connect(startup_database.dsn, autocommit=True) as connection:
+        connection.execute("UPDATE app.schema_migrations SET sha256=%s "
+                           "WHERE name='007_display_metadata.sql'", (crlf_digest,))
+        history = connection.execute("SELECT * FROM app.schema_migrations ORDER BY name").fetchall()
+    result = check(directory)
+    assert result.returncode == 0, result.stderr
+    with psycopg.connect(startup_database.dsn) as connection:
+        assert connection.execute(
+            "SELECT * FROM app.schema_migrations ORDER BY name"
+        ).fetchall() == history

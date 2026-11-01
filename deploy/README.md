@@ -66,6 +66,8 @@ Inspect failures with `docker compose --env-file config/.env logs postgres init 
 Retry does not authorize deleting volumes, cleaning schemas, editing migration
 checksums or fabricating an installation receipt. A deliberate data reset is a
 separate destructive operation; do not use it to repair an unclassified failure.
+Migration checksums accept the same SQL file with LF or CRLF line endings while
+retaining its recorded hash. Other content changes still fail compatibility checks.
 An older app refuses migration history it does not recognize. Changing its image
 tag alone cannot undo a database upgrade.
 
