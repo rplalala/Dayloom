@@ -55,6 +55,33 @@ supply an IPv4 loopback host, port, database, user and password. Application cli
 can use separately hosted databases. Connection settings do not migrate existing
 data, rename roles or update their passwords.
 
+## Diagnostics and development server
+
+Set backend diagnostic options in ignored `.env` or the process environment and
+restart the backend. Relative log paths resolve from the repository root.
+
+| Environment key | Default | Purpose |
+| --- | --- | --- |
+| `PRODUCT_LOG_ENABLED` | `true` | Write Product operation and planning logs |
+| `PRODUCT_LOG_DIRECTORY` | `logs/product` | Server diagnostic root |
+| `PRODUCT_LOG_MAX_FILE_BYTES` | `5000000` | Operation-log rotation threshold |
+| `PRODUCT_LOG_BACKUPS` | `5` | Retained operation-log backups |
+| `PRODUCT_LOG_MAX_EVENT_BYTES` | `128000` | Detailed event/payload content limit |
+| `PRODUCT_LOG_MAX_RUN_BYTES` | `50000000` | Per-run detailed collection budget; metadata and final summaries are separate |
+| `PRODUCT_LOG_MAX_STORAGE_BYTES` | `500000000` | Finished-run retention budget applied during maintenance |
+| `PRODUCT_LOG_RETENTION_DAYS` | `30` | Maximum age of inactive finished runs |
+| `VITE_PRODUCT_DIAGNOSTICS` | enabled | Set `false` at frontend build time to disable browser collection |
+| `PRODUCT_API_PROXY` | `http://127.0.0.1:8000` | Vite process proxy for `/api` and `/health` |
+
+The selected runtime's `trace` settings control categories and payload levels:
+`metadata` retains structured events, summaries and bounded validation snapshots;
+`normalized` adds eligible normalized payloads; `raw` permits eligible model payloads.
+Raw tool payloads also require `trace.raw_provider_payloads`. These settings change
+collection, not provider execution. See the
+[diagnostic contract](../docs/0007-application-operations.md#product-diagnostics) for
+correlation/privacy and [log commands](../docs/guides/development.md#product-diagnostics)
+for local inspection and pruning.
+
 ## Loading, versions and overrides
 
 `runtime.config_loader` loads and validates an immutable `RuntimeConfig`. The default loader

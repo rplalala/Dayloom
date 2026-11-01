@@ -188,7 +188,9 @@ uv run dayloom logs --prune --summary
 Logs default to `logs/product`. Correlate the task/execution IDs in operation events
 with `run.json`, `summary.json` and `budget.json`; a completed planner alone does not
 prove its preview was persisted. The [diagnostic contract](../0007-application-operations.md#product-diagnostics)
-defines payload levels, storage limits and privacy. Keep logs local: they may contain
+defines event correlation and privacy; the
+[diagnostic settings reference](../../config/README.md#diagnostics-and-development-server)
+lists collection levels, storage limits and environment keys. Keep logs local: they may contain
 travel requests and normalized evidence. Never remove a running server's logs to
 reset diagnostics.
 

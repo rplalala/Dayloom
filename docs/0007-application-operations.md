@@ -220,8 +220,9 @@ applied when a new run starts or by the local maintenance command; active runs a
 protected, with abandoned markers eligible after 24 hours. Cleanup only traverses the
 owned Product run namespace and excludes symlink directories and unrelated files.
 Storage failures warn without replacing the business result or taking ownership of
-cancellation. Diagnostics stay outside Product DTOs and Git. Configuration, retention
-limits and lookup commands are in the [development guide](guides/development.md#product-diagnostics).
+cancellation. Diagnostics stay outside Product DTOs and Git. Configuration and retention limits are in the
+[diagnostic settings reference](../config/README.md#diagnostics-and-development-server);
+[development commands](guides/development.md#product-diagnostics) cover lookup and pruning.
 Independent V0-V3 entrypoints keep their existing tracing and planning behavior.
 
 ## Input assistance
