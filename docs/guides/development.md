@@ -158,12 +158,14 @@ Build the frontend and start `uv run python scripts/run_product.py` with its def
 loopback binding. Open the exact configured origin plus `/config`, normally
 `http://localhost:5173/config`. The bottom-right settings icon on desktop and mobile Product pages
 opens the same page when local management is available. It opens directly by default;
-traveler registration and database access are not required. The browser establishes
-a separate 30-minute management session automatically, retaining CSRF protection.
+traveler registration and database access are not required. Without password protection,
+the browser establishes a separate management session automatically.
 
 Require a password to open configuration enables optional password verification.
-Set and confirm a password of 10–128 characters. Once enabled, new sessions require
-that password, and changing it or disabling verification requires the current password.
+Set and confirm a password of 10–128 characters. Saving immediately returns to the
+password screen. Every subsequent entry or reload requires the password, even if
+the browser retains a cookie. To change it or disable verification, first use
+Verify current password, then enter and confirm the new password when applicable.
 Access changes apply immediately and revoke previous management sessions, including
 sessions in other local processes. Lock configuration ends the current protected
 session. Restart invalidates sessions but preserves the access settings and password.
@@ -430,8 +432,12 @@ references, real day order and safe text rendering. Sydney and London are the on
 public examples, curated from existing accepted V3 projections with original weather,
 routes and request values. The private fixture metadata retains their source digests.
 The ambiguous-anchor fixture lives under `backend/tests/product/fixtures/`; it is not
-a public route. Public example media uses the existing configured adapters and shared
-request bounds. Example Copy tests verify private bindings and weather source credit
+a public route. Example covers and visit photographs ship in `frontend/public/dayloom/examples/`
+and are included by `npm --prefix frontend run build`; the Product static mount serves
+them directly. Keep the bundled credits and individual image licenses when redistributing.
+Missing matching photographs use local illustrations. No media service keys or provider
+requests are needed for example viewing. Guest examples are read-only; authenticated
+users can create their own independent copies. Example Copy tests verify private bindings and weather source credit
 through normalized storage, reload and a descendant copy.
 
 ### Product media setup and acceptance

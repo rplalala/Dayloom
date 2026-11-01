@@ -59,14 +59,22 @@ A snapshot's opaque revision covers both saved file texts and resolved values,
 so edits to any YAML option invalidate a stale save or API check.
 
 Configuration opens directly by default, without a terminal token or password.
-The browser automatically establishes a separate 30-minute HttpOnly, SameSite=Strict
-cookie scoped to `/api/config`, with a session-bound CSRF token for writes.
+Without password protection, the browser automatically establishes a separate
+30-minute HttpOnly, SameSite=Strict cookie scoped to `/api/config`.
 Users can enable password verification, setting and confirming a 10–128-character
 password. The enabled state, opaque access revision and Argon2id hash are persisted
 atomically in ignored `.config-access.json`, independently of Product accounts.
 Only password-required status and the opaque revision are public management metadata;
-passwords and hashes never enter API responses. New protected sessions require the
-password; changing it or disabling verification also requires the current password.
+passwords and hashes never enter API responses. Enabling or changing the password
+immediately returns to the password screen. Every protected route entry and reload
+requires the password again; the browser never restores access from an existing
+cookie. The page keeps its session-bound token only in memory, sends it on every
+protected read/write, and clears it on document navigation/history restoration.
+An old cookie alone cannot read configuration or recover that token. A successful
+unlock replaces the previous cookie's session, avoiding accumulation on repeat visits.
+Before changing a password or disabling verification, the user verifies the current
+password through `POST /api/config/access/verify`; only then are new-password fields
+offered. The final access update independently checks the current password again.
 Access changes revoke old sessions across processes and apply immediately. Corrupt,
 unreadable or symlinked access files fail closed. Host-controlled password recovery
 is defined in the operational guide. Access checks still require a
@@ -610,7 +618,7 @@ traces alone cannot authorize it.
 
 ### Independent trip copies and kept examples
 
-Saved details and library cards offer explicit whole-trip Copy; public example details
+Saved details and library cards offer explicit whole-trip Copy; authenticated example details
 offer Keep a copy. `POST /api/copies` accepts only `source_kind` (`copied` or `example`),
 `source_id` (canonical saved UUID or bundled example slug) and `operation_key`. The
 authenticated cookie, exact Origin and CSRF token are required. The operation creates
@@ -646,9 +654,9 @@ action identities are kept separately per owner, source kind and source identity
 working with another source cannot overwrite an unconfirmed operation. They are quarantined
 on expiry, restored only for the same account and cleared
 on logout/account invalidation. Mounted component, account, CSRF and invalidation fences
-exclude late replies after navigation or account changes. Guest Keep preserves the brief
-and returns after login to the allowlisted example review surface; another explicit click
-is required. Authenticated My trips retains its real saved/draft collection and empty state.
+exclude late replies after navigation or account changes. Guest example pages offer
+viewing only; Keep/Copy and replanning controls are shown after authentication.
+Authenticated My trips retains its real saved/draft collection and empty state.
 Its pending-copy link opens `/copy-recovery`, an owner-fenced status-only review of retained
 actions. An unavailable saved-source page also offers its retained action's status check.
 These entry points require neither source detail nor a new write; deleted results keep
@@ -759,7 +767,7 @@ task submission validates the separate confirmed planning request.
 ### Replanning itineraries
 
 The **Plan again** and **Plan another journey** actions in saved details, previews and
-examples open the editable brief and clear its prior draft and submission identity.
+authenticated example views open the editable brief and clear its prior draft and submission identity.
 Only the snapshot's original `request` seeds destination, dates, travelers and
 budget/currency. Imported `known_fields` limits that mapping; absent or explicit null
 values remain blank, including a visibly unselected currency. Missing basics are not
@@ -868,8 +876,21 @@ London selects Jubilee Gardens instead of the photo-less Metaverse optional refe
 from the same run's acquired Nearby ledger, retaining the London Eye anchor and
 canonical identity. No generation or provider evidence refresh is part of curation.
 
-Public detail needs no account, provider key or database and creates no example table;
-photographs use the configured media providers. The guest library links to
+Public detail needs no account, provider key or database and creates no example table.
+Its covers and twelve visit photographs are bundled locally with their source,
+author and individual licenses in the [asset credits](../frontend/public/dayloom/examples/README.md).
+Nearby references without a matching bundled photograph use local illustrations.
+The shared [asset manifest](../backend/app/product/example_media.json) maps slots to
+content-hashed files served from `/dayloom/examples/`; the frontend build includes
+these files, and the normal Product static mount serves them with immutable browser
+caching. Example cards, details and photo dialogs never call media provider APIs,
+including refresh or failure recovery. The compatibility example media endpoint
+returns only local metadata, with unknown slots unavailable. These resources are
+included for both guest and authenticated example viewing; owned copies retain
+their separate media policy. Guest examples hide copy, export and replanning
+actions; filtering, collapse, weather and read-only detail dialogs remain usable.
+The public API exposes no example mutation methods, and copying requires an account.
+The guest library links to
 `/examples/{example_id}`; signed-in users can also read those routes. The former
 prototype cities and `nearby-linking` return 404; ambiguous-anchor scenarios remain
 test fixtures rather than public itineraries.
@@ -972,8 +993,8 @@ not persist expiring photo resource names, image URLs, author metadata or image 
 `GET /api/previews/{id}/media` and `/api/trips/{id}/media` return display metadata only
 after the same owner check as detail; missing/other-owner IDs return 404. Saved-preview
 receipts delegate to the surviving owned trip, while discarded/deleted outcomes return
-no images. Public `GET /api/examples/{example_id}/media` resolves only the two bundled
-maps, with identical response and work bounds. Each request admits 200–1280px dimensions,
+no images. Public example images follow the [local bundle contract](#public-examples-and-reusable-detail).
+Each owned-media request admits 200–1280px dimensions,
 at most 12 ordered slots, three parallel resolutions and a 30-second batch deadline.
 There is no itinerary-wide slot cap. Repeated `slot` parameters select only server-authorized
 bindings; an unknown slot is unavailable without a provider call. Without explicit slots,
@@ -988,7 +1009,7 @@ survive another slot's timeout or a later failed batch. Redirects and arbitrary 
 rejected. Responses retain `Cache-Control: no-store`; the backend has no photo metadata
 cache or automatic retry. The browser's explicit session cache below determines which
 slots need fresh metadata. Activity and Nearby lists display authorized photographs
-when an owned itinerary or curated example opens. **Refresh photo** in a place dialog
+when an owned itinerary opens. **Refresh photo** in an owned place dialog
 resolves only the selected slot, without replanning or refreshing itinerary facts.
 
 #### Place photo fallback
@@ -1039,8 +1060,9 @@ Only successful photos are retained; loading, unavailable and error states are n
 Keys separate account, login/invalidation generation, endpoint/resource identity,
 detail snapshot fingerprint, provider, media kind, controlled theme, requested dimensions
 and slot. Saved trips, previews,
-independent copies and public examples cannot share private entries. Bundled examples
-use a guest scope. The snapshot fingerprint detects changes; it grants no authorization.
+independent copies cannot share private entries. Bundled examples use static local
+resources and do not participate in this provider metadata cache. The snapshot
+fingerprint detects changes; it grants no authorization.
 Private photos remain hidden until authentication and the server's owned-detail read
 succeed. Reads validate the current scope, entry shape, expiry and provider URL rules.
 Valid hits bypass the media endpoint for those slots; only misses/expired entries enter

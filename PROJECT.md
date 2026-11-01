@@ -79,7 +79,7 @@ for storage retention, overrides and isolated test settings.
 
 The local Product launcher also serves `/config` with independent loopback-only
 management access. It opens directly by default and offers optional persisted
-password verification, with a bottom-right settings shortcut in Product. It edits
+password verification on every page entry, with a bottom-right settings shortcut in Product. It edits
 Foundry endpoint/deployment in `product.yaml` and provider credentials in `.env`,
 shows local resource readiness and offers
 explicit bounded API capability checks. Saved provider changes require restart;
@@ -87,6 +87,10 @@ password-access changes apply immediately. Incomplete local installs
 can open the console while business APIs remain paused. Database/data preparation,
 model providers, spending policies and V0-V3 mechanisms retain their current scope.
 See the [configuration guide](docs/guides/development.md#local-configuration-console).
+
+Guest example itineraries are read-only showcases with bundled local photographs
+and illustration fallbacks, without media provider requests. Source and license
+credits ship with the assets; authenticated travelers can keep an independent copy.
 
 Product UI/API uses V3 and an allowlisted presentation contract. V0-V3 remain
 independently accessible through command-line and programmatic entry points. The Developer
