@@ -232,6 +232,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/auth/current` | Validated account, initials and session-bound CSRF token | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/logout` | Revoke every account token and clear the browser cookie | [Account boundary](../backend/app/product/auth.py) |
+| `DELETE /api/auth/account` | Confirmed owner deletion with the current password; protects the default test admin and rejects active planning tasks | [Account deletion](#account-deletion) |
 | `GET /api/profile`, `PUT /api/profile` | Read or replace the authenticated owner's display name and travel defaults | [Profile boundary](../backend/app/product/profiles.py) |
 | `/api/drafts` and item/copy operations | Versioned incomplete editor snapshots and revision-checked owner mutations | [Draft collection](#incomplete-drafts-and-the-collection-boundary) |
 | `GET /api/examples`, `/{example_id}`, `/{example_id}/media` | Two public historical itineraries and server-authorized photo metadata | [Examples](#public-examples-and-reusable-detail) |
@@ -393,13 +394,39 @@ Focus and periodic session checks detect remote revocation; network failure hide
 account content while preserving quarantined recovery. Durable generation has a
 separate task lifecycle.
 
+### Account deletion
+
+The `/account` page offers **Delete account**, followed by a confirmation dialog and
+the current password. `DELETE /api/auth/account` accepts only `password` and
+`confirmed: true`; the authenticated session determines the owner. Cookie requests
+require the existing origin and CSRF checks. The profile response supplies the
+read-only `can_delete_account` capability; the normalized `admin@admin.com` test
+account has a disabled button and is also protected by the server (`403
+protected_test_account`). An incorrect password returns `403 invalid_password`.
+
+Deletion locks the user row and checks for pending, running or stopping planning
+tasks, sharing the owner lock used by task admission. Active tasks return `409
+account_tasks_active`; the traveler must stop them before retrying. Successful
+deletion atomically removes the owner and existing cascading profile, drafts,
+planning tasks, previews and saved trips, including their stored image URLs. Other
+accounts and static examples remain available. Existing tokens fail the account
+existence check; the response returns `204` with `Cache-Control: no-store` without
+expiring the cookie, so a delayed response cannot erase a newer login's cookie.
+The revoked cookie expires normally or is replaced by the next explicit login.
+
+The browser clears the deleted account's session and private recovery and publishes
+its owner-scoped invalidation to other tabs. A delayed success cannot clear a newer
+account's session. An ambiguous network result triggers a session check and displays
+an error without automatically retrying the deletion. This is permanent application
+data deletion; it does not purge database backups or existing operational logs.
+
 ### Profile defaults and new-brief initialization
 
 The owner-only profile API and `/account` form maintain display name, supported currency,
 deduplicated interests, nullable pace, deduplicated soft transport priorities and literal
 additional preference text. Initials derive from the display name; email is read-only.
 The profile migration adds database domain and uniqueness checks. Account deletion
-cascades to the profile at the database boundary, without exposing an account-deletion UI.
+follows the [owner deletion contract](#account-deletion).
 
 Defaults are read once when a genuinely new brief is opened and appear as editable
 currency, choices and preference sentences. Explicit origin and initialization metadata
