@@ -884,9 +884,10 @@ canonical identity. No generation or provider evidence refresh is part of curati
 Public detail needs no account, provider key or database and creates no example table.
 Its covers and twelve visit photographs are bundled locally with their source,
 author and individual licenses in the [asset credits](../frontend/public/dayloom/examples/README.md).
-All six Nearby references have dedicated local assets: Royal Armouries and Jubilee
-Gardens use licensed photographs; the four dining references use original SVG
-illustrations, explicitly labeled rather than presented as venue photographs.
+All six Nearby references have dedicated local photographs: Royal Armouries and Jubilee
+Gardens use Commons photographs; the four dining references use Google Places photos
+retrieved once for local testing. Their Details dialogs retain Google Maps attribution,
+the supplied author and the source photo link, without asserting an open-content license.
 The shared [asset manifest](../backend/app/product/example_media.json) maps slots to
 content-hashed files served from `/dayloom/examples/`; the frontend build includes
 these files, and the normal Product static mount serves them with immutable browser

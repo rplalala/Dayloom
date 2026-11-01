@@ -436,8 +436,9 @@ routes and request values. The private fixture metadata retains their source dig
 The ambiguous-anchor fixture lives under `backend/tests/product/fixtures/`; it is not
 a public route. Example covers and visit photographs ship in `frontend/public/dayloom/examples/`
 and are included by `npm --prefix frontend run build`; the Product static mount serves
-them directly. Keep the bundled credits and individual image licenses when redistributing.
-Missing matching photographs use local illustrations. No media service keys or provider
+them directly. The asset credits distinguish licensed Commons photos from the four
+Google Places dining photos retained for local testing. Details preserves each image's
+provider, author and source. No media service keys or provider
 requests are needed for example viewing. Guest examples are read-only; authenticated
 users can create their own independent copies. Example Copy tests verify private bindings and weather source credit
 through normalized storage, reload and a descendant copy.
