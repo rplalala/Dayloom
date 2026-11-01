@@ -3,7 +3,7 @@
 from fastapi import APIRouter, Response
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from backend.app.product.auth import CurrentUser, display_initials
+from backend.app.product.auth import CurrentUser, can_delete_account, display_initials
 from backend.app.product.database import connect
 from backend.app.product.preferences import Currency, Interest, Pace, Transport
 
@@ -32,10 +32,11 @@ class ProfileUpdate(BaseModel):
         return list(dict.fromkeys(value))
 
 
-def public_profile(row):
+def public_profile(row, user):
     return {
         "display_name": row["display_name"],
         "initials": display_initials(row["display_name"]),
+        "can_delete_account": can_delete_account(user),
         **{key: row[key] for key in ("currency", "interests", "pace", "transport", "notes")},
     }
 
@@ -47,7 +48,7 @@ def read_profile(response: Response, user: CurrentUser):
         row = connection.execute(
             "SELECT * FROM app.user_profiles WHERE user_id=%s", (user["id"],)
         ).fetchone()
-    return public_profile(row)
+    return public_profile(row, user)
 
 
 @router.put("")
@@ -67,4 +68,4 @@ def update_profile(body: ProfileUpdate, response: Response, user: CurrentUser):
                 user["id"],
             ),
         ).fetchone()
-    return public_profile(row)
+    return public_profile(row, user)

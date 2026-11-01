@@ -3,7 +3,7 @@
 import hmac
 import secrets
 from datetime import UTC, datetime, timedelta
-from typing import Annotated
+from typing import Annotated, Literal
 from uuid import UUID, uuid4
 
 import jwt
@@ -20,6 +20,17 @@ password_hasher = PasswordHash.recommended()
 # Equal password work for unknown accounts avoids an email-existence timing shortcut.
 dummy_hash = password_hasher.hash("unusable-placeholder-password")
 COOKIE = "dayloom_session"
+PROTECTED_TEST_EMAIL = "admin@admin.com"
+
+
+def can_delete_account(user):
+    return user["email"] != PROTECTED_TEST_EMAIL
+
+
+class AccountDeletion(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    password: str = Field(min_length=1, max_length=128)
+    confirmed: Literal[True]
 
 
 class Credentials(BaseModel):
@@ -152,6 +163,31 @@ def current_user(request: Request) -> dict:
 
 
 CurrentUser = Annotated[dict, Depends(current_user)]
+
+
+@router.delete("/account", status_code=204)
+def delete_account(body: AccountDeletion, response: Response, user: CurrentUser):
+    with connect() as connection:
+        row = connection.execute(
+            "SELECT * FROM app.users WHERE id=%s FOR UPDATE", (user["id"],),
+        ).fetchone()
+        if row is None or row["token_version"] != user["token_version"]:
+            raise HTTPException(401, {"code": "session_revoked"})
+        if not can_delete_account(row):
+            raise HTTPException(403, {"code": "protected_test_account"})
+        if not password_hasher.verify(body.password, row["password_hash"]):
+            raise HTTPException(403, {"code": "invalid_password"})
+        # Task acceptance takes the same owner lock; deletion cannot race admission.
+        if connection.execute(
+            "SELECT 1 FROM app.planning_tasks WHERE owner_id=%s "
+            "AND state IN ('pending','running','stopping') LIMIT 1", (user["id"],),
+        ).fetchone():
+            raise HTTPException(409, {"code": "account_tasks_active"})
+        connection.execute("DELETE FROM app.users WHERE id=%s", (user["id"],))
+    response.delete_cookie(
+        COOKIE, path="/", httponly=True, samesite="lax", secure=ProductSettings().secure_cookie,
+    )
+    response.headers["Cache-Control"] = "no-store"
 
 
 @router.post("/register", status_code=201)
