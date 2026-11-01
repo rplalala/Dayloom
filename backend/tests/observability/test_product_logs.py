@@ -275,4 +275,5 @@ def test_failed_run_keeps_the_active_spending_bound(tmp_path):
         "charged_upper_usd": "1",
         "blocked": True,
         "event_count": 1,
+        "excluded_operations": [],
     }

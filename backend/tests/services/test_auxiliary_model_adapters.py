@@ -130,7 +130,9 @@ def test_planner_factory_applies_selected_policy_to_all_auxiliary_clients(monkey
             pass
 
     asyncio.run(run())
-    expected = None if profile == "development" else AuxiliaryModelLimits()
+    expected = None if profile == "development" else AuxiliaryModelLimits(
+        input_tokens=900000, output_tokens=32768, framing_tokens=2048,
+    )
     assert received == [expected, expected, expected]
 
 

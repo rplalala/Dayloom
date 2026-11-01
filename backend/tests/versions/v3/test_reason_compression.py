@@ -494,9 +494,9 @@ def test_compression_timeout_cancels_the_pending_call_without_retry():
     "compression",
     [
         {"max_calls": 2},
-        {"input_tokens": 32001},
-        {"output_tokens": 8193},
-        {"timeout_seconds": 31},
+        {"input_tokens": 64001},
+        {"output_tokens": 16385},
+        {"timeout_seconds": 61},
     ],
 )
 def test_configuration_cannot_expand_the_approved_compression_limits(compression):

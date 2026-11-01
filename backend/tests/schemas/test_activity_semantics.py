@@ -65,7 +65,9 @@ def test_provider_contract_requires_time_use_and_mapping_preserves_it():
 
     raw = itinerary()
     activity = raw["days"][0]["activities"][0]
-    activity.update(source_place_id=None, location=None, notes=None, estimated_cost=None)
+    activity.update(
+        source_place_id=None, location=None, notes=None, estimated_cost=None, atmosphere_theme=None
+    )
     for key, clock in (("start_time", "11:00:00"), ("end_time", "12:00:00")):
         activity[key] = {"date": "2026-10-15", "time": clock, "utc_offset": "+02:00"}
     result = map_foundry_itinerary(FoundryPrimaryItineraryDTO.model_validate(raw))

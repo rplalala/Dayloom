@@ -171,6 +171,8 @@ def test_product_yaml_requires_a_settings_mapping(configured_settings, contents)
 
 
 def test_missing_product_settings_hide_unrecognized_dotenv_secrets(monkeypatch, tmp_path):
+    # Both supported credential paths must be absent, regardless of the parent environment.
+    monkeypatch.delenv("DAYLOOM_DB_PASSWORD", raising=False)
     monkeypatch.delenv("DAYLOOM_DB_URL", raising=False)
     monkeypatch.delenv("PRODUCT_JWT_SECRET", raising=False)
     dotenv = tmp_path / "controlled.env"

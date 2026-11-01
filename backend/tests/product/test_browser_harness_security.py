@@ -38,6 +38,7 @@ assert 'synthetic-host-secret-never-inherit' not in os.environ.values()
         env=environment,
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
     assert result.returncode == 0, "Browser child environment isolation failed"
 
@@ -55,7 +56,7 @@ from backend.tests.product.test_browser import browser_app
 def fail_before_migration():
     with patch(
         "subprocess.run",
-        side_effect=RuntimeError("Intentional sanitized fixture diagnostic"),
+        side_effect=RuntimeError("Intentional sanitized fixture diagnostic — UTF-8"),
     ):
         yield
 
@@ -80,10 +81,11 @@ def test_intentional_failure(browser_app):
         env=environment,
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
     assert result.returncode == 1, "The diagnostic probe must exercise fixture failure"
     diagnostic = result.stdout + result.stderr
-    assert "Intentional sanitized fixture diagnostic" in diagnostic
+    assert "Intentional sanitized fixture diagnostic — UTF-8" in diagnostic
     assert all(
         marker not in diagnostic
         for marker in [
@@ -111,7 +113,7 @@ import psycopg
 from backend.tests.product import test_accounts as accounts
 
 def test_account_connection_failure(tmp_path,monkeypatch):
-    monkeypatch.setattr(psycopg,"connect",attrgetter("acceptance_connection_unavailable"))
+    monkeypatch.setattr(psycopg,"connect",attrgetter("acceptance_connection_unavailable_\u2014"))
     if "migration" in TARGET:
         getattr(accounts,TARGET)(None,tmp_path)
     else:
@@ -132,6 +134,7 @@ def test_account_connection_failure(tmp_path,monkeypatch):
         env=environment,
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
     assert result.returncode == 1, "The account diagnostic probe must exercise actual test failure"
     diagnostic = result.stdout + result.stderr

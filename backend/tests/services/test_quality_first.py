@@ -635,8 +635,9 @@ def test_default_input_guard_preserves_quality_limits(monkeypatch):
     assert MainGenerationConfig().input_tokens == 96000
     assert config().main_generation.output_tokens == 16384
     assert config().main_generation.framing_tokens == 2048
+    assert MainGenerationConfig(input_tokens=900000).input_tokens == 900000
     with pytest.raises(ValueError):
-        MainGenerationConfig(input_tokens=252001)
+        MainGenerationConfig(input_tokens=922001)
     monkeypatch.setattr(
         "backend.app.services.generation_resources.count_tokens", lambda text: len(text)
     )
