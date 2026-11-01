@@ -14,8 +14,8 @@ const listeners = new Set<() => void>();
 
 function resourceIdentity(resource: string): string {
   const path = resource.split('?')[0];
-  return /^\/api\/(trips|previews|examples)\/[^/]+\/(supporting-)?media$/.test(path)
-    ? path.replace(/\/supporting-media$/, '/media') : resource;
+  return /^\/api\/(trips|previews|examples)\/[^/]+\/((supporting|cover)-)?media$/.test(path)
+    ? path.replace(/\/(supporting|cover)-media$/, '/media') : resource;
 }
 
 export function photoFence(resource: string, scope?: PhotoScope): number {
@@ -72,6 +72,7 @@ function safeUrl(value: unknown, hosts: string[], subdomains = false): value is 
 export function validPhoto(value: unknown): value is DisplayMedia {
   if (!value || typeof value !== 'object') return false;
   const media = value as DisplayMedia;
+  if (media.cache_revision !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(media.cache_revision)) return false;
   if (media.status === 'available' && media.kind === 'atmosphere' && media.provider === 'Unsplash') {
     return (media.fallback === undefined || (media.fallback === 'google_no_photos' && media.theme === 'general')) &&
       ['meal', 'rest', 'explore', 'walk', 'general'].includes(media.theme || '') &&
@@ -175,6 +176,7 @@ export function writePhoto(resource: string, scope: PhotoScope, slot: string, me
   // Whitelist the display DTO; never persist extra provider or application fields.
   const photo: DisplayMedia = { status: 'available', kind: media.kind, provider: media.provider,
     image_url: media.image_url, source_url: media.source_url,
+    ...(media.cache_revision && { cache_revision: media.cache_revision }),
     authors: media.authors!.map(({ name, url }) => ({ name, ...(url && { url }) })),
     ...(media.theme && { theme: media.theme }),
     ...(media.fallback && { fallback: media.fallback }),

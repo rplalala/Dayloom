@@ -87,11 +87,12 @@ function useCoverMedia(endpoint: string | undefined, owner: string | null, provi
     const fence = photoFence(endpoint, scope);
     let active = true;
     let recovered = false;
+    let shown: DisplayMedia | undefined;
     const releases = new Set<() => void>();
     const valid = () => active && photoFence(endpoint, scope) === fence && (!owner || generation === photoGeneration(owner));
-    const show = (media: DisplayMedia) => { if (valid()) setResult({ key: context, media }); };
-    const load = () => {
-      const request = acquireCover(endpoint, scope);
+    const show = (media: DisplayMedia) => { if (valid()) { shown = media; setResult({ key: context, media }); } };
+    const load = (revision?: string) => {
+      const request = acquireCover(endpoint, scope, revision);
       releases.add(request.release);
       void request.promise.then(media => { show(media); request.release(); releases.delete(request.release); });
     };
@@ -105,8 +106,9 @@ function useCoverMedia(endpoint: string | undefined, owner: string | null, provi
     failed.current = () => {
       if (!valid()) return;
       evictPhoto(endpoint, scope, 'cover');
+      const revision = shown?.cache_revision;
       show({ status: 'unavailable' });
-      if (cached && !recovered) { recovered = true; load(); }
+      if (!recovered) { recovered = true; load(revision); }
     };
     if (cached) show(cached); else load();
     return () => { active = false; unsubscribe(); releases.forEach(release => release()); };
@@ -121,12 +123,13 @@ export function CuratedPhoto({ image = 'nature', label, className, fallback, lin
   return <MediaPhoto atmosphere link={link} media={cover.media} onImageError={cover.imageFailed} label={label} fallback={fallback || `/dayloom/${image === 'london' ? 'city' : image}.svg`} className={className} />;
 }
 
-export function DestinationPhoto({ destination, label, className, fallback, link, owner = null }: {
+export function DestinationPhoto({ destination, label, className, fallback, link, owner = null, endpoint }: {
   destination: string; label: string; className?: string; fallback?: string;
   owner?: string | null;
+  endpoint?: string;
   link?: { to: string; label: string };
 }) {
   const query = Array.from(destination.trim().replace(/\s+/g, ' ')).slice(0, 120).join('');
-  const cover = useCoverMedia(query ? `/api/media/destination?destination=${encodeURIComponent(query)}` : undefined, owner, 'Unsplash');
+  const cover = useCoverMedia(query ? `${endpoint || '/api/media/destination'}?destination=${encodeURIComponent(query)}` : undefined, owner, 'Unsplash');
   return <MediaPhoto atmosphere link={link} media={cover.media} onImageError={cover.imageFailed} label={label} fallback={fallback || '/dayloom/nature.svg'} className={className} />;
 }

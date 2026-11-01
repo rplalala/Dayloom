@@ -362,7 +362,7 @@ export function TripDetail({ detail, mediaEndpoint, mediaOwner, onReplan, action
       <section className="detail-hero">
         <div className="detail-cover">{coverMedia
           ? <MediaPhoto atmosphere media={coverMedia} label={`${detail.destination} destination atmosphere`} className="detail-hero-image" />
-          : <DestinationPhoto owner={mediaOwner ?? null} destination={detail.destination} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" />}<div className="detail-cover-shade" /></div>
+          : <DestinationPhoto owner={mediaOwner ?? null} endpoint={mediaEndpoint?.replace(/\/media$/, '/cover-media')} destination={detail.destination} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" />}<div className="detail-cover-shade" /></div>
         <div className="container detail-hero-inner">
           <Link to={mode === "preview" ? "/plan?recover=1" : "/trips"} className="detail-back"><Icon name="back" size={17} />{mode === "preview" ? "Back to previews" : "Back to My trips"}</Link>
           <span className="detail-eyebrow">YOUR JOURNEY, DAY BY DAY</span>
