@@ -317,8 +317,12 @@ def _register(selection_path, selection_raw, args, value, destination):
 
 
 def main(argv=None, *, runtime=None, date_provider=None, clock=None):
+    import sys
+
+    from backend.cli.shortcuts import generation_arguments
     from backend.evaluation.tools.planner_usage_cli import main as native
 
+    argv = generation_arguments(sys.argv[1:] if argv is None else argv)
     options = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
     options.add_argument("--register-batch", type=Path)
     options.add_argument("--registration-directory", type=Path)

@@ -19,6 +19,7 @@ def main(
         prog="rtpeval",
         description="RTPEval: offline validation, preparation/replay and online evaluation.",
         epilog="validate: offline source-bound batch intake; JSON to stdout.\n"
+        "verify: check all 12 published cases offline.\n"
         "evaluate: automatic evaluation; prepare/replay offline, execute online.\n"
         "suite: source-bound multi-case execution and offline replay/report.\n"
         "research: offline source-bound research reports.\n"
@@ -29,13 +30,17 @@ def main(
     )
     parser.add_argument(
         "command",
-        choices=("validate", "evaluate", "batch", "generate", "suite", "research", *TASKS),
+        choices=(
+            "verify", "validate", "evaluate", "batch", "generate", "suite", "research", *TASKS,
+        ),
         help="Evaluation task group",
     )
     parser.add_argument("arguments", nargs=argparse.REMAINDER, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
 
-    if args.command == "validate":
+    if args.command == "verify":
+        from backend.cli.verify import main as command
+    elif args.command == "validate":
         from backend.evaluation.__main__ import main as command
     elif args.command == "batch":
         from backend.cli.batch import main as command

@@ -267,10 +267,18 @@ def test_installed_registration_rejection_is_offline(installed_cli, tmp_path, ve
     assert not (tmp_path / "capture").exists()
 
 
-def test_completed_generation_registers_exact_originals_without_requirements(tmp_path, capsys):
+@pytest.mark.parametrize("short_form", [False, True])
+def test_completed_generation_registers_exact_originals_without_requirements(
+    tmp_path, capsys, short_form
+):
     from backend.cli.rtpeval import main
 
     args = arguments(tmp_path, execute=True)
+    if short_form:
+        args = [
+            "v0", str(tmp_path / "input.json"), "-o", str(tmp_path / "capture"),
+            "--group-id", "g", "--run-id", "r", "--execute",
+        ]
     selection = registration(tmp_path)
     original_selection = (tmp_path / "selection.json").read_bytes()
     assert main(["generate", *args, *selection], runtime=Runtime(), date_provider=REFERENCE) == 0

@@ -23,6 +23,7 @@ dependencies = [
 ]
 
 [project.scripts]
+dayloom = "backend.cli.dayloom:main"
 rtpeval = "backend.cli.rtpeval:main"
 
 [build-system]

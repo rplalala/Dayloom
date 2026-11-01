@@ -218,8 +218,7 @@ def main():
         Decimal(e["reference_usd"]) for e in ledger["events"] if e["reference_usd"] is not None
     ) == Decimal(ledger["reference_observed_subtotal_usd"])
     print(
-        "Verified 48 finals, 24 paired stages, exact ranks, 48 resource rows, "
-        "and case-04 index/event identities."
+        "Verified 12 cases, 48 finals, 24 paired stages, exact ranks and 48 resource rows."
     )
 
 

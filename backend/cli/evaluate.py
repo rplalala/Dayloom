@@ -29,14 +29,18 @@ def _execute(argv: Sequence[str], *, http_client=None) -> int:
     )
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument(
-        "--directory", help="Fresh output directory for one-step preparation/execution"
+        "--directory", "-o", help="Fresh output directory for one-step preparation/execution"
     )
     mode.add_argument(
         "--approved-sha256", help="Exact prepared digest for the legacy execute route"
     )
+    aliases = {"options": "-c", "prices": "-p"}
     for option in PREPARATION_FILES:
-        parser.add_argument("--" + option)
-    parser.add_argument("--env-file", help="Credential file loaded only by explicit execution")
+        flags = ["--" + option] + ([aliases[option]] if option in aliases else [])
+        parser.add_argument(*flags)
+    parser.add_argument(
+        "--env-file", "-e", help="Credential file loaded only by explicit execution"
+    )
     args = parser.parse_args(argv)
     if args.directory is not None:
         if not args.directory:

@@ -48,12 +48,17 @@ def test_evaluate_help_is_discoverable_without_loading_evaluator(installed_cli):
     assert "online" in result.stdout.lower()
 
 
+@pytest.mark.parametrize("short_flags", [False, True])
 def test_one_step_emits_native_report_and_replays_without_scoring_again(
     evaluation_material,
     monkeypatch,
     capsys,
+    short_flags,
 ):
     args, directory, root = evaluation_material
+    if short_flags:
+        aliases = {"--directory": "-o", "--options": "-c", "--prices": "-p"}
+        args = [aliases.get(arg, arg) for arg in args]
     originals = {path: path.read_bytes() for path in root.glob("*.json")}
     calls = []
 
