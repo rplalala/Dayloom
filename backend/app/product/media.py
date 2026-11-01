@@ -17,6 +17,7 @@ from backend.app.observability.usage import install_http_hooks
 from backend.app.product.auth import CurrentUser
 from backend.app.product.database import connect
 from backend.app.product.examples import example_detail, local_example_media
+from backend.app.product.media_cache import MediaCache, get_media_cache, owned_scope
 from backend.app.runtime.database import PROJECT_ROOT
 
 router = APIRouter(tags=["Product media"])
@@ -343,6 +344,7 @@ Providers = Annotated[MediaProviders, Depends(get_media_providers)]
 Dimension = Annotated[int, Query(ge=200, le=1280)]
 Slot = Annotated[str, StringConstraints(min_length=1, max_length=300)]
 RequestedSlots = Annotated[list[Slot] | None, Query(max_length=MAX_PLACE_PHOTOS)]
+CachedMedia = Annotated[MediaCache, Depends(get_media_cache)]
 
 
 @router.get("/api/media/destination")
@@ -395,6 +397,7 @@ async def resolve_photos(
     source_provider="google",
     fallback_queries=None,
     city_query=None,
+    cache_lookup=None,
 ):
     response.headers["Cache-Control"] = "no-store"
     all_bindings = list(bindings)
@@ -425,12 +428,17 @@ async def resolve_photos(
             )
             return
         try:
-            if share_values:
-                if place not in pending:
-                    pending[place] = asyncio.create_task(fetch(place))
-                items[slot] = await pending[place]
-            else:
-                items[slot] = await fetch(place, (fallback_queries or {}).get(slot))
+            async def acquire():
+                if share_values:
+                    if place not in pending:
+                        pending[place] = asyncio.create_task(fetch(place))
+                    return await pending[place]
+                return await fetch(place, (fallback_queries or {}).get(slot))
+
+            items[slot] = (await cache_lookup(slot, place, acquire)
+                           if cache_lookup else await acquire())
+        except HTTPException:
+            raise
         except Exception as error:
             # One display failure must not erase completed slots; cancellation propagates.
             operation("media_slot_failed", {"error_type": type(error).__name__})
@@ -525,18 +533,45 @@ def owned_supporting_context(kind, resource_id, owner):
     return slots, destination_photo_query(detail)
 
 
+@router.get("/api/{kind}/{resource_id}/cover-media")
+async def owned_cover_media(
+    kind: Literal["previews", "trips"],
+    resource_id: UUID,
+    user: CurrentUser,
+    providers: Providers,
+    cache: CachedMedia,
+    response: Response,
+    width: Dimension = 960,
+    height: Dimension = 640,
+    refresh: UUID | None = None,
+):
+    response.headers["Cache-Control"] = "no-store"
+    scope = await asyncio.to_thread(owned_scope, kind, resource_id, user["id"])
+    detail = await asyncio.to_thread(owned_detail, kind, resource_id, user["id"])
+    destination = destination_photo_query(detail)
+    return await cache.resolve(
+        scope, ["cover", destination, width, height],
+        lambda: providers.destination(destination, width, height), refresh,
+    )
+
+
 @router.get("/api/{kind}/{resource_id}/supporting-media")
 async def supporting_media(
     kind: Literal["previews", "trips"],
     resource_id: UUID,
     user: CurrentUser,
     providers: Providers,
+    cache: CachedMedia,
     response: Response,
     width: Dimension = 960,
     height: Dimension = 640,
     offset: Annotated[int, Query(ge=0)] = 0,
     slot: RequestedSlots = None,
+    refresh: UUID | None = None,
 ):
+    if refresh and (slot is None or len(slot) != 1):
+        raise HTTPException(422, {"code": "media_refresh_requires_one_slot"})
+    scope = await asyncio.to_thread(owned_scope, kind, resource_id, user["id"])
     slots, destination = await asyncio.to_thread(
         owned_supporting_context, kind, resource_id, user["id"]
     )
@@ -551,6 +586,9 @@ async def supporting_media(
         lookup=partial(providers.supporting, destination=destination),
         share_values=True,
         source_provider="unsplash",
+        cache_lookup=lambda slot_id, theme, acquire: cache.resolve(
+            scope, ["supporting", slot_id, theme, destination, width, height], acquire, refresh,
+        ),
     )
 
 
@@ -560,14 +598,20 @@ async def owned_media(
     resource_id: UUID,
     user: CurrentUser,
     providers: Providers,
+    cache: CachedMedia,
     response: Response,
     width: Dimension = 960,
     height: Dimension = 640,
     offset: Annotated[int, Query(ge=0)] = 0,
     slot: RequestedSlots = None,
+    refresh: UUID | None = None,
 ):
+    if refresh and (slot is None or len(slot) != 1):
+        raise HTTPException(422, {"code": "media_refresh_requires_one_slot"})
     # Storage is synchronous; slow reads must not block the task/lease event loop.
     bindings = await asyncio.to_thread(owned_bindings, kind, resource_id, user["id"])
+    scope = (await asyncio.to_thread(owned_scope, kind, resource_id, user["id"])
+             if bindings else None)
     queries = {}
     city = None
     if bindings:
@@ -584,6 +628,10 @@ async def owned_media(
         slots=slot,
         fallback_queries=queries,
         city_query=city,
+        cache_lookup=(lambda slot_id, place, acquire: cache.resolve(
+            scope, ["place", slot_id, place, queries.get(slot_id), city, width, height],
+            acquire, refresh,
+        )) if scope else None,
     )
 
 

@@ -198,7 +198,12 @@ def test_owned_place_fallbacks_use_public_context_after_save_copy_and_recreation
         with TestClient(application, base_url="http://localhost:5120") as recreated:
             recreated.cookies.update(client.cookies)
             assert recreated.get(f"/api/trips/{saved}/media").json()["items"] == items
-            assert recreated.get(f"/api/trips/{copied}/media").json()["items"] == items
+            copied_items = recreated.get(f"/api/trips/{copied}/media").json()["items"]
+            for slot, media in items.items():
+                assert copied_items[slot]["cache_revision"] != media["cache_revision"]
+                assert {k: v for k, v in copied_items[slot].items() if k != "cache_revision"} == {
+                    k: v for k, v in media.items() if k != "cache_revision"
+                }
             assert (
                 recreated.get(f"/api/trips/{saved}").json()["days"][0]["activities"][0][
                     "activity_kind"
@@ -300,7 +305,7 @@ def test_fallback_is_only_for_confirmed_missing_google_photos(fault):
     assert len(calls) <= 2
 
 
-def test_examples_and_fixed_london_cover_use_the_same_fallback_chain(client):  # noqa: F811
+def test_examples_stay_local_while_fixed_london_cover_keeps_provider_fallback(client):  # noqa: F811
     from backend.app.product.media import get_media_providers
 
     calls = []
@@ -322,16 +327,15 @@ def test_examples_and_fixed_london_cover_use_the_same_fallback_chain(client):  #
     try:
         example = client.get("/api/examples/sydney-example").json()
         slot = "activity:" + example["days"][0]["activities"][0]["activity_id"]
-        assert (
-            client.get("/api/examples/sydney-example/media", params={"slot": slot}).json()["items"][
-                slot
-            ]["fallback"]
-            == "google_no_photos"
-        )
+        media = client.get("/api/examples/sydney-example/media", params={"slot": slot}).json()[
+            "items"
+        ][slot]
+        assert media["image_url"].startswith("/dayloom/examples/")
+        assert calls == []
         cover = client.get("/api/media/curated/london").json()
         assert cover["fallback"] == "google_no_photos"
         assert cover["alt"] == "London atmosphere"
-        assert len(calls) == 7
+        assert len(calls) == 4
         assert calls[-2].url.params["query"] == "London"
     finally:
         client.app.dependency_overrides.pop(get_media_providers, None)

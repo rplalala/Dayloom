@@ -121,6 +121,7 @@ class SavedStore:
                 source_kind=preview["source_kind"],
                 source_id=preview["source_id"],
                 media_bindings=Jsonb(preview.get("media_bindings", {})),
+                media_cache=Jsonb(preview.get("media_cache", {})),
                 display_metadata=Jsonb(DetailDisplay.from_detail(detail).model_dump(mode="json")),
                 generated_at=preview["created_at"]
                 if preview["source_kind"] == "generated_v3"

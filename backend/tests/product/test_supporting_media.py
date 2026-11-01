@@ -158,7 +158,11 @@ def test_owned_supporting_slots_share_one_theme_search_and_reject_other_roles(cl
         assert len(calls) == 2
         assert calls[0].url.params["query"] == "Sydney relaxed meal"
         assert result.json()["items"]["activity:meal1"]["kind"] == "atmosphere"
-        assert result.json()["items"]["activity:meal1"] == result.json()["items"]["activity:meal2"]
+        first, second = (result.json()["items"][f"activity:meal{i}"] for i in (1, 2))
+        assert first["cache_revision"] != second["cache_revision"]
+        assert {k: v for k, v in first.items() if k != "cache_revision"} == {
+            k: v for k, v in second.items() if k != "cache_revision"
+        }
         for aid in ("main", "old", "free"):
             assert result.json()["items"][f"activity:{aid}"]["status"] == "unavailable"
         register(client, "other@example.com")

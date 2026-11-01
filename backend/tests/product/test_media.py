@@ -318,7 +318,7 @@ def test_display_batch_limits_provider_work_and_survives_recreation(client):  # 
         with TestClient(recreated, base_url="http://localhost:5120") as another:
             another.cookies.update(client.cookies)
             assert (
-                another.get(f"/api/previews/{detail.id}/media").json()["items"]
+                    another.get(f"/api/previews/{detail.id}/media?width=200&height=1280").json()["items"]
                 == response.json()["items"]
             )
     finally:
