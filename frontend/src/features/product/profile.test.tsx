@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { afterEach, expect, it, vi } from "vitest";
 import { routes } from "../../app/router";
@@ -107,6 +107,74 @@ it("treats a restored blank brief as existing work rather than new", async () =>
   await screen.findByLabelText("Destination");
   expect(screen.getByLabelText("Currency")).toHaveValue("AUD");
   expect(screen.getByLabelText("Additional preferences")).toHaveValue("");
+});
+
+function savedProfileEntry(brief = createBrief(), metadata: Record<string, unknown> = {}) {
+  sessionStorage.setItem('dayloom.editor.v1', JSON.stringify({ owner: 'alice', brief, actionId: null, origin: 'restored', ...metadata }));
+  const saved = { ...profile, pace: 'rich', transport: ['walk'] };
+  let reads = 0;
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => Response.json(
+    url === '/api/auth/current' ? account : url === '/api/profile' ? (reads++, saved)
+      : url === '/api/planning/date-window' ? { allowedStart: '2026-10-21', allowedEnd: '2026-11-03', maxTripDays: 10 } : [],
+  )));
+  const router = createMemoryRouter(routes, { initialEntries: ['/account'] });
+  render(<RouterProvider router={router} />);
+  return { router, profileReads: () => reads };
+}
+
+it('loads saved preferences when Plan a trip is explicitly opened from a restored empty editor', async () => {
+  savedProfileEntry();
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true'));
+  expect(screen.getByRole('button', { name: 'Walking' })).toHaveAttribute('aria-pressed', 'true');
+  expect(screen.getByLabelText('Currency')).toHaveValue('JPY');
+  expect((screen.getByLabelText('Additional preferences') as HTMLTextAreaElement).value).toContain('Quiet mornings');
+});
+
+it.each([
+  ['destination', { destination: 'Kyoto' }, {}],
+  ['currency', { currency: 'USD' }, {}],
+  ['preferences', { preferences: 'My own preferences' }, {}],
+  ['saved draft', {}, { draftRef: { id: 'existing', title: 'My draft', revision: 1 } }],
+  ['draft title', {}, { draftTitle: 'My title' }],
+  ['operation recovery', {}, { actionId: 'existing-operation' }],
+] as const)('preserves existing %s when entering Plan from navigation', async (_label, values, metadata) => {
+  const brief = { ...createBrief(), ...values };
+  const { profileReads } = savedProfileEntry(brief, metadata);
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  expect(await screen.findByLabelText('Destination')).toHaveValue(brief.destination);
+  expect(screen.getByLabelText('Currency')).toHaveValue(brief.currency);
+  expect(screen.getByLabelText('Additional preferences')).toHaveValue(brief.preferences);
+  expect(profileReads()).toBe(1);
+});
+
+it.each(['mobile', 'footer', 'home'] as const)('also applies saved defaults from the %s planning entry', async entry => {
+  const { router } = savedProfileEntry();
+  await screen.findByLabelText('Display name');
+  if (entry === 'mobile') {
+    fireEvent.click(screen.getByLabelText('Open navigation'));
+    fireEvent.click(within(screen.getByLabelText('Mobile navigation')).getByText('Plan a trip', { exact: true }));
+  } else if (entry === 'footer') {
+    fireEvent.click(within(screen.getByRole('contentinfo')).getByRole('link', { name: 'Start planning' }));
+  } else {
+    await act(() => router.navigate('/'));
+    fireEvent.click(within(screen.getByRole('main')).getAllByRole('link', { name: /Start planning/ })[0]);
+  }
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true'));
+});
+
+it('keeps Clear empty until another explicit planning entry', async () => {
+  savedProfileEntry();
+  await screen.findByLabelText('Display name');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  await waitFor(() => expect(screen.getByLabelText('Currency')).toHaveValue('JPY'));
+  fireEvent.click(screen.getByRole('button', { name: 'Clear' }));
+  expect(screen.getByLabelText('Additional preferences')).toHaveValue('');
+  expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'false');
+  fireEvent.click(screen.getByRole('link', { name: 'Plan a trip' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Rich' })).toHaveAttribute('aria-pressed', 'true'));
 });
 
 it.each([

@@ -5,6 +5,7 @@ import { SessionProvider, useSession } from "../features/product/session";
 import "../styles/dayloom.css";
 import { TaskProvider, TaskEntry } from "../features/product/tasks";
 import { Icon } from "../features/product/Icon";
+import { usePlanningEntry } from '../features/product/usePlanningEntry';
 
 export function ProductLayout() {
   return (
@@ -16,6 +17,7 @@ export function ProductLayout() {
 
 function ProductShell() {
   const { account, logout } = useSession();
+  const enterPlanning = usePlanningEntry();
   const { pathname } = useLocation();
   const librarySelected = pathname === "/trips" || pathname === "/import" ||
     ["/trips/", "/drafts/", "/examples/", "/previews/"].some(prefix => pathname.startsWith(prefix));
@@ -58,7 +60,7 @@ function ProductShell() {
             <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>
               Home
             </NavLink>
-            <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
+            <NavLink to="/plan" onClick={enterPlanning} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
             <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
           </nav>
           <div className="nav-actions">
@@ -77,7 +79,7 @@ function ProductShell() {
                 Log in
               </NavLink>
             )}
-            <NavLink to="/plan" className="btn btn-primary btn-small nav-cta">
+            <NavLink to="/plan" onClick={enterPlanning} className="btn btn-primary btn-small nav-cta">
               Start planning <Icon name="arrow" size={16} />
             </NavLink>
             <button
@@ -98,7 +100,7 @@ function ProductShell() {
             onClick={() => setMobile(false)}
           >
             <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Home</NavLink>
-            <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
+            <NavLink to="/plan" onClick={enterPlanning} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
             <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
             <NavLink to={account ? "/account" : "/login"} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>
               {account ? "Account settings" : "Log in"}
@@ -119,7 +121,7 @@ function ProductShell() {
           </div>
           <div className="footer-links">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/plan">Start planning</NavLink>
+            <NavLink to="/plan" onClick={enterPlanning}>Start planning</NavLink>
             <NavLink to="/trips">My trips</NavLink>
             <NavLink to={account ? "/account" : "/login"}>My account</NavLink>
           </div>
