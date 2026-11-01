@@ -78,8 +78,9 @@ See the [development guide](docs/guides/development.md#local-postgresql-naming-a
 for storage retention, overrides and isolated test settings.
 
 The local Product launcher also serves `/config` with independent loopback-only
-management access. It opens directly by default and offers optional persisted
-password verification on every page entry, with a bottom-right settings shortcut in Product. It edits
+management access. New installations use the displayed local test password,
+with persisted password verification on every page entry and a bottom-right settings shortcut.
+Existing custom passwords and explicit verification preferences are retained. It edits
 Foundry endpoint/deployment in `product.yaml` and provider credentials in `.env`,
 shows local resource readiness and offers
 explicit bounded API capability checks. Saved provider changes require restart;

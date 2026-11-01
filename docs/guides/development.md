@@ -157,7 +157,9 @@ between them automatically. API-only/Vite development remains available above.
 Build the frontend and start `uv run python scripts/run_product.py` with its default
 loopback binding. Open the exact configured origin plus `/config`, normally
 `http://localhost:5173/config`. The bottom-right settings icon on desktop and mobile Product pages
-opens the same page when local management is available. It opens directly by default;
+opens the same page when local management is available. New installations use the
+test password `dayloom-config-2026`, shown on the entry page; change it after entering.
+Existing custom passwords and explicitly disabled verification remain unchanged;
 traveler registration and database access are not required. Without password protection,
 the browser establishes a separate management session automatically.
 
@@ -167,8 +169,8 @@ password screen. Every subsequent entry or reload requires the password, even if
 the browser retains a cookie. To change it or disable verification, first use
 Verify current password, then enter and confirm the new password when applicable.
 Access changes apply immediately and revoke previous management sessions, including
-sessions in other local processes. Lock configuration ends the current protected
-session. Restart invalidates sessions but preserves the access settings and password.
+sessions in other local processes. Leaving configuration automatically locks access.
+Restart invalidates sessions but preserves the access settings and password.
 The password is independent of traveler accounts and is stored only as an Argon2id
 hash in ignored `.config-access.json`; neither it nor its hash is returned by the API.
 
@@ -187,8 +189,8 @@ Move-Item -LiteralPath .config-access.json -Destination .config-access.backup
 test ! -e .config-access.backup && mv .config-access.json .config-access.backup
 ```
 
-This host-controlled recovery returns configuration to its default open state;
-set a new password on the page. Provider keys in `.env` are retained. Invalid or
+This host-controlled recovery restores the default test password; use it to open
+configuration and set a new password. Provider keys in `.env` are retained. Invalid or
 unreadable access files fail closed rather than disabling verification automatically.
 
 The console edits only the current provider settings defined in the

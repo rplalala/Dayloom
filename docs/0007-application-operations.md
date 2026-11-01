@@ -58,20 +58,25 @@ migration does not change the independent CLI's environment precedence.
 A snapshot's opaque revision covers both saved file texts and resolved values,
 so edits to any YAML option invalidate a stale save or API check.
 
-Configuration opens directly by default, without a terminal token or password.
+New installations require the public local-test password `dayloom-config-2026`,
+displayed on the centered entry screen with instructions to change it. Existing
+custom passwords and explicitly disabled verification remain unchanged; the test
+password is not an alternative credential after a custom password is saved.
 Without password protection, the browser automatically establishes a separate
 30-minute HttpOnly, SameSite=Strict cookie scoped to `/api/config`.
 Users can enable password verification, setting and confirming a 10–128-character
 password. The enabled state, opaque access revision and Argon2id hash are persisted
 atomically in ignored `.config-access.json`, independently of Product accounts.
-Only password-required status and the opaque revision are public management metadata;
-passwords and hashes never enter API responses. Enabling or changing the password
+Public management metadata includes password-required status, the opaque revision
+and the fixed default test password. Configured custom passwords and hashes never
+enter API responses. Enabling or changing the password
 immediately returns to the password screen. Every protected route entry and reload
 requires the password again; the browser never restores access from an existing
 cookie. The page keeps its session-bound token only in memory, sends it on every
 protected read/write, and clears it on document navigation/history restoration.
 An old cookie alone cannot read configuration or recover that token. A successful
 unlock replaces the previous cookie's session, avoiding accumulation on repeat visits.
+Leaving configuration locks access automatically; no manual Lock button is offered.
 Before changing a password or disabling verification, the user verifies the current
 password through `POST /api/config/access/verify`; only then are new-password fields
 offered. The final access update independently checks the current password again.
@@ -879,7 +884,9 @@ canonical identity. No generation or provider evidence refresh is part of curati
 Public detail needs no account, provider key or database and creates no example table.
 Its covers and twelve visit photographs are bundled locally with their source,
 author and individual licenses in the [asset credits](../frontend/public/dayloom/examples/README.md).
-Nearby references without a matching bundled photograph use local illustrations.
+All six Nearby references have dedicated local assets: Royal Armouries and Jubilee
+Gardens use licensed photographs; the four dining references use original SVG
+illustrations, explicitly labeled rather than presented as venue photographs.
 The shared [asset manifest](../backend/app/product/example_media.json) maps slots to
 content-hashed files served from `/dayloom/examples/`; the frontend build includes
 these files, and the normal Product static mount serves them with immutable browser
