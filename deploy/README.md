@@ -1,8 +1,10 @@
 # Local Docker deployment
 
 Versioned deployment archives contain the Compose definition, public configuration
-template, Bash launcher and these instructions. GitHub Releases and GHCR are the
-distribution targets; local builds can use the same bundle before publication.
+template, Bash launcher and these instructions. Obtain the public archive from
+[GitHub Releases](https://github.com/rplalala/Dayloom/releases/latest), following
+the [Docker quickstart](https://github.com/rplalala/Dayloom/blob/main/docs/guides/deployment.md#option-1-docker-recommended).
+Images are distributed through GHCR; local builds can use the same bundle.
 Docker Desktop is optional. Install Bash, Docker Engine 28+
 and a Compose plugin supporting `up --wait --wait-timeout`; the first release
 supports Linux amd64 container engines.

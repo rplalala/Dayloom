@@ -1,13 +1,15 @@
-# Complete-baseline Docker local acceptance
+# Complete-baseline Docker acceptance
 
-On 2 November 2026, the unpublished `0.1.0-local` deployment archive was installed
-through its real Bash/Compose entry into fresh, independently owned test storage.
-Public Release downloads and anonymous GHCR pulls remain unobserved and require
-separate publication authorization under [#255](https://github.com/rplalala/Dayloom/issues/255)
-and [#247](https://github.com/rplalala/Dayloom/issues/247).
-Current commands belong to the [deployment guide](../../../deploy/README.md).
+On 2 November 2026, the unpublished `0.1.0-local` deployment archive established
+complete-baseline and operational recovery acceptance through the real Bash/Compose
+entry into fresh test storage. The subsequent authorized `0.1.0` publication used
+a clean merged source revision and public GitHub Release/GHCR artifacts.
+[#255](https://github.com/rplalala/Dayloom/issues/255) and
+[#247](https://github.com/rplalala/Dayloom/issues/247) own task completion.
+Current commands belong to the [deployment guide](../../guides/deployment.md)
+and [Docker operations](../../../deploy/README.md).
 
-## Artifact identity and build context
+## Local artifact identity and build context
 
 | Binding | Observed identity |
 | --- | --- |
@@ -28,8 +30,8 @@ That file enters both images through their existing `COPY deploy` rules, althoug
 it is not an input to the four-file archive renderer. The acceptance harness and
 this record were developed afterward and do not change the tested runtime or
 archive bytes. These are local repository digests, not published GHCR references.
-A future public release must build from the final clean committed revision and
-complete the separate public retrieval/fresh-install acceptance.
+The public release below was rebuilt from a clean merged commit rather than
+retagging these local images.
 
 Both images were rebuilt after the registration-gap correction. The same existing
 factory snapshot was supplied as a named build context; the final rebuild reused
@@ -37,6 +39,60 @@ its cached content and transferred only 475 bytes of context metadata. No second
 factory export was made. One concurrent app export encountered a Docker parent
 snapshot unpack error; the identical app build succeeded when retried serially,
 without pruning caches, changing configuration or restarting the source service.
+
+## Public distribution
+
+The [Dayloom 0.1.0 Release](https://github.com/rplalala/Dayloom/releases/tag/dayloom-v0.1.0)
+binds the same approved baseline to the following clean source and public images.
+Both GHCR packages are public and associated with `rplalala/Dayloom`.
+
+| Binding | Published identity |
+| --- | --- |
+| Source / PR | `ab4d3d3025a101cba9d32b07f2d837205a354446`, [PR #256](https://github.com/rplalala/Dayloom/pull/256) |
+| App | `ghcr.io/rplalala/dayloom-app@sha256:e7ce1c3d35333f988eda237a554a178b7a7ef3454d2fef40f2b679c1e3552027` |
+| Baseline | `ghcr.io/rplalala/dayloom-baseline@sha256:060b79fcdead7df46f345c16f6c92d926e334ae0d17fe4339f4b4328dbf03b66` |
+| Archive | `dayloom-0.1.0-linux-amd64.tar.gz`, 10,448 bytes |
+| Archive SHA256 | `854aa3d5f1299b8d7981f7abf91a412d33e51023bf6badc02f968f42092da4c4` |
+| App / baseline image-inspect size | 251,536,155 / 4,605,052,812 bytes |
+
+Anonymous curl retrieved the exact public archive and sidecar, verified the archive
+hash before extraction and all four file hashes afterward. Anonymous registry-token
+requests verified both manifest digests, access to all 45 config/layer blobs and a
+1 KiB read from each image's largest layer. Docker pulls also passed with an
+isolated empty credential configuration. Existing image layers were cached; these
+checks do not measure a complete uncached network transfer or its duration.
+
+The retrieved archive was then installed through Bash into fresh project
+`dayloom-public-acceptance-test`, database `dayloom_public_acceptance_test` and
+independent storage on port 55791. Startup reached the deferred-configuration
+listener in 288.28 seconds; complete inventory and saved-vector verification took
+another 32.99 seconds. All 16 table fingerprints and schema/extension/migration
+identity matched the approved manifest, and all 10 saved-vector results retained
+their order and cosine scores within `1e-12`. These timings use cached image layers
+on the Linux amd64 engine described below and exclude an uncached network download.
+
+The fresh public installation also passed browser configuration save/restart,
+default admin login and original four-trip access, a new retained draft, stop/start,
+app recreation and database-delay checks. Its 48 valid cached place slots added
+zero acquisition requests; a selected refresh used two controlled destination-key
+requests with duplicate reuse and account isolation. The browser opened an existing
+trip with all 19 external image requests replaced locally. The same test-only
+egress and transport controls described below prevented paid API and original-photo
+requests. Full backup/upgrade/recovery evidence remains the local run below; that
+expensive cycle was not repeated for publication.
+
+After acceptance, the public test containers, network, both project volumes and
+generated private configuration were removed. Cleanup checked the actual source
+container identity, separate Compose project and mounted `dayloom_pgdata` volume.
+The source container had already exited normally before cleanup; its state,
+start/finish timestamps and mounts were preserved without restarting it. No
+source-content audit was repeated after publication; the SELECT-only audit below
+belongs to the earlier local acceptance.
+
+The publication reused the existing factory snapshot and four verified small
+runtime resources. No new export or embedding run was needed. Manual builds used
+the clean source revision; no SBOM/provenance attestation is claimed for this
+bootstrap publication.
 
 ## Complete baseline and Product behavior
 
@@ -173,6 +229,18 @@ configuration regressions passed together; changed-file Ruff, diff checks and
 changed Markdown local references also passed. The target guard first failed for
 the missing entry, then passed after implementation.
 
+Release compatibility checks additionally passed the 388-test frontend suite,
+frontend lint/type/build checks and Ruff. The review worktree initially lacked
+ignored tokenizer resources and the expected local Python path: verified resource
+reuse corrected the RAG regression (36 focused tests passed), and the PowerShell
+launcher check passed after restoring that path. Three representative V3 checks
+also passed. A complete backend rerun was stopped and not repeated at the user's
+request. The targeted native evaluator case
+`test_public_execution_preserves_native_outcomes_and_one_use[none-one_step]`
+still fails with `Opening eligibility/evidence replay differs` on both the release
+and original `79301aa` main revision. Its root cause and fix remain unresolved;
+this acceptance does not claim full backend or historical evaluator replay success.
+
 The reusable opt-in entry is
 `python -m backend.tests.deployment.archive_acceptance --help`; ordinary pytest
 runs only its disposable-target guards. Safe local evidence identifiers are
@@ -192,3 +260,7 @@ pre-export evidence and found them unchanged. Source TripWorld access was limite
 to the original read-only export and saved-vector query; the final source-content
 audit specifically covers those 11 Product tables. Its safe local evidence
 identifier is `source-final.json`.
+
+Public-distribution evidence identifiers under the same private work area are
+`publication-20261102/anonymous-images.json`, `anonymous-download/`,
+`public-install/result.json` and `public-container-cleanup.json`.

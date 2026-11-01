@@ -1,19 +1,30 @@
 # Dayloom
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Docker: linux/amd64](https://img.shields.io/badge/Docker-linux%2Famd64-2496ED?logo=docker&logoColor=white)](docs/guides/deployment.md#option-1-docker-recommended)
+[![Release](https://img.shields.io/github/v/release/rplalala/Dayloom?label=release)](https://github.com/rplalala/Dayloom/releases/latest)
+
 An LLM-powered travel planner that combines current travel information, retrieval
 and validation to build day-by-day itineraries. Enter a destination, dates, budget
 and preferences, then preview, save and revisit your trip.
 
-[Try the prototype](https://dingzh.cc/Dayloom/prototype/) ·
-[Run locally](docs/guides/deployment.md) ·
-[Verify the results](docs/guides/verification.md) ·
-[Reproduce experiments](docs/guides/experiments.md) ·
+[Prototype](https://dingzh.cc/Dayloom/prototype/) ·
+[Deployment Guide](docs/guides/deployment.md) ·
+[Verification Guide](docs/guides/verification.md) ·
+[Reproduce Guide](docs/guides/experiments.md) ·
 [Datasets](data/tripworld/README.md) ·
-[Benchmark report](benchmark/report.md)
+[Benchmark](benchmark/report.md)
 
 The online prototype uses browser-local data. The full application runs locally
 with React, FastAPI and PostgreSQL. It supports accounts, recoverable planning
 tasks, saved trips, place photographs and itinerary import/export.
+
+> [!TIP]
+> **Quick deployment → [Run the full application with Docker](docs/guides/deployment.md#option-1-docker-recommended)**
+>
+> Start with Bash, Docker Engine and Compose. The images include the database baseline
+> and stored vectors; instance configuration is created automatically. Enter provider
+> settings during setup or finish them later at `/config`.
 
 ## How it works
 
@@ -31,9 +42,10 @@ The modular monolith uses **React + TypeScript**, **FastAPI + LangGraph** and
 
 ## Local development
 
-First installation requires Python 3.12, uv, Node.js/npm, PostgreSQL with pgvector,
-the TripWorld release and your own model/travel-provider access. Follow the
-[deployment guide](docs/guides/deployment.md) to prepare them.
+For source development and direct V0–V3 execution, use Python 3.12, uv,
+Node.js/npm, PostgreSQL with pgvector and the TripWorld release. Follow
+[source setup](docs/guides/deployment.md#option-2-run-from-source), or use the
+[Docker bundle](docs/guides/deployment.md#option-1-docker-recommended) to run the app.
 
 Once configured, build and start Dayloom from the repository root:
 
@@ -86,6 +98,7 @@ for generation, evaluation and analysis. Follow the
 | `backend/cli/` | Installed `dayloom` and `rtpeval` commands |
 | `backend/evaluation/` | Independent scoring, saved-evidence replay and analysis |
 | `backend/tests/` | Backend unit and integration tests |
+| `deploy/` | Bash/Compose installation, Docker images and baseline/release tools |
 | `scripts/` | Direct launchers, migrations and V0–V3 entry points |
 | `tools/` | Data preparation, validation and diagnostics |
 | `benchmark/` | Twelve cases, selected outputs, reports and offline verifiers |
@@ -95,12 +108,14 @@ for generation, evaluation and analysis. Follow the
 
 Python and frontend dependencies are pinned in `uv.lock` and
 `frontend/package-lock.json`. `.env.example` lists private settings;
-`compose.yaml` defines the local database.
+the root `compose.yaml` defines the source workflow's local database.
+The separate `deploy/compose.yaml` runs the complete Docker installation.
 
 ## TripWorld database release
 
-Download the [TripWorld release](https://drive.google.com/drive/folders/14VjxQU7jR8PGuiMWes5uaPLIOdrMNaQ0?usp=sharing)
-to use V2/V3 without rebuilding embeddings. It contains processed data, saved
+Docker installations obtain the corpus and stored vectors through the baseline image.
+For source-based V2/V3 execution, download the [TripWorld release](https://drive.google.com/drive/folders/14VjxQU7jR8PGuiMWes5uaPLIOdrMNaQ0?usp=sharing)
+to reuse existing embeddings. It contains processed data, saved
 vectors, provenance and checksums. The [data guide](data/tripworld/README.md) explains
 its source, processing and contents; the [deployment guide](docs/guides/deployment.md)
 covers setup and restoration. Large runtime data is distributed separately from source.

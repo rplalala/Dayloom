@@ -2,7 +2,7 @@
 
 Choose the guide for the task:
 
-- [Deploy Dayloom](guides/deployment.md): install, restore data and launch.
+- [Deploy Dayloom](guides/deployment.md): Docker quickstart or source installation.
 - [Develop and configure](guides/development.md): local settings, checks and maintenance.
 - [Reproduce experiments](guides/experiments.md): generate outputs and run independent evaluation.
 - [Verify findings](guides/verification.md): check retained evidence and report reconstruction.
