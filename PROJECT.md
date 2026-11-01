@@ -62,7 +62,10 @@ API, persistence, security and recovery rules.
 Local configuration supports database connections, provider credentials and JWT
 signing keys. Existing keys are retained; a new local installation generates and
 saves a key when absent. Personal settings and secrets are ignored by Git.
-Use [deployment](docs/guides/deployment.md) to install and
+The Bash/Compose deployment bundle installs prebuilt images and the complete
+approved Product/TripWorld baseline; provider setup can be finished later at
+`/config`. Existing instances retain their own data and configuration.
+Use [deployment](docs/guides/deployment.md) for Docker or source installation and
 [development](docs/guides/development.md) for configuration and maintenance.
 
 ## Data and independent evaluation

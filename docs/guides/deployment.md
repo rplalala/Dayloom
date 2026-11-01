@@ -1,26 +1,89 @@
-# Run Dayloom locally
+# Deploy Dayloom
 
-For the Bash-first, complete Docker deployment bundle, use the
-[Docker deployment guide](../../deploy/README.md). This guide covers installation
-from a source checkout and retains the existing host-based workflow.
+Both options run the full React, FastAPI and PostgreSQL application on your machine.
+Choose Docker for a prepared installation, or source setup to develop the code and
+run the V0–V3 entry points directly.
 
-The [complete-baseline local acceptance](../records/v0-v3/2026-11-02-docker-local-acceptance.md)
-records the tested unpublished archive and its platform limits. On a Windows host
-with a Linux amd64 Docker Desktop 28.3.2 engine, fresh storage reached the deferred
-setup listener in 318.55 seconds using cached images and a 4,434,195,118-byte factory
-dump. The engine had 8 CPUs and approximately 16 GiB of memory; sampled PostgreSQL
-and initializer cgroup maxima were approximately 7.99 GiB and 3.13 GiB, including
-page cache. These observations do not establish minimum resources or network
-download time. Allow separate disk space for images, restored data and a private
-operational backup; image metadata size alone does not measure that footprint.
+| Option | Best for | Host tools |
+| --- | --- | --- |
+| [Docker bundle](#option-1-docker-recommended) | Run the complete app with the approved initial data | Bash, Docker Engine and Compose |
+| [Source checkout](#option-2-run-from-source) | Develop the frontend/backend or run planners directly | Python 3.12, uv, Node.js 24 and PostgreSQL/pgvector |
 
-This guide installs the full web application. To check the saved research results
-without running it, use [findings verification](verification.md).
+## Option 1: Docker (recommended)
 
-Run commands from the repository root. Except for copying `.env`, the commands
-below work in both PowerShell and Bash.
+Use Bash, Docker Engine 28+ and a Compose plugin supporting `up --wait --wait-timeout`.
+The release supports Linux amd64 containers. Docker Desktop is optional.
+No source checkout, host Python/Node installation or separate dataset preparation is required.
 
-## 1. Install dependencies
+### Download and start
+
+Run this in a directory where a new `dayloom` directory can be created:
+
+```bash
+version=0.1.0
+archive="dayloom-${version}-linux-amd64.tar.gz"
+release="https://github.com/rplalala/Dayloom/releases/download/dayloom-v${version}"
+
+mkdir dayloom &&
+cd dayloom &&
+curl --fail --location "$release/$archive" --output "$archive" &&
+curl --fail --location "$release/$archive.sha256" --output "$archive.sha256" &&
+sha256sum --ignore-missing --check "$archive.sha256" &&
+tar -xzf "$archive" &&
+sha256sum --ignore-missing --check "$archive.sha256" &&
+bash start.sh
+```
+
+The deployment archive is small; first launch downloads the app and baseline images.
+The baseline contains a 4.43 GB database dump. The launcher creates private `config/`
+files and project-scoped storage, restores the complete baseline once, then starts
+Dayloom at [localhost:5173](http://localhost:5173). Initial image acquisition and
+database restoration can take several minutes. Repeated startup retains your data.
+
+Choose provider entry now or later. For unattended setup, use
+`bash start.sh --non-interactive`. If the default port is occupied, select a free
+port with `DAYLOOM_HOST_PORT=5174 bash start.sh`; use the URL printed by the launcher.
+
+### Finish configuration
+
+Open `/config` using the configuration-management password printed at first launch.
+Enter your Foundry endpoint/deployment, OpenAI and Google keys; Unsplash is optional.
+You can finish this step later. Save, then apply the settings from the bundle directory:
+
+```bash
+docker compose --env-file config/.env restart app
+```
+
+The retained Product test account is **`admin@admin.com` / `admin123456`**.
+Its login is separate from configuration management. Existing trips, related records,
+photo-cache metadata and stored retrieval vectors are included. New provider API
+requests use your instance configuration; setup does not generate new embeddings
+or refresh photos.
+
+For stop/start, logs, password recovery, upgrades and private database/configuration
+backups, follow the [Docker operations guide](../../deploy/README.md).
+Keep the generated configuration and database volume between runs. For everyday
+use, run `bash start.sh` from the same bundle and open the printed local URL.
+
+### Platform and resource observations
+
+The [complete-baseline acceptance](../records/v0-v3/2026-11-02-docker-local-acceptance.md)
+records measured artifact sizes, installation/recovery times and platform limits.
+The local engine tested there had 8 CPUs and approximately 16 GiB of memory.
+Those observations do not establish minimum memory/disk or network-download time.
+Allow working space for images, the restored database and a private operational backup.
+
+## Option 2: Run from source
+
+Use this option to change the code, run the API and Vite separately, or execute V0–V3
+directly. The following steps prepare your own source checkout, runtime tools and
+retrieval data. For saved-result verification without running the application, use
+the [verification guide](verification.md).
+
+Run source commands from the repository root. Except for copying `.env`, they work
+in both PowerShell and Bash.
+
+### 1. Install dependencies
 
 You need **Python 3.12**, **uv**, **Node.js 24.x with npm**, and **Docker Compose**.
 The local database image supplies PostgreSQL 17 and pgvector. A native installation
@@ -31,7 +94,7 @@ uv sync --locked --group retrieval
 npm --prefix frontend ci
 ```
 
-## 2. Configure local secrets
+### 2. Configure local secrets
 
 For a new installation, copy `.env.example` to `.env`:
 
@@ -60,7 +123,7 @@ Leave `PRODUCT_JWT_SECRET` blank on a new local installation: `dayloom start`
 generates and saves it automatically. Existing keys are retained. The configuration
 page supports a custom key or explicit replacement generation.
 
-## 3. Prepare retrieval data and vocabularies
+### 3. Prepare retrieval data and vocabularies
 
 Download and extract the [TripWorld release](../../README.md#tripworld-database-release)
 beside the source directory. The [data guide](../../data/tripworld/README.md) explains
@@ -93,7 +156,7 @@ For an offline installation, supply the planner cache under `.cache/tokenizer/`
 and the embedding cache under `data/tripworld/tokenizer_cache/`, then use
 `uv run dayloom tokenizers --offline` to verify them.
 
-## 4. Start and populate the database
+### 4. Start and populate the database
 
 For a **new installation**, create the external volume and start PostgreSQL:
 
@@ -113,7 +176,7 @@ PostgreSQL, use `pg_restore --no-owner --no-privileges` against your empty datab
 as described in the release README, using your configured database and role.
 For connection or volume overrides, see [database configuration](development.md#local-postgresql-naming-and-storage).
 
-## 5. Build, migrate and launch
+### 5. Build, migrate and launch
 
 ```bash
 npm --prefix frontend run build
@@ -144,7 +207,7 @@ Once ready, open [Dayloom](http://localhost:5173), create an account and plan a 
 Planning and online features use your provider accounts. Optional API checks can
 also incur charges; web-search charges are outside the current spending guard.
 
-## Check, stop and troubleshoot
+### Check, stop and troubleshoot
 
 Check local configuration, database access, migrations, vocabularies and retrieval
 compatibility without contacting providers:

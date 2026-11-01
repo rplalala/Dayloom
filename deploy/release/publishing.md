@@ -21,8 +21,8 @@ with the archive; existing instances retain their installed baseline through the
 maintenance commands. Application and baseline versioning remain independent.
 
 The target platform is Linux amd64. Other architectures have no acceptance claim.
-The approved baseline dump measured 4,434,195,118 bytes; its existing local image
-measured 4,605,038,330 bytes. Package build JSON reports actual archive and selected
+The approved baseline dump measured 4,434,195,118 bytes; the first public baseline
+image measured 4,605,052,812 bytes. Package build JSON reports actual archive and selected
 image sizes for each build. These are stored image sizes, not compressed transfer
 sizes or measured minimum memory/disk limits; allow working room for image layers,
 the restored database and private backups.
