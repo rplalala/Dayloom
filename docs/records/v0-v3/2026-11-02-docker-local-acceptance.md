@@ -45,8 +45,9 @@ The retained archive contains exactly four regular files: `compose.yaml`,
 archive and each extracted file. Bash ran noninteractively from a different
 working directory; no source checkout, host dataset mount or host Python/Node
 runtime was used by the installer. Images were already cached locally. The test
-project used `dayloom_full_acceptance_test` and independent volumes, replacing only
-the explicitly identified earlier disposable acceptance project.
+used Compose project `dayloom-full-acceptance-test`, database
+`dayloom_full_acceptance_test` and independent volumes, replacing only the
+explicitly identified earlier disposable acceptance project.
 
 Fresh startup generated independent database, signing and management identities,
 retained editable instance configuration and allowed `/config` while business
