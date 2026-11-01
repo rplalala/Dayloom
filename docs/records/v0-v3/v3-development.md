@@ -113,7 +113,7 @@ standalone Repair checkpoint below.
 
 All fit the current 160k primary ceiling; the latter two exceed the proposed 64k Repair
 ceiling. This supports bounded projection rather than copying the primary payload.
-These are fabricated development fixtures, not live captures or worst-case proofs.
+These are synthetic development fixtures, not live captures or worst-case proofs.
 Reproduce without credentials/captures by loading `config/runtime.yaml`, calling
 `tools.diagnostics.itinerary_payload.fixtures(days, K, long_text)` for `(3,12,False)`,
 `(10,20,False)`, `(10,20,True)`, then `measure(ITINERARY_GENERATION_SYSTEM_PROMPT, prompt,
