@@ -102,3 +102,6 @@ preservation, subsequent destination writes, checksum and metadata rejection,
 active-task refusal, unknown-target preservation and registration-gap recovery.
 Final acceptance additionally restores the approved full baseline in independent
 storage and checks its saved-vector parity.
+
+For versioned application archives, initial baseline image bootstrap and the manual
+publication workflow, see [controlled release preparation](publishing.md).

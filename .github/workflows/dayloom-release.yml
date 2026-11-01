@@ -1,0 +1,197 @@
+name: Prepare and publish a Dayloom release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact app version (for example 0.1.0), without v
+        required: true
+        type: string
+      source_revision:
+        description: Exact reviewed 40-character source commit
+        required: true
+        type: string
+      baseline_image:
+        description: Existing verified ghcr.io/rplalala/dayloom-baseline@sha256 digest
+        required: true
+        type: string
+      resources_url:
+        description: HTTPS URL of the explicit four-file small build-resource archive
+        required: true
+        type: string
+      resources_sha256:
+        description: Independently verified build-resource archive SHA256
+        required: true
+        type: string
+      publish:
+        description: Publish app image and create a draft Release (requires approval)
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: dayloom-release-${{ inputs.version }}
+  cancel-in-progress: false
+jobs:
+  prepare:
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
+    env:
+      VERSION: ${{ inputs.version }}
+      SOURCE_REVISION: ${{ inputs.source_revision }}
+      BASELINE_IMAGE: ${{ inputs.baseline_image }}
+      RESOURCES_URL: ${{ inputs.resources_url }}
+      RESOURCES_SHA256: ${{ inputs.resources_sha256 }}
+    steps:
+      - name: Validate explicit selectors
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9.-]+)?$ ]]
+          [[ $SOURCE_REVISION =~ ^[a-f0-9]{40}$ ]]
+          [[ $BASELINE_IMAGE =~ ^ghcr.io/rplalala/dayloom-baseline@sha256:[a-f0-9]{64}$ ]]
+          [[ $RESOURCES_SHA256 =~ ^[a-f0-9]{64}$ ]]
+          [[ $RESOURCES_URL == https://* ]]
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ inputs.source_revision }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+      - name: Verify and stage explicit build inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ $(git rev-parse HEAD) == "$SOURCE_REVISION" ]]
+          docker pull "$BASELINE_IMAGE"
+          curl --fail --location --proto '=https' --proto-redir '=https' "$RESOURCES_URL" -o "$RUNNER_TEMP/resources.tar.gz"
+          python -m deploy.release.package resources --archive "$RUNNER_TEMP/resources.tar.gz" --sha256 "$RESOURCES_SHA256" --output "$RUNNER_TEMP/resources"
+          python -m deploy.release.package check-inputs --resources "$RUNNER_TEMP/resources" --baseline-image "$BASELINE_IMAGE" > "$RUNNER_TEMP/compatibility.json"
+          echo "BASELINE_ID=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["baseline_id"])' "$RUNNER_TEMP/compatibility.json")" >> "$GITHUB_ENV"
+          docker buildx build --call=check --build-context "runtime-resources=$RUNNER_TEMP/resources" -f deploy/docker/app.Dockerfile .
+      - name: Build app with explicit resources
+        id: app
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
+        with:
+          context: .
+          file: deploy/docker/app.Dockerfile
+          platforms: linux/amd64
+          build-contexts: runtime-resources=${{ runner.temp }}/resources
+          build-args: |
+            SOURCE_REVISION=${{ inputs.source_revision }}
+            APP_VERSION=${{ inputs.version }}
+          tags: ghcr.io/rplalala/dayloom-app:${{ inputs.version }}
+          push: false
+          load: true
+          provenance: false
+          sbom: false
+  publish:
+    if: inputs.publish
+    needs: prepare
+    runs-on: ubuntu-24.04
+    # Configure required reviewers on this environment before enabling publication.
+    environment: dayloom-publication
+    permissions:
+      contents: write
+      packages: write
+    env:
+      VERSION: ${{ inputs.version }}
+      SOURCE_REVISION: ${{ inputs.source_revision }}
+      BASELINE_IMAGE: ${{ inputs.baseline_image }}
+      RESOURCES_URL: ${{ inputs.resources_url }}
+      RESOURCES_SHA256: ${{ inputs.resources_sha256 }}
+    steps:
+      - name: Validate explicit selectors
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9.-]+)?$ ]]
+          [[ $SOURCE_REVISION =~ ^[a-f0-9]{40}$ ]]
+          [[ $BASELINE_IMAGE =~ ^ghcr.io/rplalala/dayloom-baseline@sha256:[a-f0-9]{64}$ ]]
+          [[ $RESOURCES_SHA256 =~ ^[a-f0-9]{64}$ ]]
+          [[ $RESOURCES_URL == https://* ]]
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ inputs.source_revision }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+      - name: Verify and stage explicit build inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ $(git rev-parse HEAD) == "$SOURCE_REVISION" ]]
+          docker pull "$BASELINE_IMAGE"
+          curl --fail --location --proto '=https' --proto-redir '=https' "$RESOURCES_URL" -o "$RUNNER_TEMP/resources.tar.gz"
+          python -m deploy.release.package resources --archive "$RUNNER_TEMP/resources.tar.gz" --sha256 "$RESOURCES_SHA256" --output "$RUNNER_TEMP/resources"
+          python -m deploy.release.package check-inputs --resources "$RUNNER_TEMP/resources" --baseline-image "$BASELINE_IMAGE" > "$RUNNER_TEMP/compatibility.json"
+          echo "BASELINE_ID=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["baseline_id"])' "$RUNNER_TEMP/compatibility.json")" >> "$GITHUB_ENV"
+          docker buildx build --call=check --build-context "runtime-resources=$RUNNER_TEMP/resources" -f deploy/docker/app.Dockerfile .
+      - name: Authenticate scoped registry token
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Refuse an existing release version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "dayloom-v$VERSION" >/dev/null 2>&1; then
+            echo 'Release version already exists.' >&2
+            exit 1
+          fi
+          if docker manifest inspect "ghcr.io/rplalala/dayloom-app:$VERSION" >/dev/null 2>&1; then
+            echo 'Image version already exists.' >&2
+            exit 1
+          fi
+      - name: Build app with explicit resources
+        id: app
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
+        with:
+          context: .
+          file: deploy/docker/app.Dockerfile
+          platforms: linux/amd64
+          build-contexts: runtime-resources=${{ runner.temp }}/resources
+          build-args: |
+            SOURCE_REVISION=${{ inputs.source_revision }}
+            APP_VERSION=${{ inputs.version }}
+          tags: ghcr.io/rplalala/dayloom-app:${{ inputs.version }}
+          push: true
+          provenance: mode=max
+          sbom: true
+      - name: Render verified public deployment archive
+        env:
+          APP_DIGEST: ${{ steps.app.outputs.digest }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP_IMAGE="ghcr.io/rplalala/dayloom-app@$APP_DIGEST"
+          docker pull "$APP_IMAGE"
+          python -m deploy.release.package build --version "$VERSION" --source-revision "$SOURCE_REVISION" --app-image "$APP_IMAGE" --baseline-image "$BASELINE_IMAGE" --baseline-id "$BASELINE_ID" --output dist-release > dist-release-report.json
+          python -m deploy.release.package verify "dist-release/dayloom-$VERSION-linux-amd64.tar.gz"
+      - name: Create draft Release for final visibility and anonymous checks
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf 'Linux amd64 deployment. App source: %s. Baseline: %s.\n\nVerify the archive checksum before extraction. Complete anonymous image/download acceptance before publishing this draft.\n' "$SOURCE_REVISION" "$BASELINE_IMAGE" > "$RUNNER_TEMP/release-notes.md"
+          gh release create "dayloom-v$VERSION" --target "$SOURCE_REVISION" --title "Dayloom $VERSION" --draft --notes-file "$RUNNER_TEMP/release-notes.md" dist-release/*.tar.gz dist-release/*.sha256
+      - name: Preserve local preparation metadata
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: dayloom-preparation-${{ inputs.version }}
+          path: |
+            dist-release-report.json
+            dist-release/
+          if-no-files-found: ignore

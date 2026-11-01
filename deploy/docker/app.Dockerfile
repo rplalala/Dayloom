@@ -11,9 +11,6 @@ RUN npm run build
 FROM ghcr.io/astral-sh/uv:0.12.13@sha256:b485bd65cc2cf1c9a93b3554012c9c3778cf7b1b5fd3d3096ce9e1226c97e1e6 AS uv
 
 FROM python:3.12-slim-bookworm@sha256:54c85f3c47607a77f32adec749d3c81d1348bf25833671f512b26a9b6d778cb3 AS runtime
-ARG SOURCE_REVISION=unknown
-LABEL org.opencontainers.image.source="https://github.com/rplalala/Dayloom" \
-      org.opencontainers.image.revision=$SOURCE_REVISION
 COPY --from=uv /uv /usr/local/bin/uv
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -42,6 +39,12 @@ RUN uv sync --locked --no-dev --group retrieval \
     && useradd --uid 1000 --gid 1000 --no-create-home dayloom \
     && mkdir -p /instance /opt/dayloom/logs \
     && chown dayloom:dayloom /instance /opt/dayloom/logs
+# Release-only metadata follows expensive dependencies and resources for cache reuse.
+ARG SOURCE_REVISION=unknown
+ARG APP_VERSION=unreleased
+LABEL org.opencontainers.image.source="https://github.com/rplalala/Dayloom" \
+      org.opencontainers.image.revision=$SOURCE_REVISION \
+      org.opencontainers.image.version=$APP_VERSION
 USER 1000:1000
 EXPOSE 5173
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \

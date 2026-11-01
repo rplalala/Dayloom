@@ -16,4 +16,12 @@ RUN apt-get update \
 FROM tools AS baseline
 COPY --from=baseline-data / /baseline/
 RUN python3 -m deploy.release.baseline verify /baseline
+# Keep release metadata after the large immutable data layer.
+ARG SOURCE_REVISION=unknown
+ARG BASELINE_VERSION=unreleased
+ARG BASELINE_ID=unreleased
+LABEL org.opencontainers.image.source="https://github.com/rplalala/Dayloom" \
+      org.opencontainers.image.revision=$SOURCE_REVISION \
+      org.opencontainers.image.version=$BASELINE_VERSION \
+      io.dayloom.baseline.id=$BASELINE_ID
 CMD ["restore", "/baseline"]
