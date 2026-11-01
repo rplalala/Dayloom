@@ -69,7 +69,7 @@ Exact parsing/projection wire is owned by [intake](0002-intake-identity-usage.md
 the [same-run V3 diagnostic](0005-quality-human-review.md#v3-pairs). It uses native
 paired plans, deterministic API identity, route preparation, independent Google
 transport, pricing and scorers. It does not dispatch review agents or add a second
-evaluator. The [operational guide](../../backend/evaluation/README.md#installed-paired-acquisition)
+evaluator. The [operational guide](../guides/experiments.md#v3-paired-diagnostics)
 owns commands and examples.
 
 `rtpeval_pair_selection_1` identifies the batch/revision and every selected
@@ -259,7 +259,7 @@ traces from finals or execute planning. Native descriptive material status remai
 independent of accepted primary qualification and quality. Exact artifact bytes and
 all supplied source bytes participate in suite integrity and offline replay.
 
-The [installed suite guide](../../backend/evaluation/README.md#installed-multi-case-suite)
+The [installed suite guide](../guides/experiments.md#evaluate-multiple-cases)
 owns command usage; [selection and resource scope](0002-intake-identity-usage.md#suite-selection-and-generation-resources)
 owns selected generation data. Native scoring, paired diagnostics, human answers and
 controlled cases keep their existing topic contracts.
@@ -372,7 +372,7 @@ defined in [generation resources](0002-intake-identity-usage.md#generation-resea
 Controlled target inventory remains a separate population: `controlled_resource_link` is
 `not_applicable` with `controlled_simulation_is_a_separate_population`. These are descriptive
 source-compatible links, without a combined score, ranking or causal interpretation.
-The [installed suite guide](../../backend/evaluation/README.md#installed-multi-case-suite)
+The [installed suite guide](../guides/experiments.md#evaluate-multiple-cases)
 owns operator commands.
 
 ## Original-input research declarations and attempt census

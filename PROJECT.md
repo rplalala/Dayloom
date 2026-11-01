@@ -211,7 +211,15 @@ internal findings and caches are not independent factual ground truth. The opera
 `evaluation_run_cli prepare / execute / replay` flow captures independent evidence,
 records actual requests/usage and produces native automatic reports for V0-V3 finals.
 
-The editable repository installation exposes offline `rtpeval validate` and one-step
+The editable installation provides `dayloom` for local resource preparation and
+application/database launchers, and `rtpeval verify` for the twelve published cases.
+`rtpeval generate VERSION REQUEST` supplies fresh capture directories and run IDs;
+execution still requires `--execute`. The `evaluate` group also exposes incremental
+opening prepare/execute/replay and paired-opening preparation. See the
+[deployment](docs/guides/deployment.md), [experiment](docs/guides/experiments.md) and
+[findings verification](docs/guides/verification.md) guides for the short commands.
+
+The evaluation interface exposes offline `rtpeval validate` and one-step
 `rtpeval evaluate execute`. The latter accepts a qualified manifest, a fresh directory
 and explicit options/prices/reviewed contexts; native preparation and execution emit the
 existing automatic report without manual digest transfer or a subsequent quality command.
@@ -222,7 +230,7 @@ integrity, one-use rules, version-specific identity/reasoning policies and separ
 remain native. Eligible missing-hours access assessment now precedes the single final
 primary score within the prepared allowance; API-only execution is an explicit option.
 No automatic retry is added. See
-[installed evaluation](backend/evaluation/README.md#installed-automatic-evaluation).
+[installed evaluation](docs/guides/experiments.md#evaluate-the-selected-outputs).
 The integrated implementation also exposes explicit offline collection, external reviewed
 requirements attachment/native finalization, selected generation registration and task-oriented
 adapters to the existing tools. Collection stays unqualified until reviewed four-version
@@ -230,7 +238,7 @@ finalization; external agents are separately operated. Post-generation offline r
 queues distinguish missing activity-role/occupancy work from reviewed uncertainty;
 fresh primary preparation blocks missing required coverage before acquisition.
 See the [review readiness contract](docs/contracts/0002-intake-identity-usage.md#post-generation-review-readiness) and
-[material handoff](backend/evaluation/README.md#installed-generation-and-material-handoff).
+[material handoff](docs/guides/experiments.md#generate-v0v3-outputs).
 
 | Capability | Current behavior | Detailed owner |
 | --- | --- | --- |
@@ -240,9 +248,9 @@ See the [review readiness contract](docs/contracts/0002-intake-identity-usage.md
 | Opening | Current/regular API schedules take priority; missing-hours LLM assessment can infer ordinary public-landmark viewing, while explicit restricted activities and museum admission need access evidence; factual coverage stays separate | [Opening/routes](docs/contracts/0004-opening-routes.md#opening) |
 | Routes | Independent coordinates and mode/time-applicable route evidence against original reserved duration; unsupported provider scope remains unresolved | [Opening/routes](docs/contracts/0004-opening-routes.md#route-wire) |
 | Quality and density | Five automatic dimensions with separate evidence availability; source-linked pace deductions adjust the final total without adding hard generation quotas | [Quality/density](docs/contracts/0005-quality-human-review.md) |
-| Multi-case suite | Explicit ordered accepted revisions, sequential native primary limits, default saved generation-resource/mechanism reports, optional independent pairs and source-bound study refresh | [Suite guide](backend/evaluation/README.md#installed-multi-case-suite), [artifact contract](docs/contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle) |
+| Multi-case suite | Explicit ordered accepted revisions, sequential native primary limits, default saved generation-resource/mechanism reports, optional independent pairs and source-bound study refresh | [Suite guide](docs/guides/experiments.md#evaluate-multiple-cases), [artifact contract](docs/contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle) |
 | Additional evaluation tracks | Blinded review, V3 paired reports, controlled Repair and mechanism reports are implemented; their execution and research populations require their own scope | [Evaluation design](docs/0006-independent-evaluation.md), [artifacts](docs/contracts/0001-evaluation-artifacts.md) |
-| Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports, with explicit optional suite attachments, fresh report revisions and deterministic offline replay | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
+| Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports, with explicit optional suite attachments, fresh report revisions and deterministic offline replay | [Offline research](docs/guides/verification.md#inspect-additional-reports), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
 Fresh Primary identity uses `versioned_api_identity_6`, independent
 `requirement_subject_correspondence_2` and `v0_visit_correspondence_1`; requirement rules 6
@@ -469,7 +477,7 @@ both submissions precede final project sign-off.
 
 School archival submission is pending. Current preparation covers the
 [deployment guide](docs/guides/deployment.md),
-[reproduction and materials guide](docs/guides/reproduction.md), local inventory
+[reproduction and materials guide](docs/guides/verification.md), local inventory
 and completeness verification; upload, repository creation, form submission and
 new paid execution remain outside that scope. The project Git repository excludes
 the separate `thesis/` working repository,

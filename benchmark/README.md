@@ -283,7 +283,7 @@ Installed tools provide the native captures, intake and reports. Corpus-free
 relevance presentation omits corpus sections unless coverage material or a profile
 is explicitly selected. The final-case handoff remains tracked in #138; no general
 directory-assembly command is implied. Source-labelled paired evidence reuse is
-available through the [installed import flow](../backend/evaluation/README.md#installed-paired-acquisition).
+available through the [installed import flow](../docs/guides/experiments.md#v3-paired-diagnostics).
 
 For all current and subsequent cases, the [paired contract](../docs/contracts/0005-quality-human-review.md#v3-pairs)
 defines the common missing-hours access policy for both V3 stages. A refresh updates the
@@ -588,7 +588,7 @@ producer completion declarations pass native intake. Usage may explicitly be
 unavailable under the existing contract. Preserve FAIL and UNKNOWN outcomes; material
 acceptance is distinct from scoring PASS.
 
-Use the existing [material handoff](../backend/evaluation/README.md#installed-generation-and-material-handoff)
+Use the existing [material handoff](../docs/guides/experiments.md#generate-v0v3-outputs)
 and [artifact contract](../docs/contracts/0001-evaluation-artifacts.md) for schemas,
 qualification, source bindings and integrity checks. This directory adds a storage
 convention, not another acceptance schema or an automatic admission command.

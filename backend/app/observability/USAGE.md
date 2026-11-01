@@ -1,7 +1,7 @@
 # Opt-in attempt usage capture
 
 Capture is owned by the selected-run producer. The opt-in
-[development CLI](../../evaluation/README.md#planner-usage-capture-cli) wraps the existing
+[development CLI](../../../docs/guides/experiments.md#generate-v0v3-outputs) wraps the existing
 request runtime, including dependency setup and cleanup. Product APIs and existing runner
 scripts retain their current behavior. A custom producer can wrap its already authorized
 selected-version invocation and client cleanup:
@@ -33,7 +33,7 @@ Model observations use provider usage only. HTTP events count transport attempts
 For researcher-facing offline comparisons:
 
 ```powershell
-.venv/Scripts/python.exe -m backend.evaluation.usage_report C:/batch/g1/v0_usage.json C:/batch/g1/v1_usage.json C:/batch/g1/v2_usage.json C:/batch/g1/v3_usage.json
+uv run rtpeval usage v0_usage.json v1_usage.json v2_usage.json v3_usage.json
 ```
 
 The report is descriptive, preserves request pairing/missingness and contributes no quality score. It is not displayed to blinded raters. Independent oracle usage uses a separate namespace and ledger; native oracle snapshots

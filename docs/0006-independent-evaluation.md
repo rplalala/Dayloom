@@ -45,7 +45,7 @@ unimplemented follow-up modules are available.
 
 Snapshot acquisition accepts injected transport. The evaluator-owned
 `evaluation_run.prepare_run / execute_run / replay_run` and
-[formal CLI](../backend/evaluation/README.md#fresh-automatic-evaluation-cli) now compose
+[formal CLI](guides/experiments.md#evaluate-the-selected-outputs) now compose
 fresh Google acquisition, independent common-subject and V0 visit correspondence, and all native final-quality
 consumers. Preparation freezes originals, contexts, limits, prices and code; execution
 persists evidence/failures; replay sends nothing. Final-only scope explicitly excludes
@@ -104,7 +104,7 @@ partial. Producer fates and patch acceptance do not establish independent releva
 or repair. Native scores, masks and cost semantics remain authoritative; no new
 research score or inferential conclusion is introduced.
 
-The [installed offline research guide](../backend/evaluation/README.md#installed-offline-research)
+The [installed offline research guide](guides/verification.md#inspect-additional-reports)
 locates commands and material handoff. Detailed population/stage/review contracts
 belong to [artifacts](contracts/0001-evaluation-artifacts.md), compatible completion
 and resources to [intake/usage](contracts/0002-intake-identity-usage.md), and final,
@@ -116,7 +116,7 @@ track preparation/composition to the resources, pair and external adapters.
 Its closed summary preserves separate track statuses and study populations; offline
 refresh appends independently verified lineage without primary rescoring. The
 [artifact contract](contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle)
-owns wire bindings; the [installed guide](../backend/evaluation/README.md#installed-multi-case-suite)
+owns wire bindings; the [installed guide](guides/experiments.md#evaluate-multiple-cases)
 owns the operator flow.
 
 The dependency roots are #107 for the suite and #113 for research. Accepted #111
@@ -125,7 +125,7 @@ RAG and Repair benefit rows to compatible selected generation-resource attempts;
 missing measurements remain visible. Same-run V3 resources belong to its selected
 V3 invocation; controlled simulation remains a separate population. Fresh append
 revisions preserve primary scores and prior receipts, and network-denied replay
-rebuilds report semantics. The [operator flow](../backend/evaluation/README.md#optional-research-attachments-and-offline-refresh)
+rebuilds report semantics. The [operator flow](guides/verification.md#inspect-additional-reports)
 owns declarations, output locations and source-retention requirements.
 
 GitHub Issues own detailed specs and live acceptance state. Current native, suite
@@ -285,7 +285,7 @@ owns author/reviewer provenance, and the
 [relevance contract](contracts/0001-evaluation-artifacts.md#independent-interest-relevance-and-corpus-coverage)
 owns interest/relevance evidence.
 
-The [material preparation support table](../backend/evaluation/README.md#material-preparation-support)
+The [material preparation support table](guides/experiments.md#independent-requirements-and-activity-review)
 distinguishes installed producers/consumers from external reviews and pending
 adapters. Census export and paired acquisition are installed; corpus measurement
 and sidecars remain installed for optional studies. Detailed candidate POI and

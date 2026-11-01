@@ -4,7 +4,7 @@ Ticket [11 / #23](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/23
 2026-10-04. Status: Implemented and offline Validated. This checkpoint establishes
 engineering behavior, not a formal target/control corpus or benchmark result.
 The [controlled replay contract](../../contracts/0001-evaluation-artifacts.md#controlled-repair)
-owns current semantics; the [package guide](../../../backend/evaluation/README.md#controlled-v3-offline-workflow)
+owns current semantics; the [package guide](../../guides/experiments.md#blinded-and-controlled-studies)
 owns commands.
 
 ## Frozen execution and independent outcomes

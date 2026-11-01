@@ -28,12 +28,12 @@ From the repository root, `uv run rtpeval --help` discovers the task groups.
 The [root command guide](../../README.md#command-line) gives selected generation,
 existing-material collection, external requirements handoff, finalization and the
 shortest accepted-manifest-to-report route. The
-[operational evaluation guide](../../backend/evaluation/README.md#installed-generation-and-material-handoff)
+[operational evaluation guide](experiments.md#generate-v0v3-outputs)
 owns producer schema templates, exact parameters, pending/blocked states and source
 preservation. `validate` is offline native intake; `evaluate execute` prepares and emits
 the automatic report in one invocation, while preparation/replay stay offline.
 Provider execution requires its own authorization and fresh one-use directory. See
-[automatic evaluation](../../backend/evaluation/README.md#installed-automatic-evaluation)
+[automatic evaluation](experiments.md#evaluate-the-selected-outputs)
 for budgets, credentials, reviewed contexts and the retained prepared/digest route.
 Normal material operations do not launch external author/reviewer agents. Development
 smoke and historical session-specific reproduction remain separate below.
@@ -62,7 +62,7 @@ are distinct settings. Never commit real credentials. Default local DB host/port
 V2/V3 require the compatible TripWorld database and artifact/embedding sidecars.
 The planner vocabulary under `.cache/tokenizer` and embedding vocabulary under
 `data/tripworld/tokenizer_cache` must be prepared explicitly; runtime loading does
-not download them. Follow the [tokenizer preparation steps](deployment.md#4-prepare-both-tokenizer-vocabularies)
+not download them. Follow the [resource preparation steps](deployment.md#3-prepare-retrieval-data-and-vocabularies)
 before checking retrieval readiness. A degraded retrieval fallback is not retrieval acceptance.
 
 ## Local PostgreSQL naming and storage
@@ -282,10 +282,10 @@ calls. `VITE_PRODUCT_DIAGNOSTICS=false` disables browser collection at frontend 
 Inspect locally without accessing a database or provider:
 
 ```powershell
-.venv/Scripts/python.exe scripts/product_logs.py --summary
-.venv/Scripts/python.exe scripts/product_logs.py --task-id <task-uuid>
-.venv/Scripts/python.exe scripts/product_logs.py --run-id <execution-uuid> --summary
-.venv/Scripts/python.exe scripts/product_logs.py --prune --summary
+uv run dayloom logs --summary
+uv run dayloom logs --task-id <task-uuid>
+uv run dayloom logs --run-id <execution-uuid> --summary
+uv run dayloom logs --prune --summary
 ```
 
 Use `--directory` for another explicitly selected Product log root. Diagnostic output
@@ -729,7 +729,7 @@ under `tools/data/tripworld`. Requirement fingerprints have one runtime definiti
 the optional port from [requirement_capture.py](../../tools/validation/requirement_capture.py).
 
 Evaluation's development-only V0 route tool uses
-`python -m backend.evaluation.tools.route_requests_cli`. This is separate from the
+`uv run rtpeval dev route-requests`. This is separate from the
 repository-level `tools/validation` helpers. Ordinary evaluator CLIs remain in
 `backend.evaluation`; they are command entries into actual evaluator functionality.
 Neither location makes smoke a required product execution step.

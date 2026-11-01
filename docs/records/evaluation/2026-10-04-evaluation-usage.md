@@ -53,7 +53,7 @@ Independent Standards/Spec reviews found no blocking issues. The PowerShell 7 JS
 example was verified as UTF-8 without BOM using accented text. Local packets and logs
 are under `artifacts/evaluation-usage/`, including `accepted-packet/`, `final-packet/`,
 `usage-gate.txt`, `backend-gate.txt` and per-test `cli-output/`. The
-[package guide](../../../backend/evaluation/README.md#start-with-the-synthetic-usage-packet)
+[package guide](../../guides/verification.md#verify-resource-and-cost-claims)
 provides a reproducible demonstration; published observations above stand independently
 of those ignored paths.
 

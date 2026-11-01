@@ -431,7 +431,7 @@ Neither preparation nor ticket completion authorizes execution: a new exact-plan
 and the current-session child required by smoke policy are mandatory. Historical #73
 failure evidence, raw response and consumed directory remain untouched; FAIL/UNKNOWN are
 valid outcomes without an all-match acceptance target. See the
-[operational guide](../../backend/evaluation/README.md#prepared-one-call-identity-development-smoke)
+[operational guide](../guides/experiments.md#development-checks)
 and [preparation record](../records/evaluation/intake-identity-usage.md#fresh-v0-smoke-preparation-2026-10-06).
 
 The complete `identity_versioned_replay` stores independent evidence and the optional
@@ -477,7 +477,7 @@ for a newly required live run.
 
 ### Formal automatic execution
 
-The [formal CLI](../../backend/evaluation/README.md#fresh-automatic-evaluation-cli) wraps
+The [formal CLI](../guides/experiments.md#evaluate-the-selected-outputs) wraps
 native acquisition/scoring. Preparation freezes originals, reviewed schedule/occupancy/
 route/density contexts, explicit send/token/time/cost limits, caller-supplied dated USD
 prices and code hashes without sending. Execution verifies the exact digest and sources,
@@ -652,7 +652,7 @@ or changed IDs/audit/review state does not unlock those consumers. The bundle an
 files must remain available locally; an isolated report is insufficient. Supplied human
 reviews retain the native review trust boundary; replay does not certify the reviewer.
 Score/mask formulas are unchanged. Identity eligibility proves neither coordinates nor
-route feasibility. See the [CLI guide](../../backend/evaluation/README.md#intake-and-identity)
+route feasibility. See the [CLI guide](../guides/experiments.md#independent-requirements-and-activity-review)
 and [dated acceptance](../records/evaluation/routes.md#v0-identity-adoption-acceptance-2026-10-05).
 
 ### Historical uniform LLM identity judgment
@@ -901,7 +901,7 @@ Retail estimates exclude account credits, free caps, volume discounts and tax. N
 bill means actual amounts remain unavailable. The user explicitly selected OpenAI official
 GPT-6 Luna pricing for this task's Foundry estimates; that proxy is a documented assumption,
 not a claim about Azure charges. Current-source prices used retrospectively and missing
-cache/service-tier details must be stated. The [package guide](../../backend/evaluation/README.md#offline-cost-report)
+cache/service-tier details must be stated. The [package guide](../guides/verification.md#verify-resource-and-cost-claims)
 contains runnable import examples; dated acceptance belongs to the existing
 [usage record](../records/evaluation/intake-identity-usage.md#offline-cost-acceptance-2026-10-05).
 
@@ -983,7 +983,7 @@ observations. Producer completion and qualified four-version intake retain their
 separate requirements. This command performs no independent
 evaluator acquisition or quality scoring. Its preparation/capture output cannot attest
 a completed four-version batch. Runnable instructions belong to the
-[package guide](../../backend/evaluation/README.md#planner-usage-capture-cli).
+[package guide](../guides/experiments.md#generate-v0v3-outputs).
 
 <a id="planner-generation-evidence"></a>
 
@@ -1212,7 +1212,7 @@ material without an accepted manifest; another attempt needs a different fresh d
 A changed original request requires fresh requirements authoring/review rather than edited
 hashes. Accepted standardized input does not establish a formal benchmark or research
 selection policy. Runnable schema templates and parameters belong to the
-[material guide](../../backend/evaluation/README.md#installed-generation-and-material-handoff).
+[material guide](../guides/experiments.md#generate-v0v3-outputs).
 
 
 ## Research completion and selection

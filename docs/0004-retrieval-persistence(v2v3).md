@@ -116,7 +116,7 @@ embedding space remain unchanged. Bounded scans count entities rather than venue
 caps, timeouts and unavailable observations cannot supply exact counts. The
 [producer contract](contracts/0001-evaluation-artifacts.md#pinned-corpus-measurement-producer)
 owns source formats, budgets, completion records and export validation;
-[installed examples](../backend/evaluation/README.md#measuring-and-exporting-pinned-corpus-coverage)
+[installed examples](guides/experiments.md#retrieval-corpus-coverage)
 show the caller-prepared material and commands.
 
 Research reporting consumes these sidecars without connecting to PostgreSQL,

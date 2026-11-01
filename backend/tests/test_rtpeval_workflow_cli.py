@@ -3,6 +3,7 @@
 import asyncio
 import json
 import re
+import shlex
 from datetime import datetime
 from pathlib import Path
 
@@ -23,42 +24,43 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_documented_primary_workflows_use_accepted_cli_arguments(installed_cli):
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    primary = readme.split("## Command line", 1)[1].split("## Current application", 1)[0]
-    guide = (ROOT / "backend/evaluation/README.md").read_text(encoding="utf-8")
-    material = guide.split("## Installed batch validation", 1)[1].split(
-        "## Contract and module navigation", 1
-    )[0]
-    commands = re.findall(r"^uv run rtpeval (.+)$", primary + material, flags=re.MULTILINE)
-    commands.extend(re.findall(r"^uv run rtpeval (pair acquire .+)$", guide, flags=re.MULTILINE))
+    guides = [
+        ROOT / "README.md",
+        ROOT / "backend/evaluation/README.md",
+        ROOT / "docs/guides/experiments.md",
+        ROOT / "docs/guides/verification.md",
+    ]
+    text = "\n".join(path.read_text(encoding="utf-8") for path in guides)
+    commands = re.findall(r"^uv run rtpeval (.+)$", text, flags=re.MULTILINE)
+    commands.extend(re.findall(r"`(?:uv run )?rtpeval ([^`\n]+)`", text))
     for required in (
         "generate ",
+        "verify",
         "batch collect ",
         "batch attach-requirements ",
         "batch finalize ",
+        "evaluate prepare ",
         "evaluate execute ",
         "evaluate replay ",
+        "evaluate prepare-opening ",
+        "evaluate execute-opening ",
+        "evaluate replay-opening ",
         "suite prepare ",
         "suite execute ",
         "suite report ",
         "suite replay ",
         "research validate ",
         "research report ",
-        "research corpus prepare ",
-        "research corpus measure ",
-        "research corpus export ",
-        "pair acquire prepare ",
-        "pair acquire execute ",
-        "pair acquire replay ",
-        "pair acquire export ",
     ):
         assert any(command.startswith(required) for command in commands), required
     help_outputs = {}
     for command in commands:
-        words = command.split()
+        words = shlex.split(command)
         # Read the leaf's help without executing placeholder sources. Generate's
         # registration options are documented by its wrapper before native help.
-        if words[:2] in (["research", "corpus"], ["pair", "acquire"]):
+        if words[0] == "generate" and len(words) > 1 and words[1] in {"v0", "v1", "v2", "v3"}:
+            leaf = words[:2]
+        elif words[:2] in (["research", "corpus"], ["pair", "acquire"]):
             leaf = words[:3] if len(words) > 2 and not words[2].startswith("--") else words[:2]
         elif (
             words[0] in {"batch", "evaluate", "suite", "research"}
@@ -73,7 +75,7 @@ def test_documented_primary_workflows_use_accepted_cli_arguments(installed_cli):
             result = installed_cli(*leaf, "--help", tools_offline=True)
             assert result.returncode == 0, command + result.stdout + result.stderr
             help_outputs[key] = result.stdout
-        for flag in (word for word in words if word.startswith("--")):
+        for flag in (word for word in words if re.fullmatch(r"--?[a-z][\w-]*", word)):
             assert flag in help_outputs[key], command + ": " + flag
 
 

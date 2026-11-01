@@ -5,10 +5,10 @@
 These core files consolidate current behavior; development diaries do not
 belong in this directory. Task specifications and iteration state live in GitHub Issues.
 
-For installation, start with the [deployment guide](guides/deployment.md). For the
-source/data submission and offline verification of published results, start with
-the [reproduction guide](guides/reproduction.md). [README](../README.md#project-structure)
-maps the source tree.
+Start with [deployment](guides/deployment.md) to run the application,
+[experiment reproduction](guides/experiments.md) to generate and evaluate runs,
+or [findings verification](guides/verification.md) to check the saved study.
+[README](../README.md#project-structure) maps the source tree.
 
 [Domain terminology](../GLOSSARY.md) defines Repair exploration and final selection.
 
@@ -55,9 +55,9 @@ The [version-specific identity contract](contracts/0002-intake-identity-usage.md
 owns deterministic V1-V3 API checks and V0-only model correspondence; historical uniform
 LLM reports retain an explicit replay path.
 
-The [offline research guide](../backend/evaluation/README.md#installed-offline-research)
+The [offline research guide](guides/verification.md#inspect-additional-reports)
 locates installed commands, original-input/generation material preparation and
-report outputs. The [suite research attachment flow](../backend/evaluation/README.md#optional-research-attachments-and-offline-refresh)
+report outputs. The [suite research attachment flow](guides/verification.md#inspect-additional-reports)
 locates optional integrated reports, append revisions and offline replay; detailed
 definitions remain in the topic contracts above.
 The [paired access refresh](records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)

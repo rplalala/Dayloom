@@ -462,7 +462,7 @@ Changed readiness needs a regenerated inventory and separate budget approval. La
 authorized execution uses the current session's execution child under the
 [smoke policy](../agents/smoke-tests.md), `gpt-6.1-sol` / `medium`.
 
-The [package guide](../../backend/evaluation/README.md#v0-route-requests) owns CLI
+The [package guide](../guides/experiments.md#development-checks) owns CLI
 invocation and exit codes. The [route history](../records/evaluation/routes.md) records
 October 5–8 KR/AU preparations and executions, including zero-ready packages,
 identity refreshes and provider-specific UNKNOWNs. Those dated inventories do not

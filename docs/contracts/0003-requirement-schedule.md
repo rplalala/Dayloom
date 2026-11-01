@@ -475,7 +475,7 @@ Code owners: [requirement_schedule](../../backend/evaluation/requirement_schedul
 [schedule_time](../../backend/evaluation/schedule_time.py),
 [occupancy](../../backend/evaluation/occupancy.py) and
 [shared preparation](../../backend/evaluation/_schedule_preparation.py).
-The immutable public report and CLI are described in [package commands](../../backend/evaluation/README.md#ticket-05-offline-requirement-and-schedule-metrics).
+The immutable public report and CLI are described in [package commands](../guides/experiments.md#independent-requirements-and-activity-review).
 
 ## Decision and acceptance history
 

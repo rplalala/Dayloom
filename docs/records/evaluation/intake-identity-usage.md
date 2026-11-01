@@ -1340,7 +1340,7 @@ Only related documentation was uncommitted at those validation checkpoints.
 Independent development environments and child worktrees isolated implementation
 from the main checkout; local configuration and required assets were copied without
 changing their originals. No fresh Planner output or formal research population was
-created. The [suite guide](../../../backend/evaluation/README.md#installed-multi-case-suite)
+created. The [suite guide](../../guides/experiments.md#evaluate-multiple-cases)
 owns current commands, while the source/receipt, accounting and pairing contracts
 own their respective detailed rules.
 
