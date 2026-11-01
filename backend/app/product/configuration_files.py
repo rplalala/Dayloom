@@ -16,7 +16,7 @@ FOUNDRY_FIELDS = {
 }
 
 
-def retire_foundry_bindings(text, environment):
+def retire_bindings(text, environment, retired_fields):
     """Remove legacy keys, preserving dependents' existing interpolated values."""
     resolved, pieces = {}, []
     for item in parse_stream(StringIO(text)):
@@ -25,9 +25,9 @@ def retire_foundry_bindings(text, environment):
         value = "".join(atom.resolve(variables) for atom in atoms)
         if item.key is not None:
             resolved[item.key] = value if item.value is not None else None
-        if item.key and item.key.upper() in FOUNDRY_FIELDS:
+        if item.key and item.key.upper() in retired_fields:
             continue
-        if any(isinstance(atom, Variable) and atom.name.upper() in FOUNDRY_FIELDS
+        if any(isinstance(atom, Variable) and atom.name.upper() in retired_fields
                for atom in atoms):
             quoted = value.replace("\\", "\\\\").replace("'", "\\'")
             pieces.append(f"{item.key}='{quoted}'\n")

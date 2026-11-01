@@ -33,9 +33,9 @@ def test_curated_media_reads_existing_unsplash_configuration(tmp_path, monkeypat
     monkeypatch.delenv("PRODUCT_UNSPLASH_ACCESS_KEY", raising=False)
     monkeypatch.delenv("UNSPLASH_API_KEY", raising=False)
     (tmp_path / "index.html").write_text("Dayloom", encoding="utf-8")
-    configuration = "UNSPLASH_API_KEY=existing-local-key\n"
+    configuration = "PRODUCT_UNSPLASH_ACCESS_KEY=existing-local-key\n"
     if explicit_key:
-        configuration += "PRODUCT_UNSPLASH_ACCESS_KEY=" + explicit_key + "\n"
+        configuration += "UNSPLASH_API_KEY=" + explicit_key + "\n"
     (tmp_path / ".env").write_text(configuration, encoding="utf-8")
     requests = []
 

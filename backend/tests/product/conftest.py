@@ -11,5 +11,5 @@ def provider_values():
         "AZURE_OPENAI_API_KEY": "synthetic-foundry",
         "OPENAI_API_KEY": "synthetic-openai",
         "GOOGLE_MAPS_API_KEY": "synthetic-google",
-        "PRODUCT_UNSPLASH_ACCESS_KEY": "synthetic-unsplash",
+        "UNSPLASH_API_KEY": "synthetic-unsplash",
     }

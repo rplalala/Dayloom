@@ -47,7 +47,7 @@ class MediaSettings(BaseSettings):
     )
     unsplash_access_key: SecretStr = Field(
         default=SecretStr(""),
-        validation_alias=AliasChoices("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"),
+        validation_alias=AliasChoices("UNSPLASH_API_KEY", "PRODUCT_UNSPLASH_ACCESS_KEY"),
     )
 
 

@@ -21,7 +21,7 @@ from pwdlib import PasswordHash
 from backend.app.product.configuration_files import (
     FOUNDRY_FIELDS,
     replace_configuration_files,
-    retire_foundry_bindings,
+    retire_bindings,
     update_foundry,
 )
 from backend.app.product.configuration_validation import supported_foundry_endpoint
@@ -33,7 +33,7 @@ FIELDS = {
     "AZURE_OPENAI_API_KEY": True,
     "OPENAI_API_KEY": True,
     "GOOGLE_MAPS_API_KEY": True,
-    "PRODUCT_UNSPLASH_ACCESS_KEY": True,
+    "UNSPLASH_API_KEY": True,
     "DAYLOOM_DB_HOST": False,
     "DAYLOOM_DB_PORT": False,
     "DAYLOOM_DB_NAME": False,
@@ -154,7 +154,7 @@ class LocalConfiguration:
             files = {}
             if updated != deployment_text:
                 files[self.root / "product.yaml"] = updated
-            retained = retire_foundry_bindings(text, self.environment)
+            retained = retire_bindings(text, self.environment, FOUNDRY_FIELDS)
             if retained != text:
                 files[self.root / ".env"] = retained
             replace_configuration_files(files)
@@ -189,9 +189,9 @@ class LocalConfiguration:
             for key in FIELDS
         }
         for source in (self._environment_settings, local):
-            for key in ("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"):
+            for key in ("UNSPLASH_API_KEY", "PRODUCT_UNSPLASH_ACCESS_KEY"):
                 if source.get(key) is not None:
-                    values["PRODUCT_UNSPLASH_ACCESS_KEY"] = source[key] or ""
+                    values["UNSPLASH_API_KEY"] = source[key] or ""
                     return [text, deployment_text], values
         return [text, deployment_text], values
 
@@ -208,8 +208,9 @@ class LocalConfiguration:
                     "value": None if secret else values[key],
                     "locked": self._environment_settings.get(key) is not None
                     or (
-                        key == "PRODUCT_UNSPLASH_ACCESS_KEY"
-                        and self._environment_settings.get("UNSPLASH_API_KEY") is not None
+                        key == "UNSPLASH_API_KEY"
+                        and self._environment_settings.get("PRODUCT_UNSPLASH_ACCESS_KEY")
+                        is not None
                     ),
                 }
                 for key, secret in FIELDS.items()
@@ -227,8 +228,8 @@ class LocalConfiguration:
             if key not in FIELDS:
                 raise ConfigurationError("unsupported_setting")
             if self._environment_settings.get(key) is not None or (
-                key == "PRODUCT_UNSPLASH_ACCESS_KEY"
-                and self._environment_settings.get("UNSPLASH_API_KEY") is not None
+                key == "UNSPLASH_API_KEY"
+                and self._environment_settings.get("PRODUCT_UNSPLASH_ACCESS_KEY") is not None
             ):
                 raise ConfigurationError("setting_managed_by_environment", 409)
             if (
@@ -282,10 +283,12 @@ class LocalConfiguration:
         replacements = {
             key: value for key, value in changes.items() if key not in FOUNDRY_FIELDS
         }
-        if "PRODUCT_UNSPLASH_ACCESS_KEY" in changes:
-            replacements["UNSPLASH_API_KEY"] = changes["PRODUCT_UNSPLASH_ACCESS_KEY"]
+        retired_fields = set(FOUNDRY_FIELDS)
+        if "UNSPLASH_API_KEY" in changes:
+            retired_fields.add("PRODUCT_UNSPLASH_ACCESS_KEY")
         pieces, seen = [], set()
-        for item in parse_stream(StringIO(retire_foundry_bindings(text, self.environment))):
+        retained_bindings = retire_bindings(text, self.environment, retired_fields)
+        for item in parse_stream(StringIO(retained_bindings)):
             key = item.key.upper() if item.key is not None else None
             if key in FOUNDRY_FIELDS:
                 continue

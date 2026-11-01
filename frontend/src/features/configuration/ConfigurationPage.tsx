@@ -33,7 +33,7 @@ const sections: { service?: Exclude<Service, 'all'>; title: string; description:
     ['GOOGLE_MAPS_API_KEY', 'Google Maps API key', 'Shared by planning and place photographs.'],
   ] },
   { service: 'unsplash', title: 'Unsplash', description: 'Optional atmosphere photographs. Illustrations are used when unavailable.', fields: [
-    ['PRODUCT_UNSPLASH_ACCESS_KEY', 'Unsplash access key', 'Optional. Existing UNSPLASH_API_KEY settings are also recognized.'],
+    ['UNSPLASH_API_KEY', 'Unsplash access key', 'Optional. Saved locally as UNSPLASH_API_KEY.'],
   ] },
 ];
 const apiNames: Record<string, string> = {

@@ -42,7 +42,7 @@ REQUIRED_SETTINGS = {
     "foundry": ("AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_DEPLOYMENT", "AZURE_OPENAI_API_KEY"),
     "openai": ("OPENAI_API_KEY",),
     "google": ("GOOGLE_MAPS_API_KEY",),
-    "unsplash": ("PRODUCT_UNSPLASH_ACCESS_KEY",),
+    "unsplash": ("UNSPLASH_API_KEY",),
 }
 
 
@@ -363,7 +363,7 @@ class _CheckRun:
             "GET",
             "https://api.unsplash.com/photos/7Zb7kUyQg1E",
             headers={
-                "Authorization": "Client-ID " + self.values["PRODUCT_UNSPLASH_ACCESS_KEY"],
+                "Authorization": "Client-ID " + self.values["UNSPLASH_API_KEY"],
                 "Accept-Version": "v1",
             },
         )

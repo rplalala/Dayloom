@@ -120,7 +120,7 @@ def test_environment_overrides_are_visible_but_not_editable(tmp_path):
 
 
 @pytest.mark.parametrize("source", ["environment", "dotenv"])
-@pytest.mark.parametrize("key", [*FIELDS, "UNSPLASH_API_KEY"])
+@pytest.mark.parametrize("key", [*FIELDS, "PRODUCT_UNSPLASH_ACCESS_KEY"])
 def test_managed_names_keep_existing_case_insensitive_resolution(tmp_path, source, key):
     value = (
         "https://example.services.ai.azure.com/openai/v1"
@@ -132,7 +132,7 @@ def test_managed_names_keep_existing_case_insensitive_resolution(tmp_path, sourc
     manager, client = connect_manager(
         tmp_path, environment=supplied if source == "environment" else {},
     )
-    canonical = "PRODUCT_UNSPLASH_ACCESS_KEY" if key == "UNSPLASH_API_KEY" else key
+    canonical = "UNSPLASH_API_KEY" if key == "PRODUCT_UNSPLASH_ACCESS_KEY" else key
     with client:
         view = client.get("/api/config").json()
         assert manager.initial[canonical] == value
@@ -177,11 +177,11 @@ def test_alias_clear_replaces_mixed_case_bindings_and_keeps_interpolation_case_s
     manager = LocalConfiguration(tmp_path, origin="http://localhost:5173", environment={})
     assert manager.initial["OPENAI_API_KEY"] == "synthetic-lower"
     assert manager.initial["GOOGLE_MAPS_API_KEY"] == "synthetic-upper"
-    manager.save(manager.view()["revision"], {"PRODUCT_UNSPLASH_ACCESS_KEY": ""})
+    manager.save(manager.view()["revision"], {"UNSPLASH_API_KEY": ""})
     assert "synthetic-alias" not in path.read_text("utf-8")
     assert "synthetic-primary" not in path.read_text("utf-8")
     assert LocalConfiguration(tmp_path, origin=manager.origin, environment={}).initial[
-        "PRODUCT_UNSPLASH_ACCESS_KEY"
+        "UNSPLASH_API_KEY"
     ] == ""
 
 
@@ -249,24 +249,24 @@ def test_configuration_payload_is_bounded_before_validation(tmp_path):
 
 
 def test_unsplash_alias_can_be_cleared_and_quoted_keys_round_trip(tmp_path):
-    (tmp_path / ".env").write_text("UNSPLASH_API_KEY=legacy-private\n", encoding="utf-8")
+    (tmp_path / ".env").write_text("PRODUCT_UNSPLASH_ACCESS_KEY=legacy-private\n", encoding="utf-8")
     _, client = connect_manager(tmp_path)
     with client:
         before = client.get("/api/config").json()
-        assert before["fields"]["PRODUCT_UNSPLASH_ACCESS_KEY"]["configured"] is True
+        assert before["fields"]["UNSPLASH_API_KEY"]["configured"] is True
         result = client.put(
             "/api/config",
             json={
                 "revision": before["revision"],
                 "changes": {
-                    "PRODUCT_UNSPLASH_ACCESS_KEY": "",
+                    "UNSPLASH_API_KEY": "",
                     "OPENAI_API_KEY": "synthetic'key\\suffix",
                 },
             },
         )
         assert result.status_code == 200
         restarted = LocalConfiguration(tmp_path, origin="http://localhost:5173", environment={})
-        assert restarted.initial["PRODUCT_UNSPLASH_ACCESS_KEY"] == ""
+        assert restarted.initial["UNSPLASH_API_KEY"] == ""
         assert restarted.initial["OPENAI_API_KEY"] == "synthetic'key\\suffix"
 
 
@@ -316,14 +316,14 @@ def test_expired_management_session_is_rejected(tmp_path, monkeypatch):
 
 
 def test_external_unsplash_alias_precedes_dotenv_canonical_key(tmp_path):
-    (tmp_path / ".env").write_text("PRODUCT_UNSPLASH_ACCESS_KEY=dotenv-private\n", encoding="utf-8")
+    (tmp_path / ".env").write_text("UNSPLASH_API_KEY=dotenv-private\n", encoding="utf-8")
     manager = LocalConfiguration(
         tmp_path,
         origin="http://localhost:5173",
-        environment={"UNSPLASH_API_KEY": "external-private"},
+        environment={"PRODUCT_UNSPLASH_ACCESS_KEY": "external-private"},
     )
-    assert manager.initial["PRODUCT_UNSPLASH_ACCESS_KEY"] == "external-private"
-    assert manager.view()["fields"]["PRODUCT_UNSPLASH_ACCESS_KEY"]["locked"] is True
+    assert manager.initial["UNSPLASH_API_KEY"] == "external-private"
+    assert manager.view()["fields"]["UNSPLASH_API_KEY"]["locked"] is True
 
 
 def test_dotenv_interpolation_preserves_external_environment_precedence(tmp_path):
@@ -356,14 +356,14 @@ def test_unassigned_dotenv_bindings_allow_existing_defaults_and_aliases(tmp_path
         encoding="utf-8",
     )
     (tmp_path / ".env").write_text(
-        "AZURE_OPENAI_ENDPOINT\nPRODUCT_UNSPLASH_ACCESS_KEY\nUNSPLASH_API_KEY=synthetic-legacy\n",
+        "AZURE_OPENAI_ENDPOINT\nUNSPLASH_API_KEY\nPRODUCT_UNSPLASH_ACCESS_KEY=synthetic-legacy\n",
         encoding="utf-8",
     )
     manager = LocalConfiguration(tmp_path, origin="http://localhost:5173", environment={})
     assert manager.initial["AZURE_OPENAI_ENDPOINT"] == (
         "https://example.services.ai.azure.com/openai/v1"
     )
-    assert manager.initial["PRODUCT_UNSPLASH_ACCESS_KEY"] == "synthetic-legacy"
+    assert manager.initial["UNSPLASH_API_KEY"] == "synthetic-legacy"
 
 
 def test_concurrent_file_replacement_cannot_tag_old_fields_with_new_revision(tmp_path, monkeypatch):

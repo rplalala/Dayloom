@@ -143,7 +143,7 @@ it('unlocks independently, saves only edited fields and clears typed secrets', a
       AZURE_OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false },
       OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false },
       GOOGLE_MAPS_API_KEY: { value: null, secret: true, configured: false, locked: false },
-      PRODUCT_UNSPLASH_ACCESS_KEY: { value: null, secret: true, configured: false, locked: false },
+      UNSPLASH_API_KEY: { value: null, secret: true, configured: false, locked: false },
     } };
   const requests: { url: string; init?: RequestInit }[] = [];
   vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
@@ -301,4 +301,23 @@ it('saves database settings and a custom signing key, and generates a replacemen
   await screen.findByText(/New signing key saved/);
   expect(writes[1]).toEqual({ url: '/api/config/signing-key', body: { revision: 'b'.repeat(64) } });
   expect(screen.getByLabelText('JWT signing key')).toHaveValue('');
+});
+
+
+it('edits Unsplash through its single canonical setting name', async () => {
+  const writes: Record<string, unknown>[] = [];
+  const config = { revision: 'a'.repeat(64), restart_required: false, running_ready: true,
+    fields: { UNSPLASH_API_KEY: { value: null, secret: true, configured: true, locked: false } } };
+  vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'f'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'csrf' });
+    if (init?.method === 'PUT') writes.push(JSON.parse(init.body as string));
+    return Response.json(config);
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  fireEvent.change(await screen.findByLabelText('Unsplash access key'), { target: { value: 'synthetic-new-unsplash' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Save configuration' }));
+  await screen.findByText(/Saved. Restart Dayloom/);
+  expect(writes).toEqual([{ revision: 'a'.repeat(64), changes: { UNSPLASH_API_KEY: 'synthetic-new-unsplash' } }]);
+  expect(screen.getByLabelText('Unsplash access key')).toHaveValue('');
 });
