@@ -488,6 +488,12 @@ distinguish unopened session state from edited, restored, draft and replan conte
 including an intentionally cleared or restored blank brief. A stale defaults response
 cannot overwrite an intervening edit, accepted draft or account change. Explicitly
 starting another brief resets that initialization and reads the latest defaults once.
+For an authenticated traveler, the header/mobile **Plan a trip** links and the shell/home
+**Start planning** and **Plan my trip** actions also treat a completely empty restored editor as a
+new brief. This applies only when all fields match the initial blank form and there
+is no draft identity, draft title or operation recovery key. Existing input, custom
+currency and preferences remain unchanged. Clear leaves the editor empty until a
+subsequent explicit planning entry; ordinary route restoration does not reapply defaults.
 Profile updates never mutate an open editor, and planning services do not read profiles
 to overlay confirmed requests. Draft identity and revision share the account-scoped
 recovery boundary so expiry can quarantine them alongside their editor content.
