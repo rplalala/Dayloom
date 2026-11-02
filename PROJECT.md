@@ -59,8 +59,9 @@ uses authorized place bindings or labelled atmosphere imagery with illustration
 fallback. [Application operations](docs/0007-application-operations.md) owns the
 API, persistence, security and recovery rules.
 
-Local configuration supports database connections, provider credentials and JWT
-signing keys. Existing keys are retained; a new local installation generates and
+Local configuration supports database connections, provider credentials, the RAG
+deployment policy and JWT signing keys. Existing keys are retained; a new local
+installation generates and
 saves a key when absent. Personal settings and secrets are ignored by Git.
 The Bash/Compose deployment bundle installs prebuilt images and the complete
 approved Product/TripWorld baseline; provider setup can be finished later at

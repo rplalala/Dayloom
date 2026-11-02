@@ -80,6 +80,8 @@ const errors: Record<string, string> = {
   local_configuration_unavailable: 'Local configuration is available through uv run dayloom start on a loopback address.',
   api_check_in_progress: 'Another API check is already running. Wait for it to finish.',
   api_check_failed: 'The API check could not complete. No automatic retry was made.',
+  invalid_rag_policy: 'Choose whether to enable TripWorld retrieval.',
+  rag_policy_restart_required: 'Restart Dayloom to apply the saved RAG policy before checking APIs.',
 };
 
 class ConfigurationFailure extends Error {
@@ -251,7 +253,7 @@ export function ConfigurationPage() {
   }
 
   function checkApis(service: Service) {
-    if (!config || Object.keys(edits).length) return;
+    if (!config || Object.keys(edits).length || ragRestartPending) return;
     const revision = config.revision;
     void perform(async (request) => {
       setApiReports(current => service === 'all' ? {} : { ...current, [service]: undefined });
@@ -274,6 +276,11 @@ export function ConfigurationPage() {
       setNotice(`API checks finished with ${report.request_count} HTTP attempts. Review the results below.`);
     });
   }
+
+  const runningRagEnabled = config?.rag_enabled !== false;
+  const savedRag = config?.fields.PRODUCT_RAG_ENABLED?.value ?? String(runningRagEnabled);
+  const selectedRagEnabled = (edits.PRODUCT_RAG_ENABLED ?? savedRag) === 'true';
+  const ragRestartPending = (savedRag === 'true') !== runningRagEnabled;
 
   return <div className={`config-page${!config ? ' config-locked' : ''}`}>
     <header className="config-header"><Link to="/" className="config-brand">Dayloom<span>Local configuration</span></Link>
@@ -304,7 +311,7 @@ export function ConfigurationPage() {
             <strong>{config.rag_enabled === false ? 'RAG is disabled by deployment configuration.' : 'RAG is enabled.'}</strong>
             <span>{config.rag_enabled === false
               ? 'TripWorld and embeddings are skipped. No OpenAI key is required. V3 keeps Google discovery, validation and Repair.'
-              : 'TripWorld retrieval and an OpenAI embedding key are required.'} Manage this policy through deployment configuration, then restart Dayloom.</span>
+              : 'TripWorld retrieval and an OpenAI embedding key are required.'} This describes the running process. Save the RAG setting below and restart Dayloom to apply a change.</span>
           </aside>
           {access && <ConfigurationAccessSettings key={access.revision} access={access} busy={busy}
             pendingProviderEdits={!!Object.keys(edits).length} onSave={saveAccess} onVerify={verifyAccess} />}
@@ -312,10 +319,21 @@ export function ConfigurationPage() {
             <div><h2>Check service access</h2><p>API checks send small requests to your saved services and may incur charges.
               All checks use at most 8 HTTP attempts and 60 seconds, with no automatic retries.</p>
               <p>Requests are sent only when you click Check API or Check all APIs. Save or reload any edits first.</p></div>
-            <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis('all')}>Check all APIs</button>
+            <button type="button" disabled={busy || !!Object.keys(edits).length || ragRestartPending} onClick={() => checkApis('all')}>Check all APIs</button>
           </section>
+          {ragRestartPending && <p className="config-message">Restart Dayloom to apply the saved RAG policy before checking APIs.</p>}
           <form onSubmit={save}>
-            <div className="config-grid">{sections.filter(section => config.rag_enabled !== false || section.service !== 'openai').map(section => <section className="config-card" key={section.title}>
+            {config.fields.PRODUCT_RAG_ENABLED && <section className="config-card config-security" aria-label="RAG configuration">
+              <h2>TripWorld retrieval (RAG)</h2>
+              <label className="config-toggle"><input type="checkbox" role="switch"
+                aria-describedby="rag-policy-help" checked={selectedRagEnabled}
+                disabled={busy || config.fields.PRODUCT_RAG_ENABLED.locked}
+                onChange={event => edit('PRODUCT_RAG_ENABLED', String(event.target.checked), false)} />
+                <span>Enable TripWorld retrieval (RAG)</span></label>
+              <p id="rag-policy-help">Save configuration, then restart Dayloom to apply this setting. Turning RAG off hides OpenAI inputs and retains saved keys. V3 keeps Google discovery, validation and Repair.</p>
+              {config.fields.PRODUCT_RAG_ENABLED.locked && <p>RAG is managed by the process environment. Change PRODUCT_RAG_ENABLED there and restart Dayloom.</p>}
+            </section>}
+            <div className="config-grid">{sections.filter(section => selectedRagEnabled || section.service !== 'openai').map(section => <section className="config-card" key={section.title}>
               <h2>{section.title}</h2><p>{section.description}</p>
               {section.fields.map(([key, label, help]) => {
                 const field = config.fields[key];
@@ -337,7 +355,7 @@ export function ConfigurationPage() {
                 </div>;
               })}
               {section.service && <div className="config-api-actions"><button type="button" aria-label={`Check ${section.title} API`}
-                disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis(section.service!)}>Check API</button></div>}
+                disabled={busy || !!Object.keys(edits).length || ragRestartPending} onClick={() => checkApis(section.service!)}>Check API</button></div>}
               {section.service && apiReports[section.service] && <div className="config-api-results" aria-label={`${section.title} API results`} aria-live="polite">
                 <p className="config-api-time">Checked {new Date(apiReports[section.service]!.checked_at).toLocaleString()}</p>
                 <ul>{apiReports[section.service]!.results.map(result => <li key={result.id} data-status={result.status}>

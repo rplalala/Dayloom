@@ -22,8 +22,9 @@ PRODUCT_RAG_ENABLED=false bash start.sh
 The launcher saves this override in `config/.env`. No OpenAI key, retrieval sidecars
 or embedding tokenizer is required when RAG is disabled. V3 keeps Google discovery,
 Foundry evidence, validation and Repair. The planner tokenizer, app database and
-other required credentials remain necessary. `/config` shows the active policy and
-skipped checks; changes require restart. Existing keys and database contents are
+other required credentials remain necessary. The **Enable TripWorld retrieval (RAG)**
+switch at `/config` can also save this override. The page shows the active policy
+and skipped checks; changes require restart. Existing keys and database contents are
 retained. This is a deployment option, with the full policy documented in the
 [configuration reference](https://github.com/rplalala/Dayloom/blob/main/config/README.md#product-rag-policy).
 

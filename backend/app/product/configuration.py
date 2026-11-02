@@ -43,6 +43,7 @@ FIELDS = {
     "DAYLOOM_DB_PASSWORD": True,
     "DAYLOOM_DB_URL": True,
     "PRODUCT_JWT_SECRET": True,
+    "PRODUCT_RAG_ENABLED": False,
 }
 COOKIE = "dayloom_config_session"
 SESSION_SECONDS = 1800
@@ -113,19 +114,10 @@ class LocalConfiguration:
         self.lock = threading.Lock()
         self.migrate_foundry_overrides()
         self.initial = self.snapshot()[1]
-        self.rag_enabled = self.saved_rag_enabled()
+        self.rag_enabled = self.initial["PRODUCT_RAG_ENABLED"] == "true"
         self.running_ready = True
         self.resource_probe = None
         self.api_checker = ApiChecker(embedding_enabled=self.rag_enabled)
-
-    def saved_rag_enabled(self):
-        _, local = self.read()
-        local = {key.upper(): value for key, value in local.items()}
-        _, options = self.read_deployment()
-        value = self._environment_settings.get(
-            "PRODUCT_RAG_ENABLED", local.get("PRODUCT_RAG_ENABLED", options.rag_enabled),
-        )
-        return ProductOptions(rag_enabled=value).rag_enabled
 
     def read(self):
         path = self.root / ".env"
@@ -187,6 +179,7 @@ class LocalConfiguration:
         local = {key.upper(): value for key, value in local.items()}
         deployment_text, options = self.read_deployment()
         defaults = {
+            "PRODUCT_RAG_ENABLED": str(options.rag_enabled).lower(),
             "DAYLOOM_DB_HOST": "127.0.0.1", "DAYLOOM_DB_PORT": "55432",
             "DAYLOOM_DB_NAME": "dayloom", "DAYLOOM_DB_USER": "dayloom",
         }
@@ -210,6 +203,9 @@ class LocalConfiguration:
             )
             for key in FIELDS
         }
+        values["PRODUCT_RAG_ENABLED"] = str(ProductOptions(
+            rag_enabled=values["PRODUCT_RAG_ENABLED"],
+        ).rag_enabled).lower()
         for source in (self._environment_settings, local):
             for key in ("UNSPLASH_API_KEY", "PRODUCT_UNSPLASH_ACCESS_KEY"):
                 if source.get(key) is not None:
@@ -221,8 +217,7 @@ class LocalConfiguration:
         text, values = self.snapshot()
         return {
             "revision": _revision(text, values),
-            "restart_required": (values != self.initial
-                                 or self.saved_rag_enabled() != self.rag_enabled),
+            "restart_required": values != self.initial,
             "running_ready": self.running_ready,
             "rag_enabled": self.rag_enabled,
             "fields": {
@@ -245,6 +240,8 @@ class LocalConfiguration:
         text, values = self.snapshot()
         if revision != _revision(text, values):
             raise ConfigurationError("configuration_changed", 409)
+        if (values["PRODUCT_RAG_ENABLED"] == "true") != self.rag_enabled:
+            raise ConfigurationError("rag_policy_restart_required", 409)
         return values
 
     def validate(self, changes):
@@ -264,6 +261,8 @@ class LocalConfiguration:
                 raise ConfigurationError("invalid_setting_value")
             if key == "PRODUCT_JWT_SECRET" and len(value) < 32:
                 raise ConfigurationError("invalid_signing_key")
+            if key == "PRODUCT_RAG_ENABLED" and value not in {"true", "false"}:
+                raise ConfigurationError("invalid_rag_policy")
             if (
                 key in {"DAYLOOM_DB_HOST", "DAYLOOM_DB_NAME", "DAYLOOM_DB_USER"}
                 and not value.strip()

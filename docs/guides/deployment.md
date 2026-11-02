@@ -99,7 +99,9 @@ rather than switching an existing instance between full and light mode.
 
 Open `/config` using the configuration-management password printed at first launch.
 Enter your Foundry endpoint/deployment and Google key, plus an OpenAI key when RAG
-is enabled; Unsplash is optional. `/config` shows the active RAG policy and skipped checks.
+is enabled; Unsplash is optional. Use **Enable TripWorld retrieval (RAG)** to choose
+the instance's RAG policy. `/config` shows the running policy and skipped checks;
+the saved switch takes effect after restart.
 You can finish this step later. Save, then apply the settings from the bundle directory:
 
 ```bash

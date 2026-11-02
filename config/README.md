@@ -70,12 +70,17 @@ It retains existing signing keys; **Generate signing key** replaces one explicit
 ### Product RAG policy
 
 Set `rag_enabled: false` in the instance's `product.yaml`, or override it with
-`PRODUCT_RAG_ENABLED=false` in its `.env` or process environment. The default is
-`true`; selecting a remote database does not change it. Restart the application
-after changing this policy. `/config` shows the running policy and pending restart,
-but does not offer a traveler-facing switch. When RAG is disabled, it hides the
-OpenAI credential section and its API-check button. Re-enabling RAG and restarting
-restores that section with any saved key retained; the key is never displayed.
+`PRODUCT_RAG_ENABLED=false` in its `.env` or process environment. The **Enable
+TripWorld retrieval (RAG)** switch at `/config` saves this `.env` override through
+the authenticated configuration API. A process-environment override makes it
+read-only. The default is `true`; selecting a remote database does not change it.
+
+Save the setting and restart the application to apply it. The page distinguishes
+the running policy from the form's selected/saved policy. Turning the switch off
+hides the OpenAI credential section and its API-check button; turning it on
+restores them with any saved key retained. Keys are never displayed. API checks
+are blocked while a saved RAG policy is waiting for restart. This is an instance
+deployment control; Product still exposes no planner-version selector.
 
 With RAG disabled, Product still runs V3, including Google discovery and Repair
 candidate additions, weather, official evidence, generation, validation and Repair.

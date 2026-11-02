@@ -5,6 +5,58 @@ import { ConfigurationPage } from './ConfigurationPage';
 
 afterEach(() => vi.unstubAllGlobals());
 
+it('saves the RAG switch for restart, hides retrieval inputs and retains the saved key', async () => {
+  let running = true;
+  let saved = true;
+  const writes: unknown[] = [];
+  vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'a'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'page-token' });
+    if (init?.method === 'PUT') {
+      const body = JSON.parse(init.body as string);
+      writes.push(body.changes);
+      saved = body.changes.PRODUCT_RAG_ENABLED === 'true';
+    }
+    return Response.json({ revision: 'a'.repeat(64), restart_required: saved !== running,
+      running_ready: true, rag_enabled: running, fields: {
+        PRODUCT_RAG_ENABLED: { value: String(saved), secret: false, configured: true, locked: false },
+        OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false },
+      } });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  const toggle = await screen.findByRole('switch', { name: 'Enable TripWorld retrieval (RAG)' });
+  expect(toggle).toBeChecked();
+  fireEvent.click(toggle);
+  expect(screen.queryByLabelText('OpenAI API key')).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Save configuration' }));
+  await screen.findByText(/Saved\. Restart Dayloom/);
+  expect(writes).toEqual([{ PRODUCT_RAG_ENABLED: 'false' }]);
+  expect(screen.getByText('RAG is enabled.')).toBeVisible();
+  expect(screen.getByRole('button', { name: 'Check all APIs' })).toBeDisabled();
+  running = false;
+  fireEvent.click(screen.getByRole('button', { name: 'Reload saved configuration' }));
+  await screen.findByText('RAG is disabled by deployment configuration.');
+  expect(screen.getByRole('switch')).not.toBeChecked();
+  expect(screen.getByRole('button', { name: 'Check all APIs' })).toBeEnabled();
+  fireEvent.click(screen.getByRole('switch'));
+  expect(screen.getByLabelText('OpenAI API key')).toHaveValue('');
+  expect(screen.getByPlaceholderText('Leave empty to keep the saved key')).toBeVisible();
+});
+
+it('shows an environment-controlled RAG switch as read-only', async () => {
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'a'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'page-token' });
+    return Response.json({ revision: 'a'.repeat(64), restart_required: false,
+      running_ready: true, rag_enabled: false, fields: {
+        PRODUCT_RAG_ENABLED: { value: 'false', secret: false, configured: true, locked: true },
+      } });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  expect(await screen.findByRole('switch', { name: 'Enable TripWorld retrieval (RAG)' })).toBeDisabled();
+  expect(screen.getByText(/RAG is managed by the process environment/)).toBeVisible();
+});
+
 it.each([false, true])('hides RAG inputs when disabled, including saved credentials (%s)', async configured => {
   vi.stubGlobal('fetch', vi.fn(async (url: string) => {
     if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'a'.repeat(64) });

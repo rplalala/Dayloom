@@ -33,6 +33,7 @@ Product pages expose a settings link when available.
 | `DAYLOOM_DB_HOST`, `DAYLOOM_DB_PORT`, `DAYLOOM_DB_NAME`, `DAYLOOM_DB_USER`, `DAYLOOM_DB_PASSWORD` | `.env` |
 | `DAYLOOM_DB_URL` connection override | `.env` |
 | `PRODUCT_JWT_SECRET` | `.env` |
+| `PRODUCT_RAG_ENABLED` deployment switch | `.env` |
 
 Tracked `product.example.yaml` supplies defaults; ignored `product.yaml` overrides
 it. The [configuration reference](../config/README.md#deployment-settings) owns
@@ -68,8 +69,10 @@ owns commands and prerequisites.
 
 Product captures `rag_enabled` at startup, defaulting to true. The instance can
 explicitly disable retrieval while keeping V3 Google discovery, validation and
-Repair; only app storage is then required. `/config` exposes the running policy,
-skipped retrieval checks and hides retrieval-only inputs, without a runtime switch.
+Repair; only app storage is then required. `/config` provides an authenticated
+deployment switch that saves the next-start policy, displays the running policy
+and skipped checks, and hides retrieval-only inputs when deselected. It retains
+existing keys and requires restart; API probes reject a pending RAG-policy change.
 The [configuration reference](../config/README.md#product-rag-policy) owns precedence,
 provider restrictions and resource requirements. Existing database data is preserved.
 
