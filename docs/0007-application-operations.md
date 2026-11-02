@@ -51,6 +51,21 @@ revision and environment locks as Save. Responses expose presence only; restart 
 the key and invalidates prior sessions. API-only/nonlocal launches need a configured key.
 Legacy local Foundry dotenv fields migrate to YAML with dependent values preserved.
 
+### Remote-database light deployment
+
+The light Compose definition runs only app, with loopback host binding and the same
+management authentication, peer, Host, Origin and CSRF restrictions as full deployment.
+Missing settings, database connectivity/TLS errors, incomplete/newer/changed Product
+migration history or incompatible TripWorld corpus/vector space keep business APIs
+in setup mode while `/config` remains accessible. Saved connection/provider edits
+apply after restart; probes describe the running configuration, not pending changes.
+Light startup checks the prepared database read-only, never restores a baseline,
+applies DDL or embeds documents. A successful health response means the process is
+available, not that business resources are ready. Database backups and schema/data
+preparation belong to the remote database administrator. The
+[deployment guide](guides/deployment.md#light-deployment-with-a-remote-database)
+owns commands and prerequisites.
+
 ### Access and writes
 
 New host installations display the test password `dayloom-config-2026` and change

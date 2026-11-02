@@ -5,6 +5,22 @@ import { ConfigurationPage } from './ConfigurationPage';
 
 afterEach(() => vi.unstubAllGlobals());
 
+it('explains remote connectivity and schema failures without suggesting a local database', async () => {
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'a'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'page-token' });
+    if (url.endsWith('/readiness')) return Response.json({ ready: false, missing: [], credentials_verified: false,
+      resources: [{ id: 'remote_database', ready: false }, { id: 'remote_migrations', ready: false }] });
+    return Response.json({ revision: 'a'.repeat(64), restart_required: false, running_ready: false, fields: {} });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  fireEvent.click(await screen.findByRole('button', { name: 'Check local readiness' }));
+  await screen.findByText('Remote PostgreSQL');
+  expect(screen.getByText(/Check your prepared database URL, TLS settings/)).toBeInTheDocument();
+  expect(screen.getByText(/Light startup never applies migrations or restores data/)).toBeInTheDocument();
+  expect(screen.queryByText(/Start the local database with/)).not.toBeInTheDocument();
+});
+
 it.each(['unlock', 'reload'])('ignores a delayed %s response after the protected page is hidden and restored', async operation => {
   const config = { revision: 'a'.repeat(64), restart_required: false, running_ready: true,
     fields: { OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false } } };

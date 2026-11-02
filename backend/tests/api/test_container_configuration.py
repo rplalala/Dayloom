@@ -86,6 +86,69 @@ def test_container_launcher_serves_setup_at_a_different_internal_port(
     assert "http://localhost:5173/config" in output
 
 
+def test_remote_setup_save_and_restart_gates_on_schema_compatibility(
+    local_launcher, monkeypatch,  # noqa: F811
+):
+    import uvicorn
+
+    from backend.app.product import database
+    from deploy.docker import app_entrypoint
+    from deploy.docker.instance import bootstrap_instance
+    from scripts import run_product
+
+    first = bootstrap_instance(local_launcher, "http://localhost:5173",
+                               database_host="unconfigured.invalid", remote_database=True)
+    monkeypatch.setattr(run_product, "check_runtime", lambda: None)
+    phase = ["save"]
+    connections = []
+
+    def audit(parameters):
+        connections.append(parameters)
+        assert parameters["sslmode"] == "verify-full"
+        if phase[0] == "incompatible":
+            raise ValueError("Private SQL details must not escape")
+
+    monkeypatch.setattr(database, "check_migrations", audit)
+
+    class Server:
+        def __init__(self, config):
+            self.app = config.app
+
+        async def serve(self):
+            manager = self.app.state.local_configuration
+            with TestClient(self.app, base_url=manager.origin,
+                            client=("172.22.0.1", 50000),
+                            headers={"Origin": manager.origin}) as client:
+                assert client.get("/config").status_code == 200
+                session = client.post("/api/config/session", json={
+                    "password": first["management_password"],
+                })
+                assert session.status_code == 200
+                client.headers["X-CSRF-Token"] = session.json()["csrf_token"]
+                view = client.get("/api/config").json()
+                if phase[0] == "save":
+                    assert not connections
+                    saved = client.put("/api/config", json={
+                        "revision": view["revision"], "changes": {
+                            "DAYLOOM_DB_URL": "postgresql://reader:controlled@db.example/dayloom?sslmode=verify-full",
+                        },
+                    })
+                    assert saved.status_code == 200
+                    assert saved.json()["restart_required"] is True
+                    assert manager.initial["DAYLOOM_DB_URL"] == ""
+                expected = 401 if phase[0] == "ready" else 503
+                assert client.get("/api/auth/current").status_code == expected
+                assert manager.running_ready == (phase[0] == "ready")
+
+    monkeypatch.setattr(uvicorn, "Server", Server)
+    for name in ("save", "incompatible", "ready"):
+        phase[0] = name
+        with patch.dict(os.environ, {"DAYLOOM_CONFIG_DIR": str(local_launcher)}, clear=True):
+            assert app_entrypoint.main([
+                "serve", "--remote-database", "--management-peer", "172.22.0.1",
+            ]) == 0
+
+
 def test_bootstrap_creates_private_configuration_once_and_authenticates_through_api(tmp_path):
     directory = tmp_path / "instance"
     command = [

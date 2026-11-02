@@ -3,7 +3,7 @@
 import asyncio
 
 
-def check_local_resources():
+def check_local_resources(*, remote_database=False):
     from backend.app.product.settings import ProductSettings
     from backend.app.runtime.database import DatabaseSettings
 
@@ -40,11 +40,17 @@ def check_local_resources():
 
         asyncio.run(prepare(), loop_factory=create_api_loop)
 
+    def remote_migrations():
+        from backend.app.product.database import check_migrations
+
+        check_migrations(DatabaseSettings().connection_parameters())
+
     results = []
     for name, probe in (
         ("product_settings", ProductSettings),
-        ("database", lambda: database("SELECT 1")),
-        ("migrations", lambda: database("SELECT 1 FROM app.schema_migrations LIMIT 1")),
+        ("remote_database" if remote_database else "database", lambda: database("SELECT 1")),
+        (("remote_migrations", remote_migrations) if remote_database else
+         ("migrations", lambda: database("SELECT 1 FROM app.schema_migrations LIMIT 1"))),
         ("tokenizers", tokenizers),
         ("tripworld", retrieval),
     ):

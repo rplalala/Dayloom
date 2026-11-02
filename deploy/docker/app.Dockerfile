@@ -43,6 +43,7 @@ RUN uv sync --locked --no-dev --group retrieval \
 ARG SOURCE_REVISION=unknown
 ARG APP_VERSION=unreleased
 LABEL org.opencontainers.image.source="https://github.com/rplalala/Dayloom" \
+      io.dayloom.remote-database="1" \
       org.opencontainers.image.revision=$SOURCE_REVISION \
       org.opencontainers.image.version=$APP_VERSION
 USER 1000:1000

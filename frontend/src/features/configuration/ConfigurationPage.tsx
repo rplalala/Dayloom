@@ -51,6 +51,8 @@ const resourceHelp: Record<string, [string, string]> = {
   product_settings: ['Application settings', 'Complete the database and account session settings above.'],
   database: ['PostgreSQL', 'Start the local database with uv run dayloom db up -d.'],
   migrations: ['Product migrations', 'Apply Product migrations with uv run dayloom migrate.'],
+  remote_database: ['Remote PostgreSQL', 'Check your prepared database URL, TLS settings and network access. Remote startup does not create or restore a database.'],
+  remote_migrations: ['Remote Product schema', 'Use a prepared database with matching Product migrations. Light startup never applies migrations or restores data.'],
   tokenizers: ['Tokenizer resources', 'Prepare both tokenizers following docs/guides/development.md.'],
   tripworld: ['TripWorld retrieval', 'Prepare the compatible database and retrieval files following docs/guides/development.md.'],
 };

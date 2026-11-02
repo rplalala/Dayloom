@@ -65,6 +65,9 @@ saves a key when absent. Personal settings and secrets are ignored by Git.
 The Bash/Compose deployment bundle installs prebuilt images and the complete
 approved Product/TripWorld baseline; provider setup can be finished later at
 `/config`. Existing instances retain their own data and configuration.
+The app-only light mode uses a prepared remote PostgreSQL/pgvector database. It can
+start in configuration mode before database/provider setup and audits remote schema
+and retrieval compatibility without restoring data or applying migrations.
 Use [deployment](docs/guides/deployment.md) for Docker or source installation and
 [development](docs/guides/development.md) for configuration and maintenance.
 

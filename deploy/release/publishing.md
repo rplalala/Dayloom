@@ -91,6 +91,26 @@ and compare sidecars with the selected baseline. This bounded check complements
 review of the clean checkout and Docker build checks; it is not an exhaustive
 secret detector. Runtime instance secrets are generated only after extraction.
 
+## Light deployment archive
+
+The app image advertises `io.dayloom.remote-database=1` when it includes the remote
+setup entry point. Old images, including 0.1.0, cannot be packaged as light releases.
+Light packaging inspects only the app image and verifies its source/version labels,
+capability and immutable digest; it never inspects or pulls a baseline image.
+
+```bash
+python -m deploy.release.light_package build --version VERSION \
+  --source-revision SOURCE_SHA --app-image ghcr.io/rplalala/dayloom-app@sha256:APP_DIGEST \
+  --output dist-release
+python -m deploy.release.light_package verify dist-release/dayloom-VERSION-light-linux-amd64.tar.gz
+```
+
+The four-file archive contains app-only Compose, public defaults, a launcher selecting
+light mode and standalone operations instructions. It has archive/file checksums and
+rejects a substituted app digest before host configuration is written. Full and light
+packages can share one app image and one Release; existing full archives and baseline
+images remain unchanged. Build or packaging success does not establish publication.
+
 ## Application release workflow
 
 `dayloom-release.yml` is manual-only. Supply the reviewed 40-character source
@@ -109,8 +129,8 @@ to validate its declaration. Its `GITHUB_TOKEN` is scoped to package and reposit
 writes, is passed only to Docker login and GitHub CLI, and is never a build input.
 Actions are pinned to reviewed commits. The job refuses an existing app version,
 pushes an app image with SBOM/provenance attestations, pulls its digest, rechecks
-resource/label compatibility, creates the deployment archive and creates a draft
-GitHub Release containing only the archive and checksum sidecar. Build arguments
+resource/label compatibility, creates full and light deployment archives and creates a
+draft GitHub Release containing their archives and checksum sidecars. Build arguments
 are public source/version identifiers; Docker provenance may expose them.
 
 Package visibility needs maintainer configuration: first publication can remain

@@ -41,7 +41,7 @@ def create_private_file(path, content):
 
 
 def bootstrap_instance(directory, origin, *, database_host="postgres", database_port=5432,
-                       database_name="dayloom", database_user="dayloom"):
+                       database_name="dayloom", database_user="dayloom", remote_database=False):
     origin = local_origin(origin)
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True, mode=0o700)
@@ -53,7 +53,7 @@ def bootstrap_instance(directory, origin, *, database_host="postgres", database_
         values = {
             "DAYLOOM_DB_HOST": database_host, "DAYLOOM_DB_PORT": str(database_port),
             "DAYLOOM_DB_NAME": database_name, "DAYLOOM_DB_USER": database_user,
-            "DAYLOOM_DB_PASSWORD": secrets.token_urlsafe(48),
+            "DAYLOOM_DB_PASSWORD": "" if remote_database else secrets.token_urlsafe(48),
             "PRODUCT_JWT_SECRET": secrets.token_urlsafe(48),
             "AZURE_OPENAI_API_KEY": "", "OPENAI_API_KEY": "",
             "GOOGLE_MAPS_API_KEY": "", "UNSPLASH_API_KEY": "",

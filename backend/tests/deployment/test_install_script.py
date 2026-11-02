@@ -75,7 +75,7 @@ fi
     return work, fixtures, env
 
 
-def install(installation):
+def install(installation, *arguments):
     work, _, env = installation
     git = shutil.which("git")
     windows_bash = Path(git).parent.parent / "bin/bash.exe" if git else Path("missing")
@@ -83,7 +83,7 @@ def install(installation):
     if not bash:
         pytest.skip("Bash is required for the installer entry point")
     return subprocess.run(
-        [bash, "-s", "--"],
+        [bash, "-s", "--", *arguments],
         input='export PATH="$TEST_COMMAND_DIR:$PATH"\n' + (ROOT / "deploy/install.sh").read_text(),
         cwd=work,
         env=env,
@@ -151,4 +151,20 @@ def test_unexpected_latest_tag_creates_no_installation(installation):
     result = install(installation)
     assert result.returncode != 0
     assert "supported Dayloom version" in result.stderr
+    assert not (work / "dayloom").exists()
+
+
+def test_light_installer_selects_the_separate_latest_asset(installation):
+    work, fixtures, _ = installation
+    original = fixtures / "dayloom-2.7.3-linux-amd64.tar.gz"
+    light = fixtures / "dayloom-2.7.3-light-linux-amd64.tar.gz"
+    original.rename(light)
+    checksum = original.with_name(original.name + ".sha256")
+    light.with_name(light.name + ".sha256").write_bytes(
+        checksum.read_bytes().replace(original.name.encode(), light.name.encode())
+    )
+    checksum.unlink()
+    result = install(installation, "--light")
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert (work / "dayloom-light/launched.txt").exists()
     assert not (work / "dayloom").exists()

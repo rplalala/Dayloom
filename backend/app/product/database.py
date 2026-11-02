@@ -9,6 +9,30 @@ from psycopg.rows import dict_row
 from backend.app.product.settings import ProductSettings
 
 
+def migration_digests(content):
+    """Retain historical LF/CRLF receipts without accepting other SQL changes."""
+    lf = content.replace(b"\r\n", b"\n")
+    return {hashlib.sha256(value).hexdigest() for value in (
+        content, lf, lf.replace(b"\n", b"\r\n"),
+    )}
+
+
+def check_migrations(parameters, *, directory=None):
+    """Audit an already provisioned remote database; never apply migrations."""
+    directory = directory or Path(__file__).with_name("migrations")
+    options = dict(parameters)
+    options.update(connect_timeout=3, options=(options.get("options", "")
+                   + " -c default_transaction_read_only=on -c statement_timeout=3000"))
+    with psycopg.connect(**options) as connection:
+        rows = connection.execute("SELECT name, sha256 FROM app.schema_migrations").fetchall()
+    recorded = dict(rows)
+    paths = list(directory.glob("*.sql"))
+    if len(recorded) != len(rows) or set(recorded) != {path.name for path in paths}:
+        raise ValueError("Remote database migration history is incomplete or newer")
+    if any(recorded[path.name] not in migration_digests(path.read_bytes()) for path in paths):
+        raise ValueError("Remote database migration checksum is incompatible")
+
+
 def connect(settings: ProductSettings | None = None):
     settings = settings or ProductSettings()
     return psycopg.connect(settings.database_url.get_secret_value(), row_factory=dict_row)
@@ -42,10 +66,7 @@ def migrate(
             if old:
                 # Git checkouts may have stored the same SQL with Windows line endings.
                 # Keep historical receipts; do not ignore any other byte differences.
-                lf_content = content.replace(b"\r\n", b"\n")
-                equivalent = {digest, hashlib.sha256(lf_content).hexdigest(),
-                              hashlib.sha256(lf_content.replace(b"\n", b"\r\n")).hexdigest()}
-                if old[0] not in equivalent:
+                if old[0] not in migration_digests(content):
                     raise ValueError(f"Migration checksum mismatch: {path.name}")
                 continue
             connection.execute(content.decode("utf-8"))

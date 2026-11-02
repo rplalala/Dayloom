@@ -40,6 +40,48 @@ Choose provider entry now or later. For unattended setup, use
 `bash start.sh --non-interactive`. If the default port is occupied, select a free
 port with `DAYLOOM_HOST_PORT=5174 bash start.sh`; use the URL printed by the launcher.
 
+### Light deployment with a remote database
+
+Light deployment runs only the app service. It does not download the baseline image,
+start PostgreSQL locally, restore data or generate embeddings. Use a prepared remote
+PostgreSQL/pgvector database containing compatible Product tables, TripWorld data
+and stored vectors. Remote startup audits every Product migration and the retrieval
+corpus/embedding-space bindings read-only; it never applies migrations or imports data.
+
+This mode requires a new app image supporting remote setup and a Release containing
+`dayloom-VERSION-light-linux-amd64.tar.gz`. The existing 0.1.0 Release is full-only.
+For a release that provides both bundles, use the separate light installation entry:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | bash -s -- --light
+```
+
+The installer creates `dayloom-light/`; it refuses to overwrite an existing directory.
+Open the printed `/config` URL using the generated management password. Database and
+provider configuration may be completed later. An empty, unreachable or incompatible
+database keeps business APIs in setup mode while the configuration page stays available.
+Save your complete connection URL and provider settings, then restart app. Include the
+managed database's TLS settings, such as `sslmode=verify-full` and its trusted CA path.
+Use your own isolated database/role; do not distribute shared production credentials.
+
+After installation, run `cd dayloom-light`. The configuration/restart commands below
+apply to both released bundle types. For stop/start, private configuration retention
+and remote-database backup responsibilities, see [light operations](../../deploy/README.light.md).
+Full and light instances use separate directories, configurations and Compose projects;
+choose a free `DAYLOOM_HOST_PORT` when running both. Product users in light mode come
+from the remote database; the full baseline's default admin is not created automatically.
+
+For source-based testing with an app image built from this revision, run:
+
+```bash
+DAYLOOM_APP_IMAGE=dayloom-app:local bash deploy/start.sh --light --non-interactive
+```
+
+In that source workflow, maintenance needs `-f deploy/compose.light.yaml` and
+`--env-file deploy/config/.env`; released bundles use `compose.yaml` and `config/.env`.
+The source launch modes share `deploy/config`, so use separate checkouts/directories
+rather than switching an existing instance between full and light mode.
+
 ### Finish configuration
 
 Open `/config` using the configuration-management password printed at first launch.

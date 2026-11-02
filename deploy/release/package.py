@@ -189,9 +189,20 @@ def build(args):
     )
     validate_metadata(metadata)
     files = render(metadata)
-    output = Path(args.output).resolve()
+    bundle = write_bundle(args.output, f"dayloom-{args.version}-linux-amd64.tar.gz", files)
+    return {
+        **metadata,
+        **bundle,
+        "app_image_bytes": app["Size"],
+        "baseline_image_bytes": baseline["Size"],
+    }
+
+
+def write_bundle(output, asset, files):
+    """Write a reproducible four-file bundle with archive and file checksums."""
+    output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=True)
-    archive = output / f"dayloom-{args.version}-linux-amd64.tar.gz"
+    archive = output / asset
     checksum = archive.with_name(archive.name + ".sha256")
     if archive.exists() or checksum.exists():
         raise ReleaseError("Release output already exists; never overwrite a version")
@@ -213,19 +224,14 @@ def build(args):
     checksum.write_text(
         "".join(f"{digest}  {name}\n" for name, digest in entries), encoding="utf-8", newline="\n"
     )
-    return {
-        **metadata,
-        "archive": str(archive),
-        "checksum": str(checksum),
-        "archive_bytes": archive.stat().st_size,
-        "app_image_bytes": app["Size"],
-        "baseline_image_bytes": baseline["Size"],
-    }
+    return {"archive": str(archive), "checksum": str(checksum),
+            "archive_bytes": archive.stat().st_size}
 
 
-def verify(args):
-    archive = Path(args.archive)
-    checksum = Path(args.checksum) if args.checksum else archive.with_name(archive.name + ".sha256")
+def read_bundle(archive, checksum=None):
+    """Verify all four regular files before exposing deployment metadata."""
+    archive = Path(archive)
+    checksum = Path(checksum) if checksum else archive.with_name(archive.name + ".sha256")
     entries = {}
     for line in checksum.read_text(encoding="utf-8").splitlines():
         digest, name = line.split("  ", 1)
@@ -247,6 +253,12 @@ def verify(args):
             content[member.name] = bundle.extractfile(member).read()
             if hashlib.sha256(content[member.name]).hexdigest() != entries[member.name]:
                 raise ReleaseError("Release file checksum mismatch")
+    return content
+
+
+def verify(args):
+    archive = Path(args.archive)
+    content = read_bundle(archive, args.checksum)
     lines = content[".env.example"].decode().splitlines()
     metadata = json.loads(
         next(

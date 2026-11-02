@@ -39,6 +39,9 @@ baseline placeholder. For local development select `DAYLOOM_APP_IMAGE`,
 `DAYLOOM_BASELINE_IMAGE` and the verified `DAYLOOM_BASELINE_ID` before launching.
 Release packaging replaces those defaults with exact release identities.
 
+For an app-only installation backed by a prepared remote database, use the separate
+[light deployment guide](README.light.md). Keep each mode in its own instance directory.
+
 ## Instance configuration
 
 Runtime files live under the generated `config` directory. Provider edits remain
