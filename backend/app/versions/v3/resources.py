@@ -50,8 +50,9 @@ class RequestRetrieval:
     remain authoritative. Successful values use the common request cache.
     """
 
-    def __init__(self, factory, deadline, *, runtime=None):
+    def __init__(self, factory, deadline, *, runtime=None, enabled=True):
         self.factory, self.deadline = factory, deadline
+        self.enabled = enabled
         self.runtime = runtime
         self.owned = runtime is None
         self.entered = False
@@ -69,6 +70,8 @@ class RequestRetrieval:
             raise TimeoutError("Whole-request deadline exhausted")
 
     async def __aenter__(self):
+        if not self.enabled:
+            raise RuntimeError("Retrieval disabled_by_deployment")
         self.check_time()
         if self.entry_failed or self.closed:
             raise RuntimeError("Request retrieval resource unavailable")
@@ -107,7 +110,8 @@ class RequestRetrieval:
 
     def allows_embedding(self, texts):
         return (
-            not self.closed
+            self.enabled
+            and not self.closed
             and not self.entry_failed
             and not (set(texts) & self.failed_embeddings)
             and (self.prepared or not self.prepare_attempted)
@@ -120,7 +124,7 @@ class RequestRetrieval:
         return sha256(repr(values).encode()).hexdigest(), scope.model_dump_json()
 
     def allows_search(self, vector, scope):
-        return self.search_key(vector, scope) not in self.failed_searches
+        return self.enabled and self.search_key(vector, scope) not in self.failed_searches
 
     async def embed(self, texts):
         self.check_time()
@@ -169,6 +173,7 @@ class RequestRetrieval:
         return deepcopy(
             {
                 "prepared": self.prepared,
+                "rag_enabled": self.enabled,
                 "initialization_attempted": self.prepare_attempted,
                 "owned": self.owned,
                 "closed": self.closed,

@@ -17,30 +17,37 @@ def check_runtime():
     import psycopg
 
     from backend.app.product.settings import ProductSettings
-    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.app.runtime.config_loader import load_product_runtime_config
+    from backend.app.runtime.deployment import ProductPolicySettings, check_rag_provider
     from backend.app.runtime.event_loop import create_api_loop
     from backend.app.runtime.token_counting import tokenizer
-    from backend.app.tripworld.retrieval.query_tokens import tokenizer as embedding_tokenizer
-    from backend.app.tripworld.retrieval.runtime import RuntimeRetrieval
     from backend.app.versions.v1.config import V1Settings
 
     settings = ProductSettings()
     V1Settings()
-    if not os.environ.get("OPENAI_API_KEY"):
+    rag_enabled = ProductPolicySettings().rag_enabled
+    config = load_product_runtime_config()
+    check_rag_provider(rag_enabled, config.web_evidence.provider)
+    if rag_enabled and not os.environ.get("OPENAI_API_KEY"):
         raise ValueError("Set OPENAI_API_KEY for live query embeddings")
     tokenizer()
-    embedding_tokenizer()
     with psycopg.connect(
         settings.database_url.get_secret_value(), connect_timeout=5,
         options="-c default_transaction_read_only=on -c statement_timeout=5000",
     ) as connection:
         connection.execute("SELECT 1 FROM app.schema_migrations LIMIT 1")
 
-    async def check_retrieval():
-        async with RuntimeRetrieval(load_runtime_config().tripworld_discovery) as retrieval:
-            await retrieval.prepare()
+    if rag_enabled:
+        from backend.app.tripworld.retrieval.query_tokens import tokenizer as embedding_tokenizer
+        from backend.app.tripworld.retrieval.runtime import RuntimeRetrieval
 
-    asyncio.run(check_retrieval(), loop_factory=create_api_loop)
+        embedding_tokenizer()
+
+        async def check_retrieval():
+            async with RuntimeRetrieval(config.tripworld_discovery) as retrieval:
+                await retrieval.prepare()
+
+        asyncio.run(check_retrieval(), loop_factory=create_api_loop)
     return settings
 
 
@@ -109,6 +116,9 @@ def main(argv=None):
                 if key.upper() in FIELDS:
                     del os.environ[key]
             os.environ.update(manager.initial)
+        # The policy is process-owned; host edits apply only after restart.
+        os.environ["PRODUCT_RAG_ENABLED"] = str(policy.rag_enabled).lower()
+        application.state.rag_enabled = policy.rag_enabled
         try:
             if args.remote_database:
                 from backend.app.product.database import check_migrations
@@ -125,7 +135,9 @@ def main(argv=None):
             if args.remote_database:
                 from backend.app.product.local_readiness import check_local_resources
 
-                manager.resource_probe = lambda: check_local_resources(remote_database=True)
+                manager.resource_probe = lambda: check_local_resources(
+                    remote_database=True, rag_enabled=policy.rag_enabled,
+                )
             enable_local_configuration(application, manager, ready=ready)
     except ValidationError as error:
         fields = ", ".join(".".join(map(str, item["loc"])) for item in error.errors())
@@ -141,6 +153,7 @@ def main(argv=None):
     else:
         print("Local setup required. Open " + manager.origin + "/config to configure providers "
               "and inspect local resources.")
+    print("RAG: " + ("enabled" if policy.rag_enabled else "disabled by deployment configuration"))
     if args.check:
         return
     import uvicorn

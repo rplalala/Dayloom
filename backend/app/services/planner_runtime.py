@@ -169,9 +169,11 @@ class RequestPlannerRuntime:
         *,
         config: RuntimeConfig | None = None,
         dependency_factory: Callable = create_planner_dependencies,
+        rag_enabled: bool = True,
     ) -> None:
         self._config = config
         self._dependency_factory = dependency_factory
+        self._rag_enabled = rag_enabled
 
     @property
     def diagnostics_config(self):
@@ -214,6 +216,10 @@ class RequestPlannerRuntime:
         request = validate_planning_request(request, reference_date)
         config = self._config or load_runtime_config()
         observer = current_progress()
+        if version == SystemVersion.V3:
+            from backend.app.runtime.deployment import check_rag_provider
+
+            check_rag_provider(self._rag_enabled, config.web_evidence.provider)
         effective_tracer = tracer or (
             ProgressTracer(observer) if observer else NullRunTracer(uuid4())
         )
@@ -242,6 +248,7 @@ class RequestPlannerRuntime:
                     )
                 if version == SystemVersion.V3:
                     options["request_started_at"] = started
+                    options["rag_enabled"] = self._rag_enabled
                 return await runner(
                     request,
                     deps.llm,

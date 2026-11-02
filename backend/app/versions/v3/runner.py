@@ -30,6 +30,7 @@ async def run_v3(
     runtime_config_source=None,
     retrieval_factory=None,
     retrieval_runtime=None,
+    rag_enabled=True,
     **kwargs,
 ):
     """Injected clients remain caller-owned. Factory-created retrieval is request-owned.
@@ -78,6 +79,8 @@ async def run_v3(
             "v3_request_policy",
             {
                 "quantity_review_enabled": quantity_review_enabled,
+                "rag_enabled": rag_enabled,
+                "rag_policy_source": "deployment" if not rag_enabled else "default_or_deployment",
                 "review_policy_source": review_source,
                 "runtime_config_source": runtime_config_source,
                 "base_runtime_config_hash": base_config_hash,
@@ -96,6 +99,7 @@ async def run_v3(
         retrieval_factory or (lambda: RuntimeRetrieval(config.tripworld_discovery)),
         deadline,
         runtime=retrieval_runtime,
+        enabled=rag_enabled,
     )
     try:
         owner.check_time()
@@ -117,6 +121,7 @@ async def run_v3(
                     TripWorldDiscovery,
                     config=config.tripworld_discovery,
                     runtime_factory=lambda: owner,
+                    enabled=rag_enabled,
                 ),
                 result_factory=V3PlanningResult,
                 result_projector=project_result,

@@ -27,7 +27,7 @@ from backend.app.product.configuration_files import (
     update_foundry,
 )
 from backend.app.product.configuration_validation import supported_foundry_endpoint
-from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader
+from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader, ProductOptions
 
 FIELDS = {
     "AZURE_OPENAI_ENDPOINT": False,
@@ -113,9 +113,19 @@ class LocalConfiguration:
         self.lock = threading.Lock()
         self.migrate_foundry_overrides()
         self.initial = self.snapshot()[1]
+        self.rag_enabled = self.saved_rag_enabled()
         self.running_ready = True
         self.resource_probe = None
-        self.api_checker = ApiChecker()
+        self.api_checker = ApiChecker(embedding_enabled=self.rag_enabled)
+
+    def saved_rag_enabled(self):
+        _, local = self.read()
+        local = {key.upper(): value for key, value in local.items()}
+        _, options = self.read_deployment()
+        value = self._environment_settings.get(
+            "PRODUCT_RAG_ENABLED", local.get("PRODUCT_RAG_ENABLED", options.rag_enabled),
+        )
+        return ProductOptions(rag_enabled=value).rag_enabled
 
     def read(self):
         path = self.root / ".env"
@@ -211,8 +221,10 @@ class LocalConfiguration:
         text, values = self.snapshot()
         return {
             "revision": _revision(text, values),
-            "restart_required": values != self.initial,
+            "restart_required": (values != self.initial
+                                 or self.saved_rag_enabled() != self.rag_enabled),
             "running_ready": self.running_ready,
+            "rag_enabled": self.rag_enabled,
             "fields": {
                 key: {
                     "secret": secret,
@@ -349,14 +361,18 @@ class LocalConfiguration:
 
         view = self.view()
         required = ["AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_DEPLOYMENT",
-                    "AZURE_OPENAI_API_KEY", "OPENAI_API_KEY", "GOOGLE_MAPS_API_KEY",
+                    "AZURE_OPENAI_API_KEY", "GOOGLE_MAPS_API_KEY",
                     "PRODUCT_JWT_SECRET"]
+        if self.rag_enabled:
+            required.append("OPENAI_API_KEY")
         if not view["fields"]["DAYLOOM_DB_URL"]["configured"]:
             required.append("DAYLOOM_DB_PASSWORD")
-        resources = (self.resource_probe or check_local_resources)()
+        resources = (self.resource_probe() if self.resource_probe else
+                     check_local_resources(rag_enabled=self.rag_enabled))
         missing = [key for key in required if not view["fields"][key]["configured"]]
         return {
-            "ready": not missing and all(item["ready"] for item in resources),
+            "ready": not missing and all(item["ready"] or item.get("status") == "skipped"
+                                         for item in resources),
             "missing": missing,
             "resources": resources,
             "credentials_verified": False,

@@ -58,8 +58,9 @@ class ProbeFailure(Exception):
 
 
 class ApiChecker:
-    def __init__(self, *, transport=None, clock=monotonic):
+    def __init__(self, *, transport=None, clock=monotonic, embedding_enabled=True):
         self.transport, self.clock = transport, clock
+        self.embedding_enabled = embedding_enabled
         self.lock = threading.Lock()
 
     async def check(self, service, values):
@@ -84,6 +85,13 @@ class ApiChecker:
                     ("unsplash", "unsplash", run.unsplash),
                 ):
                     if service in {"all", group}:
+                        if group == "openai" and not self.embedding_enabled:
+                            run.results.append({
+                                "id": name, "service": group, "status": "disabled",
+                                "message": "RAG is disabled by deployment configuration.",
+                                "latency_ms": 0,
+                            })
+                            continue
                         await run.probe(name, REQUIRED_SETTINGS[group], operation, service=group)
                 return {
                     "service": service,

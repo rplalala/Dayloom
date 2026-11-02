@@ -20,6 +20,12 @@ class ProductOptions(BaseModel):
     allow_insecure_loopback: bool = False
     session_seconds: int = 3600
     runtime_profile: Literal["development", "acceptance"] = "acceptance"
+    rag_enabled: bool = True
+
+
+def check_rag_provider(rag_enabled, provider):
+    if not rag_enabled and provider != "azure_foundry":
+        raise ValueError("RAG-disabled deployments require the Foundry evidence provider")
 
 
 class DatabaseOptions(BaseModel):
