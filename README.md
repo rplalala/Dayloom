@@ -1,7 +1,7 @@
 # Dayloom
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Docker: linux/amd64](https://img.shields.io/badge/Docker-linux%2Famd64-2496ED?logo=docker&logoColor=white)](docs/guides/deployment.md#option-1-docker-recommended)
+[![Docker: amd64 and arm64](https://img.shields.io/badge/Docker-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white)](docs/guides/deployment.md#option-1-docker-recommended)
 [![Release](https://img.shields.io/github/v/release/rplalala/Dayloom?label=release)](https://github.com/rplalala/Dayloom/releases/latest)
 
 An LLM-powered travel planner that combines current travel information, retrieval
@@ -20,7 +20,7 @@ with React, FastAPI and PostgreSQL. It supports accounts, recoverable planning
 tasks, saved trips, place photographs and itinerary import/export.
 
 > [!TIP]
-> **Quick deployment → [Docker guide](docs/guides/deployment.md#option-1-docker-recommended)** · [0.2.0 released](https://github.com/rplalala/Dayloom/releases/tag/dayloom-v0.2.0)
+> **Quick deployment → [Docker guide](docs/guides/deployment.md#option-1-docker-recommended)** · [0.2.1 released](https://github.com/rplalala/Dayloom/releases/tag/dayloom-v0.2.1)
 >
 > **Full: app, local PostgreSQL and the complete initial database**
 >

@@ -11,21 +11,19 @@ installation or an app-only installation connected to prepared remote PostgreSQL
 
 ## Option 1: Docker (recommended)
 
-[Dayloom 0.2.0](https://github.com/rplalala/Dayloom/releases/tag/dayloom-v0.2.0)
-is published with full and light deployment bundles. Version 0.1.0 remains available
-as a full-only release. The commands below select the latest published version.
+[Dayloom 0.2.1](https://github.com/rplalala/Dayloom/releases/tag/dayloom-v0.2.1)
+is published with full and light deployment bundles. Original 0.1.0 and 0.2.0
+releases remain available. The commands below select the latest published version.
 
-| Mode | Runs locally | Database requirements |
-| --- | --- | --- |
-| Full | App, PostgreSQL and one-time initialization | The bundled baseline supplies Product accounts, business data, TripWorld and stored vectors. |
-| Light | App only | Your prepared remote PostgreSQL database; the minimum with RAG disabled is a matching `app` schema. |
+| Mode | Linux architecture | Runs locally | Database requirements |
+| --- | --- | --- | --- |
+| Full | amd64 | App, PostgreSQL and one-time initialization | The bundled baseline supplies Product accounts, business data, TripWorld and stored vectors. |
+| Light | amd64, arm64 | App only | Your prepared remote PostgreSQL database; the minimum with RAG disabled is a matching `app` schema. |
 
 Use Bash, Docker Engine 28+ and a Compose plugin supporting `up --wait --wait-timeout`.
-Published 0.1.0 and 0.2.0 bundles support Linux amd64 containers. Full deployment
-remains amd64-only. ARM64 light deployment requires a release containing
-`dayloom-VERSION-light-linux-arm64.tar.gz`; the installer detects the Docker engine's
-architecture and selects its matching archive. An amd64 archive cannot be reused
-as an ARM64 release. Docker Desktop is optional.
+The installer detects the Docker engine's architecture and selects its matching
+archive. Original 0.1.0 and 0.2.0 bundles are amd64-only. An amd64 archive cannot be
+reused as an ARM64 release. Docker Desktop is optional.
 No source checkout or host Python/Node installation is required. Full deployment
 includes its initial data; light deployment uses the prepared remote database below.
 
