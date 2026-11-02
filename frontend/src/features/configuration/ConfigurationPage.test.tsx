@@ -5,6 +5,25 @@ import { ConfigurationPage } from './ConfigurationPage';
 
 afterEach(() => vi.unstubAllGlobals());
 
+it('explains disabled RAG, optional OpenAI keys and skipped retrieval checks', async () => {
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'a'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'page-token' });
+    if (url.endsWith('/readiness')) return Response.json({ ready: true, missing: [], credentials_verified: false,
+      resources: [{ id: 'tripworld', ready: false, status: 'skipped' },
+        { id: 'embedding_tokenizer', ready: false, status: 'skipped' }] });
+    return Response.json({ revision: 'a'.repeat(64), restart_required: false, running_ready: true,
+      rag_enabled: false, fields: { OPENAI_API_KEY: { value: null, secret: true, configured: false, locked: false } } });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  expect(await screen.findByText('RAG is disabled by deployment configuration.')).toBeVisible();
+  expect(screen.getByText('Not required')).toBeVisible();
+  expect(screen.getByRole('button', { name: 'Check OpenAI API' })).toBeDisabled();
+  fireEvent.click(screen.getByRole('button', { name: 'Check local readiness' }));
+  expect(await screen.findAllByText('Skipped')).toHaveLength(2);
+  expect(screen.queryByText('Needs attention')).not.toBeInTheDocument();
+});
+
 it('explains remote connectivity and schema failures without suggesting a local database', async () => {
   vi.stubGlobal('fetch', vi.fn(async (url: string) => {
     if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'a'.repeat(64) });

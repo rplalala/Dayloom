@@ -4,13 +4,13 @@ import { ConfigurationAccessSettings, type AccessChange, type ConfigurationAcces
 import './configuration.css';
 
 type Field = { value: string | null; secret: boolean; configured: boolean; locked: boolean };
-type Configuration = { revision: string; restart_required: boolean; running_ready: boolean; fields: Record<string, Field> };
-type Readiness = { ready: boolean; missing: string[]; credentials_verified: boolean; resources: { id: string; ready: boolean }[] };
+type Configuration = { revision: string; restart_required: boolean; running_ready: boolean; rag_enabled?: boolean; fields: Record<string, Field> };
+type Readiness = { ready: boolean; missing: string[]; credentials_verified: boolean; resources: { id: string; ready: boolean; status?: string }[] };
 type Service = 'all' | 'foundry' | 'openai' | 'google' | 'unsplash';
 type ApiResult = { id: string; service: Service; status: string; message: string; latency_ms: number; http_status?: number };
 type ApiReport = { revision: string; stale: boolean; service: Service; checked_at: string; request_count: number; results: ApiResult[] };
 const sections: { service?: Exclude<Service, 'all'>; title: string; description: string; fields: string[][] }[] = [
-  { title: 'PostgreSQL', description: 'Use the same database for accounts and TripWorld retrieval. Connection changes do not move existing data.', fields: [
+  { title: 'PostgreSQL', description: 'Accounts always require a prepared app schema. TripWorld retrieval also uses this database when RAG is enabled. Connection changes do not move existing data.', fields: [
     ['DAYLOOM_DB_HOST', 'Database host', 'Local Compose normally uses 127.0.0.1.'],
     ['DAYLOOM_DB_PORT', 'Database port', 'Local Compose normally uses 55432.'],
     ['DAYLOOM_DB_NAME', 'Database name', 'Select the database containing your prepared data.'],
@@ -46,6 +46,7 @@ const apiStatuses: Record<string, string> = {
   rate_limited: 'Rate limited', not_found: 'Deployment / resource not found', network_error: 'Network error',
   timeout: 'Timed out', provider_error: 'Provider error', invalid_configuration: 'Invalid configuration',
   invalid_response: 'Response not verified', not_checked: 'Not checked', inconclusive: 'Not verified',
+  disabled: 'Disabled by deployment',
 };
 const resourceHelp: Record<string, [string, string]> = {
   product_settings: ['Application settings', 'Complete the database and account session settings above.'],
@@ -54,6 +55,9 @@ const resourceHelp: Record<string, [string, string]> = {
   remote_database: ['Remote PostgreSQL', 'Check your prepared database URL, TLS settings and network access. Remote startup does not create or restore a database.'],
   remote_migrations: ['Remote Product schema', 'Use a prepared database with matching Product migrations. Light startup never applies migrations or restores data.'],
   tokenizers: ['Tokenizer resources', 'Prepare both tokenizers following docs/guides/development.md.'],
+  planner_tokenizer: ['Planner tokenizer', 'Prepare the main model tokenizer following docs/guides/development.md.'],
+  embedding_tokenizer: ['Embedding tokenizer', 'Not required when RAG is disabled.'],
+  rag_provider_policy: ['Evidence provider policy', 'RAG-disabled deployments require the Foundry evidence provider in the runtime profile.'],
   tripworld: ['TripWorld retrieval', 'Prepare the compatible database and retrieval files following docs/guides/development.md.'],
 };
 const errors: Record<string, string> = {
@@ -296,6 +300,12 @@ export function ConfigurationPage() {
             <strong>{config.running_ready ? 'Application started with ready local resources.' : 'Setup is incomplete. Planning is paused.'}</strong>
             <span>{config.restart_required ? 'Saved configuration differs from the running process. Restart required.' : 'No saved provider changes are waiting for a restart.'}</span>
           </aside>
+          <aside className="config-message" aria-label="RAG deployment policy">
+            <strong>{config.rag_enabled === false ? 'RAG is disabled by deployment configuration.' : 'RAG is enabled.'}</strong>
+            <span>{config.rag_enabled === false
+              ? 'TripWorld and embeddings are skipped. No OpenAI key is required. V3 keeps Google discovery, validation and Repair.'
+              : 'TripWorld retrieval and an OpenAI embedding key are required.'} Manage this policy through deployment configuration, then restart Dayloom.</span>
+          </aside>
           {access && <ConfigurationAccessSettings key={access.revision} access={access} busy={busy}
             pendingProviderEdits={!!Object.keys(edits).length} onSave={saveAccess} onVerify={verifyAccess} />}
           <section className="config-card config-api-intro" aria-label="API connectivity checks">
@@ -312,7 +322,7 @@ export function ConfigurationPage() {
                 if (!field) return null;
                 const edited = Object.hasOwn(edits, key);
                 return <div className="config-field" key={key}>
-                  <label htmlFor={key}>{label}<span>{field.locked ? 'Managed by environment' : edited ? (edits[key] ? 'Change pending' : 'Will be cleared') : field.configured ? 'Configured' : 'Missing'}</span></label>
+                  <label htmlFor={key}>{label}<span>{field.locked ? 'Managed by environment' : edited ? (edits[key] ? 'Change pending' : 'Will be cleared') : field.configured ? 'Configured' : key === 'OPENAI_API_KEY' && config.rag_enabled === false ? 'Not required' : 'Missing'}</span></label>
                   <div className="config-input-row"><input id={key} type={field.secret ? 'password' : 'text'}
                     autoComplete="off" spellCheck={false} maxLength={field.secret ? 4096 : key.endsWith('DEPLOYMENT') ? 128 : 4096}
                     aria-label={label} aria-describedby={`${key}-help`} disabled={busy || field.locked}
@@ -323,11 +333,11 @@ export function ConfigurationPage() {
                       aria-label={`Clear ${label}`} onClick={() => {
                         setEdits(current => ({ ...current, [key]: '' })); setApiReports({}); setNotice('');
                       }}>Clear</button>}
-                  </div><small id={`${key}-help`}>{help}</small>
+                  </div><small id={`${key}-help`}>{key === 'OPENAI_API_KEY' && config.rag_enabled === false ? 'Optional while RAG is disabled. Existing saved keys are retained.' : help}</small>
                 </div>;
               })}
               {section.service && <div className="config-api-actions"><button type="button" aria-label={`Check ${section.title} API`}
-                disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis(section.service!)}>Check API</button></div>}
+                disabled={busy || !!Object.keys(edits).length || (section.service === 'openai' && config.rag_enabled === false)} onClick={() => checkApis(section.service!)}>Check API</button></div>}
               {section.service && apiReports[section.service] && <div className="config-api-results" aria-label={`${section.title} API results`} aria-live="polite">
                 <p className="config-api-time">Checked {new Date(apiReports[section.service]!.checked_at).toLocaleString()}</p>
                 <ul>{apiReports[section.service]!.results.map(result => <li key={result.id} data-status={result.status}>
@@ -361,8 +371,8 @@ export function ConfigurationPage() {
             {readiness && <><p role="status">{readiness.ready ? 'Required settings and current local resources are ready. Restart to check pending connection changes.' : 'Some configuration or local resources still need attention.'}</p>
               {readiness.missing.length > 0 && <p>Missing settings: {readiness.missing.join(', ')}</p>}
               <ul>{readiness.resources.map(resource => <li key={resource.id}>
-                <div><strong>{resourceHelp[resource.id]?.[0] || resource.id}</strong><span className={resource.ready ? 'config-ready' : 'config-missing'}>{resource.ready ? 'Ready' : 'Needs attention'}</span></div>
-                {!resource.ready && <p>{resourceHelp[resource.id]?.[1] || 'Follow the local deployment guide to prepare this resource.'}</p>}
+                <div><strong>{resourceHelp[resource.id]?.[0] || resource.id}</strong><span className={resource.ready || resource.status === 'skipped' ? 'config-ready' : 'config-missing'}>{resource.status === 'skipped' ? 'Skipped' : resource.ready ? 'Ready' : 'Needs attention'}</span></div>
+                {!resource.ready && <p>{resource.status === 'skipped' ? 'Skipped because RAG is disabled by deployment configuration.' : resourceHelp[resource.id]?.[1] || 'Follow the local deployment guide to prepare this resource.'}</p>}
               </li>)}</ul></>}
             <p>To check saved database changes before restarting, run <code>uv run dayloom check</code> in a new terminal. Preparation follows <code>docs/guides/development.md</code>.</p>
           </section>

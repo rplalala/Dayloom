@@ -10,6 +10,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 
 
+def test_candidate_preflight_honors_disabled_rag_and_still_checks_installation(
+    tmp_path, monkeypatch,
+):
+    from backend.app.product import local_readiness
+    from deploy.docker import startup, upgrade
+
+    monkeypatch.setenv("DAYLOOM_CONFIG_DIR", str(tmp_path))
+    monkeypatch.setenv("PRODUCT_RAG_ENABLED", "false")
+    calls = []
+
+    def resources(*, rag_enabled):
+        assert rag_enabled is False
+        return [{"id": "tripworld", "ready": False, "status": "skipped"},
+                {"id": "migrations", "ready": True}]
+
+    monkeypatch.setattr(local_readiness, "check_local_resources", resources)
+    monkeypatch.setattr(startup, "prepare_database", lambda *args: calls.append(args))
+    assert upgrade.main(["--baseline-id", "a" * 64]) == 0
+    assert calls == [("a" * 64, 30)]
+
+
 def maintenance(*args):
     return subprocess.run(
         [sys.executable, "-m", "deploy.release.maintenance", *map(str, args)],

@@ -14,7 +14,10 @@ ROOT = Path(__file__).resolve().parents[3]
 
 
 @pytest.mark.parametrize("light", [True, False])
-def test_launcher_selects_only_the_expected_mode_and_keeps_configuration(tmp_path, light):
+@pytest.mark.parametrize("rag_override", [None, "false", "true"])
+def test_launcher_selects_only_the_expected_mode_and_keeps_configuration(
+    tmp_path, light, rag_override,
+):
     bundle = tmp_path / "bundle"
     bundle.mkdir()
     for name in (
@@ -87,6 +90,8 @@ else: raise SystemExit("Unexpected Docker command")
     )
     if not light:
         env.update(DAYLOOM_BASELINE_IMAGE="baseline:controlled", DAYLOOM_BASELINE_ID="b" * 64)
+    if rag_override is not None:
+        env["PRODUCT_RAG_ENABLED"] = rag_override
     env["TEST_COMMAND_DIR"] = (
         "/" + commands.drive[0].lower() + commands.as_posix()[2:]
         if os.name == "nt"
@@ -111,6 +116,7 @@ else: raise SystemExit("Unexpected Docker command")
     )
     assert result.returncode == 0, result.stdout + result.stderr
     values = dotenv_values(bundle / "config/.env")
+    assert values.get("PRODUCT_RAG_ENABLED") == rag_override
     if light:
         assert values["DAYLOOM_DEPLOYMENT_MODE"] == "remote"
         assert values["DAYLOOM_DB_PASSWORD"] == ""

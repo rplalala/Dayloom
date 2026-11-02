@@ -58,6 +58,10 @@ def test_light_bundle_is_pinned_and_verifiable_without_any_baseline(tmp_path, im
         assert "LIGHT=1" in bundle.extractfile("start.sh").read().decode()
         defaults = bundle.extractfile(".env.example").read().decode()
         assert APP in defaults and "BASELINE" not in defaults
+        guide = bundle.extractfile("README.md").read().decode()
+        policy_link = f"https://github.com/rplalala/Dayloom/blob/{SHA}/config/README.md"
+        assert policy_link + "#product-rag-policy" in guide
+        assert "/blob/HEAD/" not in guide and "/blob/main/" not in guide
     verified = subprocess.run(
         command + ["verify", str(archive)],
         cwd=ROOT,

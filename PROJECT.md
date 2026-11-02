@@ -65,9 +65,12 @@ saves a key when absent. Personal settings and secrets are ignored by Git.
 The Bash/Compose deployment bundle installs prebuilt images and the complete
 approved Product/TripWorld baseline; provider setup can be finished later at
 `/config`. Existing instances retain their own data and configuration.
-The app-only light mode uses a prepared remote PostgreSQL/pgvector database. It can
-start in configuration mode before database/provider setup and audits remote schema
-and retrieval compatibility without restoring data or applying migrations.
+The app-only light mode uses prepared remote PostgreSQL. RAG is enabled by default;
+an instance can explicitly disable it while retaining V3 Google discovery,
+validation and Repair. Disabled RAG needs only Product storage, with no TripWorld,
+pgvector or OpenAI key. Setup can be completed later at `/config`; startup audits
+required resources without restoring data or applying migrations. The
+[configuration reference](config/README.md#product-rag-policy) owns this policy.
 Use [deployment](docs/guides/deployment.md) for Docker or source installation and
 [development](docs/guides/development.md) for configuration and maintenance.
 

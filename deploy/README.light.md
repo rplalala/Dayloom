@@ -11,11 +11,26 @@ Database and provider settings may be entered later. Save and restart:
 docker compose --env-file config/.env restart app
 ```
 
-Use your own prepared PostgreSQL/pgvector database with all matching Product
-migrations, TripWorld data and stored vectors. A complete `DAYLOOM_DB_URL` can include
+Use your own prepared PostgreSQL database with all matching Product migrations.
+RAG is enabled by default and additionally requires pgvector, TripWorld data and
+stored vectors. To use only the app schema, explicitly run:
+
+```bash
+PRODUCT_RAG_ENABLED=false bash start.sh
+```
+
+The launcher saves this override in `config/.env`. No OpenAI key, retrieval sidecars
+or embedding tokenizer is required when RAG is disabled. V3 keeps Google discovery,
+Foundry evidence, validation and Repair. The planner tokenizer, app database and
+other required credentials remain necessary. `/config` shows the active policy and
+skipped checks; changes require restart. Existing keys and database contents are
+retained. This is a deployment option, with the full policy documented in the
+[configuration reference](https://github.com/rplalala/Dayloom/blob/main/config/README.md#product-rag-policy).
+
+A complete `DAYLOOM_DB_URL` can include
 `sslmode=verify-full` and a trusted CA path under `/instance` (the mounted `config/`
 directory). An unreachable database, TLS failure, missing/newer migrations, or
-incompatible corpus/vector space keeps business APIs in setup mode. No database
+incompatible corpus/vector space (when RAG is enabled) keeps business APIs in setup mode. No database
 restoration or schema migration is applied by light startup. Compatibility checks
 make no paid model, embedding, map or photo requests.
 

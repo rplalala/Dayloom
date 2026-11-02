@@ -44,9 +44,9 @@ port with `DAYLOOM_HOST_PORT=5174 bash start.sh`; use the URL printed by the lau
 
 Light deployment runs only the app service. It does not download the baseline image,
 start PostgreSQL locally, restore data or generate embeddings. Use a prepared remote
-PostgreSQL/pgvector database containing compatible Product tables, TripWorld data
-and stored vectors. Remote startup audits every Product migration and the retrieval
-corpus/embedding-space bindings read-only; it never applies migrations or imports data.
+PostgreSQL database containing all matching Product migrations. By default, RAG
+also requires pgvector, compatible TripWorld data and stored vectors. Remote startup
+audits the required resources read-only; it never applies migrations or imports data.
 
 This mode requires a new app image supporting remote setup and a Release containing
 `dayloom-VERSION-light-linux-amd64.tar.gz`. The existing 0.1.0 Release is full-only.
@@ -55,6 +55,19 @@ For a release that provides both bundles, use the separate light installation en
 ```bash
 curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | bash -s -- --light
 ```
+
+For an instance without TripWorld retrieval, explicitly disable RAG:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | PRODUCT_RAG_ENABLED=false bash -s -- --light
+```
+
+This saves the override in the new instance's `config/.env`. Only the prepared
+`app` schema is needed; no dataset, pgvector or OpenAI key is required. V3 retains
+Google discovery, official evidence through Foundry, validation and Repair. Foundry
+and Google credentials can be entered later at `/config`. Existing cloud data and
+keys are retained. See the [RAG policy](../../config/README.md#product-rag-policy)
+for precedence, resource requirements and the restart boundary.
 
 The installer creates `dayloom-light/`; it refuses to overwrite an existing directory.
 Open the printed `/config` URL using the generated management password. Database and
@@ -74,7 +87,7 @@ from the remote database; the full baseline's default admin is not created autom
 For source-based testing with an app image built from this revision, run:
 
 ```bash
-DAYLOOM_APP_IMAGE=dayloom-app:local bash deploy/start.sh --light --non-interactive
+PRODUCT_RAG_ENABLED=false DAYLOOM_APP_IMAGE=dayloom-app:local bash deploy/start.sh --light --non-interactive
 ```
 
 In that source workflow, maintenance needs `-f deploy/compose.light.yaml` and
@@ -85,7 +98,8 @@ rather than switching an existing instance between full and light mode.
 ### Finish configuration
 
 Open `/config` using the configuration-management password printed at first launch.
-Enter your Foundry endpoint/deployment, OpenAI and Google keys; Unsplash is optional.
+Enter your Foundry endpoint/deployment and Google key, plus an OpenAI key when RAG
+is enabled; Unsplash is optional. `/config` shows the active RAG policy and skipped checks.
 You can finish this step later. Save, then apply the settings from the bundle directory:
 
 ```bash
@@ -163,6 +177,13 @@ page supports a custom key or explicit replacement generation.
 
 ### 3. Prepare retrieval data and vocabularies
 
+The following retrieval preparation is required for the default RAG-enabled
+Product and independent V2/V3 execution. A Product deployment with RAG explicitly
+disabled can omit the TripWorld release, sidecars, embedding vocabulary and restore
+step below. It still needs the planner vocabulary under `.cache/tokenizer/`, a
+PostgreSQL database and Product migrations. Configure the instance as described in
+the [RAG policy](../../config/README.md#product-rag-policy).
+
 Download and extract the [TripWorld release](../../README.md#tripworld-database-release)
 beside the source directory. The [data guide](../../data/tripworld/README.md) explains
 the upstream source, processing and release contents.
@@ -231,7 +252,7 @@ change it after entering. Configure the database connection and services you use
 | PostgreSQL | Host, port, database, role and password; optional complete connection URL |
 | Account sessions | Retained or automatically generated JWT key; custom key and generation controls |
 | Azure Foundry | Planner model and web search; use the supported `gpt-6-luna` deployment profile |
-| OpenAI | TripWorld query embeddings |
+| OpenAI | TripWorld query embeddings; optional when Product RAG is disabled |
 | Google Maps | Places, routes and place photographs |
 | Unsplash | Optional atmosphere photographs (`UNSPLASH_API_KEY`) |
 

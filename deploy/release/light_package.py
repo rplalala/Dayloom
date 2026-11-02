@@ -78,7 +78,10 @@ def build(args):
         + defaults,
         "README.md": f"# Dayloom {args.version} light deployment\n\n"
         f"Source revision: `{args.source_revision}`. App: `{args.app_image}`.\n\n"
-        + (ROOT / "README.light.md").read_text(encoding="utf-8"),
+        + (ROOT / "README.light.md").read_text(encoding="utf-8").replace(
+            "https://github.com/rplalala/Dayloom/blob/main/",
+            f"https://github.com/rplalala/Dayloom/blob/{args.source_revision}/",
+        ),
     }
     return {
         **metadata,

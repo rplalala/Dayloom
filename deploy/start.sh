@@ -234,14 +234,19 @@ RUN_GID=${DAYLOOM_RUN_GID:-${OWNER##*:}}
 helper() {
   docker run --rm --user "$RUN_UID:$RUN_GID" --mount "type=bind,source=$CONFIG_MOUNT,target=/instance" "$APP_IMAGE" "$@"
 }
+RAG_OPTIONS=()
+if [[ -n ${PRODUCT_RAG_ENABLED+x} ]]; then
+  [[ $PRODUCT_RAG_ENABLED == true || $PRODUCT_RAG_ENABLED == false ]] || fail 'PRODUCT_RAG_ENABLED must be true or false.'
+  RAG_OPTIONS=(--rag-enabled "$PRODUCT_RAG_ENABLED")
+fi
 if (( LIGHT )); then
   helper prepare-remote --directory /instance --origin "http://localhost:$PORT" \
-    --app-image "$APP_IMAGE" --uid "$RUN_UID" --gid "$RUN_GID" --project "$PROJECT"
+    --app-image "$APP_IMAGE" --uid "$RUN_UID" --gid "$RUN_GID" --project "$PROJECT" "${RAG_OPTIONS[@]}"
 else
 helper prepare --directory /instance --origin "http://localhost:$PORT" \
   --app-image "$APP_IMAGE" --baseline-image "$BASELINE_IMAGE" --baseline-id "$BASELINE_ID" \
   --uid "$RUN_UID" --gid "$RUN_GID" --project "$PROJECT" \
-  --database-name "$DB_NAME" --database-user "$DB_USER"
+  --database-name "$DB_NAME" --database-user "$DB_USER" "${RAG_OPTIONS[@]}"
 fi
 
 if (( ! NON_INTERACTIVE )) && [[ -t 0 ]] && (( FIRST_INSTALL || CONFIGURE )); then
@@ -278,7 +283,7 @@ printf '\nDayloom is running at http://localhost:%s\n' "$PORT"
 printf 'Complete or inspect setup at http://localhost:%s/config. Saved provider changes require an app restart.\n' "$PORT"
 printf '%s\n' 'The first bootstrap output contains the instance configuration password. The Product test admin is separate.'
 if (( LIGHT )); then
-  printf '%s\n' 'Light deployment: connect a prepared remote PostgreSQL/pgvector database at /config.'
+  printf '%s\n' 'Light deployment: connect prepared remote PostgreSQL at /config. TripWorld/pgvector is required only when RAG is enabled.'
   printf 'Logs: docker compose -f "%s" --env-file config/.env logs -f app\n' "$COMPOSE_FILE"
   printf 'Apply saved settings: docker compose -f "%s" --env-file config/.env restart app\n' "$COMPOSE_FILE"
 else

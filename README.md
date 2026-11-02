@@ -30,7 +30,7 @@ tasks, saved trips, place photographs and itinerary import/export.
 > and stored vectors; instance configuration is created automatically. Enter provider
 > settings during setup or finish them later at `/config`.
 
-Have a prepared remote PostgreSQL/pgvector database? Use the
+Have a prepared remote PostgreSQL database? Use the
 [app-only light deployment](docs/guides/deployment.md#light-deployment-with-a-remote-database)
 to avoid downloading the full baseline. Light mode requires a release with the
 light bundle; the existing 0.1.0 release remains full-only.

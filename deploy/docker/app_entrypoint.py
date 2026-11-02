@@ -31,7 +31,9 @@ def main(argv=None):
     prepare.add_argument("--project", required=True)
     prepare.add_argument("--database-name", default="dayloom")
     prepare.add_argument("--database-user", default="dayloom")
+    prepare.add_argument("--rag-enabled", choices=("true", "false"))
     remote = commands.add_parser("prepare-remote")
+    remote.add_argument("--rag-enabled", choices=("true", "false"))
     for name in ("directory", "origin", "app-image", "project"):
         remote.add_argument("--" + name, required=True)
     for name in ("uid", "gid"):

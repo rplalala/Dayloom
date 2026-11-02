@@ -56,8 +56,8 @@ Legacy local Foundry dotenv fields migrate to YAML with dependent values preserv
 The light Compose definition runs only app, with loopback host binding and the same
 management authentication, peer, Host, Origin and CSRF restrictions as full deployment.
 Missing settings, database connectivity/TLS errors, incomplete/newer/changed Product
-migration history or incompatible TripWorld corpus/vector space keep business APIs
-in setup mode while `/config` remains accessible. Saved connection/provider edits
+migration history or incompatible TripWorld corpus/vector space (when RAG is enabled)
+keep business APIs in setup mode while `/config` remains accessible. Saved connection/provider edits
 apply after restart; probes describe the running configuration, not pending changes.
 Light startup checks the prepared database read-only, never restores a baseline,
 applies DDL or embeds documents. A successful health response means the process is
@@ -65,6 +65,13 @@ available, not that business resources are ready. Database backups and schema/da
 preparation belong to the remote database administrator. The
 [deployment guide](guides/deployment.md#light-deployment-with-a-remote-database)
 owns commands and prerequisites.
+
+Product captures `rag_enabled` at startup, defaulting to true. The instance can
+explicitly disable retrieval while keeping V3 Google discovery, validation and
+Repair; only app storage is then required. `/config` exposes the running policy,
+skipped retrieval checks and optional OpenAI credential, without a runtime switch.
+The [configuration reference](../config/README.md#product-rag-policy) owns precedence,
+provider restrictions and resource requirements. Existing database data is preserved.
 
 ### Access and writes
 
