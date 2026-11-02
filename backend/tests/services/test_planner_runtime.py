@@ -94,7 +94,10 @@ def result(version):
 
 
 @pytest.mark.parametrize("version", list(SystemVersion))
-def test_dispatch_uses_programmatic_runner_with_owned_dependencies(monkeypatch, version):
+@pytest.mark.parametrize("rag_enabled", [True, False])
+def test_dispatch_uses_programmatic_runner_with_owned_dependencies(
+    monkeypatch, version, rag_enabled,
+):
     events = []
     deps = module.PlannerDependencies(
         llm=object(), places=object(), weather=object(), routes=object()
@@ -117,11 +120,15 @@ def test_dispatch_uses_programmatic_runner_with_owned_dependencies(monkeypatch, 
             assert kwargs["runtime_config"] is config
         if version == SystemVersion.V3:
             assert kwargs["request_started_at"] <= module.monotonic()
+            assert kwargs["rag_enabled"] is rag_enabled
+        else:
+            assert "rag_enabled" not in kwargs
         return result(version)
 
     config = load_runtime_config()
     monkeypatch.setattr(module, f"run_{version}", runner)
-    runtime = module.RequestPlannerRuntime(config=config, dependency_factory=factory)
+    runtime = module.RequestPlannerRuntime(config=config, dependency_factory=factory,
+                                          rag_enabled=rag_enabled)
     output = asyncio.run(runtime.run(version, make_request(), reference_date=REFERENCE))
     assert output.system_version == version
     assert events[0][0] == "open" and events[-1] == ("close", version)

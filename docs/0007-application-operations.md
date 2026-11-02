@@ -33,6 +33,7 @@ Product pages expose a settings link when available.
 | `DAYLOOM_DB_HOST`, `DAYLOOM_DB_PORT`, `DAYLOOM_DB_NAME`, `DAYLOOM_DB_USER`, `DAYLOOM_DB_PASSWORD` | `.env` |
 | `DAYLOOM_DB_URL` connection override | `.env` |
 | `PRODUCT_JWT_SECRET` | `.env` |
+| `PRODUCT_RAG_ENABLED` deployment switch | `.env` |
 
 Tracked `product.example.yaml` supplies defaults; ignored `product.yaml` overrides
 it. The [configuration reference](../config/README.md#deployment-settings) owns
@@ -50,6 +51,30 @@ absent. Custom keys need 32 characters. Explicit key generation uses the same ac
 revision and environment locks as Save. Responses expose presence only; restart applies
 the key and invalidates prior sessions. API-only/nonlocal launches need a configured key.
 Legacy local Foundry dotenv fields migrate to YAML with dependent values preserved.
+
+### Remote-database light deployment
+
+The light Compose definition runs only app, with loopback host binding and the same
+management authentication, peer, Host, Origin and CSRF restrictions as full deployment.
+Missing settings, database connectivity/TLS errors, incomplete/newer/changed Product
+migration history or incompatible TripWorld corpus/vector space (when RAG is enabled)
+keep business APIs in setup mode while `/config` remains accessible. Saved connection/provider edits
+apply after restart; probes describe the running configuration, not pending changes.
+Light startup checks the prepared database read-only, never restores a baseline,
+applies DDL or embeds documents. A successful health response means the process is
+available, not that business resources are ready. Database backups and schema/data
+preparation belong to the remote database administrator. The
+[deployment guide](guides/deployment.md#light-deployment-with-a-remote-database)
+owns commands and prerequisites.
+
+Product captures `rag_enabled` at startup, defaulting to true. The instance can
+explicitly disable retrieval while keeping V3 Google discovery, validation and
+Repair; only app storage is then required. `/config` provides an authenticated
+deployment switch that saves the next-start policy, displays the running policy
+and skipped checks, and hides retrieval-only inputs when deselected. It retains
+existing keys and requires restart; API probes reject a pending RAG-policy change.
+The [configuration reference](../config/README.md#product-rag-policy) owns precedence,
+provider restrictions and resource requirements. Existing database data is preserved.
 
 ### Access and writes
 

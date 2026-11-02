@@ -31,7 +31,7 @@ def test_packaged_prepare_reuses_secrets_and_preserves_editable_provider_setting
             "--app-image", "dayloom-app:controlled", "--baseline-image", "baseline:controlled",
             "--baseline-id", "b" * 64, "--uid", "1000", "--gid", "1000",
             "--project", "dayloom-controlled-test", "--database-name", "dayloom_t4_test"]
-    first = launch(*args)
+    first = launch(*args, "--rag-enabled", "false")
     assert first.returncode == 0, first.stderr
     assert "management_password" in json.loads(first.stdout)
     old = dotenv_values(directory / ".env")
@@ -41,6 +41,7 @@ def test_packaged_prepare_reuses_secrets_and_preserves_editable_provider_setting
     assert repeated.returncode == 0, repeated.stderr
     assert "management_password" not in json.loads(repeated.stdout)
     current = dotenv_values(directory / ".env")
+    assert current["PRODUCT_RAG_ENABLED"] == "false"
     assert current["DAYLOOM_DB_PASSWORD"] == old["DAYLOOM_DB_PASSWORD"]
     assert current["PRODUCT_JWT_SECRET"] == old["PRODUCT_JWT_SECRET"]
     assert current["OPENAI_API_KEY"] == "controlled-saved-value"

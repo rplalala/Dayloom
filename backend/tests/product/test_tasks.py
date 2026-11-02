@@ -48,10 +48,12 @@ def test_accepted_pending_has_identity_and_survives_app_recreation(client):  # n
 
 
 @pytest.mark.parametrize("expire_running_lease", [False, True])
+@pytest.mark.parametrize("rag_enabled", [True, False])
 def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
     client,  # noqa: F811
     monkeypatch,
     expire_running_lease,
+    rag_enabled,
 ):  # noqa: F811
     import asyncio
     from contextlib import asynccontextmanager
@@ -84,6 +86,8 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
         return retrieval
 
     monkeypatch.setattr("backend.app.versions.v3.runner.RuntimeRetrieval", retrieval_factory)
+    if not rag_enabled:
+        monkeypatch.setenv("OPENAI_API_KEY", "")
 
     async def scenario():
         entered, release = asyncio.Event(), asyncio.Event()
@@ -111,7 +115,7 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
             yield Introductions()
 
         service = PlanningService(
-            RequestPlannerRuntime(dependency_factory=dependencies),
+            RequestPlannerRuntime(dependency_factory=dependencies, rag_enabled=rag_enabled),
             FixedDateProvider(date(2026, 9, 11)),
             introductions=ProductIntroductions(introductions),
         )
@@ -218,9 +222,8 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
                     assert finished["outcome"]["code"] == "planning_interrupted"
                     assert (await http.get("/api/previews")).json() == []
                     assert calls.count("V1Itinerary") == 1
-                    assert (
-                        len(retrievals) == 1 and retrievals[0].enters == retrievals[0].closes == 1
-                    )
+                    assert len(retrievals) == int(rag_enabled)
+                    assert all(item.enters == item.closes == 1 for item in retrievals)
                     return
                 assert finished["state"] == "completed", finished
                 preview_id = finished["preview_id"]
@@ -264,9 +267,8 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
                 assert (await http.get("/api/previews")).json() == []
                 preview = (await http.get(f"/api/previews/{preview_id}")).json()
                 assert calls.count("V1Itinerary") == 1
-                assert (
-                    len(retrievals) == 1 and retrievals[0].enters == 1 and retrievals[0].closes == 1
-                )
+                assert len(retrievals) == int(rag_enabled)
+                assert all(item.enters == item.closes == 1 for item in retrievals)
         recreated = create_app()
         async with recreated.router.lifespan_context(recreated):
             async with AsyncClient(

@@ -186,7 +186,7 @@ async def execute(model=None, places=None, runtime=None, **kwargs):
         FakeWeatherProvider(),
         kwargs.pop("routes_provider", None) or FakeRoutesProvider(),
         reference_date=kwargs.pop("reference_date", date(2026, 9, 11)),
-        retrieval_factory=lambda: runtime,
+        retrieval_factory=kwargs.pop("retrieval_factory", lambda: runtime),
         development_timeout_seconds=kwargs.pop("development_timeout_seconds", 600),
         # Isolate existing conflict fixtures; default-policy coverage passes None explicitly.
         quantity_review_enabled=kwargs.pop("quantity_review_enabled", False),
@@ -194,6 +194,37 @@ async def execute(model=None, places=None, runtime=None, **kwargs):
         **kwargs,
     )
     return result, model, places, runtime
+
+
+def test_rag_disabled_keeps_google_additions_validation_and_repair(monkeypatch):
+    from backend.app.versions.v3 import repair_service, runner
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("Disabled RAG constructed a retrieval runtime")
+
+    monkeypatch.setattr(runner, "RuntimeRetrieval", forbidden)
+    geographic_scopes = []
+    repair = repair_service.run_repair_stage
+
+    async def observed(*args, **kwargs):
+        geographic_scopes.append(kwargs["geographic_scope"])
+        assert kwargs["rag"] is None
+        return await repair(*args, **kwargs)
+
+    monkeypatch.setattr("backend.app.versions.v3.wiring.run_repair_stage", observed)
+    result, model, places, runtime = asyncio.run(execute(
+        Model(primary(False), "add"), places=ManyPlaces(),
+        quantity_review_enabled=True, rag_enabled=False, retrieval_factory=forbidden,
+    ))
+    assert runtime.enters == runtime.prepares == runtime.closes == 0
+    assert result.request_resources["operations"] == []
+    assert result.request_resources["rag_enabled"] is False
+    assert result.v3.original_rag_discovery["status"] == "disabled"
+    assert result.v3.original_rag_discovery["reason"] == "disabled_by_deployment"
+    assert geographic_scopes and all(scope is not None for scope in geographic_scopes)
+    assert model.repair_calls > 0 and places.nearby
+    assert result.v3.repair.status == "ACCEPTED_PARTIAL"
+    assert result.v3.final_report and result.system_version.value == "v3"
 
 
 @pytest.mark.parametrize(

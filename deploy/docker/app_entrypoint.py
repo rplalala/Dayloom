@@ -31,6 +31,13 @@ def main(argv=None):
     prepare.add_argument("--project", required=True)
     prepare.add_argument("--database-name", default="dayloom")
     prepare.add_argument("--database-user", default="dayloom")
+    prepare.add_argument("--rag-enabled", choices=("true", "false"))
+    remote = commands.add_parser("prepare-remote")
+    remote.add_argument("--rag-enabled", choices=("true", "false"))
+    for name in ("directory", "origin", "app-image", "project"):
+        remote.add_argument("--" + name, required=True)
+    for name in ("uid", "gid"):
+        remote.add_argument("--" + name, type=int, required=True)
     probe = commands.add_parser("probe-directory")
     probe.add_argument("--directory", required=True)
     peers = commands.add_parser("set-management-peers")
@@ -51,7 +58,9 @@ def main(argv=None):
     serve.add_argument("--host", default="0.0.0.0")
     serve.add_argument("--port", type=int, default=5173)
     serve.add_argument("--management-peer", action="append", default=[])
-    serve.add_argument("--require-installation", action="store_true")
+    mode = serve.add_mutually_exclusive_group()
+    mode.add_argument("--require-installation", action="store_true")
+    mode.add_argument("--remote-database", action="store_true")
     serve.add_argument("--baseline-id", default=os.environ.get("DAYLOOM_BASELINE_ID", ""))
     serve.add_argument("--startup-timeout", type=float, default=1800)
     args = parser.parse_args(argv)
@@ -61,7 +70,9 @@ def main(argv=None):
         if command == "serve":
             from scripts.run_product import main as run_product
 
-            if args.require_installation or args.baseline_id:
+            if args.remote_database and args.baseline_id:
+                raise ValueError("Remote database mode does not accept a baseline identity")
+            if not args.remote_database and (args.require_installation or args.baseline_id):
                 from deploy.docker.startup import prepare_database
 
                 prepare_database(args.baseline_id, args.startup_timeout)
@@ -70,6 +81,8 @@ def main(argv=None):
                 if peer.strip()
             ]
             arguments = ["--container-local", "--host", args.host, "--port", str(args.port)]
+            if args.remote_database:
+                arguments.append("--remote-database")
             for peer in peers:
                 arguments.extend(["--management-peer", peer])
             run_product(arguments)
@@ -85,11 +98,12 @@ def main(argv=None):
 
             info = Path(args.directory).stat()
             print(str(info.st_uid) + ":" + str(info.st_gid))
-        elif command in {"prepare", "set-management-peers", "configure-providers",
+        elif command in {"prepare", "prepare-remote", "set-management-peers", "configure-providers",
                          "prepare-logs", "status"}:
             from deploy.docker import launch_settings
 
             actions = {"prepare": launch_settings.prepare_deployment,
+                       "prepare-remote": launch_settings.prepare_remote_deployment,
                        "set-management-peers": launch_settings.set_management_peers,
                        "configure-providers": launch_settings.configure_providers,
                        "prepare-logs": launch_settings.prepare_logs,

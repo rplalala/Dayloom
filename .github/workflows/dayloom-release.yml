@@ -177,6 +177,8 @@ jobs:
           docker pull "$APP_IMAGE"
           python -m deploy.release.package build --version "$VERSION" --source-revision "$SOURCE_REVISION" --app-image "$APP_IMAGE" --baseline-image "$BASELINE_IMAGE" --baseline-id "$BASELINE_ID" --output dist-release > dist-release-report.json
           python -m deploy.release.package verify "dist-release/dayloom-$VERSION-linux-amd64.tar.gz"
+          python -m deploy.release.light_package build --version "$VERSION" --source-revision "$SOURCE_REVISION" --app-image "$APP_IMAGE" --output dist-release > dist-release-light-report.json
+          python -m deploy.release.light_package verify "dist-release/dayloom-$VERSION-light-linux-amd64.tar.gz"
       - name: Create draft Release for final visibility and anonymous checks
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -193,5 +195,6 @@ jobs:
           name: dayloom-preparation-${{ inputs.version }}
           path: |
             dist-release-report.json
+            dist-release-light-report.json
             dist-release/
           if-no-files-found: ignore

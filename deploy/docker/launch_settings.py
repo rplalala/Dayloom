@@ -52,7 +52,7 @@ def update_wiring(directory, values, *, origin=None):
 
 def prepare_deployment(directory, origin, app_image, baseline_image, baseline_id, uid, gid,
                        project, database_name="dayloom", database_user="dayloom",
-                       database_host="postgres", database_port=5432):
+                       database_host="postgres", database_port=5432, rag_enabled=None):
     for image in (app_image, baseline_image):
         if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9:/@._-]{0,511}", image):
             raise ValueError("Invalid image reference")
@@ -63,6 +63,8 @@ def prepare_deployment(directory, origin, app_image, baseline_image, baseline_id
     if min(uid, gid) < 0:
         raise ValueError("Invalid runtime UID/GID")
     existing = dotenv_values(Path(directory) / ".env", interpolate=False)
+    if existing.get("DAYLOOM_DEPLOYMENT_MODE") == "remote":
+        raise ValueError("Use a separate directory for full and light deployments")
     if existing.get("DAYLOOM_BASELINE_ID") not in (None, "", baseline_id):
         raise ValueError("Installed baseline differs; use its existing baseline identity")
     for key, value in (("DAYLOOM_DB_NAME", database_name), ("DAYLOOM_DB_USER", database_user)):
@@ -76,6 +78,26 @@ def prepare_deployment(directory, origin, app_image, baseline_image, baseline_id
         "DAYLOOM_APP_IMAGE": app_image, "DAYLOOM_BASELINE_IMAGE": baseline_image,
         "DAYLOOM_BASELINE_ID": baseline_id, "DAYLOOM_RUN_UID": uid, "DAYLOOM_RUN_GID": gid,
         "DAYLOOM_HOST_PORT": urlsplit(origin).port or 80, "COMPOSE_PROJECT_NAME": project,
+        **({"PRODUCT_RAG_ENABLED": rag_enabled} if rag_enabled is not None else {}),
+    }, origin=origin)
+    return result
+
+
+def prepare_remote_deployment(directory, origin, app_image, uid, gid, project, rag_enabled=None):
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9:/@._-]{0,511}", app_image):
+        raise ValueError("Invalid app image")
+    if not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,62}", project) or min(uid, gid) < 0:
+        raise ValueError("Invalid project or runtime identity")
+    existing = dotenv_values(Path(directory) / ".env", interpolate=False)
+    if existing.get("DAYLOOM_BASELINE_ID") or existing.get("DAYLOOM_BASELINE_IMAGE"):
+        raise ValueError("Use a separate directory for full and light deployments")
+    result = bootstrap_instance(directory, origin, database_host="unconfigured.invalid",
+                                remote_database=True)
+    update_wiring(directory, {
+        "DAYLOOM_DEPLOYMENT_MODE": "remote", "DAYLOOM_APP_IMAGE": app_image,
+        "DAYLOOM_RUN_UID": uid, "DAYLOOM_RUN_GID": gid,
+        "DAYLOOM_HOST_PORT": urlsplit(origin).port or 80, "COMPOSE_PROJECT_NAME": project,
+        **({"PRODUCT_RAG_ENABLED": rag_enabled} if rag_enabled is not None else {}),
     }, origin=origin)
     return result
 
@@ -86,6 +108,8 @@ def configure_providers(directory):
     changes = {}
     for key in ("AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_DEPLOYMENT", "AZURE_OPENAI_API_KEY",
                 "OPENAI_API_KEY", "GOOGLE_MAPS_API_KEY", "UNSPLASH_API_KEY"):
+        if key == "OPENAI_API_KEY" and not manager.rag_enabled:
+            continue
         prompt = key + " (blank keeps saved value): "
         value = getpass.getpass(prompt) if key.endswith("KEY") else input(prompt)
         if value:

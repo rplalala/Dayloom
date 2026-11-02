@@ -6,6 +6,7 @@ BUNDLE_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 CONFIG_DIR="$BUNDLE_DIR/config"
 NON_INTERACTIVE=0
 CONFIGURE=0
+LIGHT=0
 OPERATION=launch
 OPERATION_ARGS=()
 if [[ ${1:-} =~ ^(backup|verify-backup|restore-backup|upgrade)$ ]]; then
@@ -18,7 +19,8 @@ for argument in "$@"; do
   case "$argument" in
     --non-interactive) NON_INTERACTIVE=1 ;;
     --configure) CONFIGURE=1 ;;
-    --help|-h) printf '%s\n' 'Usage: bash start.sh [--non-interactive] [--configure]' \
+    --light) LIGHT=1 ;;
+    --help|-h) printf '%s\n' 'Usage: bash start.sh [--light] [--non-interactive] [--configure]' \
       '       bash start.sh backup|verify-backup /absolute/NAME.dayloom-backup' \
       '       bash start.sh restore-backup /absolute/NAME.dayloom-backup --project NEW --port PORT' \
       '       bash start.sh upgrade IMAGE --backup /absolute/NAME.dayloom-backup'; exit 0 ;;
@@ -38,6 +40,14 @@ grep -q -- '--wait-timeout' <<< "$COMPOSE_HELP" || fail 'Update Compose to a ver
 ARCH=$(docker info --format '{{.OSType}}/{{.Architecture}}')
 [[ $ARCH == linux/x86_64 || $ARCH == linux/amd64 ]] || fail 'This release supports Linux amd64 container engines.'
 
+DEFAULTS_FILE="$BUNDLE_DIR/.env.example"
+COMPOSE_FILE="$BUNDLE_DIR/compose.yaml"
+if (( LIGHT )); then
+  [[ ! -f $BUNDLE_DIR/light.env.example ]] || DEFAULTS_FILE="$BUNDLE_DIR/light.env.example"
+  [[ ! -f $BUNDLE_DIR/compose.light.yaml ]] || COMPOSE_FILE="$BUNDLE_DIR/compose.light.yaml"
+  grep -Fq -- '--remote-database' "$COMPOSE_FILE" || fail 'Use the separate light deployment bundle.'
+fi
+
 # Read only named public scalars. Do not source or evaluate dotenv as shell code.
 public_value() {
   local file=$1 key=$2 name value
@@ -55,7 +65,7 @@ public_value() {
 pick() {
   local key=$1 value=${!1:-}
   [[ -n $value ]] || value=$(public_value "$CONFIG_DIR/.env" "$key")
-  [[ -n $value ]] || value=$(public_value "$BUNDLE_DIR/.env.example" "$key")
+  [[ -n $value ]] || value=$(public_value "$DEFAULTS_FILE" "$key")
   printf '%s' "$value"
 }
 APP_IMAGE=$(pick DAYLOOM_APP_IMAGE)
@@ -63,6 +73,12 @@ BASELINE_IMAGE=$(pick DAYLOOM_BASELINE_IMAGE)
 BASELINE_ID=$(pick DAYLOOM_BASELINE_ID)
 PORT=$(pick DAYLOOM_HOST_PORT)
 PROJECT=$(pick COMPOSE_PROJECT_NAME)
+if [[ $(public_value "$CONFIG_DIR/.env" DAYLOOM_DEPLOYMENT_MODE) == remote ]] && (( ! LIGHT )); then
+  fail 'Use --light for this instance; full and light deployments need separate directories.'
+fi
+if (( LIGHT )) && [[ $OPERATION != launch ]]; then
+  fail 'Use your remote database provider for backups and upgrades.'
+fi
 DB_NAME=$(pick DAYLOOM_DB_NAME)
 DB_USER=$(pick DAYLOOM_DB_USER)
 native_path() {
@@ -132,7 +148,7 @@ if [[ $OPERATION != launch ]]; then
   RUN_UID=$(public_value "$CONFIG_DIR/.env" DAYLOOM_RUN_UID)
   RUN_GID=$(public_value "$CONFIG_DIR/.env" DAYLOOM_RUN_GID)
   CONFIG_MOUNT=$(native_path "$CONFIG_DIR")
-  COMPOSE=(docker compose --project-directory "$(native_path "$BUNDLE_DIR")" --env-file "$(native_path "$CONFIG_DIR/.env")" -f "$(native_path "$BUNDLE_DIR/compose.yaml")")
+  COMPOSE=(docker compose --project-directory "$(native_path "$BUNDLE_DIR")" --env-file "$(native_path "$CONFIG_DIR/.env")" -f "$(native_path "$COMPOSE_FILE")")
   unset DAYLOOM_APP_IMAGE DAYLOOM_BASELINE_IMAGE DAYLOOM_BASELINE_ID DAYLOOM_HOST_PORT
   unset DAYLOOM_RUN_UID DAYLOOM_RUN_GID COMPOSE_PROJECT_NAME DAYLOOM_DB_NAME DAYLOOM_DB_USER DAYLOOM_DB_PASSWORD DAYLOOM_MANAGEMENT_PEERS
   docker run --rm --network none --user 0:0 --entrypoint python \
@@ -181,12 +197,20 @@ if [[ $OPERATION != launch ]]; then
   printf '%s\n' 'Application upgraded; installed baseline and user content retained. Keep the pre-upgrade backup private.'
   exit 0
 fi
-[[ $BASELINE_ID =~ ^[a-f0-9]{64}$ ]] || fail 'Use a released bundle, or explicitly select the locally verified baseline identity.'
+if (( LIGHT )); then
+  [[ $OPERATION == launch ]] || fail 'Use your remote database provider for backups and upgrades.'
+  [[ -z $(public_value "$CONFIG_DIR/.env" DAYLOOM_BASELINE_ID) ]] || fail 'Use a fresh directory for light deployment.'
+else
+  [[ $(public_value "$CONFIG_DIR/.env" DAYLOOM_DEPLOYMENT_MODE) != remote ]] || fail 'Use --light for this instance.'
+  [[ $BASELINE_ID =~ ^[a-f0-9]{64}$ ]] || fail 'Use a released bundle, or explicitly select the locally verified baseline identity.'
+fi
+IMAGES=("$APP_IMAGE")
+(( LIGHT )) || IMAGES+=("$BASELINE_IMAGE")
 [[ $PORT =~ ^[0-9]{1,5}$ ]] || fail 'DAYLOOM_HOST_PORT must be a valid TCP port.'
 PORT=$((10#$PORT))
 if (( PORT <= 0 || PORT > 65535 )); then fail 'DAYLOOM_HOST_PORT must be a valid TCP port.'; fi
 [[ $PROJECT =~ ^[a-z0-9][a-z0-9_-]{0,62}$ ]] || fail 'Invalid Compose project name.'
-for image in "$APP_IMAGE" "$BASELINE_IMAGE"; do
+for image in "${IMAGES[@]}"; do
   [[ $image =~ ^[A-Za-z0-9][A-Za-z0-9:/@._-]+$ ]] || fail 'Invalid image reference.'
 done
 if (true 3<>"/dev/tcp/127.0.0.1/$PORT") 2>/dev/null; then
@@ -200,7 +224,7 @@ fi
 [[ ! -L $CONFIG_DIR ]] || fail 'The instance configuration directory must not be a symbolic link.'
 mkdir -p -- "$CONFIG_DIR"
 CONFIG_MOUNT=$(native_path "$CONFIG_DIR")
-for image in "$APP_IMAGE" "$BASELINE_IMAGE"; do
+for image in "${IMAGES[@]}"; do
   docker image inspect "$image" >/dev/null 2>&1 || docker pull "$image"
 done
 OWNER=$(docker run --rm --user 0:0 --mount "type=bind,source=$CONFIG_MOUNT,target=/instance" "$APP_IMAGE" probe-directory --directory /instance)
@@ -210,10 +234,20 @@ RUN_GID=${DAYLOOM_RUN_GID:-${OWNER##*:}}
 helper() {
   docker run --rm --user "$RUN_UID:$RUN_GID" --mount "type=bind,source=$CONFIG_MOUNT,target=/instance" "$APP_IMAGE" "$@"
 }
+RAG_OPTIONS=()
+if [[ -n ${PRODUCT_RAG_ENABLED+x} ]]; then
+  [[ $PRODUCT_RAG_ENABLED == true || $PRODUCT_RAG_ENABLED == false ]] || fail 'PRODUCT_RAG_ENABLED must be true or false.'
+  RAG_OPTIONS=(--rag-enabled "$PRODUCT_RAG_ENABLED")
+fi
+if (( LIGHT )); then
+  helper prepare-remote --directory /instance --origin "http://localhost:$PORT" \
+    --app-image "$APP_IMAGE" --uid "$RUN_UID" --gid "$RUN_GID" --project "$PROJECT" "${RAG_OPTIONS[@]}"
+else
 helper prepare --directory /instance --origin "http://localhost:$PORT" \
   --app-image "$APP_IMAGE" --baseline-image "$BASELINE_IMAGE" --baseline-id "$BASELINE_ID" \
   --uid "$RUN_UID" --gid "$RUN_GID" --project "$PROJECT" \
-  --database-name "$DB_NAME" --database-user "$DB_USER"
+  --database-name "$DB_NAME" --database-user "$DB_USER" "${RAG_OPTIONS[@]}"
+fi
 
 if (( ! NON_INTERACTIVE )) && [[ -t 0 ]] && (( FIRST_INSTALL || CONFIGURE )); then
   read -r -p 'Configure provider services now? [y/N] ' ANSWER
@@ -222,7 +256,7 @@ if (( ! NON_INTERACTIVE )) && [[ -t 0 ]] && (( FIRST_INSTALL || CONFIGURE )); th
   fi
 fi
 
-COMPOSE=(docker compose --project-directory "$(native_path "$BUNDLE_DIR")" --env-file "$(native_path "$CONFIG_DIR/.env")" -f "$(native_path "$BUNDLE_DIR/compose.yaml")")
+COMPOSE=(docker compose --project-directory "$(native_path "$BUNDLE_DIR")" --env-file "$(native_path "$CONFIG_DIR/.env")" -f "$(native_path "$COMPOSE_FILE")")
 # Public overrides were validated and persisted above. Prevent ambient libpq/deployment
 # values from making Compose use different credentials than the mounted instance.
 unset DAYLOOM_APP_IMAGE DAYLOOM_BASELINE_IMAGE DAYLOOM_BASELINE_ID DAYLOOM_HOST_PORT
@@ -230,9 +264,16 @@ unset DAYLOOM_RUN_UID DAYLOOM_RUN_GID COMPOSE_PROJECT_NAME DAYLOOM_DB_NAME DAYLO
 unset DAYLOOM_DB_PASSWORD
 # A placeholder is used only while creating the network; the app is not started yet.
 export DAYLOOM_MANAGEMENT_PEERS=127.0.0.1
+if (( LIGHT )); then
+  "${COMPOSE[@]}" create app
+  NETWORK_ID=$(docker network ls -q --filter "label=com.docker.compose.project=$PROJECT" --filter 'label=com.docker.compose.network=default')
+  [[ -n $NETWORK_ID && $NETWORK_ID != *$'\n'* ]] || fail 'Cannot identify the isolated Compose network.'
+  GATEWAY=$(docker network inspect "$NETWORK_ID" --format '{{range .IPAM.Config}}{{.Gateway}}{{end}}')
+else
 "${COMPOSE[@]}" up -d --wait --wait-timeout 180 postgres
 POSTGRES_ID=$("${COMPOSE[@]}" ps -q postgres)
 GATEWAY=$(docker inspect "$POSTGRES_ID" --format '{{range .NetworkSettings.Networks}}{{.Gateway}}{{end}}')
+fi
 helper set-management-peers --directory /instance --peers "$GATEWAY"
 unset DAYLOOM_MANAGEMENT_PEERS
 "${COMPOSE[@]}" run --rm --no-deps --user 0:0 app prepare-logs --uid "$RUN_UID" --gid "$RUN_GID"
@@ -241,5 +282,11 @@ unset DAYLOOM_MANAGEMENT_PEERS
 printf '\nDayloom is running at http://localhost:%s\n' "$PORT"
 printf 'Complete or inspect setup at http://localhost:%s/config. Saved provider changes require an app restart.\n' "$PORT"
 printf '%s\n' 'The first bootstrap output contains the instance configuration password. The Product test admin is separate.'
-printf '%s\n' 'Logs: docker compose --env-file config/.env logs -f app'
-printf '%s\n' 'Apply saved settings: docker compose --env-file config/.env restart app'
+if (( LIGHT )); then
+  printf '%s\n' 'Light deployment: connect prepared remote PostgreSQL at /config. TripWorld/pgvector is required only when RAG is enabled.'
+  printf 'Logs: docker compose -f "%s" --env-file config/.env logs -f app\n' "$COMPOSE_FILE"
+  printf 'Apply saved settings: docker compose -f "%s" --env-file config/.env restart app\n' "$COMPOSE_FILE"
+else
+  printf '%s\n' 'Logs: docker compose --env-file config/.env logs -f app'
+  printf '%s\n' 'Apply saved settings: docker compose --env-file config/.env restart app'
+fi

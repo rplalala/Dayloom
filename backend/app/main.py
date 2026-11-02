@@ -45,6 +45,10 @@ def create_app() -> FastAPI:
     @asynccontextmanager
     async def lifespan(application):
         from backend.app.observability.product_service_logs import configure_product_service_logs
+        from backend.app.runtime.deployment import ProductPolicySettings
+
+        if not hasattr(application.state, "rag_enabled"):
+            application.state.rag_enabled = ProductPolicySettings().rag_enabled
         configure_product_service_logs()
         try:
             yield

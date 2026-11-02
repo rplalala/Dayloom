@@ -135,6 +135,17 @@ def test_release_archive_is_reproducible_four_files_and_verified_without_checkou
     assert build(tmp_path, image_boundary).returncode == 2
 
 
+def test_full_bundle_links_light_documentation_at_its_exact_source_revision(
+    tmp_path, image_boundary,
+):
+    result = build(tmp_path, image_boundary)
+    assert result.returncode == 0, result.stderr
+    with tarfile.open(json.loads(result.stdout)["archive"]) as bundle:
+        readme = bundle.extractfile("README.md").read().decode()
+        assert "(README.light.md)" not in readme
+        assert f"https://github.com/rplalala/Dayloom/blob/{SHA}/deploy/README.light.md" in readme
+
+
 @pytest.mark.parametrize("change", ["revision", "resource", "digest", "secret", "baseline_label"])
 def test_release_rejects_mismatched_or_secret_image_inputs(tmp_path, image_boundary, change):
     _, _, fixture = image_boundary

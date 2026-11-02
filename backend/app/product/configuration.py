@@ -27,7 +27,7 @@ from backend.app.product.configuration_files import (
     update_foundry,
 )
 from backend.app.product.configuration_validation import supported_foundry_endpoint
-from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader
+from backend.app.runtime.deployment import DeploymentOptions, DeploymentYamlLoader, ProductOptions
 
 FIELDS = {
     "AZURE_OPENAI_ENDPOINT": False,
@@ -43,6 +43,7 @@ FIELDS = {
     "DAYLOOM_DB_PASSWORD": True,
     "DAYLOOM_DB_URL": True,
     "PRODUCT_JWT_SECRET": True,
+    "PRODUCT_RAG_ENABLED": False,
 }
 COOKIE = "dayloom_config_session"
 SESSION_SECONDS = 1800
@@ -113,9 +114,10 @@ class LocalConfiguration:
         self.lock = threading.Lock()
         self.migrate_foundry_overrides()
         self.initial = self.snapshot()[1]
+        self.rag_enabled = self.initial["PRODUCT_RAG_ENABLED"] == "true"
         self.running_ready = True
         self.resource_probe = None
-        self.api_checker = ApiChecker()
+        self.api_checker = ApiChecker(embedding_enabled=self.rag_enabled)
 
     def read(self):
         path = self.root / ".env"
@@ -177,6 +179,7 @@ class LocalConfiguration:
         local = {key.upper(): value for key, value in local.items()}
         deployment_text, options = self.read_deployment()
         defaults = {
+            "PRODUCT_RAG_ENABLED": str(options.rag_enabled).lower(),
             "DAYLOOM_DB_HOST": "127.0.0.1", "DAYLOOM_DB_PORT": "55432",
             "DAYLOOM_DB_NAME": "dayloom", "DAYLOOM_DB_USER": "dayloom",
         }
@@ -200,6 +203,9 @@ class LocalConfiguration:
             )
             for key in FIELDS
         }
+        values["PRODUCT_RAG_ENABLED"] = str(ProductOptions(
+            rag_enabled=values["PRODUCT_RAG_ENABLED"],
+        ).rag_enabled).lower()
         for source in (self._environment_settings, local):
             for key in ("UNSPLASH_API_KEY", "PRODUCT_UNSPLASH_ACCESS_KEY"):
                 if source.get(key) is not None:
@@ -213,6 +219,7 @@ class LocalConfiguration:
             "revision": _revision(text, values),
             "restart_required": values != self.initial,
             "running_ready": self.running_ready,
+            "rag_enabled": self.rag_enabled,
             "fields": {
                 key: {
                     "secret": secret,
@@ -233,6 +240,8 @@ class LocalConfiguration:
         text, values = self.snapshot()
         if revision != _revision(text, values):
             raise ConfigurationError("configuration_changed", 409)
+        if (values["PRODUCT_RAG_ENABLED"] == "true") != self.rag_enabled:
+            raise ConfigurationError("rag_policy_restart_required", 409)
         return values
 
     def validate(self, changes):
@@ -252,6 +261,8 @@ class LocalConfiguration:
                 raise ConfigurationError("invalid_setting_value")
             if key == "PRODUCT_JWT_SECRET" and len(value) < 32:
                 raise ConfigurationError("invalid_signing_key")
+            if key == "PRODUCT_RAG_ENABLED" and value not in {"true", "false"}:
+                raise ConfigurationError("invalid_rag_policy")
             if (
                 key in {"DAYLOOM_DB_HOST", "DAYLOOM_DB_NAME", "DAYLOOM_DB_USER"}
                 and not value.strip()
@@ -349,14 +360,18 @@ class LocalConfiguration:
 
         view = self.view()
         required = ["AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_DEPLOYMENT",
-                    "AZURE_OPENAI_API_KEY", "OPENAI_API_KEY", "GOOGLE_MAPS_API_KEY",
+                    "AZURE_OPENAI_API_KEY", "GOOGLE_MAPS_API_KEY",
                     "PRODUCT_JWT_SECRET"]
+        if self.rag_enabled:
+            required.append("OPENAI_API_KEY")
         if not view["fields"]["DAYLOOM_DB_URL"]["configured"]:
             required.append("DAYLOOM_DB_PASSWORD")
-        resources = (self.resource_probe or check_local_resources)()
+        resources = (self.resource_probe() if self.resource_probe else
+                     check_local_resources(rag_enabled=self.rag_enabled))
         missing = [key for key in required if not view["fields"][key]["configured"]]
         return {
-            "ready": not missing and all(item["ready"] for item in resources),
+            "ready": not missing and all(item["ready"] or item.get("status") == "skipped"
+                                         for item in resources),
             "missing": missing,
             "resources": resources,
             "credentials_verified": False,

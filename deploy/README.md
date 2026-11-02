@@ -28,7 +28,8 @@ Python/Node installation, dataset download or manual restore is needed.
 
 Choose provider entry now or later. `bash start.sh --non-interactive` always
 postpones entry and never prompts. Open `/config` afterward to enter Foundry,
-OpenAI and Google settings; Unsplash is optional. The first bootstrap prints the
+Google settings and an OpenAI key when RAG is enabled; Unsplash is optional.
+The first bootstrap prints the
 configuration-management password once. It is independent of the retained Product
 test account `admin@admin.com` / `admin123456`. Only the management password hash is
 stored. Recover management access through the documented host-side reset command,
@@ -39,6 +40,9 @@ baseline placeholder. For local development select `DAYLOOM_APP_IMAGE`,
 `DAYLOOM_BASELINE_IMAGE` and the verified `DAYLOOM_BASELINE_ID` before launching.
 Release packaging replaces those defaults with exact release identities.
 
+For an app-only installation backed by a prepared remote database, use the separate
+[light deployment guide](README.light.md). Keep each mode in its own instance directory.
+
 ## Instance configuration
 
 Runtime files live under the generated `config` directory. Provider edits remain
@@ -48,7 +52,11 @@ Changing connection fields does not rename or migrate a database or change an
 existing PostgreSQL role password. Existing configuration and keys are reused.
 
 Public bootstrap overrides include `DAYLOOM_HOST_PORT`, `COMPOSE_PROJECT_NAME`,
-`DAYLOOM_DB_NAME`, `DAYLOOM_DB_USER`, `DAYLOOM_RUN_UID` and `DAYLOOM_RUN_GID`.
+`DAYLOOM_DB_NAME`, `DAYLOOM_DB_USER`, `DAYLOOM_RUN_UID`, `DAYLOOM_RUN_GID` and
+`PRODUCT_RAG_ENABLED` (literal `true` or `false`, saved when explicitly supplied).
+The [configuration reference](https://github.com/rplalala/Dayloom/blob/main/config/README.md#product-rag-policy)
+defines RAG prerequisites and restart behavior. Disabling retrieval does not remove
+the full bundle's initial dataset or change its container layout.
 The launcher probes the mounted directory's actual ownership and uses a compatible
 runtime identity; UID/GID overrides are available for a deliberately prepared
 directory. The Windows Docker bind metadata tested here reports root ownership.

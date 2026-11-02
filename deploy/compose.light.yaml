@@ -1,0 +1,17 @@
+name: ${COMPOSE_PROJECT_NAME:-dayloom-light}
+services:
+  app:
+    image: ${DAYLOOM_APP_IMAGE:?Select a compatible app image}
+    user: '${DAYLOOM_RUN_UID:?Run the Bash launcher first}:${DAYLOOM_RUN_GID:?Run the Bash launcher first}'
+    environment:
+      DAYLOOM_CONFIG_DIR: /instance
+      DAYLOOM_MANAGEMENT_PEERS: ${DAYLOOM_MANAGEMENT_PEERS:?Run the Bash launcher first}
+    command: [serve, --remote-database]
+    ports:
+      - '127.0.0.1:${DAYLOOM_HOST_PORT:-5173}:5173'
+    volumes:
+      - ./config:/instance
+      - logs:/opt/dayloom/logs
+    restart: unless-stopped
+volumes:
+  logs:

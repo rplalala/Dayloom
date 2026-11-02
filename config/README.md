@@ -44,6 +44,7 @@ require restart, and changing the selected directory does not move database data
 | `allow_insecure_loopback` | `PRODUCT_ALLOW_INSECURE_LOOPBACK` | `true` for the supplied HTTP loopback setup; disable for HTTPS hosting |
 | `session_seconds` | `PRODUCT_SESSION_SECONDS` | `3600`; accepted range 1–86400 |
 | `runtime_profile` | `PRODUCT_RUNTIME_PROFILE` | `acceptance` for Product; independent planners default to development |
+| `rag_enabled` | `PRODUCT_RAG_ENABLED` | `true`; Product deployment policy, captured at startup |
 | `database.host` | `DAYLOOM_DB_HOST` | `127.0.0.1` |
 | `database.port` | `DAYLOOM_DB_PORT` | `55432`; accepted range 1–65535 |
 | `database.name` | `DAYLOOM_DB_NAME` | `dayloom` |
@@ -54,7 +55,7 @@ require restart, and changing the selected directory does not move database data
 | `foundry.endpoint` | `AZURE_OPENAI_ENDPOINT` | Configure your supported HTTPS endpoint ending in `/openai/v1` |
 | `foundry.deployment` | `AZURE_OPENAI_DEPLOYMENT` | `gpt-6-luna`; use a deployment compatible with the selected policy |
 | — | `AZURE_OPENAI_API_KEY` | Foundry model and web-search credential |
-| — | `OPENAI_API_KEY` | TripWorld query embeddings |
+| — | `OPENAI_API_KEY` | TripWorld query embeddings; not required when Product RAG is disabled |
 | — | `GOOGLE_MAPS_API_KEY` | Planning and place photographs |
 | — | `UNSPLASH_API_KEY` | Optional atmosphere photos |
 | — | `PRODUCT_JWT_SECRET` | Private signing key, at least 32 characters; local startup generates one only when absent |
@@ -65,6 +66,37 @@ paths from the repository root. Unknown/duplicate YAML keys and credentials in Y
 are rejected without echoing values. The console shows process-managed fields as
 locked, masks secrets and requires a restart for saved connection/provider/JWT changes.
 It retains existing signing keys; **Generate signing key** replaces one explicitly.
+
+### Product RAG policy
+
+Set `rag_enabled: false` in the instance's `product.yaml`, or override it with
+`PRODUCT_RAG_ENABLED=false` in its `.env` or process environment. The **Enable
+TripWorld retrieval (RAG)** switch at `/config` saves this `.env` override through
+the authenticated configuration API. A process-environment override makes it
+read-only. The default is `true`; selecting a remote database does not change it.
+
+Save the setting and restart the application to apply it. The page distinguishes
+the running policy from the form's selected/saved policy. Turning the switch off
+hides the OpenAI credential section and its API-check button; turning it on
+restores them with any saved key retained. Keys are never displayed. API checks
+are blocked while a saved RAG policy is waiting for restart. This is an instance
+deployment control; Product still exposes no planner-version selector.
+
+With RAG disabled, Product still runs V3, including Google discovery and Repair
+candidate additions, weather, official evidence, generation, validation and Repair.
+Initial discovery and Repair skip TripWorld without opening retrieval connections
+or sending embeddings. Traces distinguish `disabled_by_deployment` from retrieval
+failures; enabled RAG retains its existing failure fallback.
+
+An app-only database with all matching Product migrations is sufficient in this
+mode. TripWorld data, pgvector, retrieval sidecars, the embedding tokenizer and
+`OPENAI_API_KEY` are not required. The planner tokenizer, app database, JWT, Foundry
+and Google configuration remain required. Existing keys and database contents are
+retained. OpenAI diagnostic checks return disabled without sending requests, even
+when a key is saved. Official evidence must use the standard Foundry adapter; an
+explicit legacy `web_evidence.provider: openai` profile fails readiness instead of
+silently switching providers. Independent V0–V3 entry points retain their default
+research behavior; this deployment option does not introduce a research version.
 
 The database launcher uses these same resolved fields when invoking Compose;
 Compose does not parse YAML itself. A URL used for local Compose must explicitly
@@ -184,7 +216,8 @@ adapter; omitting the field preserves the same adapter and legacy configuration 
 Search retains domain filtering, `max_tool_calls`, timeouts, caller-input/output limits
 and zero SDK retries. The existing optional `provider: openai` adapter remains available
 to explicitly configured runtimes, but is not selected by either standard profile.
-`OPENAI_API_KEY` is still required for TripWorld query embeddings.
+`OPENAI_API_KEY` is required when TripWorld query embeddings are enabled; Product
+deployments follow the [RAG policy](#product-rag-policy).
 
 `generation_spend_usd: 25` enables one request-local allowance across Product generation
 and introductions, the programmatic runtime, and the tools CLI with explicit acceptance

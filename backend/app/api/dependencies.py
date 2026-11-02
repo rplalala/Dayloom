@@ -2,6 +2,8 @@
 
 from functools import lru_cache
 
+from fastapi import Request
+
 from backend.app.policies.trip_dates import DateProvider, SystemDateProvider
 from backend.app.runtime.config_loader import load_product_runtime_config, load_runtime_config
 from backend.app.runtime.logging_config import configure_logging
@@ -19,15 +21,21 @@ def get_date_provider() -> DateProvider:
     return SystemDateProvider(runtime_config.app.time_zone)
 
 
-@lru_cache
-def get_planning_service() -> PlanningService:
+def get_planning_service(request: Request) -> PlanningService:
     """Provide the version-agnostic product planning service."""
 
-    return PlanningService(
+    existing = getattr(request.app.state, "product_planning_service", None)
+    if existing is not None:
+        return existing
+    rag_enabled = request.app.state.rag_enabled
+    service = PlanningService(
         RequestPlannerRuntime(
             config=load_product_runtime_config(),
             dependency_factory=create_product_planner_dependencies,
+            rag_enabled=rag_enabled,
         ),
         get_date_provider(),
         spend_limit_usd=load_product_runtime_config().generation_spend_usd,
     )
+    request.app.state.product_planning_service = service
+    return service

@@ -50,8 +50,9 @@ It works without a traveler account or a database connection. New host installat
 show the configuration password `dayloom-config-2026`; change it after entering.
 Existing passwords and disabled verification preferences are retained.
 
-The page edits database connections, provider credentials, Foundry deployment and
-JWT signing keys. Blank secret inputs retain their saved values; **Clear** removes
+The page edits database connections, provider credentials, Foundry deployment,
+the instance RAG policy and JWT signing keys. Blank secret inputs retain their saved
+values; **Clear** removes
 an optional credential or connection URL. Process environment overrides are locked.
 After saving, finish active tasks, stop Dayloom and run `uv run dayloom start` again.
 The running process keeps its original settings until then.

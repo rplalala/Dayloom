@@ -38,11 +38,13 @@ def main(argv=None):
         if not args.baseline_id:
             parser.error("--baseline-id is required for candidate compatibility")
         from backend.app.product.local_readiness import check_local_resources
+        from backend.app.runtime.deployment import ProductPolicySettings
         from deploy.docker.startup import prepare_database
 
         # These probes read local files/database only; no provider client sends requests.
-        resources = check_local_resources()
-        failed = [item["id"] for item in resources if not item["ready"]]
+        resources = check_local_resources(rag_enabled=ProductPolicySettings().rag_enabled)
+        failed = [item["id"] for item in resources
+                  if not item["ready"] and item.get("status") != "skipped"]
         if failed:
             print(
                 "Candidate local resources are incompatible: "

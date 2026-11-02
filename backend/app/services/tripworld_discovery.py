@@ -29,8 +29,9 @@ class RAGStop(Exception):
 
 
 class TripWorldDiscovery:
-    def __init__(self, acquisition, *, config=None, runtime_factory=None):
+    def __init__(self, acquisition, *, config=None, runtime_factory=None, enabled=True):
         self.acq = acquisition
+        self.enabled = enabled
         self.config = config or RAGConfig()
         self.runtime_factory = runtime_factory or (lambda: RuntimeRetrieval(self.config))
         self.report = {
@@ -241,6 +242,11 @@ class TripWorldDiscovery:
                 country=None,
             )
             self.report["scope"] = self.scope.model_dump()
+            if not self.enabled:
+                self.report.update(status="disabled", reason="disabled_by_deployment",
+                                   elapsed_seconds=perf_counter() - started)
+                self.acq._tracer.event("rag_discovery_disabled", self.report)
+                return merged
             queries, omitted = query_plan(contract, self.config)
             self.report["queries"] = [q.model_dump() for q in queries]
             self.report["omitted_queries"] = omitted

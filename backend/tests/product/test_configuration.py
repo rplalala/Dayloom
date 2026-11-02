@@ -82,10 +82,40 @@ def test_save_preserves_unrelated_settings_and_only_applies_after_restart(tmp_pa
         )
 
 
+def test_rag_policy_can_be_saved_without_switching_the_running_instance_or_losing_keys(tmp_path):
+    (tmp_path / ".env").write_text("OPENAI_API_KEY=retained-key\n", encoding="utf-8")
+    manager, client = connect_manager(tmp_path)
+    with client:
+        view = client.get("/api/config").json()
+        assert view["fields"]["PRODUCT_RAG_ENABLED"]["value"] == "true"
+        saved = client.put("/api/config", json={
+            "revision": view["revision"], "changes": {"PRODUCT_RAG_ENABLED": "false"},
+        })
+        assert saved.status_code == 200, saved.text
+        view = saved.json()
+        assert view["rag_enabled"] is True
+        assert view["fields"]["PRODUCT_RAG_ENABLED"]["value"] == "false"
+        assert view["restart_required"] is True
+        probe = client.post("/api/config/check", json={
+            "revision": view["revision"], "service": "all",
+        })
+        assert probe.status_code == 409
+        assert probe.json()["detail"]["code"] == "rag_policy_restart_required"
+    restarted = LocalConfiguration(tmp_path, origin=manager.origin, environment={})
+    assert restarted.view()["rag_enabled"] is False
+    assert restarted.initial["OPENAI_API_KEY"] == "retained-key"
+    assert restarted.view()["restart_required"] is False
+    restarted.save(restarted.view()["revision"], {"PRODUCT_RAG_ENABLED": "true"})
+    enabled = LocalConfiguration(tmp_path, origin=manager.origin, environment={})
+    assert enabled.view()["rag_enabled"] is True
+    assert enabled.initial["OPENAI_API_KEY"] == "retained-key"
+
+
 @pytest.mark.parametrize(
     "changes,code",
     [
         ({"UNKNOWN_SETTING": "out-of-scope"}, "unsupported_setting"),
+        ({"PRODUCT_RAG_ENABLED": "yes"}, "invalid_rag_policy"),
         ({"OPENAI_API_KEY": "bad\nPRODUCT_JWT_SECRET=injected"}, "invalid_setting_value"),
         (
             {"AZURE_OPENAI_ENDPOINT": "https://untrusted.example/openai/v1"},
@@ -123,6 +153,7 @@ def test_environment_overrides_are_visible_but_not_editable(tmp_path):
 @pytest.mark.parametrize("key", [*FIELDS, "PRODUCT_UNSPLASH_ACCESS_KEY"])
 def test_managed_names_keep_existing_case_insensitive_resolution(tmp_path, source, key):
     value = (
+        "false" if key == "PRODUCT_RAG_ENABLED" else
         "https://example.services.ai.azure.com/openai/v1"
         if key == "AZURE_OPENAI_ENDPOINT" else "synthetic-case-value"
     )

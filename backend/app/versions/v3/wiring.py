@@ -476,7 +476,7 @@ class V3PostPrimary:
                 places_provider=self.acq._places,
                 routes_provider=self.acq._routes,
                 intent_ids=intent_ids,
-                rag=self.owner,
+                rag=self.owner if self.owner.enabled else None,
                 geographic_scope=getattr(self.discovery, "scope", None),
                 cache=self.acq._cache,
                 tracer=self.tracer,
