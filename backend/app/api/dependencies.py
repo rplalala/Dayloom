@@ -27,12 +27,7 @@ def get_planning_service(request: Request) -> PlanningService:
     existing = getattr(request.app.state, "product_planning_service", None)
     if existing is not None:
         return existing
-    from backend.app.runtime.deployment import ProductPolicySettings
-
-    rag_enabled = getattr(request.app.state, "rag_enabled", None)
-    if rag_enabled is None:
-        rag_enabled = ProductPolicySettings().rag_enabled
-        request.app.state.rag_enabled = rag_enabled
+    rag_enabled = request.app.state.rag_enabled
     service = PlanningService(
         RequestPlannerRuntime(
             config=load_product_runtime_config(),

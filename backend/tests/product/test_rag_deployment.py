@@ -13,6 +13,49 @@ from backend.app.runtime.deployment import ProductOptions, ProductPolicySettings
 from backend.tests.product.test_accounts import client  # noqa: F401
 
 
+def test_api_startup_pins_rag_before_the_first_request_and_restart_applies_changes(
+    tmp_path, monkeypatch,
+):
+    from contextlib import asynccontextmanager
+    from datetime import date
+
+    from fastapi.testclient import TestClient
+    from starlette.requests import Request
+
+    from backend.app.api import dependencies
+    from backend.app.main import create_app
+    from backend.app.services import planner_runtime
+    from backend.app.services.planning import PlanningFailedError
+    from backend.tests.request_fixtures import make_request
+
+    deployment = tmp_path / "product.yaml"
+    deployment.write_text("rag_enabled: false\n", encoding="utf-8")
+    monkeypatch.setenv("DAYLOOM_CONFIG_DIR", str(tmp_path))
+    monkeypatch.delenv("PRODUCT_RAG_ENABLED", raising=False)
+    monkeypatch.setenv("PRODUCT_LOG_DIRECTORY", str(tmp_path / "logs"))
+    calls = []
+
+    @asynccontextmanager
+    async def providers(*args):
+        yield planner_runtime.PlannerDependencies(llm=object())
+
+    async def observe_policy(*args, **kwargs):
+        calls.append(kwargs["rag_enabled"])
+        raise RuntimeError("Stop before provider execution")
+
+    monkeypatch.setattr(dependencies, "create_product_planner_dependencies", providers)
+    monkeypatch.setattr(planner_runtime, "run_v3", observe_policy)
+    for index in range(2):
+        with TestClient(create_app()) as session:
+            if index == 0:
+                deployment.write_text("rag_enabled: true\n", encoding="utf-8")
+            request = Request({"type": "http", "app": session.app})
+            service = dependencies.get_planning_service(request)
+            with pytest.raises(PlanningFailedError):
+                asyncio.run(service.plan(make_request(), reference_date=date(2026, 9, 11)))
+    assert calls == [False, True]
+
+
 def test_app_only_database_passes_disabled_readiness(client, monkeypatch, provider_values):  # noqa: F811
     from backend.app.product.local_readiness import check_local_resources
     from backend.app.tripworld.retrieval import query_tokens, runtime
