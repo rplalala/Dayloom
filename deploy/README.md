@@ -6,8 +6,8 @@ template, Bash launcher and these instructions. Obtain the public archive from
 the [Docker quickstart](https://github.com/rplalala/Dayloom/blob/main/docs/guides/deployment.md#option-1-docker-recommended).
 Images are distributed through GHCR; local builds can use the same bundle.
 Docker Desktop is optional. Install Bash, Docker Engine 28+
-and a Compose plugin supporting `up --wait --wait-timeout`; the first release
-supports Linux amd64 container engines.
+and a Compose plugin supporting `up --wait --wait-timeout`. Full deployment supports
+Linux amd64; ARM64 is available only through a matching light deployment archive.
 
 Install the latest published version into a new `./dayloom` directory:
 

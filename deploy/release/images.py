@@ -34,7 +34,7 @@ def docker(*args):
     return result.stdout.decode("utf-8").strip()
 
 
-def inspect_image(reference, allow_local):
+def inspect_image(reference, allow_local, architecture="amd64"):
     if not re.fullmatch(IMAGE, reference):
         raise ReleaseError("Images must use immutable repository@sha256 references")
     if not allow_local and not reference.startswith("ghcr.io/rplalala/dayloom-"):
@@ -42,8 +42,10 @@ def inspect_image(reference, allow_local):
     info = json.loads(docker("image", "inspect", reference))[0]
     if reference not in info.get("RepoDigests", []):
         raise ReleaseError("Selected image digest does not match Docker's inspected identity")
-    if info.get("Os") != "linux" or info.get("Architecture") != "amd64":
-        raise ReleaseError("Only Linux amd64 images are supported")
+    if architecture not in {"amd64", "arm64"} or (
+        info.get("Os") != "linux" or info.get("Architecture") != architecture
+    ):
+        raise ReleaseError(f"Image architecture must match Linux {architecture}")
     labels = info.get("Config", {}).get("Labels") or {}
     if labels.get("org.opencontainers.image.source") != SOURCE and not allow_local:
         raise ReleaseError("Image is missing repository provenance")

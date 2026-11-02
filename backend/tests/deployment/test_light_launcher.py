@@ -13,10 +13,13 @@ from dotenv import dotenv_values
 ROOT = Path(__file__).resolve().parents[3]
 
 
-@pytest.mark.parametrize("light", [True, False])
+@pytest.mark.parametrize("light,platform", [
+    (True, "linux/amd64"), (False, "linux/amd64"),
+    (True, "linux/arm64"), (False, "linux/arm64"),
+])
 @pytest.mark.parametrize("rag_override", [None, "false", "true"])
 def test_launcher_selects_only_the_expected_mode_and_keeps_configuration(
-    tmp_path, light, rag_override,
+    tmp_path, light, platform, rag_override,
 ):
     bundle = tmp_path / "bundle"
     bundle.mkdir()
@@ -40,7 +43,7 @@ with (root/"calls.jsonl").open("a") as log: log.write(json.dumps(args)+"\\n")
 if os.environ["TEST_LIGHT"] == "1":
  assert not any("baseline" in value or value in {"postgres", "init"} for value in args), args
 if args[0]=="info":
- print("linux/amd64" if "--format" in args else "ready")
+ print(os.environ["TEST_PLATFORM"] if "--format" in args else "ready")
 elif args[0]=="version": print("28.0.0")
 elif args[:3]==["compose","up","--help"]: print("--wait-timeout")
 elif args[:2]==["image","inspect"]: print("[]")
@@ -87,6 +90,7 @@ else: raise SystemExit("Unexpected Docker command")
         DAYLOOM_APP_IMAGE="dayloom-app:controlled",
         DAYLOOM_HOST_PORT="15877",
         TEST_LIGHT="1" if light else "0",
+        TEST_PLATFORM=platform,
     )
     if not light:
         env.update(DAYLOOM_BASELINE_IMAGE="baseline:controlled", DAYLOOM_BASELINE_ID="b" * 64)
@@ -114,6 +118,11 @@ else: raise SystemExit("Unexpected Docker command")
         text=True,
         timeout=40,
     )
+    if not light and platform == "linux/arm64":
+        assert result.returncode == 1
+        assert "light deployment only" in result.stderr
+        assert not (bundle / "config").exists()
+        return
     assert result.returncode == 0, result.stdout + result.stderr
     values = dotenv_values(bundle / "config/.env")
     assert values.get("PRODUCT_RAG_ENABLED") == rag_override

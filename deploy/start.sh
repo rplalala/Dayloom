@@ -38,7 +38,14 @@ fi
 COMPOSE_HELP=$(docker compose up --help)
 grep -q -- '--wait-timeout' <<< "$COMPOSE_HELP" || fail 'Update Compose to a version supporting up --wait and --wait-timeout.'
 ARCH=$(docker info --format '{{.OSType}}/{{.Architecture}}')
-[[ $ARCH == linux/x86_64 || $ARCH == linux/amd64 ]] || fail 'This release supports Linux amd64 container engines.'
+case "$ARCH" in
+  linux/x86_64|linux/amd64) ARCH=amd64 ;;
+  linux/aarch64|linux/arm64) ARCH=arm64 ;;
+  *) fail 'Supported Docker engines are Linux amd64 and arm64.' ;;
+esac
+if [[ $ARCH == arm64 ]] && (( ! LIGHT )); then
+  fail 'ARM64 supports light deployment only; use the ARM64 light bundle.'
+fi
 
 DEFAULTS_FILE="$BUNDLE_DIR/.env.example"
 COMPOSE_FILE="$BUNDLE_DIR/compose.yaml"
