@@ -315,14 +315,14 @@ export function ConfigurationPage() {
             <button type="button" disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis('all')}>Check all APIs</button>
           </section>
           <form onSubmit={save}>
-            <div className="config-grid">{sections.map(section => <section className="config-card" key={section.title}>
+            <div className="config-grid">{sections.filter(section => config.rag_enabled !== false || section.service !== 'openai').map(section => <section className="config-card" key={section.title}>
               <h2>{section.title}</h2><p>{section.description}</p>
               {section.fields.map(([key, label, help]) => {
                 const field = config.fields[key];
                 if (!field) return null;
                 const edited = Object.hasOwn(edits, key);
                 return <div className="config-field" key={key}>
-                  <label htmlFor={key}>{label}<span>{field.locked ? 'Managed by environment' : edited ? (edits[key] ? 'Change pending' : 'Will be cleared') : field.configured ? 'Configured' : key === 'OPENAI_API_KEY' && config.rag_enabled === false ? 'Not required' : 'Missing'}</span></label>
+                  <label htmlFor={key}>{label}<span>{field.locked ? 'Managed by environment' : edited ? (edits[key] ? 'Change pending' : 'Will be cleared') : field.configured ? 'Configured' : 'Missing'}</span></label>
                   <div className="config-input-row"><input id={key} type={field.secret ? 'password' : 'text'}
                     autoComplete="off" spellCheck={false} maxLength={field.secret ? 4096 : key.endsWith('DEPLOYMENT') ? 128 : 4096}
                     aria-label={label} aria-describedby={`${key}-help`} disabled={busy || field.locked}
@@ -333,11 +333,11 @@ export function ConfigurationPage() {
                       aria-label={`Clear ${label}`} onClick={() => {
                         setEdits(current => ({ ...current, [key]: '' })); setApiReports({}); setNotice('');
                       }}>Clear</button>}
-                  </div><small id={`${key}-help`}>{key === 'OPENAI_API_KEY' && config.rag_enabled === false ? 'Optional while RAG is disabled. Existing saved keys are retained.' : help}</small>
+                  </div><small id={`${key}-help`}>{help}</small>
                 </div>;
               })}
               {section.service && <div className="config-api-actions"><button type="button" aria-label={`Check ${section.title} API`}
-                disabled={busy || !!Object.keys(edits).length || (section.service === 'openai' && config.rag_enabled === false)} onClick={() => checkApis(section.service!)}>Check API</button></div>}
+                disabled={busy || !!Object.keys(edits).length} onClick={() => checkApis(section.service!)}>Check API</button></div>}
               {section.service && apiReports[section.service] && <div className="config-api-results" aria-label={`${section.title} API results`} aria-live="polite">
                 <p className="config-api-time">Checked {new Date(apiReports[section.service]!.checked_at).toLocaleString()}</p>
                 <ul>{apiReports[section.service]!.results.map(result => <li key={result.id} data-status={result.status}>

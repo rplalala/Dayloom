@@ -5,7 +5,7 @@ import { ConfigurationPage } from './ConfigurationPage';
 
 afterEach(() => vi.unstubAllGlobals());
 
-it('explains disabled RAG, optional OpenAI keys and skipped retrieval checks', async () => {
+it.each([false, true])('hides RAG inputs when disabled, including saved credentials (%s)', async configured => {
   vi.stubGlobal('fetch', vi.fn(async (url: string) => {
     if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'a'.repeat(64) });
     if (url.endsWith('/session')) return Response.json({ csrf_token: 'page-token' });
@@ -13,15 +13,45 @@ it('explains disabled RAG, optional OpenAI keys and skipped retrieval checks', a
       resources: [{ id: 'tripworld', ready: false, status: 'skipped' },
         { id: 'embedding_tokenizer', ready: false, status: 'skipped' }] });
     return Response.json({ revision: 'a'.repeat(64), restart_required: false, running_ready: true,
-      rag_enabled: false, fields: { OPENAI_API_KEY: { value: null, secret: true, configured: false, locked: false } } });
+      rag_enabled: false, fields: {
+        OPENAI_API_KEY: { value: null, secret: true, configured, locked: false },
+        DAYLOOM_DB_HOST: { value: 'database.example', secret: false, configured: true, locked: false },
+        AZURE_OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false },
+        GOOGLE_MAPS_API_KEY: { value: null, secret: true, configured: true, locked: false },
+      } });
   }));
   render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
   expect(await screen.findByText('RAG is disabled by deployment configuration.')).toBeVisible();
-  expect(screen.getByText('Not required')).toBeVisible();
-  expect(screen.getByRole('button', { name: 'Check OpenAI API' })).toBeDisabled();
+  expect(screen.queryByLabelText('OpenAI API key')).not.toBeInTheDocument();
+  expect(screen.queryByRole('heading', { name: 'OpenAI' })).not.toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: 'Check OpenAI API' })).not.toBeInTheDocument();
+  expect(screen.getByLabelText('Database host')).toBeVisible();
+  expect(screen.getByLabelText('Foundry API key')).toBeVisible();
+  expect(screen.getByLabelText('Google Maps API key')).toBeVisible();
   fireEvent.click(screen.getByRole('button', { name: 'Check local readiness' }));
   expect(await screen.findAllByText('Skipped')).toHaveLength(2);
   expect(screen.queryByText('Needs attention')).not.toBeInTheDocument();
+});
+
+it('restores RAG inputs after a restarted instance reports RAG enabled', async () => {
+  let ragEnabled = false;
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+    if (url.endsWith('/access')) return Response.json({ password_required: false, revision: 'a'.repeat(64) });
+    if (url.endsWith('/session')) return Response.json({ csrf_token: 'page-token' });
+    return Response.json({ revision: 'a'.repeat(64), restart_required: false, running_ready: true,
+      rag_enabled: ragEnabled, fields: {
+        OPENAI_API_KEY: { value: null, secret: true, configured: true, locked: false },
+      } });
+  }));
+  render(<MemoryRouter><ConfigurationPage /></MemoryRouter>);
+  await screen.findByText('RAG is disabled by deployment configuration.');
+  expect(screen.queryByLabelText('OpenAI API key')).not.toBeInTheDocument();
+  ragEnabled = true;
+  fireEvent.click(screen.getByRole('button', { name: 'Reload saved configuration' }));
+  expect(await screen.findByLabelText('OpenAI API key')).toHaveValue('');
+  expect(screen.getByPlaceholderText('Leave empty to keep the saved key')).toBeVisible();
+  expect(screen.getByRole('button', { name: 'Clear OpenAI API key' })).toBeVisible();
+  expect(screen.getByRole('button', { name: 'Check OpenAI API' })).toBeEnabled();
 });
 
 it('explains remote connectivity and schema failures without suggesting a local database', async () => {

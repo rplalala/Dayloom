@@ -69,7 +69,7 @@ owns commands and prerequisites.
 Product captures `rag_enabled` at startup, defaulting to true. The instance can
 explicitly disable retrieval while keeping V3 Google discovery, validation and
 Repair; only app storage is then required. `/config` exposes the running policy,
-skipped retrieval checks and optional OpenAI credential, without a runtime switch.
+skipped retrieval checks and hides retrieval-only inputs, without a runtime switch.
 The [configuration reference](../config/README.md#product-rag-policy) owns precedence,
 provider restrictions and resource requirements. Existing database data is preserved.
 
