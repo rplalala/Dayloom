@@ -20,20 +20,25 @@ with React, FastAPI and PostgreSQL. It supports accounts, recoverable planning
 tasks, saved trips, place photographs and itinerary import/export.
 
 > [!TIP]
-> **Quick deployment → [Run the full application with Docker](docs/guides/deployment.md#option-1-docker-recommended)**
+> **Quick deployment → [Docker guide](docs/guides/deployment.md#option-1-docker-recommended)** · [0.2.0 released](https://github.com/rplalala/Dayloom/releases/tag/dayloom-v0.2.0)
+>
+> **Full: app, local PostgreSQL and the complete initial database**
 >
 > ```bash
 > curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | bash
 > ```
 >
-> Start with Bash, Docker Engine and Compose. The images include the database baseline
-> and stored vectors; instance configuration is created automatically. Enter provider
-> settings during setup or finish them later at `/config`.
-
-Have a prepared remote PostgreSQL database? Use the
-[app-only light deployment](docs/guides/deployment.md#light-deployment-with-a-remote-database)
-to avoid downloading the full baseline. Light mode requires a release with the
-light bundle; the existing 0.1.0 release remains full-only.
+> **Light: app only, prepared remote PostgreSQL, RAG disabled**
+>
+> ```bash
+> curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | PRODUCT_RAG_ENABLED=false bash -s -- --light
+> ```
+>
+> Use Bash, Docker Engine and Compose. Full deployment restores the included baseline
+> and stored vectors into a local database. Light deployment requires a remote database
+> with all matching `app` migrations; with RAG disabled it needs no TripWorld dataset,
+> pgvector or OpenAI key. Both create instance configuration automatically and allow
+> service settings to be completed later at `/config`.
 
 ## How it works
 

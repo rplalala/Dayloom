@@ -1,21 +1,31 @@
 # Deploy Dayloom
 
-Both options run the full React, FastAPI and PostgreSQL application on your machine.
-Choose Docker for a prepared installation, or source setup to develop the code and
-run the V0–V3 entry points directly.
+Run Dayloom with a Docker bundle, or use a source checkout to develop the code and
+run the V0–V3 entry points directly. Docker offers a complete local database
+installation or an app-only installation connected to prepared remote PostgreSQL.
 
 | Option | Best for | Host tools |
 | --- | --- | --- |
-| [Docker bundle](#option-1-docker-recommended) | Run the complete app with the approved initial data | Bash, Docker Engine and Compose |
+| [Docker bundle](#option-1-docker-recommended) | Complete local installation or app-only remote-database deployment | Bash, Docker Engine and Compose |
 | [Source checkout](#option-2-run-from-source) | Develop the frontend/backend or run planners directly | Python 3.12, uv, Node.js 24 and PostgreSQL/pgvector |
 
 ## Option 1: Docker (recommended)
 
+[Dayloom 0.2.0](https://github.com/rplalala/Dayloom/releases/tag/dayloom-v0.2.0)
+is published with full and light deployment bundles. Version 0.1.0 remains available
+as a full-only release. The commands below select the latest published version.
+
+| Mode | Runs locally | Database requirements |
+| --- | --- | --- |
+| Full | App, PostgreSQL and one-time initialization | The bundled baseline supplies Product accounts, business data, TripWorld and stored vectors. |
+| Light | App only | Your prepared remote PostgreSQL database; the minimum with RAG disabled is a matching `app` schema. |
+
 Use Bash, Docker Engine 28+ and a Compose plugin supporting `up --wait --wait-timeout`.
 The release supports Linux amd64 containers. Docker Desktop is optional.
-No source checkout, host Python/Node installation or separate dataset preparation is required.
+No source checkout or host Python/Node installation is required. Full deployment
+includes its initial data; light deployment uses the prepared remote database below.
 
-### Download and start
+### Full deployment with a local database
 
 Run this in a directory where a new `dayloom` directory can be created.
 You also need `curl`, `tar` and `sha256sum` on the host.
@@ -44,28 +54,28 @@ port with `DAYLOOM_HOST_PORT=5174 bash start.sh`; use the URL printed by the lau
 
 Light deployment runs only the app service. It does not download the baseline image,
 start PostgreSQL locally, restore data or generate embeddings. Use a prepared remote
-PostgreSQL database containing all matching Product migrations. By default, RAG
-also requires pgvector, compatible TripWorld data and stored vectors. Remote startup
-audits the required resources read-only; it never applies migrations or imports data.
+PostgreSQL database with the resources required by your RAG setting:
 
-This mode requires a new app image supporting remote setup and a Release containing
-`dayloom-VERSION-light-linux-amd64.tar.gz`. The existing 0.1.0 Release is full-only.
-For a release that provides both bundles, use the separate light installation entry:
+| RAG policy | Remote database | OpenAI key |
+| --- | --- | --- |
+| Off, as in the command below | All matching Product migrations in `app`; no TripWorld data or pgvector required | Not required |
+| On, the default unless explicitly disabled | Matching `app` migrations, pgvector, compatible TripWorld data and stored vectors | Required for query embeddings |
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | bash -s -- --light
-```
+Remote startup audits the required resources read-only; it never provisions a
+database, applies migrations or imports data. The database administrator prepares
+the schema separately. Changing a connection does not migrate existing data.
 
-For an instance without TripWorld retrieval, explicitly disable RAG:
+For the minimal app-only installation, explicitly disable RAG:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/rplalala/Dayloom/main/deploy/install.sh | PRODUCT_RAG_ENABLED=false bash -s -- --light
 ```
 
 This saves the override in the new instance's `config/.env`. Only the prepared
-`app` schema is needed; no dataset, pgvector or OpenAI key is required. V3 retains
-Google discovery, official evidence through Foundry, validation and Repair. Foundry
-and Google credentials can be entered later at `/config`. Existing cloud data and
+`app` schema is needed. Omit `PRODUCT_RAG_ENABLED=false` to keep RAG enabled with
+the additional requirements in the table. V3 retains Google discovery, official
+evidence through Foundry, validation and Repair. Foundry and Google credentials
+can be entered later at `/config`. Existing cloud data and
 keys are retained. See the [RAG policy](../../config/README.md#product-rag-policy)
 for precedence, resource requirements and the restart boundary.
 
@@ -81,8 +91,7 @@ After installation, run `cd dayloom-light`. The configuration/restart commands b
 apply to both released bundle types. For stop/start, private configuration retention
 and remote-database backup responsibilities, see [light operations](../../deploy/README.light.md).
 Full and light instances use separate directories, configurations and Compose projects;
-choose a free `DAYLOOM_HOST_PORT` when running both. Product users in light mode come
-from the remote database; the full baseline's default admin is not created automatically.
+choose a free `DAYLOOM_HOST_PORT` when running both.
 
 For source-based testing with an app image built from this revision, run:
 
@@ -108,16 +117,18 @@ You can finish this step later. Save, then apply the settings from the bundle di
 docker compose --env-file config/.env restart app
 ```
 
-The retained Product test account is **`admin@admin.com` / `admin123456`**.
-Its login is separate from configuration management. Existing trips, related records,
-photo-cache metadata and stored retrieval vectors are included. New provider API
-requests use your instance configuration; setup does not generate new embeddings
-or refresh photos.
+Full deployment retains the Product test account **`admin@admin.com` / `admin123456`**,
+existing trips, related records, photo-cache metadata and stored vectors. Light
+deployment uses the accounts and business data in your prepared remote database;
+it does not create that test account or import the full baseline. Account login is
+separate from configuration management. New provider requests use your instance
+settings; setup does not generate embeddings or refresh photos.
 
 For stop/start, logs, password recovery, upgrades and private database/configuration
 backups, follow the [Docker operations guide](../../deploy/README.md).
-Keep the generated configuration and database volume between runs. For everyday
-use, run `bash start.sh` from the same bundle and open the printed local URL.
+Keep the generated configuration between runs; full deployments also retain their
+local database volume. For everyday use, run `bash start.sh` from the same bundle
+and open the printed local URL.
 
 ### Platform and resource observations
 
