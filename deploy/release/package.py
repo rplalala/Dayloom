@@ -136,6 +136,10 @@ def render(metadata):
         "Release packaging replaces those defaults with exact release identities.\n\n"
     )
     result["README.md"] = result["README.md"].replace(source_only, "")
+    result["README.md"] = result["README.md"].replace(
+        "(README.light.md)",
+        f"(https://github.com/rplalala/Dayloom/blob/{metadata['source_revision']}/deploy/README.light.md)",
+    )
     result["README.md"] = (
         f"# Dayloom {metadata['version']}\n\n"
         f"Source revision: `{metadata['source_revision']}`. Linux amd64.\n\n"
