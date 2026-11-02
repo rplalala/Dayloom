@@ -59,6 +59,13 @@ else
 fi
 """)
     curl.chmod(0o755)
+    docker = commands / "docker"
+    docker.write_text(
+        '#!/usr/bin/env bash\n'
+        '[[ "$*" == "info --format {{.OSType}}/{{.Architecture}}" ]] || exit 99\n'
+        'printf "%s\\n" "${TEST_DOCKER_PLATFORM:-linux/amd64}"\n'
+    )
+    docker.chmod(0o755)
     work = tmp_path / "install space"
     work.mkdir()
     env = {
@@ -168,3 +175,36 @@ def test_light_installer_selects_the_separate_latest_asset(installation):
     assert result.returncode == 0, result.stdout + result.stderr
     assert (work / "dayloom-light/launched.txt").exists()
     assert not (work / "dayloom").exists()
+
+
+@pytest.mark.parametrize("platform", ["linux/arm64", "linux/aarch64"])
+def test_light_installer_selects_the_arm64_engine_asset(installation, platform):
+    work, fixtures, env = installation
+    env["TEST_DOCKER_PLATFORM"] = platform
+    original = fixtures / "dayloom-2.7.3-linux-amd64.tar.gz"
+    arm = fixtures / "dayloom-2.7.3-light-linux-arm64.tar.gz"
+    original.rename(arm)
+    checksum = original.with_name(original.name + ".sha256")
+    arm.with_name(arm.name + ".sha256").write_bytes(
+        checksum.read_bytes().replace(original.name.encode(), arm.name.encode())
+    )
+    checksum.unlink()
+    result = install(installation, "--light")
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert (work / "dayloom-light/launched.txt").exists()
+    assert (work / "dayloom-light" / arm.name).is_file()
+
+
+@pytest.mark.parametrize("platform,arguments", [
+    ("linux/arm64", ()),
+    ("linux/ppc64le", ("--light",)),
+    ("windows/amd64", ("--light",)),
+])
+def test_unsupported_deployment_creates_no_instance(installation, platform, arguments):
+    work, _, env = installation
+    env["TEST_DOCKER_PLATFORM"] = platform
+    result = install(installation, *arguments)
+    assert result.returncode != 0
+    assert not (work / "dayloom").exists()
+    assert not (work / "dayloom-light").exists()
+    assert "--light" in result.stderr if platform == "linux/arm64" else "Supported" in result.stderr

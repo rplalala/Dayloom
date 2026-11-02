@@ -20,7 +20,9 @@ platform is rejected. First installation rejects public overrides that disagree
 with the archive; existing instances retain their installed baseline through the
 maintenance commands. Application and baseline versioning remain independent.
 
-The target platform is Linux amd64. Other architectures have no acceptance claim.
+Full deployment targets Linux amd64. Light deployment can target Linux amd64 or
+arm64; it does not package or restore the local baseline. Published 0.1.0 and 0.2.0
+assets remain amd64-only and are never overwritten to add a platform.
 The approved baseline dump measured 4,434,195,118 bytes; the first public baseline
 image measured 4,605,052,812 bytes. Package build JSON reports actual archive and selected
 image sizes for each build. These are stored image sizes, not compressed transfer
@@ -105,6 +107,15 @@ python -m deploy.release.light_package build --version VERSION \
 python -m deploy.release.light_package verify dist-release/dayloom-VERSION-light-linux-amd64.tar.gz
 ```
 
+For ARM64, pull the app's immutable Linux arm64 manifest, add `--architecture arm64`
+to the build command and verify `dayloom-VERSION-light-linux-arm64.tar.gz`.
+The selected image must match that architecture. New light metadata uses
+`dayloom-light-release-v2` with an explicit architecture; original v1 metadata
+remains verifiable as amd64. Each new launcher checks both its architecture and
+the pinned app digest before writing instance configuration. The latest installer
+uses the Docker engine architecture, including remote Docker contexts, and rejects
+ARM64 full deployment before downloading an archive.
+
 The four-file archive contains app-only Compose, public defaults, a launcher selecting
 light mode and standalone operations instructions. It has archive/file checksums and
 rejects a substituted app digest before host configuration is written. Full and light
@@ -116,7 +127,10 @@ images remain unchanged. Build or packaging success does not establish publicati
 `dayloom-release.yml` is manual-only. Supply the reviewed 40-character source
 commit, an exact app version without `v`, the existing immutable GHCR baseline
 reference and the explicit resource archive URL/SHA256. The `prepare` job has only
-repository read access and builds locally with no publication. Preparation uses
+repository read access and builds both app variants on native amd64 and arm64
+runners with no publication. Only amd64 preparation downloads the existing
+baseline for compatibility checks; both builds use the same resource archive
+checksum. Preparation uses
 no registry, provider or database secret. It validates Docker build declarations
 and uses the verified named resource context. OCI revision/version labels are
 added after expensive runtime layers so metadata changes reuse dependency/data
@@ -128,8 +142,9 @@ Publication needs explicit human authorization; do not trigger this workflow jus
 to validate its declaration. Its `GITHUB_TOKEN` is scoped to package and repository
 writes, is passed only to Docker login and GitHub CLI, and is never a build input.
 Actions are pinned to reviewed commits. The job refuses an existing app version,
-pushes an app image with SBOM/provenance attestations, pulls its digest, rechecks
-resource/label compatibility, creates full and light deployment archives and creates a
+pushes a multi-platform app image with SBOM/provenance attestations, pulls its
+digest, rechecks resource/label compatibility, creates the amd64 full archive plus
+amd64 and arm64 light archives and creates a
 draft GitHub Release containing their archives and checksum sidecars. Build arguments
 are public source/version identifiers; Docker provenance may expose them.
 
@@ -142,6 +157,9 @@ from those retrieved artifacts. Public-distribution acceptance remains pending
 until that entire path passes; a preparation build or draft asset does not prove
 anonymous availability. The workflow never rebuilds or exports the baseline,
 calls paid providers, or loads an author's runtime configuration.
+ARM64 light packaging pins the platform manifest from the app index. Startup
+acceptance must identify whether it ran on a native ARM64 engine or under emulation;
+an emulated config-page check is not evidence of native server performance.
 
 ## Local package verification
 

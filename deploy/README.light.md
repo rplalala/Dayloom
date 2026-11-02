@@ -1,8 +1,9 @@
 Run `bash start.sh` from this extracted bundle to start one app service. It creates
 private `config/` files and a logs volume, and downloads only the selected app image.
 No local PostgreSQL service, baseline image, dataset import or embeddings are created.
-Docker Engine 28+, Compose with `up --wait --wait-timeout`, Bash and Linux amd64
-containers are required. Docker Desktop is optional.
+Docker Engine 28+, Compose with `up --wait --wait-timeout` and Bash are required.
+Use the light archive matching the Docker engine: Linux amd64 or arm64. The launcher
+rejects an archive for the other architecture. Docker Desktop is optional.
 
 Open the printed loopback URL at `/config` using the generated management password.
 Database and provider settings may be entered later. Save and restart:

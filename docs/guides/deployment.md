@@ -21,7 +21,11 @@ as a full-only release. The commands below select the latest published version.
 | Light | App only | Your prepared remote PostgreSQL database; the minimum with RAG disabled is a matching `app` schema. |
 
 Use Bash, Docker Engine 28+ and a Compose plugin supporting `up --wait --wait-timeout`.
-The release supports Linux amd64 containers. Docker Desktop is optional.
+Published 0.1.0 and 0.2.0 bundles support Linux amd64 containers. Full deployment
+remains amd64-only. ARM64 light deployment requires a release containing
+`dayloom-VERSION-light-linux-arm64.tar.gz`; the installer detects the Docker engine's
+architecture and selects its matching archive. An amd64 archive cannot be reused
+as an ARM64 release. Docker Desktop is optional.
 No source checkout or host Python/Node installation is required. Full deployment
 includes its initial data; light deployment uses the prepared remote database below.
 

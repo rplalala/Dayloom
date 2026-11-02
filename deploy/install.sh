@@ -12,10 +12,22 @@ main() {
     esac
   done
   if (( light )); then directory=dayloom-light; suffix=-light; fi
-  for tool in curl tar sha256sum; do
+  for tool in curl tar sha256sum docker; do
     command -v "$tool" >/dev/null || fail "Install $tool first."
   done
   [[ ! -e $directory && ! -L $directory ]] || fail "The $directory directory already exists; run its start.sh or choose a fresh parent directory."
+
+  local platform architecture
+  platform=$(docker info --format '{{.OSType}}/{{.Architecture}}') || \
+    fail 'Docker is unavailable; start the daemon and check access.'
+  case "$platform" in
+    linux/amd64|linux/x86_64) architecture=amd64 ;;
+    linux/arm64|linux/aarch64) architecture=arm64 ;;
+    *) fail 'Supported Docker engines are Linux amd64 and arm64.' ;;
+  esac
+  if [[ $architecture == arm64 ]] && (( ! light )); then
+    fail 'ARM64 supports light deployment only; run the installer with --light.'
+  fi
 
   local repository=https://github.com/rplalala/Dayloom
   local resolved version archive release
@@ -25,7 +37,7 @@ main() {
   [[ $resolved =~ ^https://github\.com/rplalala/Dayloom/releases/tag/dayloom-v([0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9.-]+)?)$ ]] || \
     fail 'The latest release does not have a supported Dayloom version tag.'
   version=${BASH_REMATCH[1]}
-  archive="dayloom-${version}${suffix}-linux-amd64.tar.gz"
+  archive="dayloom-${version}${suffix}-linux-${architecture}.tar.gz"
   release="$repository/releases/download/dayloom-v$version"
 
   mkdir "$directory"
